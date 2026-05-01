@@ -1,0 +1,18 @@
+{
+  "reportName": "Constitutional Review Campaign v0",
+  "provenanceFormat": "constitutional-review-report-v1",
+  "sourceTree": "tracked local project artifact; inspect repository history for commit identity",
+  "javaRelease": "21",
+  "javaCommand": "constitutionalreview.Main --campaign v0 --runs 80 --cases 64 --seed 20260501 --output-dir reports --legislative-input /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "runs": 80,
+  "casesPerRun": 64,
+  "seed": 20260501,
+  "experimentCaseCount": 7,
+  "scenarioCount": 13,
+  "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "legislativeInputSha256": "ee8cab52fcec4dffa5f031e3e557dbc56f92df0405e75df19d152ff5eba3de74",
+  "artifacts": [
+    {"path": "reports/constitutional-review-campaign-v0.csv", "sha256": "b1d4f2da680b7aba4a24603822ed643942bd6a43001c897951fec320abcf0416"},
+    {"path": "reports/constitutional-review-campaign-v0.md", "sha256": "fb726c943882b575e04f3d7374607d8e62c26d6ecda65fc52676a522924b5924"}
+  ]
+}

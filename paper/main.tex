@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{array}
+
+\title{Designing Constitutional Review Institutions by Simulation}
+\author{Anonymous Author(s)}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Constitutional review institutions face a persistent design problem: courts need enough independence to protect rights and legal continuity, but enough accountability to avoid becoming an unreviewable partisan veto point. This paper introduces a separate computational simulator for comparing supreme-court and constitutional-review designs. The model varies appointment methods, court size, term limits, removal standards, recusal rules, emergency docket procedures, voting thresholds, opinion-coalition behavior, panel versus en banc review, dual or cross-checking courts, constitutional councils, legislative override rules, and independence/accountability tradeoffs. A data-import boundary allows legislative simulator outputs to become constitutional dockets without making this project depend on the legislative simulator source tree.
+\end{abstract}
+
+\section{Motivation}
+
+The motivating question is not whether one court design is ideal in isolation. It is whether institutional designs can be compared under shared docket assumptions and explicit value tradeoffs. A court can be independent while losing democratic legitimacy, responsive while failing rights protection, stable while entrenching bad doctrine, or active while creating constitutional conflict. The simulator is built to expose those tensions rather than collapse them into a single institutional label.
+
+The current model should be read as a design-search scaffold. It does not claim to forecast any real supreme court. It creates synthetic constitutional cases, routes them through institutional designs, and reports comparative indicators. The initial campaign is therefore useful for identifying which mechanics deserve deeper modeling: appointment selection, emergency-docket restraints, cross-court review, council warnings, override channels, and recusal discipline.
+
+\section{Model}
+
+Each generated world contains a pool of potential justices, a constitutional docket, and a legislative-output profile. Cases vary by legal ambiguity, rights burden, democratic mandate, partisan salience, emergency pressure, legislative quality, constitutional-conflict potential, and public attention. Justices vary by ideology, independence, rights sensitivity, accountability pressure, institutionalism, partisan loyalty, and emergency deference.
+
+Each scenario supplies a court design. The court design selects reviewers, applies recusal rules, routes cases to full-court or panel review, determines whether emergency relief occurs with or without merits review, applies a voting threshold, optionally invokes cross-checking or council review, and optionally allows legislative or popular override. Decisions update a simple court state that tracks precedent stability and conflict load over time.
+
+\section{Legislative Input Boundary}
+
+This project remains separate from the legislative simulator. Legislative outputs are imported as CSV data and summarized into a neutral profile with enacted volume, legal quality, weak-mandate rate, rights risk, partisan skew, volatility, public legitimacy, and override pressure. This allows laws generated under legislative simulations to become inputs for constitutional review without coupling Java packages or build systems.
+
+The v0 campaign was run with the adjacent congressional simulator's main campaign CSV as an imported input. The importer summarized that file as enacted volume 0.324, legal quality 0.617, weak-mandate rate 0.174, rights risk 0.106, partisan skew 0.233, volatility 0.121, and public legitimacy 0.550.
+
+\section{Metrics}
+
+The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness. Higher legal stability, rights protection, legitimacy, and democratic responsiveness are generally better. Lower partisan alignment, shadow-docket abuse, reversal rate, constitutional conflict, and administrative cost are generally better. Invalidation, emergency order, recusal, concurrence, dissent, en banc, council warning, cross-check disagreement, and override rates are diagnostic rather than automatically good or bad.
+
+The reported directional score is a reading aid. It averages a stability/rights score, a legitimacy/control score, and administrative feasibility. It should not be treated as a final constitutional ranking.
+
+\section{Initial Campaign}
+
+The first campaign compares thirteen institutional scenarios across seven assumption cases: baseline, partisan appointment pressure, rights-risk legislation, shadow-docket stress, high democratic mandate, constitutional conflict, and imported legislative output. The reported run used 80 runs per case, 64 cases per run, seed 20260501, and the imported congressional simulator campaign CSV.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.7in}rrrrrr}
+\toprule
+Scenario & Score & Stability & Rights & Partisan & Shadow & Conflict \\
+\midrule
+60 percent invalidation threshold & 0.817 & 0.974 & 0.708 & 0.056 & 0.077 & 0.266 \\
+18-year staggered terms & 0.810 & 0.967 & 0.712 & 0.057 & 0.107 & 0.267 \\
+Stylized current U.S.-like court & 0.809 & 0.958 & 0.711 & 0.056 & 0.190 & 0.267 \\
+No emergency relief without merits review & 0.803 & 0.976 & 0.707 & 0.043 & 0.047 & 0.266 \\
+Panel with en banc correction & 0.802 & 0.968 & 0.711 & 0.068 & 0.107 & 0.267 \\
+Cross-checking constitutional court & 0.767 & 0.968 & 0.707 & 0.024 & 0.078 & 0.303 \\
+Dual supreme courts & 0.750 & 0.958 & 0.712 & 0.023 & 0.078 & 0.303 \\
+\bottomrule
+\end{tabular}
+\caption{Selected v0 campaign averages. Lower values are preferred for partisan alignment, shadow-docket abuse, and conflict. The full CSV and Markdown report are generated under \texttt{reports/}.}
+\label{tab:v0-selected}
+\end{table}
+
+\section{Early Interpretation}
+
+The initial results suggest several next modeling priorities. First, the emergency docket needs richer procedure states because the model already shows large legitimacy and abuse effects from reason-giving and merits-review requirements. Second, cross-checking and dual-court designs reduce partisan alignment but currently pay a high administrative and conflict cost; the model needs clearer disagreement-resolution mechanics before those designs can be evaluated seriously. Third, override rules should distinguish ordinary policy disagreement from rights-sensitive override attempts. Fourth, appointment design should be connected to time, vacancy timing, and political cycles instead of selecting one court at run start.
+
+\section{Next Work}
+
+The next serious increment should deepen the docket and actor model before adding more named designs. The highest-value additions are:
+
+\begin{enumerate}
+  \item a docket generator that separates facial challenges, as-applied challenges, election disputes, emergency stays, executive-power cases, administrative-law cases, and rights claims;
+  \item a justice replacement timeline for life tenure, staggered terms, court expansion, and partisan appointment waves;
+  \item explicit emergency-docket procedure states: application, response window, reasoned order, temporary stay, merits acceleration, and expiration;
+  \item override mechanics that model delay, supermajority thresholds, referendum risk, rights carveouts, and repeated overrides;
+  \item report slices that compare designs by stress case rather than only weighted averages;
+  \item sensitivity runs over appointment capture, emergency pressure, rights-risk legislation, and weak democratic mandate.
+\end{enumerate}
+
+\section{Reproducibility}
+
+The simulator is dependency-free Java and is run through \texttt{make}. The core commands are \texttt{make test}, \texttt{make campaign}, and \texttt{make paper}. The v0 report artifacts are written under \path{reports/}. The paper is built from this file with \texttt{make paper}. The software and campaign outputs are treated as the primary artifacts \cite{ConstitutionalReviewSimulator2026}. Imported legislative profiles are optional and come from the separate legislative simulator's report CSV contract \cite{CongressInstitutionalSimulator2026}.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
