@@ -15,6 +15,31 @@ public record ReviewCase(
         double legislativeQuality,
         double constitutionalConflictPotential,
         double publicAttention,
-        double overridePressure
+        double overridePressure,
+        double lowerCourtConflict,
+        double lowerCourtErrorRisk,
+        double certiorariPressure
 ) {
+    public ReviewCase withId(String id) {
+        return new ReviewCase(
+                id,
+                type,
+                docketType,
+                legalAmbiguity,
+                rightsBurden,
+                democraticMandate,
+                partisanSalience,
+                lawIdeology,
+                emergencyPressure,
+                requestedEmergencyRelief,
+                executiveDefianceRisk,
+                legislativeQuality,
+                constitutionalConflictPotential,
+                publicAttention,
+                overridePressure,
+                lowerCourtConflict,
+                lowerCourtErrorRisk,
+                certiorariPressure
+        );
+    }
 }

@@ -1,0 +1,2 @@
+sourceKey,domain,metric,term,numerator,denominator,value,sourceUrl,notes
+black-epstein-recusal,recusal,recusalRate,1946-2003,599,70110,0.008544,https://epstein.wustl.edu/recusal,Black and Epstein report 599 post-1946 recusal cases; denominator uses SCDB case-centered cases times nine justice seats.

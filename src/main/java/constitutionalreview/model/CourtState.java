@@ -47,13 +47,21 @@ public final class CourtState {
             double democraticMandate,
             double rightsBurden,
             double partisanSalience,
-            double executiveDefianceRisk
+            double executiveDefianceRisk,
+            boolean legislativeCompliance,
+            boolean legislativeEvasion,
+            boolean delayedReenactment,
+            boolean executiveEmergencyFlood,
+            boolean overrideCampaign,
+            boolean appointmentPressureCampaign
     ) {
         precedentStability = Values.clamp01(precedentStability + 0.04 - precedentShift * 0.22);
         conflictLoad = Values.clamp01(conflictLoad * 0.72 + conflict * 0.28);
         legislativeDefiance = Values.clamp01(
                 legislativeDefiance * 0.66
                         + (invalidated ? democraticMandate * 0.14 + publicAttention * 0.08 : -0.02)
+                        + (legislativeEvasion ? 0.08 : 0.0)
+                        - (legislativeCompliance ? 0.05 : 0.0)
                         + (overrideAttempted && !overrideSuccessful ? 0.07 : 0.0)
                         - (overrideSuccessful ? 0.04 : 0.0)
                         + conflict * 0.06
@@ -61,6 +69,7 @@ public final class CourtState {
         executiveEmergencyStrategy = Values.clamp01(
                 executiveEmergencyStrategy * 0.68
                         + (emergencyDenied ? 0.16 : 0.0)
+                        + (executiveEmergencyFlood ? 0.10 : 0.0)
                         + (shadowRelief ? 0.07 : 0.0)
                         + executiveDefianceRisk * 0.08
                         + partisanSalience * 0.04
@@ -69,11 +78,14 @@ public final class CourtState {
                 appointmentManipulationPressure * 0.72
                         + conflict * 0.14
                         + partisanSalience * 0.08
+                        + (appointmentPressureCampaign ? 0.10 : 0.0)
                         + (invalidated ? publicAttention * 0.06 : 0.0)
         );
         overrideAdaptation = Values.clamp01(
                 overrideAdaptation * 0.64
                         + (invalidated ? democraticMandate * 0.06 : 0.0)
+                        + (delayedReenactment ? 0.10 : 0.0)
+                        + (overrideCampaign ? 0.06 : 0.0)
                         + (overrideAttempted && !overrideSuccessful ? 0.12 : 0.0)
                         + (rightsCarveoutBlocked ? rightsBurden * 0.16 : 0.0)
                         - (overrideSuccessful ? 0.05 : 0.0)

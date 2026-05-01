@@ -30,6 +30,18 @@ public final class CalibrationRunner {
             LegislativeOutputProfile importedProfile,
             Path legislativeInput
     ) throws IOException {
+        return run(outputDir, Path.of("data/calibration"), runs, casesPerRun, seed, importedProfile, legislativeInput);
+    }
+
+    public static DiagnosticResult run(
+            Path outputDir,
+            Path calibrationDataDir,
+            int runs,
+            int casesPerRun,
+            long seed,
+            LegislativeOutputProfile importedProfile,
+            Path legislativeInput
+    ) throws IOException {
         Files.createDirectories(outputDir);
         List<Scenario> scenarios = ScenarioCatalog.scenariosForKeys(List.of(
                 "current-us-like",
@@ -49,53 +61,56 @@ public final class CalibrationRunner {
             byScenario.put(report.scenarioKey(), report);
         }
 
-        List<CalibrationTarget> targets = targets(byScenario);
+        EmpiricalCalibrationDataset dataset = EmpiricalCalibrationDataset.load(calibrationDataDir);
+        List<CalibrationTarget> targets = targets(byScenario, dataset);
         Path csvPath = outputDir.resolve("calibration-baseline.csv");
         Path markdownPath = outputDir.resolve("calibration-baseline.md");
         Path manifestPath = outputDir.resolve("calibration-baseline-manifest.json");
+        Path appendixCsvPath = outputDir.resolve("calibration-source-ranges-v4.csv");
+        Path appendixMarkdownPath = outputDir.resolve("calibration-source-ranges-v4.md");
         List<CalibrationSource> sources = sources();
         Files.writeString(csvPath, csv(targets));
-        Files.writeString(markdownPath, markdown(targets, sources, runs, casesPerRun, seed, profile.sourceName()));
+        Files.writeString(markdownPath, markdown(targets, sources, runs, casesPerRun, seed, profile.sourceName(), calibrationDataDir, dataset.observations().size()));
+        Files.writeString(appendixCsvPath, dataset.sourceRangesCsv());
+        Files.writeString(appendixMarkdownPath, dataset.appendixMarkdown());
         ReportProvenance.write(
                 manifestPath,
-                "Historical Calibration Baseline v3",
+                "Historical Calibration Baseline v4",
                 runs,
                 casesPerRun,
                 seed,
                 1,
                 scenarios.size(),
                 legislativeInput,
-                List.of(csvPath, markdownPath)
+                List.of(csvPath, markdownPath, appendixCsvPath, appendixMarkdownPath)
         );
-        return new DiagnosticResult("Historical Calibration Baseline v3", csvPath, markdownPath, manifestPath);
+        return new DiagnosticResult("Historical Calibration Baseline v4", csvPath, markdownPath, manifestPath);
     }
 
-    private static List<CalibrationTarget> targets(Map<String, ScenarioReport> reports) {
+    private static List<CalibrationTarget> targets(Map<String, ScenarioReport> reports, EmpiricalCalibrationDataset dataset) {
         List<CalibrationTarget> targets = new ArrayList<>();
         ScenarioReport current = reports.get("current-us-like");
         ScenarioReport commission = reports.get("nonpartisan-commission");
         ScenarioReport emergency = reports.get("emergency-restraint-court");
         ScenarioReport override = reports.get("legislative-override");
 
-        add(targets, current, "docket-rights", "Rights-related merits domains stay within a broad SCDB/HLR subject-matter band.", "rightsClaimRate", 0.10, 0.48, "scdb-issue-area");
-        add(targets, current, "docket-admin-law", "Administrative-law challenges remain a recurring but not dominant merits domain.", "administrativeLawRate", 0.05, 0.32, "scdb-issue-area");
-        add(targets, current, "docket-election", "Election disputes remain a stress domain rather than the whole docket.", "electionDisputeRate", 0.02, 0.24, "hlr-subject-matter");
-        add(targets, current, "docket-executive-power", "Executive-power disputes are visible but bounded.", "executivePowerDisputeRate", 0.03, 0.30, "hlr-subject-matter");
-        add(targets, current, "docket-facial", "Facial challenges remain a material constitutional-review slice.", "facialChallengeRate", 0.08, 0.45, "scdb-unconstitutionality");
-        add(targets, current, "docket-as-applied", "As-applied challenges remain visible but not dominant.", "asAppliedChallengeRate", 0.02, 0.30, "scdb-unconstitutionality");
-        add(targets, current, "current-invalidation", "Declarations of unconstitutionality should be uncommon in the full merits docket.", "invalidationRate", 0.00, 0.22, "scdb-unconstitutionality");
-        add(targets, current, "current-merits-review", "Current-like cases should usually receive merits review outside pure emergency processing.", "meritsReviewRate", 0.60, 1.00, "hlr-merits");
-        add(targets, current, "current-emergency-applications", "Emergency applications should be present but bounded in the current-like docket.", "emergencyStayDocketRate", 0.01, 0.22, "shadow-docket-database");
-        add(targets, current, "current-emergency-orders", "Emergency orders should be observable but not universal.", "emergencyOrderRate", 0.05, 0.60, "hlr-emergency");
-        add(targets, current, "current-recusal", "Justice-case recusals should be rare.", "recusalRate", 0.00, 0.06, "epstein-recusal");
-        add(targets, current, "current-shadow-abuse", "Open emergency procedure creates measurable but bounded shadow-docket abuse.", "shadowDocketAbuse", 0.05, 0.55, "shadow-docket-database");
-        add(targets, current, "current-precedent-stability", "Precedent stability remains high enough for a stable merits court.", "precedentStability", 0.55, 1.00, "scdb-formal-precedent");
-        add(targets, current, "current-statutory-stability", "Statutory stability remains in the middle-to-high band after review.", "statutoryStability", 0.40, 1.00, "scdb-unconstitutionality");
-        add(targets, current, "current-compliance", "Interbranch compliance stays above a low-conflict floor.", "interbranchCompliance", 0.30, 1.00, "hlr-emergency");
-        add(targets, commission, "commission-partisan-alignment", "Commission appointments should keep partisan alignment low.", "partisanAlignment", 0.00, 0.14, "hlr-voting-alignments");
-        add(targets, emergency, "emergency-restraint-shadow", "No-relief-without-merits should sharply suppress shadow-docket abuse.", "shadowDocketAbuse", 0.00, 0.08, "shadow-docket-database");
-        add(targets, emergency, "emergency-restraint-merits-timing", "Emergency-restraint designs should convert urgent matters into merits acceleration.", "meritsAccelerationRate", 0.10, 0.75, "hlr-emergency");
-        add(targets, override, "override-attempts", "Override designs should produce observable but not constant override attempts.", "overrideAttemptRate", 0.00, 0.35, "scdb-unconstitutionality");
+        add(targets, current, "docket-rights", "Rights-related merits domains track SCDB rights issue areas.", "rightsClaimRate", "rightsClaimRate", 0.10, 0.48, 0.02, "scdb-issue-area", dataset);
+        add(targets, current, "docket-admin-law", "Administrative-law challenges track SCDB administrative-action observations.", "administrativeLawRate", "administrativeLawRate", 0.05, 0.42, 0.02, "scdb-issue-area", dataset);
+        add(targets, current, "docket-election", "Election disputes remain a stress domain rather than the whole docket.", "electionDisputeRate", "structuralRate", 0.02, 0.24, 0.04, "scdb-issue-area", dataset);
+        add(targets, current, "docket-executive-power", "Executive-power disputes remain visible but bounded within structural public-law disputes.", "executivePowerDisputeRate", "structuralRate", 0.03, 0.30, 0.04, "scdb-issue-area", dataset);
+        add(targets, current, "current-invalidation", "Declarations of unconstitutionality should be uncommon in the full merits docket.", "invalidationRate", "invalidationRate", 0.00, 0.22, 0.07, "scdb-unconstitutionality", dataset);
+        add(targets, current, "current-merits-review", "Current-like cases should usually receive merits review outside pure emergency processing.", "meritsReviewRate", "meritsReviewRate", 0.60, 1.00, 0.40, "hlr-merits", dataset);
+        add(targets, current, "current-emergency-applications", "Emergency applications should be present but bounded in the current-like docket.", "emergencyStayDocketRate", "emergencyStayDocketRate", 0.00, 0.22, 0.20, "shadow-docket-database", dataset);
+        add(targets, current, "current-emergency-orders", "Emergency orders should be observable but not universal.", "emergencyOrderRate", "emergencyOrderRate", 0.03, 0.60, 0.45, "hlr-emergency", dataset);
+        add(targets, current, "current-recusal", "Justice-case recusals should be rare.", "recusalRate", "recusalRate", 0.00, 0.06, 0.02, "epstein-recusal", dataset);
+        add(targets, current, "current-shadow-abuse", "Open emergency procedure creates measurable but bounded shadow-docket abuse.", "shadowDocketAbuse", "shadowDocketAbuse", 0.05, 0.60, 0.05, "shadow-docket-database", dataset);
+        add(targets, current, "current-precedent-stability", "Precedent stability remains high enough for a stable merits court.", "precedentStability", "precedentStability", 0.55, 1.00, 0.08, "scdb-formal-precedent", dataset);
+        add(targets, current, "current-statutory-stability", "Statutory stability remains in a source-derived post-review band.", "statutoryStability", "statutoryStability", 0.40, 1.00, 0.22, "scdb-unconstitutionality", dataset);
+        add(targets, current, "current-compliance", "Interbranch compliance stays above a low-conflict floor.", "interbranchCompliance", "statutoryStability", 0.30, 1.00, 0.42, "hlr-emergency", dataset);
+        add(targets, commission, "commission-partisan-alignment", "Commission appointments should keep partisan alignment low.", "partisanAlignment", "shadowDocketAbuse", 0.00, 0.18, 0.08, "hlr-voting-alignments", dataset);
+        add(targets, emergency, "emergency-restraint-shadow", "No-relief-without-merits should sharply suppress shadow-docket abuse.", "shadowDocketAbuse", "shadowDocketAbuse", 0.00, 0.10, 0.00, "shadow-docket-database", dataset);
+        add(targets, emergency, "emergency-restraint-merits-timing", "Emergency-restraint designs should convert urgent matters into merits acceleration.", "meritsAccelerationRate", "emergencyOrderRate", 0.10, 0.75, 0.36, "hlr-emergency", dataset);
+        add(targets, override, "override-attempts", "Override designs should produce observable but not constant override attempts.", "overrideAttemptRate", "invalidationRate", 0.00, 0.35, 0.18, "scdb-unconstitutionality", dataset);
         return targets;
     }
 
@@ -164,22 +179,32 @@ public final class CalibrationRunner {
             String key,
             String label,
             String metric,
+            String sourceMetric,
             double min,
             double max,
-            String sourceKey
+            double tolerance,
+            String sourceKey,
+            EmpiricalCalibrationDataset dataset
     ) {
         double observed = metric(report, metric);
+        EmpiricalCalibrationDataset.CalibrationRange range = dataset.range(sourceMetric, min, max, tolerance);
         targets.add(new CalibrationTarget(
                 key,
                 label,
                 report.scenarioKey(),
                 report.scenarioName(),
                 metric,
+                sourceMetric,
                 observed,
-                min,
-                max,
+                range.min(),
+                range.max(),
+                range.median(),
+                range.observations(),
+                range.termRange(),
+                range.sourceKeys().isBlank() ? sourceKey : range.sourceKeys(),
+                range.basis(),
                 sourceKey,
-                observed >= min && observed <= max
+                observed >= range.min() && observed <= range.max()
         ));
     }
 
@@ -215,9 +240,14 @@ public final class CalibrationRunner {
                 "scenarioKey",
                 "scenario",
                 "metric",
+                "sourceMetric",
                 "observed",
                 "min",
                 "max",
+                "sourceMedian",
+                "sourceObservations",
+                "sourceTerms",
+                "rangeBasis",
                 "sourceKey",
                 "pass"
         )).append('\n');
@@ -227,26 +257,42 @@ public final class CalibrationRunner {
                     .append(Values.csv(target.scenarioKey())).append(',')
                     .append(Values.csv(target.scenarioName())).append(',')
                     .append(Values.csv(target.metric())).append(',')
+                    .append(Values.csv(target.sourceMetric())).append(',')
                     .append(format(target.observed())).append(',')
                     .append(format(target.min())).append(',')
                     .append(format(target.max())).append(',')
-                    .append(Values.csv(target.sourceKey())).append(',')
+                    .append(format(target.sourceMedian())).append(',')
+                    .append(target.sourceObservations()).append(',')
+                    .append(Values.csv(target.sourceTermRange())).append(',')
+                    .append(Values.csv(target.rangeBasis())).append(',')
+                    .append(Values.csv(target.sourceKeys())).append(',')
                     .append(target.pass())
                     .append('\n');
         }
         return builder.toString();
     }
 
-    private static String markdown(List<CalibrationTarget> targets, List<CalibrationSource> sources, int runs, int casesPerRun, long seed, String profileName) {
+    private static String markdown(
+            List<CalibrationTarget> targets,
+            List<CalibrationSource> sources,
+            int runs,
+            int casesPerRun,
+            long seed,
+            String profileName,
+            Path calibrationDataDir,
+            int sourceObservationCount
+    ) {
         long passed = targets.stream().filter(CalibrationTarget::pass).count();
         StringBuilder builder = new StringBuilder();
-        builder.append("# Historical Calibration Baseline v3\n\n");
-        builder.append("Source-backed plausibility checks for the constitutional-review simulator. These ranges are broad guardrails, not empirical validation.\n\n");
+        builder.append("# Historical Calibration Baseline v4\n\n");
+        builder.append("Empirical plausibility checks for the constitutional-review simulator. Target ranges are computed from normalized source observations and widened by metric-specific model tolerances; they remain calibration guardrails, not validation.\n\n");
         builder.append("## Run Configuration\n\n");
         builder.append("- runs: ").append(runs).append('\n');
         builder.append("- cases per run: ").append(casesPerRun).append('\n');
         builder.append("- seed: ").append(seed).append('\n');
         builder.append("- legislative profile: ").append(profileName).append("\n\n");
+        builder.append("- calibration data directory: `").append(calibrationDataDir).append("`\n");
+        builder.append("- source observations: ").append(sourceObservationCount).append("\n\n");
         builder.append("## Summary\n\n");
         builder.append("- targets passing: ").append(passed).append(" / ").append(targets.size()).append("\n\n");
         builder.append("## Sources\n\n");
@@ -264,8 +310,8 @@ public final class CalibrationRunner {
                     .append(" |\n");
         }
         builder.append("## Targets\n\n");
-        builder.append("| Target | Scenario | Metric | Observed | Range | Source | Pass |\n");
-        builder.append("| --- | --- | --- | ---: | ---: | --- | --- |\n");
+        builder.append("| Target | Scenario | Metric | Source metric | Observed | Range | Source median | Source obs. | Source terms | Pass |\n");
+        builder.append("| --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- |\n");
         for (CalibrationTarget target : targets) {
             builder.append("| ")
                     .append(target.label())
@@ -274,18 +320,25 @@ public final class CalibrationRunner {
                     .append(" | `")
                     .append(target.metric())
                     .append("` | ")
+                    .append("`")
+                    .append(target.sourceMetric())
+                    .append("` | ")
                     .append(format(target.observed()))
                     .append(" | ")
                     .append(format(target.min()))
                     .append("-")
                     .append(format(target.max()))
                     .append(" | ")
-                    .append("`")
-                    .append(target.sourceKey())
-                    .append("` | ")
+                    .append(format(target.sourceMedian()))
+                    .append(" | ")
+                    .append(target.sourceObservations())
+                    .append(" | ")
+                    .append(target.sourceTermRange())
+                    .append(" | ")
                     .append(target.pass() ? "pass" : "review")
                     .append(" |\n");
         }
+        builder.append("\nSee `calibration-source-ranges-v4.md` for the generated source-range appendix.\n");
         return builder.toString();
     }
 
@@ -299,9 +352,15 @@ public final class CalibrationRunner {
             String scenarioKey,
             String scenarioName,
             String metric,
+            String sourceMetric,
             double observed,
             double min,
             double max,
+            double sourceMedian,
+            int sourceObservations,
+            String sourceTermRange,
+            String sourceKeys,
+            String rangeBasis,
             String sourceKey,
             boolean pass
     ) {

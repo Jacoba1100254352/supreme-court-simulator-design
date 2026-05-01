@@ -12,7 +12,7 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports",
   "legislativeInputSha256": "a511189a505f596206f03065270099dcb820046c04454681675e8d4e546f2359",
   "artifacts": [
-    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "66cc744845ac9e33f0bf2ecd47e3559aaae31775c2a341732f60ec520f07b9fb"},
-    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "c4d0d16d5986a0bbb66649c192a0aeecfe7c0e06d11f787c1c6ed287243c4a00"}
+    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "d3617587b0854540fb04f31d8c5e2d38afd3f6c94a23359798ff8c5cf902c1d8"},
+    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "093e2a587a3ee1d35bbd19fd65eba53ece971e1994764c27fb6d73d51d9e85f8"}
   ]
 }

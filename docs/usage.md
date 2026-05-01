@@ -33,6 +33,18 @@ Build the LaTeX paper:
 make paper
 ```
 
+Run the full diagnostic suite:
+
+```sh
+make diagnostics
+```
+
+Run empirical calibration against a custom normalized source table directory:
+
+```sh
+make calibrate CALIBRATION_DATA_DIR=/path/to/calibration
+```
+
 Import legislative outputs:
 
 ```sh
@@ -45,8 +57,8 @@ The importer accepts the congressional simulator campaign CSV schema and also ac
 
 Campaign runs write:
 
-- `reports/constitutional-review-campaign-v1.csv`
-- `reports/constitutional-review-campaign-v1.md`
-- `reports/constitutional-review-campaign-v1-manifest.json`
+- `reports/constitutional-review-campaign-v2.csv`
+- `reports/constitutional-review-campaign-v2.md`
+- `reports/constitutional-review-campaign-v2-manifest.json`
 
-The preserved v0 target writes the same filenames with `v0`.
+Diagnostic runs also write empirical calibration, source-range appendix, seed-robustness, mechanism-ablation, parameter-prior, legislative-family, and manipulation-stress reports. The preserved v0 and v1 targets write the same campaign filename pattern with `v0` and `v1`.

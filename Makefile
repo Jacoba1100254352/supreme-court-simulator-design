@@ -3,6 +3,7 @@ TEST_SOURCES := $(shell find src/test/java -name '*.java')
 JAVA_RELEASE ?= 21
 JAVA_PROPS ?= -Dconstitutionalreview.javaRelease=$(JAVA_RELEASE)
 LEGISLATIVE_FAMILY_DIR ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports
+CALIBRATION_DATA_DIR ?= data/calibration
 
 .PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-clean test ci clean
 
@@ -28,7 +29,7 @@ manipulation-stress: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign manipulation-stress --runs 80 --cases 64 --seed 20260501 --output-dir reports $(ARGS)
 
 calibrate: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --calibrate --runs 80 --cases 64 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --calibrate --runs 80 --cases 64 --seed 20260501 --output-dir reports --calibration-data-dir "$(CALIBRATION_DATA_DIR)" $(ARGS)
 
 seed-robustness: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --seed-robustness --runs 40 --cases 48 --seed 20260501 --output-dir reports $(ARGS)

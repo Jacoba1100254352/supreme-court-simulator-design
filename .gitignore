@@ -2,3 +2,5 @@ out/
 paper/build/
 .DS_Store
 *.class
+.idea/
+*.iml

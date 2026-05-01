@@ -50,14 +50,14 @@ public final class ParameterSweepRunner {
                 .map(entry -> entry.getValue().toRow(entry.getKey()))
                 .sorted(Comparator.comparingDouble(SweepRow::directionalMedian).reversed())
                 .toList();
-        Path csvPath = outputDir.resolve("parameter-sweep-v3.csv");
-        Path markdownPath = outputDir.resolve("parameter-sweep-v3.md");
-        Path manifestPath = outputDir.resolve("parameter-sweep-v3-manifest.json");
+        Path csvPath = outputDir.resolve("parameter-sweep-v4.csv");
+        Path markdownPath = outputDir.resolve("parameter-sweep-v4.md");
+        Path manifestPath = outputDir.resolve("parameter-sweep-v4-manifest.json");
         Files.writeString(csvPath, csv(rows));
         Files.writeString(markdownPath, markdown(rows, worlds, runs, casesPerRun, seed, importedProfile));
         ReportProvenance.write(
                 manifestPath,
-                "Parameter Sweep Uncertainty v3",
+                "Parameter Sweep Priors v4",
                 runs,
                 casesPerRun,
                 seed,
@@ -66,29 +66,31 @@ public final class ParameterSweepRunner {
                 legislativeInput,
                 List.of(csvPath, markdownPath)
         );
-        return new DiagnosticResult("Parameter Sweep Uncertainty v3", csvPath, markdownPath, manifestPath);
+        return new DiagnosticResult("Parameter Sweep Priors v4", csvPath, markdownPath, manifestPath);
     }
 
     private static List<SweepWorld> worlds(int casesPerRun, LegislativeOutputProfile importedProfile) {
         LegislativeOutputProfile neutral = LegislativeOutputProfile.neutral();
         List<SweepWorld> worlds = new ArrayList<>();
-        worlds.add(new SweepWorld("baseline", "Baseline", WorldSpec.baseline(casesPerRun, neutral)));
-        worlds.add(new SweepWorld("low-polarization", "Low polarization", new WorldSpec(casesPerRun, 31, 0.32, 0.32, 0.40, 0.16, neutral)));
-        worlds.add(new SweepWorld("high-polarization", "High polarization", new WorldSpec(casesPerRun, 31, 0.82, 0.70, 0.58, 0.22, neutral)));
-        worlds.add(new SweepWorld("low-appointment-capture", "Low appointment capture", new WorldSpec(casesPerRun, 35, 0.42, 0.16, 0.42, 0.16, neutral)));
-        worlds.add(new SweepWorld("high-appointment-capture", "High appointment capture", new WorldSpec(casesPerRun, 35, 0.80, 0.88, 0.58, 0.22, neutral)));
-        worlds.add(new SweepWorld("low-public-pressure", "Low public pressure", new WorldSpec(casesPerRun, 31, 0.52, 0.42, 0.18, 0.18, neutral)));
-        worlds.add(new SweepWorld("high-public-pressure", "High public pressure", new WorldSpec(casesPerRun, 31, 0.58, 0.46, 0.78, 0.22, neutral)));
-        worlds.add(new SweepWorld("low-emergency-share", "Low emergency share", new WorldSpec(casesPerRun, 31, 0.50, 0.40, 0.42, 0.04, neutral)));
-        worlds.add(new SweepWorld("high-emergency-share", "High emergency share", new WorldSpec(casesPerRun, 31, 0.62, 0.56, 0.54, 0.72, emergencyProfile())));
-        worlds.add(new SweepWorld("low-rights-risk", "Low rights risk", new WorldSpec(casesPerRun, 31, 0.46, 0.34, 0.50, 0.12, lowRightsProfile())));
-        worlds.add(new SweepWorld("high-rights-risk", "High rights risk", new WorldSpec(casesPerRun, 31, 0.64, 0.54, 0.50, 0.26, highRightsProfile())));
-        worlds.add(new SweepWorld("weak-mandate", "Weak democratic mandate", new WorldSpec(casesPerRun, 31, 0.58, 0.48, 0.42, 0.22, weakMandateProfile())));
-        worlds.add(new SweepWorld("high-conflict", "High constitutional conflict", new WorldSpec(casesPerRun, 31, 0.74, 0.68, 0.62, 0.36, conflictProfile())));
+        worlds.add(new SweepWorld("baseline", "Baseline institutional prior", 1.00, "Central case for ordinary constitutional review.", WorldSpec.baseline(casesPerRun, neutral)));
+        worlds.add(new SweepWorld("low-polarization", "Low-polarization prior", 0.60, "Political branches and candidate pool are less polarized.", new WorldSpec(casesPerRun, 31, 0.32, 0.32, 0.40, 0.16, neutral)));
+        worlds.add(new SweepWorld("high-polarization", "High-polarization prior", 0.85, "Polarization and appointment capture both rise.", new WorldSpec(casesPerRun, 31, 0.82, 0.70, 0.58, 0.22, neutral)));
+        worlds.add(new SweepWorld("low-appointment-capture", "Low appointment-capture prior", 0.55, "Appointment incentives are less partisan.", new WorldSpec(casesPerRun, 35, 0.42, 0.16, 0.42, 0.16, neutral)));
+        worlds.add(new SweepWorld("high-appointment-capture", "High appointment-capture prior", 0.80, "Vacancies become unusually strategic.", new WorldSpec(casesPerRun, 35, 0.80, 0.88, 0.58, 0.22, neutral)));
+        worlds.add(new SweepWorld("low-public-pressure", "Low public-pressure prior", 0.45, "Cases receive less public attention.", new WorldSpec(casesPerRun, 31, 0.52, 0.42, 0.18, 0.18, neutral)));
+        worlds.add(new SweepWorld("high-public-pressure", "High public-pressure prior", 0.70, "Public attention and accountability pressures rise.", new WorldSpec(casesPerRun, 31, 0.58, 0.46, 0.78, 0.22, neutral)));
+        worlds.add(new SweepWorld("low-emergency-share", "Low emergency-share prior", 0.50, "Few cases arrive as urgent applications.", new WorldSpec(casesPerRun, 31, 0.50, 0.40, 0.42, 0.04, neutral)));
+        worlds.add(new SweepWorld("high-emergency-share", "High emergency-share prior", 0.85, "Emergency routing becomes institutionally important.", new WorldSpec(casesPerRun, 31, 0.62, 0.56, 0.54, 0.72, emergencyProfile())));
+        worlds.add(new SweepWorld("low-rights-risk", "Low rights-risk prior", 0.45, "Legislative outputs rarely burden protected interests.", new WorldSpec(casesPerRun, 31, 0.46, 0.34, 0.50, 0.12, lowRightsProfile())));
+        worlds.add(new SweepWorld("high-rights-risk", "High rights-risk prior", 0.85, "Rights burdens and legal defects are common.", new WorldSpec(casesPerRun, 31, 0.64, 0.54, 0.50, 0.26, highRightsProfile())));
+        worlds.add(new SweepWorld("weak-mandate", "Weak democratic-mandate prior", 0.75, "Reviewed laws have low public legitimacy.", new WorldSpec(casesPerRun, 31, 0.58, 0.48, 0.42, 0.22, weakMandateProfile())));
+        worlds.add(new SweepWorld("high-conflict", "High constitutional-conflict prior", 0.90, "Interbranch conflict and defiance risk rise together.", new WorldSpec(casesPerRun, 31, 0.74, 0.68, 0.62, 0.36, conflictProfile())));
         if (importedProfile != null) {
             worlds.add(new SweepWorld(
                     "imported-legislative-family",
-                    "Imported legislative profile",
+                    "Imported legislative-family prior",
+                    0.70,
+                    "A congressional simulator output is blended into the docket assumptions.",
                     new WorldSpec(casesPerRun, 31, 0.56, 0.46, 0.48, 0.22, neutral.blend(importedProfile, 0.70).withSourceName("parameter/imported blend"))
             ));
         }
@@ -176,26 +178,30 @@ public final class ParameterSweepRunner {
             LegislativeOutputProfile importedProfile
     ) {
         StringBuilder builder = new StringBuilder();
-        builder.append("# Parameter Sweep Uncertainty v3\n\n");
-        builder.append("Scenario bands from varying model parameters, not only random seeds.\n\n");
+        builder.append("# Parameter Sweep Priors v4\n\n");
+        builder.append("Scenario bands from named uncertainty priors, not only random seeds. Prior weights are descriptive modeling weights used to document relative plausibility; the percentile bands below still summarize one observation per prior profile.\n\n");
         builder.append("## Run Configuration\n\n");
         builder.append("- runs per sweep world: ").append(runs).append('\n');
         builder.append("- cases per run: ").append(casesPerRun).append('\n');
         builder.append("- base seed: ").append(seed).append('\n');
-        builder.append("- sweep worlds: ").append(worlds.size()).append('\n');
+        builder.append("- named priors: ").append(worlds.size()).append('\n');
         builder.append("- legislative input: ")
                 .append(importedProfile == null ? "neutral synthetic profile" : importedProfile.sourceName())
                 .append("\n\n");
-        builder.append("## Sweep Worlds\n\n");
-        builder.append("| Key | Name | Legislative source |\n");
-        builder.append("| --- | --- | --- |\n");
+        builder.append("## Named Prior Profiles\n\n");
+        builder.append("| Key | Name | Weight | Legislative source | Rationale |\n");
+        builder.append("| --- | --- | ---: | --- | --- |\n");
         for (SweepWorld world : worlds) {
             builder.append("| `")
                     .append(world.key())
                     .append("` | ")
                     .append(world.name())
                     .append(" | ")
+                    .append(format(world.priorWeight()))
+                    .append(" | ")
                     .append(world.worldSpec().legislativeProfile().sourceName())
+                    .append(" | ")
+                    .append(world.rationale())
                     .append(" |\n");
         }
         builder.append("\n## Scenario Bands\n\n");
@@ -293,7 +299,7 @@ public final class ParameterSweepRunner {
         }
     }
 
-    private record SweepWorld(String key, String name, WorldSpec worldSpec) {
+    private record SweepWorld(String key, String name, double priorWeight, String rationale, WorldSpec worldSpec) {
     }
 
     private record SweepRow(

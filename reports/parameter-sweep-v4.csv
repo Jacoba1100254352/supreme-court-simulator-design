@@ -1,0 +1,14 @@
+scenarioKey,scenario,observations,directionalP05,directionalMedian,directionalP95,legalStabilityP05,legalStabilityMedian,legalStabilityP95,rightsProtectionP05,rightsProtectionMedian,rightsProtectionP95,shadowDocketAbuseP05,shadowDocketAbuseMedian,shadowDocketAbuseP95,constitutionalConflictP05,constitutionalConflictMedian,constitutionalConflictP95,strategicPressureP05,strategicPressureMedian,strategicPressureP95
+term-limited-balanced,18-year staggered terms + regular appointments,14,0.657,0.720,0.733,0.451,0.636,0.685,0.646,0.679,0.723,0.095,0.125,0.218,0.513,0.548,0.670,0.322,0.349,0.429
+emergency-restraint-court,No emergency relief without merits review,14,0.662,0.719,0.730,0.384,0.662,0.700,0.619,0.652,0.767,0.003,0.005,0.022,0.499,0.534,0.673,0.277,0.306,0.413
+supermajority-review,60 percent invalidation threshold,14,0.662,0.718,0.733,0.506,0.653,0.687,0.617,0.650,0.686,0.080,0.111,0.214,0.515,0.549,0.662,0.334,0.356,0.422
+nonpartisan-commission,Nonpartisan commission appointments,14,0.652,0.713,0.725,0.440,0.638,0.682,0.648,0.676,0.723,0.097,0.124,0.220,0.512,0.547,0.670,0.301,0.326,0.410
+accountability-retention-court,Retention-election accountability court,14,0.644,0.711,0.724,0.439,0.646,0.687,0.623,0.650,0.683,0.095,0.121,0.216,0.519,0.563,0.723,0.300,0.323,0.423
+panel-en-banc,Three-judge panels with en banc correction,14,0.647,0.709,0.723,0.451,0.641,0.685,0.646,0.671,0.717,0.098,0.126,0.219,0.512,0.546,0.668,0.299,0.322,0.408
+legislative-override,Judicial review with legislative supermajority override,14,0.642,0.708,0.721,0.419,0.629,0.678,0.649,0.684,0.741,0.097,0.123,0.219,0.530,0.574,0.736,0.320,0.350,0.474
+recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,14,0.645,0.707,0.720,0.449,0.640,0.683,0.644,0.674,0.726,0.096,0.124,0.220,0.513,0.548,0.670,0.323,0.347,0.428
+expanded-court-fifteen,Expanded 15-seat court,14,0.646,0.705,0.719,0.445,0.634,0.683,0.648,0.681,0.725,0.096,0.125,0.221,0.513,0.548,0.670,0.325,0.349,0.428
+current-us-like,Stylized current U.S.-like supreme court,14,0.638,0.697,0.717,0.462,0.633,0.670,0.642,0.671,0.764,0.382,0.472,0.675,0.534,0.571,0.721,0.355,0.385,0.468
+constitutional-council,Pre-enactment constitutional council,14,0.611,0.681,0.696,0.453,0.662,0.700,0.627,0.653,0.728,0.094,0.124,0.214,0.519,0.564,0.726,0.304,0.340,0.456
+cross-checking-courts,Supreme court with cross-checking constitutional court,14,0.610,0.664,0.678,0.539,0.642,0.671,0.595,0.619,0.644,0.080,0.112,0.215,0.562,0.596,0.709,0.310,0.334,0.405
+dual-supreme-courts,Dual supreme courts with disagreement filter,14,0.585,0.646,0.661,0.407,0.581,0.634,0.657,0.692,0.726,0.078,0.112,0.218,0.576,0.611,0.729,0.327,0.348,0.422

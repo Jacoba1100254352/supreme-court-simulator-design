@@ -31,8 +31,10 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     @Override
     public CourtDecision review(ReviewCase reviewCase, CourtState state, Random random) {
         reviewedCases++;
+        StrategicActorPolicy.StrategicResponse strategicResponse = StrategicActorPolicy.choose(reviewCase, state, design, random);
         double effectiveEmergencyPressure = Values.clamp01(
                 reviewCase.emergencyPressure()
+                        + strategicResponse.emergencyPressureDelta()
                         + state.executiveEmergencyStrategy() * 0.20
                         + state.conflictLoad() * 0.04
         );
@@ -59,7 +61,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             invalidated = reviewCase.rightsBurden() > 0.68 || voteCount.yes() >= requiredVotes + 1;
         }
 
-        OverrideDecision overrideDecision = legislativeOverride(reviewCase, invalidated, state, random);
+        OverrideDecision overrideDecision = legislativeOverride(reviewCase, invalidated, state, strategicResponse, random);
         boolean override = overrideDecision.successful();
         double precedentShift = precedentShift(reviewCase, invalidated, shadowRelief, crossDisagreement);
         boolean precedentReversal = invalidated && (precedentShift > 0.48 || reviewCase.legalAmbiguity() > 0.74);
@@ -96,7 +98,13 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.democraticMandate(),
                 reviewCase.rightsBurden(),
                 reviewCase.partisanSalience(),
-                reviewCase.executiveDefianceRisk()
+                reviewCase.executiveDefianceRisk(),
+                strategicResponse.legislativeCompliance(),
+                strategicResponse.legislativeEvasion(),
+                strategicResponse.delayedReenactment(),
+                strategicResponse.executiveEmergencyFlood(),
+                strategicResponse.overrideCampaign(),
+                strategicResponse.appointmentPressureCampaign()
         );
         int replacements = updateCourtAfterCase(reviewCase, state, random);
         return new CourtDecision(
@@ -141,7 +149,13 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 state.legislativeDefiance(),
                 state.executiveEmergencyStrategy(),
                 state.appointmentManipulationPressure(),
-                state.overrideAdaptation()
+                state.overrideAdaptation(),
+                strategicResponse.legislativeCompliance(),
+                strategicResponse.legislativeEvasion(),
+                strategicResponse.delayedReenactment(),
+                strategicResponse.executiveEmergencyFlood(),
+                strategicResponse.overrideCampaign(),
+                strategicResponse.appointmentPressureCampaign()
         );
     }
 
@@ -364,24 +378,35 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         if (design.auxiliaryReview() == AuxiliaryReview.NONE || design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL) {
             return false;
         }
-        double probability = 0.06 + reviewCase.legalAmbiguity() * 0.16 + reviewCase.partisanSalience() * 0.12;
+        double probability = 0.06
+                + reviewCase.legalAmbiguity() * 0.16
+                + reviewCase.partisanSalience() * 0.12
+                + reviewCase.lowerCourtConflict() * 0.08;
         if (invalidated && reviewCase.democraticMandate() > 0.64) {
             probability += 0.12;
         }
         return random.nextDouble() < Values.clamp01(probability);
     }
 
-    private OverrideDecision legislativeOverride(ReviewCase reviewCase, boolean invalidated, CourtState state, Random random) {
+    private OverrideDecision legislativeOverride(
+            ReviewCase reviewCase,
+            boolean invalidated,
+            CourtState state,
+            StrategicActorPolicy.StrategicResponse strategicResponse,
+            Random random
+    ) {
         if (!invalidated || design.overrideRule() == OverrideRule.NONE) {
             return new OverrideDecision(false, false, OverrideOutcome.NONE);
         }
         double base = reviewCase.overridePressure() * 0.34
+                + strategicResponse.overridePressureDelta()
                 + reviewCase.democraticMandate() * 0.30
                 + reviewCase.publicAttention() * 0.18
                 + state.conflictLoad() * 0.12
                 + state.legislativeDefiance() * 0.12
                 + state.overrideAdaptation() * 0.10
-                - reviewCase.rightsBurden() * 0.24;
+                - reviewCase.rightsBurden() * 0.24
+                + (strategicResponse.legislativeCompliance() ? -0.05 : 0.0);
         boolean attempted = random.nextDouble() < Values.clamp01(base + 0.18);
         if (!attempted) {
             return new OverrideDecision(false, false, OverrideOutcome.NONE);
@@ -431,7 +456,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double concern = reviewCase.rightsBurden() * 0.40
                 + reviewCase.constitutionalConflictPotential() * 0.28
                 + (1.0 - reviewCase.legislativeQuality()) * 0.20
-                + reviewCase.legalAmbiguity() * 0.12;
+                + reviewCase.legalAmbiguity() * 0.12
+                + reviewCase.lowerCourtErrorRisk() * 0.10;
         if (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL) {
             concern *= 0.92;
         }
@@ -493,6 +519,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     ) {
         double conflict = reviewCase.constitutionalConflictPotential() * 0.38
                 + reviewCase.executiveDefianceRisk() * 0.18
+                + reviewCase.lowerCourtConflict() * 0.08
                 + state.conflictLoad() * 0.12
                 + state.legislativeDefiance() * 0.10
                 + state.executiveEmergencyStrategy() * 0.08;
@@ -569,6 +596,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + reviewCase.democraticMandate() * 0.04
                 - reviewCase.executiveDefianceRisk() * 0.18
                 - reviewCase.partisanSalience() * 0.10
+                - reviewCase.lowerCourtConflict() * 0.05
                 - conflict * 0.26
                 - state.conflictLoad() * 0.10;
         if (crossDisagreement) {

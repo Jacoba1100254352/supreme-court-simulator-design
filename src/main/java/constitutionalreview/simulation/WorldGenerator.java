@@ -50,12 +50,12 @@ public final class WorldGenerator {
     }
 
     private static List<ReviewCase> generateDocket(WorldSpec spec, Random random) {
-        List<ReviewCase> docket = new ArrayList<>();
+        List<ReviewCase> candidates = new ArrayList<>();
         LegislativeOutputProfile profile = spec.legislativeProfile().normalized();
-        CaseType[] types = CaseType.values();
         DocketType[] docketTypes = DocketType.values();
-        for (int i = 0; i < spec.cases(); i++) {
-            CaseType type = types[random.nextInt(types.length)];
+        int candidateCases = Math.max(spec.cases() * 4, spec.cases() + 24);
+        for (int i = 0; i < candidateCases; i++) {
+            CaseType type = caseType(spec, profile, random);
             DocketType docketType = docketType(type, docketTypes, spec, profile, random);
             LegalDomainProfile domain = LegalDomainProfile.forCase(type, docketType);
             double rightsTypeBoost = type == CaseType.RIGHTS || type == CaseType.ELECTIONS || docketType == DocketType.RIGHTS_CLAIM ? 0.18 : 0.0;
@@ -80,8 +80,17 @@ public final class WorldGenerator {
             );
             double publicAttention = Values.clamp01(0.20 + rightsBurden * 0.20 + democraticMandate * 0.20 + partisanSalience * 0.22 + domain.publicAttentionShift() + random.nextDouble() * 0.24);
             double overridePressure = Values.clamp01(profile.overridePressure() * 0.42 + democraticMandate * 0.24 + publicAttention * 0.18 + partisanSalience * 0.16 + domain.overridePressureShift());
-            docket.add(new ReviewCase(
-                    "case-" + (i + 1),
+            double lowerCourtConflict = Values.clamp01(
+                    0.10 + legalAmbiguity * 0.22 + partisanSalience * 0.22 + conflictPotential * 0.20 + random.nextDouble() * 0.24
+            );
+            double lowerCourtErrorRisk = Values.clamp01(
+                    0.08 + (1.0 - legislativeQuality) * 0.24 + legalAmbiguity * 0.28 + rightsBurden * 0.12 + random.nextGaussian() * 0.10
+            );
+            double certiorariPressure = Values.clamp01(
+                    0.16 + lowerCourtConflict * 0.24 + lowerCourtErrorRisk * 0.20 + publicAttention * 0.18 + emergencyPressure * 0.10 + domain.conflictPotentialShift()
+            );
+            candidates.add(new ReviewCase(
+                    "candidate-" + (i + 1),
                     type,
                     docketType,
                     legalAmbiguity,
@@ -95,10 +104,13 @@ public final class WorldGenerator {
                     legislativeQuality,
                     conflictPotential,
                     publicAttention,
-                    overridePressure
+                    overridePressure,
+                    lowerCourtConflict,
+                    lowerCourtErrorRisk,
+                    certiorariPressure
             ));
         }
-        return docket;
+        return LowerCourtIntake.selectForReview(candidates, spec.cases(), random);
     }
 
     private static DocketType docketType(
@@ -128,5 +140,32 @@ public final class WorldGenerator {
             return DocketType.FACIAL_CHALLENGE;
         }
         return docketTypes[random.nextBoolean() ? 1 : 0];
+    }
+
+    private static CaseType caseType(WorldSpec spec, LegislativeOutputProfile profile, Random random) {
+        double rights = 0.20 + profile.rightsRisk() * 0.08;
+        double structural = 0.16 + profile.partisanSkew() * 0.03;
+        double elections = 0.04 + spec.publicPressure() * 0.03;
+        double executive = 0.08 + spec.emergencyShare() * 0.07 + profile.volatility() * 0.03;
+        double administrative = 0.17 + (1.0 - profile.legalQuality()) * 0.04;
+        double economic = Math.max(0.10, 1.0 - rights - structural - elections - executive - administrative);
+        double total = rights + structural + elections + executive + administrative + economic;
+        double draw = random.nextDouble() * total;
+        if ((draw -= rights) < 0.0) {
+            return CaseType.RIGHTS;
+        }
+        if ((draw -= structural) < 0.0) {
+            return CaseType.STRUCTURAL;
+        }
+        if ((draw -= elections) < 0.0) {
+            return CaseType.ELECTIONS;
+        }
+        if ((draw -= executive) < 0.0) {
+            return CaseType.EXECUTIVE_POWER;
+        }
+        if ((draw -= administrative) < 0.0) {
+            return CaseType.ADMINISTRATIVE_STATE;
+        }
+        return CaseType.ECONOMIC_REGULATION;
     }
 }

@@ -21,6 +21,12 @@ public final class MetricsAccumulator {
     private int overrides;
     private int rightsCarveoutBlocks;
     private int repeatedOverrides;
+    private int legislativeCompliance;
+    private int legislativeEvasion;
+    private int delayedReenactmentStrategies;
+    private int executiveEmergencyFloods;
+    private int overrideCampaigns;
+    private int appointmentPressureCampaigns;
     private int reversals;
     private int justiceReplacements;
     private int recusedJustices;
@@ -67,6 +73,12 @@ public final class MetricsAccumulator {
         overrides += decision.legislativeOverride() ? 1 : 0;
         rightsCarveoutBlocks += decision.overrideOutcome() == OverrideOutcome.RIGHTS_CARVEOUT_BLOCKED ? 1 : 0;
         repeatedOverrides += decision.overrideOutcome() == OverrideOutcome.REPEATED_OVERRIDE ? 1 : 0;
+        legislativeCompliance += decision.legislativeCompliance() ? 1 : 0;
+        legislativeEvasion += decision.legislativeEvasion() ? 1 : 0;
+        delayedReenactmentStrategies += decision.delayedReenactment() ? 1 : 0;
+        executiveEmergencyFloods += decision.executiveEmergencyFlood() ? 1 : 0;
+        overrideCampaigns += decision.overrideCampaign() ? 1 : 0;
+        appointmentPressureCampaigns += decision.appointmentPressureCampaign() ? 1 : 0;
         reversals += decision.precedentReversal() ? 1 : 0;
         justiceReplacements += decision.justiceReplacements();
         recusedJustices += decision.recusedJustices();
@@ -135,6 +147,12 @@ public final class MetricsAccumulator {
                 executiveEmergencyStrategy / cases,
                 appointmentManipulationPressure / cases,
                 overrideAdaptation / cases,
+                legislativeCompliance / cases,
+                legislativeEvasion / cases,
+                delayedReenactmentStrategies / cases,
+                executiveEmergencyFloods / cases,
+                overrideCampaigns / cases,
+                appointmentPressureCampaigns / cases,
                 facialChallenges / cases,
                 asAppliedChallenges / cases,
                 electionDisputes / cases,

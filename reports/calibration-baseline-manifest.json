@@ -1,9 +1,9 @@
 {
-  "reportName": "Historical Calibration Baseline v3",
+  "reportName": "Historical Calibration Baseline v4",
   "provenanceFormat": "constitutional-review-report-v2",
   "sourceTree": "tracked local project artifact; inspect repository history for commit identity",
   "javaRelease": "21",
-  "javaCommand": "constitutionalreview.Main --calibrate --runs 80 --cases 64 --seed 20260501 --output-dir reports --legislative-input /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "javaCommand": "constitutionalreview.Main --calibrate --runs 80 --cases 64 --seed 20260501 --output-dir reports --calibration-data-dir data/calibration --legislative-input /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "runs": 80,
   "casesPerRun": 64,
   "seed": 20260501,
@@ -12,7 +12,9 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
   "artifacts": [
-    {"path": "reports/calibration-baseline.csv", "sha256": "3dbe594c49c96c4c2e7dc12ebdd2144e6ae4a9da27977c3384ddd0628d0c0c55"},
-    {"path": "reports/calibration-baseline.md", "sha256": "afa8f6f8c4be0aee0ce6d922f6d8a454800c9f5884d0f176950a7ac6ecda00f0"}
+    {"path": "reports/calibration-baseline.csv", "sha256": "f41ce48401a0890cc18b0a5aa5ec7cee523916f06a8cc6e87cd842aa3846ff9f"},
+    {"path": "reports/calibration-baseline.md", "sha256": "06809b3218725f26e69478609b15887890cffb262346a9a31298c6dc72d741c3"},
+    {"path": "reports/calibration-source-ranges-v4.csv", "sha256": "fc433b60ce8e0b743f2e3c4d141fcf7b8a8a96a8263302c15d7fd76321322c01"},
+    {"path": "reports/calibration-source-ranges-v4.md", "sha256": "af99c250d0c1d98d4f98950973827042d5a62592fb4dc568454a26eb7f59eba5"}
   ]
 }

@@ -43,6 +43,12 @@ public record ScenarioReport(
         double executiveEmergencyStrategy,
         double appointmentManipulationPressure,
         double overrideAdaptation,
+        double legislativeComplianceRate,
+        double legislativeEvasionRate,
+        double delayedReenactmentStrategyRate,
+        double executiveEmergencyFloodRate,
+        double overrideCampaignRate,
+        double appointmentPressureCampaignRate,
         double facialChallengeRate,
         double asAppliedChallengeRate,
         double electionDisputeRate,
@@ -76,7 +82,11 @@ public record ScenarioReport(
                 legislativeDefiance,
                 executiveEmergencyStrategy,
                 appointmentManipulationPressure,
-                overrideAdaptation
+                overrideAdaptation,
+                legislativeEvasionRate,
+                executiveEmergencyFloodRate,
+                overrideCampaignRate,
+                appointmentPressureCampaignRate
         );
     }
 

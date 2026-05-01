@@ -1,0 +1,633 @@
+sourceKey,domain,metric,term,numerator,denominator,value,sourceUrl,notes
+scdb-modern-2025-01,rights,rightsClaimRate,1946,19,142,0.133803,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1946,59,142,0.415493,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1946,48,142,0.338028,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1946,41,142,0.288732,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1946,5,142,0.035211,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1946,139,142,0.978873,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1946,137,142,0.964789,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1946,142,142,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1947,35,118,0.296610,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1947,30,118,0.254237,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1947,30,118,0.254237,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1947,23,118,0.194915,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1947,7,118,0.059322,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1947,117,118,0.991525,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1947,111,118,0.940678,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1947,118,118,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1948,18,127,0.141732,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1948,37,127,0.291339,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1948,41,127,0.322835,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1948,33,127,0.259843,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1948,4,127,0.031496,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1948,122,127,0.960630,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1948,123,127,0.968504,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1948,127,127,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1949,28,100,0.280000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1949,35,100,0.350000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1949,22,100,0.220000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1949,37,100,0.370000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1949,4,100,0.040000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1949,98,100,0.980000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1949,96,100,0.960000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1949,100,100,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1950,22,103,0.213592,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1950,40,103,0.388350,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1950,31,103,0.300971,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1950,32,103,0.310680,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1950,5,103,0.048544,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1950,103,103,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1950,98,103,0.951456,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1950,103,103,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1951,22,100,0.220000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1951,28,100,0.280000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1951,29,100,0.290000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1951,24,100,0.240000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1951,5,100,0.050000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1951,98,100,0.980000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1951,95,100,0.950000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1951,100,100,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1952,25,122,0.204918,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1952,33,122,0.270492,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1952,23,122,0.188525,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1952,39,122,0.319672,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1952,4,122,0.032787,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1952,122,122,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1952,118,122,0.967213,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1952,122,122,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1953,14,87,0.160920,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1953,29,87,0.333333,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1953,33,87,0.379310,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1953,18,87,0.206897,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1953,6,87,0.068966,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1953,86,87,0.988506,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1953,81,87,0.931034,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1953,87,87,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1954,19,98,0.193878,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1954,31,98,0.316327,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1954,23,98,0.234694,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1954,28,98,0.285714,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1954,3,98,0.030612,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1954,96,98,0.979592,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1954,95,98,0.969388,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1954,98,98,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1955,20,106,0.188679,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1955,27,106,0.254717,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1955,30,106,0.283019,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1955,30,106,0.283019,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1955,4,106,0.037736,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1955,106,106,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1955,102,106,0.962264,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1955,106,106,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1956,28,127,0.220472,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1956,31,127,0.244094,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1956,32,127,0.251969,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1956,32,127,0.251969,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1956,5,127,0.039370,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1956,125,127,0.984252,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1956,122,127,0.960630,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1956,127,127,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1957,35,155,0.225806,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1957,47,155,0.303226,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1957,38,155,0.245161,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1957,36,155,0.232258,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1957,8,155,0.051613,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1957,155,155,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1957,147,155,0.948387,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1957,155,155,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1958,20,139,0.143885,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1958,32,139,0.230216,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1958,51,139,0.366906,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1958,31,139,0.223022,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1958,2,139,0.014388,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1958,138,139,0.992806,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1958,137,139,0.985612,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1958,139,139,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1959,27,136,0.198529,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1959,33,136,0.242647,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1959,31,136,0.227941,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1959,44,136,0.323529,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1959,8,136,0.058824,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1959,134,136,0.985294,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1959,128,136,0.941176,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1959,136,136,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1960,40,139,0.287770,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1960,35,139,0.251799,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1960,28,139,0.201439,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1960,27,139,0.194245,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1960,7,139,0.050360,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1960,137,139,0.985612,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1960,132,139,0.949640,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1960,139,139,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1961,31,118,0.262712,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1961,24,118,0.203390,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1961,27,118,0.228814,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1961,29,118,0.245763,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1961,7,118,0.059322,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1961,117,118,0.991525,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1961,111,118,0.940678,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1961,118,118,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1962,42,158,0.265823,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1962,33,158,0.208861,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1962,37,158,0.234177,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1962,39,158,0.246835,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1962,14,158,0.088608,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1962,152,158,0.962025,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1962,144,158,0.911392,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1962,158,158,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1963,60,183,0.327869,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1963,33,183,0.180328,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1963,36,183,0.196721,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1963,40,183,0.218579,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1963,23,183,0.125683,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1963,177,183,0.967213,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1963,160,183,0.874317,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1963,183,183,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1964,43,134,0.320896,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1964,39,134,0.291045,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1964,23,134,0.171642,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1964,37,134,0.276119,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1964,15,134,0.111940,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1964,131,134,0.977612,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1964,119,134,0.888060,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1964,134,134,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1965,40,141,0.283688,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1965,33,141,0.234043,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1965,30,141,0.212766,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1965,42,141,0.297872,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1965,9,141,0.063830,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1965,137,141,0.971631,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1965,132,141,0.936170,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1965,141,141,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1966,44,147,0.299320,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1966,40,147,0.272109,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1966,25,147,0.170068,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1966,29,147,0.197279,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1966,10,147,0.068027,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1966,141,147,0.959184,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1966,137,147,0.931973,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1966,147,147,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1967,59,197,0.299492,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1967,40,197,0.203046,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1967,29,197,0.147208,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1967,29,197,0.147208,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1967,19,197,0.096447,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1967,189,197,0.959391,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1967,178,197,0.903553,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1967,197,197,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1968,42,140,0.300000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1968,29,140,0.207143,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1968,20,140,0.142857,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1968,34,140,0.242857,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1968,16,140,0.114286,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1968,135,140,0.964286,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1968,124,140,0.885714,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1968,140,140,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1969,52,141,0.368794,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1969,48,141,0.340426,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1969,13,141,0.092199,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1969,33,141,0.234043,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1969,9,141,0.063830,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1969,136,141,0.964539,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1969,132,141,0.936170,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1969,141,141,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1970,59,144,0.409722,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1970,42,144,0.291667,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1970,18,144,0.125000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1970,27,144,0.187500,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1970,17,144,0.118056,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1970,141,144,0.979167,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1970,127,144,0.881944,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1970,144,144,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1971,68,179,0.379888,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1971,56,179,0.312849,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1971,35,179,0.195531,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1971,26,179,0.145251,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1971,19,179,0.106145,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1971,176,179,0.983240,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1971,160,179,0.893855,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1971,179,179,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1972,71,186,0.381720,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1972,62,186,0.333333,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1972,31,186,0.166667,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1972,37,186,0.198925,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1972,23,186,0.123656,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1972,183,186,0.983871,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1972,163,186,0.876344,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1972,186,186,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1973,66,173,0.381503,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1973,55,173,0.317919,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1973,22,173,0.127168,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1973,39,173,0.225434,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1973,14,173,0.080925,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1973,170,173,0.982659,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1973,159,173,0.919075,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1973,173,173,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1974,49,154,0.318182,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1974,53,154,0.344156,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1974,28,154,0.181818,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1974,40,154,0.259740,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1974,14,154,0.090909,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1974,152,154,0.987013,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1974,140,154,0.909091,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1974,154,154,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1975,60,182,0.329670,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1975,63,182,0.346154,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1975,32,182,0.175824,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1975,48,182,0.263736,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1975,12,182,0.065934,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1975,174,182,0.956044,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1975,170,182,0.934066,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1975,182,182,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1976,73,179,0.407821,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1976,69,179,0.385475,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1976,19,179,0.106145,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1976,38,179,0.212291,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1976,19,179,0.106145,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1976,172,179,0.960894,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1976,160,179,0.893855,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1976,179,179,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1977,47,155,0.303226,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1977,58,155,0.374194,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1977,32,155,0.206452,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1977,34,155,0.219355,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1977,13,155,0.083871,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1977,151,155,0.974194,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1977,142,155,0.916129,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1977,155,155,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1978,64,160,0.400000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1978,66,160,0.412500,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1978,27,160,0.168750,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1978,29,160,0.181250,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1978,14,160,0.087500,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1978,158,160,0.987500,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1978,146,160,0.912500,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1978,160,160,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1979,51,157,0.324841,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1979,65,157,0.414013,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1979,32,157,0.203822,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1979,22,157,0.140127,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1979,10,157,0.063694,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1979,154,157,0.980892,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1979,147,157,0.936306,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1979,157,157,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1980,49,153,0.320261,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1980,48,153,0.313725,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1980,26,153,0.169935,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1980,37,153,0.241830,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1980,12,153,0.078431,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1980,152,153,0.993464,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1980,141,153,0.921569,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1980,153,153,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1981,64,177,0.361582,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1981,70,177,0.395480,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1981,29,177,0.163842,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1981,43,177,0.242938,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1981,23,177,0.129944,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1981,175,177,0.988701,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1981,154,177,0.870056,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1981,177,177,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1982,51,166,0.307229,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1982,64,166,0.385542,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1982,33,166,0.198795,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1982,35,166,0.210843,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1982,13,166,0.078313,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1982,163,166,0.981928,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1982,153,166,0.921687,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1982,166,166,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1983,55,173,0.317919,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1983,72,173,0.416185,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1983,27,173,0.156069,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1983,32,173,0.184971,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1983,7,173,0.040462,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1983,169,173,0.976879,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1983,166,173,0.959538,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1983,173,173,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1984,50,165,0.303030,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1984,55,165,0.333333,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1984,32,165,0.193939,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1984,29,165,0.175758,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1984,16,165,0.096970,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1984,163,165,0.987879,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1984,149,165,0.903030,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1984,165,165,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1985,54,165,0.327273,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1985,63,165,0.381818,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1985,16,165,0.096970,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1985,39,165,0.236364,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1985,6,165,0.036364,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1985,162,165,0.981818,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1985,159,165,0.963636,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1985,165,165,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1986,51,161,0.316770,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1986,56,161,0.347826,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1986,23,161,0.142857,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1986,33,161,0.204969,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1986,14,161,0.086957,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1986,157,161,0.975155,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1986,147,161,0.913043,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1986,161,161,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1987,44,153,0.287582,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1987,47,153,0.307190,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1987,27,153,0.176471,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1987,38,153,0.248366,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1987,15,153,0.098039,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1987,151,153,0.986928,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1987,138,153,0.901961,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1987,153,153,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1988,54,152,0.355263,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1988,44,152,0.289474,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1988,17,152,0.111842,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1988,32,152,0.210526,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1988,13,152,0.085526,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1988,148,152,0.973684,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1988,139,152,0.914474,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1988,152,152,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1989,31,140,0.221429,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1989,45,140,0.321429,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1989,24,140,0.171429,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1989,37,140,0.264286,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1989,6,140,0.042857,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1989,138,140,0.985714,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1989,134,140,0.957143,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1989,140,140,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1990,27,129,0.209302,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1990,26,129,0.201550,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1990,26,129,0.201550,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1990,28,129,0.217054,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1990,3,129,0.023256,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1990,124,129,0.961240,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1990,126,129,0.976744,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1990,129,129,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1991,37,120,0.308333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1991,27,120,0.225000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1991,28,120,0.233333,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1991,26,120,0.216667,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1991,14,120,0.116667,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1991,117,120,0.975000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1991,106,120,0.883333,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1991,120,120,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1992,28,120,0.233333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1992,25,120,0.208333,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1992,18,120,0.150000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1992,37,120,0.308333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1992,5,120,0.041667,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1992,119,120,0.991667,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1992,115,120,0.958333,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1992,120,120,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1993,26,96,0.270833,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1993,20,96,0.208333,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1993,22,96,0.229167,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1993,19,96,0.197917,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1993,8,96,0.083333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1993,94,96,0.979167,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1993,88,96,0.916667,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1993,96,96,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1994,25,92,0.271739,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1994,16,92,0.173913,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1994,17,92,0.184783,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1994,27,92,0.293478,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1994,9,92,0.097826,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1994,89,92,0.967391,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1994,83,92,0.902174,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1994,92,92,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1995,22,91,0.241758,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1995,18,91,0.197802,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1995,17,91,0.186813,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1995,26,91,0.285714,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1995,11,91,0.120879,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1995,87,91,0.956044,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1995,80,91,0.879121,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1995,91,91,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1996,38,96,0.395833,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1996,15,96,0.156250,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1996,16,96,0.166667,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1996,22,96,0.229167,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1996,8,96,0.083333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1996,95,96,0.989583,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1996,88,96,0.916667,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1996,96,96,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1997,27,102,0.264706,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1997,22,102,0.215686,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1997,16,102,0.156863,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1997,27,102,0.264706,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1997,7,102,0.068627,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1997,99,102,0.970588,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1997,95,102,0.931373,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1997,102,102,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1998,31,92,0.336957,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1998,14,92,0.152174,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1998,14,92,0.152174,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1998,20,92,0.217391,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1998,9,92,0.097826,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1998,90,92,0.978261,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1998,83,92,0.902174,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1998,92,92,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,1999,27,85,0.317647,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,1999,12,85,0.141176,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,1999,10,85,0.117647,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,1999,18,85,0.211765,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,1999,13,85,0.152941,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,1999,84,85,0.988235,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,1999,72,85,0.847059,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,1999,85,85,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2000,28,87,0.321839,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2000,20,87,0.229885,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2000,11,87,0.126437,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2000,21,87,0.241379,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2000,8,87,0.091954,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2000,86,87,0.988506,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2000,79,87,0.908046,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2000,87,87,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2001,28,85,0.329412,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2001,30,85,0.352941,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2001,11,85,0.129412,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2001,24,85,0.282353,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2001,5,85,0.058824,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2001,81,85,0.952941,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2001,80,85,0.941176,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2001,85,85,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2002,27,84,0.321429,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2002,15,84,0.178571,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2002,19,84,0.226190,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2002,20,84,0.238095,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2002,3,84,0.035714,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2002,83,84,0.988095,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2002,81,84,0.964286,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2002,84,84,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2003,18,79,0.227848,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2003,13,79,0.164557,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2003,17,79,0.215190,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2003,14,79,0.177215,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2003,2,79,0.025316,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2003,78,79,0.987342,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2003,77,79,0.974684,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2003,79,79,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2004,25,80,0.312500,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2004,13,80,0.162500,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2004,14,80,0.175000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2004,20,80,0.250000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2004,5,80,0.062500,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2004,79,80,0.987500,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2004,75,80,0.937500,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2004,80,80,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2005,26,87,0.298851,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2005,7,87,0.080460,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2005,13,87,0.149425,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2005,21,87,0.241379,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2005,2,87,0.022989,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2005,85,87,0.977011,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2005,85,87,0.977011,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2005,87,87,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2006,10,75,0.133333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2006,17,75,0.226667,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2006,21,75,0.280000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2006,19,75,0.253333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2006,5,75,0.066667,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2006,70,75,0.933333,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2006,70,75,0.933333,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2006,75,75,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2007,18,74,0.243243,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2007,14,74,0.189189,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2007,14,74,0.189189,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2007,16,74,0.216216,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2007,4,74,0.054054,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2007,74,74,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2007,70,74,0.945946,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2007,74,74,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2008,25,83,0.301205,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2008,22,83,0.265060,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2008,12,83,0.144578,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2008,18,83,0.216867,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2008,2,83,0.024096,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2008,81,83,0.975904,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2008,81,83,0.975904,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2008,83,83,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2009,17,93,0.182796,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2009,14,93,0.150538,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2009,20,93,0.215054,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2009,14,93,0.150538,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2009,5,93,0.053763,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2009,91,93,0.978495,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2009,88,93,0.946237,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2009,93,93,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2010,28,84,0.333333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2010,14,84,0.166667,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2010,15,84,0.178571,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2010,15,84,0.178571,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2010,5,84,0.059524,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2010,83,84,0.988095,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2010,79,84,0.940476,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2010,84,84,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2011,23,77,0.298701,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2011,17,77,0.220779,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2011,16,77,0.207792,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2011,14,77,0.181818,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2011,5,77,0.064935,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2011,77,77,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2011,72,77,0.935065,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2011,77,77,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2012,20,79,0.253165,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2012,15,79,0.189873,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2012,15,79,0.189873,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2012,17,79,0.215190,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2012,3,79,0.037975,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2012,78,79,0.987342,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2012,76,79,0.962025,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2012,79,79,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2013,20,75,0.266667,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2013,12,75,0.160000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2013,18,75,0.240000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2013,11,75,0.146667,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2013,4,75,0.053333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2013,75,75,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2013,71,75,0.946667,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2013,75,75,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2014,22,74,0.297297,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2014,16,74,0.216216,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2014,20,74,0.270270,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2014,12,74,0.162162,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2014,7,74,0.094595,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2014,72,74,0.972973,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2014,67,74,0.905405,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2014,74,74,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2015,17,81,0.209877,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2015,9,81,0.111111,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2015,18,81,0.222222,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2015,11,81,0.135802,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2015,2,81,0.024691,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2015,80,81,0.987654,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2015,79,81,0.975309,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2015,81,81,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2016,23,69,0.333333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2016,7,69,0.101449,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2016,13,69,0.188406,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2016,14,69,0.202899,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2016,8,69,0.115942,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2016,69,69,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2016,61,69,0.884058,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2016,69,69,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2017,17,76,0.223684,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2017,6,76,0.078947,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2017,13,76,0.171053,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2017,21,76,0.276316,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2017,5,76,0.065789,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2017,73,76,0.960526,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2017,71,76,0.934211,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2017,76,76,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2018,17,73,0.232877,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2018,5,73,0.068493,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2018,20,73,0.273973,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2018,17,73,0.232877,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2018,5,73,0.068493,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2018,69,73,0.945205,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2018,68,73,0.931507,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2018,73,73,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2019,21,60,0.350000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2019,8,60,0.133333,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2019,19,60,0.316667,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2019,8,60,0.133333,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2019,6,60,0.100000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2019,59,60,0.983333,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2019,54,60,0.900000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2019,60,60,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2020,18,65,0.276923,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2020,9,65,0.138462,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2020,13,65,0.200000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2020,13,65,0.200000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2020,5,65,0.076923,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2020,64,65,0.984615,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2020,60,65,0.923077,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2020,65,65,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2021,23,65,0.353846,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2021,5,65,0.076923,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2021,12,65,0.184615,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2021,10,65,0.153846,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2021,7,65,0.107692,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2021,62,65,0.953846,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2021,58,65,0.892308,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2021,65,65,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2022,16,58,0.275862,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2022,5,58,0.086207,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2022,19,58,0.327586,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2022,9,58,0.155172,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2022,2,58,0.034483,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2022,57,58,0.982759,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2022,56,58,0.965517,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2022,58,58,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2023,21,59,0.355932,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2023,9,59,0.152542,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2023,12,59,0.203390,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2023,8,59,0.135593,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2023,0,59,0.000000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2023,58,59,0.983051,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2023,59,59,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2023,59,59,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.
+scdb-modern-2025-01,rights,rightsClaimRate,2024,15,64,0.234375,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 2 civil rights, 3 First Amendment, 4 due process, and 5 privacy."
+scdb-modern-2025-01,administrative,administrativeLawRate,2024,9,64,0.140625,https://scdb.la.psu.edu/data/2025-release-01/,SCDB adminAction present and nonzero.
+scdb-modern-2025-01,economic,economicRegulationRate,2024,17,64,0.265625,https://scdb.la.psu.edu/data/2025-release-01/,SCDB issueArea value 8 economic activity.
+scdb-modern-2025-01,structural,structuralRate,2024,17,64,0.265625,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB issueArea values 9 judicial power, 10 federalism, 11 interstate relations, and 12 federal taxation."
+scdb-modern-2025-01,constitutional,invalidationRate,2024,0,64,0.000000,https://scdb.la.psu.edu/data/2025-release-01/,"SCDB declarationUncon values 2, 3, and 4."
+scdb-modern-2025-01,precedent,precedentStability,2024,64,64,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB precedentAlteration share.
+scdb-modern-2025-01,statutory,statutoryStability,2024,64,64,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,One minus SCDB declarationUncon share.
+scdb-modern-2025-01,merits,meritsReviewRate,2024,64,64,1.000000,https://scdb.la.psu.edu/data/2025-release-01/,SCDB case-centered merits dataset term coverage.

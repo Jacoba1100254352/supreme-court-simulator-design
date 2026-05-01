@@ -45,6 +45,12 @@ public record CourtDecision(
         double legislativeDefiance,
         double executiveEmergencyStrategy,
         double appointmentManipulationPressure,
-        double overrideAdaptation
+        double overrideAdaptation,
+        boolean legislativeCompliance,
+        boolean legislativeEvasion,
+        boolean delayedReenactment,
+        boolean executiveEmergencyFlood,
+        boolean overrideCampaign,
+        boolean appointmentPressureCampaign
 ) {
 }

@@ -67,6 +67,12 @@ make legislative-family-comparison
 
 Set `LEGISLATIVE_FAMILY_DIR=/path/to/reports` to compare a different directory of legislative campaign CSVs.
 
+Use a different normalized empirical calibration-data directory:
+
+```sh
+make calibrate CALIBRATION_DATA_DIR=/path/to/calibration
+```
+
 Import a legislative simulator report as input:
 
 ```sh
@@ -81,19 +87,24 @@ The v1 campaign added docket subtypes, justice replacement/vacancy dynamics, ric
 
 The v2 campaign adds adversarial manipulation cases for appointment timing, emergency-application flooding, override evasion, recusal pressure, and court-expansion retaliation. It also splits legal stability into precedent stability, statutory stability, and interbranch compliance while keeping the blended legal-stability metric for headline comparisons.
 
-The current diagnostics add source-backed historical calibration ranges, legal-domain profiles for rights, election, executive-power, administrative, structural, and economic-regulation cases, and explicit strategic response state for legislative defiance, executive emergency behavior, appointment manipulation pressure, and override adaptation.
+The current diagnostics add normalized empirical calibration source tables, source-range appendix reports, legal-domain profiles for rights, election, executive-power, administrative, structural, and economic-regulation cases, lower-court/certiorari intake before merits review, and explicit strategic actor choices for compliance, evasion, reenactment, emergency flooding, override campaigns, and appointment-pressure campaigns.
 
 The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness.
 
 ## Current Reports
 
 - `reports/constitutional-review-campaign-v2.csv` and `.md`: full v2 campaign.
-- `reports/calibration-baseline.csv` and `.md`: source-backed historical plausibility guardrails for docket mix and key rates.
+- `reports/calibration-baseline.csv` and `.md`: empirical calibration guardrails computed from normalized source observations.
+- `reports/calibration-source-ranges-v4.csv` and `.md`: generated appendix of source ranges by metric.
 - `reports/seed-robustness-v2.csv` and `.md`: weighted v2 campaign sensitivity across deterministic seed offsets.
 - `reports/mechanism-ablation-v2.csv` and `.md`: pairwise institutional mechanism comparisons.
 - `reports/manipulation-stress-v2.csv` and `.md`: focused adversarial stress campaign.
-- `reports/parameter-sweep-v3.csv` and `.md`: uncertainty bands from changing model parameters, not only random seeds.
+- `reports/parameter-sweep-v4.csv` and `.md`: uncertainty bands from named prior profiles, not only random seeds.
 - `reports/legislative-family-comparison-v3.csv` and `.md`: constitutional-review results across multiple congressional-simulator campaign families.
+
+## Calibration Data
+
+Normalized empirical source observations live in `data/calibration/`. Regenerate them from raw SCDB and shadow-docket archives with `tools/build_calibration_tables.py`; raw archives are intentionally not committed.
 
 ## Paper
 

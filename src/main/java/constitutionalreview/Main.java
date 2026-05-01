@@ -131,6 +131,7 @@ public final class Main {
             if (options.calibrate) {
                 printDiagnostic(CalibrationRunner.run(
                         options.outputDir,
+                        options.calibrationDataDir,
                         options.runs,
                         options.cases,
                         options.seed,
@@ -258,6 +259,7 @@ public final class Main {
         private boolean parameterSweep;
         private boolean legislativeFamilyComparison;
         private Path outputDir = Path.of("reports");
+        private Path calibrationDataDir = Path.of("data/calibration");
         private Path legislativeInput;
         private Path legislativeFamilyDir;
         private final List<String> scenarioKeys = new ArrayList<>();
@@ -286,6 +288,7 @@ public final class Main {
                     case "--output-dir" -> options.outputDir = Path.of(requireValue(args, ++i, arg));
                     case "--legislative-input" -> options.legislativeInput = Path.of(requireValue(args, ++i, arg));
                     case "--legislative-family-dir" -> options.legislativeFamilyDir = Path.of(requireValue(args, ++i, arg));
+                    case "--calibration-data-dir" -> options.calibrationDataDir = Path.of(requireValue(args, ++i, arg));
                     case "--scenarios" -> options.scenarioKeys.addAll(parseList(requireValue(args, ++i, arg)));
                     default -> throw new IllegalArgumentException("Unknown argument: " + arg);
                 }
@@ -349,6 +352,7 @@ public final class Main {
                       --parameter-sweep
                       --legislative-family-comparison
                       --output-dir DIR
+                      --calibration-data-dir DIR
                       --legislative-input CSV
                       --legislative-family-dir DIR
                       --polarization VALUE

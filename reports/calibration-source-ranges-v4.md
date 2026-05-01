@@ -1,0 +1,26 @@
+# Empirical Calibration Appendix v4
+
+Normalized source observations used to compute calibration ranges. The simulator does not read raw SCDB or shadow-docket archives at runtime; those large files are reduced into term-level source rows under `data/calibration`.
+
+## Source Range Summary
+
+| Metric | Obs. | Terms | Sources | Raw min | P05 | Median | P95 | Raw max |
+| --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| `administrativeLawRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.068 | 0.086 | 0.234 | 0.397 | 0.416 |
+| `economicRegulationRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.092 | 0.117 | 0.194 | 0.323 | 0.379 |
+| `emergencyOrderRate` | 22 | 2003-2024 | shadow-docket-v2-0 | 0.011 | 0.031 | 0.100 | 0.225 | 0.323 |
+| `emergencyStayDocketRate` | 32 | 1993-2024 | shadow-docket-v2-0 | 0.000 | 0.000 | 0.006 | 0.013 | 0.023 |
+| `invalidationRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.000 | 0.023 | 0.066 | 0.121 | 0.153 |
+| `meritsReviewRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| `precedentStability` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.933 | 0.956 | 0.983 | 1.000 | 1.000 |
+| `recusalRate` | 1 | 1946-2003 | black-epstein-recusal | 0.009 | 0.009 | 0.009 | 0.009 | 0.009 |
+| `rightsClaimRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.133 | 0.159 | 0.299 | 0.383 | 0.410 |
+| `shadowDocketAbuse` | 22 | 2003-2024 | shadow-docket-v2-0 | 0.065 | 0.069 | 0.222 | 0.361 | 0.538 |
+| `statutoryStability` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.847 | 0.879 | 0.934 | 0.977 | 1.000 |
+| `structuralRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.133 | 0.145 | 0.223 | 0.309 | 0.370 |
+
+## Source Files
+
+- `black-epstein-recusal-summary.csv`
+- `scdb-modern-2025-release-01.csv`
+- `shadow-docket-v2-0-summary.csv`
