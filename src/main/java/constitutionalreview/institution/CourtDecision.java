@@ -1,19 +1,29 @@
 package constitutionalreview.institution;
 
 import constitutionalreview.model.CaseType;
+import constitutionalreview.model.DocketType;
 
 public record CourtDecision(
         String caseId,
         CaseType caseType,
+        DocketType docketType,
         boolean meritsReview,
         boolean invalidated,
         boolean emergencyOrder,
         boolean shadowRelief,
+        EmergencyProcedureStage emergencyProcedureStage,
+        boolean reasonedEmergencyOrder,
+        boolean temporaryStay,
+        boolean meritsAccelerated,
+        boolean expiredEmergencyOrder,
         boolean enBanc,
         boolean councilWarning,
         boolean crossCheckDisagreement,
         boolean legislativeOverride,
+        boolean overrideAttempted,
+        OverrideOutcome overrideOutcome,
         boolean precedentReversal,
+        int justiceReplacements,
         int participatingJustices,
         int recusedJustices,
         int votesForInvalidation,

@@ -1,0 +1,11 @@
+package constitutionalreview.model;
+
+public enum DocketType {
+    FACIAL_CHALLENGE,
+    AS_APPLIED_CHALLENGE,
+    ELECTION_DISPUTE,
+    EMERGENCY_STAY_APPLICATION,
+    EXECUTIVE_POWER_DISPUTE,
+    ADMINISTRATIVE_LAW_CHALLENGE,
+    RIGHTS_CLAIM
+}

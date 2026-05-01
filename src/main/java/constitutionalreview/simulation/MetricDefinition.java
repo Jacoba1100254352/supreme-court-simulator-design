@@ -27,10 +27,13 @@ public record MetricDefinition(
             new MetricDefinition("invalidationRate", "Invalidation rate", MetricDirection.DIAGNOSTIC, "Share of cases invalidating a law or government action."),
             new MetricDefinition("meritsReviewRate", "Merits review", MetricDirection.DIAGNOSTIC, "Share of cases resolved through merits review."),
             new MetricDefinition("emergencyOrderRate", "Emergency order rate", MetricDirection.DIAGNOSTIC, "Emergency docket activity."),
+            new MetricDefinition("meritsAccelerationRate", "Merits acceleration", MetricDirection.DIAGNOSTIC, "Emergency cases pushed into merits review."),
             new MetricDefinition("recusalRate", "Recusal rate", MetricDirection.DIAGNOSTIC, "Conflict-screening intensity."),
+            new MetricDefinition("justiceReplacementRate", "Justice replacement rate", MetricDirection.DIAGNOSTIC, "Appointment and replacement churn per case."),
             new MetricDefinition("concurrenceRate", "Concurrence rate", MetricDirection.DIAGNOSTIC, "Fragmentation in agreement."),
             new MetricDefinition("dissentRate", "Dissent rate", MetricDirection.DIAGNOSTIC, "Public disagreement inside the court."),
             new MetricDefinition("enBancRate", "En banc rate", MetricDirection.DIAGNOSTIC, "Full-court review rate."),
+            new MetricDefinition("overrideAttemptRate", "Override attempt rate", MetricDirection.DIAGNOSTIC, "Legislative or popular override attempts."),
             new MetricDefinition("overrideRate", "Override rate", MetricDirection.DIAGNOSTIC, "Legislative or popular override activity.")
     );
 

@@ -46,6 +46,28 @@ public final class CampaignRunner {
         );
     }
 
+    public static CampaignResult runV1(
+            Path outputDir,
+            int runs,
+            int casesPerRun,
+            long seed,
+            LegislativeOutputProfile importedProfile,
+            Path legislativeInput
+    ) throws IOException {
+        return run(
+                "Constitutional Review Campaign v1",
+                "constitutional-review-campaign-v1",
+                outputDir,
+                v1Cases(casesPerRun, importedProfile),
+                ScenarioCatalog.defaultScenarios(),
+                runs,
+                casesPerRun,
+                seed,
+                importedProfile,
+                legislativeInput
+        );
+    }
+
     private static CampaignResult run(
             String reportName,
             String fileStem,
@@ -194,6 +216,118 @@ public final class CampaignRunner {
         return cases;
     }
 
+    private static List<CampaignCase> v1Cases(int casesPerRun, LegislativeOutputProfile importedProfile) {
+        List<CampaignCase> cases = new ArrayList<>(v0Cases(casesPerRun, importedProfile));
+        LegislativeOutputProfile neutral = LegislativeOutputProfile.neutral();
+        cases.add(new CampaignCase(
+                "low-appointment-capture",
+                "Low Appointment Capture",
+                "Appointment incentives are less partisan and the justice pool is less polarized.",
+                0.75,
+                new WorldSpec(casesPerRun, 35, 0.38, 0.18, 0.44, 0.18, neutral)
+        ));
+        cases.add(new CampaignCase(
+                "extreme-appointment-capture",
+                "Extreme Appointment Capture",
+                "Appointment incentives are highly partisan and vacancies become ideological leverage points.",
+                1.0,
+                new WorldSpec(casesPerRun, 35, 0.86, 0.88, 0.48, 0.20, neutral)
+        ));
+        cases.add(new CampaignCase(
+                "low-emergency-pressure",
+                "Low Emergency Pressure",
+                "Few cases arrive through urgent stay requests or executive emergency disputes.",
+                0.75,
+                new WorldSpec(casesPerRun, 31, 0.52, 0.42, 0.45, 0.04, neutral)
+        ));
+        cases.add(new CampaignCase(
+                "extreme-emergency-pressure",
+                "Extreme Emergency Pressure",
+                "Emergency applications, executive-power disputes, and time-sensitive election conflicts are common.",
+                1.0,
+                new WorldSpec(casesPerRun, 31, 0.62, 0.54, 0.48, 0.72, new LegislativeOutputProfile(
+                        "extreme-emergency synthetic legislature",
+                        0.54,
+                        0.48,
+                        0.38,
+                        0.34,
+                        0.50,
+                        0.66,
+                        0.48,
+                        0.54
+                ))
+        ));
+        cases.add(new CampaignCase(
+                "low-rights-risk",
+                "Low Rights Risk",
+                "Legislative output is legally careful, low-volatility, and rarely burdens protected interests.",
+                0.75,
+                new WorldSpec(casesPerRun, 31, 0.46, 0.36, 0.50, 0.12, new LegislativeOutputProfile(
+                        "low-rights-risk synthetic legislature",
+                        0.42,
+                        0.74,
+                        0.08,
+                        0.06,
+                        0.14,
+                        0.12,
+                        0.74,
+                        0.08
+                ))
+        ));
+        cases.add(new CampaignCase(
+                "extreme-rights-risk",
+                "Extreme Rights Risk",
+                "Legislative output often creates concentrated rights burdens under contested public mandates.",
+                1.0,
+                new WorldSpec(casesPerRun, 31, 0.64, 0.54, 0.50, 0.26, new LegislativeOutputProfile(
+                        "extreme-rights-risk synthetic legislature",
+                        0.62,
+                        0.34,
+                        0.48,
+                        0.78,
+                        0.46,
+                        0.46,
+                        0.40,
+                        0.70
+                ))
+        ));
+        cases.add(new CampaignCase(
+                "weak-mandate-legislation",
+                "Weak-Mandate Legislation",
+                "Many reviewed laws have low public legitimacy and high override pressure after invalidation.",
+                1.0,
+                new WorldSpec(casesPerRun, 31, 0.58, 0.48, 0.42, 0.22, new LegislativeOutputProfile(
+                        "weak-mandate synthetic legislature",
+                        0.58,
+                        0.46,
+                        0.68,
+                        0.34,
+                        0.42,
+                        0.38,
+                        0.30,
+                        0.74
+                ))
+        ));
+        cases.add(new CampaignCase(
+                "strong-mandate-legislation",
+                "Strong-Mandate Legislation",
+                "Popular legislation creates the hardest democratic-responsiveness pressure for review.",
+                0.75,
+                new WorldSpec(casesPerRun, 31, 0.42, 0.34, 0.70, 0.12, new LegislativeOutputProfile(
+                        "strong-mandate synthetic legislature",
+                        0.50,
+                        0.70,
+                        0.04,
+                        0.16,
+                        0.16,
+                        0.14,
+                        0.84,
+                        0.10
+                ))
+        ));
+        return cases;
+    }
+
     private static String csv(CampaignResult result) {
         StringBuilder builder = new StringBuilder();
         builder.append(String.join(",",
@@ -222,14 +356,29 @@ public final class CampaignRunner {
                 "meritsReviewRate",
                 "emergencyOrderRate",
                 "shadowReliefRate",
+                "reasonedEmergencyOrderRate",
+                "temporaryStayRate",
+                "meritsAccelerationRate",
+                "expiredEmergencyOrderRate",
                 "recusalRate",
+                "justiceReplacementRate",
                 "concurrenceRate",
                 "dissentRate",
                 "panelRate",
                 "enBancRate",
                 "crossCheckDisagreementRate",
                 "councilWarningRate",
-                "overrideRate"
+                "overrideAttemptRate",
+                "overrideRate",
+                "rightsCarveoutBlockRate",
+                "repeatedOverrideRate",
+                "facialChallengeRate",
+                "asAppliedChallengeRate",
+                "electionDisputeRate",
+                "emergencyStayDocketRate",
+                "executivePowerDisputeRate",
+                "administrativeLawRate",
+                "rightsClaimRate"
         )).append('\n');
         for (CampaignRow row : result.rows()) {
             ScenarioReport report = row.report();
@@ -259,14 +408,29 @@ public final class CampaignRunner {
                     .append(format(report.meritsReviewRate())).append(',')
                     .append(format(report.emergencyOrderRate())).append(',')
                     .append(format(report.shadowReliefRate())).append(',')
+                    .append(format(report.reasonedEmergencyOrderRate())).append(',')
+                    .append(format(report.temporaryStayRate())).append(',')
+                    .append(format(report.meritsAccelerationRate())).append(',')
+                    .append(format(report.expiredEmergencyOrderRate())).append(',')
                     .append(format(report.recusalRate())).append(',')
+                    .append(format(report.justiceReplacementRate())).append(',')
                     .append(format(report.concurrenceRate())).append(',')
                     .append(format(report.dissentRate())).append(',')
                     .append(format(report.panelRate())).append(',')
                     .append(format(report.enBancRate())).append(',')
                     .append(format(report.crossCheckDisagreementRate())).append(',')
                     .append(format(report.councilWarningRate())).append(',')
-                    .append(format(report.overrideRate()))
+                    .append(format(report.overrideAttemptRate())).append(',')
+                    .append(format(report.overrideRate())).append(',')
+                    .append(format(report.rightsCarveoutBlockRate())).append(',')
+                    .append(format(report.repeatedOverrideRate())).append(',')
+                    .append(format(report.facialChallengeRate())).append(',')
+                    .append(format(report.asAppliedChallengeRate())).append(',')
+                    .append(format(report.electionDisputeRate())).append(',')
+                    .append(format(report.emergencyStayDocketRate())).append(',')
+                    .append(format(report.executivePowerDisputeRate())).append(',')
+                    .append(format(report.administrativeLawRate())).append(',')
+                    .append(format(report.rightsClaimRate()))
                     .append('\n');
         }
         return builder.toString();
@@ -353,11 +517,11 @@ public final class CampaignRunner {
         builder.append("\n## Metric Direction Legend\n\n");
         builder.append("- Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.\n");
         builder.append("- Lower `partisanAlignment`, `shadowDocketAbuse`, `reversalRate`, `constitutionalConflict`, and `administrativeCost` are usually better.\n");
-        builder.append("- Invalidation, emergency, recusal, concurrence, dissent, panel, en banc, council, cross-check, and override rates are diagnostic.\n");
+        builder.append("- Invalidation, emergency, replacement, recusal, concurrence, dissent, panel, en banc, council, cross-check, and override rates are diagnostic.\n");
 
         builder.append("\n## Scenario Averages Across Cases\n\n");
-        builder.append("| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Admin cost | Invalidation | Override |\n");
-        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        builder.append("| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Admin cost | Merits accel. | Replacement | Override att. | Override |\n");
+        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
         weightedReports.stream()
                 .sorted(Comparator.comparingDouble(WeightedScenarioReport::directionalScore).reversed())
                 .forEach(report -> builder.append("| ")
@@ -387,11 +551,64 @@ public final class CampaignRunner {
                         .append(" | ")
                         .append(format(report.administrativeCost()))
                         .append(" | ")
-                        .append(format(report.invalidationRate()))
+                        .append(format(report.meritsAccelerationRate()))
+                        .append(" | ")
+                        .append(format(report.justiceReplacementRate()))
+                        .append(" | ")
+                        .append(format(report.overrideAttemptRate()))
                         .append(" | ")
                         .append(format(report.overrideRate()))
                         .append(" |\n"));
+        appendCaseSlices(builder, result.rows());
         return builder.toString();
+    }
+
+    private static void appendCaseSlices(StringBuilder builder, List<CampaignRow> rows) {
+        Map<String, List<CampaignRow>> byCase = new LinkedHashMap<>();
+        for (CampaignRow row : rows) {
+            byCase.computeIfAbsent(row.campaignCase().key(), ignored -> new ArrayList<>()).add(row);
+        }
+        builder.append("\n## Stress Case Leaders\n\n");
+        builder.append("| Case | Best directional | Highest rights | Lowest shadow abuse | Lowest partisan align. |\n");
+        builder.append("| --- | --- | --- | --- | --- |\n");
+        for (List<CampaignRow> caseRows : byCase.values()) {
+            CampaignCase campaignCase = caseRows.get(0).campaignCase();
+            ScenarioReport bestDirectional = caseRows.stream()
+                    .map(CampaignRow::report)
+                    .max(Comparator.comparingDouble(ScenarioReport::directionalScore))
+                    .orElseThrow();
+            ScenarioReport bestRights = caseRows.stream()
+                    .map(CampaignRow::report)
+                    .max(Comparator.comparingDouble(ScenarioReport::rightsProtection))
+                    .orElseThrow();
+            ScenarioReport lowestShadow = caseRows.stream()
+                    .map(CampaignRow::report)
+                    .min(Comparator.comparingDouble(ScenarioReport::shadowDocketAbuse))
+                    .orElseThrow();
+            ScenarioReport lowestPartisan = caseRows.stream()
+                    .map(CampaignRow::report)
+                    .min(Comparator.comparingDouble(ScenarioReport::partisanAlignment))
+                    .orElseThrow();
+            builder.append("| ")
+                    .append(campaignCase.name())
+                    .append(" | ")
+                    .append(bestDirectional.scenarioName())
+                    .append(" (")
+                    .append(format(bestDirectional.directionalScore()))
+                    .append(") | ")
+                    .append(bestRights.scenarioName())
+                    .append(" (")
+                    .append(format(bestRights.rightsProtection()))
+                    .append(") | ")
+                    .append(lowestShadow.scenarioName())
+                    .append(" (")
+                    .append(format(lowestShadow.shadowDocketAbuse()))
+                    .append(") | ")
+                    .append(lowestPartisan.scenarioName())
+                    .append(" (")
+                    .append(format(lowestPartisan.partisanAlignment()))
+                    .append(") |\n");
+        }
     }
 
     private static List<WeightedScenarioReport> weightedReports(List<CampaignRow> rows) {
@@ -428,6 +645,9 @@ public final class CampaignRunner {
         private double democraticResponsiveness;
         private double administrativeCost;
         private double invalidationRate;
+        private double meritsAccelerationRate;
+        private double justiceReplacementRate;
+        private double overrideAttemptRate;
         private double overrideRate;
 
         private WeightedTotals(String scenarioName) {
@@ -449,6 +669,9 @@ public final class CampaignRunner {
             democraticResponsiveness += report.democraticResponsiveness() * rowWeight;
             administrativeCost += report.administrativeCost() * rowWeight;
             invalidationRate += report.invalidationRate() * rowWeight;
+            meritsAccelerationRate += report.meritsAccelerationRate() * rowWeight;
+            justiceReplacementRate += report.justiceReplacementRate() * rowWeight;
+            overrideAttemptRate += report.overrideAttemptRate() * rowWeight;
             overrideRate += report.overrideRate() * rowWeight;
         }
 
@@ -470,6 +693,9 @@ public final class CampaignRunner {
                     democraticResponsiveness / denominator,
                     administrativeCost / denominator,
                     invalidationRate / denominator,
+                    meritsAccelerationRate / denominator,
+                    justiceReplacementRate / denominator,
+                    overrideAttemptRate / denominator,
                     overrideRate / denominator
             );
         }
@@ -491,6 +717,9 @@ public final class CampaignRunner {
             double democraticResponsiveness,
             double administrativeCost,
             double invalidationRate,
+            double meritsAccelerationRate,
+            double justiceReplacementRate,
+            double overrideAttemptRate,
             double overrideRate
     ) {
     }

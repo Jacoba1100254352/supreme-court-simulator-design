@@ -21,6 +21,12 @@ Write campaign artifacts:
 make campaign
 ```
 
+Run the preserved v0 campaign:
+
+```sh
+make campaign-v0
+```
+
 Build the LaTeX paper:
 
 ```sh
@@ -39,6 +45,8 @@ The importer accepts the congressional simulator campaign CSV schema and also ac
 
 Campaign runs write:
 
-- `reports/constitutional-review-campaign-v0.csv`
-- `reports/constitutional-review-campaign-v0.md`
-- `reports/constitutional-review-campaign-v0-manifest.json`
+- `reports/constitutional-review-campaign-v1.csv`
+- `reports/constitutional-review-campaign-v1.md`
+- `reports/constitutional-review-campaign-v1-manifest.json`
+
+The preserved v0 target writes the same filenames with `v0`.

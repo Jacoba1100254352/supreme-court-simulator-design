@@ -20,14 +20,29 @@ public record ScenarioReport(
         double administrativeCost,
         double emergencyOrderRate,
         double shadowReliefRate,
+        double reasonedEmergencyOrderRate,
+        double temporaryStayRate,
+        double meritsAccelerationRate,
+        double expiredEmergencyOrderRate,
         double recusalRate,
+        double justiceReplacementRate,
         double concurrenceRate,
         double dissentRate,
         double panelRate,
         double enBancRate,
         double crossCheckDisagreementRate,
         double councilWarningRate,
-        double overrideRate
+        double overrideAttemptRate,
+        double overrideRate,
+        double rightsCarveoutBlockRate,
+        double repeatedOverrideRate,
+        double facialChallengeRate,
+        double asAppliedChallengeRate,
+        double electionDisputeRate,
+        double emergencyStayDocketRate,
+        double executivePowerDisputeRate,
+        double administrativeLawRate,
+        double rightsClaimRate
 ) {
     public double stabilityRightsScore() {
         return Values.average(

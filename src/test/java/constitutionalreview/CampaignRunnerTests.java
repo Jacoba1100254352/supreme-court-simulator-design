@@ -14,7 +14,7 @@ public final class CampaignRunnerTests {
 
     public static void run() throws IOException {
         Path outputDir = Files.createTempDirectory("constitutional-review-campaign");
-        CampaignResult result = CampaignRunner.runV0(
+        CampaignResult result = CampaignRunner.runV1(
                 outputDir,
                 2,
                 8,
@@ -27,5 +27,6 @@ public final class CampaignRunnerTests {
         TestSupport.check(Files.exists(result.manifestPath()), "campaign should write manifest");
         String markdown = Files.readString(result.markdownPath());
         TestSupport.check(markdown.contains("Scenario Averages Across Cases"), "markdown should include scenario table");
+        TestSupport.check(markdown.contains("Stress Case Leaders"), "markdown should include stress-case slices");
     }
 }

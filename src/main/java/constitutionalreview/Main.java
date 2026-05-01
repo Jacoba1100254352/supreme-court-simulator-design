@@ -73,6 +73,14 @@ public final class Main {
                         imported,
                         options.legislativeInput
                 );
+                case "v1" -> CampaignRunner.runV1(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                );
                 default -> throw new IllegalArgumentException("Unknown campaign: " + options.campaignName);
             };
             System.out.println("Constitutional review campaign complete.");
@@ -224,7 +232,7 @@ public final class Main {
                       --seed N
                       --scenarios key,key
                       --all-scenarios
-                      --campaign v0
+                      --campaign v0|v1
                       --output-dir DIR
                       --legislative-input CSV
                       --polarization VALUE

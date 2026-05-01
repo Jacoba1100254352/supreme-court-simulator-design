@@ -37,11 +37,13 @@ Build the starter paper:
 make paper
 ```
 
-Write the v0 campaign artifacts:
+Write the current v1 campaign artifacts:
 
 ```sh
 make campaign
 ```
+
+`make campaign` now writes the v1 campaign. The initial v0 campaign remains available as `make campaign-v0`.
 
 Import a legislative simulator report as input:
 
@@ -51,10 +53,12 @@ make campaign ARGS="--legislative-input '/Users/jacobanderson/Documents/simulato
 
 ## Current Design Surface
 
-The v0 catalog includes appointment method, court size, term limits, removal standards, recusal rules, emergency docket procedures, voting thresholds, concurrence/dissent behavior, panel versus en banc review, dual or cross-checking courts, constitutional councils, legislative override rules, and independence/accountability tradeoffs.
+The catalog includes appointment method, court size, term limits, removal standards, recusal rules, emergency docket procedures, voting thresholds, concurrence/dissent behavior, panel versus en banc review, dual or cross-checking courts, constitutional councils, legislative override rules, and independence/accountability tradeoffs.
+
+The v1 campaign adds docket subtypes, justice replacement/vacancy dynamics, richer emergency procedure states, stronger override outcomes, stress-case slices, and sensitivity cases for appointment capture, emergency pressure, rights risk, and weak democratic mandate.
 
 The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness.
 
 ## Paper
 
-The initial LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the v0 formulas are empirically validated.
+The initial LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the v1 formulas are empirically validated.
