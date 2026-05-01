@@ -35,6 +35,9 @@ public final class MetricsAccumulator {
     private int administrativeLawChallenges;
     private int rightsClaims;
     private double legalStability;
+    private double precedentStability;
+    private double statutoryStability;
+    private double interbranchCompliance;
     private double rightsProtection;
     private double partisanAlignment;
     private double shadowDocketAbuse;
@@ -68,6 +71,9 @@ public final class MetricsAccumulator {
         dissents += decision.dissents();
         addDocketType(decision.docketType());
         legalStability += decision.legalStability();
+        precedentStability += decision.precedentStability();
+        statutoryStability += decision.statutoryStability();
+        interbranchCompliance += decision.interbranchCompliance();
         rightsProtection += decision.rightsProtection();
         partisanAlignment += decision.partisanAlignment();
         shadowDocketAbuse += decision.shadowDocketAbuse();
@@ -87,6 +93,9 @@ public final class MetricsAccumulator {
                 meritsReviews / cases,
                 invalidations / cases,
                 legalStability / cases,
+                precedentStability / cases,
+                statutoryStability / cases,
+                interbranchCompliance / cases,
                 rightsProtection / cases,
                 partisanAlignment / cases,
                 shadowDocketAbuse / cases,

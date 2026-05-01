@@ -9,6 +9,7 @@ public final class SimulatorTests {
         SimulatorInvariantTests.run();
         LegislativeOutputImporterTests.run();
         CampaignRunnerTests.run();
+        DiagnosticRunnerTests.run();
         System.out.println("All constitutional review simulator tests passed.");
     }
 }

@@ -65,7 +65,10 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double partisanAlignment = partisanAlignment(reviewCase, voteCount, participating);
         double shadowAbuse = shadowDocketAbuse(reviewCase, emergency, meritsReview, emergencyProcedure);
         double conflict = constitutionalConflict(reviewCase, invalidated, shadowRelief, crossDisagreement, overrideDecision, state);
-        double stability = legalStability(state, precedentShift, shadowAbuse, conflict);
+        double precedentStability = precedentStability(state, precedentShift, shadowAbuse, conflict);
+        double statutoryStability = statutoryStability(reviewCase, invalidated, shadowRelief, emergencyProcedure, overrideDecision, conflict);
+        double interbranchCompliance = interbranchCompliance(reviewCase, crossDisagreement, councilWarning, overrideDecision, conflict, state);
+        double legalStability = Values.average(precedentStability, statutoryStability, interbranchCompliance);
         double legitimacy = legitimacy(reviewCase, meritsReview, emergencyProcedure, recused, participating.size(), shadowAbuse, partisanAlignment, councilWarning);
         double responsiveness = democraticResponsiveness(reviewCase, invalidated, overrideDecision, councilWarning);
         double administrativeCost = administrativeCost(reviewCase, emergencyProcedure, enBanc, crossDisagreement, councilWarning);
@@ -99,7 +102,10 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 voteCount.no(),
                 concurrences,
                 dissents,
-                stability,
+                legalStability,
+                precedentStability,
+                statutoryStability,
+                interbranchCompliance,
                 rightsProtection,
                 partisanAlignment,
                 shadowAbuse,
@@ -481,8 +487,74 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         return Values.clamp01(conflict);
     }
 
-    private double legalStability(CourtState state, double precedentShift, double shadowAbuse, double conflict) {
+    private double precedentStability(CourtState state, double precedentShift, double shadowAbuse, double conflict) {
         return Values.clamp01(state.precedentStability() - precedentShift * 0.28 - shadowAbuse * 0.18 - conflict * 0.12 + 0.12);
+    }
+
+    private double statutoryStability(
+            ReviewCase reviewCase,
+            boolean invalidated,
+            boolean shadowRelief,
+            EmergencyProcedure emergencyProcedure,
+            OverrideDecision overrideDecision,
+            double conflict
+    ) {
+        double stability = 0.68
+                + reviewCase.legislativeQuality() * 0.18
+                + reviewCase.democraticMandate() * 0.08
+                - reviewCase.legalAmbiguity() * 0.08
+                - conflict * 0.12;
+        if (invalidated) {
+            stability -= 0.18 + reviewCase.publicAttention() * 0.06;
+        }
+        if (shadowRelief) {
+            stability -= 0.10;
+        }
+        if (emergencyProcedure.expired()) {
+            stability -= 0.05;
+        }
+        if (overrideDecision.successful()) {
+            stability += 0.08;
+        }
+        if (overrideDecision.outcome() == OverrideOutcome.REPEATED_OVERRIDE) {
+            stability -= 0.12;
+        } else if (overrideDecision.outcome() == OverrideOutcome.RIGHTS_CARVEOUT_BLOCKED) {
+            stability -= 0.05;
+        }
+        return Values.clamp01(stability);
+    }
+
+    private double interbranchCompliance(
+            ReviewCase reviewCase,
+            boolean crossDisagreement,
+            boolean councilWarning,
+            OverrideDecision overrideDecision,
+            double conflict,
+            CourtState state
+    ) {
+        double compliance = 0.76
+                + reviewCase.legislativeQuality() * 0.08
+                + reviewCase.democraticMandate() * 0.04
+                - reviewCase.executiveDefianceRisk() * 0.18
+                - reviewCase.partisanSalience() * 0.10
+                - conflict * 0.26
+                - state.conflictLoad() * 0.10;
+        if (crossDisagreement) {
+            compliance -= 0.08;
+        }
+        if (overrideDecision.attempted()) {
+            compliance -= 0.04;
+        }
+        if (overrideDecision.successful()) {
+            compliance += 0.05;
+        }
+        if (overrideDecision.outcome() == OverrideOutcome.REPEATED_OVERRIDE) {
+            compliance -= 0.10;
+        }
+        if (councilWarning) {
+            compliance += 0.04;
+        }
+        return Values.clamp01(compliance);
     }
 
     private double legitimacy(

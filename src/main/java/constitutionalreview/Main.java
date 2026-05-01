@@ -1,7 +1,11 @@
 package constitutionalreview;
 
+import constitutionalreview.experiment.CalibrationRunner;
 import constitutionalreview.experiment.CampaignResult;
 import constitutionalreview.experiment.CampaignRunner;
+import constitutionalreview.experiment.DiagnosticResult;
+import constitutionalreview.experiment.MechanismAblationRunner;
+import constitutionalreview.experiment.SeedRobustnessRunner;
 import constitutionalreview.importer.LegislativeOutputImporter;
 import constitutionalreview.model.LegislativeOutputProfile;
 import constitutionalreview.simulation.Scenario;
@@ -32,6 +36,9 @@ public final class Main {
         LegislativeOutputProfile profile = loadLegislativeProfile(options.legislativeInput);
         if (options.campaignName != null) {
             runCampaign(options, profile);
+            return;
+        }
+        if (runDiagnostics(options, profile)) {
             return;
         }
 
@@ -81,6 +88,22 @@ public final class Main {
                         imported,
                         options.legislativeInput
                 );
+                case "v2" -> CampaignRunner.runV2(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                );
+                case "manipulation-stress" -> CampaignRunner.runManipulationStress(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                );
                 default -> throw new IllegalArgumentException("Unknown campaign: " + options.campaignName);
             };
             System.out.println("Constitutional review campaign complete.");
@@ -90,6 +113,56 @@ public final class Main {
         } catch (IOException exception) {
             throw new IllegalStateException("Unable to write campaign outputs.", exception);
         }
+    }
+
+    private static boolean runDiagnostics(Options options, LegislativeOutputProfile profile) {
+        boolean any = options.calibrate || options.seedRobustness || options.mechanismAblation;
+        if (!any) {
+            return false;
+        }
+        try {
+            LegislativeOutputProfile imported = options.legislativeInput == null ? null : profile;
+            if (options.calibrate) {
+                printDiagnostic(CalibrationRunner.run(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                ));
+            }
+            if (options.seedRobustness) {
+                printDiagnostic(SeedRobustnessRunner.run(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                ));
+            }
+            if (options.mechanismAblation) {
+                printDiagnostic(MechanismAblationRunner.run(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                ));
+            }
+            return true;
+        } catch (IOException exception) {
+            throw new IllegalStateException("Unable to write diagnostic outputs.", exception);
+        }
+    }
+
+    private static void printDiagnostic(DiagnosticResult result) {
+        System.out.println(result.name() + " complete.");
+        System.out.println("CSV: " + result.csvPath());
+        System.out.println("Markdown: " + result.markdownPath());
+        System.out.println("Manifest: " + result.manifestPath());
     }
 
     private static List<Scenario> scenarios(Options options) {
@@ -154,6 +227,9 @@ public final class Main {
         private double emergencyShare = 0.18;
         private boolean allScenarios;
         private String campaignName;
+        private boolean calibrate;
+        private boolean seedRobustness;
+        private boolean mechanismAblation;
         private Path outputDir = Path.of("reports");
         private Path legislativeInput;
         private final List<String> scenarioKeys = new ArrayList<>();
@@ -174,6 +250,9 @@ public final class Main {
                     case "--emergency-share" -> options.emergencyShare = parseDouble(args, ++i, arg);
                     case "--all-scenarios" -> options.allScenarios = true;
                     case "--campaign" -> options.campaignName = requireValue(args, ++i, arg);
+                    case "--calibrate" -> options.calibrate = true;
+                    case "--seed-robustness" -> options.seedRobustness = true;
+                    case "--mechanism-ablation" -> options.mechanismAblation = true;
                     case "--output-dir" -> options.outputDir = Path.of(requireValue(args, ++i, arg));
                     case "--legislative-input" -> options.legislativeInput = Path.of(requireValue(args, ++i, arg));
                     case "--scenarios" -> options.scenarioKeys.addAll(parseList(requireValue(args, ++i, arg)));
@@ -232,7 +311,10 @@ public final class Main {
                       --seed N
                       --scenarios key,key
                       --all-scenarios
-                      --campaign v0|v1
+                      --campaign v0|v1|v2|manipulation-stress
+                      --calibrate
+                      --seed-robustness
+                      --mechanism-ablation
                       --output-dir DIR
                       --legislative-input CSV
                       --polarization VALUE

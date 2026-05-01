@@ -68,6 +68,50 @@ public final class CampaignRunner {
         );
     }
 
+    public static CampaignResult runV2(
+            Path outputDir,
+            int runs,
+            int casesPerRun,
+            long seed,
+            LegislativeOutputProfile importedProfile,
+            Path legislativeInput
+    ) throws IOException {
+        return run(
+                "Constitutional Review Campaign v2",
+                "constitutional-review-campaign-v2",
+                outputDir,
+                v2Cases(casesPerRun, importedProfile),
+                ScenarioCatalog.defaultScenarios(),
+                runs,
+                casesPerRun,
+                seed,
+                importedProfile,
+                legislativeInput
+        );
+    }
+
+    public static CampaignResult runManipulationStress(
+            Path outputDir,
+            int runs,
+            int casesPerRun,
+            long seed,
+            LegislativeOutputProfile importedProfile,
+            Path legislativeInput
+    ) throws IOException {
+        return run(
+                "Adversarial Manipulation Stress Campaign v2",
+                "manipulation-stress-v2",
+                outputDir,
+                manipulationCases(casesPerRun, importedProfile),
+                ScenarioCatalog.defaultScenarios(),
+                runs,
+                casesPerRun,
+                seed,
+                importedProfile,
+                legislativeInput
+        );
+    }
+
     private static CampaignResult run(
             String reportName,
             String fileStem,
@@ -216,7 +260,7 @@ public final class CampaignRunner {
         return cases;
     }
 
-    private static List<CampaignCase> v1Cases(int casesPerRun, LegislativeOutputProfile importedProfile) {
+    static List<CampaignCase> v1Cases(int casesPerRun, LegislativeOutputProfile importedProfile) {
         List<CampaignCase> cases = new ArrayList<>(v0Cases(casesPerRun, importedProfile));
         LegislativeOutputProfile neutral = LegislativeOutputProfile.neutral();
         cases.add(new CampaignCase(
@@ -328,6 +372,96 @@ public final class CampaignRunner {
         return cases;
     }
 
+    static List<CampaignCase> v2Cases(int casesPerRun, LegislativeOutputProfile importedProfile) {
+        List<CampaignCase> cases = new ArrayList<>(v1Cases(casesPerRun, importedProfile));
+        cases.addAll(manipulationCases(casesPerRun, importedProfile));
+        return cases;
+    }
+
+    static List<CampaignCase> manipulationCases(int casesPerRun, LegislativeOutputProfile importedProfile) {
+        LegislativeOutputProfile neutral = LegislativeOutputProfile.neutral();
+        LegislativeOutputProfile importedBlend = importedProfile == null
+                ? neutral
+                : neutral.blend(importedProfile, 0.55).withSourceName("adversarial/imported blend");
+        List<CampaignCase> cases = new ArrayList<>();
+        cases.add(new CampaignCase(
+                "appointment-timing-manipulation",
+                "Appointment Timing Manipulation",
+                "Political actors time vacancies under high capture and public pressure.",
+                1.0,
+                new WorldSpec(casesPerRun, 37, 0.86, 0.92, 0.72, 0.20, importedBlend)
+        ));
+        cases.add(new CampaignCase(
+                "emergency-application-flood",
+                "Emergency Application Flood",
+                "Executives and litigants route controversial policies through urgent stay requests.",
+                1.0,
+                new WorldSpec(casesPerRun, 33, 0.66, 0.58, 0.54, 0.84, new LegislativeOutputProfile(
+                        "emergency-flood synthetic legislature",
+                        0.62,
+                        0.42,
+                        0.44,
+                        0.38,
+                        0.56,
+                        0.82,
+                        0.44,
+                        0.58
+                ))
+        ));
+        cases.add(new CampaignCase(
+                "override-evasion-loop",
+                "Override Evasion Loop",
+                "Legislatures repeatedly revise invalidated laws to test rights carveouts and override thresholds.",
+                1.0,
+                new WorldSpec(casesPerRun, 31, 0.72, 0.62, 0.68, 0.26, new LegislativeOutputProfile(
+                        "override-evasion synthetic legislature",
+                        0.58,
+                        0.36,
+                        0.32,
+                        0.58,
+                        0.52,
+                        0.48,
+                        0.72,
+                        0.88
+                ))
+        ));
+        cases.add(new CampaignCase(
+                "recusal-pressure-campaign",
+                "Recusal Pressure Campaign",
+                "High-salience litigants try to force or avoid recusals around ideologically charged cases.",
+                0.85,
+                new WorldSpec(casesPerRun, 35, 0.80, 0.74, 0.78, 0.34, new LegislativeOutputProfile(
+                        "recusal-pressure synthetic legislature",
+                        0.48,
+                        0.50,
+                        0.42,
+                        0.46,
+                        0.70,
+                        0.48,
+                        0.42,
+                        0.62
+                ))
+        ));
+        cases.add(new CampaignCase(
+                "court-expansion-retaliation",
+                "Court Expansion Retaliation",
+                "A polarized political system reacts to judicial conflict with expansion threats and capture pressure.",
+                0.85,
+                new WorldSpec(casesPerRun, 45, 0.90, 0.86, 0.66, 0.30, new LegislativeOutputProfile(
+                        "expansion-retaliation synthetic legislature",
+                        0.54,
+                        0.40,
+                        0.48,
+                        0.44,
+                        0.74,
+                        0.54,
+                        0.40,
+                        0.72
+                ))
+        ));
+        return cases;
+    }
+
     private static String csv(CampaignResult result) {
         StringBuilder builder = new StringBuilder();
         builder.append(String.join(",",
@@ -343,6 +477,9 @@ public final class CampaignRunner {
                 "stabilityRightsScore",
                 "legitimacyControlScore",
                 "legalStability",
+                "precedentStability",
+                "statutoryStability",
+                "interbranchCompliance",
                 "rightsProtection",
                 "partisanAlignment",
                 "shadowDocketAbuse",
@@ -395,6 +532,9 @@ public final class CampaignRunner {
                     .append(format(report.stabilityRightsScore())).append(',')
                     .append(format(report.legitimacyControlScore())).append(',')
                     .append(format(report.legalStability())).append(',')
+                    .append(format(report.precedentStability())).append(',')
+                    .append(format(report.statutoryStability())).append(',')
+                    .append(format(report.interbranchCompliance())).append(',')
                     .append(format(report.rightsProtection())).append(',')
                     .append(format(report.partisanAlignment())).append(',')
                     .append(format(report.shadowDocketAbuse())).append(',')
@@ -520,8 +660,8 @@ public final class CampaignRunner {
         builder.append("- Invalidation, emergency, replacement, recusal, concurrence, dissent, panel, en banc, council, cross-check, and override rates are diagnostic.\n");
 
         builder.append("\n## Scenario Averages Across Cases\n\n");
-        builder.append("| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Admin cost | Merits accel. | Replacement | Override att. | Override |\n");
-        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        builder.append("| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Precedent | Statutory | Compliance | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Admin cost | Merits accel. | Replacement | Override att. | Override |\n");
+        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
         weightedReports.stream()
                 .sorted(Comparator.comparingDouble(WeightedScenarioReport::directionalScore).reversed())
                 .forEach(report -> builder.append("| ")
@@ -534,6 +674,12 @@ public final class CampaignRunner {
                         .append(format(report.legitimacyControlScore()))
                         .append(" | ")
                         .append(format(report.legalStability()))
+                        .append(" | ")
+                        .append(format(report.precedentStability()))
+                        .append(" | ")
+                        .append(format(report.statutoryStability()))
+                        .append(" | ")
+                        .append(format(report.interbranchCompliance()))
                         .append(" | ")
                         .append(format(report.rightsProtection()))
                         .append(" | ")
@@ -636,6 +782,9 @@ public final class CampaignRunner {
         private double stabilityRightsScore;
         private double legitimacyControlScore;
         private double legalStability;
+        private double precedentStability;
+        private double statutoryStability;
+        private double interbranchCompliance;
         private double rightsProtection;
         private double partisanAlignment;
         private double shadowDocketAbuse;
@@ -660,6 +809,9 @@ public final class CampaignRunner {
             stabilityRightsScore += report.stabilityRightsScore() * rowWeight;
             legitimacyControlScore += report.legitimacyControlScore() * rowWeight;
             legalStability += report.legalStability() * rowWeight;
+            precedentStability += report.precedentStability() * rowWeight;
+            statutoryStability += report.statutoryStability() * rowWeight;
+            interbranchCompliance += report.interbranchCompliance() * rowWeight;
             rightsProtection += report.rightsProtection() * rowWeight;
             partisanAlignment += report.partisanAlignment() * rowWeight;
             shadowDocketAbuse += report.shadowDocketAbuse() * rowWeight;
@@ -684,6 +836,9 @@ public final class CampaignRunner {
                     stabilityRightsScore / denominator,
                     legitimacyControlScore / denominator,
                     legalStability / denominator,
+                    precedentStability / denominator,
+                    statutoryStability / denominator,
+                    interbranchCompliance / denominator,
                     rightsProtection / denominator,
                     partisanAlignment / denominator,
                     shadowDocketAbuse / denominator,
@@ -708,6 +863,9 @@ public final class CampaignRunner {
             double stabilityRightsScore,
             double legitimacyControlScore,
             double legalStability,
+            double precedentStability,
+            double statutoryStability,
+            double interbranchCompliance,
             double rightsProtection,
             double partisanAlignment,
             double shadowDocketAbuse,

@@ -28,7 +28,7 @@ public final class ReportProvenance {
         StringBuilder builder = new StringBuilder();
         builder.append("{\n");
         append(builder, "reportName", reportName, true);
-        append(builder, "provenanceFormat", "constitutional-review-report-v1", true);
+        append(builder, "provenanceFormat", "constitutional-review-report-v2", true);
         append(builder, "sourceTree", "tracked local project artifact; inspect repository history for commit identity", true);
         append(builder, "javaRelease", System.getProperty("constitutionalreview.javaRelease", "21"), true);
         append(builder, "javaCommand", System.getProperty("sun.java.command", "unknown"), true);

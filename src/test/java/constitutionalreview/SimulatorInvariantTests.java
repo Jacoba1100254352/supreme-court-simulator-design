@@ -40,6 +40,9 @@ public final class SimulatorInvariantTests {
         TestSupport.check(report.totalCases() == 160, "total cases should equal runs * cases");
         TestSupport.checkUnitInterval(report.directionalScore(), "directionalScore");
         TestSupport.checkUnitInterval(report.legalStability(), "legalStability");
+        TestSupport.checkUnitInterval(report.precedentStability(), "precedentStability");
+        TestSupport.checkUnitInterval(report.statutoryStability(), "statutoryStability");
+        TestSupport.checkUnitInterval(report.interbranchCompliance(), "interbranchCompliance");
         TestSupport.checkUnitInterval(report.rightsProtection(), "rightsProtection");
         TestSupport.checkUnitInterval(report.partisanAlignment(), "partisanAlignment");
         TestSupport.checkUnitInterval(report.shadowDocketAbuse(), "shadowDocketAbuse");

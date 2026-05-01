@@ -1,0 +1,18 @@
+{
+  "reportName": "Seed Robustness v2",
+  "provenanceFormat": "constitutional-review-report-v2",
+  "sourceTree": "tracked local project artifact; inspect repository history for commit identity",
+  "javaRelease": "21",
+  "javaCommand": "constitutionalreview.Main --seed-robustness --runs 40 --cases 48 --seed 20260501 --output-dir reports --legislative-input /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "runs": 40,
+  "casesPerRun": 48,
+  "seed": 20260501,
+  "experimentCaseCount": 20,
+  "scenarioCount": 13,
+  "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
+  "artifacts": [
+    {"path": "reports/seed-robustness-v2.csv", "sha256": "4c5af496485a19ce1574b9da587184790adc885d9d30479f86eb8df495e8f927"},
+    {"path": "reports/seed-robustness-v2.md", "sha256": "9404d98c81000ddd67dfa65e30799483a12daab8b54c12c81c668bf399c481a6"}
+  ]
+}

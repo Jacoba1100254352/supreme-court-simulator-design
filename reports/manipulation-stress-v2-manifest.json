@@ -1,0 +1,18 @@
+{
+  "reportName": "Adversarial Manipulation Stress Campaign v2",
+  "provenanceFormat": "constitutional-review-report-v2",
+  "sourceTree": "tracked local project artifact; inspect repository history for commit identity",
+  "javaRelease": "21",
+  "javaCommand": "constitutionalreview.Main --campaign manipulation-stress --runs 80 --cases 64 --seed 20260501 --output-dir reports --legislative-input /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "runs": 80,
+  "casesPerRun": 64,
+  "seed": 20260501,
+  "experimentCaseCount": 5,
+  "scenarioCount": 13,
+  "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
+  "artifacts": [
+    {"path": "reports/manipulation-stress-v2.csv", "sha256": "0da0222ad62fa3e788f41523f2ea16cca3b1b1f51cbe6dbe22c47f962ac88f71"},
+    {"path": "reports/manipulation-stress-v2.md", "sha256": "2b6663859035863c4ecd27e3a9dc43f1349e43eb50f5cd29b5852b85078d79e3"}
+  ]
+}

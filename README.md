@@ -31,19 +31,27 @@ Run tests:
 make test
 ```
 
-Build the starter paper:
+Build the paper:
 
 ```sh
 make paper
 ```
 
-Write the current v1 campaign artifacts:
+Write the current v2 campaign artifacts:
 
 ```sh
 make campaign
 ```
 
-`make campaign` now writes the v1 campaign. The initial v0 campaign remains available as `make campaign-v0`.
+`make campaign` now writes the v2 campaign. The initial v0 and v1 campaigns remain available as `make campaign-v0` and `make campaign-v1`.
+
+Run the v2 diagnostic suite:
+
+```sh
+make diagnostics
+```
+
+The suite writes calibration guardrails, seed-robustness bands, mechanism ablations, and a focused adversarial-manipulation stress campaign.
 
 Import a legislative simulator report as input:
 
@@ -55,10 +63,20 @@ make campaign ARGS="--legislative-input '/Users/jacobanderson/Documents/simulato
 
 The catalog includes appointment method, court size, term limits, removal standards, recusal rules, emergency docket procedures, voting thresholds, concurrence/dissent behavior, panel versus en banc review, dual or cross-checking courts, constitutional councils, legislative override rules, and independence/accountability tradeoffs.
 
-The v1 campaign adds docket subtypes, justice replacement/vacancy dynamics, richer emergency procedure states, stronger override outcomes, stress-case slices, and sensitivity cases for appointment capture, emergency pressure, rights risk, and weak democratic mandate.
+The v1 campaign added docket subtypes, justice replacement/vacancy dynamics, richer emergency procedure states, stronger override outcomes, stress-case slices, and sensitivity cases for appointment capture, emergency pressure, rights risk, and weak democratic mandate.
+
+The v2 campaign adds adversarial manipulation cases for appointment timing, emergency-application flooding, override evasion, recusal pressure, and court-expansion retaliation. It also splits legal stability into precedent stability, statutory stability, and interbranch compliance while keeping the blended legal-stability metric for headline comparisons.
 
 The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness.
 
+## Current Reports
+
+- `reports/constitutional-review-campaign-v2.csv` and `.md`: full v2 campaign.
+- `reports/calibration-baseline.csv` and `.md`: plausibility guardrails for docket mix and key rates.
+- `reports/seed-robustness-v2.csv` and `.md`: weighted v2 campaign sensitivity across deterministic seed offsets.
+- `reports/mechanism-ablation-v2.csv` and `.md`: pairwise institutional mechanism comparisons.
+- `reports/manipulation-stress-v2.csv` and `.md`: focused adversarial stress campaign.
+
 ## Paper
 
-The initial LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the v1 formulas are empirically validated.
+The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the v2 formulas are empirically validated.

@@ -28,5 +28,17 @@ public final class CampaignRunnerTests {
         String markdown = Files.readString(result.markdownPath());
         TestSupport.check(markdown.contains("Scenario Averages Across Cases"), "markdown should include scenario table");
         TestSupport.check(markdown.contains("Stress Case Leaders"), "markdown should include stress-case slices");
+
+        CampaignResult v2 = CampaignRunner.runV2(
+                outputDir,
+                1,
+                6,
+                20260501L,
+                LegislativeOutputProfile.neutral().withSourceName("test imported profile"),
+                null
+        );
+        String csv = Files.readString(v2.csvPath());
+        TestSupport.check(csv.contains("precedentStability"), "v2 csv should include split stability metrics");
+        TestSupport.check(csv.contains("appointment-timing-manipulation"), "v2 campaign should include manipulation cases");
     }
 }
