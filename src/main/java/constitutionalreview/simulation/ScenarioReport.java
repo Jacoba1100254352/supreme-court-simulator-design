@@ -39,6 +39,10 @@ public record ScenarioReport(
         double overrideRate,
         double rightsCarveoutBlockRate,
         double repeatedOverrideRate,
+        double legislativeDefiance,
+        double executiveEmergencyStrategy,
+        double appointmentManipulationPressure,
+        double overrideAdaptation,
         double facialChallengeRate,
         double asAppliedChallengeRate,
         double electionDisputeRate,
@@ -62,7 +66,17 @@ public record ScenarioReport(
                 democraticResponsiveness,
                 independenceAccountabilityBalance,
                 MetricDefinition.lowerIsBetter(partisanAlignment),
-                MetricDefinition.lowerIsBetter(shadowDocketAbuse)
+                MetricDefinition.lowerIsBetter(shadowDocketAbuse),
+                MetricDefinition.lowerIsBetter(strategicPressure())
+        );
+    }
+
+    public double strategicPressure() {
+        return Values.average(
+                legislativeDefiance,
+                executiveEmergencyStrategy,
+                appointmentManipulationPressure,
+                overrideAdaptation
         );
     }
 

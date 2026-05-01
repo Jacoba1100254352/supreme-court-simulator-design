@@ -1,5 +1,5 @@
 {
-  "reportName": "Calibration Baseline v2",
+  "reportName": "Historical Calibration Baseline v3",
   "provenanceFormat": "constitutional-review-report-v2",
   "sourceTree": "tracked local project artifact; inspect repository history for commit identity",
   "javaRelease": "21",
@@ -12,7 +12,7 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
   "artifacts": [
-    {"path": "reports/calibration-baseline.csv", "sha256": "cfa03662e749ad3d65c15773e31cd1da5943da635d1ba8a473584232a432d7e7"},
-    {"path": "reports/calibration-baseline.md", "sha256": "e4c54f2a822b1a14ca42982d580c8b47e32a66b0104f9e7297abf2d6a6b83c9f"}
+    {"path": "reports/calibration-baseline.csv", "sha256": "3dbe594c49c96c4c2e7dc12ebdd2144e6ae4a9da27977c3384ddd0628d0c0c55"},
+    {"path": "reports/calibration-baseline.md", "sha256": "afa8f6f8c4be0aee0ce6d922f6d8a454800c9f5884d0f176950a7ac6ecda00f0"}
   ]
 }

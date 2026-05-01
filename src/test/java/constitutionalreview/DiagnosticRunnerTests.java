@@ -2,7 +2,9 @@ package constitutionalreview;
 
 import constitutionalreview.experiment.CalibrationRunner;
 import constitutionalreview.experiment.DiagnosticResult;
+import constitutionalreview.experiment.LegislativeFamilyComparisonRunner;
 import constitutionalreview.experiment.MechanismAblationRunner;
+import constitutionalreview.experiment.ParameterSweepRunner;
 import constitutionalreview.experiment.SeedRobustnessRunner;
 import constitutionalreview.model.LegislativeOutputProfile;
 
@@ -20,6 +22,17 @@ public final class DiagnosticRunnerTests {
         checkResult(CalibrationRunner.run(outputDir, 2, 8, 20260501L, profile, null), "Calibration Baseline");
         checkResult(SeedRobustnessRunner.run(outputDir, 1, 6, 20260501L, profile, null), "Seed Robustness");
         checkResult(MechanismAblationRunner.run(outputDir, 1, 6, 20260501L, profile, null), "Mechanism Ablation");
+        checkResult(ParameterSweepRunner.run(outputDir, 1, 6, 20260501L, profile, null), "Parameter Sweep");
+        Path familyDir = Files.createTempDirectory("legislative-family");
+        Files.writeString(familyDir.resolve("simulation-campaign-v0.csv"), """
+                caseKey,caseWeight,productivity,welfare,weakPublicMandatePassage,minorityHarm,lobbyCapture,policyShift,legitimacy
+                baseline,1.0,0.40,0.70,0.20,0.10,0.30,0.25,0.65
+                """);
+        Files.writeString(familyDir.resolve("simulation-campaign-v10.csv"), """
+                caseKey,caseWeight,productivity,welfare,weakPublicMandatePassage,minorityHarm,lobbyCapture,policyShift,legitimacy
+                pressure,1.0,0.70,0.42,0.50,0.48,0.60,0.55,0.38
+                """);
+        checkResult(LegislativeFamilyComparisonRunner.run(outputDir, familyDir, 1, 6, 20260501L), "Legislative Family");
     }
 
     private static void checkResult(DiagnosticResult result, String title) throws IOException {

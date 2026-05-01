@@ -14,30 +14,30 @@
 \maketitle
 
 \begin{abstract}
-Constitutional review institutions face a persistent design problem: courts need enough independence to protect rights and legal continuity, but enough accountability to avoid becoming an unreviewable partisan veto point. This paper introduces a separate computational simulator for comparing supreme-court and constitutional-review designs. The model varies appointment methods, court size, term limits, removal standards, recusal rules, emergency docket procedures, voting thresholds, opinion-coalition behavior, panel versus en banc review, dual or cross-checking courts, constitutional councils, legislative override rules, and independence/accountability tradeoffs. The current version adds docket subtypes, vacancy and replacement dynamics, emergency procedure stages, override outcomes, split legal-stability diagnostics, adversarial manipulation campaigns, calibration guardrails, seed-robustness bands, and pairwise mechanism ablations. A data-import boundary allows legislative simulator outputs to become constitutional dockets without making this project depend on the legislative simulator source tree.
+Constitutional review institutions face a persistent design problem: courts need enough independence to protect rights and legal continuity, but enough accountability to avoid becoming an unreviewable partisan veto point. This paper introduces a separate computational simulator for comparing supreme-court and constitutional-review designs. The model varies appointment methods, court size, term limits, removal standards, recusal rules, emergency docket procedures, voting thresholds, opinion-coalition behavior, panel versus en banc review, dual or cross-checking courts, constitutional councils, legislative override rules, and independence/accountability tradeoffs. The current version adds docket subtypes, legal-domain profiles, vacancy and replacement dynamics, emergency procedure stages, override outcomes, explicit legislative and executive strategic-response state, split legal-stability diagnostics, adversarial manipulation campaigns, source-backed calibration guardrails, seed-robustness bands, parameter-sweep uncertainty bands, multi-family legislative-import comparison, and pairwise mechanism ablations. A data-import boundary allows legislative simulator outputs to become constitutional dockets without making this project depend on the legislative simulator source tree.
 \end{abstract}
 
 \section{Motivation}
 
 The motivating question is not whether one court design is ideal in isolation. It is whether institutional designs can be compared under shared docket assumptions and explicit value tradeoffs. A court can be independent while losing democratic legitimacy, responsive while failing rights protection, stable while entrenching bad doctrine, or active while creating constitutional conflict. The simulator is built to expose those tensions rather than collapse them into a single institutional label.
 
-The current model should be read as a design-search scaffold. It does not claim to forecast any real supreme court. It creates synthetic constitutional cases, routes them through institutional designs, and reports comparative indicators. The v2 campaign is therefore useful for identifying which mechanics deserve deeper calibration: appointment selection, emergency-docket restraints, cross-court review, council warnings, override channels, recusal discipline, replacement timing, and adversarial manipulation of procedural rules.
+The current model should be read as a design-search scaffold. It does not claim to forecast any real supreme court. It creates synthetic constitutional cases, routes them through institutional designs, and reports comparative indicators. The v2 campaign and v3 diagnostics are therefore useful for identifying which mechanics deserve deeper calibration: appointment selection, emergency-docket restraints, cross-court review, council warnings, override channels, recusal discipline, replacement timing, strategic political response, legal-domain mix, and adversarial manipulation of procedural rules.
 
 \section{Model}
 
-Each generated world contains a pool of potential justices, a constitutional docket, and a legislative-output profile. Cases vary by legal ambiguity, rights burden, democratic mandate, partisan salience, emergency pressure, requested emergency relief, legislative quality, constitutional-conflict potential, public attention, and override pressure. The docket separates facial challenges, as-applied challenges, election disputes, emergency stay applications, executive-power disputes, administrative-law challenges, and rights claims. Justices vary by ideology, independence, rights sensitivity, accountability pressure, institutionalism, partisan loyalty, and emergency deference.
+Each generated world contains a pool of potential justices, a constitutional docket, and a legislative-output profile. Cases vary by legal ambiguity, rights burden, democratic mandate, partisan salience, emergency pressure, requested emergency relief, legislative quality, constitutional-conflict potential, public attention, and override pressure. The docket separates facial challenges, as-applied challenges, election disputes, emergency stay applications, executive-power disputes, administrative-law challenges, structural cases, economic-regulation cases, and rights claims. Legal-domain profiles shift baseline case attributes so rights, election, executive-power, administrative, structural, and economic-regulation cases do not behave as interchangeable docket labels. Justices vary by ideology, independence, rights sensitivity, accountability pressure, institutionalism, partisan loyalty, and emergency deference.
 
-Each scenario supplies a court design. The court design selects reviewers, applies recusal rules, routes cases to full-court or panel review, determines whether emergency relief occurs through an application-only path, response window, reasoned temporary stay, shadow stay, merits acceleration, or expiration without relief, applies a voting threshold, optionally invokes cross-checking or council review, and optionally allows legislative or popular override. Override attempts can fail, succeed through ordinary supermajority action, proceed through delayed reenactment or referendum, be blocked by a rights carveout, or recur as a repeated override. Decisions update a simple court state that tracks precedent stability and conflict load over time. Court rosters also change over simulated time through term-limit schedules, retention pressure, life-tenure attrition, and appointment-method-specific replacement selection.
+Each scenario supplies a court design. The court design selects reviewers, applies recusal rules, routes cases to full-court or panel review, determines whether emergency relief occurs through an application-only path, response window, reasoned temporary stay, shadow stay, merits acceleration, or expiration without relief, applies a voting threshold, optionally invokes cross-checking or council review, and optionally allows legislative or popular override. Override attempts can fail, succeed through ordinary supermajority action, proceed through delayed reenactment or referendum, be blocked by a rights carveout, or recur as a repeated override. Decisions update court state tracking precedent stability, conflict load, legislative defiance, executive emergency strategy, appointment manipulation pressure, and override adaptation. Court rosters also change over simulated time through term-limit schedules, retention pressure, life-tenure attrition, and appointment-method-specific replacement selection.
 
 \section{Legislative Input Boundary}
 
 This project remains separate from the legislative simulator. Legislative outputs are imported as CSV data and summarized into a neutral profile with enacted volume, legal quality, weak-mandate rate, rights risk, partisan skew, volatility, public legitimacy, and override pressure. This allows laws generated under legislative simulations to become inputs for constitutional review without coupling Java packages or build systems.
 
-The v2 campaign was run with the adjacent congressional simulator's main campaign CSV as an imported input. The importer summarized that file as enacted volume 0.324, legal quality 0.617, weak-mandate rate 0.174, rights risk 0.106, partisan skew 0.233, volatility 0.121, and public legitimacy 0.550.
+The v2 campaign was run with the adjacent congressional simulator's main campaign CSV as an imported input. The importer summarized that file as enacted volume 0.324, legal quality 0.617, weak-mandate rate 0.174, rights risk 0.106, partisan skew 0.233, volatility 0.121, and public legitimacy 0.550. A separate legislative-family diagnostic compares the same import contract against seven congressional-simulator campaign families, including v0, v5, v10, v15, v20, v21-paper, and manipulation-stress report outputs.
 
 \section{Metrics}
 
-The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness. Legal stability is now also decomposed into precedent stability, statutory stability, and interbranch compliance. Higher legal stability, rights protection, legitimacy, and democratic responsiveness are generally better. Lower partisan alignment, shadow-docket abuse, reversal rate, constitutional conflict, and administrative cost are generally better. Invalidation, emergency order, merits acceleration, replacement, recusal, concurrence, dissent, en banc, council warning, cross-check disagreement, override-attempt, and override-success rates are diagnostic rather than automatically good or bad.
+The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness. Legal stability is now also decomposed into precedent stability, statutory stability, and interbranch compliance. Strategic pressure summarizes legislative defiance, executive emergency strategy, appointment manipulation pressure, and override adaptation. Higher legal stability, rights protection, legitimacy, and democratic responsiveness are generally better. Lower partisan alignment, shadow-docket abuse, reversal rate, constitutional conflict, administrative cost, and strategic pressure are generally better. Invalidation, emergency order, merits acceleration, replacement, recusal, concurrence, dissent, en banc, council warning, cross-check disagreement, override-attempt, and override-success rates are diagnostic rather than automatically good or bad.
 
 The reported directional score is a reading aid. It averages a stability/rights score, a legitimacy/control score, and administrative feasibility. It should not be treated as a final constitutional ranking.
 
@@ -52,13 +52,13 @@ The current campaign compares thirteen institutional scenarios across twenty ass
 \toprule
 Scenario & Score & Stability & Rights & Partisan & Shadow & Conflict \\
 \midrule
-60 percent invalidation threshold & 0.786 & 0.751 & 0.696 & 0.071 & 0.049 & 0.294 \\
-18-year staggered terms & 0.784 & 0.748 & 0.702 & 0.072 & 0.066 & 0.295 \\
-Stylized current U.S.-like court & 0.777 & 0.744 & 0.702 & 0.071 & 0.238 & 0.296 \\
-Nonpartisan commission & 0.776 & 0.749 & 0.701 & 0.046 & 0.066 & 0.295 \\
-No emergency relief without merits review & 0.776 & 0.756 & 0.695 & 0.047 & 0.001 & 0.294 \\
-Legislative supermajority override & 0.774 & 0.747 & 0.701 & 0.030 & 0.066 & 0.300 \\
-Dual supreme courts & 0.720 & 0.727 & 0.703 & 0.029 & 0.049 & 0.334 \\
+60 percent invalidation threshold & 0.745 & 0.671 & 0.685 & 0.100 & 0.086 & 0.458 \\
+18-year staggered terms & 0.742 & 0.659 & 0.698 & 0.102 & 0.106 & 0.459 \\
+No emergency relief without merits review & 0.740 & 0.673 & 0.689 & 0.065 & 0.008 & 0.450 \\
+Nonpartisan commission & 0.735 & 0.662 & 0.697 & 0.065 & 0.107 & 0.458 \\
+Legislative supermajority override & 0.731 & 0.655 & 0.701 & 0.043 & 0.107 & 0.478 \\
+Stylized current U.S.-like court & 0.730 & 0.656 & 0.703 & 0.100 & 0.368 & 0.477 \\
+Dual supreme courts & 0.674 & 0.629 & 0.700 & 0.042 & 0.088 & 0.507 \\
 \bottomrule
 \end{tabular}
 \caption{Selected v2 campaign averages. Lower values are preferred for partisan alignment, shadow-docket abuse, and conflict. The full CSV and Markdown report are generated under \texttt{reports/}.}
@@ -69,23 +69,32 @@ Dual supreme courts & 0.720 & 0.727 & 0.703 & 0.029 & 0.049 & 0.334 \\
 
 The v2 results preserve the main v1 pattern while making the mechanics easier to inspect. Supermajority invalidation remains the top directional-score scenario under the current score, mostly because it combines stability with low administrative cost and low shadow-docket abuse. The no-emergency-relief-without-merits design nearly eliminates shadow-docket abuse but pays administrative cost through merits acceleration. Cross-checking and dual-court designs reduce partisan alignment, but the current disagreement-resolution model increases constitutional conflict and administrative cost. Replacement dynamics make term-limited and panel systems more active procedurally without automatically dominating life tenure.
 
-The calibration run passes all sixteen current guardrails for docket mix, recusal frequency, emergency-docket abuse, split legal stability, partisan alignment, and override attempts. Seed robustness is tight under the current deterministic averaging setup, suggesting that headline ordering is not being driven by a single random stream. The mechanism ablation report shows that emergency restraint, term regularization, and supermajority invalidation thresholds reduce shadow-docket abuse relative to the stylized current-court baseline, while cross-checking and dual-court filters reduce partisan alignment at the cost of conflict and administration. The manipulation-stress campaign preserves the same broad ranking but lowers scores across the board, especially under emergency flooding and override-evasion assumptions.
+The calibration run now passes all nineteen current guardrails for docket mix, invalidation, recusal frequency, emergency-docket abuse, split legal stability, partisan alignment, and override attempts. The guardrails are broad historical plausibility ranges drawn from the Supreme Court Database codebook, Harvard Law Review Supreme Court Statistics, the Supreme Court Shadow Docket Database, and Black and Epstein's recusal dataset rather than synthetic thresholds alone \cite{SupremeCourtDatabaseCodebook2025,HarvardLawReviewStatistics2025,ShadowDocketDatabase2025,BlackEpsteinRecusal}. Seed robustness is tight under the current deterministic averaging setup, suggesting that headline ordering is not being driven by a single random stream. Parameter sweeps introduce wider uncertainty bands by varying polarization, appointment capture, emergency pressure, rights risk, weak mandate, public pressure, conflict, and imported legislative profiles. In those sweeps, the median directional-score leaders remain supermajority invalidation and staggered terms, but the low-end bands compress the top scenarios when conflict and rights-risk assumptions intensify. The legislative-family comparison imports seven congressional-simulator report families; supermajority invalidation remains the top directional-score scenario in each family under the current scoring rule. The mechanism ablation report shows that emergency restraint, term regularization, and supermajority invalidation thresholds reduce shadow-docket abuse relative to the stylized current-court baseline, while cross-checking and dual-court filters reduce partisan alignment at the cost of conflict and administration. The manipulation-stress campaign preserves the same broad ranking but lowers scores across the board, especially under emergency flooding and override-evasion assumptions.
 
 \section{Remaining Work}
 
-The next increments should focus on empirical anchoring and strategic behavior rather than more named court designs. The highest-value additions are:
+The next increments should focus on moving from broad historical guardrails to stronger empirical and strategic validation. The highest-value additions are:
 
 \begin{enumerate}
-  \item replace the broad calibration guardrails with source-backed historical ranges for docket mix, emergency orders, merits timing, invalidation frequency, and recusal frequency;
-  \item add confidence intervals from parameter sweeps, not only seed offsets;
-  \item give legislatures and executives explicit strategic response policies after invalidation, emergency denial, or override failure;
-  \item add separate legal-domain calibration profiles for rights, election, administrative, structural, and executive-power cases;
-  \item compare the simulator's imported legislative-output contract against multiple congressional-simulator campaign families rather than one paper run.
+  \item extract actual term-by-term calibration series from SCDB, Harvard Law Review statistics, shadow-docket data, and recusal data instead of manually curated broad ranges;
+  \item convert parameter sweeps into explicit prior distributions with Monte Carlo or Bayesian sensitivity summaries;
+  \item replace simple strategic-response state with adaptive legislature and executive policy actors that learn from invalidation, emergency denial, and override failure;
+  \item add lower-court, certiorari, and agenda-selection layers so the merits docket is not generated directly from world conditions;
+  \item validate the legislative import contract against raw legislative simulator run outputs, not only published aggregate campaign CSVs.
 \end{enumerate}
 
 \section{Reproducibility}
 
-The simulator is dependency-free Java and is run through \texttt{make}. The core commands are \texttt{make test}, \texttt{make campaign}, \texttt{make diagnostics}, and \texttt{make paper}. The v2 report artifacts are written under \path{reports/}. The preserved v0 and v1 campaigns can still be regenerated with \texttt{make campaign-v0} and \texttt{make campaign-v1}. The paper is built from this file with \texttt{make paper}. The software and campaign outputs are treated as the primary artifacts \cite{ConstitutionalReviewSimulator2026}. Imported legislative profiles are optional and come from the separate legislative simulator's report CSV contract \cite{CongressInstitutionalSimulator2026}.
+The simulator is dependency-free Java and is run through \texttt{make}. The core commands are:
+
+\begin{center}
+\begin{tabular}{lll}
+\texttt{make test} & \texttt{make campaign} & \texttt{make diagnostics} \\
+\texttt{make parameter-sweep} & \texttt{make legislative-family-comparison} & \texttt{make paper}
+\end{tabular}
+\end{center}
+
+The v2 campaign and v3 diagnostic artifacts are written under \path{reports/}. The preserved v0 and v1 campaigns can still be regenerated with \texttt{make campaign-v0} and \texttt{make campaign-v1}. The paper is built from this file with \texttt{make paper}. The software and campaign outputs are treated as the primary artifacts \cite{ConstitutionalReviewSimulator2026}. Imported legislative profiles are optional and come from the separate legislative simulator's report CSV contract \cite{CongressInstitutionalSimulator2026}.
 
 \bibliographystyle{plain}
 \bibliography{references}

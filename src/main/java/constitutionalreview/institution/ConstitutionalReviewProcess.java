@@ -31,7 +31,12 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     @Override
     public CourtDecision review(ReviewCase reviewCase, CourtState state, Random random) {
         reviewedCases++;
-        boolean emergency = random.nextDouble() < reviewCase.emergencyPressure();
+        double effectiveEmergencyPressure = Values.clamp01(
+                reviewCase.emergencyPressure()
+                        + state.executiveEmergencyStrategy() * 0.20
+                        + state.conflictLoad() * 0.04
+        );
+        boolean emergency = random.nextDouble() < effectiveEmergencyPressure;
         boolean initialMeritsReview = meritsReview(reviewCase, emergency, random);
         boolean enBanc = enBanc(reviewCase, emergency, random);
         List<Justice> participating = participatingJustices(reviewCase, enBanc, random);
@@ -73,7 +78,26 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double responsiveness = democraticResponsiveness(reviewCase, invalidated, overrideDecision, councilWarning);
         double administrativeCost = administrativeCost(reviewCase, emergencyProcedure, enBanc, crossDisagreement, councilWarning);
 
-        state.applyDecision(precedentShift, conflict);
+        boolean emergencyDenied = emergency
+                && reviewCase.requestedEmergencyRelief() > 0.42
+                && !shadowRelief
+                && !emergencyProcedure.temporaryStay()
+                && !emergencyProcedure.meritsAccelerated();
+        state.applyDecision(
+                precedentShift,
+                conflict,
+                invalidated,
+                emergencyDenied,
+                shadowRelief,
+                overrideDecision.attempted(),
+                overrideDecision.successful(),
+                overrideDecision.outcome() == OverrideOutcome.RIGHTS_CARVEOUT_BLOCKED,
+                reviewCase.publicAttention(),
+                reviewCase.democraticMandate(),
+                reviewCase.rightsBurden(),
+                reviewCase.partisanSalience(),
+                reviewCase.executiveDefianceRisk()
+        );
         int replacements = updateCourtAfterCase(reviewCase, state, random);
         return new CourtDecision(
                 reviewCase.id(),
@@ -113,7 +137,11 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 responsiveness,
                 conflict,
                 precedentShift,
-                administrativeCost
+                administrativeCost,
+                state.legislativeDefiance(),
+                state.executiveEmergencyStrategy(),
+                state.appointmentManipulationPressure(),
+                state.overrideAdaptation()
         );
     }
 
@@ -351,6 +379,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + reviewCase.democraticMandate() * 0.30
                 + reviewCase.publicAttention() * 0.18
                 + state.conflictLoad() * 0.12
+                + state.legislativeDefiance() * 0.12
+                + state.overrideAdaptation() * 0.10
                 - reviewCase.rightsBurden() * 0.24;
         boolean attempted = random.nextDouble() < Values.clamp01(base + 0.18);
         if (!attempted) {
@@ -463,7 +493,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     ) {
         double conflict = reviewCase.constitutionalConflictPotential() * 0.38
                 + reviewCase.executiveDefianceRisk() * 0.18
-                + state.conflictLoad() * 0.12;
+                + state.conflictLoad() * 0.12
+                + state.legislativeDefiance() * 0.10
+                + state.executiveEmergencyStrategy() * 0.08;
         if (invalidated) {
             conflict += reviewCase.democraticMandate() * 0.14;
         }
@@ -675,6 +707,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         if (reviewCase.publicAttention() > 0.72 && design.removalStandard() == RemovalStandard.RETENTION_RECALL) {
             scheduled += 0.05;
         }
+        scheduled += state.appointmentManipulationPressure() * 0.06;
         return Values.clamp01(scheduled);
     }
 

@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Stream;
 
 public final class ReportProvenance {
     private ReportProvenance() {
@@ -87,6 +88,20 @@ public final class ReportProvenance {
     private static String sha256(Path path) throws IOException {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            if (Files.isDirectory(path)) {
+                try (Stream<Path> stream = Files.list(path)) {
+                    for (Path child : stream
+                            .filter(Files::isRegularFile)
+                            .sorted()
+                            .toList()) {
+                        digest.update(child.getFileName().toString().getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                        digest.update((byte) 0);
+                        digest.update(sha256(child).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                        digest.update((byte) 0);
+                    }
+                }
+                return HexFormat.of().formatHex(digest.digest()).toLowerCase(Locale.ROOT);
+            }
             return HexFormat.of().formatHex(digest.digest(Files.readAllBytes(path))).toLowerCase(Locale.ROOT);
         } catch (NoSuchAlgorithmException exception) {
             throw new IllegalStateException("SHA-256 digest is unavailable.", exception);

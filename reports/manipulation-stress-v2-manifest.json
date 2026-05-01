@@ -12,7 +12,7 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
   "artifacts": [
-    {"path": "reports/manipulation-stress-v2.csv", "sha256": "0da0222ad62fa3e788f41523f2ea16cca3b1b1f51cbe6dbe22c47f962ac88f71"},
-    {"path": "reports/manipulation-stress-v2.md", "sha256": "2b6663859035863c4ecd27e3a9dc43f1349e43eb50f5cd29b5852b85078d79e3"}
+    {"path": "reports/manipulation-stress-v2.csv", "sha256": "55b12133e5ac93fca784cfdfea8a94c573b4ac8a1b77f99d033635aac0ed649c"},
+    {"path": "reports/manipulation-stress-v2.md", "sha256": "ee51bbbba8c8b19aacca26168275addc0c5454da1b1c7e325515a175f9c6d47e"}
   ]
 }

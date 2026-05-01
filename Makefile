@@ -2,8 +2,9 @@ MAIN_SOURCES := $(shell find src/main/java -name '*.java')
 TEST_SOURCES := $(shell find src/test/java -name '*.java')
 JAVA_RELEASE ?= 21
 JAVA_PROPS ?= -Dconstitutionalreview.javaRelease=$(JAVA_RELEASE)
+LEGISLATIVE_FAMILY_DIR ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation diagnostics paper paper-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -35,7 +36,13 @@ seed-robustness: build
 mechanism-ablation: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --mechanism-ablation --runs 60 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
 
-diagnostics: calibrate seed-robustness mechanism-ablation manipulation-stress
+parameter-sweep: build
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --parameter-sweep --runs 40 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
+
+legislative-family-comparison: build
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --legislative-family-comparison --legislative-family-dir "$(LEGISLATIVE_FAMILY_DIR)" --runs 40 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
+
+diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison manipulation-stress
 
 paper:
 	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex

@@ -1,0 +1,18 @@
+{
+  "reportName": "Legislative Family Import Comparison v3",
+  "provenanceFormat": "constitutional-review-report-v2",
+  "sourceTree": "tracked local project artifact; inspect repository history for commit identity",
+  "javaRelease": "21",
+  "javaCommand": "constitutionalreview.Main --legislative-family-comparison --legislative-family-dir /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports --runs 40 --cases 48 --seed 20260501 --output-dir reports --legislative-input /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "runs": 40,
+  "casesPerRun": 48,
+  "seed": 20260501,
+  "experimentCaseCount": 7,
+  "scenarioCount": 13,
+  "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports",
+  "legislativeInputSha256": "a511189a505f596206f03065270099dcb820046c04454681675e8d4e546f2359",
+  "artifacts": [
+    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "66cc744845ac9e33f0bf2ecd47e3559aaae31775c2a341732f60ec520f07b9fb"},
+    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "c4d0d16d5986a0bbb66649c192a0aeecfe7c0e06d11f787c1c6ed287243c4a00"}
+  ]
+}

@@ -4,7 +4,9 @@ import constitutionalreview.experiment.CalibrationRunner;
 import constitutionalreview.experiment.CampaignResult;
 import constitutionalreview.experiment.CampaignRunner;
 import constitutionalreview.experiment.DiagnosticResult;
+import constitutionalreview.experiment.LegislativeFamilyComparisonRunner;
 import constitutionalreview.experiment.MechanismAblationRunner;
+import constitutionalreview.experiment.ParameterSweepRunner;
 import constitutionalreview.experiment.SeedRobustnessRunner;
 import constitutionalreview.importer.LegislativeOutputImporter;
 import constitutionalreview.model.LegislativeOutputProfile;
@@ -116,7 +118,11 @@ public final class Main {
     }
 
     private static boolean runDiagnostics(Options options, LegislativeOutputProfile profile) {
-        boolean any = options.calibrate || options.seedRobustness || options.mechanismAblation;
+        boolean any = options.calibrate
+                || options.seedRobustness
+                || options.mechanismAblation
+                || options.parameterSweep
+                || options.legislativeFamilyComparison;
         if (!any) {
             return false;
         }
@@ -150,6 +156,25 @@ public final class Main {
                         options.seed,
                         imported,
                         options.legislativeInput
+                ));
+            }
+            if (options.parameterSweep) {
+                printDiagnostic(ParameterSweepRunner.run(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                ));
+            }
+            if (options.legislativeFamilyComparison) {
+                printDiagnostic(LegislativeFamilyComparisonRunner.run(
+                        options.outputDir,
+                        options.legislativeFamilyDir,
+                        options.runs,
+                        options.cases,
+                        options.seed
                 ));
             }
             return true;
@@ -230,8 +255,11 @@ public final class Main {
         private boolean calibrate;
         private boolean seedRobustness;
         private boolean mechanismAblation;
+        private boolean parameterSweep;
+        private boolean legislativeFamilyComparison;
         private Path outputDir = Path.of("reports");
         private Path legislativeInput;
+        private Path legislativeFamilyDir;
         private final List<String> scenarioKeys = new ArrayList<>();
 
         private static Options parse(String[] args) {
@@ -253,8 +281,11 @@ public final class Main {
                     case "--calibrate" -> options.calibrate = true;
                     case "--seed-robustness" -> options.seedRobustness = true;
                     case "--mechanism-ablation" -> options.mechanismAblation = true;
+                    case "--parameter-sweep" -> options.parameterSweep = true;
+                    case "--legislative-family-comparison" -> options.legislativeFamilyComparison = true;
                     case "--output-dir" -> options.outputDir = Path.of(requireValue(args, ++i, arg));
                     case "--legislative-input" -> options.legislativeInput = Path.of(requireValue(args, ++i, arg));
+                    case "--legislative-family-dir" -> options.legislativeFamilyDir = Path.of(requireValue(args, ++i, arg));
                     case "--scenarios" -> options.scenarioKeys.addAll(parseList(requireValue(args, ++i, arg)));
                     default -> throw new IllegalArgumentException("Unknown argument: " + arg);
                 }
@@ -315,8 +346,11 @@ public final class Main {
                       --calibrate
                       --seed-robustness
                       --mechanism-ablation
+                      --parameter-sweep
+                      --legislative-family-comparison
                       --output-dir DIR
                       --legislative-input CSV
+                      --legislative-family-dir DIR
                       --polarization VALUE
                       --appointment-capture VALUE
                       --public-pressure VALUE

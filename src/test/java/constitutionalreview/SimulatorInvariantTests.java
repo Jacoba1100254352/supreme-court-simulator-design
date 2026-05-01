@@ -51,6 +51,11 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.constitutionalConflict(), "constitutionalConflict");
         TestSupport.checkUnitInterval(report.democraticResponsiveness(), "democraticResponsiveness");
         TestSupport.checkUnitInterval(report.administrativeCost(), "administrativeCost");
+        TestSupport.checkUnitInterval(report.strategicPressure(), "strategicPressure");
+        TestSupport.checkUnitInterval(report.legislativeDefiance(), "legislativeDefiance");
+        TestSupport.checkUnitInterval(report.executiveEmergencyStrategy(), "executiveEmergencyStrategy");
+        TestSupport.checkUnitInterval(report.appointmentManipulationPressure(), "appointmentManipulationPressure");
+        TestSupport.checkUnitInterval(report.overrideAdaptation(), "overrideAdaptation");
         TestSupport.checkUnitInterval(report.meritsAccelerationRate(), "meritsAccelerationRate");
         TestSupport.checkUnitInterval(report.justiceReplacementRate(), "justiceReplacementRate");
         TestSupport.checkUnitInterval(report.overrideAttemptRate(), "overrideAttemptRate");

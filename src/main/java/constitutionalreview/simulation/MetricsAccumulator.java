@@ -45,6 +45,10 @@ public final class MetricsAccumulator {
     private double constitutionalConflict;
     private double democraticResponsiveness;
     private double administrativeCost;
+    private double legislativeDefiance;
+    private double executiveEmergencyStrategy;
+    private double appointmentManipulationPressure;
+    private double overrideAdaptation;
 
     public void add(CourtDecision decision) {
         totalCases++;
@@ -81,6 +85,10 @@ public final class MetricsAccumulator {
         constitutionalConflict += decision.constitutionalConflict();
         democraticResponsiveness += decision.democraticResponsiveness();
         administrativeCost += decision.administrativeCost();
+        legislativeDefiance += decision.legislativeDefiance();
+        executiveEmergencyStrategy += decision.executiveEmergencyStrategy();
+        appointmentManipulationPressure += decision.appointmentManipulationPressure();
+        overrideAdaptation += decision.overrideAdaptation();
     }
 
     public ScenarioReport toReport(String scenarioKey, String scenarioName) {
@@ -123,6 +131,10 @@ public final class MetricsAccumulator {
                 overrides / cases,
                 rightsCarveoutBlocks / cases,
                 repeatedOverrides / cases,
+                legislativeDefiance / cases,
+                executiveEmergencyStrategy / cases,
+                appointmentManipulationPressure / cases,
+                overrideAdaptation / cases,
                 facialChallenges / cases,
                 asAppliedChallenges / cases,
                 electionDisputes / cases,

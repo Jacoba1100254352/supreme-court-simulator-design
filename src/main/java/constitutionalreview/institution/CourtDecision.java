@@ -41,6 +41,10 @@ public record CourtDecision(
         double democraticResponsiveness,
         double constitutionalConflict,
         double precedentShift,
-        double administrativeCost
+        double administrativeCost,
+        double legislativeDefiance,
+        double executiveEmergencyStrategy,
+        double appointmentManipulationPressure,
+        double overrideAdaptation
 ) {
 }

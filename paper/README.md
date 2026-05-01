@@ -8,4 +8,4 @@ Build it from the repository root:
 make paper
 ```
 
-The manuscript is intentionally cautious: it presents the simulator as a design-search framework and treats the v2 campaign and diagnostics as demonstrations of comparative mechanics rather than validation.
+The manuscript is intentionally cautious: it presents the simulator as a design-search framework and treats the v2 campaign plus v3 diagnostics as demonstrations of comparative mechanics rather than validation.

@@ -39,10 +39,10 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 
 ## Headline Findings
 
-- Highest directional score: 60 percent invalidation threshold at 0.786.
-- Highest rights protection: Dual supreme courts with disagreement filter at 0.703.
-- Lowest shadow-docket abuse: No emergency relief without merits review at 0.001.
-- Lowest partisan alignment: Dual supreme courts with disagreement filter at 0.029.
+- Highest directional score: 60 percent invalidation threshold at 0.745.
+- Highest rights protection: Stylized current U.S.-like supreme court at 0.703.
+- Lowest shadow-docket abuse: No emergency relief without merits review at 0.008.
+- Lowest partisan alignment: Dual supreme courts with disagreement filter at 0.042.
 - Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, and administrative feasibility.
 
 ## Metric Direction Legend
@@ -53,43 +53,43 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 
 ## Scenario Averages Across Cases
 
-| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Precedent | Statutory | Compliance | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Admin cost | Merits accel. | Replacement | Override att. | Override |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 60 percent invalidation threshold | 0.786 | 0.784 | 0.842 | 0.751 | 0.955 | 0.698 | 0.600 | 0.696 | 0.071 | 0.049 | 0.795 | 0.018 | 0.294 | 0.712 | 0.266 | 0.196 | 0.024 | 0.000 | 0.000 |
-| 18-year staggered terms + regular appointments | 0.784 | 0.783 | 0.840 | 0.748 | 0.939 | 0.704 | 0.599 | 0.702 | 0.072 | 0.066 | 0.800 | 0.023 | 0.295 | 0.718 | 0.272 | 0.297 | 0.104 | 0.000 | 0.000 |
-| Stylized current U.S.-like supreme court | 0.777 | 0.782 | 0.772 | 0.744 | 0.928 | 0.705 | 0.599 | 0.702 | 0.071 | 0.238 | 0.678 | 0.021 | 0.296 | 0.716 | 0.222 | 0.000 | 0.025 | 0.000 | 0.000 |
-| Nonpartisan commission appointments | 0.776 | 0.783 | 0.847 | 0.749 | 0.943 | 0.706 | 0.599 | 0.701 | 0.046 | 0.066 | 0.805 | 0.022 | 0.295 | 0.717 | 0.302 | 0.295 | 0.104 | 0.000 | 0.000 |
-| No emergency relief without merits review | 0.776 | 0.785 | 0.869 | 0.756 | 0.958 | 0.711 | 0.600 | 0.695 | 0.047 | 0.001 | 0.844 | 0.017 | 0.294 | 0.712 | 0.326 | 0.446 | 0.103 | 0.000 | 0.000 |
-| Retention-election accountability court | 0.776 | 0.782 | 0.847 | 0.752 | 0.949 | 0.708 | 0.597 | 0.696 | 0.050 | 0.066 | 0.807 | 0.020 | 0.298 | 0.718 | 0.302 | 0.300 | 0.107 | 0.038 | 0.012 |
-| Three-judge panels with en banc correction | 0.775 | 0.783 | 0.857 | 0.749 | 0.943 | 0.705 | 0.599 | 0.700 | 0.082 | 0.066 | 0.901 | 0.023 | 0.295 | 0.717 | 0.314 | 0.295 | 0.447 | 0.000 | 0.000 |
-| Judicial review with legislative supermajority override | 0.774 | 0.782 | 0.852 | 0.747 | 0.941 | 0.704 | 0.596 | 0.701 | 0.030 | 0.066 | 0.808 | 0.022 | 0.300 | 0.719 | 0.312 | 0.297 | 0.105 | 0.044 | 0.006 |
-| Peer recusal + reasoned emergency docket | 0.771 | 0.783 | 0.840 | 0.749 | 0.943 | 0.705 | 0.599 | 0.701 | 0.073 | 0.066 | 0.804 | 0.023 | 0.295 | 0.717 | 0.312 | 0.297 | 0.104 | 0.000 | 0.000 |
-| Expanded 15-seat court | 0.770 | 0.783 | 0.848 | 0.749 | 0.942 | 0.705 | 0.599 | 0.701 | 0.046 | 0.067 | 0.811 | 0.023 | 0.295 | 0.718 | 0.322 | 0.296 | 0.103 | 0.000 | 0.000 |
-| Pre-enactment constitutional council | 0.761 | 0.784 | 0.867 | 0.755 | 0.953 | 0.709 | 0.604 | 0.696 | 0.056 | 0.066 | 0.912 | 0.018 | 0.298 | 0.721 | 0.368 | 0.297 | 0.169 | 0.035 | 0.007 |
-| Supreme court with cross-checking constitutional court | 0.736 | 0.771 | 0.855 | 0.738 | 0.950 | 0.694 | 0.569 | 0.692 | 0.031 | 0.049 | 0.813 | 0.015 | 0.332 | 0.710 | 0.417 | 0.197 | 0.141 | 0.000 | 0.000 |
-| Dual supreme courts with disagreement filter | 0.720 | 0.768 | 0.858 | 0.727 | 0.924 | 0.688 | 0.568 | 0.703 | 0.029 | 0.049 | 0.818 | 0.022 | 0.334 | 0.717 | 0.468 | 0.194 | 0.144 | 0.000 | 0.000 |
+| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Precedent | Statutory | Compliance | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Strategic | Admin cost | Merits accel. | Replacement | Override att. | Override |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 60 percent invalidation threshold | 0.745 | 0.706 | 0.824 | 0.671 | 0.879 | 0.633 | 0.503 | 0.685 | 0.100 | 0.086 | 0.802 | 0.074 | 0.458 | 0.727 | 0.206 | 0.295 | 0.235 | 0.051 | 0.000 | 0.000 |
+| 18-year staggered terms + regular appointments | 0.742 | 0.702 | 0.824 | 0.659 | 0.837 | 0.637 | 0.503 | 0.698 | 0.102 | 0.106 | 0.811 | 0.091 | 0.459 | 0.737 | 0.202 | 0.300 | 0.404 | 0.131 | 0.000 | 0.000 |
+| No emergency relief without merits review | 0.740 | 0.708 | 0.865 | 0.673 | 0.869 | 0.645 | 0.506 | 0.689 | 0.065 | 0.008 | 0.874 | 0.080 | 0.450 | 0.731 | 0.181 | 0.354 | 0.608 | 0.130 | 0.000 | 0.000 |
+| Nonpartisan commission appointments | 0.735 | 0.703 | 0.833 | 0.662 | 0.845 | 0.638 | 0.503 | 0.697 | 0.065 | 0.107 | 0.819 | 0.088 | 0.458 | 0.736 | 0.201 | 0.330 | 0.402 | 0.131 | 0.000 | 0.000 |
+| Retention-election accountability court | 0.733 | 0.698 | 0.832 | 0.665 | 0.858 | 0.643 | 0.495 | 0.683 | 0.070 | 0.106 | 0.820 | 0.082 | 0.473 | 0.741 | 0.206 | 0.330 | 0.409 | 0.192 | 0.114 | 0.049 |
+| Three-judge panels with en banc correction | 0.732 | 0.704 | 0.836 | 0.663 | 0.848 | 0.639 | 0.503 | 0.695 | 0.113 | 0.107 | 0.901 | 0.086 | 0.458 | 0.735 | 0.200 | 0.345 | 0.400 | 0.494 | 0.000 | 0.000 |
+| Judicial review with legislative supermajority override | 0.731 | 0.698 | 0.835 | 0.655 | 0.842 | 0.633 | 0.491 | 0.701 | 0.043 | 0.107 | 0.822 | 0.088 | 0.478 | 0.738 | 0.225 | 0.340 | 0.404 | 0.129 | 0.126 | 0.015 |
+| Stylized current U.S.-like supreme court | 0.730 | 0.703 | 0.731 | 0.656 | 0.832 | 0.640 | 0.496 | 0.703 | 0.100 | 0.368 | 0.631 | 0.071 | 0.477 | 0.723 | 0.240 | 0.243 | 0.000 | 0.051 | 0.000 | 0.000 |
+| Peer recusal + reasoned emergency docket | 0.729 | 0.703 | 0.825 | 0.661 | 0.843 | 0.638 | 0.503 | 0.698 | 0.101 | 0.107 | 0.817 | 0.088 | 0.458 | 0.737 | 0.201 | 0.340 | 0.406 | 0.128 | 0.000 | 0.000 |
+| Expanded 15-seat court | 0.729 | 0.703 | 0.834 | 0.661 | 0.843 | 0.638 | 0.503 | 0.699 | 0.066 | 0.107 | 0.825 | 0.089 | 0.458 | 0.737 | 0.201 | 0.350 | 0.403 | 0.131 | 0.000 | 0.000 |
+| Pre-enactment constitutional council | 0.710 | 0.704 | 0.847 | 0.676 | 0.874 | 0.642 | 0.512 | 0.689 | 0.078 | 0.106 | 0.922 | 0.075 | 0.472 | 0.747 | 0.215 | 0.421 | 0.410 | 0.197 | 0.106 | 0.016 |
+| Supreme court with cross-checking constitutional court | 0.693 | 0.695 | 0.835 | 0.666 | 0.893 | 0.637 | 0.469 | 0.665 | 0.044 | 0.086 | 0.825 | 0.054 | 0.500 | 0.713 | 0.207 | 0.450 | 0.240 | 0.170 | 0.000 | 0.000 |
+| Dual supreme courts with disagreement filter | 0.674 | 0.683 | 0.840 | 0.629 | 0.802 | 0.618 | 0.466 | 0.700 | 0.042 | 0.088 | 0.830 | 0.090 | 0.507 | 0.736 | 0.220 | 0.500 | 0.233 | 0.173 | 0.000 | 0.000 |
 
 ## Stress Case Leaders
 
 | Case | Best directional | Highest rights | Lowest shadow abuse | Lowest partisan align. |
 | --- | --- | --- | --- | --- |
-| Baseline | 60 percent invalidation threshold (0.806) | Stylized current U.S.-like supreme court (0.718) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.020) |
-| Partisan Appointment Pressure | 60 percent invalidation threshold (0.807) | Stylized current U.S.-like supreme court (0.720) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.022) |
-| Rights-Risk Legislation | 60 percent invalidation threshold (0.780) | 18-year staggered terms + regular appointments (0.676) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.026) |
-| Shadow-Docket Stress | 60 percent invalidation threshold (0.770) | Dual supreme courts with disagreement filter (0.697) | No emergency relief without merits review (0.002) | Judicial review with legislative supermajority override (0.028) |
-| High Democratic Mandate | 60 percent invalidation threshold (0.817) | Dual supreme courts with disagreement filter (0.726) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.012) |
-| Constitutional Conflict | 60 percent invalidation threshold (0.765) | Stylized current U.S.-like supreme court (0.688) | No emergency relief without merits review (0.003) | Dual supreme courts with disagreement filter (0.045) |
-| Imported Legislative Output | 60 percent invalidation threshold (0.809) | Stylized current U.S.-like supreme court (0.725) | No emergency relief without merits review (0.000) | Judicial review with legislative supermajority override (0.018) |
-| Low Appointment Capture | 60 percent invalidation threshold (0.806) | Dual supreme courts with disagreement filter (0.718) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.013) |
-| Extreme Appointment Capture | 60 percent invalidation threshold (0.804) | Dual supreme courts with disagreement filter (0.720) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.027) |
-| Low Emergency Pressure | 60 percent invalidation threshold (0.811) | Dual supreme courts with disagreement filter (0.719) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.018) |
-| Extreme Emergency Pressure | 60 percent invalidation threshold (0.755) | Stylized current U.S.-like supreme court (0.687) | No emergency relief without merits review (0.004) | Dual supreme courts with disagreement filter (0.033) |
-| Low Rights Risk | 60 percent invalidation threshold (0.824) | Dual supreme courts with disagreement filter (0.742) | No emergency relief without merits review (0.000) | Judicial review with legislative supermajority override (0.011) |
-| Extreme Rights Risk | 60 percent invalidation threshold (0.756) | Dual supreme courts with disagreement filter (0.702) | No emergency relief without merits review (0.001) | Dual supreme courts with disagreement filter (0.035) |
-| Weak-Mandate Legislation | 60 percent invalidation threshold (0.780) | Expanded 15-seat court (0.703) | No emergency relief without merits review (0.000) | Judicial review with legislative supermajority override (0.024) |
-| Strong-Mandate Legislation | 60 percent invalidation threshold (0.821) | Dual supreme courts with disagreement filter (0.730) | No emergency relief without merits review (0.000) | Dual supreme courts with disagreement filter (0.012) |
-| Appointment Timing Manipulation | 60 percent invalidation threshold (0.808) | Judicial review with legislative supermajority override (0.726) | No emergency relief without merits review (0.000) | Judicial review with legislative supermajority override (0.027) |
-| Emergency Application Flood | No emergency relief without merits review (0.742) | Stylized current U.S.-like supreme court (0.676) | No emergency relief without merits review (0.009) | Dual supreme courts with disagreement filter (0.045) |
-| Override Evasion Loop | 60 percent invalidation threshold (0.766) | Dual supreme courts with disagreement filter (0.649) | No emergency relief without merits review (0.001) | Judicial review with legislative supermajority override (0.038) |
-| Recusal Pressure Campaign | 60 percent invalidation threshold (0.767) | Stylized current U.S.-like supreme court (0.682) | No emergency relief without merits review (0.003) | Judicial review with legislative supermajority override (0.057) |
-| Court Expansion Retaliation | 60 percent invalidation threshold (0.760) | Peer recusal + reasoned emergency docket (0.688) | No emergency relief without merits review (0.004) | Dual supreme courts with disagreement filter (0.061) |
+| Baseline | 60 percent invalidation threshold (0.767) | Dual supreme courts with disagreement filter (0.703) | No emergency relief without merits review (0.003) | Dual supreme courts with disagreement filter (0.031) |
+| Partisan Appointment Pressure | 60 percent invalidation threshold (0.768) | Dual supreme courts with disagreement filter (0.698) | No emergency relief without merits review (0.004) | Dual supreme courts with disagreement filter (0.035) |
+| Rights-Risk Legislation | 60 percent invalidation threshold (0.734) | Judicial review with legislative supermajority override (0.732) | No emergency relief without merits review (0.006) | Dual supreme courts with disagreement filter (0.037) |
+| Shadow-Docket Stress | No emergency relief without merits review (0.728) | Stylized current U.S.-like supreme court (0.695) | No emergency relief without merits review (0.013) | Judicial review with legislative supermajority override (0.039) |
+| High Democratic Mandate | 60 percent invalidation threshold (0.779) | Dual supreme courts with disagreement filter (0.684) | No emergency relief without merits review (0.002) | Dual supreme courts with disagreement filter (0.019) |
+| Constitutional Conflict | No emergency relief without merits review (0.719) | Stylized current U.S.-like supreme court (0.721) | No emergency relief without merits review (0.016) | Judicial review with legislative supermajority override (0.059) |
+| Imported Legislative Output | 60 percent invalidation threshold (0.771) | Dual supreme courts with disagreement filter (0.695) | No emergency relief without merits review (0.003) | Judicial review with legislative supermajority override (0.029) |
+| Low Appointment Capture | 60 percent invalidation threshold (0.768) | Judicial review with legislative supermajority override (0.701) | No emergency relief without merits review (0.003) | Dual supreme courts with disagreement filter (0.021) |
+| Extreme Appointment Capture | 60 percent invalidation threshold (0.766) | Dual supreme courts with disagreement filter (0.700) | No emergency relief without merits review (0.003) | Dual supreme courts with disagreement filter (0.042) |
+| Low Emergency Pressure | 60 percent invalidation threshold (0.773) | Dual supreme courts with disagreement filter (0.704) | No emergency relief without merits review (0.003) | Dual supreme courts with disagreement filter (0.028) |
+| Extreme Emergency Pressure | No emergency relief without merits review (0.720) | Stylized current U.S.-like supreme court (0.696) | No emergency relief without merits review (0.018) | Dual supreme courts with disagreement filter (0.046) |
+| Low Rights Risk | 60 percent invalidation threshold (0.787) | Dual supreme courts with disagreement filter (0.692) | No emergency relief without merits review (0.002) | Judicial review with legislative supermajority override (0.019) |
+| Extreme Rights Risk | 60 percent invalidation threshold (0.702) | No emergency relief without merits review (0.736) | No emergency relief without merits review (0.009) | Dual supreme courts with disagreement filter (0.049) |
+| Weak-Mandate Legislation | 60 percent invalidation threshold (0.738) | Stylized current U.S.-like supreme court (0.731) | No emergency relief without merits review (0.007) | Judicial review with legislative supermajority override (0.035) |
+| Strong-Mandate Legislation | 60 percent invalidation threshold (0.783) | Dual supreme courts with disagreement filter (0.680) | No emergency relief without merits review (0.002) | Dual supreme courts with disagreement filter (0.020) |
+| Appointment Timing Manipulation | 60 percent invalidation threshold (0.771) | Dual supreme courts with disagreement filter (0.699) | No emergency relief without merits review (0.002) | Judicial review with legislative supermajority override (0.042) |
+| Emergency Application Flood | No emergency relief without merits review (0.707) | Stylized current U.S.-like supreme court (0.701) | No emergency relief without merits review (0.026) | Dual supreme courts with disagreement filter (0.059) |
+| Override Evasion Loop | 60 percent invalidation threshold (0.719) | Stylized current U.S.-like supreme court (0.702) | No emergency relief without merits review (0.010) | Judicial review with legislative supermajority override (0.052) |
+| Recusal Pressure Campaign | 60 percent invalidation threshold (0.721) | Stylized current U.S.-like supreme court (0.719) | No emergency relief without merits review (0.015) | Judicial review with legislative supermajority override (0.076) |
+| Court Expansion Retaliation | 60 percent invalidation threshold (0.711) | Stylized current U.S.-like supreme court (0.722) | No emergency relief without merits review (0.017) | Dual supreme courts with disagreement filter (0.078) |

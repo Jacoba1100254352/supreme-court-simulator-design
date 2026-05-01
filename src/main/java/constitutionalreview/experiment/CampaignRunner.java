@@ -509,6 +509,11 @@ public final class CampaignRunner {
                 "overrideRate",
                 "rightsCarveoutBlockRate",
                 "repeatedOverrideRate",
+                "strategicPressure",
+                "legislativeDefiance",
+                "executiveEmergencyStrategy",
+                "appointmentManipulationPressure",
+                "overrideAdaptation",
                 "facialChallengeRate",
                 "asAppliedChallengeRate",
                 "electionDisputeRate",
@@ -564,6 +569,11 @@ public final class CampaignRunner {
                     .append(format(report.overrideRate())).append(',')
                     .append(format(report.rightsCarveoutBlockRate())).append(',')
                     .append(format(report.repeatedOverrideRate())).append(',')
+                    .append(format(report.strategicPressure())).append(',')
+                    .append(format(report.legislativeDefiance())).append(',')
+                    .append(format(report.executiveEmergencyStrategy())).append(',')
+                    .append(format(report.appointmentManipulationPressure())).append(',')
+                    .append(format(report.overrideAdaptation())).append(',')
                     .append(format(report.facialChallengeRate())).append(',')
                     .append(format(report.asAppliedChallengeRate())).append(',')
                     .append(format(report.electionDisputeRate())).append(',')
@@ -660,8 +670,8 @@ public final class CampaignRunner {
         builder.append("- Invalidation, emergency, replacement, recusal, concurrence, dissent, panel, en banc, council, cross-check, and override rates are diagnostic.\n");
 
         builder.append("\n## Scenario Averages Across Cases\n\n");
-        builder.append("| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Precedent | Statutory | Compliance | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Admin cost | Merits accel. | Replacement | Override att. | Override |\n");
-        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        builder.append("| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Precedent | Statutory | Compliance | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Strategic | Admin cost | Merits accel. | Replacement | Override att. | Override |\n");
+        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
         weightedReports.stream()
                 .sorted(Comparator.comparingDouble(WeightedScenarioReport::directionalScore).reversed())
                 .forEach(report -> builder.append("| ")
@@ -694,6 +704,8 @@ public final class CampaignRunner {
                         .append(format(report.constitutionalConflict()))
                         .append(" | ")
                         .append(format(report.democraticResponsiveness()))
+                        .append(" | ")
+                        .append(format(report.strategicPressure()))
                         .append(" | ")
                         .append(format(report.administrativeCost()))
                         .append(" | ")
@@ -792,6 +804,7 @@ public final class CampaignRunner {
         private double reversalRate;
         private double constitutionalConflict;
         private double democraticResponsiveness;
+        private double strategicPressure;
         private double administrativeCost;
         private double invalidationRate;
         private double meritsAccelerationRate;
@@ -819,6 +832,7 @@ public final class CampaignRunner {
             reversalRate += report.reversalRate() * rowWeight;
             constitutionalConflict += report.constitutionalConflict() * rowWeight;
             democraticResponsiveness += report.democraticResponsiveness() * rowWeight;
+            strategicPressure += report.strategicPressure() * rowWeight;
             administrativeCost += report.administrativeCost() * rowWeight;
             invalidationRate += report.invalidationRate() * rowWeight;
             meritsAccelerationRate += report.meritsAccelerationRate() * rowWeight;
@@ -846,6 +860,7 @@ public final class CampaignRunner {
                     reversalRate / denominator,
                     constitutionalConflict / denominator,
                     democraticResponsiveness / denominator,
+                    strategicPressure / denominator,
                     administrativeCost / denominator,
                     invalidationRate / denominator,
                     meritsAccelerationRate / denominator,
@@ -873,6 +888,7 @@ public final class CampaignRunner {
             double reversalRate,
             double constitutionalConflict,
             double democraticResponsiveness,
+            double strategicPressure,
             double administrativeCost,
             double invalidationRate,
             double meritsAccelerationRate,

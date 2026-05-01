@@ -12,7 +12,7 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
   "artifacts": [
-    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "124f3597a96d0c51ecf335a2e4f08c7b42b572f7ff6284a6fa48c62ae98ccb03"},
-    {"path": "reports/mechanism-ablation-v2.md", "sha256": "b7976fd78876c49b8f21363a9081d180d5f570c283583d1a6835f41f9a747043"}
+    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "46bb56ae1a84dfa6b798ff5817321d4dbd9741cdf0ff9498ff10fbd7693c773b"},
+    {"path": "reports/mechanism-ablation-v2.md", "sha256": "0d023987ae21158bf5c11d0fa77afa1ef7c11a3054829a7a6016d75be51ff5c9"}
   ]
 }

@@ -17,15 +17,15 @@ Positive deltas improve higher-better metrics. Negative deltas improve lower-bet
 
 | Mechanism | Base -> Variant | Directional | Legal | Precedent | Statutory | Compliance | Rights | Partisan | Shadow | Conflict | Responsiveness | Admin cost | Override att. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Invalidation threshold | `current-us-like` -> `supermajority-review` | 0.011 | 0.010 | 0.036 | -0.008 | 0.001 | -0.008 | 0.003 | -0.212 | -0.003 | -0.003 | 0.047 | 0.000 |
-| Term regularization | `current-us-like` -> `term-limited-balanced` | 0.009 | 0.004 | 0.014 | -0.001 | 0.000 | 0.001 | 0.002 | -0.197 | -0.001 | 0.004 | 0.052 | 0.000 |
-| Emergency restraint | `current-us-like` -> `emergency-restraint-court` | 0.002 | 0.017 | 0.042 | 0.007 | 0.001 | -0.009 | -0.020 | -0.270 | -0.003 | -0.004 | 0.106 | 0.000 |
-| Appointment screening | `current-us-like` -> `nonpartisan-commission` | 0.000 | 0.006 | 0.017 | 0.000 | 0.001 | -0.003 | -0.017 | -0.195 | -0.001 | 0.002 | 0.082 | 0.000 |
-| Accountability election | `nonpartisan-commission` -> `accountability-retention-court` | -0.001 | 0.005 | 0.012 | 0.005 | -0.003 | -0.008 | 0.001 | 0.001 | 0.005 | 0.000 | 0.001 | 0.056 |
-| Recusal and emergency process | `current-us-like` -> `recusal-and-emergency-reform` | -0.005 | 0.006 | 0.017 | -0.000 | 0.000 | -0.001 | 0.002 | -0.195 | -0.001 | 0.003 | 0.092 | 0.000 |
-| Panel routing | `term-limited-balanced` -> `panel-en-banc` | -0.009 | 0.002 | 0.006 | 0.001 | 0.000 | -0.002 | 0.011 | 0.000 | -0.000 | -0.002 | 0.043 | 0.000 |
-| Legislative override | `term-limited-balanced` -> `legislative-override` | -0.010 | -0.005 | -0.008 | -0.001 | -0.005 | 0.001 | -0.045 | 0.000 | 0.007 | 0.003 | 0.040 | 0.063 |
-| Court expansion | `term-limited-balanced` -> `expanded-court-fifteen` | -0.014 | 0.002 | 0.004 | 0.001 | 0.000 | -0.001 | -0.025 | -0.000 | -0.000 | -0.000 | 0.050 | 0.000 |
-| Constitutional council | `nonpartisan-commission` -> `constitutional-council` | -0.017 | 0.011 | 0.020 | 0.005 | 0.007 | -0.006 | 0.012 | -0.000 | 0.004 | 0.006 | 0.072 | 0.049 |
-| Cross-checking court | `nonpartisan-commission` -> `cross-checking-courts` | -0.041 | -0.009 | 0.015 | -0.010 | -0.031 | -0.014 | -0.019 | -0.016 | 0.038 | -0.011 | 0.118 | 0.000 |
-| Dual-court filter | `nonpartisan-commission` -> `dual-supreme-courts` | -0.056 | -0.022 | -0.018 | -0.017 | -0.031 | 0.001 | -0.020 | -0.019 | 0.039 | -0.000 | 0.166 | 0.000 |
+| Invalidation threshold | `current-us-like` -> `supermajority-review` | 0.016 | 0.019 | 0.055 | -0.008 | 0.008 | -0.022 | 0.000 | -0.304 | -0.022 | 0.006 | 0.055 | 0.000 |
+| Term regularization | `current-us-like` -> `term-limited-balanced` | 0.013 | 0.004 | 0.009 | -0.005 | 0.007 | -0.007 | 0.008 | -0.285 | -0.021 | 0.018 | 0.059 | 0.000 |
+| Emergency restraint | `current-us-like` -> `emergency-restraint-court` | 0.012 | 0.017 | 0.037 | 0.003 | 0.010 | -0.013 | -0.029 | -0.391 | -0.030 | 0.014 | 0.113 | 0.000 |
+| Appointment screening | `current-us-like` -> `nonpartisan-commission` | 0.006 | 0.008 | 0.019 | -0.002 | 0.008 | -0.009 | -0.024 | -0.281 | -0.022 | 0.016 | 0.089 | 0.000 |
+| Recusal and emergency process | `current-us-like` -> `recusal-and-emergency-reform` | 0.000 | 0.005 | 0.012 | -0.004 | 0.007 | -0.006 | 0.009 | -0.285 | -0.021 | 0.019 | 0.099 | 0.000 |
+| Accountability election | `nonpartisan-commission` -> `accountability-retention-court` | -0.002 | -0.000 | 0.007 | 0.004 | -0.011 | -0.016 | 0.002 | -0.002 | 0.019 | 0.009 | 0.000 | 0.145 |
+| Panel routing | `term-limited-balanced` -> `panel-en-banc` | -0.011 | 0.003 | 0.007 | 0.002 | 0.000 | -0.004 | 0.010 | 0.002 | -0.001 | -0.002 | 0.046 | 0.000 |
+| Legislative override | `term-limited-balanced` -> `legislative-override` | -0.011 | -0.005 | 0.004 | -0.005 | -0.014 | 0.003 | -0.066 | -0.000 | 0.024 | 0.002 | 0.040 | 0.158 |
+| Court expansion | `term-limited-balanced` -> `expanded-court-fifteen` | -0.013 | -0.002 | -0.004 | -0.001 | -0.000 | 0.003 | -0.042 | 0.002 | 0.000 | 0.001 | 0.051 | 0.000 |
+| Constitutional council | `nonpartisan-commission` -> `constitutional-council` | -0.027 | 0.015 | 0.031 | 0.004 | 0.010 | -0.009 | 0.013 | -0.002 | 0.017 | 0.013 | 0.097 | 0.128 |
+| Cross-checking court | `nonpartisan-commission` -> `cross-checking-courts` | -0.042 | 0.010 | 0.062 | 0.002 | -0.034 | -0.039 | -0.022 | -0.020 | 0.041 | -0.028 | 0.121 | 0.000 |
+| Dual-court filter | `nonpartisan-commission` -> `dual-supreme-courts` | -0.061 | -0.034 | -0.045 | -0.020 | -0.038 | 0.002 | -0.026 | -0.019 | 0.050 | -0.001 | 0.171 | 0.000 |
