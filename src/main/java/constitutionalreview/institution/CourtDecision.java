@@ -64,6 +64,7 @@ public record CourtDecision(
         double democraticResponsiveness,
         double constitutionalConflict,
         double precedentShift,
+        boolean rightsClaimantCase,
         double rightsClaimantSuccess,
         double doctrinalDepth,
         double remedialBreadth,

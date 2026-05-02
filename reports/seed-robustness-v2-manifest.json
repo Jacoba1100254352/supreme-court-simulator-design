@@ -12,7 +12,7 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/seed-robustness-v2.csv", "sha256": "d38e232dc98b76372ae8bafc0aad4a70ad757b52c64f7672e41bda35935ce0e0"},
-    {"path": "reports/seed-robustness-v2.md", "sha256": "7f1ebaae41b448f8b09434f2661aa0a4191c413e701d908a72cbbf5b2922094b"}
+    {"path": "reports/seed-robustness-v2.csv", "sha256": "a6b3237f10bd534bf3f5cabc4f59c37a04135cfe419e0f8c60cebbd629740fe7"},
+    {"path": "reports/seed-robustness-v2.md", "sha256": "8047f1765ccfb7a7eab4ef423add18aed36528bc0d7a5c3aa675b48c05ea92da"}
   ]
 }

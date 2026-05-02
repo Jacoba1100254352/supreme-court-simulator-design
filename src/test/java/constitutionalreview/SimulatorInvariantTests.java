@@ -46,6 +46,7 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.rightsProtection(), "rightsProtection");
         TestSupport.checkUnitInterval(report.partisanAlignment(), "partisanAlignment");
         TestSupport.checkUnitInterval(report.shadowDocketAbuse(), "shadowDocketAbuse");
+        TestSupport.checkUnitInterval(report.emergencyLegitimacyRisk(), "emergencyLegitimacyRisk");
         TestSupport.checkUnitInterval(report.legitimacy(), "legitimacy");
         TestSupport.checkUnitInterval(report.reversalRate(), "reversalRate");
         TestSupport.checkUnitInterval(report.constitutionalConflict(), "constitutionalConflict");
@@ -68,8 +69,21 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.rightsCarveoutBlockRate(), "rightsCarveoutBlockRate");
         TestSupport.checkUnitInterval(report.concurrenceRate(), "concurrenceRate");
         TestSupport.checkUnitInterval(report.dissentRate(), "dissentRate");
-        TestSupport.checkUnitInterval(report.facialChallengeRate() + report.asAppliedChallengeRate() + report.electionDisputeRate()
+        TestSupport.checkUnitInterval(report.rightsClaimantCaseRate(), "rightsClaimantCaseRate");
+        TestSupport.checkUnitInterval(report.rightsClaimantSuccess(), "rightsClaimantSuccess");
+        TestSupport.check(
+                report.rightsClaimantSuccess() <= report.rightsClaimantCaseRate() + 0.000_000_1,
+                "aggregate claimant success should not exceed claimant case share"
+        );
+        TestSupport.checkUnitInterval(report.rightsDomainClaimantSuccess(), "rightsDomainClaimantSuccess");
+        TestSupport.checkUnitInterval(report.structuralDomainClaimantSuccess(), "structuralDomainClaimantSuccess");
+        TestSupport.checkUnitInterval(report.electionDomainClaimantSuccess(), "electionDomainClaimantSuccess");
+        TestSupport.checkUnitInterval(report.executivePowerDomainClaimantSuccess(), "executivePowerDomainClaimantSuccess");
+        TestSupport.checkUnitInterval(report.administrativeDomainClaimantSuccess(), "administrativeDomainClaimantSuccess");
+        TestSupport.checkUnitInterval(report.economicDomainClaimantSuccess(), "economicDomainClaimantSuccess");
+        double docketTypeTotal = report.facialChallengeRate() + report.asAppliedChallengeRate() + report.electionDisputeRate()
                 + report.emergencyStayDocketRate() + report.executivePowerDisputeRate() + report.administrativeLawRate()
-                + report.rightsClaimRate(), "docket type total");
+                + report.rightsClaimRate();
+        TestSupport.check(Math.abs(docketTypeTotal - 1.0) < 0.000_000_1, "docket type rates should sum to one");
     }
 }

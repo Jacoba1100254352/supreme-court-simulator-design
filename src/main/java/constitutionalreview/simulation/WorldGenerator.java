@@ -58,11 +58,10 @@ public final class WorldGenerator {
     }
 
     private static List<ReviewCase> generateDocket(WorldSpec spec, Random random) {
-        List<ReviewCase> candidates = new ArrayList<>();
+        List<ReviewCase> filings = new ArrayList<>();
         LegislativeOutputProfile profile = spec.legislativeProfile().normalized();
         DocketType[] docketTypes = DocketType.values();
-        int candidateCases = Math.max(spec.cases() * 4, spec.cases() + 24);
-        for (int i = 0; i < candidateCases; i++) {
+        for (int i = 0; i < spec.cases(); i++) {
             CaseType type = caseType(spec, profile, random);
             DocketType docketType = docketType(type, docketTypes, spec, profile, random);
             AccessPath accessPath = accessPath(type, docketType, profile, random);
@@ -120,8 +119,8 @@ public final class WorldGenerator {
                     publicAttention,
                     random
             );
-            candidates.add(new ReviewCase(
-                    "candidate-" + (i + 1),
+            filings.add(new ReviewCase(
+                    "filing-" + (i + 1),
                     type,
                     docketType,
                     accessPath,
@@ -152,7 +151,7 @@ public final class WorldGenerator {
                     emergencyApplication
             ));
         }
-        return LowerCourtIntake.selectForReview(candidates, spec.cases(), random);
+        return filings;
     }
 
     private static AccessPath accessPath(CaseType type, DocketType docketType, LegislativeOutputProfile profile, Random random) {

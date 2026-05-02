@@ -96,7 +96,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 0.42,
                 conflict,
                 0.0,
-                rightsProtection,
+                rightsClaimantCase(reviewCase),
+                rightsClaimantSuccess(reviewCase, false, false),
                 0.0,
                 0.0,
                 0.0,
@@ -177,6 +178,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double legalStability = Values.average(precedentStability, statutoryStability, interbranchCompliance);
         double legitimacy = legitimacy(reviewCase, meritsReview, emergencyProcedure, recused, participating.size(), shadowAbuse, partisanAlignment, councilWarning);
         double responsiveness = democraticResponsiveness(reviewCase, invalidated, overrideDecision, councilWarning);
+        boolean rightsClaimantCase = rightsClaimantCase(reviewCase);
         double rightsClaimantSuccess = rightsClaimantSuccess(reviewCase, invalidated, shadowRelief);
         double doctrinalDepth = doctrinalDepth(reviewCase, invalidated, precedentShift, emergencyProcedure);
         double remedialBreadth = remedialBreadth(reviewCase, invalidated, shadowRelief, emergencyProcedure, overrideDecision);
@@ -272,6 +274,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 responsiveness,
                 conflict,
                 precedentShift,
+                rightsClaimantCase,
                 rightsClaimantSuccess,
                 doctrinalDepth,
                 remedialBreadth,
@@ -727,10 +730,14 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     }
 
     private double rightsClaimantSuccess(ReviewCase reviewCase, boolean invalidated, boolean shadowRelief) {
-        if (reviewCase.rightsBurden() < 0.45) {
+        if (!rightsClaimantCase(reviewCase)) {
             return 0.0;
         }
         return invalidated || shadowRelief ? 1.0 : 0.0;
+    }
+
+    private boolean rightsClaimantCase(ReviewCase reviewCase) {
+        return reviewCase.rightsBurden() >= 0.45;
     }
 
     private double doctrinalDepth(ReviewCase reviewCase, boolean invalidated, double precedentShift, EmergencyProcedure emergencyProcedure) {

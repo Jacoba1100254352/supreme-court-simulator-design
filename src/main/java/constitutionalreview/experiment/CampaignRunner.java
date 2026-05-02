@@ -549,7 +549,14 @@ public final class CampaignRunner {
                 "practicalSymbolicComplianceRate",
                 "practicalBureaucraticResistanceRate",
                 "practicalOpenNoncomplianceRate",
+                "rightsClaimantCaseRate",
                 "rightsClaimantSuccess",
+                "rightsDomainClaimantSuccess",
+                "structuralDomainClaimantSuccess",
+                "electionDomainClaimantSuccess",
+                "executivePowerDomainClaimantSuccess",
+                "administrativeDomainClaimantSuccess",
+                "economicDomainClaimantSuccess",
                 "doctrinalDepth",
                 "remedialBreadth",
                 "lowerCourtCompliance",
@@ -650,7 +657,14 @@ public final class CampaignRunner {
                     .append(format(report.practicalSymbolicComplianceRate())).append(',')
                     .append(format(report.practicalBureaucraticResistanceRate())).append(',')
                     .append(format(report.practicalOpenNoncomplianceRate())).append(',')
+                    .append(format(report.rightsClaimantCaseRate())).append(',')
                     .append(format(report.rightsClaimantSuccess())).append(',')
+                    .append(format(report.rightsDomainClaimantSuccess())).append(',')
+                    .append(format(report.structuralDomainClaimantSuccess())).append(',')
+                    .append(format(report.electionDomainClaimantSuccess())).append(',')
+                    .append(format(report.executivePowerDomainClaimantSuccess())).append(',')
+                    .append(format(report.administrativeDomainClaimantSuccess())).append(',')
+                    .append(format(report.economicDomainClaimantSuccess())).append(',')
                     .append(format(report.doctrinalDepth())).append(',')
                     .append(format(report.remedialBreadth())).append(',')
                     .append(format(report.lowerCourtCompliance())).append(',')
@@ -760,7 +774,7 @@ public final class CampaignRunner {
                 .append(" at ")
                 .append(format(highestPublicConfidence.publicConfidence()))
                 .append(".\n");
-        builder.append("- Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, and administrative feasibility.\n");
+        builder.append("- Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, claimant success, elite acceptance, and administrative feasibility.\n");
 
         builder.append("\n## Metric Direction Legend\n\n");
         builder.append("- Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.\n");
@@ -813,6 +827,30 @@ public final class CampaignRunner {
                         .append(format(report.practicalOpenNoncomplianceRate()))
                         .append(" | ")
                         .append(format(report.administrativeCost()))
+                        .append(" |\n"));
+        builder.append("\n## Domain-Specific Rights Claimant Success\n\n");
+        builder.append("| Scenario | Claimant case share | Aggregate | Rights | Structural | Election | Executive | Administrative | Economic |\n");
+        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        weightedReports.stream()
+                .sorted(Comparator.comparingDouble(WeightedScenarioReport::directionalScore).reversed())
+                .forEach(report -> builder.append("| ")
+                        .append(report.scenarioName())
+                        .append(" | ")
+                        .append(format(report.rightsClaimantCaseRate()))
+                        .append(" | ")
+                        .append(format(report.rightsClaimantSuccess()))
+                        .append(" | ")
+                        .append(format(report.rightsDomainClaimantSuccess()))
+                        .append(" | ")
+                        .append(format(report.structuralDomainClaimantSuccess()))
+                        .append(" | ")
+                        .append(format(report.electionDomainClaimantSuccess()))
+                        .append(" | ")
+                        .append(format(report.executivePowerDomainClaimantSuccess()))
+                        .append(" | ")
+                        .append(format(report.administrativeDomainClaimantSuccess()))
+                        .append(" | ")
+                        .append(format(report.economicDomainClaimantSuccess()))
                         .append(" |\n"));
         appendCaseSlices(builder, result.rows());
         return builder.toString();
@@ -917,7 +955,14 @@ public final class CampaignRunner {
         private double emergencyGrantRate;
         private double quorumFailureRate;
         private double fragmentationIndex;
+        private double rightsClaimantCaseRate;
         private double rightsClaimantSuccess;
+        private double rightsDomainClaimantSuccess;
+        private double structuralDomainClaimantSuccess;
+        private double electionDomainClaimantSuccess;
+        private double executivePowerDomainClaimantSuccess;
+        private double administrativeDomainClaimantSuccess;
+        private double economicDomainClaimantSuccess;
         private double doctrinalDepth;
         private double remedialBreadth;
         private double lowerCourtCompliance;
@@ -964,7 +1009,14 @@ public final class CampaignRunner {
             emergencyGrantRate += report.emergencyGrantRate() * rowWeight;
             quorumFailureRate += report.quorumFailureRate() * rowWeight;
             fragmentationIndex += report.fragmentationIndex() * rowWeight;
+            rightsClaimantCaseRate += report.rightsClaimantCaseRate() * rowWeight;
             rightsClaimantSuccess += report.rightsClaimantSuccess() * rowWeight;
+            rightsDomainClaimantSuccess += report.rightsDomainClaimantSuccess() * rowWeight;
+            structuralDomainClaimantSuccess += report.structuralDomainClaimantSuccess() * rowWeight;
+            electionDomainClaimantSuccess += report.electionDomainClaimantSuccess() * rowWeight;
+            executivePowerDomainClaimantSuccess += report.executivePowerDomainClaimantSuccess() * rowWeight;
+            administrativeDomainClaimantSuccess += report.administrativeDomainClaimantSuccess() * rowWeight;
+            economicDomainClaimantSuccess += report.economicDomainClaimantSuccess() * rowWeight;
             doctrinalDepth += report.doctrinalDepth() * rowWeight;
             remedialBreadth += report.remedialBreadth() * rowWeight;
             lowerCourtCompliance += report.lowerCourtCompliance() * rowWeight;
@@ -1011,7 +1063,14 @@ public final class CampaignRunner {
                     emergencyGrantRate / denominator,
                     quorumFailureRate / denominator,
                     fragmentationIndex / denominator,
+                    rightsClaimantCaseRate / denominator,
                     rightsClaimantSuccess / denominator,
+                    rightsDomainClaimantSuccess / denominator,
+                    structuralDomainClaimantSuccess / denominator,
+                    electionDomainClaimantSuccess / denominator,
+                    executivePowerDomainClaimantSuccess / denominator,
+                    administrativeDomainClaimantSuccess / denominator,
+                    economicDomainClaimantSuccess / denominator,
                     doctrinalDepth / denominator,
                     remedialBreadth / denominator,
                     lowerCourtCompliance / denominator,
@@ -1058,7 +1117,14 @@ public final class CampaignRunner {
             double emergencyGrantRate,
             double quorumFailureRate,
             double fragmentationIndex,
+            double rightsClaimantCaseRate,
             double rightsClaimantSuccess,
+            double rightsDomainClaimantSuccess,
+            double structuralDomainClaimantSuccess,
+            double electionDomainClaimantSuccess,
+            double executivePowerDomainClaimantSuccess,
+            double administrativeDomainClaimantSuccess,
+            double economicDomainClaimantSuccess,
             double doctrinalDepth,
             double remedialBreadth,
             double lowerCourtCompliance,

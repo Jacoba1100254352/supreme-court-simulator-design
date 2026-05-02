@@ -4,6 +4,7 @@ import constitutionalreview.institution.CourtDecision;
 import constitutionalreview.institution.FormalLegalResponse;
 import constitutionalreview.institution.OverrideOutcome;
 import constitutionalreview.institution.PracticalImplementationResponse;
+import constitutionalreview.model.CaseType;
 import constitutionalreview.model.DocketType;
 
 public final class MetricsAccumulator {
@@ -62,6 +63,13 @@ public final class MetricsAccumulator {
     private int practicalSymbolicCompliance;
     private int practicalBureaucraticResistance;
     private int practicalOpenNoncompliance;
+    private int rightsClaimantCases;
+    private int rightsDomainClaimantCases;
+    private int structuralDomainClaimantCases;
+    private int electionDomainClaimantCases;
+    private int executivePowerDomainClaimantCases;
+    private int administrativeDomainClaimantCases;
+    private int economicDomainClaimantCases;
     private double admissionScore;
     private double conditionalReversalProbability;
     private double solicitorGeneralSignal;
@@ -83,6 +91,12 @@ public final class MetricsAccumulator {
     private double democraticResponsiveness;
     private double administrativeCost;
     private double rightsClaimantSuccess;
+    private double rightsDomainClaimantSuccess;
+    private double structuralDomainClaimantSuccess;
+    private double electionDomainClaimantSuccess;
+    private double executivePowerDomainClaimantSuccess;
+    private double administrativeDomainClaimantSuccess;
+    private double economicDomainClaimantSuccess;
     private double doctrinalDepth;
     private double remedialBreadth;
     private double fragmentationIndex;
@@ -134,6 +148,7 @@ public final class MetricsAccumulator {
         addDocketType(decision.docketType());
         addFormalResponse(decision.formalLegalResponse());
         addPracticalResponse(decision.practicalImplementationResponse());
+        addDomainClaimantSuccess(decision);
         admissionScore += decision.admissionScore();
         conditionalReversalProbability += decision.conditionalReversalProbability();
         solicitorGeneralSignal += decision.solicitorGeneralSignal();
@@ -246,7 +261,14 @@ public final class MetricsAccumulator {
                 practicalSymbolicCompliance / cases,
                 practicalBureaucraticResistance / cases,
                 practicalOpenNoncompliance / cases,
+                rightsClaimantCases / cases,
                 rightsClaimantSuccess / cases,
+                rightsDomainClaimantSuccess / Math.max(1.0, rightsDomainClaimantCases),
+                structuralDomainClaimantSuccess / Math.max(1.0, structuralDomainClaimantCases),
+                electionDomainClaimantSuccess / Math.max(1.0, electionDomainClaimantCases),
+                executivePowerDomainClaimantSuccess / Math.max(1.0, executivePowerDomainClaimantCases),
+                administrativeDomainClaimantSuccess / Math.max(1.0, administrativeDomainClaimantCases),
+                economicDomainClaimantSuccess / Math.max(1.0, economicDomainClaimantCases),
                 doctrinalDepth / cases,
                 remedialBreadth / cases,
                 lowerCourtCompliance / cases,
@@ -296,6 +318,39 @@ public final class MetricsAccumulator {
             case BUREAUCRATIC_RESISTANCE -> practicalBureaucraticResistance++;
             case OPEN_NONCOMPLIANCE -> practicalOpenNoncompliance++;
             case NONE, PROMPT_IMPLEMENTATION -> {
+            }
+        }
+    }
+
+    private void addDomainClaimantSuccess(CourtDecision decision) {
+        if (!decision.rightsClaimantCase()) {
+            return;
+        }
+        rightsClaimantCases++;
+        switch (decision.caseType()) {
+            case RIGHTS -> {
+                rightsDomainClaimantCases++;
+                rightsDomainClaimantSuccess += decision.rightsClaimantSuccess();
+            }
+            case STRUCTURAL -> {
+                structuralDomainClaimantCases++;
+                structuralDomainClaimantSuccess += decision.rightsClaimantSuccess();
+            }
+            case ELECTIONS -> {
+                electionDomainClaimantCases++;
+                electionDomainClaimantSuccess += decision.rightsClaimantSuccess();
+            }
+            case EXECUTIVE_POWER -> {
+                executivePowerDomainClaimantCases++;
+                executivePowerDomainClaimantSuccess += decision.rightsClaimantSuccess();
+            }
+            case ADMINISTRATIVE_STATE -> {
+                administrativeDomainClaimantCases++;
+                administrativeDomainClaimantSuccess += decision.rightsClaimantSuccess();
+            }
+            case ECONOMIC_REGULATION -> {
+                economicDomainClaimantCases++;
+                economicDomainClaimantSuccess += decision.rightsClaimantSuccess();
             }
         }
     }

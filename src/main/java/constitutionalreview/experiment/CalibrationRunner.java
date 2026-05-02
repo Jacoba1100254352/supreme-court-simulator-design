@@ -96,7 +96,7 @@ public final class CalibrationRunner {
 
         add(targets, current, "docket-rights", "Rights-related merits domains track SCDB rights issue areas.", "rightsClaimRate", "rightsClaimRate", 0.10, 0.48, 0.02, "scdb-issue-area", dataset);
         add(targets, current, "docket-admin-law", "Administrative-law challenges track SCDB administrative-action observations.", "administrativeLawRate", "administrativeLawRate", 0.05, 0.42, 0.02, "scdb-issue-area", dataset);
-        add(targets, current, "docket-election", "Election disputes remain a stress domain rather than the whole docket.", "electionDisputeRate", "structuralRate", 0.02, 0.24, 0.04, "scdb-issue-area", dataset);
+        add(targets, current, "docket-election", "Election disputes remain a stress domain rather than the whole docket.", "electionDisputeRate", "electionDocketShare", 0.02, 0.24, 0.00, "model-docket-mix-prior", dataset);
         add(targets, current, "docket-executive-power", "Executive-power disputes remain visible but bounded within structural public-law disputes.", "executivePowerDisputeRate", "structuralRate", 0.03, 0.30, 0.04, "scdb-issue-area", dataset);
         add(targets, current, "current-invalidation", "Declarations of unconstitutionality should be uncommon in the full merits docket.", "invalidationRate", "invalidationRate", 0.00, 0.22, 0.07, "scdb-unconstitutionality", dataset);
         add(targets, current, "current-merits-transfer", "Admissibility-aware current-like designs should transfer a substantial but not universal share of filed matters to merits.", "meritsTransferRate", "admissibilityModelShare", 0.25, 0.85, 0.00, "deep-research-intake-synthesis", dataset);
@@ -175,6 +175,12 @@ public final class CalibrationRunner {
                         "Supreme Court Deep Research synthesis intake tables",
                         "data/calibration/supreme-court-synthesis/lower-court-intake-calibration.csv",
                         "Preserves comparative intake-denominator rows with validation-use and coverage metadata; used here as a structural guardrail rather than a one-to-one empirical target."
+                ),
+                new CalibrationSource(
+                        "model-docket-mix-prior",
+                        "Simulator docket-mix prior",
+                        "src/main/java/constitutionalreview/simulation/WorldGenerator.java",
+                        "Defines stress-domain bounds for generated docket categories that do not map cleanly to a single empirical source denominator."
                 )
         );
     }

@@ -12,7 +12,7 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/constitutional-review-campaign-v2.csv", "sha256": "2c5bc2d0d9f4d09176742ebceda84cecf06a8c592da98f920d7022e4ca4e4e53"},
-    {"path": "reports/constitutional-review-campaign-v2.md", "sha256": "24840483c522dc05ce7e1f15053ce19acd456452e2b0f20b2b4455cde99cb046"}
+    {"path": "reports/constitutional-review-campaign-v2.csv", "sha256": "537b67b095c67fd45d4e5ed6b5080031a887651dc64c02b65411d2b0657e8611"},
+    {"path": "reports/constitutional-review-campaign-v2.md", "sha256": "6c1c4a9ce647b9cee83f0c25757281aaa445568a29a9efd019c694e3f7a06079"}
   ]
 }

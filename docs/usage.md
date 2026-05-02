@@ -68,6 +68,6 @@ Campaign runs write:
 - `reports/constitutional-review-campaign-v2.md`
 - `reports/constitutional-review-campaign-v2-manifest.json`
 
-Diagnostic runs also write empirical calibration, source-range appendix, seed-robustness, mechanism-ablation, parameter-prior, legislative-family, and manipulation-stress reports. The campaign CSV now includes review-path admission rates, certiorari signals, emergency legitimacy risk, emergency grant rate, quorum failure, opinion fragmentation, formal legal responses, practical implementation responses, and direct output metrics such as rights-claimant success, doctrinal depth, remedial breadth, lower-court compliance, elite acceptance, and public confidence.
+Diagnostic runs also write empirical calibration, source-range appendix, seed-robustness, mechanism-ablation, parameter-prior, legislative-family, and manipulation-stress reports. `--cases` is now the filed universe per run. Admission filtering determines how many of those filings become merits transfers or emergency merits follow-through. The campaign CSV includes review-path admission rates, certiorari signals, emergency legitimacy risk, emergency grant rate, quorum failure, opinion fragmentation, formal legal responses, practical implementation responses, and direct output metrics such as overall and domain-specific rights-claimant success, doctrinal depth, remedial breadth, lower-court compliance, elite acceptance, and public confidence.
 
 The preserved v0 and v1 targets write the same campaign filename pattern with `v0` and `v1`.
