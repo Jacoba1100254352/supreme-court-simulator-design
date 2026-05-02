@@ -12,6 +12,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -35,7 +36,7 @@ public final class EmpiricalCalibrationDataset {
             return new EmpiricalCalibrationDataset(sourceDirectory, List.of());
         }
         List<CalibrationObservation> observations = new ArrayList<>();
-        try (Stream<Path> paths = Files.list(sourceDirectory)) {
+        try (Stream<Path> paths = Files.walk(sourceDirectory)) {
             for (Path path : paths
                     .filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().endsWith(".csv"))
@@ -172,11 +173,11 @@ public final class EmpiricalCalibrationDataset {
         if (sourceDirectory == null || !Files.isDirectory(sourceDirectory)) {
             return List.of();
         }
-        try (Stream<Path> paths = Files.list(sourceDirectory)) {
+        try (Stream<Path> paths = Files.walk(sourceDirectory)) {
             return paths
                     .filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().endsWith(".csv"))
-                    .map(path -> path.getFileName().toString())
+                    .map(path -> sourceDirectory.relativize(path).toString())
                     .sorted()
                     .toList();
         } catch (IOException exception) {
@@ -194,6 +195,9 @@ public final class EmpiricalCalibrationDataset {
         for (int i = 0; i < headers.size(); i++) {
             columns.put(headers.get(i), i);
         }
+        if (columns.containsKey("metricKey") && columns.containsKey("observedValue")) {
+            return readSynthesisCsv(path, lines, columns);
+        }
         List<CalibrationObservation> observations = new ArrayList<>();
         for (int i = 1; i < lines.size(); i++) {
             if (lines.get(i).isBlank()) {
@@ -210,6 +214,33 @@ public final class EmpiricalCalibrationDataset {
                     parseDouble(get(row, columns, "value")),
                     get(row, columns, "sourceUrl"),
                     get(row, columns, "notes")
+            ));
+        }
+        return observations;
+    }
+
+    private static List<CalibrationObservation> readSynthesisCsv(Path path, List<String> lines, Map<String, Integer> columns) {
+        String sourceKey = path.getFileName().toString().replaceFirst("\\.csv$", "");
+        List<CalibrationObservation> observations = new ArrayList<>();
+        for (int i = 1; i < lines.size(); i++) {
+            if (lines.get(i).isBlank()) {
+                continue;
+            }
+            List<String> row = parseCsvLine(lines.get(i));
+            OptionalDouble observed = parseOptionalDouble(get(row, columns, "observedValue"));
+            if (observed.isEmpty()) {
+                continue;
+            }
+            observations.add(new CalibrationObservation(
+                    sourceKey,
+                    get(row, columns, "jurisdiction"),
+                    get(row, columns, "metricKey"),
+                    get(row, columns, "timePeriod"),
+                    parseDoubleOrZero(get(row, columns, "lowerBound")),
+                    parseDoubleOrZero(get(row, columns, "upperBound")),
+                    observed.getAsDouble(),
+                    get(row, columns, "sourceUrl"),
+                    synthesisNotes(row, columns)
             ));
         }
         return observations;
@@ -252,6 +283,40 @@ public final class EmpiricalCalibrationDataset {
             return 0.0;
         }
         return Double.parseDouble(value);
+    }
+
+    private static double parseDoubleOrZero(String value) {
+        OptionalDouble parsed = parseOptionalDouble(value);
+        return parsed.isPresent() ? parsed.getAsDouble() : 0.0;
+    }
+
+    private static OptionalDouble parseOptionalDouble(String value) {
+        if (value == null || value.isBlank()) {
+            return OptionalDouble.empty();
+        }
+        try {
+            return OptionalDouble.of(Double.parseDouble(value));
+        } catch (NumberFormatException exception) {
+            return OptionalDouble.empty();
+        }
+    }
+
+    private static String synthesisNotes(List<String> row, Map<String, Integer> columns) {
+        List<String> parts = new ArrayList<>();
+        addNote(parts, "sourceName", get(row, columns, "sourceName"));
+        addNote(parts, "confidenceLevel", get(row, columns, "confidenceLevel"));
+        addNote(parts, "validationUse", get(row, columns, "validationUse"));
+        addNote(parts, "denominatorSpec", get(row, columns, "denominatorSpec"));
+        addNote(parts, "coverageScope", get(row, columns, "coverageScope"));
+        addNote(parts, "comparabilityClass", get(row, columns, "comparabilityClass"));
+        addNote(parts, "rawSection", get(row, columns, "rawSection"));
+        return String.join("; ", parts);
+    }
+
+    private static void addNote(List<String> parts, String label, String value) {
+        if (value != null && !value.isBlank()) {
+            parts.add(label + "=" + value);
+        }
     }
 
     private static double percentile(List<Double> sorted, double percentile) {

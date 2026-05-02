@@ -87,9 +87,13 @@ The v1 campaign added docket subtypes, justice replacement/vacancy dynamics, ric
 
 The v2 campaign adds adversarial manipulation cases for appointment timing, emergency-application flooding, override evasion, recusal pressure, and court-expansion retaliation. It also splits legal stability into precedent stability, statutory stability, and interbranch compliance while keeping the blended legal-stability metric for headline comparisons.
 
-The current diagnostics add normalized empirical calibration source tables, source-range appendix reports, legal-domain profiles for rights, election, executive-power, administrative, structural, and economic-regulation cases, lower-court/certiorari intake before merits review, and explicit strategic actor choices for compliance, evasion, reenactment, emergency flooding, override campaigns, and appointment-pressure campaigns.
+The current diagnostics add normalized empirical calibration source tables, source-range appendix reports, legal-domain profiles for rights, election, executive-power, administrative, structural, and economic-regulation cases, review-path/admissibility filtering before merits review, and explicit strategic actor choices for formal legal response and practical implementation.
 
-The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness.
+The review-path model distinguishes certiorari, IFP certiorari, constitutional complaints, amparo, QPC-style filtered referral, abstract ex ante and ex post review, concrete referral, emergency applications, electoral review, and interbranch disputes. Cert-style intake now tracks petition type, SG/CVSG signal, amicus intensity, split maturity, relists, specialist counsel, vehicle defects, and conditional reversal probability.
+
+Emergency applications are first-class objects with applicant/respondent type, application class, requested relief, response request, full-court referral, status-quo effect, public disagreement risk, and merits follow-through. Reports now separate `shadowDocketAbuse` from `emergencyLegitimacyRisk`.
+
+The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness. Direct outputs such as rights-claimant success, doctrinal depth, remedial breadth, fragmentation, lower-court compliance, elite acceptance, and public confidence are kept separate from derived directional indices.
 
 ## Current Reports
 
@@ -104,7 +108,7 @@ The headline metrics are legal stability, rights protection, partisan alignment,
 
 ## Calibration Data
 
-Normalized empirical source observations live in `data/calibration/`. Regenerate them from raw SCDB and shadow-docket archives with `tools/build_calibration_tables.py`; raw archives are intentionally not committed.
+Normalized empirical source observations live in `data/calibration/`. Regenerate them from raw SCDB and shadow-docket archives with `tools/build_calibration_tables.py`; raw archives are intentionally not committed. Import the Deep Research synthesis CSV blocks with `tools/import_deep_research_synthesis.py`; those rows preserve `confidenceLevel`, `validationUse`, `denominatorSpec`, `coverageScope`, and `comparabilityClass` so strict validation, loose calibration, and paper context remain distinct.
 
 ## Paper
 

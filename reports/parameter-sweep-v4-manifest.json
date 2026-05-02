@@ -8,11 +8,11 @@
   "casesPerRun": 48,
   "seed": 20260501,
   "experimentCaseCount": 14,
-  "scenarioCount": 13,
+  "scenarioCount": 14,
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
-  "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
+  "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/parameter-sweep-v4.csv", "sha256": "0909acedd44b2c481f910a7dbb0aa56750ed04b39537a3048237f666df9632e5"},
-    {"path": "reports/parameter-sweep-v4.md", "sha256": "04a3c40d10cc1b8b884f9860f4b6ff66bd363b12075fd27759df26d36e74a727"}
+    {"path": "reports/parameter-sweep-v4.csv", "sha256": "19eede1a644932549cd6618ec2dca9f467fcc69429c20a525454a21e0687f891"},
+    {"path": "reports/parameter-sweep-v4.md", "sha256": "492e1ab4900c35987bb7015f4465efa74228e332d5defc0c213d6825278bbe58"}
   ]
 }

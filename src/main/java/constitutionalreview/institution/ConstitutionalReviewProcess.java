@@ -3,8 +3,11 @@ package constitutionalreview.institution;
 import constitutionalreview.model.CaseWorld;
 import constitutionalreview.model.CourtState;
 import constitutionalreview.model.DocketType;
+import constitutionalreview.model.EmergencyMeritsFollowThrough;
 import constitutionalreview.model.Justice;
 import constitutionalreview.model.ReviewCase;
+import constitutionalreview.simulation.AdmissionDecision;
+import constitutionalreview.simulation.AdmissionFilter;
 import constitutionalreview.util.Values;
 
 import java.util.ArrayList;
@@ -28,9 +31,99 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         return design;
     }
 
+    private CourtDecision screenedOutDecision(ReviewCase reviewCase, AdmissionDecision admissionDecision, CourtState state) {
+        double rightsProtection = reviewCase.rightsBurden() > 0.55 ? 0.26 : 0.62;
+        double legalStability = Values.clamp01(0.72 + reviewCase.legislativeQuality() * 0.06 - reviewCase.legalAmbiguity() * 0.08);
+        double lowerCourtCompliance = Values.clamp01(0.62 + reviewCase.lowerCourtConflict() * 0.08 - reviewCase.lowerCourtErrorRisk() * 0.10);
+        double legitimacy = Values.clamp01(0.42 + admissionDecision.admissionScore() * 0.10 - reviewCase.publicAttention() * 0.08);
+        double conflict = Values.clamp01(reviewCase.constitutionalConflictPotential() * 0.22 + state.conflictLoad() * 0.08);
+        return new CourtDecision(
+                reviewCase.id(),
+                reviewCase.type(),
+                reviewCase.docketType(),
+                reviewCase.accessPath(),
+                reviewCase.reviewTiming(),
+                admissionDecision.petitionFiled(),
+                false,
+                admissionDecision.screenedOut(),
+                false,
+                admissionDecision.paidPetition(),
+                admissionDecision.ifpPetition(),
+                admissionDecision.admissionScore(),
+                admissionDecision.conditionalReversalProbability(),
+                reviewCase.solicitorGeneralSignal(),
+                reviewCase.amicusBriefs(),
+                reviewCase.splitMaturity(),
+                reviewCase.relistCount(),
+                reviewCase.specialistCounsel(),
+                reviewCase.vehicleDefectRisk(),
+                false,
+                false,
+                false,
+                false,
+                EmergencyProcedureStage.NONE,
+                EmergencyOrder.none(),
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                OverrideOutcome.NONE,
+                FormalLegalResponse.NONE,
+                PracticalImplementationResponse.NONE,
+                false,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                legalStability,
+                legalStability,
+                legalStability,
+                lowerCourtCompliance,
+                rightsProtection,
+                0.0,
+                0.0,
+                0.0,
+                legitimacy,
+                0.42,
+                conflict,
+                0.0,
+                rightsProtection,
+                0.0,
+                0.0,
+                0.0,
+                lowerCourtCompliance,
+                lowerCourtCompliance,
+                legitimacy,
+                Values.clamp01(design.administrativeCost() * 0.36),
+                state.legislativeDefiance(),
+                state.executiveEmergencyStrategy(),
+                state.appointmentManipulationPressure(),
+                state.overrideAdaptation(),
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+        );
+    }
+
     @Override
     public CourtDecision review(ReviewCase reviewCase, CourtState state, Random random) {
         reviewedCases++;
+        AdmissionDecision admissionDecision = AdmissionFilter.evaluate(reviewCase, design, random);
+        if (!admissionDecision.admitted()) {
+            return screenedOutDecision(reviewCase, admissionDecision, state);
+        }
         StrategicActorPolicy.StrategicResponse strategicResponse = StrategicActorPolicy.choose(reviewCase, state, design, random);
         double effectiveEmergencyPressure = Values.clamp01(
                 reviewCase.emergencyPressure()
@@ -39,16 +132,21 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                         + state.conflictLoad() * 0.04
         );
         boolean emergency = random.nextDouble() < effectiveEmergencyPressure;
-        boolean initialMeritsReview = meritsReview(reviewCase, emergency, random);
+        boolean initialMeritsReview = admissionDecision.transferredToMerits() && meritsReview(reviewCase, emergency, random);
         boolean enBanc = enBanc(reviewCase, emergency, random);
         List<Justice> participating = participatingJustices(reviewCase, enBanc, random);
         int recused = Math.max(0, Math.min(court.size(), court.size() - participating.size()));
+        boolean quorumFailure = quorumFailure(recused, participating.size(), enBanc, random);
 
         VoteCount voteCount = vote(reviewCase, state, participating, emergency, random);
         EmergencyProcedure emergencyProcedure = emergencyProcedure(reviewCase, emergency, initialMeritsReview, voteCount, participating.size(), random);
+        EmergencyOrder emergencyOrder = emergencyOrder(reviewCase, emergencyProcedure, voteCount, participating.size(), random);
         boolean meritsReview = initialMeritsReview || emergencyProcedure.meritsAccelerated();
+        if (quorumFailure) {
+            meritsReview = false;
+        }
         int requiredVotes = requiredVotes(participating.size(), reviewCase);
-        boolean invalidated = meritsReview && voteCount.yes() >= requiredVotes;
+        boolean invalidated = meritsReview && !quorumFailure && voteCount.yes() >= requiredVotes;
         boolean shadowRelief = emergencyProcedure.stage() == EmergencyProcedureStage.SHADOW_STAY;
 
         boolean councilWarning = design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL
@@ -71,6 +169,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double rightsProtection = rightsProtection(reviewCase, invalidated, shadowRelief, overrideDecision);
         double partisanAlignment = partisanAlignment(reviewCase, voteCount, participating);
         double shadowAbuse = shadowDocketAbuse(reviewCase, emergency, meritsReview, emergencyProcedure);
+        double emergencyLegitimacyRisk = emergencyOrder.legitimacyRisk();
         double conflict = constitutionalConflict(reviewCase, invalidated, shadowRelief, crossDisagreement, overrideDecision, state);
         double precedentStability = precedentStability(state, precedentShift, shadowAbuse, conflict);
         double statutoryStability = statutoryStability(reviewCase, invalidated, shadowRelief, emergencyProcedure, overrideDecision, conflict);
@@ -78,6 +177,13 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double legalStability = Values.average(precedentStability, statutoryStability, interbranchCompliance);
         double legitimacy = legitimacy(reviewCase, meritsReview, emergencyProcedure, recused, participating.size(), shadowAbuse, partisanAlignment, councilWarning);
         double responsiveness = democraticResponsiveness(reviewCase, invalidated, overrideDecision, councilWarning);
+        double rightsClaimantSuccess = rightsClaimantSuccess(reviewCase, invalidated, shadowRelief);
+        double doctrinalDepth = doctrinalDepth(reviewCase, invalidated, precedentShift, emergencyProcedure);
+        double remedialBreadth = remedialBreadth(reviewCase, invalidated, shadowRelief, emergencyProcedure, overrideDecision);
+        double fragmentationIndex = fragmentationIndex(concurrences, dissents, voteCount, participating.size());
+        double lowerCourtCompliance = lowerCourtCompliance(reviewCase, meritsReview, invalidated, admissionDecision, state);
+        double eliteAcceptance = eliteAcceptance(interbranchCompliance, overrideDecision, strategicResponse);
+        double publicConfidence = publicConfidence(legitimacy, emergencyLegitimacyRisk, partisanAlignment, strategicResponse);
         double administrativeCost = administrativeCost(reviewCase, emergencyProcedure, enBanc, crossDisagreement, councilWarning);
 
         boolean emergencyDenied = emergency
@@ -111,21 +217,41 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.id(),
                 reviewCase.type(),
                 reviewCase.docketType(),
+                reviewCase.accessPath(),
+                reviewCase.reviewTiming(),
+                admissionDecision.petitionFiled(),
+                admissionDecision.admitted(),
+                admissionDecision.screenedOut(),
+                admissionDecision.transferredToMerits(),
+                admissionDecision.paidPetition(),
+                admissionDecision.ifpPetition(),
+                admissionDecision.admissionScore(),
+                admissionDecision.conditionalReversalProbability(),
+                reviewCase.solicitorGeneralSignal(),
+                reviewCase.amicusBriefs(),
+                reviewCase.splitMaturity(),
+                reviewCase.relistCount(),
+                reviewCase.specialistCounsel(),
+                reviewCase.vehicleDefectRisk(),
                 meritsReview,
                 invalidated,
                 emergency,
                 shadowRelief,
                 emergencyProcedure.stage(),
+                emergencyOrder,
                 emergencyProcedure.reasonedOrder(),
                 emergencyProcedure.temporaryStay(),
                 emergencyProcedure.meritsAccelerated(),
                 emergencyProcedure.expired(),
                 enBanc,
+                quorumFailure,
                 councilWarning,
                 crossDisagreement,
                 override,
                 overrideDecision.attempted(),
                 overrideDecision.outcome(),
+                strategicResponse.formalResponse(),
+                strategicResponse.practicalImplementationResponse(),
                 precedentReversal,
                 replacements,
                 participating.size(),
@@ -141,10 +267,18 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 rightsProtection,
                 partisanAlignment,
                 shadowAbuse,
+                emergencyLegitimacyRisk,
                 legitimacy,
                 responsiveness,
                 conflict,
                 precedentShift,
+                rightsClaimantSuccess,
+                doctrinalDepth,
+                remedialBreadth,
+                fragmentationIndex,
+                lowerCourtCompliance,
+                eliteAcceptance,
+                publicConfidence,
                 administrativeCost,
                 state.legislativeDefiance(),
                 state.executiveEmergencyStrategy(),
@@ -318,11 +452,24 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     }
 
     private int requiredVotes(int participating, ReviewCase reviewCase) {
-        double share = design.votingThreshold().requiredShare(reviewCase.rightsBurden() > 0.68);
+        double share = reviewCase.rightsBurden() > 0.68
+                ? Math.max(design.votingThreshold().requiredShare(true), design.remedyVotingThresholds().rightsClaimShare())
+                : Math.max(design.votingThreshold().requiredShare(false), design.remedyVotingThresholds().lawStrikeShare());
         if (design.emergencyDocketRule() == EmergencyDocketRule.SUPERMAJORITY_STAY && reviewCase.emergencyPressure() > 0.62) {
-            share = Math.max(share, 0.60);
+            share = Math.max(share, design.remedyVotingThresholds().emergencyReliefShare());
         }
         return Math.max(1, (int) Math.ceil(participating * share - 0.000_001));
+    }
+
+    private boolean quorumFailure(int recused, int participating, boolean enBanc, Random random) {
+        if (recused == 0 || design.recusalConsequenceType() != RecusalConsequenceType.QUORUM_FAILURE_AFFIRMANCE) {
+            return false;
+        }
+        int quorum = enBanc ? Math.max(3, (int) Math.ceil(design.courtSize() * 0.50)) : Math.min(3, design.courtSize());
+        double probability = design.quorumFailureRisk()
+                + (participating < quorum ? 0.18 : 0.0)
+                + Math.max(0, recused - 1) * 0.018;
+        return random.nextDouble() < Values.clamp01(probability);
     }
 
     private EmergencyProcedure emergencyProcedure(
@@ -372,6 +519,45 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             }
             case NO_RELIEF_WITHOUT_MERITS -> new EmergencyProcedure(EmergencyProcedureStage.MERITS_ACCELERATED, true, false, true, false);
         };
+    }
+
+    private EmergencyOrder emergencyOrder(
+            ReviewCase reviewCase,
+            EmergencyProcedure emergencyProcedure,
+            VoteCount voteCount,
+            int participating,
+            Random random
+    ) {
+        if (emergencyProcedure.stage() == EmergencyProcedureStage.NONE) {
+            return EmergencyOrder.none();
+        }
+        boolean granted = emergencyProcedure.temporaryStay()
+                || emergencyProcedure.meritsAccelerated()
+                || emergencyProcedure.stage() == EmergencyProcedureStage.SHADOW_STAY;
+        boolean explanation = emergencyProcedure.reasonedOrder()
+                || design.emergencyDocketRule() != EmergencyDocketRule.OPEN_EMERGENCY
+                || random.nextDouble() < 0.18 + reviewCase.publicAttention() * 0.20;
+        boolean voteDisclosed = explanation || random.nextDouble() < 0.20 + reviewCase.partisanSalience() * 0.22;
+        int disagreement = 0;
+        int minority = Math.max(0, Math.min(voteCount.yes(), voteCount.no()));
+        for (int i = 0; i < minority; i++) {
+            if (random.nextDouble() < Values.clamp01(reviewCase.emergencyApplication().publicDisagreementRisk() + reviewCase.partisanSalience() * 0.18)) {
+                disagreement++;
+            }
+        }
+        EmergencyMeritsFollowThrough followThrough = EmergencyMeritsFollowThrough.NONE;
+        if (emergencyProcedure.meritsAccelerated()) {
+            followThrough = random.nextBoolean()
+                    ? EmergencyMeritsFollowThrough.DEFERRED_TO_ORAL_ARGUMENT
+                    : EmergencyMeritsFollowThrough.LATER_CERT_GRANTED;
+        } else if (granted && random.nextDouble() < reviewCase.emergencyApplication().meritsFollowThroughProbability()) {
+            followThrough = random.nextBoolean()
+                    ? EmergencyMeritsFollowThrough.LATER_MERITS_AFFIRMED
+                    : EmergencyMeritsFollowThrough.LATER_MERITS_REVERSED;
+        }
+        double abuse = shadowDocketAbuse(reviewCase, true, emergencyProcedure.meritsAccelerated(), emergencyProcedure);
+        double legitimacyRisk = emergencyLegitimacyRisk(reviewCase, emergencyProcedure, explanation, disagreement, granted);
+        return new EmergencyOrder(granted, explanation, voteDisclosed, disagreement, followThrough, abuse, legitimacyRisk);
     }
 
     private boolean crossCheckDisagreement(ReviewCase reviewCase, boolean invalidated, Random random) {
@@ -507,6 +693,126 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 - (emergencyProcedure.meritsAccelerated() ? 0.07 : 0.0);
         abuse += reviewCase.partisanSalience() * 0.12 + reviewCase.legalAmbiguity() * 0.08;
         return Values.clamp01(abuse);
+    }
+
+    private double emergencyLegitimacyRisk(
+            ReviewCase reviewCase,
+            EmergencyProcedure emergencyProcedure,
+            boolean explanation,
+            int disagreement,
+            boolean granted
+    ) {
+        if (emergencyProcedure.stage() == EmergencyProcedureStage.NONE) {
+            return 0.0;
+        }
+        double opacity = explanation ? 0.08 : 0.26;
+        double meritsLike = emergencyProcedure.meritsAccelerated() ? 0.08 : 0.18;
+        double disagreementRisk = Math.min(0.22, disagreement * 0.06);
+        double statusQuoRisk = switch (reviewCase.emergencyApplication().statusQuoEffect()) {
+            case ALTERS_STATUS_QUO -> 0.18;
+            case PRESERVES_ENACTED_POLICY -> 0.10;
+            case PRESERVES_INJUNCTION, UNCLEAR -> 0.08;
+            case NONE -> 0.0;
+        };
+        double grantedRisk = granted ? 0.08 : 0.02;
+        return Values.clamp01(
+                reviewCase.publicAttention() * 0.20
+                        + reviewCase.rightsBurden() * 0.12
+                        + opacity
+                        + meritsLike
+                        + disagreementRisk
+                        + statusQuoRisk
+                        + grantedRisk
+        );
+    }
+
+    private double rightsClaimantSuccess(ReviewCase reviewCase, boolean invalidated, boolean shadowRelief) {
+        if (reviewCase.rightsBurden() < 0.45) {
+            return 0.0;
+        }
+        return invalidated || shadowRelief ? 1.0 : 0.0;
+    }
+
+    private double doctrinalDepth(ReviewCase reviewCase, boolean invalidated, double precedentShift, EmergencyProcedure emergencyProcedure) {
+        double depth = precedentShift * 0.62 + reviewCase.legalAmbiguity() * 0.12;
+        if (invalidated) {
+            depth += reviewCase.publicAttention() * 0.12;
+        }
+        if (emergencyProcedure.meritsAccelerated()) {
+            depth += 0.06;
+        }
+        return Values.clamp01(depth);
+    }
+
+    private double remedialBreadth(
+            ReviewCase reviewCase,
+            boolean invalidated,
+            boolean shadowRelief,
+            EmergencyProcedure emergencyProcedure,
+            OverrideDecision overrideDecision
+    ) {
+        double breadth = 0.0;
+        if (invalidated) {
+            breadth += 0.46 + reviewCase.publicAttention() * 0.18 + reviewCase.rightsBurden() * 0.10;
+        }
+        if (shadowRelief || emergencyProcedure.temporaryStay()) {
+            breadth += 0.18;
+        }
+        if (overrideDecision.successful()) {
+            breadth -= 0.16;
+        }
+        return Values.clamp01(breadth);
+    }
+
+    private double fragmentationIndex(int concurrences, int dissents, VoteCount voteCount, int participating) {
+        if (participating <= 0) {
+            return 0.0;
+        }
+        int majority = Math.max(voteCount.yes(), voteCount.no());
+        double majorityCohesionPenalty = 1.0 - (majority / (double) participating);
+        double separateOpinions = (concurrences + dissents) / (double) Math.max(1, participating);
+        return Values.clamp01(majorityCohesionPenalty + separateOpinions * 0.45);
+    }
+
+    private double lowerCourtCompliance(ReviewCase reviewCase, boolean meritsReview, boolean invalidated, AdmissionDecision admissionDecision, CourtState state) {
+        double compliance = 0.68
+                - reviewCase.lowerCourtConflict() * 0.18
+                - reviewCase.lowerCourtErrorRisk() * 0.12
+                - state.conflictLoad() * 0.10
+                + (meritsReview ? 0.08 : -0.03)
+                + (admissionDecision.transferredToMerits() ? 0.04 : 0.0);
+        if (invalidated) {
+            compliance -= 0.08;
+        }
+        return Values.clamp01(compliance);
+    }
+
+    private double eliteAcceptance(
+            double interbranchCompliance,
+            OverrideDecision overrideDecision,
+            StrategicActorPolicy.StrategicResponse strategicResponse
+    ) {
+        double acceptance = interbranchCompliance
+                + (strategicResponse.legislativeCompliance() ? 0.08 : 0.0)
+                - (strategicResponse.legislativeEvasion() ? 0.10 : 0.0)
+                - (strategicResponse.practicalImplementationResponse() == PracticalImplementationResponse.OPEN_NONCOMPLIANCE ? 0.24 : 0.0)
+                - (strategicResponse.formalResponse() == FormalLegalResponse.COURT_CURBING ? 0.18 : 0.0)
+                - (overrideDecision.attempted() ? 0.06 : 0.0);
+        return Values.clamp01(acceptance);
+    }
+
+    private double publicConfidence(
+            double legitimacy,
+            double emergencyLegitimacyRisk,
+            double partisanAlignment,
+            StrategicActorPolicy.StrategicResponse strategicResponse
+    ) {
+        double confidence = legitimacy
+                - emergencyLegitimacyRisk * 0.18
+                - partisanAlignment * 0.12
+                - (strategicResponse.appointmentPressureCampaign() ? 0.08 : 0.0)
+                - (strategicResponse.formalResponse() == FormalLegalResponse.COURT_CURBING ? 0.10 : 0.0);
+        return Values.clamp01(confidence);
     }
 
     private double constitutionalConflict(

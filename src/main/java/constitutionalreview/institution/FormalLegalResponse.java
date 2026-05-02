@@ -1,0 +1,13 @@
+package constitutionalreview.institution;
+
+public enum FormalLegalResponse {
+    NONE,
+    ACQUIESCENT_COMPLIANCE,
+    REPEAL,
+    REPLACEMENT_STATUTE,
+    NARROWED_REENACTMENT,
+    WEAK_FORM_OVERRIDE,
+    CONSTITUTIONAL_AMENDMENT,
+    COURT_CURBING,
+    OPEN_DEFIANCE
+}

@@ -46,6 +46,25 @@ public final class StrategicActorPolicy {
                         + reviewCase.publicAttention() * 0.16
                         + (design.appointmentMethod() == AppointmentMethod.PRESIDENT_SENATE ? 0.08 : -0.04)
         );
+        FormalLegalResponse formalResponse = formalResponse(
+                comply,
+                evade,
+                reenact,
+                overrideCampaign,
+                politicalIncentive,
+                reviewCase,
+                state,
+                design,
+                random
+        );
+        PracticalImplementationResponse practicalResponse = practicalResponse(
+                comply,
+                evade,
+                politicalIncentive,
+                reviewCase,
+                state,
+                random
+        );
         return new StrategicResponse(
                 comply,
                 evade,
@@ -53,10 +72,78 @@ public final class StrategicActorPolicy {
                 emergencyFlood,
                 overrideCampaign,
                 appointmentPressure,
+                formalResponse,
+                practicalResponse,
                 emergencyFlood ? 0.11 + state.executiveEmergencyStrategy() * 0.10 : 0.0,
                 overrideCampaign ? 0.12 + state.overrideAdaptation() * 0.12 : 0.0,
                 comply ? 0.07 : -0.05
         );
+    }
+
+    private static FormalLegalResponse formalResponse(
+            boolean comply,
+            boolean evade,
+            boolean reenact,
+            boolean overrideCampaign,
+            double politicalIncentive,
+            ReviewCase reviewCase,
+            CourtState state,
+            CourtDesign design,
+            Random random
+    ) {
+        if (overrideCampaign && design.overrideRule() != OverrideRule.NONE) {
+            return FormalLegalResponse.WEAK_FORM_OVERRIDE;
+        }
+        if (politicalIncentive > 0.72 && state.conflictLoad() > 0.54 && random.nextDouble() < 0.18) {
+            return FormalLegalResponse.CONSTITUTIONAL_AMENDMENT;
+        }
+        if (state.appointmentManipulationPressure() > 0.46 && random.nextDouble() < 0.24) {
+            return FormalLegalResponse.COURT_CURBING;
+        }
+        if (reenact) {
+            return random.nextDouble() < reviewCase.legalAmbiguity()
+                    ? FormalLegalResponse.NARROWED_REENACTMENT
+                    : FormalLegalResponse.REPLACEMENT_STATUTE;
+        }
+        if (evade) {
+            return FormalLegalResponse.REPLACEMENT_STATUTE;
+        }
+        if (comply && reviewCase.rightsBurden() > 0.62 && random.nextDouble() < 0.30) {
+            return FormalLegalResponse.REPEAL;
+        }
+        return comply ? FormalLegalResponse.ACQUIESCENT_COMPLIANCE : FormalLegalResponse.NONE;
+    }
+
+    private static PracticalImplementationResponse practicalResponse(
+            boolean comply,
+            boolean evade,
+            double politicalIncentive,
+            ReviewCase reviewCase,
+            CourtState state,
+            Random random
+    ) {
+        double defiance = Values.clamp01(
+                reviewCase.executiveDefianceRisk() * 0.38
+                        + state.legislativeDefiance() * 0.24
+                        + state.conflictLoad() * 0.18
+                        + politicalIncentive * 0.12
+        );
+        if (defiance > 0.78 && random.nextDouble() < defiance * 0.32) {
+            return PracticalImplementationResponse.OPEN_NONCOMPLIANCE;
+        }
+        if (evade && random.nextDouble() < 0.50) {
+            return PracticalImplementationResponse.ADMINISTRATIVE_SUBSTITUTION;
+        }
+        if (!comply && random.nextDouble() < Values.clamp01(defiance + 0.12)) {
+            return PracticalImplementationResponse.SYMBOLIC_COMPLIANCE;
+        }
+        if (reviewCase.publicAttention() < 0.44 && random.nextDouble() < Values.clamp01(defiance + 0.10)) {
+            return PracticalImplementationResponse.IMPLEMENTATION_DELAY;
+        }
+        if (defiance > 0.52 && random.nextDouble() < 0.22) {
+            return PracticalImplementationResponse.BUREAUCRATIC_RESISTANCE;
+        }
+        return comply ? PracticalImplementationResponse.PROMPT_IMPLEMENTATION : PracticalImplementationResponse.NONE;
     }
 
     public record StrategicResponse(
@@ -66,6 +153,8 @@ public final class StrategicActorPolicy {
             boolean executiveEmergencyFlood,
             boolean overrideCampaign,
             boolean appointmentPressureCampaign,
+            FormalLegalResponse formalResponse,
+            PracticalImplementationResponse practicalImplementationResponse,
             double emergencyPressureDelta,
             double overridePressureDelta,
             double complianceDelta

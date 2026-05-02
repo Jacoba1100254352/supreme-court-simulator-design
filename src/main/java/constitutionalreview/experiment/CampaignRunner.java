@@ -473,6 +473,19 @@ public final class CampaignRunner {
                 "scenarioKey",
                 "scenario",
                 "totalCases",
+                "petitionFiledRate",
+                "admissionRate",
+                "screenOutRate",
+                "meritsTransferRate",
+                "paidPetitionRate",
+                "ifpPetitionRate",
+                "solicitorGeneralSignalRate",
+                "amicusIntensity",
+                "splitMaturity",
+                "relistRate",
+                "specialistCounselRate",
+                "vehicleDefectRisk",
+                "conditionalReversalProbability",
                 "directionalScore",
                 "stabilityRightsScore",
                 "legitimacyControlScore",
@@ -483,6 +496,7 @@ public final class CampaignRunner {
                 "rightsProtection",
                 "partisanAlignment",
                 "shadowDocketAbuse",
+                "emergencyLegitimacyRisk",
                 "legitimacy",
                 "reversalRate",
                 "constitutionalConflict",
@@ -492,15 +506,18 @@ public final class CampaignRunner {
                 "invalidationRate",
                 "meritsReviewRate",
                 "emergencyOrderRate",
+                "emergencyGrantRate",
                 "shadowReliefRate",
                 "reasonedEmergencyOrderRate",
                 "temporaryStayRate",
                 "meritsAccelerationRate",
                 "expiredEmergencyOrderRate",
                 "recusalRate",
+                "quorumFailureRate",
                 "justiceReplacementRate",
                 "concurrenceRate",
                 "dissentRate",
+                "fragmentationIndex",
                 "panelRate",
                 "enBancRate",
                 "crossCheckDisagreementRate",
@@ -520,6 +537,24 @@ public final class CampaignRunner {
                 "executiveEmergencyFloodRate",
                 "overrideCampaignRate",
                 "appointmentPressureCampaignRate",
+                "formalRepealRate",
+                "formalReplacementRate",
+                "formalNarrowedReenactmentRate",
+                "formalWeakOverrideRate",
+                "formalAmendmentRate",
+                "formalCourtCurbingRate",
+                "formalOpenDefianceRate",
+                "practicalDelayRate",
+                "practicalAdministrativeSubstitutionRate",
+                "practicalSymbolicComplianceRate",
+                "practicalBureaucraticResistanceRate",
+                "practicalOpenNoncomplianceRate",
+                "rightsClaimantSuccess",
+                "doctrinalDepth",
+                "remedialBreadth",
+                "lowerCourtCompliance",
+                "eliteAcceptance",
+                "publicConfidence",
                 "facialChallengeRate",
                 "asAppliedChallengeRate",
                 "electionDisputeRate",
@@ -539,6 +574,19 @@ public final class CampaignRunner {
                     .append(Values.csv(report.scenarioKey())).append(',')
                     .append(Values.csv(report.scenarioName())).append(',')
                     .append(report.totalCases()).append(',')
+                    .append(format(report.petitionFiledRate())).append(',')
+                    .append(format(report.admissionRate())).append(',')
+                    .append(format(report.screenOutRate())).append(',')
+                    .append(format(report.meritsTransferRate())).append(',')
+                    .append(format(report.paidPetitionRate())).append(',')
+                    .append(format(report.ifpPetitionRate())).append(',')
+                    .append(format(report.solicitorGeneralSignalRate())).append(',')
+                    .append(format(report.amicusIntensity())).append(',')
+                    .append(format(report.splitMaturity())).append(',')
+                    .append(format(report.relistRate())).append(',')
+                    .append(format(report.specialistCounselRate())).append(',')
+                    .append(format(report.vehicleDefectRisk())).append(',')
+                    .append(format(report.conditionalReversalProbability())).append(',')
                     .append(format(report.directionalScore())).append(',')
                     .append(format(report.stabilityRightsScore())).append(',')
                     .append(format(report.legitimacyControlScore())).append(',')
@@ -549,6 +597,7 @@ public final class CampaignRunner {
                     .append(format(report.rightsProtection())).append(',')
                     .append(format(report.partisanAlignment())).append(',')
                     .append(format(report.shadowDocketAbuse())).append(',')
+                    .append(format(report.emergencyLegitimacyRisk())).append(',')
                     .append(format(report.legitimacy())).append(',')
                     .append(format(report.reversalRate())).append(',')
                     .append(format(report.constitutionalConflict())).append(',')
@@ -558,15 +607,18 @@ public final class CampaignRunner {
                     .append(format(report.invalidationRate())).append(',')
                     .append(format(report.meritsReviewRate())).append(',')
                     .append(format(report.emergencyOrderRate())).append(',')
+                    .append(format(report.emergencyGrantRate())).append(',')
                     .append(format(report.shadowReliefRate())).append(',')
                     .append(format(report.reasonedEmergencyOrderRate())).append(',')
                     .append(format(report.temporaryStayRate())).append(',')
                     .append(format(report.meritsAccelerationRate())).append(',')
                     .append(format(report.expiredEmergencyOrderRate())).append(',')
                     .append(format(report.recusalRate())).append(',')
+                    .append(format(report.quorumFailureRate())).append(',')
                     .append(format(report.justiceReplacementRate())).append(',')
                     .append(format(report.concurrenceRate())).append(',')
                     .append(format(report.dissentRate())).append(',')
+                    .append(format(report.fragmentationIndex())).append(',')
                     .append(format(report.panelRate())).append(',')
                     .append(format(report.enBancRate())).append(',')
                     .append(format(report.crossCheckDisagreementRate())).append(',')
@@ -586,6 +638,24 @@ public final class CampaignRunner {
                     .append(format(report.executiveEmergencyFloodRate())).append(',')
                     .append(format(report.overrideCampaignRate())).append(',')
                     .append(format(report.appointmentPressureCampaignRate())).append(',')
+                    .append(format(report.formalRepealRate())).append(',')
+                    .append(format(report.formalReplacementRate())).append(',')
+                    .append(format(report.formalNarrowedReenactmentRate())).append(',')
+                    .append(format(report.formalWeakOverrideRate())).append(',')
+                    .append(format(report.formalAmendmentRate())).append(',')
+                    .append(format(report.formalCourtCurbingRate())).append(',')
+                    .append(format(report.formalOpenDefianceRate())).append(',')
+                    .append(format(report.practicalDelayRate())).append(',')
+                    .append(format(report.practicalAdministrativeSubstitutionRate())).append(',')
+                    .append(format(report.practicalSymbolicComplianceRate())).append(',')
+                    .append(format(report.practicalBureaucraticResistanceRate())).append(',')
+                    .append(format(report.practicalOpenNoncomplianceRate())).append(',')
+                    .append(format(report.rightsClaimantSuccess())).append(',')
+                    .append(format(report.doctrinalDepth())).append(',')
+                    .append(format(report.remedialBreadth())).append(',')
+                    .append(format(report.lowerCourtCompliance())).append(',')
+                    .append(format(report.eliteAcceptance())).append(',')
+                    .append(format(report.publicConfidence())).append(',')
                     .append(format(report.facialChallengeRate())).append(',')
                     .append(format(report.asAppliedChallengeRate())).append(',')
                     .append(format(report.electionDisputeRate())).append(',')
@@ -651,8 +721,14 @@ public final class CampaignRunner {
         WeightedScenarioReport lowestShadow = weightedReports.stream()
                 .min(Comparator.comparingDouble(WeightedScenarioReport::shadowDocketAbuse))
                 .orElseThrow();
+        WeightedScenarioReport lowestEmergencyRisk = weightedReports.stream()
+                .min(Comparator.comparingDouble(WeightedScenarioReport::emergencyLegitimacyRisk))
+                .orElseThrow();
         WeightedScenarioReport lowestPartisan = weightedReports.stream()
                 .min(Comparator.comparingDouble(WeightedScenarioReport::partisanAlignment))
+                .orElseThrow();
+        WeightedScenarioReport highestPublicConfidence = weightedReports.stream()
+                .max(Comparator.comparingDouble(WeightedScenarioReport::publicConfidence))
                 .orElseThrow();
         builder.append("- Highest directional score: ")
                 .append(bestDirectional.scenarioName())
@@ -669,21 +745,32 @@ public final class CampaignRunner {
                 .append(" at ")
                 .append(format(lowestShadow.shadowDocketAbuse()))
                 .append(".\n");
+        builder.append("- Lowest emergency legitimacy risk: ")
+                .append(lowestEmergencyRisk.scenarioName())
+                .append(" at ")
+                .append(format(lowestEmergencyRisk.emergencyLegitimacyRisk()))
+                .append(".\n");
         builder.append("- Lowest partisan alignment: ")
                 .append(lowestPartisan.scenarioName())
                 .append(" at ")
                 .append(format(lowestPartisan.partisanAlignment()))
                 .append(".\n");
+        builder.append("- Highest public confidence index: ")
+                .append(highestPublicConfidence.scenarioName())
+                .append(" at ")
+                .append(format(highestPublicConfidence.publicConfidence()))
+                .append(".\n");
         builder.append("- Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, and administrative feasibility.\n");
 
         builder.append("\n## Metric Direction Legend\n\n");
         builder.append("- Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.\n");
-        builder.append("- Lower `partisanAlignment`, `shadowDocketAbuse`, `reversalRate`, `constitutionalConflict`, and `administrativeCost` are usually better.\n");
-        builder.append("- Invalidation, emergency, replacement, recusal, concurrence, dissent, panel, en banc, council, cross-check, and override rates are diagnostic.\n");
+        builder.append("- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `lowerCourtCompliance`, `eliteAcceptance`, and `publicConfidence` are usually better, but each should be read in domain context.\n");
+        builder.append("- Lower `partisanAlignment`, `shadowDocketAbuse`, `emergencyLegitimacyRisk`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.\n");
+        builder.append("- Petition, admission, emergency, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, formal-response, practical-response, and override rates are diagnostic rather than automatically good or bad.\n");
 
         builder.append("\n## Scenario Averages Across Cases\n\n");
-        builder.append("| Scenario | Directional | Stability/rights | Legitimacy/control | Legal stability | Precedent | Statutory | Compliance | Rights protection | Partisan align. | Shadow abuse | Legitimacy | Reversal | Conflict | Responsiveness | Strategic | Evasion | Exec flood | Admin cost | Merits accel. | Replacement | Override att. | Override |\n");
-        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        builder.append("| Scenario | Directional | Admission | Screen out | Rights protection | Claimant success | Doctrinal depth | Remedy breadth | Lower-court compliance | Elite acceptance | Public confidence | Partisan align. | Shadow abuse | Emergency risk | Emergency grants | Fragmentation | Strategic | Court-curbing | Open noncomp. | Admin cost |\n");
+        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
         weightedReports.stream()
                 .sorted(Comparator.comparingDouble(WeightedScenarioReport::directionalScore).reversed())
                 .forEach(report -> builder.append("| ")
@@ -691,47 +778,41 @@ public final class CampaignRunner {
                         .append(" | ")
                         .append(format(report.directionalScore()))
                         .append(" | ")
-                        .append(format(report.stabilityRightsScore()))
+                        .append(format(report.admissionRate()))
                         .append(" | ")
-                        .append(format(report.legitimacyControlScore()))
-                        .append(" | ")
-                        .append(format(report.legalStability()))
-                        .append(" | ")
-                        .append(format(report.precedentStability()))
-                        .append(" | ")
-                        .append(format(report.statutoryStability()))
-                        .append(" | ")
-                        .append(format(report.interbranchCompliance()))
+                        .append(format(report.screenOutRate()))
                         .append(" | ")
                         .append(format(report.rightsProtection()))
+                        .append(" | ")
+                        .append(format(report.rightsClaimantSuccess()))
+                        .append(" | ")
+                        .append(format(report.doctrinalDepth()))
+                        .append(" | ")
+                        .append(format(report.remedialBreadth()))
+                        .append(" | ")
+                        .append(format(report.lowerCourtCompliance()))
+                        .append(" | ")
+                        .append(format(report.eliteAcceptance()))
+                        .append(" | ")
+                        .append(format(report.publicConfidence()))
                         .append(" | ")
                         .append(format(report.partisanAlignment()))
                         .append(" | ")
                         .append(format(report.shadowDocketAbuse()))
                         .append(" | ")
-                        .append(format(report.legitimacy()))
+                        .append(format(report.emergencyLegitimacyRisk()))
                         .append(" | ")
-                        .append(format(report.reversalRate()))
+                        .append(format(report.emergencyGrantRate()))
                         .append(" | ")
-                        .append(format(report.constitutionalConflict()))
-                        .append(" | ")
-                        .append(format(report.democraticResponsiveness()))
+                        .append(format(report.fragmentationIndex()))
                         .append(" | ")
                         .append(format(report.strategicPressure()))
                         .append(" | ")
-                        .append(format(report.legislativeEvasionRate()))
+                        .append(format(report.formalCourtCurbingRate()))
                         .append(" | ")
-                        .append(format(report.executiveEmergencyFloodRate()))
+                        .append(format(report.practicalOpenNoncomplianceRate()))
                         .append(" | ")
                         .append(format(report.administrativeCost()))
-                        .append(" | ")
-                        .append(format(report.meritsAccelerationRate()))
-                        .append(" | ")
-                        .append(format(report.justiceReplacementRate()))
-                        .append(" | ")
-                        .append(format(report.overrideAttemptRate()))
-                        .append(" | ")
-                        .append(format(report.overrideRate()))
                         .append(" |\n"));
         appendCaseSlices(builder, result.rows());
         return builder.toString();
@@ -807,6 +888,10 @@ public final class CampaignRunner {
         private final String scenarioName;
         private double weight;
         private double directionalScore;
+        private double petitionFiledRate;
+        private double admissionRate;
+        private double screenOutRate;
+        private double meritsTransferRate;
         private double stabilityRightsScore;
         private double legitimacyControlScore;
         private double legalStability;
@@ -816,15 +901,28 @@ public final class CampaignRunner {
         private double rightsProtection;
         private double partisanAlignment;
         private double shadowDocketAbuse;
+        private double emergencyLegitimacyRisk;
         private double legitimacy;
         private double reversalRate;
         private double constitutionalConflict;
         private double democraticResponsiveness;
         private double strategicPressure;
+        private double formalCourtCurbingRate;
+        private double formalOpenDefianceRate;
+        private double practicalOpenNoncomplianceRate;
         private double legislativeEvasionRate;
         private double executiveEmergencyFloodRate;
         private double administrativeCost;
         private double invalidationRate;
+        private double emergencyGrantRate;
+        private double quorumFailureRate;
+        private double fragmentationIndex;
+        private double rightsClaimantSuccess;
+        private double doctrinalDepth;
+        private double remedialBreadth;
+        private double lowerCourtCompliance;
+        private double eliteAcceptance;
+        private double publicConfidence;
         private double meritsAccelerationRate;
         private double justiceReplacementRate;
         private double overrideAttemptRate;
@@ -837,6 +935,10 @@ public final class CampaignRunner {
         private void add(double rowWeight, ScenarioReport report) {
             weight += rowWeight;
             directionalScore += report.directionalScore() * rowWeight;
+            petitionFiledRate += report.petitionFiledRate() * rowWeight;
+            admissionRate += report.admissionRate() * rowWeight;
+            screenOutRate += report.screenOutRate() * rowWeight;
+            meritsTransferRate += report.meritsTransferRate() * rowWeight;
             stabilityRightsScore += report.stabilityRightsScore() * rowWeight;
             legitimacyControlScore += report.legitimacyControlScore() * rowWeight;
             legalStability += report.legalStability() * rowWeight;
@@ -846,15 +948,28 @@ public final class CampaignRunner {
             rightsProtection += report.rightsProtection() * rowWeight;
             partisanAlignment += report.partisanAlignment() * rowWeight;
             shadowDocketAbuse += report.shadowDocketAbuse() * rowWeight;
+            emergencyLegitimacyRisk += report.emergencyLegitimacyRisk() * rowWeight;
             legitimacy += report.legitimacy() * rowWeight;
             reversalRate += report.reversalRate() * rowWeight;
             constitutionalConflict += report.constitutionalConflict() * rowWeight;
             democraticResponsiveness += report.democraticResponsiveness() * rowWeight;
             strategicPressure += report.strategicPressure() * rowWeight;
+            formalCourtCurbingRate += report.formalCourtCurbingRate() * rowWeight;
+            formalOpenDefianceRate += report.formalOpenDefianceRate() * rowWeight;
+            practicalOpenNoncomplianceRate += report.practicalOpenNoncomplianceRate() * rowWeight;
             legislativeEvasionRate += report.legislativeEvasionRate() * rowWeight;
             executiveEmergencyFloodRate += report.executiveEmergencyFloodRate() * rowWeight;
             administrativeCost += report.administrativeCost() * rowWeight;
             invalidationRate += report.invalidationRate() * rowWeight;
+            emergencyGrantRate += report.emergencyGrantRate() * rowWeight;
+            quorumFailureRate += report.quorumFailureRate() * rowWeight;
+            fragmentationIndex += report.fragmentationIndex() * rowWeight;
+            rightsClaimantSuccess += report.rightsClaimantSuccess() * rowWeight;
+            doctrinalDepth += report.doctrinalDepth() * rowWeight;
+            remedialBreadth += report.remedialBreadth() * rowWeight;
+            lowerCourtCompliance += report.lowerCourtCompliance() * rowWeight;
+            eliteAcceptance += report.eliteAcceptance() * rowWeight;
+            publicConfidence += report.publicConfidence() * rowWeight;
             meritsAccelerationRate += report.meritsAccelerationRate() * rowWeight;
             justiceReplacementRate += report.justiceReplacementRate() * rowWeight;
             overrideAttemptRate += report.overrideAttemptRate() * rowWeight;
@@ -867,6 +982,10 @@ public final class CampaignRunner {
                     scenarioKey,
                     scenarioName,
                     directionalScore / denominator,
+                    petitionFiledRate / denominator,
+                    admissionRate / denominator,
+                    screenOutRate / denominator,
+                    meritsTransferRate / denominator,
                     stabilityRightsScore / denominator,
                     legitimacyControlScore / denominator,
                     legalStability / denominator,
@@ -876,15 +995,28 @@ public final class CampaignRunner {
                     rightsProtection / denominator,
                     partisanAlignment / denominator,
                     shadowDocketAbuse / denominator,
+                    emergencyLegitimacyRisk / denominator,
                     legitimacy / denominator,
                     reversalRate / denominator,
                     constitutionalConflict / denominator,
                     democraticResponsiveness / denominator,
                     strategicPressure / denominator,
+                    formalCourtCurbingRate / denominator,
+                    formalOpenDefianceRate / denominator,
+                    practicalOpenNoncomplianceRate / denominator,
                     legislativeEvasionRate / denominator,
                     executiveEmergencyFloodRate / denominator,
                     administrativeCost / denominator,
                     invalidationRate / denominator,
+                    emergencyGrantRate / denominator,
+                    quorumFailureRate / denominator,
+                    fragmentationIndex / denominator,
+                    rightsClaimantSuccess / denominator,
+                    doctrinalDepth / denominator,
+                    remedialBreadth / denominator,
+                    lowerCourtCompliance / denominator,
+                    eliteAcceptance / denominator,
+                    publicConfidence / denominator,
                     meritsAccelerationRate / denominator,
                     justiceReplacementRate / denominator,
                     overrideAttemptRate / denominator,
@@ -897,6 +1029,10 @@ public final class CampaignRunner {
             String scenarioKey,
             String scenarioName,
             double directionalScore,
+            double petitionFiledRate,
+            double admissionRate,
+            double screenOutRate,
+            double meritsTransferRate,
             double stabilityRightsScore,
             double legitimacyControlScore,
             double legalStability,
@@ -906,15 +1042,28 @@ public final class CampaignRunner {
             double rightsProtection,
             double partisanAlignment,
             double shadowDocketAbuse,
+            double emergencyLegitimacyRisk,
             double legitimacy,
             double reversalRate,
             double constitutionalConflict,
             double democraticResponsiveness,
             double strategicPressure,
+            double formalCourtCurbingRate,
+            double formalOpenDefianceRate,
+            double practicalOpenNoncomplianceRate,
             double legislativeEvasionRate,
             double executiveEmergencyFloodRate,
             double administrativeCost,
             double invalidationRate,
+            double emergencyGrantRate,
+            double quorumFailureRate,
+            double fragmentationIndex,
+            double rightsClaimantSuccess,
+            double doctrinalDepth,
+            double remedialBreadth,
+            double lowerCourtCompliance,
+            double eliteAcceptance,
+            double publicConfidence,
             double meritsAccelerationRate,
             double justiceReplacementRate,
             double overrideAttemptRate,

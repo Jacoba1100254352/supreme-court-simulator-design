@@ -4,6 +4,9 @@ public record ReviewCase(
         String id,
         CaseType type,
         DocketType docketType,
+        AccessPath accessPath,
+        ReviewTiming reviewTiming,
+        PetitionType petitionType,
         double legalAmbiguity,
         double rightsBurden,
         double democraticMandate,
@@ -18,13 +21,24 @@ public record ReviewCase(
         double overridePressure,
         double lowerCourtConflict,
         double lowerCourtErrorRisk,
-        double certiorariPressure
+        double certiorariPressure,
+        double solicitorGeneralSignal,
+        int amicusBriefs,
+        double splitMaturity,
+        int relistCount,
+        boolean specialistCounsel,
+        double vehicleDefectRisk,
+        double conditionalReversalProbability,
+        EmergencyApplication emergencyApplication
 ) {
     public ReviewCase withId(String id) {
         return new ReviewCase(
                 id,
                 type,
                 docketType,
+                accessPath,
+                reviewTiming,
+                petitionType,
                 legalAmbiguity,
                 rightsBurden,
                 democraticMandate,
@@ -39,7 +53,15 @@ public record ReviewCase(
                 overridePressure,
                 lowerCourtConflict,
                 lowerCourtErrorRisk,
-                certiorariPressure
+                certiorariPressure,
+                solicitorGeneralSignal,
+                amicusBriefs,
+                splitMaturity,
+                relistCount,
+                specialistCounsel,
+                vehicleDefectRisk,
+                conditionalReversalProbability,
+                emergencyApplication
         );
     }
 }

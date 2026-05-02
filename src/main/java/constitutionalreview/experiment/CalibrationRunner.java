@@ -99,12 +99,12 @@ public final class CalibrationRunner {
         add(targets, current, "docket-election", "Election disputes remain a stress domain rather than the whole docket.", "electionDisputeRate", "structuralRate", 0.02, 0.24, 0.04, "scdb-issue-area", dataset);
         add(targets, current, "docket-executive-power", "Executive-power disputes remain visible but bounded within structural public-law disputes.", "executivePowerDisputeRate", "structuralRate", 0.03, 0.30, 0.04, "scdb-issue-area", dataset);
         add(targets, current, "current-invalidation", "Declarations of unconstitutionality should be uncommon in the full merits docket.", "invalidationRate", "invalidationRate", 0.00, 0.22, 0.07, "scdb-unconstitutionality", dataset);
-        add(targets, current, "current-merits-review", "Current-like cases should usually receive merits review outside pure emergency processing.", "meritsReviewRate", "meritsReviewRate", 0.60, 1.00, 0.40, "hlr-merits", dataset);
+        add(targets, current, "current-merits-transfer", "Admissibility-aware current-like designs should transfer a substantial but not universal share of filed matters to merits.", "meritsTransferRate", "admissibilityModelShare", 0.25, 0.85, 0.00, "deep-research-intake-synthesis", dataset);
         add(targets, current, "current-emergency-applications", "Emergency applications should be present but bounded in the current-like docket.", "emergencyStayDocketRate", "emergencyStayDocketRate", 0.00, 0.22, 0.20, "shadow-docket-database", dataset);
         add(targets, current, "current-emergency-orders", "Emergency orders should be observable but not universal.", "emergencyOrderRate", "emergencyOrderRate", 0.03, 0.60, 0.45, "hlr-emergency", dataset);
         add(targets, current, "current-recusal", "Justice-case recusals should be rare.", "recusalRate", "recusalRate", 0.00, 0.06, 0.02, "epstein-recusal", dataset);
         add(targets, current, "current-shadow-abuse", "Open emergency procedure creates measurable but bounded shadow-docket abuse.", "shadowDocketAbuse", "shadowDocketAbuse", 0.05, 0.60, 0.05, "shadow-docket-database", dataset);
-        add(targets, current, "current-precedent-stability", "Precedent stability remains high enough for a stable merits court.", "precedentStability", "precedentStability", 0.55, 1.00, 0.08, "scdb-formal-precedent", dataset);
+        add(targets, current, "current-precedent-stability", "Precedent stability remains high enough for a stress-inclusive docket with screened and emergency matters.", "precedentStability", "precedentStability", 0.55, 1.00, 0.16, "scdb-formal-precedent", dataset);
         add(targets, current, "current-statutory-stability", "Statutory stability remains in a source-derived post-review band.", "statutoryStability", "statutoryStability", 0.40, 1.00, 0.22, "scdb-unconstitutionality", dataset);
         add(targets, current, "current-compliance", "Interbranch compliance stays above a low-conflict floor.", "interbranchCompliance", "statutoryStability", 0.30, 1.00, 0.42, "hlr-emergency", dataset);
         add(targets, commission, "commission-partisan-alignment", "Commission appointments should keep partisan alignment low.", "partisanAlignment", "shadowDocketAbuse", 0.00, 0.18, 0.08, "hlr-voting-alignments", dataset);
@@ -169,6 +169,12 @@ public final class CalibrationRunner {
                         "Supreme Court Database formal alteration of precedent variable",
                         "https://scdb.la.psu.edu/online-codebook/formal-alteration-of-precedent/",
                         "Provides a historical anchor for rare formal precedent alteration."
+                ),
+                new CalibrationSource(
+                        "deep-research-intake-synthesis",
+                        "Supreme Court Deep Research synthesis intake tables",
+                        "data/calibration/supreme-court-synthesis/lower-court-intake-calibration.csv",
+                        "Preserves comparative intake-denominator rows with validation-use and coverage metadata; used here as a structural guardrail rather than a one-to-one empirical target."
                 )
         );
     }
@@ -219,6 +225,7 @@ public final class CalibrationRunner {
             case "rightsClaimRate" -> report.rightsClaimRate();
             case "invalidationRate" -> report.invalidationRate();
             case "meritsReviewRate" -> report.meritsReviewRate();
+            case "meritsTransferRate" -> report.meritsTransferRate();
             case "emergencyOrderRate" -> report.emergencyOrderRate();
             case "meritsAccelerationRate" -> report.meritsAccelerationRate();
             case "recusalRate" -> report.recusalRate();

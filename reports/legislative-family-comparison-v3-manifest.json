@@ -8,11 +8,11 @@
   "casesPerRun": 48,
   "seed": 20260501,
   "experimentCaseCount": 7,
-  "scenarioCount": 13,
+  "scenarioCount": 14,
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports",
-  "legislativeInputSha256": "a511189a505f596206f03065270099dcb820046c04454681675e8d4e546f2359",
+  "legislativeInputSha256": "93f6b8b0d9aaa877f6ca5583b0a62c394fdc25ab35493b03732430bf71738745",
   "artifacts": [
-    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "d3617587b0854540fb04f31d8c5e2d38afd3f6c94a23359798ff8c5cf902c1d8"},
-    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "093e2a587a3ee1d35bbd19fd65eba53ece971e1994764c27fb6d73d51d9e85f8"}
+    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "87cf60cb1bf0a1af5f3e66a10dfa66f0f7e6bfde0e938104acc436355bbed604"},
+    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "dae9d593044740ae6b6c65e06813ed56c67087edd063d7046bbe46155d51f7c6"}
   ]
 }

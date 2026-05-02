@@ -8,11 +8,11 @@
   "casesPerRun": 64,
   "seed": 20260501,
   "experimentCaseCount": 20,
-  "scenarioCount": 13,
+  "scenarioCount": 14,
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
-  "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
+  "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/constitutional-review-campaign-v2.csv", "sha256": "c8b182582ab63dfb7c38c56e54c06f96ce2721f562a14b8d4236ac444ee207f9"},
-    {"path": "reports/constitutional-review-campaign-v2.md", "sha256": "1d0c33e6402de65fc0d7686d205d7f74c4f77ba8b99a55058b25db37b113e0d3"}
+    {"path": "reports/constitutional-review-campaign-v2.csv", "sha256": "2c5bc2d0d9f4d09176742ebceda84cecf06a8c592da98f920d7022e4ca4e4e53"},
+    {"path": "reports/constitutional-review-campaign-v2.md", "sha256": "24840483c522dc05ce7e1f15053ce19acd456452e2b0f20b2b4455cde99cb046"}
   ]
 }

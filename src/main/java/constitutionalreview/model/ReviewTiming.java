@@ -1,0 +1,9 @@
+package constitutionalreview.model;
+
+public enum ReviewTiming {
+    EX_ANTE_PRE_PROMULGATION,
+    IMMEDIATE_POST_PROMULGATION_ABSTRACT,
+    EX_POST_CONCRETE,
+    LATE_EX_POST,
+    EMERGENCY_INTERIM
+}

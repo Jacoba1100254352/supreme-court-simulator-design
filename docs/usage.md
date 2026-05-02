@@ -45,6 +45,13 @@ Run empirical calibration against a custom normalized source table directory:
 make calibrate CALIBRATION_DATA_DIR=/path/to/calibration
 ```
 
+Import the local Supreme Court Deep Research synthesis CSV blocks into calibration inputs:
+
+```sh
+python3 tools/import_deep_research_synthesis.py
+make calibrate
+```
+
 Import legislative outputs:
 
 ```sh
@@ -61,4 +68,6 @@ Campaign runs write:
 - `reports/constitutional-review-campaign-v2.md`
 - `reports/constitutional-review-campaign-v2-manifest.json`
 
-Diagnostic runs also write empirical calibration, source-range appendix, seed-robustness, mechanism-ablation, parameter-prior, legislative-family, and manipulation-stress reports. The preserved v0 and v1 targets write the same campaign filename pattern with `v0` and `v1`.
+Diagnostic runs also write empirical calibration, source-range appendix, seed-robustness, mechanism-ablation, parameter-prior, legislative-family, and manipulation-stress reports. The campaign CSV now includes review-path admission rates, certiorari signals, emergency legitimacy risk, emergency grant rate, quorum failure, opinion fragmentation, formal legal responses, practical implementation responses, and direct output metrics such as rights-claimant success, doctrinal depth, remedial breadth, lower-court compliance, elite acceptance, and public confidence.
+
+The preserved v0 and v1 targets write the same campaign filename pattern with `v0` and `v1`.

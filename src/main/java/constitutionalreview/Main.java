@@ -206,30 +206,36 @@ public final class Main {
         System.out.println();
         System.out.printf(
                 Locale.ROOT,
-                "%-40s %7s %7s %7s %7s %7s %7s %7s %7s%n",
+                "%-40s %7s %7s %7s %7s %7s %7s %7s %7s %7s %7s %7s%n",
                 "Scenario",
                 "Score",
+                "Admit",
                 "Stable",
                 "Rights",
                 "Partisan",
                 "Shadow",
+                "Emerg",
                 "Legit",
                 "Conflict",
-                "Resp"
+                "Resp",
+                "Public"
         );
         for (ScenarioReport report : reports) {
             System.out.printf(
                     Locale.ROOT,
-                    "%-40s %7s %7s %7s %7s %7s %7s %7s %7s%n",
+                    "%-40s %7s %7s %7s %7s %7s %7s %7s %7s %7s %7s %7s%n",
                     truncate(report.scenarioName(), 40),
                     Values.format3(report.directionalScore()),
+                    Values.format3(report.admissionRate()),
                     Values.format3(report.legalStability()),
                     Values.format3(report.rightsProtection()),
                     Values.format3(report.partisanAlignment()),
                     Values.format3(report.shadowDocketAbuse()),
+                    Values.format3(report.emergencyLegitimacyRisk()),
                     Values.format3(report.legitimacy()),
                     Values.format3(report.constitutionalConflict()),
-                    Values.format3(report.democraticResponsiveness())
+                    Values.format3(report.democraticResponsiveness()),
+                    Values.format3(report.publicConfidence())
             );
         }
     }

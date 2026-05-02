@@ -1,14 +1,15 @@
 scenarioKey,scenario,seedCount,directionalMean,directionalMin,directionalMax,directionalStddev,legalStabilityMean,legalStabilityStddev,precedentStabilityMean,statutoryStabilityMean,interbranchComplianceMean,rightsProtectionMean,rightsProtectionStddev,shadowDocketAbuseMean,shadowDocketAbuseStddev,constitutionalConflictMean,constitutionalConflictStddev,democraticResponsivenessMean,administrativeCostMean
-emergency-restraint-court,No emergency relief without merits review,5,0.699,0.699,0.700,0.000,0.578,0.002,0.730,0.589,0.414,0.680,0.002,0.011,0.000,0.582,0.001,0.746,0.376
-supermajority-review,60 percent invalidation threshold,5,0.697,0.696,0.697,0.000,0.609,0.001,0.829,0.587,0.412,0.651,0.002,0.147,0.001,0.590,0.000,0.723,0.318
-term-limited-balanced,18-year staggered terms + regular appointments,5,0.696,0.696,0.697,0.000,0.580,0.002,0.742,0.586,0.411,0.684,0.002,0.157,0.000,0.591,0.000,0.743,0.322
-nonpartisan-commission,Nonpartisan commission appointments,5,0.691,0.691,0.691,0.000,0.583,0.002,0.749,0.588,0.411,0.681,0.002,0.157,0.000,0.590,0.000,0.742,0.352
-accountability-retention-court,Retention-election accountability court,5,0.687,0.687,0.687,0.000,0.584,0.002,0.763,0.594,0.396,0.653,0.002,0.156,0.000,0.618,0.001,0.754,0.352
-panel-en-banc,Three-judge panels with en banc correction,5,0.686,0.686,0.687,0.000,0.588,0.002,0.763,0.590,0.412,0.677,0.001,0.159,0.001,0.589,0.000,0.739,0.369
-legislative-override,Judicial review with legislative supermajority override,5,0.684,0.684,0.685,0.000,0.570,0.001,0.743,0.576,0.390,0.690,0.001,0.157,0.001,0.628,0.000,0.745,0.362
-expanded-court-fifteen,Expanded 15-seat court,5,0.683,0.683,0.684,0.000,0.581,0.002,0.746,0.587,0.411,0.683,0.002,0.158,0.001,0.591,0.000,0.743,0.372
-recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,5,0.683,0.683,0.684,0.000,0.582,0.001,0.747,0.587,0.411,0.681,0.001,0.157,0.001,0.591,0.000,0.742,0.362
-current-us-like,Stylized current U.S.-like supreme court,5,0.676,0.675,0.676,0.000,0.579,0.001,0.744,0.594,0.399,0.696,0.002,0.537,0.001,0.624,0.000,0.711,0.255
-constitutional-council,Pre-enactment constitutional council,5,0.656,0.656,0.656,0.000,0.600,0.001,0.787,0.589,0.425,0.669,0.001,0.155,0.001,0.619,0.001,0.762,0.470
-cross-checking-courts,Supreme court with cross-checking constitutional court,5,0.644,0.644,0.644,0.000,0.610,0.001,0.858,0.601,0.370,0.612,0.001,0.147,0.000,0.638,0.001,0.697,0.479
-dual-supreme-courts,Dual supreme courts with disagreement filter,5,0.624,0.623,0.624,0.000,0.536,0.001,0.680,0.562,0.365,0.688,0.001,0.148,0.000,0.654,0.000,0.741,0.529
+emergency-restraint-court,No emergency relief without merits review,5,0.584,0.584,0.585,0.001,0.616,0.001,0.742,0.624,0.464,0.614,0.001,0.010,0.000,0.489,0.001,0.660,0.301
+term-limited-balanced,18-year staggered terms + regular appointments,5,0.583,0.582,0.585,0.001,0.627,0.001,0.765,0.630,0.467,0.600,0.002,0.125,0.001,0.486,0.002,0.645,0.250
+current-us-like,Stylized current U.S.-like supreme court,5,0.578,0.577,0.579,0.001,0.619,0.001,0.749,0.633,0.457,0.620,0.002,0.423,0.002,0.515,0.002,0.621,0.198
+nonpartisan-commission,Nonpartisan commission appointments,5,0.576,0.576,0.577,0.001,0.626,0.001,0.769,0.629,0.463,0.605,0.001,0.128,0.001,0.493,0.001,0.650,0.281
+recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,5,0.576,0.575,0.577,0.000,0.627,0.001,0.765,0.630,0.467,0.601,0.001,0.125,0.001,0.487,0.001,0.645,0.284
+expanded-court-fifteen,Expanded 15-seat court,5,0.576,0.575,0.576,0.000,0.627,0.002,0.765,0.630,0.467,0.601,0.002,0.126,0.000,0.487,0.001,0.645,0.292
+panel-en-banc,Three-judge panels with en banc correction,5,0.572,0.571,0.573,0.001,0.629,0.001,0.776,0.630,0.462,0.602,0.001,0.130,0.001,0.493,0.001,0.649,0.298
+legislative-override,Judicial review with legislative supermajority override,5,0.572,0.572,0.572,0.000,0.619,0.001,0.766,0.623,0.451,0.608,0.002,0.129,0.001,0.514,0.001,0.652,0.289
+accountability-retention-court,Retention-election accountability court,5,0.572,0.572,0.572,0.000,0.626,0.000,0.774,0.631,0.454,0.590,0.001,0.127,0.000,0.510,0.001,0.658,0.281
+supermajority-review,60 percent invalidation threshold,5,0.570,0.569,0.571,0.000,0.648,0.001,0.826,0.632,0.467,0.574,0.001,0.124,0.000,0.486,0.001,0.627,0.248
+constitutional-council,Pre-enactment constitutional council,5,0.558,0.557,0.560,0.001,0.638,0.001,0.790,0.630,0.475,0.597,0.002,0.127,0.001,0.509,0.001,0.667,0.375
+comparative-constitutional-senates,Comparative 16-seat constitutional senates,5,0.554,0.554,0.555,0.001,0.652,0.001,0.834,0.636,0.467,0.566,0.001,0.124,0.001,0.485,0.001,0.623,0.330
+dual-supreme-courts,Dual supreme courts with disagreement filter,5,0.537,0.536,0.537,0.000,0.588,0.001,0.711,0.608,0.428,0.609,0.001,0.127,0.001,0.542,0.001,0.651,0.426
+cross-checking-courts,Supreme court with cross-checking constitutional court,5,0.529,0.528,0.530,0.001,0.634,0.000,0.819,0.632,0.431,0.562,0.000,0.125,0.001,0.532,0.001,0.622,0.384

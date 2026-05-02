@@ -8,9 +8,12 @@ import constitutionalreview.institution.EmergencyDocketRule;
 import constitutionalreview.institution.OpinionCoalitionRule;
 import constitutionalreview.institution.OverrideRule;
 import constitutionalreview.institution.RecusalRule;
+import constitutionalreview.institution.RecusalConsequenceType;
+import constitutionalreview.institution.RemedyVotingThresholds;
 import constitutionalreview.institution.RemovalStandard;
 import constitutionalreview.institution.ReviewProcess;
 import constitutionalreview.institution.ReviewMode;
+import constitutionalreview.institution.SizeChangeDifficulty;
 import constitutionalreview.institution.TermLimitPolicy;
 import constitutionalreview.institution.VotingThreshold;
 import constitutionalreview.model.CaseWorld;
@@ -32,6 +35,7 @@ public final class ScenarioCatalog {
             "panel-en-banc",
             "cross-checking-courts",
             "dual-supreme-courts",
+            "comparative-constitutional-senates",
             "constitutional-council",
             "legislative-override",
             "accountability-retention-court",
@@ -227,6 +231,32 @@ public final class ScenarioCatalog {
                         1.10,
                         1.02,
                         0.30
+                )),
+                entry("comparative-constitutional-senates", new CourtDesign(
+                        "Comparative 16-seat constitutional senates",
+                        AppointmentMethod.LEGISLATIVE_SUPERMAJORITY,
+                        16,
+                        TermLimitPolicy.TWELVE_YEAR_NONRENEWABLE,
+                        RemovalStandard.ETHICS_TRIBUNAL,
+                        RecusalRule.PEER_PANEL,
+                        EmergencyDocketRule.SUPERMAJORITY_STAY,
+                        VotingThreshold.SIXTY_PERCENT,
+                        OpinionCoalitionRule.MAJORITY_OPINION_DISCIPLINE,
+                        ReviewMode.SPECIALIZED_PANELS,
+                        AuxiliaryReview.NONE,
+                        OverrideRule.NONE,
+                        1.12,
+                        1.04,
+                        0.24,
+                        2,
+                        0.67,
+                        0.18,
+                        false,
+                        68,
+                        SizeChangeDifficulty.SUPERMAJORITY_STATUTE,
+                        RecusalConsequenceType.SUBSTITUTE_JUSTICE,
+                        0.004,
+                        new RemedyVotingThresholds(0.50, 0.67, 0.67, 0.67, 0.67, 0.67)
                 )),
                 entry("constitutional-council", new CourtDesign(
                         "Pre-enactment constitutional council",

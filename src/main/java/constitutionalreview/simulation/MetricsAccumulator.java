@@ -1,14 +1,23 @@
 package constitutionalreview.simulation;
 
 import constitutionalreview.institution.CourtDecision;
+import constitutionalreview.institution.FormalLegalResponse;
 import constitutionalreview.institution.OverrideOutcome;
+import constitutionalreview.institution.PracticalImplementationResponse;
 import constitutionalreview.model.DocketType;
 
 public final class MetricsAccumulator {
     private int totalCases;
+    private int petitionFiled;
+    private int admitted;
+    private int screenOuts;
+    private int meritsTransfers;
+    private int paidPetitions;
+    private int ifpPetitions;
     private int meritsReviews;
     private int invalidations;
     private int emergencyOrders;
+    private int emergencyGrants;
     private int shadowRelief;
     private int reasonedEmergencyOrders;
     private int temporaryStays;
@@ -30,6 +39,7 @@ public final class MetricsAccumulator {
     private int reversals;
     private int justiceReplacements;
     private int recusedJustices;
+    private int quorumFailures;
     private int participatingJustices;
     private int concurrences;
     private int dissents;
@@ -40,6 +50,26 @@ public final class MetricsAccumulator {
     private int executivePowerDisputes;
     private int administrativeLawChallenges;
     private int rightsClaims;
+    private int formalRepeals;
+    private int formalReplacements;
+    private int formalNarrowedReenactments;
+    private int formalWeakOverrides;
+    private int formalAmendments;
+    private int formalCourtCurbing;
+    private int formalOpenDefiance;
+    private int practicalDelays;
+    private int practicalAdministrativeSubstitution;
+    private int practicalSymbolicCompliance;
+    private int practicalBureaucraticResistance;
+    private int practicalOpenNoncompliance;
+    private double admissionScore;
+    private double conditionalReversalProbability;
+    private double solicitorGeneralSignal;
+    private double amicusBriefs;
+    private double splitMaturity;
+    private double relistCount;
+    private double specialistCounsel;
+    private double vehicleDefectRisk;
     private double legalStability;
     private double precedentStability;
     private double statutoryStability;
@@ -47,10 +77,18 @@ public final class MetricsAccumulator {
     private double rightsProtection;
     private double partisanAlignment;
     private double shadowDocketAbuse;
+    private double emergencyLegitimacyRisk;
     private double legitimacy;
     private double constitutionalConflict;
     private double democraticResponsiveness;
     private double administrativeCost;
+    private double rightsClaimantSuccess;
+    private double doctrinalDepth;
+    private double remedialBreadth;
+    private double fragmentationIndex;
+    private double lowerCourtCompliance;
+    private double eliteAcceptance;
+    private double publicConfidence;
     private double legislativeDefiance;
     private double executiveEmergencyStrategy;
     private double appointmentManipulationPressure;
@@ -58,9 +96,16 @@ public final class MetricsAccumulator {
 
     public void add(CourtDecision decision) {
         totalCases++;
+        petitionFiled += decision.petitionFiled() ? 1 : 0;
+        admitted += decision.admitted() ? 1 : 0;
+        screenOuts += decision.screenedOut() ? 1 : 0;
+        meritsTransfers += decision.transferredToMerits() ? 1 : 0;
+        paidPetitions += decision.paidPetition() ? 1 : 0;
+        ifpPetitions += decision.ifpPetition() ? 1 : 0;
         meritsReviews += decision.meritsReview() ? 1 : 0;
         invalidations += decision.invalidated() ? 1 : 0;
         emergencyOrders += decision.emergencyOrder() ? 1 : 0;
+        emergencyGrants += decision.emergencyOrderDetail().granted() ? 1 : 0;
         shadowRelief += decision.shadowRelief() ? 1 : 0;
         reasonedEmergencyOrders += decision.reasonedEmergencyOrder() ? 1 : 0;
         temporaryStays += decision.temporaryStay() ? 1 : 0;
@@ -82,10 +127,21 @@ public final class MetricsAccumulator {
         reversals += decision.precedentReversal() ? 1 : 0;
         justiceReplacements += decision.justiceReplacements();
         recusedJustices += decision.recusedJustices();
+        quorumFailures += decision.quorumFailure() ? 1 : 0;
         participatingJustices += decision.participatingJustices();
         concurrences += decision.concurrences();
         dissents += decision.dissents();
         addDocketType(decision.docketType());
+        addFormalResponse(decision.formalLegalResponse());
+        addPracticalResponse(decision.practicalImplementationResponse());
+        admissionScore += decision.admissionScore();
+        conditionalReversalProbability += decision.conditionalReversalProbability();
+        solicitorGeneralSignal += decision.solicitorGeneralSignal();
+        amicusBriefs += decision.amicusBriefs();
+        splitMaturity += decision.splitMaturity();
+        relistCount += decision.relistCount();
+        specialistCounsel += decision.specialistCounsel() ? 1.0 : 0.0;
+        vehicleDefectRisk += decision.vehicleDefectRisk();
         legalStability += decision.legalStability();
         precedentStability += decision.precedentStability();
         statutoryStability += decision.statutoryStability();
@@ -93,10 +149,18 @@ public final class MetricsAccumulator {
         rightsProtection += decision.rightsProtection();
         partisanAlignment += decision.partisanAlignment();
         shadowDocketAbuse += decision.shadowDocketAbuse();
+        emergencyLegitimacyRisk += decision.emergencyLegitimacyRisk();
         legitimacy += decision.legitimacy();
         constitutionalConflict += decision.constitutionalConflict();
         democraticResponsiveness += decision.democraticResponsiveness();
         administrativeCost += decision.administrativeCost();
+        rightsClaimantSuccess += decision.rightsClaimantSuccess();
+        doctrinalDepth += decision.doctrinalDepth();
+        remedialBreadth += decision.remedialBreadth();
+        fragmentationIndex += decision.fragmentationIndex();
+        lowerCourtCompliance += decision.lowerCourtCompliance();
+        eliteAcceptance += decision.eliteAcceptance();
+        publicConfidence += decision.publicConfidence();
         legislativeDefiance += decision.legislativeDefiance();
         executiveEmergencyStrategy += decision.executiveEmergencyStrategy();
         appointmentManipulationPressure += decision.appointmentManipulationPressure();
@@ -110,6 +174,19 @@ public final class MetricsAccumulator {
                 scenarioKey,
                 scenarioName,
                 totalCases,
+                petitionFiled / cases,
+                admitted / cases,
+                screenOuts / cases,
+                meritsTransfers / cases,
+                paidPetitions / cases,
+                ifpPetitions / cases,
+                solicitorGeneralSignal / cases,
+                amicusBriefs / cases,
+                splitMaturity / cases,
+                relistCount / cases,
+                specialistCounsel / cases,
+                vehicleDefectRisk / cases,
+                conditionalReversalProbability / cases,
                 meritsReviews / cases,
                 invalidations / cases,
                 legalStability / cases,
@@ -119,6 +196,7 @@ public final class MetricsAccumulator {
                 rightsProtection / cases,
                 partisanAlignment / cases,
                 shadowDocketAbuse / cases,
+                emergencyLegitimacyRisk / cases,
                 legitimacy / cases,
                 reversals / cases,
                 constitutionalConflict / cases,
@@ -126,15 +204,18 @@ public final class MetricsAccumulator {
                 independenceAccountabilityBalance(),
                 administrativeCost / cases,
                 emergencyOrders / cases,
+                emergencyGrants / cases,
                 shadowRelief / cases,
                 reasonedEmergencyOrders / cases,
                 temporaryStays / cases,
                 meritsAccelerations / cases,
                 expiredEmergencyOrders / cases,
                 recusedJustices / justicesInCases,
+                quorumFailures / cases,
                 justiceReplacements / cases,
                 concurrences / Math.max(1.0, participatingJustices),
                 dissents / Math.max(1.0, participatingJustices),
+                fragmentationIndex / cases,
                 1.0 - (enBanc / cases),
                 enBanc / cases,
                 crossDisagreements / cases,
@@ -153,6 +234,24 @@ public final class MetricsAccumulator {
                 executiveEmergencyFloods / cases,
                 overrideCampaigns / cases,
                 appointmentPressureCampaigns / cases,
+                formalRepeals / cases,
+                formalReplacements / cases,
+                formalNarrowedReenactments / cases,
+                formalWeakOverrides / cases,
+                formalAmendments / cases,
+                formalCourtCurbing / cases,
+                formalOpenDefiance / cases,
+                practicalDelays / cases,
+                practicalAdministrativeSubstitution / cases,
+                practicalSymbolicCompliance / cases,
+                practicalBureaucraticResistance / cases,
+                practicalOpenNoncompliance / cases,
+                rightsClaimantSuccess / cases,
+                doctrinalDepth / cases,
+                remedialBreadth / cases,
+                lowerCourtCompliance / cases,
+                eliteAcceptance / cases,
+                publicConfidence / cases,
                 facialChallenges / cases,
                 asAppliedChallenges / cases,
                 electionDisputes / cases,
@@ -175,12 +274,41 @@ public final class MetricsAccumulator {
         }
     }
 
+    private void addFormalResponse(FormalLegalResponse response) {
+        switch (response) {
+            case REPEAL -> formalRepeals++;
+            case REPLACEMENT_STATUTE -> formalReplacements++;
+            case NARROWED_REENACTMENT -> formalNarrowedReenactments++;
+            case WEAK_FORM_OVERRIDE -> formalWeakOverrides++;
+            case CONSTITUTIONAL_AMENDMENT -> formalAmendments++;
+            case COURT_CURBING -> formalCourtCurbing++;
+            case OPEN_DEFIANCE -> formalOpenDefiance++;
+            case NONE, ACQUIESCENT_COMPLIANCE -> {
+            }
+        }
+    }
+
+    private void addPracticalResponse(PracticalImplementationResponse response) {
+        switch (response) {
+            case IMPLEMENTATION_DELAY -> practicalDelays++;
+            case ADMINISTRATIVE_SUBSTITUTION -> practicalAdministrativeSubstitution++;
+            case SYMBOLIC_COMPLIANCE -> practicalSymbolicCompliance++;
+            case BUREAUCRATIC_RESISTANCE -> practicalBureaucraticResistance++;
+            case OPEN_NONCOMPLIANCE -> practicalOpenNoncompliance++;
+            case NONE, PROMPT_IMPLEMENTATION -> {
+            }
+        }
+    }
+
     private double independenceAccountabilityBalance() {
         double cases = Math.max(1.0, totalCases);
         double avgRights = rightsProtection / cases;
         double avgResponsive = democraticResponsiveness / cases;
+        double avgEliteAcceptance = eliteAcceptance / cases;
+        double avgPublicConfidence = publicConfidence / cases;
         double lowPartisan = MetricDefinition.lowerIsBetter(partisanAlignment / cases);
         double lowShadow = MetricDefinition.lowerIsBetter(shadowDocketAbuse / cases);
-        return (avgRights + avgResponsive + lowPartisan + lowShadow) / 4.0;
+        double lowEmergencyRisk = MetricDefinition.lowerIsBetter(emergencyLegitimacyRisk / cases);
+        return (avgRights + avgResponsive + avgEliteAcceptance + avgPublicConfidence + lowPartisan + lowShadow + lowEmergencyRisk) / 7.0;
     }
 }

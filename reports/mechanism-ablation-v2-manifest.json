@@ -10,9 +10,9 @@
   "experimentCaseCount": 8,
   "scenarioCount": 24,
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
-  "legislativeInputSha256": "70ae7f116cfcbad0b2ca0fe3f0673627d8705acb97c3f80e75a2d595cb69af23",
+  "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "021c82f8c995dbdc821dbf58ad74c6940626d3650fc1b21010d4f11daa33aae0"},
-    {"path": "reports/mechanism-ablation-v2.md", "sha256": "a23dcd733179285f75d8d2c34bf9cdc5b84f659f3b7edd9c68c515e26337300d"}
+    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "1917257ee89f4642a2a6ab4638492055024c00f21dfcf40f25c6e6e750f0e82e"},
+    {"path": "reports/mechanism-ablation-v2.md", "sha256": "f799bb706875935e1e05815b64659f8bc1ba4858a997ae01c74497e3a6b2c4ca"}
   ]
 }
