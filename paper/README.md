@@ -12,6 +12,8 @@ make paper
 
 The manuscript is intentionally cautious: it presents the simulator as a design-search framework and treats the v2 campaign plus v4 diagnostics as demonstrations of comparative mechanics rather than validation.
 
+`make paper` regenerates LaTeX figure fragments from `reports/constitutional-review-campaign-v2.csv` before compiling. The current manuscript includes a domain-specific claimant-success heatmap, a public-confidence/constitutional-conflict scatter plot, and an emergency-docket profile chart.
+
 Additional submission-prep files:
 
 - `title-page.tex`: non-anonymous title-page skeleton for journal submission systems.

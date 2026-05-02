@@ -33,6 +33,7 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{url}
+\usepackage{xcolor}
 \usepackage{hyperref}
 
 \ifnum\paperusescup=1
@@ -101,9 +102,23 @@ The headline metrics are legal stability, rights protection, partisan alignment,
 
 The reported directional score is only a reading aid. It averages a stability/rights score, a legitimacy/control score, rights-claimant success, elite acceptance, and administrative feasibility. Direct outputs such as rights-claimant success, doctrinal depth, remedial breadth, lower-court compliance, elite acceptance, public confidence, and coalition fragmentation are reported separately and should not be treated as interchangeable components of one welfare function.
 
+\begin{figure}[hbt!]
+\centering
+\input{figures/domain_claimant_success}
+\caption{Domain-specific rights-claimant success for selected institutional designs. The aggregate rights-protection score can hide domain shifts, especially for election, structural, executive-power, administrative-law, and economic-regulation cases.}
+\label{fig:domain-claimant-success}
+\end{figure}
+
 \section{Campaign Results}
 
 The current campaign compares fourteen institutional scenarios across twenty assumption cases: the original broad cases, sensitivity sweeps for appointment capture, emergency pressure, rights risk, and democratic mandate, plus adversarial stress cases for appointment timing, emergency-application flooding, override evasion, recusal pressure, and court-expansion retaliation. The reported run used 80 runs per case, 64 filed matters per run, seed 20260501, and an imported legislative-output profile from a separate legislative simulator report contract.
+
+\begin{figure}[hbt!]
+\centering
+\input{figures/conflict_confidence_tradeoff}
+\caption{Public-confidence and constitutional-conflict tradeoff for selected institutional designs. Marker shade increases with shadow-docket abuse, so the figure separates legitimacy and conflict from emergency-docket opacity instead of folding them into one score.}
+\label{fig:conflict-confidence}
+\end{figure}
 
 \begin{table}[hbt!]
 \centering
@@ -127,6 +142,15 @@ Cross-checking constitutional court & 0.551 & 0.577 & 0.595 & 0.063 & 0.205 & 0.
 \end{table}
 
 Table~\ref{tab:v2-selected} shows that term regularization leads the current directional score by combining low shadow-docket abuse, moderate emergency legitimacy risk, and relatively low conflict. The no-emergency-relief-without-merits design remains the strongest emergency-docket reform on shadow abuse, emergency legitimacy risk, and public confidence, though it pays administrative cost through merits acceleration. The stylized current U.S.-like court has high rights protection in this run, but much higher shadow-docket abuse and emergency legitimacy risk. Cross-checking and dual-court designs reduce partisan alignment, but the current disagreement-resolution model increases constitutional conflict and administrative cost. The comparative 16-seat constitutional-senate scenario confirms that even court sizes and chamber-like structures can be modeled, but it does not automatically dominate simpler reforms.
+
+\begin{figure}[hbt!]
+\centering
+\input{figures/emergency_profile}
+\caption{Emergency-docket and public-confidence profile for selected institutional designs. The comparison highlights why emergency procedure is modeled directly: designs that are similar on rights protection and legal stability can differ sharply on shadow-docket abuse, emergency legitimacy risk, and public confidence.}
+\label{fig:emergency-profile}
+\end{figure}
+
+\clearpage
 
 \section{Limitations}
 

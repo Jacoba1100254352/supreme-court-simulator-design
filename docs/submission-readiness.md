@@ -12,6 +12,22 @@ Current manuscript posture:
 - The source attempts to use the official Cambridge `cup-journal` template with `journal=jlc` when `cup-journal.cls` is available.
 - The local build falls back to an article review copy with author-date citations because the local TeX Live Basic installation does not ship Cambridge's class or `biber`.
 - Citations are author-date in the local build and are ready for the official template's Chicago author-date pipeline when compiled in the Cambridge/Overleaf environment.
+- Figures are appropriate for this target. JLC's author instructions ask authors to place tables and figures in the manuscript near first reference rather than collecting them at the end. The current manuscript follows that practice with generated campaign figures.
+
+## Why JLC Instead of ACM
+
+The adjacent Congress Institutional Simulator uses ACM format because that paper is framed as a computational framework for collective decision-making, compromise, productivity, agenda control, and voting-system design. That framing fits an ACM-style computational social systems / collective intelligence audience and the `acmart` template's computing metadata expectations.
+
+This paper is different. Its central claims are about judicial institutions: constitutional-review access paths, emergency orders, appointment and tenure rules, recusal, voting thresholds, constitutional conflict, legal stability, rights protection, and public legitimacy. Those claims need reviewers who can evaluate law-and-courts theory, comparative constitutional design, judicial-politics framing, and empirical/legal replication expectations.
+
+Practical differences:
+
+- JLC is the stronger substantive home because it is specifically a law-and-courts journal and publishes interdisciplinary work for the law-and-courts community. See the [JLC author instructions](https://www.cambridge.org/core/journals/journal-of-law-and-courts/information/author-instructions/preparing-your-materials).
+- JLC's instructions support Word, PDF, or LaTeX review files, anonymous submission, author-date citation, data-availability language, and replication materials through JLC Dataverse at acceptance.
+- ACM would be plausible only if the paper were reframed around the simulator as a computing contribution: model architecture, human-centered decision support, collective intelligence, simulation methodology, or software/tooling. That would risk making the constitutional-review substance look like an application case rather than the paper's core contribution.
+- ACM production is also stricter about `acmart`, CCS concepts, TAPS compatibility, figure descriptions, and approved LaTeX packages. See ACM's [LaTeX preparation instructions](https://authors.acm.org/proceedings/production-information/preparing-your-article-with-latex). That is manageable, as the Congress paper shows, but it adds constraints without improving venue fit for a judicial-politics manuscript.
+
+Bottom line: keep JLC as the primary journal target and CELS as the near-term feedback venue. Revisit ACM only if the paper is rewritten into a general computational institutional-design methods paper rather than a court-design paper.
 
 ## Immediate Conference Target
 
