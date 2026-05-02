@@ -113,3 +113,5 @@ Normalized empirical source observations live in `data/calibration/`. Regenerate
 ## Paper
 
 The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the current formulas are empirically validated.
+
+The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC template path when the official `cup-journal` class is available, and otherwise builds locally as an author-date review copy. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.

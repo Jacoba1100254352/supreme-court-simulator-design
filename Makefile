@@ -46,6 +46,8 @@ legislative-family-comparison: build
 diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison manipulation-stress
 
 paper:
+	mkdir -p paper/build
+	rm -f paper/build/main.aux paper/build/main.bbl paper/build/main.blg paper/build/main.fdb_latexmk paper/build/main.fls paper/build/main.out
 	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
 	cp paper/build/main.pdf paper/main.pdf
 

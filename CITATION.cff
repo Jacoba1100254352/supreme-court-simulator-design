@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Constitutional Review Simulator"
+message: "If you use this simulator or its generated reports, please cite the project."
+type: software
+authors:
+  - family-names: "Anderson"
+    given-names: "Jacob"
+date-released: "2026-05-02"
+version: "0.2.0"
+repository-code: "https://github.com/Jacoba1100254352/supreme-court-simulator-design"
+abstract: "A Java simulation project for comparing supreme-court and constitutional-review institutional designs, with campaign reports, calibration guardrails, and a LaTeX manuscript."
