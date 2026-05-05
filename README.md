@@ -45,6 +45,10 @@ Run stricter submission checks and build the non-anonymous title page:
 make paper-strict-check
 ```
 
+`make paper` always refreshes `paper/main.pdf` after regenerating paper tables
+and figures, and the paper targets now fail if the checked-in PDF is older than
+the LaTeX inputs that feed it.
+
 Build a clean replication archive for review or deposit:
 
 ```sh
