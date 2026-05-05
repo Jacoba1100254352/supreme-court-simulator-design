@@ -78,3 +78,4 @@ Normalized source observations used to compute calibration ranges. The simulator
 - `supreme-court-synthesis/emergency-docket-calibration.csv`
 - `supreme-court-synthesis/institutional-cost-delay-complexity-benchmarks.csv`
 - `supreme-court-synthesis/lower-court-intake-calibration.csv`
+- `supreme-court-synthesis/source-register.csv`

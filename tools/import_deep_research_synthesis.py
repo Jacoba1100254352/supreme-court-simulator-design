@@ -45,7 +45,7 @@ def main() -> None:
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     sections = extract_csv_sections(args.report.read_text())
-    written: list[tuple[str, Path, int]] = []
+    written: list[tuple[str, Path, list[dict[str, str]]]] = []
     for section_name, csv_text in sections:
         filename = SECTION_FILENAMES.get(section_name)
         if filename is None:
@@ -56,11 +56,12 @@ def main() -> None:
             writer = csv.DictWriter(output, fieldnames=list(rows[0].keys()))
             writer.writeheader()
             writer.writerows(rows)
-        written.append((section_name, path, len(rows)))
+        written.append((section_name, path, rows))
 
+    write_source_register(args.output_dir, written)
     write_readme(args.output_dir, args.report, written)
-    for section_name, path, count in written:
-        print(f"Imported {count} rows from {section_name} -> {path}")
+    for section_name, path, rows in written:
+        print(f"Imported {len(rows)} rows from {section_name} -> {path}")
 
 
 def extract_csv_sections(markdown: str) -> list[tuple[str, str]]:
@@ -116,21 +117,80 @@ def metadata(section_name: str, row: dict[str, str]) -> dict[str, str]:
     }
 
 
-def write_readme(output_dir: Path, report: Path, written: list[tuple[str, Path, int]]) -> None:
+def write_source_register(output_dir: Path, written: list[tuple[str, Path, list[dict[str, str]]]]) -> None:
+    register: dict[tuple[str, str], dict[str, object]] = {}
+    for section_name, path, rows in written:
+        for row in rows:
+            source_name = row.get("sourceName", "").strip()
+            source_url = row.get("sourceUrl", "").strip()
+            if not source_name and not source_url:
+                continue
+            key = (source_name, source_url)
+            entry = register.setdefault(key, {
+                "sourceName": source_name,
+                "sourceUrl": source_url,
+                "files": set(),
+                "sections": set(),
+                "rowCount": 0,
+                "validationUses": set(),
+                "confidenceLevels": set(),
+                "comparabilityClasses": set(),
+            })
+            entry["files"].add(path.name)
+            entry["sections"].add(section_name)
+            entry["rowCount"] = int(entry["rowCount"]) + 1
+            if row.get("validationUse"):
+                entry["validationUses"].add(row["validationUse"])
+            if row.get("confidenceLevel"):
+                entry["confidenceLevels"].add(row["confidenceLevel"])
+            if row.get("comparabilityClass"):
+                entry["comparabilityClasses"].add(row["comparabilityClass"])
+
+    path = output_dir / "source-register.csv"
+    fields = [
+        "sourceName",
+        "sourceUrl",
+        "files",
+        "sections",
+        "rowCount",
+        "validationUses",
+        "confidenceLevels",
+        "comparabilityClasses",
+    ]
+    with path.open("w", newline="") as output:
+        writer = csv.DictWriter(output, fieldnames=fields)
+        writer.writeheader()
+        for (_source_name, _source_url), entry in sorted(register.items()):
+            writer.writerow({
+                "sourceName": entry["sourceName"],
+                "sourceUrl": entry["sourceUrl"],
+                "files": ";".join(sorted(entry["files"])),
+                "sections": ";".join(sorted(entry["sections"])),
+                "rowCount": entry["rowCount"],
+                "validationUses": ";".join(sorted(entry["validationUses"])),
+                "confidenceLevels": ";".join(sorted(entry["confidenceLevels"])),
+                "comparabilityClasses": ";".join(sorted(entry["comparabilityClasses"])),
+            })
+
+
+def write_readme(output_dir: Path, report: Path, written: list[tuple[str, Path, list[dict[str, str]]]]) -> None:
     lines = [
         "# Supreme Court Deep Research Synthesis",
         "",
-        f"Imported from `{report}`.",
+        f"Imported from local Deep Research synthesis report `{report.name}`. The raw report is not committed.",
         "",
         "These CSVs preserve the ingest-ready research rows as calibration inputs.",
         "Rows include `confidenceLevel`, `validationUse`, `denominatorSpec`, `coverageScope`, and `comparabilityClass` so strict validation, loose calibration, and paper-only context are not conflated.",
+        "The synthesis itself is not cited as empirical authority in the manuscript; `source-register.csv` preserves the named sources and URLs represented in the normalized rows.",
         "",
         "| Section | File | Rows |",
         "| --- | --- | ---: |",
     ]
-    for section_name, path, count in written:
-        lines.append(f"| {section_name} | `{path.name}` | {count} |")
+    for section_name, path, rows in written:
+        lines.append(f"| {section_name} | `{path.name}` | {len(rows)} |")
     lines.extend([
+        "",
+        "See `source-register.csv` for a normalized source register grouped by source name and URL.",
         "",
         "The Java loader reads numeric `observedValue` rows from these files recursively when `data/calibration` is used as the calibration directory.",
         "Non-numeric design-preset rows remain available for documentation and scenario-design work, but are not treated as numerical validation observations.",

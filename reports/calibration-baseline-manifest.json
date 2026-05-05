@@ -12,9 +12,9 @@
   "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/calibration-baseline.csv", "sha256": "4da3aa960661bf71224a6f58dc9ed5292087a248beae1d944f7113a06bc60642"},
-    {"path": "reports/calibration-baseline.md", "sha256": "65930f452a794158f8886840f30d5a8316334cf07058b617efa1e6818ccc7887"},
+    {"path": "reports/calibration-baseline.csv", "sha256": "479f788972fc1b1760fbf4ca9182e69551bed7ce39f5a2fdf3f4498d03269993"},
+    {"path": "reports/calibration-baseline.md", "sha256": "1d6d37e241346a85feafdcd2aeacd48df4a54385cc42244019b861b9f24739e9"},
     {"path": "reports/calibration-source-ranges-v4.csv", "sha256": "04041d91edaecad62642079c14b5b3db86a27e1467e0ee1f7410033708b5c0c1"},
-    {"path": "reports/calibration-source-ranges-v4.md", "sha256": "5fca4bc1c777b9e0f02d8786115cc390da775e299fb0f1eb76a22bd0b5950041"}
+    {"path": "reports/calibration-source-ranges-v4.md", "sha256": "d66e11101a94d23173bb9b2d424000a2a77a5e5e07faf4fbcd5e1c64d5ba403f"}
   ]
 }

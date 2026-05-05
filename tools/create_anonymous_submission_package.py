@@ -29,7 +29,6 @@ INCLUDE_PATHS = [
     "paper/abstract-variants.md",
     "paper/main.tex",
     "paper/main.pdf",
-    "paper/title-page.tex",
     "paper/references.bib",
     "paper/source-audit.csv",
     "paper/figures",

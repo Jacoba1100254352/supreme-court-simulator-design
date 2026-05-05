@@ -198,6 +198,9 @@ public final class EmpiricalCalibrationDataset {
         if (columns.containsKey("metricKey") && columns.containsKey("observedValue")) {
             return readSynthesisCsv(path, lines, columns);
         }
+        if (!columns.containsKey("metric") || !columns.containsKey("value")) {
+            return List.of();
+        }
         List<CalibrationObservation> observations = new ArrayList<>();
         for (int i = 1; i < lines.size(); i++) {
             if (lines.get(i).isBlank()) {

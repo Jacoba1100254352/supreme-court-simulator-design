@@ -3,18 +3,19 @@
 \centering
 \caption{Selected calibration guardrails}
 \label{tab:calibration-guardrails}
-\Description{Table showing selected calibration guardrails, simulated observations, source-informed ranges, source bases, and pass status.}
-\footnotesize
-\begin{tabular}{>{\raggedright\arraybackslash}p{1.33in}>{\raggedright\arraybackslash}p{1.02in}rr>{\raggedright\arraybackslash}p{1.25in}r}
+\Description{Table showing selected calibration guardrails, their intended use, simulated observations, source-informed ranges, source bases, and status.}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{1.05in}>{\raggedright\arraybackslash}p{0.72in}>{\raggedright\arraybackslash}p{0.78in}rr>{\raggedright\arraybackslash}p{0.92in}r}
 \toprule
-Guardrail & Scenario & Observed & Range & Source basis & Pass \\
+Guardrail & Scenario & Use & Observed & Range & Source basis & Status \\
 \midrule
-Merits transfer & Current-like & 0.406 & 0.250--0.850 & deep-research-intake-synthesis; fallback & yes \\
-Invalidation & Current-like & 0.038 & 0.000--0.223 & scdb-modern-2025-01; source-min-max-plus-tolerance & yes \\
-Emergency filings & Current-like & 0.054 & 0.000--0.223 & shadow-docket-v2-0; source-min-max-plus-tolerance & yes \\
-Shadow abuse & Current-like & 0.156 & 0.000--0.657 & shadow-docket-v2-0; source-min-max-plus-tolerance & yes \\
-Recusal & Current-like & 0.008 & 0.000--0.029 & black-epstein-recusal; source-min-max-plus-tolerance & yes \\
-Emergency restraint & No emergency relief without merits & 0.001 & 0.000--0.657 & shadow-docket-v2-0; source-min-max-plus-tolerance & yes \\
+Merits transfer & Current-like & model prior check & 0.406 & 0.250--0.850 & source register; model fallback & within \\
+Invalidation & Current-like & strict validation & 0.038 & 0.000--0.223 & SCDB; source range & within \\
+Emergency filings & Current-like & strict validation & 0.054 & 0.000--0.223 & shadow database; source range & within \\
+Shadow abuse & Current-like & loose calibration & 0.156 & 0.000--0.657 & shadow database; source range & within \\
+Partisan alignment & Commission & proxy sanity check & 0.020 & 0.000--0.657 & shadow database; source range & within \\
+Emergency restraint & No-gap & mechanism sanity check & 0.001 & 0.000--0.657 & shadow database; source range & within \\
 \bottomrule
 \end{tabular}
 \end{table}

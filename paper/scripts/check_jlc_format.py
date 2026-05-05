@@ -46,7 +46,7 @@ def word_count(source: str) -> int:
 def main() -> None:
     strict_submission = "--strict-submission" in sys.argv
     source = MAIN.read_text()
-    title_page = TITLE_PAGE.read_text()
+    title_page = TITLE_PAGE.read_text() if TITLE_PAGE.exists() else ""
 
     required_snippets = [
         ("official JLC class option", "journal=jlc"),
@@ -103,13 +103,16 @@ def main() -> None:
     if words < 3_000:
         warn(f"main manuscript has only {words} words; JLC review will likely expect fuller theory and method exposition")
 
-    if "Competing interests:" not in title_page:
-        fail("title page must include the explicit competing interests declaration")
-    if "Author Name" in title_page or "author@example.com" in title_page:
-        message = "title page still contains placeholder author fields for non-anonymous submission"
-        if strict_submission:
-            fail(message)
-        warn(message)
+    if strict_submission and not TITLE_PAGE.exists():
+        fail("strict submission check requires a separate non-anonymous title page")
+    if TITLE_PAGE.exists():
+        if "Competing interests:" not in title_page:
+            fail("title page must include the explicit competing interests declaration")
+        if "Author Name" in title_page or "author@example.com" in title_page:
+            message = "title page still contains placeholder author fields for non-anonymous submission"
+            if strict_submission:
+                fail(message)
+            warn(message)
 
     print(f"JLC format check passed ({words} manuscript words, {figure_count} figures).")
 
