@@ -36,7 +36,20 @@ Set `PAPER_LEGISLATIVE_INPUT=/path/to/other.csv` to reproduce the paper against 
 
 ## Package for Review or Deposit
 
-Create a clean archive after the checks pass:
+Create a blinded archive for anonymous review after the checks pass:
+
+```sh
+make anonymous-submission-package
+```
+
+The target rebuilds the paper and writes:
+
+- `dist/constitutional-review-anonymous-submission.zip`
+- `dist/anonymous-submission-manifest.json`
+
+The anonymous archive includes the anonymous manuscript, simulator source, normalized calibration inputs, generated reports, paper source, generated figure/table fragments, standalone figure exports, paper scripts, documentation, `paper/source-audit.csv`, and manifest hashes. It excludes author-identifying citation metadata, public repository metadata, raw third-party source archives, build directories, class files, and non-anonymous author metadata. A package scan fails if author strings, local `/Users/` paths, or GitHub repository URLs remain in the staged files.
+
+Create a full non-anonymous archive for acceptance-stage review or deposit:
 
 ```sh
 make replication-package
@@ -48,6 +61,24 @@ The target rebuilds the paper, verifies report manifests and the source audit, e
 - `dist/replication-package-manifest.json`
 
 The archive includes source code, tests, normalized calibration inputs, generated reports, paper source, generated figure/table fragments, standalone figure exports, paper scripts, documentation, `paper/source-audit.csv`, and manifest hashes. It intentionally excludes build directories, class files, and raw third-party source archives that are not committed.
+
+The full replication package may include non-anonymous metadata and should not be uploaded as the anonymous manuscript package unless the journal permits author-identifying supplemental material at that stage.
+
+## Refresh Normalized Calibration Sources
+
+Raw third-party archives are intentionally not committed. To rebuild the normalized calibration tables from refreshed downloads, place the raw files under `data/raw/calibration/` and run:
+
+```sh
+make raw-source-refresh
+```
+
+The wrapper searches for a SCDB case-centered zip, an optional shadow-docket zip, an optional Deep Research synthesis report, and an optional manually prepared Harvard Law Review statistics summary. You can also pass exact paths:
+
+```sh
+make raw-source-refresh ARGS="--scdb-case-zip /path/to/SCDB_2025_01_caseCentered_Citation.csv.zip --shadow-zip /path/to/shadow_docket_database_v2-0_data_files.zip --deep-research-report /path/to/deep-research-report5.md"
+```
+
+The refresh writes `dist/calibration-source-refresh-manifest.json` with input names, hashes, generated output hashes, and notes about which sources were automatically transformed versus manually summarized.
 
 ## Observed, Coded, Assumed, Simulated
 

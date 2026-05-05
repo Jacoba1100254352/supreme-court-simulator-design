@@ -51,6 +51,14 @@ Build a clean replication archive for review or deposit:
 make replication-package
 ```
 
+Build a blinded review archive for anonymous journal submission:
+
+```sh
+make anonymous-submission-package
+```
+
+This writes `dist/constitutional-review-anonymous-submission.zip` and scans the staged files for author-identifying local paths, repository URLs, and author strings. Use the full replication package for non-anonymous deposit or acceptance-stage handoff; use the anonymous package for initial peer review.
+
 Write the current v2 campaign artifacts:
 
 ```sh
@@ -87,6 +95,14 @@ Use a different normalized empirical calibration-data directory:
 make calibrate CALIBRATION_DATA_DIR=/path/to/calibration
 ```
 
+Refresh normalized calibration inputs from local raw-source downloads:
+
+```sh
+make raw-source-refresh
+```
+
+Place uncommitted raw archives under `data/raw/calibration/`, or pass explicit paths through `ARGS`, for example `make raw-source-refresh ARGS="--scdb-case-zip /path/to/SCDB.zip --shadow-zip /path/to/shadow.zip"`. The refresh writes a local manifest under `dist/` and keeps raw third-party archives out of git.
+
 Import a legislative simulator report as input:
 
 ```sh
@@ -122,7 +138,7 @@ The headline metrics are legal stability, rights protection, partisan alignment,
 
 ## Calibration Data
 
-Normalized empirical source observations live in `data/calibration/`. Regenerate them from raw SCDB and shadow-docket archives with `tools/build_calibration_tables.py`; raw archives are intentionally not committed. Import the Deep Research synthesis CSV blocks with `tools/import_deep_research_synthesis.py`; those rows preserve `confidenceLevel`, `validationUse`, `denominatorSpec`, `coverageScope`, and `comparabilityClass` so strict validation, loose calibration, and paper context remain distinct.
+Normalized empirical source observations live in `data/calibration/`. Regenerate them from raw SCDB and shadow-docket archives with `make raw-source-refresh` or `tools/build_calibration_tables.py`; raw archives are intentionally not committed. Import the Deep Research synthesis CSV blocks with `tools/import_deep_research_synthesis.py`; those rows preserve `confidenceLevel`, `validationUse`, `denominatorSpec`, `coverageScope`, and `comparabilityClass` so strict validation, loose calibration, and paper context remain distinct.
 
 ## Paper
 
@@ -131,3 +147,5 @@ The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a 
 The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC template path when the official `cup-journal` class is available, and otherwise builds locally as an author-date review copy. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 
 The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated calibration, uncertainty, and mechanism-level contrast tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. `paper/source-audit.csv` maps material claims to source-code, report, data, manuscript, or literature anchors. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
+
+Use `docs/jlc-submission-checklist.md` as the final pre-submission checklist.

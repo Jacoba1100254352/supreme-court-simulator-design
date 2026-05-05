@@ -57,6 +57,14 @@ make replication-package
 
 This writes `dist/constitutional-review-replication.zip` and `dist/replication-package-manifest.json`.
 
+Create a blinded anonymous-review archive:
+
+```sh
+make anonymous-submission-package
+```
+
+This writes `dist/constitutional-review-anonymous-submission.zip` and `dist/anonymous-submission-manifest.json`. The package builder sanitizes local absolute paths and repository references, excludes non-anonymous metadata, and fails if identifying strings remain.
+
 Run the full diagnostic suite:
 
 ```sh
@@ -75,6 +83,14 @@ Import the local Supreme Court Deep Research synthesis CSV blocks into calibrati
 python3 tools/import_deep_research_synthesis.py
 make calibrate
 ```
+
+Refresh normalized source tables from raw downloads:
+
+```sh
+make raw-source-refresh
+```
+
+By default the refresh looks in `data/raw/calibration/`, which is ignored by git. Pass explicit paths through `ARGS` when raw files live elsewhere.
 
 Import legislative outputs:
 

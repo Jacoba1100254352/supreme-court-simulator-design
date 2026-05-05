@@ -8,7 +8,15 @@ Rows use the schema:
 sourceKey,domain,metric,term,numerator,denominator,value,sourceUrl,notes
 ```
 
-The normalized files are intentionally small and reproducible. Refresh them from raw public datasets with:
+The normalized files are intentionally small and reproducible. For the full local refresh workflow, put raw downloads under `data/raw/calibration/` and run:
+
+```sh
+make raw-source-refresh
+```
+
+The wrapper detects the SCDB case-centered zip, an optional shadow-docket zip, an optional Deep Research synthesis report, and an optional manually prepared Harvard Law Review statistics summary. It writes `dist/calibration-source-refresh-manifest.json` with source names and hashes. Raw source files are ignored by git.
+
+You can also refresh the SCDB and shadow-docket reductions directly with:
 
 ```sh
 python3 tools/build_calibration_tables.py \

@@ -24,4 +24,4 @@ Additional submission-prep files:
 - `abstract-variants.md`: short abstracts/proposal variants for CELS, ICON-S, and APSA-style routes.
 - `source-audit.csv`: claim-level source and artifact anchors for the manuscript.
 
-Use `make paper-strict-check` before a non-anonymous submission package. Use `make replication-package` from the repository root to build a clean archive under `dist/`.
+Use `make paper-strict-check` before a non-anonymous submission package. Use `make anonymous-submission-package` from the repository root for blinded review materials. Use `make replication-package` for a full non-anonymous archive under `dist/` when the journal requests acceptance-stage replication materials.

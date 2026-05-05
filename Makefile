@@ -4,10 +4,11 @@ JAVA_RELEASE ?= 21
 JAVA_PROPS ?= -Dconstitutionalreview.javaRelease=$(JAVA_RELEASE)
 LEGISLATIVE_FAMILY_DIR ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports
 CALIBRATION_DATA_DIR ?= data/calibration
+RAW_CALIBRATION_DIR ?= data/raw/calibration
 PAPER_LEGISLATIVE_INPUT ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv
 PAPER_ARGS ?= --legislative-input "$(PAPER_LEGISLATIVE_INPUT)"
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-strict-check replication-package paper-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-strict-check replication-package anonymous-submission-package paper-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -32,6 +33,11 @@ manipulation-stress: build
 
 calibrate: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --calibrate --runs 80 --cases 64 --seed 20260501 --output-dir reports --calibration-data-dir "$(CALIBRATION_DATA_DIR)" $(PAPER_ARGS) $(ARGS)
+
+calibration-refresh:
+	python3 tools/refresh_calibration_sources.py --raw-dir "$(RAW_CALIBRATION_DIR)" --output-dir "$(CALIBRATION_DATA_DIR)" $(ARGS)
+
+raw-source-refresh: calibration-refresh
 
 seed-robustness: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --seed-robustness --runs 40 --cases 48 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
@@ -79,6 +85,9 @@ paper-strict-check: paper paper-title-page
 
 replication-package: paper
 	python3 tools/create_replication_package.py
+
+anonymous-submission-package: paper
+	python3 tools/create_anonymous_submission_package.py
 
 paper-clean:
 	cd paper && latexmk -C -outdir=build main.tex

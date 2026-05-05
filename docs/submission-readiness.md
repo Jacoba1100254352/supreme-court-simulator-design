@@ -54,11 +54,14 @@ Before CELS submission, prioritize:
 - `paper/scripts/export_figures.py`: standalone figure export builder for journal-production handoff.
 - `paper/source-audit.csv`: claim-level source, code, data, and report anchor inventory.
 - `docs/external-methods-review-request.md`: critical review packet and draft reviewer email.
+- `docs/jlc-submission-checklist.md`: pre-submission sequence and upload checklist for JLC/CELS.
 - `tools/create_replication_package.py`: archive builder for review/deposit packages.
+- `tools/create_anonymous_submission_package.py`: blinded review package builder with an identifier scan.
+- `tools/refresh_calibration_sources.py`: raw-source wrapper for regenerating normalized calibration inputs from local downloads.
 
 ## Remaining No-Regrets Work
 
-- Add raw-source refresh automation for the externally downloaded source archives before final Dataverse deposit.
-- Prepare a blinded repository or Dataverse placeholder if submitting before public release.
+- Run `make raw-source-refresh` after downloading fresh raw SCDB and shadow-docket archives before final Dataverse deposit.
+- Use `make anonymous-submission-package` for initial peer review; prepare a blinded repository or Dataverse placeholder only if the submission system requires a live URL before public release.
 - Decide whether I-CON remains a possible future target before posting a public preprint.
 - Get one external methods review using `docs/external-methods-review-request.md` before adding more realism layers.

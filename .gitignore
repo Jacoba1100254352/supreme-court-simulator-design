@@ -1,5 +1,6 @@
 out/
 dist/
+data/raw/
 paper/build/
 paper/figure-exports/build/
 .DS_Store
