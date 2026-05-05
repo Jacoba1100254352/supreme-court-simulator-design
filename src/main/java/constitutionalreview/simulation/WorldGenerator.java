@@ -96,17 +96,78 @@ public final class WorldGenerator {
             double lowerCourtErrorRisk = Values.clamp01(
                     0.08 + (1.0 - legislativeQuality) * 0.24 + legalAmbiguity * 0.28 + rightsBurden * 0.12 + random.nextGaussian() * 0.10
             );
+            double lowerCourtSplitDepth = Values.clamp01(
+                    lowerCourtConflict * 0.56
+                            + legalAmbiguity * 0.18
+                            + partisanSalience * 0.10
+                            + publicAttention * 0.08
+                            + random.nextGaussian() * 0.08
+            );
             double certiorariPressure = Values.clamp01(
-                    0.16 + lowerCourtConflict * 0.24 + lowerCourtErrorRisk * 0.20 + publicAttention * 0.18 + emergencyPressure * 0.10 + domain.conflictPotentialShift()
+                    0.14
+                            + lowerCourtConflict * 0.18
+                            + lowerCourtSplitDepth * 0.18
+                            + lowerCourtErrorRisk * 0.18
+                            + publicAttention * 0.16
+                            + emergencyPressure * 0.08
+                            + domain.conflictPotentialShift()
             );
             double solicitorGeneralSignal = solicitorGeneralSignal(type, docketType, publicAttention, executiveBoost, random);
             int amicusBriefs = amicusBriefs(publicAttention, partisanSalience, solicitorGeneralSignal, random);
-            double splitMaturity = Values.clamp01(lowerCourtConflict * 0.52 + legalAmbiguity * 0.20 + random.nextDouble() * 0.28);
+            double splitMaturity = Values.clamp01(lowerCourtSplitDepth * 0.58 + lowerCourtConflict * 0.18 + legalAmbiguity * 0.12 + random.nextDouble() * 0.16);
             int relistCount = relistCount(certiorariPressure, solicitorGeneralSignal, amicusBriefs, random);
             boolean specialistCounsel = random.nextDouble() < Values.clamp01(0.16 + publicAttention * 0.26 + solicitorGeneralSignal * 0.18);
-            double vehicleDefectRisk = Values.clamp01(0.28 + legalAmbiguity * 0.16 - legislativeQuality * 0.18 - lowerCourtConflict * 0.10 + random.nextGaussian() * 0.10);
+            double strategicPlaintiffSelection = Values.clamp01(
+                    0.10
+                            + publicAttention * 0.20
+                            + partisanSalience * 0.20
+                            + rightsBurden * 0.12
+                            + emergencyPressure * 0.10
+                            + (specialistCounsel ? 0.08 : 0.0)
+                            + random.nextGaussian() * 0.08
+            );
+            double repeatPlayerAdvantage = Values.clamp01(
+                    0.12
+                            + solicitorGeneralSignal * 0.24
+                            + Math.min(1.0, amicusBriefs / 5.0) * 0.14
+                            + (specialistCounsel ? 0.14 : 0.0)
+                            + executiveBoost * 0.12
+                            + adminBoost * 0.08
+                            + emergencyPressure * 0.08
+                            + random.nextGaussian() * 0.07
+            );
+            double vehicleDefectRisk = Values.clamp01(
+                    0.30
+                            + legalAmbiguity * 0.14
+                            - legislativeQuality * 0.16
+                            - lowerCourtSplitDepth * 0.08
+                            - strategicPlaintiffSelection * 0.10
+                            - repeatPlayerAdvantage * 0.06
+                            + random.nextGaussian() * 0.10
+            );
             double conditionalReversalProbability = Values.clamp01(
-                    0.48 + lowerCourtErrorRisk * 0.18 + Math.abs(lawIdeology) * partisanSalience * 0.10 + solicitorGeneralSignal * 0.08 - vehicleDefectRisk * 0.10
+                    0.46
+                            + lowerCourtErrorRisk * 0.16
+                            + lowerCourtSplitDepth * 0.12
+                            + Math.abs(lawIdeology) * partisanSalience * 0.08
+                            + solicitorGeneralSignal * 0.08
+                            + repeatPlayerAdvantage * 0.06
+                            - vehicleDefectRisk * 0.10
+            );
+            double governmentNoncomplianceRisk = Values.clamp01(
+                    defianceRisk * 0.42
+                            + profile.weakMandateRate() * 0.14
+                            + profile.overridePressure() * 0.12
+                            + partisanSalience * 0.12
+                            + emergencyPressure * 0.08
+                            + repeatPlayerAdvantage * 0.08
+            );
+            double recusalIncentivePressure = Values.clamp01(
+                    partisanSalience * 0.32
+                            + publicAttention * 0.18
+                            + repeatPlayerAdvantage * 0.18
+                            + emergencyPressure * 0.10
+                            + Math.abs(lawIdeology) * 0.08
             );
             EmergencyApplication emergencyApplication = emergencyApplication(
                     docketType,
@@ -140,6 +201,7 @@ public final class WorldGenerator {
                     overridePressure,
                     lowerCourtConflict,
                     lowerCourtErrorRisk,
+                    lowerCourtSplitDepth,
                     certiorariPressure,
                     solicitorGeneralSignal,
                     amicusBriefs,
@@ -148,6 +210,10 @@ public final class WorldGenerator {
                     specialistCounsel,
                     vehicleDefectRisk,
                     conditionalReversalProbability,
+                    strategicPlaintiffSelection,
+                    repeatPlayerAdvantage,
+                    governmentNoncomplianceRisk,
+                    recusalIncentivePressure,
                     emergencyApplication
             ));
         }

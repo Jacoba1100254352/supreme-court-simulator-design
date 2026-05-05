@@ -10,14 +10,22 @@ public record ScenarioReport(
         double admissionRate,
         double screenOutRate,
         double meritsTransferRate,
+        double certiorariPathRate,
+        double certiorariAdmissionRate,
         double paidPetitionRate,
         double ifpPetitionRate,
         double solicitorGeneralSignalRate,
         double amicusIntensity,
+        double lowerCourtSplitDepth,
         double splitMaturity,
         double relistRate,
         double specialistCounselRate,
         double vehicleDefectRisk,
+        double strategicPlaintiffSelection,
+        double repeatPlayerAdvantage,
+        double governmentNoncomplianceRisk,
+        double governmentNoncomplianceRate,
+        double recusalIncentivePressure,
         double conditionalReversalProbability,
         double meritsReviewRate,
         double invalidationRate,
@@ -52,6 +60,8 @@ public record ScenarioReport(
         double enBancRate,
         double crossCheckDisagreementRate,
         double councilWarningRate,
+        double constitutionalRemandRate,
+        double publicInterestFilteredRate,
         double overrideAttemptRate,
         double overrideRate,
         double rightsCarveoutBlockRate,
@@ -88,6 +98,8 @@ public record ScenarioReport(
         double economicDomainClaimantSuccess,
         double doctrinalDepth,
         double remedialBreadth,
+        double precedentDurability,
+        double emergencyDownstreamEffect,
         double lowerCourtCompliance,
         double eliteAcceptance,
         double publicConfidence,
@@ -102,6 +114,8 @@ public record ScenarioReport(
     public double stabilityRightsScore() {
         return Values.average(
                 legalStability,
+                precedentDurability,
+                lowerCourtCompliance,
                 rightsProtection,
                 MetricDefinition.lowerIsBetter(reversalRate),
                 MetricDefinition.lowerIsBetter(constitutionalConflict)
@@ -116,6 +130,9 @@ public record ScenarioReport(
                 MetricDefinition.lowerIsBetter(partisanAlignment),
                 MetricDefinition.lowerIsBetter(shadowDocketAbuse),
                 MetricDefinition.lowerIsBetter(emergencyLegitimacyRisk),
+                MetricDefinition.lowerIsBetter(emergencyDownstreamEffect),
+                MetricDefinition.lowerIsBetter(governmentNoncomplianceRate),
+                MetricDefinition.lowerIsBetter(recusalIncentivePressure),
                 MetricDefinition.lowerIsBetter(strategicPressure())
         );
     }
@@ -132,7 +149,9 @@ public record ScenarioReport(
                 appointmentPressureCampaignRate,
                 formalCourtCurbingRate,
                 formalOpenDefianceRate,
-                practicalOpenNoncomplianceRate
+                practicalOpenNoncomplianceRate,
+                governmentNoncomplianceRate,
+                emergencyDownstreamEffect
         );
     }
 
@@ -141,6 +160,8 @@ public record ScenarioReport(
                 stabilityRightsScore(),
                 legitimacyControlScore(),
                 rightsClaimantSuccess,
+                precedentDurability,
+                lowerCourtCompliance,
                 eliteAcceptance,
                 MetricDefinition.lowerIsBetter(administrativeCost)
         );

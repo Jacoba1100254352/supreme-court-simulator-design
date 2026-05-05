@@ -48,6 +48,8 @@ public final class CourtState {
             double rightsBurden,
             double partisanSalience,
             double executiveDefianceRisk,
+            double emergencyDownstreamEffect,
+            boolean governmentNoncompliance,
             boolean legislativeCompliance,
             boolean legislativeEvasion,
             boolean delayedReenactment,
@@ -56,7 +58,12 @@ public final class CourtState {
             boolean appointmentPressureCampaign
     ) {
         precedentStability = Values.clamp01(precedentStability + 0.04 - precedentShift * 0.22);
-        conflictLoad = Values.clamp01(conflictLoad * 0.72 + conflict * 0.28);
+        conflictLoad = Values.clamp01(
+                conflictLoad * 0.70
+                        + conflict * 0.26
+                        + emergencyDownstreamEffect * 0.04
+                        + (governmentNoncompliance ? 0.05 : 0.0)
+        );
         legislativeDefiance = Values.clamp01(
                 legislativeDefiance * 0.66
                         + (invalidated ? democraticMandate * 0.14 + publicAttention * 0.08 : -0.02)
@@ -65,12 +72,15 @@ public final class CourtState {
                         + (overrideAttempted && !overrideSuccessful ? 0.07 : 0.0)
                         - (overrideSuccessful ? 0.04 : 0.0)
                         + conflict * 0.06
+                        + (governmentNoncompliance ? 0.07 : 0.0)
         );
         executiveEmergencyStrategy = Values.clamp01(
                 executiveEmergencyStrategy * 0.68
                         + (emergencyDenied ? 0.16 : 0.0)
                         + (executiveEmergencyFlood ? 0.10 : 0.0)
                         + (shadowRelief ? 0.07 : 0.0)
+                        + emergencyDownstreamEffect * 0.12
+                        + (governmentNoncompliance ? 0.06 : 0.0)
                         + executiveDefianceRisk * 0.08
                         + partisanSalience * 0.04
         );

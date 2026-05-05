@@ -1,99 +1,155 @@
 family,scenarioKey,scenario,enactedVolume,legalQuality,weakMandateRate,rightsRisk,partisanSkew,volatility,publicLegitimacy,overridePressure,directionalScore,legalStability,rightsProtection,partisanAlignment,shadowDocketAbuse,constitutionalConflict,democraticResponsiveness,strategicPressure,overrideAttemptRate
-simulation-campaign-v0.csv,current-us-like,Stylized current U.S.-like supreme court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.602,0.702,0.617,0.033,0.151,0.302,0.575,0.150,0.000
-simulation-campaign-v0.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.604,0.705,0.621,0.032,0.045,0.300,0.580,0.147,0.000
-simulation-campaign-v0.csv,nonpartisan-commission,Nonpartisan commission appointments,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.600,0.706,0.617,0.028,0.042,0.297,0.577,0.131,0.000
-simulation-campaign-v0.csv,expanded-court-fifteen,Expanded 15-seat court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.596,0.707,0.616,0.023,0.043,0.299,0.577,0.143,0.000
-simulation-campaign-v0.csv,supermajority-review,60 percent invalidation threshold,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.601,0.706,0.606,0.033,0.033,0.295,0.568,0.150,0.000
-simulation-campaign-v0.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.598,0.707,0.611,0.033,0.043,0.290,0.569,0.143,0.000
-simulation-campaign-v0.csv,panel-en-banc,Three-judge panels with en banc correction,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.597,0.707,0.619,0.037,0.042,0.305,0.584,0.135,0.000
-simulation-campaign-v0.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.575,0.697,0.608,0.012,0.035,0.324,0.572,0.133,0.000
-simulation-campaign-v0.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.572,0.689,0.623,0.013,0.037,0.329,0.580,0.147,0.000
-simulation-campaign-v0.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.587,0.710,0.602,0.020,0.035,0.295,0.570,0.130,0.000
-simulation-campaign-v0.csv,constitutional-council,Pre-enactment constitutional council,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.588,0.713,0.612,0.034,0.043,0.306,0.587,0.135,0.019
-simulation-campaign-v0.csv,legislative-override,Judicial review with legislative supermajority override,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.599,0.708,0.618,0.013,0.040,0.302,0.581,0.133,0.027
-simulation-campaign-v0.csv,accountability-retention-court,Retention-election accountability court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.597,0.708,0.617,0.027,0.039,0.309,0.588,0.136,0.028
-simulation-campaign-v0.csv,emergency-restraint-court,No emergency relief without merits review,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.599,0.710,0.619,0.026,0.001,0.303,0.585,0.128,0.000
-simulation-campaign-v5.csv,current-us-like,Stylized current U.S.-like supreme court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.596,0.691,0.627,0.034,0.183,0.318,0.575,0.171,0.000
-simulation-campaign-v5.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.600,0.697,0.628,0.030,0.049,0.312,0.581,0.154,0.000
-simulation-campaign-v5.csv,nonpartisan-commission,Nonpartisan commission appointments,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.594,0.701,0.628,0.026,0.051,0.317,0.589,0.142,0.000
-simulation-campaign-v5.csv,expanded-court-fifteen,Expanded 15-seat court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.592,0.698,0.622,0.019,0.050,0.308,0.576,0.148,0.000
-simulation-campaign-v5.csv,supermajority-review,60 percent invalidation threshold,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.597,0.697,0.623,0.033,0.042,0.316,0.582,0.158,0.000
-simulation-campaign-v5.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.592,0.700,0.625,0.033,0.048,0.310,0.579,0.151,0.000
-simulation-campaign-v5.csv,panel-en-banc,Three-judge panels with en banc correction,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.590,0.701,0.623,0.044,0.054,0.315,0.584,0.145,0.000
-simulation-campaign-v5.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.568,0.688,0.621,0.012,0.045,0.344,0.583,0.149,0.000
-simulation-campaign-v5.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.566,0.679,0.635,0.011,0.041,0.351,0.590,0.149,0.000
-simulation-campaign-v5.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.584,0.701,0.615,0.021,0.042,0.312,0.577,0.142,0.000
-simulation-campaign-v5.csv,constitutional-council,Pre-enactment constitutional council,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.586,0.700,0.625,0.034,0.051,0.319,0.589,0.141,0.029
-simulation-campaign-v5.csv,legislative-override,Judicial review with legislative supermajority override,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.593,0.698,0.632,0.012,0.049,0.323,0.589,0.144,0.032
-simulation-campaign-v5.csv,accountability-retention-court,Retention-election accountability court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.594,0.699,0.627,0.029,0.051,0.321,0.588,0.142,0.030
-simulation-campaign-v5.csv,emergency-restraint-court,No emergency relief without merits review,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.594,0.704,0.626,0.026,0.001,0.313,0.584,0.133,0.000
-simulation-campaign-v10.csv,current-us-like,Stylized current U.S.-like supreme court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.593,0.694,0.621,0.033,0.187,0.318,0.577,0.166,0.000
-simulation-campaign-v10.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.598,0.697,0.630,0.039,0.053,0.318,0.584,0.154,0.000
-simulation-campaign-v10.csv,nonpartisan-commission,Nonpartisan commission appointments,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.596,0.698,0.632,0.027,0.054,0.320,0.590,0.142,0.000
-simulation-campaign-v10.csv,expanded-court-fifteen,Expanded 15-seat court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.591,0.698,0.625,0.024,0.052,0.313,0.579,0.152,0.000
-simulation-campaign-v10.csv,supermajority-review,60 percent invalidation threshold,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.596,0.699,0.619,0.033,0.044,0.315,0.579,0.154,0.000
-simulation-campaign-v10.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.592,0.698,0.625,0.036,0.052,0.315,0.582,0.153,0.000
-simulation-campaign-v10.csv,panel-en-banc,Three-judge panels with en banc correction,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.593,0.697,0.630,0.040,0.054,0.319,0.589,0.144,0.000
-simulation-campaign-v10.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.566,0.687,0.620,0.015,0.046,0.350,0.584,0.151,0.000
-simulation-campaign-v10.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.563,0.678,0.633,0.015,0.046,0.350,0.589,0.153,0.000
-simulation-campaign-v10.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.583,0.700,0.617,0.021,0.047,0.317,0.579,0.136,0.000
-simulation-campaign-v10.csv,constitutional-council,Pre-enactment constitutional council,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.584,0.702,0.620,0.030,0.053,0.316,0.584,0.143,0.026
-simulation-campaign-v10.csv,legislative-override,Judicial review with legislative supermajority override,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.593,0.697,0.633,0.016,0.053,0.326,0.592,0.147,0.034
-simulation-campaign-v10.csv,accountability-retention-court,Retention-election accountability court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.592,0.702,0.623,0.026,0.053,0.323,0.589,0.143,0.028
-simulation-campaign-v10.csv,emergency-restraint-court,No emergency relief without merits review,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.594,0.704,0.624,0.026,0.001,0.313,0.585,0.136,0.000
-simulation-campaign-v15.csv,current-us-like,Stylized current U.S.-like supreme court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.593,0.698,0.631,0.038,0.191,0.316,0.576,0.164,0.000
-simulation-campaign-v15.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.597,0.703,0.632,0.038,0.053,0.307,0.580,0.151,0.000
-simulation-campaign-v15.csv,nonpartisan-commission,Nonpartisan commission appointments,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.593,0.705,0.634,0.024,0.052,0.313,0.586,0.144,0.000
-simulation-campaign-v15.csv,expanded-court-fifteen,Expanded 15-seat court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.591,0.704,0.631,0.024,0.052,0.305,0.577,0.150,0.000
-simulation-campaign-v15.csv,supermajority-review,60 percent invalidation threshold,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.597,0.704,0.621,0.032,0.042,0.302,0.568,0.147,0.000
-simulation-campaign-v15.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.591,0.706,0.637,0.033,0.055,0.314,0.590,0.154,0.000
-simulation-campaign-v15.csv,panel-en-banc,Three-judge panels with en banc correction,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.591,0.705,0.630,0.040,0.054,0.311,0.580,0.138,0.000
-simulation-campaign-v15.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.566,0.691,0.624,0.014,0.046,0.342,0.577,0.147,0.000
-simulation-campaign-v15.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.565,0.686,0.640,0.014,0.043,0.345,0.589,0.148,0.000
-simulation-campaign-v15.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.585,0.706,0.626,0.022,0.042,0.308,0.577,0.135,0.000
-simulation-campaign-v15.csv,constitutional-council,Pre-enactment constitutional council,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.586,0.707,0.628,0.027,0.048,0.309,0.583,0.137,0.022
-simulation-campaign-v15.csv,legislative-override,Judicial review with legislative supermajority override,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.593,0.702,0.638,0.013,0.052,0.318,0.588,0.144,0.028
-simulation-campaign-v15.csv,accountability-retention-court,Retention-election accountability court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.595,0.705,0.629,0.024,0.048,0.310,0.582,0.137,0.023
-simulation-campaign-v15.csv,emergency-restraint-court,No emergency relief without merits review,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.591,0.708,0.635,0.024,0.001,0.315,0.590,0.138,0.000
-simulation-campaign-v20.csv,current-us-like,Stylized current U.S.-like supreme court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.594,0.690,0.631,0.039,0.180,0.315,0.573,0.164,0.000
-simulation-campaign-v20.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.598,0.696,0.631,0.036,0.050,0.306,0.576,0.150,0.000
-simulation-campaign-v20.csv,nonpartisan-commission,Nonpartisan commission appointments,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.594,0.700,0.637,0.029,0.050,0.318,0.588,0.142,0.000
-simulation-campaign-v20.csv,expanded-court-fifteen,Expanded 15-seat court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.591,0.700,0.629,0.021,0.049,0.307,0.576,0.147,0.000
-simulation-campaign-v20.csv,supermajority-review,60 percent invalidation threshold,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.596,0.698,0.626,0.034,0.042,0.310,0.573,0.151,0.000
-simulation-campaign-v20.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.591,0.697,0.633,0.035,0.051,0.313,0.580,0.155,0.000
-simulation-campaign-v20.csv,panel-en-banc,Three-judge panels with en banc correction,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.593,0.697,0.634,0.043,0.054,0.317,0.587,0.140,0.000
-simulation-campaign-v20.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.566,0.686,0.627,0.016,0.044,0.349,0.581,0.147,0.000
-simulation-campaign-v20.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.565,0.681,0.634,0.013,0.043,0.341,0.582,0.146,0.000
-simulation-campaign-v20.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.584,0.697,0.626,0.021,0.042,0.311,0.574,0.145,0.000
-simulation-campaign-v20.csv,constitutional-council,Pre-enactment constitutional council,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.582,0.702,0.630,0.034,0.055,0.320,0.591,0.144,0.021
-simulation-campaign-v20.csv,legislative-override,Judicial review with legislative supermajority override,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.593,0.694,0.637,0.015,0.051,0.318,0.582,0.147,0.038
-simulation-campaign-v20.csv,accountability-retention-court,Retention-election accountability court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.592,0.701,0.626,0.032,0.050,0.314,0.581,0.138,0.026
-simulation-campaign-v20.csv,emergency-restraint-court,No emergency relief without merits review,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.591,0.705,0.629,0.028,0.001,0.312,0.582,0.134,0.000
-simulation-campaign-v21-paper.csv,current-us-like,Stylized current U.S.-like supreme court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.602,0.707,0.630,0.031,0.153,0.292,0.572,0.146,0.000
-simulation-campaign-v21-paper.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.604,0.713,0.625,0.030,0.037,0.283,0.571,0.135,0.000
-simulation-campaign-v21-paper.csv,nonpartisan-commission,Nonpartisan commission appointments,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.600,0.715,0.628,0.022,0.039,0.288,0.576,0.130,0.000
-simulation-campaign-v21-paper.csv,expanded-court-fifteen,Expanded 15-seat court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.598,0.713,0.626,0.018,0.040,0.283,0.571,0.140,0.000
-simulation-campaign-v21-paper.csv,supermajority-review,60 percent invalidation threshold,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.603,0.713,0.625,0.034,0.037,0.288,0.573,0.141,0.000
-simulation-campaign-v21-paper.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.597,0.715,0.622,0.031,0.041,0.283,0.569,0.136,0.000
-simulation-campaign-v21-paper.csv,panel-en-banc,Three-judge panels with en banc correction,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.601,0.713,0.629,0.033,0.040,0.286,0.573,0.125,0.000
-simulation-campaign-v21-paper.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.575,0.704,0.623,0.010,0.033,0.318,0.577,0.131,0.000
-simulation-campaign-v21-paper.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.572,0.698,0.635,0.011,0.034,0.320,0.582,0.138,0.000
-simulation-campaign-v21-paper.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.589,0.715,0.621,0.019,0.037,0.290,0.574,0.131,0.000
-simulation-campaign-v21-paper.csv,constitutional-council,Pre-enactment constitutional council,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.591,0.717,0.625,0.026,0.040,0.290,0.580,0.127,0.015
-simulation-campaign-v21-paper.csv,legislative-override,Judicial review with legislative supermajority override,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.599,0.713,0.634,0.010,0.043,0.296,0.582,0.134,0.023
-simulation-campaign-v21-paper.csv,accountability-retention-court,Retention-election accountability court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.600,0.714,0.622,0.023,0.042,0.287,0.573,0.125,0.015
-simulation-campaign-v21-paper.csv,emergency-restraint-court,No emergency relief without merits review,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.600,0.718,0.622,0.019,0.001,0.282,0.571,0.117,0.000
-simulation-manipulation-stress.csv,current-us-like,Stylized current U.S.-like supreme court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.602,0.706,0.615,0.031,0.149,0.296,0.573,0.151,0.000
-simulation-manipulation-stress.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.603,0.711,0.610,0.030,0.039,0.290,0.574,0.141,0.000
-simulation-manipulation-stress.csv,nonpartisan-commission,Nonpartisan commission appointments,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.599,0.714,0.615,0.020,0.042,0.297,0.583,0.130,0.000
-simulation-manipulation-stress.csv,expanded-court-fifteen,Expanded 15-seat court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.599,0.708,0.616,0.020,0.039,0.290,0.574,0.139,0.000
-simulation-manipulation-stress.csv,supermajority-review,60 percent invalidation threshold,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.600,0.711,0.606,0.031,0.034,0.292,0.571,0.147,0.000
-simulation-manipulation-stress.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.598,0.710,0.616,0.035,0.041,0.294,0.577,0.143,0.000
-simulation-manipulation-stress.csv,panel-en-banc,Three-judge panels with en banc correction,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.597,0.710,0.618,0.038,0.045,0.300,0.583,0.137,0.000
-simulation-manipulation-stress.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.575,0.701,0.611,0.011,0.034,0.325,0.579,0.137,0.000
-simulation-manipulation-stress.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.570,0.692,0.621,0.013,0.033,0.328,0.583,0.142,0.000
-simulation-manipulation-stress.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.591,0.711,0.604,0.017,0.033,0.287,0.567,0.126,0.000
-simulation-manipulation-stress.csv,constitutional-council,Pre-enactment constitutional council,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.591,0.715,0.612,0.025,0.041,0.299,0.585,0.130,0.018
-simulation-manipulation-stress.csv,legislative-override,Judicial review with legislative supermajority override,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.598,0.709,0.618,0.012,0.041,0.301,0.581,0.132,0.029
-simulation-manipulation-stress.csv,accountability-retention-court,Retention-election accountability court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.599,0.712,0.614,0.018,0.041,0.300,0.584,0.131,0.021
-simulation-manipulation-stress.csv,emergency-restraint-court,No emergency relief without merits review,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.599,0.713,0.610,0.020,0.001,0.290,0.574,0.124,0.000
+simulation-campaign-v0.csv,current-us-like,Stylized current U.S.-like supreme court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.596,0.678,0.639,0.038,0.214,0.377,0.610,0.181,0.000
+simulation-campaign-v0.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.609,0.679,0.648,0.036,0.052,0.363,0.617,0.170,0.000
+simulation-campaign-v0.csv,nonpartisan-commission,Nonpartisan commission appointments,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.608,0.683,0.650,0.033,0.056,0.369,0.624,0.158,0.000
+simulation-campaign-v0.csv,expanded-court-fifteen,Expanded 15-seat court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.603,0.683,0.643,0.030,0.053,0.361,0.615,0.167,0.000
+simulation-campaign-v0.csv,supermajority-review,60 percent invalidation threshold,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.609,0.687,0.632,0.038,0.046,0.363,0.611,0.170,0.000
+simulation-campaign-v0.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.605,0.686,0.640,0.045,0.056,0.359,0.613,0.167,0.000
+simulation-campaign-v0.csv,panel-en-banc,Three-judge panels with en banc correction,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.603,0.685,0.639,0.043,0.057,0.367,0.619,0.158,0.000
+simulation-campaign-v0.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.582,0.672,0.630,0.017,0.046,0.401,0.612,0.162,0.000
+simulation-campaign-v0.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.581,0.663,0.650,0.018,0.044,0.400,0.622,0.168,0.000
+simulation-campaign-v0.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.596,0.689,0.623,0.024,0.047,0.360,0.606,0.153,0.000
+simulation-campaign-v0.csv,constitutional-council,Pre-enactment constitutional council,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.596,0.687,0.638,0.036,0.055,0.373,0.629,0.164,0.045
+simulation-campaign-v0.csv,legislative-override,Judicial review with legislative supermajority override,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.605,0.685,0.646,0.016,0.059,0.378,0.626,0.160,0.051
+simulation-campaign-v0.csv,accountability-retention-court,Retention-election accountability court,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.604,0.685,0.637,0.032,0.057,0.373,0.623,0.159,0.045
+simulation-campaign-v0.csv,emergency-restraint-court,No emergency relief without merits review,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.610,0.689,0.641,0.030,0.001,0.362,0.620,0.150,0.000
+simulation-campaign-v0.csv,randomized-merits-panels,Randomized merits panels with en banc correction,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.603,0.684,0.647,0.046,0.059,0.369,0.622,0.161,0.000
+simulation-campaign-v0.csv,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.605,0.685,0.641,0.038,0.024,0.360,0.614,0.167,0.000
+simulation-campaign-v0.csv,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.607,0.684,0.645,0.049,0.003,0.359,0.618,0.160,0.000
+simulation-campaign-v0.csv,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.603,0.685,0.643,0.031,0.054,0.365,0.620,0.158,0.000
+simulation-campaign-v0.csv,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.607,0.679,0.648,0.016,0.056,0.372,0.623,0.155,0.056
+simulation-campaign-v0.csv,legislative-override-window,Time-limited legislative override window,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.605,0.681,0.647,0.016,0.054,0.375,0.623,0.159,0.048
+simulation-campaign-v0.csv,constitutional-remand,Constitutional remand before invalidation,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.600,0.695,0.641,0.033,0.058,0.367,0.630,0.158,0.033
+simulation-campaign-v0.csv,public-interest-litigation-filter,Public-interest litigation filter,0.281,0.593,0.167,0.200,0.280,0.144,0.597,0.228,0.602,0.680,0.655,0.036,0.057,0.374,0.626,0.163,0.000
+simulation-campaign-v5.csv,current-us-like,Stylized current U.S.-like supreme court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.588,0.664,0.647,0.042,0.225,0.391,0.612,0.187,0.000
+simulation-campaign-v5.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.604,0.674,0.648,0.042,0.060,0.375,0.620,0.176,0.000
+simulation-campaign-v5.csv,nonpartisan-commission,Nonpartisan commission appointments,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.602,0.673,0.659,0.034,0.064,0.383,0.629,0.165,0.000
+simulation-campaign-v5.csv,expanded-court-fifteen,Expanded 15-seat court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.594,0.672,0.646,0.021,0.062,0.374,0.616,0.175,0.000
+simulation-campaign-v5.csv,supermajority-review,60 percent invalidation threshold,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.603,0.675,0.640,0.043,0.047,0.373,0.610,0.174,0.000
+simulation-campaign-v5.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.599,0.675,0.648,0.043,0.060,0.373,0.617,0.173,0.000
+simulation-campaign-v5.csv,panel-en-banc,Three-judge panels with en banc correction,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.598,0.674,0.649,0.047,0.058,0.378,0.621,0.165,0.000
+simulation-campaign-v5.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.575,0.659,0.634,0.015,0.052,0.412,0.612,0.167,0.000
+simulation-campaign-v5.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.573,0.655,0.652,0.013,0.051,0.413,0.621,0.172,0.000
+simulation-campaign-v5.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.588,0.675,0.637,0.022,0.055,0.376,0.611,0.164,0.000
+simulation-campaign-v5.csv,constitutional-council,Pre-enactment constitutional council,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.594,0.677,0.644,0.034,0.059,0.376,0.623,0.162,0.046
+simulation-campaign-v5.csv,legislative-override,Judicial review with legislative supermajority override,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.598,0.670,0.652,0.014,0.059,0.385,0.623,0.167,0.048
+simulation-campaign-v5.csv,accountability-retention-court,Retention-election accountability court,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.599,0.676,0.645,0.033,0.062,0.386,0.627,0.162,0.046
+simulation-campaign-v5.csv,emergency-restraint-court,No emergency relief without merits review,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.604,0.678,0.651,0.032,0.001,0.377,0.626,0.155,0.000
+simulation-campaign-v5.csv,randomized-merits-panels,Randomized merits panels with en banc correction,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.598,0.670,0.656,0.047,0.059,0.379,0.624,0.162,0.000
+simulation-campaign-v5.csv,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.599,0.675,0.646,0.043,0.028,0.372,0.613,0.173,0.000
+simulation-campaign-v5.csv,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.599,0.673,0.655,0.043,0.004,0.378,0.622,0.172,0.000
+simulation-campaign-v5.csv,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.597,0.676,0.649,0.028,0.064,0.381,0.621,0.164,0.000
+simulation-campaign-v5.csv,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.603,0.672,0.653,0.015,0.059,0.386,0.627,0.163,0.058
+simulation-campaign-v5.csv,legislative-override-window,Time-limited legislative override window,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.599,0.668,0.654,0.014,0.062,0.386,0.622,0.168,0.056
+simulation-campaign-v5.csv,constitutional-remand,Constitutional remand before invalidation,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.590,0.682,0.649,0.030,0.063,0.386,0.637,0.170,0.043
+simulation-campaign-v5.csv,public-interest-litigation-filter,Public-interest litigation filter,0.429,0.554,0.239,0.200,0.280,0.262,0.562,0.285,0.596,0.671,0.658,0.033,0.068,0.387,0.630,0.167,0.000
+simulation-campaign-v10.csv,current-us-like,Stylized current U.S.-like supreme court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.584,0.663,0.653,0.045,0.247,0.400,0.611,0.195,0.000
+simulation-campaign-v10.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.601,0.673,0.664,0.044,0.068,0.388,0.626,0.182,0.000
+simulation-campaign-v10.csv,nonpartisan-commission,Nonpartisan commission appointments,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.598,0.674,0.660,0.030,0.067,0.390,0.627,0.169,0.000
+simulation-campaign-v10.csv,expanded-court-fifteen,Expanded 15-seat court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.595,0.675,0.654,0.026,0.064,0.379,0.617,0.177,0.000
+simulation-campaign-v10.csv,supermajority-review,60 percent invalidation threshold,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.600,0.677,0.645,0.045,0.056,0.385,0.617,0.180,0.000
+simulation-campaign-v10.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.597,0.674,0.652,0.043,0.062,0.376,0.613,0.178,0.000
+simulation-campaign-v10.csv,panel-en-banc,Three-judge panels with en banc correction,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.595,0.670,0.664,0.047,0.066,0.391,0.628,0.176,0.000
+simulation-campaign-v10.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.571,0.661,0.643,0.019,0.057,0.425,0.616,0.178,0.000
+simulation-campaign-v10.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.569,0.654,0.658,0.018,0.057,0.423,0.624,0.175,0.000
+simulation-campaign-v10.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.589,0.679,0.640,0.024,0.053,0.380,0.612,0.164,0.000
+simulation-campaign-v10.csv,constitutional-council,Pre-enactment constitutional council,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.587,0.676,0.651,0.037,0.067,0.390,0.627,0.173,0.044
+simulation-campaign-v10.csv,legislative-override,Judicial review with legislative supermajority override,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.597,0.673,0.657,0.018,0.066,0.391,0.622,0.168,0.049
+simulation-campaign-v10.csv,accountability-retention-court,Retention-election accountability court,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.597,0.679,0.642,0.031,0.067,0.384,0.618,0.164,0.041
+simulation-campaign-v10.csv,emergency-restraint-court,No emergency relief without merits review,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.604,0.682,0.654,0.031,0.001,0.380,0.623,0.157,0.000
+simulation-campaign-v10.csv,randomized-merits-panels,Randomized merits panels with en banc correction,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.594,0.679,0.653,0.046,0.067,0.386,0.624,0.166,0.000
+simulation-campaign-v10.csv,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.598,0.675,0.650,0.039,0.028,0.377,0.616,0.173,0.000
+simulation-campaign-v10.csv,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.600,0.677,0.658,0.045,0.004,0.377,0.621,0.168,0.000
+simulation-campaign-v10.csv,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.596,0.672,0.665,0.031,0.066,0.390,0.629,0.168,0.000
+simulation-campaign-v10.csv,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.600,0.670,0.661,0.018,0.065,0.392,0.627,0.167,0.053
+simulation-campaign-v10.csv,legislative-override-window,Time-limited legislative override window,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.599,0.675,0.660,0.018,0.064,0.395,0.629,0.172,0.048
+simulation-campaign-v10.csv,constitutional-remand,Constitutional remand before invalidation,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.590,0.686,0.654,0.031,0.067,0.392,0.637,0.167,0.039
+simulation-campaign-v10.csv,public-interest-litigation-filter,Public-interest litigation filter,0.518,0.582,0.268,0.200,0.227,0.326,0.565,0.307,0.594,0.675,0.663,0.032,0.071,0.398,0.636,0.168,0.000
+simulation-campaign-v15.csv,current-us-like,Stylized current U.S.-like supreme court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.590,0.673,0.650,0.041,0.228,0.381,0.604,0.186,0.000
+simulation-campaign-v15.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.605,0.681,0.654,0.045,0.062,0.367,0.614,0.172,0.000
+simulation-campaign-v15.csv,nonpartisan-commission,Nonpartisan commission appointments,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.601,0.681,0.656,0.028,0.065,0.374,0.620,0.158,0.000
+simulation-campaign-v15.csv,expanded-court-fifteen,Expanded 15-seat court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.597,0.684,0.651,0.031,0.063,0.366,0.613,0.167,0.000
+simulation-campaign-v15.csv,supermajority-review,60 percent invalidation threshold,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.602,0.680,0.645,0.043,0.055,0.368,0.606,0.175,0.000
+simulation-campaign-v15.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.598,0.680,0.654,0.042,0.065,0.370,0.613,0.171,0.000
+simulation-campaign-v15.csv,panel-en-banc,Three-judge panels with en banc correction,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.598,0.682,0.655,0.051,0.070,0.379,0.624,0.162,0.000
+simulation-campaign-v15.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.576,0.668,0.642,0.017,0.057,0.413,0.613,0.173,0.000
+simulation-campaign-v15.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.570,0.658,0.657,0.017,0.059,0.412,0.620,0.176,0.000
+simulation-campaign-v15.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.590,0.682,0.640,0.025,0.054,0.367,0.603,0.159,0.000
+simulation-campaign-v15.csv,constitutional-council,Pre-enactment constitutional council,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.591,0.686,0.648,0.036,0.066,0.377,0.624,0.160,0.034
+simulation-campaign-v15.csv,legislative-override,Judicial review with legislative supermajority override,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.598,0.677,0.662,0.015,0.068,0.386,0.623,0.169,0.046
+simulation-campaign-v15.csv,accountability-retention-court,Retention-election accountability court,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.600,0.683,0.648,0.029,0.062,0.375,0.619,0.156,0.034
+simulation-campaign-v15.csv,emergency-restraint-court,No emergency relief without merits review,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.602,0.686,0.651,0.029,0.001,0.372,0.619,0.158,0.000
+simulation-campaign-v15.csv,randomized-merits-panels,Randomized merits panels with en banc correction,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.596,0.683,0.652,0.046,0.064,0.373,0.618,0.161,0.000
+simulation-campaign-v15.csv,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.599,0.682,0.653,0.044,0.030,0.373,0.616,0.174,0.000
+simulation-campaign-v15.csv,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.601,0.681,0.664,0.040,0.005,0.379,0.627,0.168,0.000
+simulation-campaign-v15.csv,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.596,0.679,0.654,0.027,0.064,0.374,0.617,0.166,0.000
+simulation-campaign-v15.csv,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.601,0.680,0.655,0.015,0.067,0.378,0.620,0.160,0.041
+simulation-campaign-v15.csv,legislative-override-window,Time-limited legislative override window,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.598,0.678,0.653,0.015,0.066,0.379,0.619,0.165,0.044
+simulation-campaign-v15.csv,constitutional-remand,Constitutional remand before invalidation,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.590,0.689,0.655,0.030,0.072,0.386,0.635,0.167,0.032
+simulation-campaign-v15.csv,public-interest-litigation-filter,Public-interest litigation filter,0.500,0.594,0.255,0.110,0.230,0.323,0.513,0.293,0.595,0.679,0.663,0.031,0.066,0.385,0.629,0.168,0.000
+simulation-campaign-v20.csv,current-us-like,Stylized current U.S.-like supreme court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.583,0.660,0.657,0.043,0.244,0.404,0.615,0.197,0.000
+simulation-campaign-v20.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.603,0.676,0.652,0.045,0.064,0.375,0.616,0.170,0.000
+simulation-campaign-v20.csv,nonpartisan-commission,Nonpartisan commission appointments,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.598,0.676,0.661,0.034,0.070,0.391,0.629,0.168,0.000
+simulation-campaign-v20.csv,expanded-court-fifteen,Expanded 15-seat court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.593,0.672,0.654,0.024,0.064,0.378,0.615,0.176,0.000
+simulation-campaign-v20.csv,supermajority-review,60 percent invalidation threshold,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.600,0.675,0.647,0.040,0.054,0.381,0.615,0.177,0.000
+simulation-campaign-v20.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.596,0.673,0.655,0.048,0.067,0.380,0.618,0.178,0.000
+simulation-campaign-v20.csv,panel-en-banc,Three-judge panels with en banc correction,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.597,0.677,0.656,0.049,0.064,0.386,0.625,0.164,0.000
+simulation-campaign-v20.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.574,0.661,0.642,0.020,0.055,0.417,0.612,0.168,0.000
+simulation-campaign-v20.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.568,0.653,0.655,0.017,0.057,0.421,0.620,0.180,0.000
+simulation-campaign-v20.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.589,0.676,0.640,0.025,0.054,0.374,0.607,0.167,0.000
+simulation-campaign-v20.csv,constitutional-council,Pre-enactment constitutional council,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.591,0.679,0.652,0.042,0.066,0.388,0.628,0.164,0.042
+simulation-campaign-v20.csv,legislative-override,Judicial review with legislative supermajority override,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.597,0.669,0.658,0.019,0.066,0.392,0.626,0.167,0.058
+simulation-campaign-v20.csv,accountability-retention-court,Retention-election accountability court,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.596,0.676,0.646,0.038,0.066,0.384,0.619,0.164,0.038
+simulation-campaign-v20.csv,emergency-restraint-court,No emergency relief without merits review,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.604,0.682,0.655,0.036,0.002,0.377,0.623,0.159,0.000
+simulation-campaign-v20.csv,randomized-merits-panels,Randomized merits panels with en banc correction,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.594,0.673,0.658,0.049,0.065,0.388,0.625,0.166,0.000
+simulation-campaign-v20.csv,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.597,0.673,0.654,0.046,0.032,0.381,0.617,0.180,0.000
+simulation-campaign-v20.csv,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.600,0.677,0.651,0.045,0.005,0.369,0.613,0.166,0.000
+simulation-campaign-v20.csv,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.594,0.671,0.661,0.030,0.068,0.389,0.628,0.169,0.000
+simulation-campaign-v20.csv,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.598,0.671,0.659,0.019,0.068,0.393,0.627,0.167,0.057
+simulation-campaign-v20.csv,legislative-override-window,Time-limited legislative override window,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.596,0.666,0.660,0.018,0.065,0.391,0.621,0.173,0.060
+simulation-campaign-v20.csv,constitutional-remand,Constitutional remand before invalidation,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.590,0.685,0.657,0.037,0.067,0.394,0.639,0.169,0.038
+simulation-campaign-v20.csv,public-interest-litigation-filter,Public-interest litigation filter,0.584,0.564,0.251,0.116,0.246,0.334,0.494,0.302,0.595,0.669,0.669,0.036,0.069,0.395,0.633,0.171,0.000
+simulation-campaign-v21-paper.csv,current-us-like,Stylized current U.S.-like supreme court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.597,0.682,0.650,0.040,0.201,0.360,0.603,0.178,0.000
+simulation-campaign-v21-paper.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.612,0.692,0.650,0.041,0.055,0.343,0.607,0.158,0.000
+simulation-campaign-v21-paper.csv,nonpartisan-commission,Nonpartisan commission appointments,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.607,0.690,0.657,0.028,0.056,0.352,0.615,0.155,0.000
+simulation-campaign-v21-paper.csv,expanded-court-fifteen,Expanded 15-seat court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.607,0.693,0.651,0.019,0.052,0.338,0.603,0.153,0.000
+simulation-campaign-v21-paper.csv,supermajority-review,60 percent invalidation threshold,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.610,0.691,0.644,0.037,0.044,0.344,0.603,0.162,0.000
+simulation-campaign-v21-paper.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.609,0.692,0.654,0.034,0.052,0.341,0.606,0.158,0.000
+simulation-campaign-v21-paper.csv,panel-en-banc,Three-judge panels with en banc correction,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.607,0.693,0.653,0.040,0.055,0.351,0.615,0.151,0.000
+simulation-campaign-v21-paper.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.589,0.682,0.644,0.012,0.041,0.379,0.607,0.150,0.000
+simulation-campaign-v21-paper.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.581,0.673,0.659,0.013,0.043,0.385,0.616,0.164,0.000
+simulation-campaign-v21-paper.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.598,0.695,0.637,0.020,0.043,0.344,0.600,0.147,0.000
+simulation-campaign-v21-paper.csv,constitutional-council,Pre-enactment constitutional council,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.603,0.696,0.653,0.033,0.049,0.353,0.620,0.148,0.028
+simulation-campaign-v21-paper.csv,legislative-override,Judicial review with legislative supermajority override,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.609,0.689,0.657,0.011,0.050,0.353,0.611,0.150,0.039
+simulation-campaign-v21-paper.csv,accountability-retention-court,Retention-election accountability court,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.606,0.693,0.647,0.026,0.054,0.352,0.613,0.149,0.035
+simulation-campaign-v21-paper.csv,emergency-restraint-court,No emergency relief without merits review,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.612,0.697,0.651,0.026,0.001,0.343,0.611,0.143,0.000
+simulation-campaign-v21-paper.csv,randomized-merits-panels,Randomized merits panels with en banc correction,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.604,0.695,0.650,0.040,0.055,0.349,0.612,0.148,0.000
+simulation-campaign-v21-paper.csv,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.606,0.693,0.648,0.037,0.025,0.344,0.605,0.159,0.000
+simulation-campaign-v21-paper.csv,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.607,0.693,0.652,0.039,0.002,0.346,0.610,0.155,0.000
+simulation-campaign-v21-paper.csv,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.605,0.692,0.654,0.024,0.056,0.349,0.614,0.151,0.000
+simulation-campaign-v21-paper.csv,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.612,0.691,0.654,0.012,0.049,0.349,0.611,0.144,0.033
+simulation-campaign-v21-paper.csv,legislative-override-window,Time-limited legislative override window,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.608,0.690,0.655,0.011,0.053,0.353,0.612,0.152,0.033
+simulation-campaign-v21-paper.csv,constitutional-remand,Constitutional remand before invalidation,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.601,0.703,0.655,0.027,0.054,0.356,0.628,0.150,0.023
+simulation-campaign-v21-paper.csv,public-interest-litigation-filter,Public-interest litigation filter,0.343,0.610,0.175,0.104,0.237,0.120,0.547,0.213,0.603,0.691,0.657,0.028,0.059,0.356,0.617,0.155,0.000
+simulation-manipulation-stress.csv,current-us-like,Stylized current U.S.-like supreme court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.602,0.684,0.642,0.037,0.192,0.356,0.602,0.170,0.000
+simulation-manipulation-stress.csv,term-limited-balanced,18-year staggered terms + regular appointments,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.612,0.692,0.638,0.036,0.050,0.345,0.608,0.160,0.000
+simulation-manipulation-stress.csv,nonpartisan-commission,Nonpartisan commission appointments,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.611,0.690,0.644,0.023,0.049,0.351,0.616,0.147,0.000
+simulation-manipulation-stress.csv,expanded-court-fifteen,Expanded 15-seat court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.606,0.693,0.640,0.023,0.051,0.345,0.611,0.159,0.000
+simulation-manipulation-stress.csv,supermajority-review,60 percent invalidation threshold,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.611,0.692,0.635,0.040,0.042,0.352,0.608,0.164,0.000
+simulation-manipulation-stress.csv,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.609,0.691,0.640,0.032,0.045,0.339,0.607,0.160,0.000
+simulation-manipulation-stress.csv,panel-en-banc,Three-judge panels with en banc correction,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.608,0.690,0.650,0.044,0.051,0.355,0.621,0.152,0.000
+simulation-manipulation-stress.csv,cross-checking-courts,Supreme court with cross-checking constitutional court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.587,0.680,0.631,0.014,0.039,0.382,0.607,0.158,0.000
+simulation-manipulation-stress.csv,dual-supreme-courts,Dual supreme courts with disagreement filter,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.582,0.669,0.650,0.015,0.045,0.386,0.617,0.161,0.000
+simulation-manipulation-stress.csv,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.601,0.695,0.631,0.019,0.039,0.347,0.607,0.148,0.000
+simulation-manipulation-stress.csv,constitutional-council,Pre-enactment constitutional council,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.602,0.694,0.640,0.029,0.048,0.350,0.618,0.147,0.038
+simulation-manipulation-stress.csv,legislative-override,Judicial review with legislative supermajority override,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.608,0.689,0.647,0.013,0.053,0.356,0.615,0.151,0.045
+simulation-manipulation-stress.csv,accountability-retention-court,Retention-election accountability court,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.610,0.693,0.641,0.022,0.049,0.356,0.619,0.149,0.039
+simulation-manipulation-stress.csv,emergency-restraint-court,No emergency relief without merits review,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.611,0.698,0.638,0.022,0.001,0.346,0.615,0.141,0.000
+simulation-manipulation-stress.csv,randomized-merits-panels,Randomized merits panels with en banc correction,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.606,0.692,0.645,0.043,0.053,0.352,0.619,0.148,0.000
+simulation-manipulation-stress.csv,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.609,0.694,0.639,0.039,0.022,0.348,0.611,0.157,0.000
+simulation-manipulation-stress.csv,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.609,0.694,0.646,0.037,0.002,0.347,0.616,0.155,0.000
+simulation-manipulation-stress.csv,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.608,0.691,0.649,0.020,0.051,0.353,0.621,0.148,0.000
+simulation-manipulation-stress.csv,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.614,0.693,0.645,0.013,0.048,0.353,0.617,0.143,0.044
+simulation-manipulation-stress.csv,legislative-override-window,Time-limited legislative override window,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.609,0.691,0.646,0.013,0.050,0.360,0.618,0.152,0.040
+simulation-manipulation-stress.csv,constitutional-remand,Constitutional remand before invalidation,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.601,0.701,0.644,0.025,0.054,0.359,0.633,0.148,0.028
+simulation-manipulation-stress.csv,public-interest-litigation-filter,Public-interest litigation filter,0.283,0.582,0.102,0.163,0.274,0.097,0.552,0.202,0.605,0.689,0.650,0.025,0.052,0.358,0.622,0.152,0.000

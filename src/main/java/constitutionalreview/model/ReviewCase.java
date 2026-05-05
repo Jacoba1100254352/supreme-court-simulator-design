@@ -21,6 +21,7 @@ public record ReviewCase(
         double overridePressure,
         double lowerCourtConflict,
         double lowerCourtErrorRisk,
+        double lowerCourtSplitDepth,
         double certiorariPressure,
         double solicitorGeneralSignal,
         int amicusBriefs,
@@ -29,6 +30,10 @@ public record ReviewCase(
         boolean specialistCounsel,
         double vehicleDefectRisk,
         double conditionalReversalProbability,
+        double strategicPlaintiffSelection,
+        double repeatPlayerAdvantage,
+        double governmentNoncomplianceRisk,
+        double recusalIncentivePressure,
         EmergencyApplication emergencyApplication
 ) {
     public ReviewCase withId(String id) {
@@ -53,6 +58,7 @@ public record ReviewCase(
                 overridePressure,
                 lowerCourtConflict,
                 lowerCourtErrorRisk,
+                lowerCourtSplitDepth,
                 certiorariPressure,
                 solicitorGeneralSignal,
                 amicusBriefs,
@@ -61,6 +67,10 @@ public record ReviewCase(
                 specialistCounsel,
                 vehicleDefectRisk,
                 conditionalReversalProbability,
+                strategicPlaintiffSelection,
+                repeatPlayerAdvantage,
+                governmentNoncomplianceRisk,
+                recusalIncentivePressure,
                 emergencyApplication
         );
     }

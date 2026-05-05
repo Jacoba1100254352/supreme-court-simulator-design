@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
+import csv
 from pathlib import Path
 
 
@@ -16,6 +17,21 @@ MANIFESTS = [
     ROOT / "reports" / "calibration-baseline-manifest.json",
     ROOT / "reports" / "parameter-sweep-v4-manifest.json",
 ]
+CAMPAIGN_CSV = ROOT / "reports" / "constitutional-review-campaign-v2.csv"
+REQUIRED_CAMPAIGN_COLUMNS = {
+    "certiorariPathRate",
+    "certiorariAdmissionRate",
+    "lowerCourtSplitDepth",
+    "strategicPlaintiffSelection",
+    "repeatPlayerAdvantage",
+    "governmentNoncomplianceRisk",
+    "governmentNoncomplianceRate",
+    "recusalIncentivePressure",
+    "constitutionalRemandRate",
+    "publicInterestFilteredRate",
+    "precedentDurability",
+    "emergencyDownstreamEffect",
+}
 
 
 def sha256(path: Path) -> str:
@@ -55,9 +71,20 @@ def check_manifest(path: Path) -> None:
             fail(f"{artifact['path']} hash {actual} does not match manifest {expected}")
 
 
+def check_campaign_schema() -> None:
+    if not CAMPAIGN_CSV.exists():
+        fail(f"missing campaign CSV {CAMPAIGN_CSV.relative_to(ROOT)}")
+    with CAMPAIGN_CSV.open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        missing = REQUIRED_CAMPAIGN_COLUMNS - set(reader.fieldnames or [])
+    if missing:
+        fail("campaign CSV is missing pipeline/downstream columns: " + ", ".join(sorted(missing)))
+
+
 def main() -> None:
     for manifest in MANIFESTS:
         check_manifest(manifest)
+    check_campaign_schema()
     print(f"Paper artifact verification passed ({len(MANIFESTS)} manifests).")
 
 

@@ -44,8 +44,11 @@ public final class AdmissionFilter {
         };
         return Values.clamp01(base
                 + reviewCase.lowerCourtConflict() * 0.08
+                + reviewCase.lowerCourtSplitDepth() * 0.08
                 + reviewCase.publicAttention() * 0.08
                 + reviewCase.solicitorGeneralSignal() * 0.06
+                + reviewCase.strategicPlaintiffSelection() * 0.08
+                + reviewCase.repeatPlayerAdvantage() * 0.06
                 - reviewCase.vehicleDefectRisk() * 0.22);
     }
 
@@ -64,16 +67,27 @@ public final class AdmissionFilter {
             case DIRECT_CONSTITUTIONAL_COMPLAINT, AMPARO -> -0.18;
             case INTERBRANCH_DISPUTE, ELECTORAL_REVIEW -> 0.20;
         };
+        if (design.auxiliaryReview() == constitutionalreview.institution.AuxiliaryReview.PUBLIC_INTEREST_FILTER) {
+            pathAdjustment += reviewCase.rightsBurden() > 0.52 || reviewCase.publicAttention() > 0.56
+                    ? 0.08
+                    : -0.12;
+        }
+        if (design.auxiliaryReview() == constitutionalreview.institution.AuxiliaryReview.CONSTITUTIONAL_REMAND) {
+            pathAdjustment += 0.03;
+        }
         double designGatekeeping = design.appointmentFragmentation() > 2 ? 0.02 : 0.0;
         double score = 0.18
                 + reviewCase.certiorariPressure() * 0.22
-                + reviewCase.lowerCourtConflict() * 0.17
+                + reviewCase.lowerCourtConflict() * 0.12
+                + reviewCase.lowerCourtSplitDepth() * 0.13
                 + reviewCase.lowerCourtErrorRisk() * 0.10
                 + reviewCase.solicitorGeneralSignal() * 0.15
                 + amicusSignal * 0.10
                 + reviewCase.splitMaturity() * 0.08
                 + relistSignal * 0.07
                 + (reviewCase.specialistCounsel() ? 0.05 : 0.0)
+                + reviewCase.strategicPlaintiffSelection() * 0.05
+                + reviewCase.repeatPlayerAdvantage() * 0.05
                 + reviewCase.conditionalReversalProbability() * 0.08
                 + pathAdjustment
                 + designGatekeeping

@@ -8,11 +8,11 @@
   "casesPerRun": 64,
   "seed": 20260501,
   "experimentCaseCount": 7,
-  "scenarioCount": 14,
+  "scenarioCount": 22,
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/constitutional-review-campaign-v0.csv", "sha256": "71e6b167383a8ed415950b7e938eaf715836d48e38bd202fd3324e38a2072270"},
-    {"path": "reports/constitutional-review-campaign-v0.md", "sha256": "333291a910e095fa1fc7aab8bde3e22a41de2402ec9530fe4b6d4f13c6a59c1d"}
+    {"path": "reports/constitutional-review-campaign-v0.csv", "sha256": "538b050e361aae54ab0f2f85463e8b819478ea3861866ad105a41092df8b6de6"},
+    {"path": "reports/constitutional-review-campaign-v0.md", "sha256": "a149ffb9791231aa517c392c77b80e688a557418eac83728c295c834e803b9ef"}
   ]
 }

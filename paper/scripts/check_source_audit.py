@@ -17,6 +17,7 @@ CALIBRATION_PROVENANCE = ROOT / "data" / "calibration" / "provenance-manifest.cs
 LEGISLATIVE_PROVENANCE = ROOT / "data" / "external" / "legislative" / "source-provenance.csv"
 
 REQUIRED_SECTIONS = {
+    "Claim Boundaries and Interpretation",
     "Theory and Design Space",
     "Expectations",
     "Model",

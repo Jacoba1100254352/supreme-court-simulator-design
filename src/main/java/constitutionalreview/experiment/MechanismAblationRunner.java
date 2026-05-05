@@ -80,13 +80,21 @@ public final class MechanismAblationRunner {
                 new AblationPair("appointment-screening", "Appointment screening", "current-us-like", "nonpartisan-commission"),
                 new AblationPair("term-regularization", "Term regularization", "current-us-like", "term-limited-balanced"),
                 new AblationPair("emergency-restraint", "Emergency restraint", "current-us-like", "emergency-restraint-court"),
+                new AblationPair("written-emergency-reasoning", "Mandatory written emergency reasoning", "current-us-like", "mandatory-written-emergency-reasoning"),
+                new AblationPair("automatic-merits-follow-up", "Automatic merits follow-up", "current-us-like", "automatic-merits-follow-up"),
                 new AblationPair("invalidation-threshold", "Invalidation threshold", "current-us-like", "supermajority-review"),
                 new AblationPair("recusal-emergency-process", "Recusal and emergency process", "current-us-like", "recusal-and-emergency-reform"),
+                new AblationPair("strong-recusal-enforcement", "Strong recusal enforcement", "current-us-like", "strong-recusal-enforcement"),
                 new AblationPair("panel-routing", "Panel routing", "term-limited-balanced", "panel-en-banc"),
+                new AblationPair("randomized-merits-panels", "Randomized merits panels", "term-limited-balanced", "randomized-merits-panels"),
                 new AblationPair("cross-checking-court", "Cross-checking court", "nonpartisan-commission", "cross-checking-courts"),
                 new AblationPair("dual-court-filter", "Dual-court filter", "nonpartisan-commission", "dual-supreme-courts"),
                 new AblationPair("constitutional-council", "Constitutional council", "nonpartisan-commission", "constitutional-council"),
+                new AblationPair("constitutional-remand", "Constitutional remand", "nonpartisan-commission", "constitutional-remand"),
+                new AblationPair("public-interest-filter", "Public-interest litigation filter", "nonpartisan-commission", "public-interest-litigation-filter"),
                 new AblationPair("legislative-override", "Legislative override", "term-limited-balanced", "legislative-override"),
+                new AblationPair("override-window", "Legislative override window", "term-limited-balanced", "legislative-override-window"),
+                new AblationPair("jurisdiction-stripping-constraints", "Jurisdiction-stripping constraints", "term-limited-balanced", "jurisdiction-stripping-constraints"),
                 new AblationPair("accountability-election", "Accountability election", "nonpartisan-commission", "accountability-retention-court"),
                 new AblationPair("court-expansion", "Court expansion", "term-limited-balanced", "expanded-court-fifteen")
         );
@@ -139,6 +147,10 @@ public final class MechanismAblationRunner {
                 "deltaConstitutionalConflict",
                 "deltaDemocraticResponsiveness",
                 "deltaAdministrativeCost",
+                "deltaLowerCourtCompliance",
+                "deltaGovernmentNoncomplianceRate",
+                "deltaEmergencyDownstreamEffect",
+                "deltaPrecedentDurability",
                 "deltaJusticeReplacementRate",
                 "deltaOverrideAttemptRate",
                 "deltaOverrideRate"
@@ -164,6 +176,10 @@ public final class MechanismAblationRunner {
                     .append(format(row.deltaConstitutionalConflict())).append(',')
                     .append(format(row.deltaDemocraticResponsiveness())).append(',')
                     .append(format(row.deltaAdministrativeCost())).append(',')
+                    .append(format(row.deltaLowerCourtCompliance())).append(',')
+                    .append(format(row.deltaGovernmentNoncomplianceRate())).append(',')
+                    .append(format(row.deltaEmergencyDownstreamEffect())).append(',')
+                    .append(format(row.deltaPrecedentDurability())).append(',')
                     .append(format(row.deltaJusticeReplacementRate())).append(',')
                     .append(format(row.deltaOverrideAttemptRate())).append(',')
                     .append(format(row.deltaOverrideRate()))
@@ -196,8 +212,8 @@ public final class MechanismAblationRunner {
                 .append("\n\n");
         builder.append("Positive deltas improve higher-better metrics. Negative deltas improve lower-better diagnostics such as partisan alignment, shadow abuse, conflict, and administrative cost.\n\n");
         builder.append("## Weighted Mechanism Summary\n\n");
-        builder.append("| Mechanism | Base -> Variant | Directional | Legal | Precedent | Statutory | Compliance | Rights | Partisan | Shadow | Conflict | Responsiveness | Admin cost | Override att. |\n");
-        builder.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        builder.append("| Mechanism | Base -> Variant | Directional | Legal | Rights | Shadow | Conflict | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Precedent durability | Admin cost |\n");
+        builder.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
         for (AblationSummary summary : summaries) {
             builder.append("| ")
                     .append(summary.mechanismName())
@@ -210,25 +226,21 @@ public final class MechanismAblationRunner {
                     .append(" | ")
                     .append(format(summary.deltaLegalStability()))
                     .append(" | ")
-                    .append(format(summary.deltaPrecedentStability()))
-                    .append(" | ")
-                    .append(format(summary.deltaStatutoryStability()))
-                    .append(" | ")
-                    .append(format(summary.deltaInterbranchCompliance()))
-                    .append(" | ")
                     .append(format(summary.deltaRightsProtection()))
-                    .append(" | ")
-                    .append(format(summary.deltaPartisanAlignment()))
                     .append(" | ")
                     .append(format(summary.deltaShadowDocketAbuse()))
                     .append(" | ")
                     .append(format(summary.deltaConstitutionalConflict()))
                     .append(" | ")
-                    .append(format(summary.deltaDemocraticResponsiveness()))
+                    .append(format(summary.deltaLowerCourtCompliance()))
+                    .append(" | ")
+                    .append(format(summary.deltaGovernmentNoncomplianceRate()))
+                    .append(" | ")
+                    .append(format(summary.deltaEmergencyDownstreamEffect()))
+                    .append(" | ")
+                    .append(format(summary.deltaPrecedentDurability()))
                     .append(" | ")
                     .append(format(summary.deltaAdministrativeCost()))
-                    .append(" | ")
-                    .append(format(summary.deltaOverrideAttemptRate()))
                     .append(" |\n");
         }
         return builder.toString();
@@ -274,6 +286,10 @@ public final class MechanismAblationRunner {
             double deltaConstitutionalConflict,
             double deltaDemocraticResponsiveness,
             double deltaAdministrativeCost,
+            double deltaLowerCourtCompliance,
+            double deltaGovernmentNoncomplianceRate,
+            double deltaEmergencyDownstreamEffect,
+            double deltaPrecedentDurability,
             double deltaJusticeReplacementRate,
             double deltaOverrideAttemptRate,
             double deltaOverrideRate
@@ -305,6 +321,10 @@ public final class MechanismAblationRunner {
                     variant.constitutionalConflict() - base.constitutionalConflict(),
                     variant.democraticResponsiveness() - base.democraticResponsiveness(),
                     variant.administrativeCost() - base.administrativeCost(),
+                    variant.lowerCourtCompliance() - base.lowerCourtCompliance(),
+                    variant.governmentNoncomplianceRate() - base.governmentNoncomplianceRate(),
+                    variant.emergencyDownstreamEffect() - base.emergencyDownstreamEffect(),
+                    variant.precedentDurability() - base.precedentDurability(),
                     variant.justiceReplacementRate() - base.justiceReplacementRate(),
                     variant.overrideAttemptRate() - base.overrideAttemptRate(),
                     variant.overrideRate() - base.overrideRate()
@@ -331,6 +351,10 @@ public final class MechanismAblationRunner {
         private double deltaConstitutionalConflict;
         private double deltaDemocraticResponsiveness;
         private double deltaAdministrativeCost;
+        private double deltaLowerCourtCompliance;
+        private double deltaGovernmentNoncomplianceRate;
+        private double deltaEmergencyDownstreamEffect;
+        private double deltaPrecedentDurability;
         private double deltaJusticeReplacementRate;
         private double deltaOverrideAttemptRate;
         private double deltaOverrideRate;
@@ -358,6 +382,10 @@ public final class MechanismAblationRunner {
             deltaConstitutionalConflict += row.deltaConstitutionalConflict() * rowWeight;
             deltaDemocraticResponsiveness += row.deltaDemocraticResponsiveness() * rowWeight;
             deltaAdministrativeCost += row.deltaAdministrativeCost() * rowWeight;
+            deltaLowerCourtCompliance += row.deltaLowerCourtCompliance() * rowWeight;
+            deltaGovernmentNoncomplianceRate += row.deltaGovernmentNoncomplianceRate() * rowWeight;
+            deltaEmergencyDownstreamEffect += row.deltaEmergencyDownstreamEffect() * rowWeight;
+            deltaPrecedentDurability += row.deltaPrecedentDurability() * rowWeight;
             deltaJusticeReplacementRate += row.deltaJusticeReplacementRate() * rowWeight;
             deltaOverrideAttemptRate += row.deltaOverrideAttemptRate() * rowWeight;
             deltaOverrideRate += row.deltaOverrideRate() * rowWeight;
@@ -383,6 +411,10 @@ public final class MechanismAblationRunner {
                     deltaConstitutionalConflict / denominator,
                     deltaDemocraticResponsiveness / denominator,
                     deltaAdministrativeCost / denominator,
+                    deltaLowerCourtCompliance / denominator,
+                    deltaGovernmentNoncomplianceRate / denominator,
+                    deltaEmergencyDownstreamEffect / denominator,
+                    deltaPrecedentDurability / denominator,
                     deltaJusticeReplacementRate / denominator,
                     deltaOverrideAttemptRate / denominator,
                     deltaOverrideRate / denominator
@@ -408,6 +440,10 @@ public final class MechanismAblationRunner {
             double deltaConstitutionalConflict,
             double deltaDemocraticResponsiveness,
             double deltaAdministrativeCost,
+            double deltaLowerCourtCompliance,
+            double deltaGovernmentNoncomplianceRate,
+            double deltaEmergencyDownstreamEffect,
+            double deltaPrecedentDurability,
             double deltaJusticeReplacementRate,
             double deltaOverrideAttemptRate,
             double deltaOverrideRate

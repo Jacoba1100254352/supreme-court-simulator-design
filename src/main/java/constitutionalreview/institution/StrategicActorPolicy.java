@@ -15,6 +15,8 @@ public final class StrategicActorPolicy {
                 reviewCase.democraticMandate() * 0.28
                         + reviewCase.publicAttention() * 0.22
                         + reviewCase.partisanSalience() * 0.24
+                        + reviewCase.strategicPlaintiffSelection() * 0.08
+                        + reviewCase.repeatPlayerAdvantage() * 0.06
                         + state.conflictLoad() * 0.16
                         + state.legislativeDefiance() * 0.10
         );
@@ -22,6 +24,7 @@ public final class StrategicActorPolicy {
                 0.68
                         + reviewCase.legislativeQuality() * 0.12
                         - reviewCase.executiveDefianceRisk() * 0.16
+                        - reviewCase.governmentNoncomplianceRisk() * 0.12
                         - state.legislativeDefiance() * 0.20
                         - state.overrideAdaptation() * 0.10
         );
@@ -91,13 +94,22 @@ public final class StrategicActorPolicy {
             CourtDesign design,
             Random random
     ) {
-        if (overrideCampaign && design.overrideRule() != OverrideRule.NONE) {
+        if (overrideCampaign
+                && design.overrideRule() != OverrideRule.NONE
+                && design.overrideRule() != OverrideRule.JURISDICTION_STRIPPING_CONSTRAINT) {
             return FormalLegalResponse.WEAK_FORM_OVERRIDE;
+        }
+        if (design.overrideRule() == OverrideRule.JURISDICTION_STRIPPING_CONSTRAINT
+                && state.conflictLoad() > 0.50
+                && random.nextDouble() < 0.08) {
+            return FormalLegalResponse.REPLACEMENT_STATUTE;
         }
         if (politicalIncentive > 0.72 && state.conflictLoad() > 0.54 && random.nextDouble() < 0.18) {
             return FormalLegalResponse.CONSTITUTIONAL_AMENDMENT;
         }
-        if (state.appointmentManipulationPressure() > 0.46 && random.nextDouble() < 0.24) {
+        if (state.appointmentManipulationPressure() > 0.46
+                && design.overrideRule() != OverrideRule.JURISDICTION_STRIPPING_CONSTRAINT
+                && random.nextDouble() < 0.24) {
             return FormalLegalResponse.COURT_CURBING;
         }
         if (reenact) {
@@ -124,6 +136,7 @@ public final class StrategicActorPolicy {
     ) {
         double defiance = Values.clamp01(
                 reviewCase.executiveDefianceRisk() * 0.38
+                        + reviewCase.governmentNoncomplianceRisk() * 0.22
                         + state.legislativeDefiance() * 0.24
                         + state.conflictLoad() * 0.18
                         + politicalIncentive * 0.12

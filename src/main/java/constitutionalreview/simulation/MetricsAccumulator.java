@@ -13,6 +13,8 @@ public final class MetricsAccumulator {
     private int admitted;
     private int screenOuts;
     private int meritsTransfers;
+    private int certiorariPaths;
+    private int certiorariAdmissions;
     private int paidPetitions;
     private int ifpPetitions;
     private int meritsReviews;
@@ -27,6 +29,8 @@ public final class MetricsAccumulator {
     private int enBanc;
     private int crossDisagreements;
     private int councilWarnings;
+    private int constitutionalRemands;
+    private int publicInterestFiltered;
     private int overrideAttempts;
     private int overrides;
     private int rightsCarveoutBlocks;
@@ -63,6 +67,7 @@ public final class MetricsAccumulator {
     private int practicalSymbolicCompliance;
     private int practicalBureaucraticResistance;
     private int practicalOpenNoncompliance;
+    private int governmentNoncompliance;
     private int rightsClaimantCases;
     private int rightsDomainClaimantCases;
     private int structuralDomainClaimantCases;
@@ -74,10 +79,15 @@ public final class MetricsAccumulator {
     private double conditionalReversalProbability;
     private double solicitorGeneralSignal;
     private double amicusBriefs;
+    private double lowerCourtSplitDepth;
     private double splitMaturity;
     private double relistCount;
     private double specialistCounsel;
     private double vehicleDefectRisk;
+    private double strategicPlaintiffSelection;
+    private double repeatPlayerAdvantage;
+    private double governmentNoncomplianceRisk;
+    private double recusalIncentivePressure;
     private double legalStability;
     private double precedentStability;
     private double statutoryStability;
@@ -99,6 +109,8 @@ public final class MetricsAccumulator {
     private double economicDomainClaimantSuccess;
     private double doctrinalDepth;
     private double remedialBreadth;
+    private double precedentDurability;
+    private double emergencyDownstreamEffect;
     private double fragmentationIndex;
     private double lowerCourtCompliance;
     private double eliteAcceptance;
@@ -114,6 +126,8 @@ public final class MetricsAccumulator {
         admitted += decision.admitted() ? 1 : 0;
         screenOuts += decision.screenedOut() ? 1 : 0;
         meritsTransfers += decision.transferredToMerits() ? 1 : 0;
+        certiorariPaths += decision.certiorariPath() ? 1 : 0;
+        certiorariAdmissions += decision.certiorariPath() && decision.admitted() ? 1 : 0;
         paidPetitions += decision.paidPetition() ? 1 : 0;
         ifpPetitions += decision.ifpPetition() ? 1 : 0;
         meritsReviews += decision.meritsReview() ? 1 : 0;
@@ -128,6 +142,8 @@ public final class MetricsAccumulator {
         enBanc += decision.enBanc() ? 1 : 0;
         crossDisagreements += decision.crossCheckDisagreement() ? 1 : 0;
         councilWarnings += decision.councilWarning() ? 1 : 0;
+        constitutionalRemands += decision.constitutionalRemand() ? 1 : 0;
+        publicInterestFiltered += decision.publicInterestFiltered() ? 1 : 0;
         overrideAttempts += decision.overrideAttempted() ? 1 : 0;
         overrides += decision.legislativeOverride() ? 1 : 0;
         rightsCarveoutBlocks += decision.overrideOutcome() == OverrideOutcome.RIGHTS_CARVEOUT_BLOCKED ? 1 : 0;
@@ -148,15 +164,21 @@ public final class MetricsAccumulator {
         addDocketType(decision.docketType());
         addFormalResponse(decision.formalLegalResponse());
         addPracticalResponse(decision.practicalImplementationResponse());
+        governmentNoncompliance += decision.governmentNoncompliance() ? 1 : 0;
         addDomainClaimantSuccess(decision);
         admissionScore += decision.admissionScore();
         conditionalReversalProbability += decision.conditionalReversalProbability();
         solicitorGeneralSignal += decision.solicitorGeneralSignal();
         amicusBriefs += decision.amicusBriefs();
+        lowerCourtSplitDepth += decision.lowerCourtSplitDepth();
         splitMaturity += decision.splitMaturity();
         relistCount += decision.relistCount();
         specialistCounsel += decision.specialistCounsel() ? 1.0 : 0.0;
         vehicleDefectRisk += decision.vehicleDefectRisk();
+        strategicPlaintiffSelection += decision.strategicPlaintiffSelection();
+        repeatPlayerAdvantage += decision.repeatPlayerAdvantage();
+        governmentNoncomplianceRisk += decision.governmentNoncomplianceRisk();
+        recusalIncentivePressure += decision.recusalIncentivePressure();
         legalStability += decision.legalStability();
         precedentStability += decision.precedentStability();
         statutoryStability += decision.statutoryStability();
@@ -172,6 +194,8 @@ public final class MetricsAccumulator {
         rightsClaimantSuccess += decision.rightsClaimantSuccess();
         doctrinalDepth += decision.doctrinalDepth();
         remedialBreadth += decision.remedialBreadth();
+        precedentDurability += decision.precedentDurability();
+        emergencyDownstreamEffect += decision.emergencyDownstreamEffect();
         fragmentationIndex += decision.fragmentationIndex();
         lowerCourtCompliance += decision.lowerCourtCompliance();
         eliteAcceptance += decision.eliteAcceptance();
@@ -193,14 +217,22 @@ public final class MetricsAccumulator {
                 admitted / cases,
                 screenOuts / cases,
                 meritsTransfers / cases,
+                certiorariPaths / cases,
+                certiorariAdmissions / Math.max(1.0, certiorariPaths),
                 paidPetitions / cases,
                 ifpPetitions / cases,
                 solicitorGeneralSignal / cases,
                 amicusBriefs / cases,
+                lowerCourtSplitDepth / cases,
                 splitMaturity / cases,
                 relistCount / cases,
                 specialistCounsel / cases,
                 vehicleDefectRisk / cases,
+                strategicPlaintiffSelection / cases,
+                repeatPlayerAdvantage / cases,
+                governmentNoncomplianceRisk / cases,
+                governmentNoncompliance / cases,
+                recusalIncentivePressure / cases,
                 conditionalReversalProbability / cases,
                 meritsReviews / cases,
                 invalidations / cases,
@@ -235,6 +267,8 @@ public final class MetricsAccumulator {
                 enBanc / cases,
                 crossDisagreements / cases,
                 councilWarnings / cases,
+                constitutionalRemands / cases,
+                publicInterestFiltered / cases,
                 overrideAttempts / cases,
                 overrides / cases,
                 rightsCarveoutBlocks / cases,
@@ -271,6 +305,8 @@ public final class MetricsAccumulator {
                 economicDomainClaimantSuccess / Math.max(1.0, economicDomainClaimantCases),
                 doctrinalDepth / cases,
                 remedialBreadth / cases,
+                precedentDurability / cases,
+                emergencyDownstreamEffect / cases,
                 lowerCourtCompliance / cases,
                 eliteAcceptance / cases,
                 publicConfidence / cases,
@@ -364,6 +400,8 @@ public final class MetricsAccumulator {
         double lowPartisan = MetricDefinition.lowerIsBetter(partisanAlignment / cases);
         double lowShadow = MetricDefinition.lowerIsBetter(shadowDocketAbuse / cases);
         double lowEmergencyRisk = MetricDefinition.lowerIsBetter(emergencyLegitimacyRisk / cases);
-        return (avgRights + avgResponsive + avgEliteAcceptance + avgPublicConfidence + lowPartisan + lowShadow + lowEmergencyRisk) / 7.0;
+        double lowGovernmentNoncompliance = MetricDefinition.lowerIsBetter(governmentNoncompliance / cases);
+        double lowEmergencyDownstream = MetricDefinition.lowerIsBetter(emergencyDownstreamEffect / cases);
+        return (avgRights + avgResponsive + avgEliteAcceptance + avgPublicConfidence + lowPartisan + lowShadow + lowEmergencyRisk + lowGovernmentNoncompliance + lowEmergencyDownstream) / 9.0;
     }
 }

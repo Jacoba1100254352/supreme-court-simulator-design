@@ -39,6 +39,14 @@ public final class SimulatorInvariantTests {
     private static void checkReport(ScenarioReport report) {
         TestSupport.check(report.totalCases() == 160, "total cases should equal runs * cases");
         TestSupport.checkUnitInterval(report.directionalScore(), "directionalScore");
+        TestSupport.checkUnitInterval(report.certiorariPathRate(), "certiorariPathRate");
+        TestSupport.checkUnitInterval(report.certiorariAdmissionRate(), "certiorariAdmissionRate");
+        TestSupport.checkUnitInterval(report.lowerCourtSplitDepth(), "lowerCourtSplitDepth");
+        TestSupport.checkUnitInterval(report.strategicPlaintiffSelection(), "strategicPlaintiffSelection");
+        TestSupport.checkUnitInterval(report.repeatPlayerAdvantage(), "repeatPlayerAdvantage");
+        TestSupport.checkUnitInterval(report.governmentNoncomplianceRisk(), "governmentNoncomplianceRisk");
+        TestSupport.checkUnitInterval(report.governmentNoncomplianceRate(), "governmentNoncomplianceRate");
+        TestSupport.checkUnitInterval(report.recusalIncentivePressure(), "recusalIncentivePressure");
         TestSupport.checkUnitInterval(report.legalStability(), "legalStability");
         TestSupport.checkUnitInterval(report.precedentStability(), "precedentStability");
         TestSupport.checkUnitInterval(report.statutoryStability(), "statutoryStability");
@@ -66,6 +74,8 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.meritsAccelerationRate(), "meritsAccelerationRate");
         TestSupport.checkUnitInterval(report.justiceReplacementRate(), "justiceReplacementRate");
         TestSupport.checkUnitInterval(report.overrideAttemptRate(), "overrideAttemptRate");
+        TestSupport.checkUnitInterval(report.constitutionalRemandRate(), "constitutionalRemandRate");
+        TestSupport.checkUnitInterval(report.publicInterestFilteredRate(), "publicInterestFilteredRate");
         TestSupport.checkUnitInterval(report.rightsCarveoutBlockRate(), "rightsCarveoutBlockRate");
         TestSupport.checkUnitInterval(report.concurrenceRate(), "concurrenceRate");
         TestSupport.checkUnitInterval(report.dissentRate(), "dissentRate");
@@ -81,6 +91,9 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.executivePowerDomainClaimantSuccess(), "executivePowerDomainClaimantSuccess");
         TestSupport.checkUnitInterval(report.administrativeDomainClaimantSuccess(), "administrativeDomainClaimantSuccess");
         TestSupport.checkUnitInterval(report.economicDomainClaimantSuccess(), "economicDomainClaimantSuccess");
+        TestSupport.checkUnitInterval(report.precedentDurability(), "precedentDurability");
+        TestSupport.checkUnitInterval(report.emergencyDownstreamEffect(), "emergencyDownstreamEffect");
+        TestSupport.checkUnitInterval(report.lowerCourtCompliance(), "lowerCourtCompliance");
         double docketTypeTotal = report.facialChallengeRate() + report.asAppliedChallengeRate() + report.electionDisputeRate()
                 + report.emergencyStayDocketRate() + report.executivePowerDisputeRate() + report.administrativeLawRate()
                 + report.rightsClaimRate();
