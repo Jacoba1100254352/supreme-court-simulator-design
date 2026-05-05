@@ -37,7 +37,7 @@ Build the paper:
 make paper
 ```
 
-This also regenerates the paper's LaTeX figure fragments from the current v2 campaign CSV.
+This also regenerates the paper's LaTeX figure fragments from the current v2 campaign CSV and runs a local JLC-format check.
 
 Write the current v2 campaign artifacts:
 

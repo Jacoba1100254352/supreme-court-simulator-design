@@ -13,6 +13,8 @@ Current manuscript posture:
 - The local build falls back to an article review copy with author-date citations because the local TeX Live Basic installation does not ship Cambridge's class or `biber`.
 - Citations are author-date in the local build and are ready for the official template's Chicago author-date pipeline when compiled in the Cambridge/Overleaf environment.
 - Figures are appropriate for this target. JLC's author instructions ask authors to place tables and figures in the manuscript near first reference rather than collecting them at the end. The current manuscript follows that practice with generated campaign figures.
+- `make paper-check` now verifies the local manuscript against the JLC-facing requirements that can be checked automatically: anonymous review mode, JLC template options, author-date fallback, declaration sections, figure descriptions, data availability before references, and the 10,000-word article ceiling.
+- The manuscript includes a non-identifying AI assistance statement because the project used ChatGPT/Codex and Deep Research synthesis during research, implementation, drafting, and formatting.
 
 ## Why JLC Instead of ACM
 

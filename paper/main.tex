@@ -35,6 +35,7 @@
 \usepackage{url}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\providecommand{\Description}[1]{}
 
 \ifnum\paperusescup=1
   \addbibresource{references.bib}
@@ -55,8 +56,8 @@
   \author{Anonymous Author(s)}
   \affiliation{Affiliation suppressed for anonymous review}
 \else
-  \author{Jacob Anderson}
-  \affiliation{Independent researcher}
+  \author{Author Name}
+  \affiliation{Author Affiliation}
   \email{author-email@example.com}
 \fi
 
@@ -69,7 +70,7 @@
 \fi
 
 \begin{abstract}
-Constitutional review institutions face a recurring design problem: they need enough independence to preserve rights and legal continuity, but enough accountability to avoid becoming unreviewable partisan veto points. This paper introduces a computational design-search model for comparing constitutional-review institutions under common docket and political assumptions. The model represents appointment systems, court size, tenure, removal, recusal, emergency procedure, voting thresholds, panel and en banc review, cross-checking courts, constitutional councils, legislative overrides, admissibility filters, and post-decision political response. The current campaign evaluates fourteen institutional designs across twenty ordinary and adversarial assumption cases. A filed-universe intake model routes cases through review paths and admission filters before merits review, and the reports keep direct outputs such as rights-claimant success, public confidence, lower-court compliance, and doctrinal depth separate from derived indices. The results do not identify an optimal court. They show how design bundles shift tradeoffs among legal stability, rights protection, emergency-docket abuse, partisan alignment, legitimacy, constitutional conflict, and democratic responsiveness.
+Constitutional review institutions face a recurring design problem: they need enough independence to preserve rights and legal continuity, but enough accountability to avoid becoming unreviewable partisan veto points. We introduce a computational design-search model for comparing constitutional-review institutions under common docket and political assumptions. The model represents appointment systems, court size, tenure, removal, recusal, emergency procedure, voting thresholds, panel and en banc review, cross-checking courts, constitutional councils, legislative overrides, admissibility filters, and post-decision political response. The current campaign evaluates fourteen institutional designs across twenty ordinary and adversarial assumption cases. A filed-universe intake model routes cases through review paths and admission filters before merits review, and the reports keep direct outputs such as rights-claimant success, public confidence, lower-court compliance, and doctrinal depth separate from derived indices. The results do not identify an optimal court. They show how design bundles shift tradeoffs among legal stability, rights protection, emergency-docket abuse, partisan alignment, legitimacy, constitutional conflict, and democratic responsiveness.
 \end{abstract}
 
 \ifnum\paperusescup=0
@@ -82,9 +83,15 @@ The central question is not whether one court design is ideal in isolation. It i
 
 This makes the paper a computational institutional-design exercise for judicial politics and comparative public law. The simulator is not intended to forecast any real supreme court. It is a design-search scaffold for asking how appointment regularity, emergency procedure, admission filtering, voting thresholds, override rules, council warnings, cross-court checks, and post-decision compliance strategies change the distribution of outcomes. That framing is especially important because many proposed court reforms are defended one rule at a time, even though their effects depend on the surrounding institutional bundle.
 
+\section{Contribution}
+
+The paper makes three contributions. First, it treats constitutional-review reform as a design-bundle problem rather than as a sequence of isolated proposals. Court size, tenure, appointment rules, emergency procedure, voting thresholds, review access, and override rules interact, so we compare bundles under shared assumptions instead of ranking individual reforms by intuition. Second, it separates direct model outputs from derived indices. The campaign reports legal stability, rights protection, rights-claimant success, domain-specific claimant success, emergency grant behavior, public confidence, elite acceptance, lower-court compliance, and constitutional conflict before any summary score is used. Third, it provides a reproducible design-search workflow that links scenario definitions, normalized calibration inputs, deterministic seeds, generated reports, and manuscript figures.
+
+These contributions are methodological rather than doctrinal. We do not argue that simulation can settle constitutional design. We argue that explicit simulation can make institutional tradeoffs more inspectable, especially when reforms that look attractive in isolation shift costs into emergency procedure, admission filtering, public legitimacy, interbranch conflict, or post-decision compliance.
+
 \section{Model}
 
-Each generated world contains a pool of potential justices, a filed universe of constitutional disputes, and a legislative-output profile. Filed cases vary by legal ambiguity, rights burden, democratic mandate, partisan salience, emergency pressure, requested emergency relief, legislative quality, constitutional-conflict potential, public attention, override pressure, lower-court conflict, lower-court error risk, and certiorari pressure. The docket separates facial challenges, as-applied challenges, election disputes, emergency stay applications, executive-power disputes, administrative-law challenges, structural cases, economic-regulation cases, and rights claims. Legal-domain profiles shift baseline case attributes so rights, election, executive-power, administrative, structural, and economic-regulation cases do not behave as interchangeable labels.
+Each generated world contains a pool of potential justices, a filed universe of constitutional disputes, and a legislative-output profile. Filed cases vary by legal ambiguity, rights burden, democratic mandate, partisan salience, emergency pressure, requested emergency relief, legislative quality, constitutional-conflict potential, public attention, override pressure, lower-court conflict, lower-court error risk, and certiorari pressure. We separate facial challenges, as-applied challenges, election disputes, emergency stay applications, executive-power disputes, administrative-law challenges, structural cases, economic-regulation cases, and rights claims. Legal-domain profiles shift baseline case attributes so rights, election, executive-power, administrative, structural, and economic-regulation cases do not behave as interchangeable labels.
 
 A review-path layer distinguishes paid certiorari, IFP certiorari, discretionary certiorari, direct constitutional complaint, amparo, filtered QPC-style referral, abstract ex ante and ex post review, concrete referral, emergency application, interbranch dispute, and electoral review. Admission filtering turns filed disputes into screened-out matters or merits transfers using SG/CVSG-style signal, amicus intensity, split maturity, relists, specialist counsel, vehicle-quality defects, and conditional reversal probability. There is no preliminary fixed-size top-case selector before admission; the modeled merits docket is an output of the intake process.
 
@@ -106,6 +113,7 @@ The reported directional score is only a reading aid. It averages a stability/ri
 \centering
 \input{figures/domain_claimant_success}
 \caption{Domain-specific rights-claimant success for selected institutional designs. The aggregate rights-protection score can hide domain shifts, especially for election, structural, executive-power, administrative-law, and economic-regulation cases.}
+\Description{Heatmap comparing claimant-success rates by legal domain across selected court designs.}
 \label{fig:domain-claimant-success}
 \end{figure}
 
@@ -117,6 +125,7 @@ The current campaign compares fourteen institutional scenarios across twenty ass
 \centering
 \input{figures/conflict_confidence_tradeoff}
 \caption{Public-confidence and constitutional-conflict tradeoff for selected institutional designs. Marker shade increases with shadow-docket abuse, so the figure separates legitimacy and conflict from emergency-docket opacity instead of folding them into one score.}
+\Description{Scatter plot of public confidence against constitutional conflict for selected court designs, with marker shade increasing as shadow-docket abuse rises.}
 \label{fig:conflict-confidence}
 \end{figure}
 
@@ -147,6 +156,7 @@ Table~\ref{tab:v2-selected} shows that term regularization leads the current dir
 \centering
 \input{figures/emergency_profile}
 \caption{Emergency-docket and public-confidence profile for selected institutional designs. The comparison highlights why emergency procedure is modeled directly: designs that are similar on rights protection and legal stability can differ sharply on shadow-docket abuse, emergency legitimacy risk, and public confidence.}
+\Description{Horizontal bar chart comparing shadow-docket abuse, emergency legitimacy risk, and public confidence across selected court designs.}
 \label{fig:emergency-profile}
 \end{figure}
 
@@ -155,18 +165,6 @@ Table~\ref{tab:v2-selected} shows that term regularization leads the current dir
 \section{Limitations}
 
 The model is strongest as a disciplined comparison of institutional mechanisms, not as a predictive empirical model. It does not estimate causal effects from observed constitutional systems. It uses source-backed ranges, comparative institutional coding, and deterministic scenario campaigns to identify where rule bundles create tradeoffs that would otherwise be difficult to see. The strongest next validation steps are to automate raw-data refresh for SCDB, Harvard Law Review statistics, shadow-docket data, and recusal data; convert named priors into sampled prior distributions; add actor learning across repeated outcomes; calibrate review-path-specific admission denominators against raw certiorari, amparo, constitutional complaint, QPC, abstract-review, and concrete-referral data; and benchmark the legislative import contract against raw legislative simulator runs rather than only aggregate campaign CSVs.
-
-\section{Data Availability Statement}
-
-The simulator, normalized calibration tables, deterministic seeds, scenario definitions, and generated reports are maintained as a reproducible project. Public repository identifiers are withheld in this anonymous review manuscript. The intended replication package includes source code, build instructions, normalized input data, generated campaign artifacts, and documentation distinguishing observed inputs, coding choices, model assumptions, and simulated outputs.
-
-\section{Funding Statement}
-
-No external funding is reported for this version of the manuscript.
-
-\section{Competing Interests}
-
-The author(s) declare none.
 
 \appendix
 
@@ -191,6 +189,22 @@ Outputs & Stability, rights protection, claimant success, legitimacy, conflict, 
 \bottomrule
 \end{tabular}
 \end{table}
+
+\section*{Data Availability Statement}
+
+The simulator, normalized calibration tables, deterministic seeds, scenario definitions, generated reports, and figure-generation scripts are maintained as a reproducible project. Public repository identifiers are withheld in this anonymous review manuscript. The intended replication package includes source code, build instructions, normalized input data, generated campaign artifacts, generated figure fragments, and documentation distinguishing observed inputs, coding choices, model assumptions, and simulated outputs.
+
+\section*{Funding Statement}
+
+No external funding is reported for this version of the manuscript.
+
+\section*{Competing Interests}
+
+Competing interests: The author(s) declare none.
+
+\section*{AI Assistance Statement}
+
+The author(s) used OpenAI ChatGPT and Codex in May 2026 to assist with research-prompt drafting, synthesis review, code generation, manuscript drafting, formatting checks, and local build verification. The author(s) reviewed, edited, and are responsible for the manuscript, simulator code, calibration choices, generated reports, and all claims. No AI-generated visual content appears in the manuscript; the figures are generated deterministically from project CSV outputs by repository code.
 
 \ifnum\paperusescup=1
   \printbibliography

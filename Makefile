@@ -5,7 +5,7 @@ JAVA_PROPS ?= -Dconstitutionalreview.javaRelease=$(JAVA_RELEASE)
 LEGISLATIVE_FAMILY_DIR ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports
 CALIBRATION_DATA_DIR ?= data/calibration
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-figures paper-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-figures paper-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -48,7 +48,10 @@ diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep legisl
 paper-figures:
 	python3 paper/scripts/generate_figures.py
 
-paper: paper-figures
+paper-check: paper-figures
+	python3 paper/scripts/check_jlc_format.py
+
+paper: paper-check
 	mkdir -p paper/build
 	rm -f paper/build/main.aux paper/build/main.bbl paper/build/main.blg paper/build/main.fdb_latexmk paper/build/main.fls paper/build/main.out
 	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
