@@ -4,7 +4,7 @@ Compares the constitutional-review import contract across multiple congressional
 
 ## Run Configuration
 
-- legislative family directory: /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports
+- legislative family directory: data/external/legislative
 - imported families: 7
 - runs per family: 40
 - cases per run: 48

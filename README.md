@@ -61,7 +61,7 @@ Build a blinded review archive for anonymous journal submission:
 make anonymous-submission-package
 ```
 
-This writes `dist/constitutional-review-anonymous-submission.zip` and scans the staged files for author-identifying local paths, repository URLs, and author strings. Use the full replication package for non-anonymous deposit or acceptance-stage handoff; use the anonymous package for initial peer review.
+This writes `dist/constitutional-review-anonymous-submission.zip`, plus separate `dist/constitutional-review-anonymous-manuscript.zip` and `dist/constitutional-review-anonymous-supplement.zip` archives for journal upload categories. The package scan checks staged files for author-identifying local paths, repository URLs, and author strings. Use the full replication package for non-anonymous deposit or acceptance-stage handoff; use the anonymous manuscript/supplement packages for initial peer review.
 
 Write the current v2 campaign artifacts:
 
@@ -69,7 +69,7 @@ Write the current v2 campaign artifacts:
 make campaign
 ```
 
-`make campaign` now writes the v2 paper campaign using the documented legislative-output import contract by default. Override `PAPER_LEGISLATIVE_INPUT=/path/to/campaign.csv` to use a different legislative source, or set `PAPER_ARGS=` for a synthetic-only diagnostic run. The initial v0 and v1 campaigns remain available as `make campaign-v0` and `make campaign-v1`.
+`make campaign` now writes the v2 paper campaign using the documented legislative-output import contract and the frozen fixture at `data/external/legislative/simulation-campaign-v21-paper.csv` by default. Override `PAPER_LEGISLATIVE_INPUT=/path/to/campaign.csv` to use a different legislative source, or set `PAPER_ARGS=` for a synthetic-only diagnostic run. The initial v0 and v1 campaigns remain available as `make campaign-v0` and `make campaign-v1`.
 
 Run the diagnostic suite:
 
@@ -91,7 +91,7 @@ Compare the import contract against multiple congressional-simulator report fami
 make legislative-family-comparison
 ```
 
-Set `LEGISLATIVE_FAMILY_DIR=/path/to/reports` to compare a different directory of legislative campaign CSVs.
+By default this reads the frozen family fixtures in `data/external/legislative/`. Set `LEGISLATIVE_FAMILY_DIR=/path/to/reports` to compare a different directory of legislative campaign CSVs.
 
 Use a different normalized empirical calibration-data directory:
 
@@ -142,14 +142,18 @@ The headline metrics are legal stability, rights protection, partisan alignment,
 
 ## Calibration Data
 
-Normalized empirical source observations live in `data/calibration/`. Regenerate them from raw SCDB and shadow-docket archives with `make raw-source-refresh` or `tools/build_calibration_tables.py`; raw archives are intentionally not committed. Import the Deep Research synthesis CSV blocks with `tools/import_deep_research_synthesis.py`; those rows preserve `confidenceLevel`, `validationUse`, `denominatorSpec`, `coverageScope`, and `comparabilityClass` so strict validation, loose calibration, and paper context remain distinct.
+Normalized empirical source observations live in `data/calibration/`; row-level source handling is summarized in `data/calibration/provenance-manifest.csv`. Regenerate them from raw SCDB and shadow-docket archives with `make raw-source-refresh` or `tools/build_calibration_tables.py`; raw archives are intentionally not committed. Import the Deep Research synthesis CSV blocks with `tools/import_deep_research_synthesis.py`; those rows preserve `confidenceLevel`, `validationUse`, `denominatorSpec`, `coverageScope`, and `comparabilityClass` so strict validation, loose calibration, and paper context remain distinct.
+
+## External Legislative Fixtures
+
+Frozen legislative-output fixtures live in `data/external/legislative/` with provenance in `data/external/legislative/source-provenance.csv`. These CSVs are imported as data only; this project does not depend on the Congress simulator source tree.
 
 ## Paper
 
 The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the current formulas are empirically validated.
 
-The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC template path when the official `cup-journal` class is available, and otherwise builds locally as an author-date review copy. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
+The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC `cup-journal` template path with `journal=jlc` when the official class is available, and otherwise builds locally as an author-date review copy. `make paper-jlc-template-check` is available for an official-template environment and intentionally fails on TeX installations that do not provide `cup-journal.cls`. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 
-The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated calibration, uncertainty, and mechanism-level contrast tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. `paper/source-audit.csv` maps material claims to source-code, report, data, manuscript, or literature anchors. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
+The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated selected-results, calibration, uncertainty, and mechanism-level contrast tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. `paper/source-audit.csv` maps material claims to source-code, report, data, manuscript, or literature anchors. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
 
 Use `docs/jlc-submission-checklist.md` as the final pre-submission checklist.

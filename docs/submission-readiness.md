@@ -11,11 +11,12 @@ Current manuscript posture:
 - `paper/main.tex` is anonymous by default.
 - The source attempts to use the official Cambridge `cup-journal` template with `journal=jlc` when `cup-journal.cls` is available.
 - The local build falls back to an article review copy with author-date citations because the local TeX Live Basic installation does not ship Cambridge's class or `biber`.
+- `make paper-jlc-template-check` is the official-template gate; it should pass in Overleaf or another TeX environment that provides `cup-journal.cls` and should fail locally when the class is unavailable.
 - Citations are author-date in the local build and are ready for the official template's Chicago author-date pipeline when compiled in the Cambridge/Overleaf environment.
 - Figures are appropriate for this target. JLC's author instructions ask authors to place tables and figures in the manuscript near first reference rather than collecting them at the end. The current manuscript follows that practice with generated campaign figures.
-- `make paper-check` now verifies the local manuscript against the JLC-facing requirements that can be checked automatically: anonymous review mode, JLC template options, hidden hyperlink borders, author-date fallback, declaration sections, figure and table descriptions, figure references in text, data availability before references, generated calibration/uncertainty/mechanism tables, source-audit coverage, a mechanics appendix, report-manifest consistency, and the 10,000-word article ceiling.
+- `make paper-check` now verifies the local manuscript against the JLC-facing requirements that can be checked automatically: anonymous review mode, JLC template options, hidden hyperlink borders, author-date fallback, declaration sections, figure and table descriptions, figure references in text, data availability before references, generated selected-results/calibration/uncertainty/mechanism tables, source-audit coverage, source-provenance manifests, a mechanics appendix, report-manifest consistency, and the 10,000-word article ceiling.
 - `make paper-strict-check` builds the manuscript and non-anonymous title page, then reruns the strict JLC and source-audit checks.
-- `make replication-package` creates a clean archive under `dist/` with source code, tests, normalized data, generated reports, paper source, generated figure/table fragments, standalone figure files, the source audit, and a manifest.
+- `make replication-package` creates a clean archive under `dist/` with source code, tests, normalized data, frozen legislative-output fixtures, generated reports, paper source, generated figure/table fragments, standalone figure files, source-provenance manifests, the source audit, and a manifest.
 - The manuscript includes a non-identifying AI assistance statement because the project used ChatGPT/Codex and Deep Research synthesis during research, implementation, drafting, formatting, and local verification. The statement now identifies the tool family, dates, access route, use categories, author responsibility, and treatment of AI-assisted research output.
 
 ## Why JLC Instead of ACM
@@ -53,6 +54,8 @@ Before CELS submission, prioritize:
 - `paper/scripts/verify_paper_artifacts.py`: manifest and hash consistency check for paper reports.
 - `paper/scripts/export_figures.py`: standalone figure export builder for journal-production handoff.
 - `paper/source-audit.csv`: claim-level source, code, data, and report anchor inventory.
+- `data/calibration/provenance-manifest.csv`: row-family provenance for normalized calibration sources.
+- `data/external/legislative/source-provenance.csv`: fixture hashes and provenance for imported legislative outputs.
 - `docs/external-methods-review-request.md`: critical review packet and draft reviewer email.
 - `docs/jlc-submission-checklist.md`: pre-submission sequence and upload checklist for JLC/CELS.
 - `tools/create_replication_package.py`: archive builder for review/deposit packages.
@@ -62,6 +65,6 @@ Before CELS submission, prioritize:
 ## Remaining No-Regrets Work
 
 - Run `make raw-source-refresh` after downloading fresh raw SCDB and shadow-docket archives before final Dataverse deposit.
-- Use `make anonymous-submission-package` for initial peer review; prepare a blinded repository or Dataverse placeholder only if the submission system requires a live URL before public release.
+- Use `make anonymous-submission-package` for initial peer review, uploading `constitutional-review-anonymous-manuscript.zip` and `constitutional-review-anonymous-supplement.zip` separately when the portal supports separate categories; prepare a blinded repository or Dataverse placeholder only if the submission system requires a live URL before public release.
 - Decide whether I-CON remains a possible future target before posting a public preprint.
 - Get one external methods review using `docs/external-methods-review-request.md` before adding more realism layers.

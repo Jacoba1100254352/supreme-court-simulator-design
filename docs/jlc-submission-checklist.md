@@ -21,12 +21,12 @@ make paper-strict-check
 make anonymous-submission-package
 ```
 
-The anonymous package target rebuilds the manuscript, stages a blinded package, sanitizes local paths and repository references, and fails if author-identifying strings remain.
+The anonymous package target rebuilds the manuscript, stages a blinded package, writes separate manuscript and supplement archives, sanitizes local paths and repository references, and fails if author-identifying strings remain.
 
 ## Upload Set for Anonymous Review
 
-- Anonymous manuscript PDF from `paper/main.pdf` or from `dist/constitutional-review-anonymous-submission.zip`.
-- Anonymous supplemental package: `dist/constitutional-review-anonymous-submission.zip`.
+- Anonymous manuscript PDF from `paper/main.pdf` or manuscript archive `dist/constitutional-review-anonymous-manuscript.zip`.
+- Anonymous supplemental package, if requested during review: `dist/constitutional-review-anonymous-supplement.zip`.
 - Short abstract from `paper/abstract-variants.md`, edited to match the submission form.
 - Non-anonymous title-page metadata entered only in the journal submission system or uploaded separately if the system requests it outside peer-review files.
 
@@ -36,6 +36,7 @@ Do not upload `dist/constitutional-review-replication.zip` as the anonymous supp
 
 - Manuscript remains in anonymous mode in `paper/main.tex`.
 - Cambridge/JLC path is present through the `cup-journal`/`journal=jlc` branch, with the local fallback used only for local builds.
+- Official-template environments should pass `make paper-jlc-template-check`; local TeX installations without `cup-journal.cls` are expected to fail that target.
 - Figures and tables appear near first reference in the manuscript.
 - Figure and table accessibility descriptions are present.
 - Data Availability Statement appears before the references.
@@ -46,6 +47,8 @@ Do not upload `dist/constitutional-review-replication.zip` as the anonymous supp
 ## Replication and Data Availability
 
 - Normalized calibration inputs are under `data/calibration/`.
+- Source-provenance manifests are under `data/calibration/provenance-manifest.csv` and `data/external/legislative/source-provenance.csv`.
+- Frozen legislative-output fixtures are under `data/external/legislative/`.
 - Raw third-party archives remain outside git under `data/raw/calibration/` or another local path.
 - `dist/calibration-source-refresh-manifest.json` is regenerated when raw sources are refreshed.
 - Public repository and Dataverse identifiers are withheld in anonymous review materials.

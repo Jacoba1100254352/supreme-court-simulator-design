@@ -16,9 +16,7 @@ from io import StringIO
 from pathlib import Path
 
 
-DEFAULT_REPORT = Path(
-    "/Users/jacobanderson/Downloads/Deep Research Reports/Supreme Court/deep-research-report5.md"
-)
+DEFAULT_REPORT = Path("data/raw/calibration/deep-research-report5.md")
 DEFAULT_OUTPUT_DIR = Path("data/calibration/supreme-court-synthesis")
 
 EXTRA_COLUMNS = [

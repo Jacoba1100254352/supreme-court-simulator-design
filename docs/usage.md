@@ -24,10 +24,10 @@ make campaign
 By default this uses the paper's legislative-output import contract:
 
 ```sh
-PAPER_LEGISLATIVE_INPUT="/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv"
+PAPER_LEGISLATIVE_INPUT="data/external/legislative/simulation-campaign-v21-paper.csv"
 ```
 
-Override `PAPER_LEGISLATIVE_INPUT` for a different congressional-simulator CSV. Set `PAPER_ARGS=` only when you intentionally want a synthetic-only run that will not match the paper manifests.
+The current default is the in-repository fixture `data/external/legislative/simulation-campaign-v21-paper.csv`; override `PAPER_LEGISLATIVE_INPUT` for a different congressional-simulator CSV. Set `PAPER_ARGS=` only when you intentionally want a synthetic-only run that will not match the paper manifests.
 
 Run the preserved v0 campaign:
 
@@ -63,7 +63,7 @@ Create a blinded anonymous-review archive:
 make anonymous-submission-package
 ```
 
-This writes `dist/constitutional-review-anonymous-submission.zip` and `dist/anonymous-submission-manifest.json`. The package builder sanitizes local absolute paths and repository references, excludes non-anonymous metadata, and fails if identifying strings remain.
+This writes `dist/constitutional-review-anonymous-submission.zip`, `dist/constitutional-review-anonymous-manuscript.zip`, `dist/constitutional-review-anonymous-supplement.zip`, and `dist/anonymous-submission-manifest.json`. The package builder sanitizes local absolute paths and repository references, excludes non-anonymous metadata, and fails if identifying strings remain.
 
 Run the full diagnostic suite:
 
@@ -84,6 +84,8 @@ python3 tools/import_deep_research_synthesis.py
 make calibrate
 ```
 
+By default the importer looks for `data/raw/calibration/deep-research-report5.md`; pass `--report /path/to/report.md` when the report is elsewhere.
+
 Refresh normalized source tables from raw downloads:
 
 ```sh
@@ -95,7 +97,7 @@ By default the refresh looks in `data/raw/calibration/`, which is ignored by git
 Import legislative outputs:
 
 ```sh
-make campaign ARGS="--legislative-input '/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv'"
+make campaign ARGS="--legislative-input data/external/legislative/simulation-campaign-v21-paper.csv"
 ```
 
 The importer accepts the congressional simulator campaign CSV schema and also accepts direct columns such as `legalQuality`, `rightsRisk`, `weakMandateRate`, `partisanSkew`, `volatility`, `publicLegitimacy`, and `enactedVolume`.

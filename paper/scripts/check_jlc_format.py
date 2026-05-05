@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -17,6 +18,7 @@ REQUIRED_GENERATED = [
     ROOT / "paper" / "figures" / "conflict_confidence_tradeoff.tex",
     ROOT / "paper" / "figures" / "emergency_profile.tex",
     ROOT / "paper" / "tables" / "calibration_guardrails.tex",
+    ROOT / "paper" / "tables" / "v2_selected.tex",
     ROOT / "paper" / "tables" / "uncertainty_bands.tex",
     ROOT / "paper" / "tables" / "mechanism_summary.tex",
 ]
@@ -43,8 +45,22 @@ def word_count(source: str) -> int:
     return len(re.findall(r"[A-Za-z][A-Za-z0-9'-]*", strip_latex(source)))
 
 
+def has_cambridge_class() -> bool:
+    try:
+        result = subprocess.run(
+            ["kpsewhich", "cup-journal.cls"],
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except FileNotFoundError:
+        return False
+    return result.returncode == 0
+
+
 def main() -> None:
     strict_submission = "--strict-submission" in sys.argv
+    require_cambridge_class = "--require-cambridge-class" in sys.argv
     source = MAIN.read_text()
     title_page = TITLE_PAGE.read_text() if TITLE_PAGE.exists() else ""
 
@@ -61,6 +77,7 @@ def main() -> None:
         ("theory section", "\\section{Theory and Design Space}"),
         ("expectations section", "\\section{Expectations}"),
         ("calibration guardrail table", "tables/calibration_guardrails"),
+        ("generated selected results table", "tables/v2_selected"),
         ("uncertainty band table", "tables/uncertainty_bands"),
         ("mechanism summary table", "tables/mechanism_summary"),
         ("methods appendix", "\\section{Model Mechanics}"),
@@ -69,6 +86,9 @@ def main() -> None:
     for label, snippet in required_snippets:
         if snippet not in source:
             fail(f"missing {label}: {snippet}")
+
+    if require_cambridge_class and not has_cambridge_class():
+        fail("official Cambridge cup-journal.cls is not available on this TeX installation")
 
     if "Jacob Anderson" in source or "github.com/Jacoba" in source:
         fail("anonymous manuscript contains identifying author or repository text")

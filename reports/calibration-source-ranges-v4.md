@@ -71,6 +71,7 @@ Normalized source observations used to compute calibration ranges. The simulator
 ## Source Files
 
 - `black-epstein-recusal-summary.csv`
+- `provenance-manifest.csv`
 - `scdb-modern-2025-release-01.csv`
 - `shadow-docket-v2-0-summary.csv`
 - `supreme-court-synthesis/comparative-court-design-presets.csv`

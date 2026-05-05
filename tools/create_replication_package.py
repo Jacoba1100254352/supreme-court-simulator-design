@@ -69,7 +69,7 @@ def sha256(path: Path) -> str:
 
 def should_skip(path: Path) -> bool:
     relative = path.relative_to(ROOT)
-    return any(part in EXCLUDED_PARTS for part in relative.parts)
+    return path.name == ".DS_Store" or any(part in EXCLUDED_PARTS for part in relative.parts)
 
 
 def iter_files() -> list[Path]:

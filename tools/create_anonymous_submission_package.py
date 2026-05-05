@@ -16,6 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 STAGING = DIST / "anonymous-submission"
 ARCHIVE = DIST / "constitutional-review-anonymous-submission.zip"
+MANUSCRIPT_ARCHIVE = DIST / "constitutional-review-anonymous-manuscript.zip"
+SUPPLEMENT_ARCHIVE = DIST / "constitutional-review-anonymous-supplement.zip"
 MANIFEST = DIST / "anonymous-submission-manifest.json"
 
 INCLUDE_PATHS = [
@@ -24,6 +26,7 @@ INCLUDE_PATHS = [
     "README.md",
     "REPLICATION.md",
     "data/calibration",
+    "data/external",
     "docs",
     "paper/README.md",
     "paper/abstract-variants.md",
@@ -77,15 +80,11 @@ FORBIDDEN_PATH_PARTS = [
 
 SPECIFIC_REPLACEMENTS = {
     'if "Jacob Anderson" in source or "github.com/Jacoba" in source:': 'if "".join(["Jac", "ob", " ", "And", "er", "son"]) in source or "github" + ".com/" + "".join(["Jac", "oba"]) in source:',
-    "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv": "external/legislative-output.csv",
-    "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports": "external/legislative-reports",
-    "/Users/jacobanderson/Downloads/Deep Research Reports/Supreme Court/deep-research-report5.md": "external/deep-research-report5.md",
     "git@github.com:Jacoba1100254352/Supreme-Court-Simulator-Design.git": "repository withheld for anonymous review",
     "https://github.com/Jacoba1100254352/Supreme-Court-Simulator-Design": "repository withheld for anonymous review",
     "github.com/Jacoba1100254352": "repository withheld for anonymous review",
     "Jacob Anderson": "Anonymous Author",
     "Jacoba1100254352": "repository-withheld",
-    "/Users/": "[local-user]/",
 }
 
 
@@ -167,9 +166,11 @@ def write_package_readme() -> Path:
             [
                 "# Anonymous Submission Package",
                 "",
-                "This package contains the anonymous manuscript, simulator source, normalized calibration inputs, generated reports, figure/table fragments, and source-audit materials for review.",
+                "This package contains the anonymous manuscript, simulator source, normalized calibration inputs, frozen external legislative-output fixtures, generated reports, figure/table fragments, and source-audit materials for review.",
                 "",
-                "Author-identifying files and public repository metadata are withheld. Local absolute paths in report manifests and documentation have been replaced with anonymized external-input placeholders.",
+                "Author-identifying files and public repository metadata are withheld. Local absolute paths in report manifests and documentation have been replaced with anonymized external-input placeholders if present.",
+                "",
+                "The package builder also writes separate manuscript-only and supplement-only ZIP archives so journal-upload categories can be kept distinct.",
                 "",
                 "Useful commands from the package root:",
                 "",
@@ -186,7 +187,7 @@ def write_package_readme() -> Path:
     return path
 
 
-def write_manifest(files: list[Path]) -> dict[str, object]:
+def build_manifest(files: list[Path], archive_name: str, package_kind: str) -> dict[str, object]:
     entries = [
         {
             "path": path.relative_to(STAGING).as_posix(),
@@ -195,30 +196,57 @@ def write_manifest(files: list[Path]) -> dict[str, object]:
         }
         for path in sorted(files, key=lambda item: item.relative_to(STAGING).as_posix())
     ]
-    manifest: dict[str, object] = {
+    return {
         "createdAt": datetime.now(timezone.utc).isoformat(),
-        "archive": ARCHIVE.name,
+        "archive": archive_name,
+        "packageKind": package_kind,
+        "manuscriptArchive": MANUSCRIPT_ARCHIVE.name,
+        "supplementArchive": SUPPLEMENT_ARCHIVE.name,
         "fileCount": len(entries),
         "files": entries,
         "notes": [
             "Blinded package for anonymous peer review.",
             "Non-anonymous citation metadata, author metadata, raw third-party archives, build directories, class files, and repository remotes are excluded.",
             "Run make test and make paper from the package root to reproduce the simulator checks and manuscript build.",
+            "Upload the manuscript-only archive or paper/main.pdf as the main anonymous manuscript; upload the supplement archive only if the submission system requests anonymous supplementary or replication materials at review.",
         ],
     }
+
+
+def write_manifest(files: list[Path]) -> dict[str, object]:
+    manifest = build_manifest(files, ARCHIVE.name, "combined-anonymous-review-package")
     MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     return manifest
 
 
-def write_zip(files: list[Path], manifest: dict[str, object]) -> None:
+def is_manuscript_file(path: Path) -> bool:
+    relative = path.relative_to(STAGING).as_posix()
+    if relative == "ANONYMOUS_SUBMISSION_README.md":
+        return True
+    if relative in {
+        "paper/main.pdf",
+        "paper/main.tex",
+        "paper/references.bib",
+        "paper/source-audit.csv",
+        "paper/README.md",
+    }:
+        return True
+    return relative.startswith("paper/figures/") or relative.startswith("paper/tables/") or relative.startswith("paper/figure-exports/")
+
+
+def is_supplement_file(path: Path) -> bool:
+    return not path.relative_to(STAGING).as_posix().startswith("paper/build/")
+
+
+def write_zip(archive_path: Path, files: list[Path], manifest_name: str, manifest: dict[str, object]) -> None:
     fixed_time = (2026, 5, 1, 0, 0, 0)
-    with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(files, key=lambda item: item.relative_to(STAGING).as_posix()):
             relative = path.relative_to(STAGING).as_posix()
             info = zipfile.ZipInfo(relative, fixed_time)
             info.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(info, path.read_bytes())
-        info = zipfile.ZipInfo("anonymous-submission-manifest.json", fixed_time)
+        info = zipfile.ZipInfo(manifest_name, fixed_time)
         info.compress_type = zipfile.ZIP_DEFLATED
         archive.writestr(info, json.dumps(manifest, indent=2, sort_keys=True) + "\n")
 
@@ -233,8 +261,28 @@ def main() -> None:
     copied.append(write_package_readme())
     scan_for_identifiers(copied)
     manifest = write_manifest(copied)
-    write_zip(copied, manifest)
+    manuscript_files = [path for path in copied if is_manuscript_file(path)]
+    supplement_files = [
+        path for path in copied
+        if is_supplement_file(path)
+        and (not is_manuscript_file(path) or path.name == "ANONYMOUS_SUBMISSION_README.md")
+    ]
+    manuscript_manifest = build_manifest(
+        manuscript_files,
+        MANUSCRIPT_ARCHIVE.name,
+        "anonymous-main-manuscript",
+    )
+    supplement_manifest = build_manifest(
+        supplement_files,
+        SUPPLEMENT_ARCHIVE.name,
+        "anonymous-supplement",
+    )
+    write_zip(ARCHIVE, copied, "anonymous-submission-manifest.json", manifest)
+    write_zip(MANUSCRIPT_ARCHIVE, manuscript_files, "anonymous-manuscript-manifest.json", manuscript_manifest)
+    write_zip(SUPPLEMENT_ARCHIVE, supplement_files, "anonymous-supplement-manifest.json", supplement_manifest)
     print(f"Wrote {ARCHIVE.relative_to(ROOT)}")
+    print(f"Wrote {MANUSCRIPT_ARCHIVE.relative_to(ROOT)}")
+    print(f"Wrote {SUPPLEMENT_ARCHIVE.relative_to(ROOT)}")
     print(f"Wrote {MANIFEST.relative_to(ROOT)}")
     print(f"Packaged {len(copied)} anonymous files")
 

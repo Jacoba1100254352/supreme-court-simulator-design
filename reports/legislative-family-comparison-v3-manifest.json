@@ -3,16 +3,16 @@
   "provenanceFormat": "constitutional-review-report-v2",
   "sourceTree": "tracked local project artifact; inspect repository history for commit identity",
   "javaRelease": "21",
-  "javaCommand": "constitutionalreview.Main --legislative-family-comparison --legislative-family-dir /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports --runs 40 --cases 48 --seed 20260501 --output-dir reports --legislative-input /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv",
+  "javaCommand": "constitutionalreview.Main --legislative-family-comparison --legislative-family-dir data/external/legislative --runs 40 --cases 48 --seed 20260501 --output-dir reports",
   "runs": 40,
   "casesPerRun": 48,
   "seed": 20260501,
   "experimentCaseCount": 7,
   "scenarioCount": 14,
-  "legislativeInput": "/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports",
-  "legislativeInputSha256": "b6c03cccaad5edf67015befc0094e062d259e59f69ef0e03b97d4d080e4f2d6b",
+  "legislativeInput": "data/external/legislative",
+  "legislativeInputSha256": "48701ae65ae29e14a92c1e1ffcfe12740e44b7fad0fc38e67171a35c1a3f3699",
   "artifacts": [
     {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "5aa7143581808a9f41fd210447b5345e306a4471047511fd1afd6267e272c39e"},
-    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "f4a2efadb30838252d986c904f571a7542d4d59f845ab6c7d70a5807df5c55a1"}
+    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "3274a670372033abba3a393a392d2d524c6e4b35ffeb64d688e12a5a51a25a3b"}
   ]
 }

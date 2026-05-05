@@ -13,6 +13,8 @@ ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "paper" / "main.tex"
 BIB = ROOT / "paper" / "references.bib"
 AUDIT = ROOT / "paper" / "source-audit.csv"
+CALIBRATION_PROVENANCE = ROOT / "data" / "calibration" / "provenance-manifest.csv"
+LEGISLATIVE_PROVENANCE = ROOT / "data" / "external" / "legislative" / "source-provenance.csv"
 
 REQUIRED_SECTIONS = {
     "Theory and Design Space",
@@ -45,6 +47,10 @@ def cited_keys(source: str) -> set[str]:
 def main() -> None:
     if not AUDIT.exists():
         fail("paper/source-audit.csv is missing")
+    if not CALIBRATION_PROVENANCE.exists():
+        fail("data/calibration/provenance-manifest.csv is missing")
+    if not LEGISLATIVE_PROVENANCE.exists():
+        fail("data/external/legislative/source-provenance.csv is missing")
     source = MAIN.read_text()
     existing_bib_keys = bib_keys()
     manuscript_citations = cited_keys(source)
@@ -88,6 +94,16 @@ def main() -> None:
     missing_sections = REQUIRED_SECTIONS - sections
     if missing_sections:
         fail("source audit is missing sections: " + ", ".join(sorted(missing_sections)))
+
+    provenance_rows = list(csv.DictReader(CALIBRATION_PROVENANCE.open(newline="")))
+    provenance_keys = {row.get("datasetKey", "").strip() for row in provenance_rows}
+    for key in {"scdb-modern-2025-01", "shadow-docket-v2-0", "black-epstein-recusal", "supreme-court-synthesis"}:
+        if key not in provenance_keys:
+            fail(f"calibration provenance is missing datasetKey {key}")
+
+    legislative_rows = list(csv.DictReader(LEGISLATIVE_PROVENANCE.open(newline="")))
+    if "paper-legislative-profile" not in {row.get("datasetKey", "").strip() for row in legislative_rows}:
+        fail("legislative provenance is missing paper-legislative-profile")
 
     print(f"Source audit check passed ({len(rows)} audited claims).")
 

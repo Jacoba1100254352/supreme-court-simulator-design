@@ -2,13 +2,13 @@ MAIN_SOURCES := $(shell find src/main/java -name '*.java')
 TEST_SOURCES := $(shell find src/test/java -name '*.java')
 JAVA_RELEASE ?= 21
 JAVA_PROPS ?= -Dconstitutionalreview.javaRelease=$(JAVA_RELEASE)
-LEGISLATIVE_FAMILY_DIR ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports
+LEGISLATIVE_FAMILY_DIR ?= data/external/legislative
 CALIBRATION_DATA_DIR ?= data/calibration
 RAW_CALIBRATION_DIR ?= data/raw/calibration
-PAPER_LEGISLATIVE_INPUT ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv
+PAPER_LEGISLATIVE_INPUT ?= data/external/legislative/simulation-campaign-v21-paper.csv
 PAPER_ARGS ?= --legislative-input "$(PAPER_LEGISLATIVE_INPUT)"
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-strict-check replication-package anonymous-submission-package paper-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-jlc-template-check paper-strict-check replication-package anonymous-submission-package paper-clean dist-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -65,6 +65,9 @@ paper-artifacts-check:
 paper-pdf-freshness-check:
 	python3 paper/scripts/check_pdf_freshness.py
 
+paper-jlc-template-check:
+	python3 paper/scripts/check_jlc_format.py --require-cambridge-class
+
 paper-source-audit:
 	python3 paper/scripts/check_source_audit.py
 
@@ -96,6 +99,7 @@ anonymous-submission-package: paper
 paper-clean:
 	cd paper && latexmk -C -outdir=build main.tex
 	rm -rf paper/build
+	rm -rf paper/figure-exports/build
 
 test: build
 	mkdir -p out/test
@@ -106,3 +110,6 @@ ci: test campaign paper
 
 clean:
 	rm -rf out
+
+dist-clean: clean paper-clean
+	rm -rf dist

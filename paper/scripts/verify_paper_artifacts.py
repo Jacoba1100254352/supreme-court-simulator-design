@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+PAPER_LEGISLATIVE_INPUT = "data/external/legislative/simulation-campaign-v21-paper.csv"
 MANIFESTS = [
     ROOT / "reports" / "constitutional-review-campaign-v2-manifest.json",
     ROOT / "reports" / "calibration-baseline-manifest.json",
@@ -35,9 +36,15 @@ def check_manifest(path: Path) -> None:
         fail(f"missing manifest {path.relative_to(ROOT)}")
     data = json.loads(path.read_text())
     command = data.get("javaCommand", "")
+    manifest_text = path.read_text()
+    local_home_marker = "/" + "Users" + "/"
+    if local_home_marker in manifest_text:
+        fail(f"{path.name} contains a local absolute path")
     if path.name in {"constitutional-review-campaign-v2-manifest.json", "calibration-baseline-manifest.json"}:
         if "--legislative-input" not in command:
             fail(f"{path.name} was not generated with the paper legislative input contract")
+        if PAPER_LEGISLATIVE_INPUT not in command:
+            fail(f"{path.name} was not generated with the frozen paper legislative fixture")
     for artifact in data.get("artifacts", []):
         artifact_path = ROOT / artifact["path"]
         if not artifact_path.exists():

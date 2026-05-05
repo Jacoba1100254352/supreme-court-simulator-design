@@ -2,6 +2,8 @@
 
 This directory contains normalized empirical calibration observations consumed by `CalibrationRunner`.
 
+`provenance-manifest.csv` records the source version, source URL, raw-source requirement, transformation script, extraction mode, validation use, and denominator specification for each normalized source family. Treat that manifest as the first place to check whether a row is a strict validation target, a loose calibration row, or paper-only context.
+
 Rows use the schema:
 
 ```csv
