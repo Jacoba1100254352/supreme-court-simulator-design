@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""Build standalone figure files for journal submission packages."""
+
+from __future__ import annotations
+
+import shutil
+import subprocess
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[2]
+EXPORT_DIR = ROOT / "paper" / "figure-exports"
+BUILD_DIR = EXPORT_DIR / "build"
+
+FIGURES = [
+    (
+        "domain_claimant_success",
+        "Domain-specific claimant-success heatmap",
+        "Heatmap comparing claimant-success rates by legal domain across selected court designs.",
+    ),
+    (
+        "conflict_confidence_tradeoff",
+        "Public-confidence and constitutional-conflict tradeoff",
+        "Scatter plot of public confidence against constitutional conflict for selected court designs.",
+    ),
+    (
+        "emergency_profile",
+        "Emergency-docket and public-confidence profile",
+        "Horizontal bar chart comparing shadow-docket abuse, emergency legitimacy risk, and public confidence.",
+    ),
+]
+
+
+def wrapper(stem: str, title: str, description: str) -> str:
+    return rf"""\documentclass[11pt]{{article}}
+\usepackage[margin=0.25in,paperwidth=7.6in,paperheight=5.6in]{{geometry}}
+\usepackage{{xcolor}}
+\usepackage{{graphicx}}
+\ifdefined\pdfinfoomitdate\pdfinfoomitdate=1\fi
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=-1\fi
+\ifdefined\pdftrailerid\pdftrailerid{{}}\fi
+\pagestyle{{empty}}
+\begin{{document}}
+\noindent\textbf{{{title}}}\par
+\smallskip
+\noindent\input{{../figures/{stem}}}
+\par\smallskip
+\noindent\footnotesize Accessibility description: {description}
+\end{{document}}
+"""
+
+
+def run(command: list[str], cwd: Path) -> None:
+    subprocess.run(command, cwd=cwd, check=True)
+
+
+def main() -> None:
+    EXPORT_DIR.mkdir(parents=True, exist_ok=True)
+    BUILD_DIR.mkdir(parents=True, exist_ok=True)
+    has_latexmk = shutil.which("latexmk") is not None
+    has_pdftoppm = shutil.which("pdftoppm") is not None
+    if not has_latexmk:
+        raise SystemExit("latexmk is required to export standalone figure PDFs")
+
+    for stem, title, description in FIGURES:
+        tex_path = EXPORT_DIR / f"{stem}.tex"
+        tex_path.write_text(wrapper(stem, title, description))
+        run(
+            [
+                "latexmk",
+                "-pdf",
+                "-interaction=nonstopmode",
+                "-halt-on-error",
+                "-outdir=build",
+                tex_path.name,
+            ],
+            EXPORT_DIR,
+        )
+        pdf_path = BUILD_DIR / f"{stem}.pdf"
+        final_pdf = EXPORT_DIR / f"{stem}.pdf"
+        shutil.copyfile(pdf_path, final_pdf)
+        if has_pdftoppm:
+            run(
+                [
+                    "pdftoppm",
+                    "-png",
+                    "-r",
+                    "300",
+                    "-singlefile",
+                    final_pdf.name,
+                    stem,
+                ],
+                EXPORT_DIR,
+            )
+
+
+if __name__ == "__main__":
+    main()

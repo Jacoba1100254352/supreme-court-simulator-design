@@ -35,7 +35,11 @@
 \usepackage{url}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\hypersetup{hidelinks}
 \providecommand{\Description}[1]{}
+\ifdefined\pdfinfoomitdate\pdfinfoomitdate=1\fi
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=-1\fi
+\ifdefined\pdftrailerid\pdftrailerid{}\fi
 
 \ifnum\paperusescup=1
   \addbibresource{references.bib}
@@ -89,25 +93,49 @@ The paper makes three contributions. First, it treats constitutional-review refo
 
 These contributions are methodological rather than doctrinal. We do not argue that simulation can settle constitutional design. We argue that explicit simulation can make institutional tradeoffs more inspectable, especially when reforms that look attractive in isolation shift costs into emergency procedure, admission filtering, public legitimacy, interbranch conflict, or post-decision compliance.
 
+\section{Theory and Design Space}
+
+The model joins three law-and-courts traditions that are often studied separately. The first treats judges as purposive actors whose choices depend on legal goals, policy preferences, colleagues, litigants, and other institutions \jlcite{SegalSpaeth2002,EpsteinKnight1998,ClaytonGillman1999}. The second treats constitutional review as an institutional settlement among political actors who face uncertainty, seek insurance against future exclusion, or try to preserve influence through courts \jlcite{Ginsburg2003,Hirschl2004,DixonGinsburg2017}. The third asks how courts preserve authority when they depend on elected officials, lower courts, publics, and repeat players for implementation \jlcite{Vanberg2005,Staton2010}. A useful simulator for constitutional-review design has to represent all three: judicial choice, institutional allocation, and post-decision compliance.
+
+Comparative constitutional design also makes clear that ``judicial review'' is not one institution. Strong-form review, weak-form review, pre-enactment review, legislative override, individual complaint, amparo, concrete referral, constitutional council screening, specialized constitutional courts, and ordinary supreme courts expose different actors to different veto points \jlcite{Tushnet2008,Gardbaum2013}. That is why this project models access path, review timing, remedy threshold, emergency procedure, and override rule as separate design fields. The relevant unit of comparison is the bundle, not a single reform label.
+
+Emergency procedure is treated separately because it changes both timing and legitimacy. The literature on the U.S. shadow docket emphasizes that orders outside the ordinary merits process can be consequential precisely because they are faster, less reasoned, and less procedurally regular \jlcite{Baude2015,Vladeck2023,ShadowDocketDatabase2025}. The simulator therefore separates ordinary merits review from emergency applications, shadow relief, public disagreement, reasons, merits follow-through, and status-quo effects. This makes emergency legality, rights protection, and legitimacy costs visible instead of burying them in an aggregate activity rate.
+
+The design problem also differs from ordinary policy optimization. Constitutional-review institutions produce several goods that can conflict: rights protection, legal stability, responsiveness to democratic majorities, settlement of interbranch conflict, and visible decisional legitimacy. A design that improves one good can undermine another by changing access, delay, information, coalition structure, or implementation incentives. For that reason, the simulator does not search for a single welfare-maximizing court. It asks whether a design bundle moves costs into predictable locations and whether those costs remain visible in direct outputs.
+
+This framing matters for reform debates. A proposal to impose term limits is not only a tenure proposal; it changes vacancy timing, appointment incentives, and the value of partisan capture. A proposal to require reasoned emergency orders is not only a transparency proposal; it changes speed, emergency grant behavior, public disagreement, and merits follow-through. A proposal to add a constitutional council is not only a rights-screening proposal; it changes ex ante review, later judicial workload, and the political salience of invalidation. The simulation architecture therefore treats legal form, access path, and political response as jointly produced institutional behavior.
+
 \section{Model}
 
 Each generated world contains a pool of potential justices, a filed universe of constitutional disputes, and a legislative-output profile. Filed cases vary by legal ambiguity, rights burden, democratic mandate, partisan salience, emergency pressure, requested emergency relief, legislative quality, constitutional-conflict potential, public attention, override pressure, lower-court conflict, lower-court error risk, and certiorari pressure. We separate facial challenges, as-applied challenges, election disputes, emergency stay applications, executive-power disputes, administrative-law challenges, structural cases, economic-regulation cases, and rights claims. Legal-domain profiles shift baseline case attributes so rights, election, executive-power, administrative, structural, and economic-regulation cases do not behave as interchangeable labels.
 
-A review-path layer distinguishes paid certiorari, IFP certiorari, discretionary certiorari, direct constitutional complaint, amparo, filtered QPC-style referral, abstract ex ante and ex post review, concrete referral, emergency application, interbranch dispute, and electoral review. Admission filtering turns filed disputes into screened-out matters or merits transfers using SG/CVSG-style signal, amicus intensity, split maturity, relists, specialist counsel, vehicle-quality defects, and conditional reversal probability. There is no preliminary fixed-size top-case selector before admission; the modeled merits docket is an output of the intake process.
+A review-path layer distinguishes paid certiorari, IFP certiorari, discretionary certiorari, direct constitutional complaint, amparo, filtered QPC-style referral, abstract ex ante and ex post review, concrete referral, emergency application, interbranch dispute, and electoral review. Admission filtering turns filed disputes into screened-out matters or merits transfers using SG/CVSG-style signal, amicus intensity, split maturity, relists, specialist counsel, vehicle-quality defects, and conditional reversal probability. There is no preliminary fixed-size top-case selector before admission; the modeled merits docket is an output of the intake process. The state transition is filed matter $\rightarrow$ petition or referral $\rightarrow$ admission decision $\rightarrow$ merits transfer, emergency order, or screen-out $\rightarrow$ post-decision response.
 
 Each scenario supplies a court design. The design selects reviewers, applies recusal rules, routes cases to full-court or panel review, determines emergency relief procedure, applies voting thresholds, optionally invokes cross-checking or council review, and optionally allows legislative or popular override. Emergency applications carry applicant type, application class, requested relief, response request, full-court referral, status-quo effect, public disagreement risk, and merits follow-through. Strategic actors choose whether to comply, evade, reenact, flood emergency applications, organize override campaigns, or pressure appointments. Their response is split into formal legal response and practical implementation response, including repeal, replacement, narrowed reenactment, weak-form override, amendment, court-curbing, delay, administrative substitution, symbolic compliance, bureaucratic resistance, and open noncompliance.
 
+The model uses shared worlds to make institutional comparisons sharper. Within a run, every scenario sees the same filed matters and legislative-output profile. Differences in outputs therefore come from the institutional rule bundle and its induced strategic responses, not from a different case draw. Across runs and stress cases, the world generator changes appointment capture, emergency pressure, rights risk, democratic mandate, public attention, executive defiance, and imported legislative quality. This gives the campaign both within-world comparison and across-assumption sensitivity.
+
+The current design surface is deliberately broader than the tabled scenarios. Court size may be odd or even; terms may be life, fixed, staggered, renewable, or retirement-age bounded; removal may be impeachment-like, supermajoritarian, or external-review based; recusal may leave replacement, vacancy, or quorum consequences; and remedies may require different thresholds for invalidation, emergency relief, or override. The scenario catalog chooses interpretable bundles from that larger design surface, then the diagnostics vary assumptions around those bundles rather than presenting every possible combination as if it were substantively meaningful.
+
+That choice keeps the paper focused on institutional mechanisms rather than arbitrary parameter permutations.
+
 \section{Calibration and Validation}
 
-The calibration layer is deliberately framed as a plausibility guardrail rather than as a claim of full validation. Normalized source observations are drawn from the Supreme Court Database, Harvard Law Review Supreme Court statistics, the Supreme Court Shadow Docket Database, Black and Epstein's recusal data, and Deep Research synthesis tables \jlcite{SupremeCourtDatabaseCodebook2025,HarvardLawReviewStatistics2025,ShadowDocketDatabase2025,BlackEpsteinRecusal,DeepResearchSynthesis2026}. The current calibration run passes all seventeen guardrails for docket mix, invalidation, recusal frequency, emergency-docket abuse, split legal stability, partisan alignment, override attempts, and admissibility-aware merits transfer.
+The calibration layer is deliberately framed as a plausibility guardrail rather than as a claim of full validation. Normalized source observations are drawn from the Supreme Court Database, Harvard Law Review Supreme Court statistics, the Supreme Court Shadow Docket Database, Black and Epstein's recusal data, and an author-generated synthesis memo assisted by ChatGPT Deep Research \jlcite{SupremeCourtDatabaseCodebook2025,HarvardLawReviewStatistics2025,ShadowDocketDatabase2025,BlackEpsteinRecusal,DeepResearchSynthesis2026}. The current calibration run passes all seventeen guardrails for docket mix, invalidation, recusal frequency, emergency-docket abuse, split legal stability, partisan alignment, override attempts, and admissibility-aware merits transfer.
 
 The model distinguishes three categories that should not be blurred. Observed inputs anchor source ranges or qualitative rules. Coding decisions translate legal institutions into parameterized mechanisms. Simulated outputs are exploratory comparisons under those mechanisms. Several quantities remain intentionally loose: SCOTUSblog significant-application counts are not full emergency denominators; raw cross-national invalidation rates are not directly comparable without institutional context; and source tables describing appointment actors or court structure are not treated as direct measures of independence. The generated source-range appendix reports raw source minima, percentiles, medians, maxima, terms, and source keys, while the campaign reports preserve deterministic seeds and scenario definitions for reproduction.
+
+Table~\ref{tab:calibration-guardrails} reports representative guardrails rather than every source row. It is meant to show the type of check being applied: a current-like design should have plausible docket composition, invalidation, recusal, and emergency-order behavior, while a no-emergency-relief-without-merits design should sharply suppress shadow relief without erasing emergency merits acceleration. Passing these guardrails does not mean the model is causally identified. It means the run has not drifted outside ranges that would make the comparison facially implausible.
+
+\input{tables/calibration_guardrails}
 
 \section{Metrics}
 
 The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness. Legal stability is decomposed into precedent stability, statutory stability, and interbranch compliance. Emergency legitimacy risk is reported separately from shadow-docket abuse, so opacity and emergency procedure legitimacy are not collapsed into the same quantity as abusive merits-like relief. Rights-claimant success is reported both as an aggregate direct output and by legal domain for rights, structural, election, executive-power, administrative-law, and economic-regulation cases.
 
 The reported directional score is only a reading aid. It averages a stability/rights score, a legitimacy/control score, rights-claimant success, elite acceptance, and administrative feasibility. Direct outputs such as rights-claimant success, doctrinal depth, remedial breadth, lower-court compliance, elite acceptance, public confidence, and coalition fragmentation are reported separately and should not be treated as interchangeable components of one welfare function.
+
+Figure~\ref{fig:domain-claimant-success} illustrates why the domain-specific claimant-success measures are kept separate. Designs can look similar on aggregate rights protection while moving success rates differently for rights, structural, election, executive-power, administrative-law, and economic-regulation disputes.
 
 \begin{figure}[hbt!]
 \centering
@@ -121,6 +149,8 @@ The reported directional score is only a reading aid. It averages a stability/ri
 
 The current campaign compares fourteen institutional scenarios across twenty assumption cases: the original broad cases, sensitivity sweeps for appointment capture, emergency pressure, rights risk, and democratic mandate, plus adversarial stress cases for appointment timing, emergency-application flooding, override evasion, recusal pressure, and court-expansion retaliation. The reported run used 80 runs per case, 64 filed matters per run, seed 20260501, and an imported legislative-output profile from a separate legislative simulator report contract.
 
+Figure~\ref{fig:conflict-confidence} plots public confidence against constitutional conflict for selected designs, with marker shade representing shadow-docket abuse. The figure is diagnostic rather than normative: movement toward lower conflict and higher confidence is usually attractive, but the figure intentionally leaves rights protection and democratic responsiveness outside the two-dimensional display.
+
 \begin{figure}[hbt!]
 \centering
 \input{figures/conflict_confidence_tradeoff}
@@ -133,6 +163,7 @@ The current campaign compares fourteen institutional scenarios across twenty ass
 \centering
 \caption{Selected v2 campaign averages}
 \label{tab:v2-selected}
+\Description{Table of selected campaign averages for directional score, admission rate, rights protection, shadow-docket abuse, emergency legitimacy risk, public confidence, and constitutional conflict.}
 \footnotesize
 \begin{tabular}{>{\raggedright\arraybackslash}p{2.0in}rrrrrrr}
 \toprule
@@ -150,7 +181,13 @@ Cross-checking constitutional court & 0.551 & 0.577 & 0.595 & 0.063 & 0.205 & 0.
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:v2-selected} shows that term regularization leads the current directional score by combining low shadow-docket abuse, moderate emergency legitimacy risk, and relatively low conflict. The no-emergency-relief-without-merits design remains the strongest emergency-docket reform on shadow abuse, emergency legitimacy risk, and public confidence, though it pays administrative cost through merits acceleration. The stylized current U.S.-like court has high rights protection in this run, but much higher shadow-docket abuse and emergency legitimacy risk. Cross-checking and dual-court designs reduce partisan alignment, but the current disagreement-resolution model increases constitutional conflict and administrative cost. The comparative 16-seat constitutional-senate scenario confirms that even court sizes and chamber-like structures can be modeled, but it does not automatically dominate simpler reforms.
+Table~\ref{tab:v2-selected} should be read as a clustered comparison, not as a tournament table. The top directional scores are close: 18-year terms, emergency-restraint, the stylized current U.S.-like court, and commission appointment all fall within a narrow band. The no-emergency-relief-without-merits design remains the strongest emergency-docket reform on shadow abuse, emergency legitimacy risk, and public confidence, though it pays administrative cost through merits acceleration. The stylized current U.S.-like court has high rights protection in this run, but much higher shadow-docket abuse and emergency legitimacy risk. Cross-checking and dual-court designs reduce partisan alignment, but the current disagreement-resolution model increases constitutional conflict and administrative cost. The comparative 16-seat constitutional-senate scenario confirms that even court sizes and chamber-like structures can be modeled, but it does not automatically dominate simpler reforms.
+
+Table~\ref{tab:uncertainty-bands} reports named-prior uncertainty bands from the parameter sweep. The overlap among the leading designs is the main point. The model is more informative about tradeoff patterns, such as emergency-restraint reducing shadow abuse and dual-court designs increasing conflict under the current disagreement rule, than about fine ordinal rankings among close scores.
+
+\input{tables/uncertainty_bands}
+
+Figure~\ref{fig:emergency-profile} makes the emergency-procedure result visible. Similar rights and stability averages can coexist with very different emergency profiles, so the manuscript reports shadow-docket abuse, emergency legitimacy risk, and public confidence separately.
 
 \begin{figure}[hbt!]
 \centering
@@ -175,6 +212,7 @@ The model is strongest as a disciplined comparison of institutional mechanisms, 
 \centering
 \caption{Illustrative provenance map for modeled institutional features}
 \label{tab:provenance}
+\Description{Table mapping modeled institutional feature families to simulator representations and provenance status.}
 \small
 \begin{tabular}{>{\raggedright\arraybackslash}p{1.45in}>{\raggedright\arraybackslash}p{1.75in}>{\raggedright\arraybackslash}p{1.65in}}
 \toprule
@@ -190,9 +228,39 @@ Outputs & Stability, rights protection, claimant success, legitimacy, conflict, 
 \end{tabular}
 \end{table}
 
+\section{Model Mechanics}
+\label{app:mechanics}
+
+This appendix records the main state machine and scoring formulas so the manuscript does not treat the simulator as a black box. Each run draws a filed universe from a shared world seed. For each scenario, the same filed matters are reviewed by a court process with a scenario-specific design and a scenario-specific random stream. Let $i$ index filed matters and $s$ index institutional scenarios.
+
+Admission begins with a path-specific petition probability:
+\[
+\begin{aligned}
+P(\mathrm{petition/referral}_{is}) = \mathrm{clamp}_{[0,1]}(&b_{\mathrm{petition}}
+ + .08\,\mathrm{conflict}_i
+ + .08\,\mathrm{attention}_i \\
+&+ .06\,\mathrm{SG}_i
+ - .22\,\mathrm{vehicleDefect}_i).
+\end{aligned}
+\]
+Conditional on a petition or referral, the admission score combines certiorari pressure, lower-court conflict, lower-court error, SG/CVSG signal, amicus intensity, split maturity, relist signal, specialist counsel, conditional reversal probability, access-path adjustment, institutional gatekeeping, vehicle defects, and vacancy deadlock. Merits transfer is then path-specific: emergency applications transfer through the application's merits-follow-through probability, complaints and amparo transfer at a lower rate, and ordinary referrals or cert-like paths transfer at a higher baseline.
+
+After admission, the court process chooses strategic-actor response, emergency status, initial merits review, panel or en banc routing, recusals, quorum, votes, emergency order, invalidation, auxiliary-review outcome, override attempt, and post-decision implementation response. The direct metrics are case averages over the filed universe. For example, rights-claimant success is one when a high-rights-burden claimant receives invalidation or shadow relief and zero otherwise; public confidence is legitimacy minus penalties for emergency legitimacy risk, partisan alignment, appointment-pressure campaigns, and court-curbing response; constitutional conflict rises with conflict potential, executive defiance, lower-court conflict, accumulated state conflict, invalidating high-mandate laws, shadow relief, cross-court disagreement, override attempts, and repeated override loops.
+
+The directional score is intentionally secondary:
+\[
+\begin{aligned}
+\mathrm{DirectionalScore}_s = \mathrm{mean}(&\mathrm{StabilityRights}_s,
+\mathrm{LegitimacyControl}_s,\mathrm{ClaimantSuccess}_s,\\
+&\mathrm{EliteAcceptance}_s,
+1-\mathrm{AdministrativeCost}_s).
+\end{aligned}
+\]
+The stability-rights component averages legal stability, rights protection, reversal restraint, and conflict restraint. The legitimacy-control component averages legitimacy, democratic responsiveness, independence-accountability balance, partisan-alignment restraint, shadow-abuse restraint, emergency-legitimacy-risk restraint, and strategic-pressure restraint. Because those choices are normative, the paper reports the direct outputs separately and uses the directional score only as a reading aid.
+
 \section*{Data Availability Statement}
 
-The simulator, normalized calibration tables, deterministic seeds, scenario definitions, generated reports, and figure-generation scripts are maintained as a reproducible project. Public repository identifiers are withheld in this anonymous review manuscript. The intended replication package includes source code, build instructions, normalized input data, generated campaign artifacts, generated figure fragments, and documentation distinguishing observed inputs, coding choices, model assumptions, and simulated outputs.
+The simulator, normalized calibration tables, deterministic seeds, scenario definitions, generated reports, figure-generation scripts, standalone figure exports, and report manifests are maintained as a reproducible project. Public repository identifiers are withheld in this anonymous review manuscript. The intended replication package includes source code, build instructions, normalized input data, generated campaign artifacts, generated figure fragments, standalone figure files, manifest hashes, and documentation distinguishing observed inputs, coding choices, model assumptions, and simulated outputs. For final publication, the package should be deposited in the Journal of Law and Courts Dataverse or another repository linked from the JLC Dataverse rather than being available only on request.
 
 \section*{Funding Statement}
 
@@ -204,7 +272,7 @@ Competing interests: The author(s) declare none.
 
 \section*{AI Assistance Statement}
 
-The author(s) used OpenAI ChatGPT and Codex in May 2026 to assist with research-prompt drafting, synthesis review, code generation, manuscript drafting, formatting checks, and local build verification. The author(s) reviewed, edited, and are responsible for the manuscript, simulator code, calibration choices, generated reports, and all claims. No AI-generated visual content appears in the manuscript; the figures are generated deterministically from project CSV outputs by repository code.
+The author(s) used OpenAI ChatGPT Deep Research and OpenAI Codex during May 2026, accessed through OpenAI's ChatGPT and Codex interfaces, to assist with research-prompt drafting, source-synthesis review, code generation, manuscript drafting, formatting checks, and local build verification. The author(s) did not list AI systems as authors, did not train or modify these systems, and reviewed, edited, and are responsible for the manuscript, simulator code, calibration choices, generated reports, generated figures, references, and all claims. Outputs from AI-assisted research were treated as leads or author-created synthesis notes; third-party sources, datasets, and claims were checked against cited sources or local project artifacts before inclusion. No AI-generated visual content appears in the manuscript; all figures are generated deterministically from project CSV outputs by repository code.
 
 \ifnum\paperusescup=1
   \printbibliography

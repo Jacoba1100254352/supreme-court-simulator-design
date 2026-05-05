@@ -37,7 +37,7 @@ Build the paper:
 make paper
 ```
 
-This also regenerates the paper's LaTeX figure fragments from the current v2 campaign CSV and runs a local JLC-format check.
+This also regenerates the paper's LaTeX figure and table fragments from the current v2 campaign, verifies report manifests, exports standalone figure files, runs a local JLC-format check, and checks the final LaTeX log for unresolved references or citations.
 
 Write the current v2 campaign artifacts:
 
@@ -45,7 +45,7 @@ Write the current v2 campaign artifacts:
 make campaign
 ```
 
-`make campaign` now writes the v2 campaign. The initial v0 and v1 campaigns remain available as `make campaign-v0` and `make campaign-v1`.
+`make campaign` now writes the v2 paper campaign using the documented legislative-output import contract by default. Override `PAPER_LEGISLATIVE_INPUT=/path/to/campaign.csv` to use a different legislative source, or set `PAPER_ARGS=` for a synthetic-only diagnostic run. The initial v0 and v1 campaigns remain available as `make campaign-v0` and `make campaign-v1`.
 
 Run the diagnostic suite:
 
@@ -53,7 +53,7 @@ Run the diagnostic suite:
 make diagnostics
 ```
 
-The suite writes source-backed historical calibration guardrails, seed-robustness bands, parameter-sweep uncertainty bands, mechanism ablations, a focused adversarial-manipulation stress campaign, and a multi-family legislative-import comparison.
+The suite writes source-backed historical calibration guardrails, seed-robustness bands, parameter-sweep uncertainty bands, mechanism ablations, a focused adversarial-manipulation stress campaign, and a multi-family legislative-import comparison. Paper-facing diagnostic targets use `PAPER_ARGS` by default so regenerated reports match the manuscript manifests.
 
 Run the parameter sweep only:
 
@@ -78,7 +78,7 @@ make calibrate CALIBRATION_DATA_DIR=/path/to/calibration
 Import a legislative simulator report as input:
 
 ```sh
-make campaign ARGS="--legislative-input '/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv'"
+make campaign PAPER_LEGISLATIVE_INPUT="/path/to/congressional-simulator-campaign.csv"
 ```
 
 ## Current Design Surface
@@ -118,4 +118,4 @@ The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a 
 
 The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC template path when the official `cup-journal` class is available, and otherwise builds locally as an author-date review copy. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 
-The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
+The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated calibration and uncertainty tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.

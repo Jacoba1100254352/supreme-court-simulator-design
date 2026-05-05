@@ -1,5 +1,6 @@
 out/
 paper/build/
+paper/figure-exports/build/
 .DS_Store
 *.class
 .idea/

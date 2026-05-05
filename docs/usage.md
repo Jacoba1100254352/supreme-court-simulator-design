@@ -21,6 +21,14 @@ Write campaign artifacts:
 make campaign
 ```
 
+By default this uses the paper's legislative-output import contract:
+
+```sh
+PAPER_LEGISLATIVE_INPUT="/Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv"
+```
+
+Override `PAPER_LEGISLATIVE_INPUT` for a different congressional-simulator CSV. Set `PAPER_ARGS=` only when you intentionally want a synthetic-only run that will not match the paper manifests.
+
 Run the preserved v0 campaign:
 
 ```sh
@@ -32,6 +40,8 @@ Build the LaTeX paper:
 ```sh
 make paper
 ```
+
+This regenerates manuscript figures and tables, verifies report manifests, exports standalone figure files, compiles the PDF, and checks the LaTeX log for unresolved references or citations.
 
 Run the full diagnostic suite:
 

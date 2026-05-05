@@ -4,8 +4,10 @@ JAVA_RELEASE ?= 21
 JAVA_PROPS ?= -Dconstitutionalreview.javaRelease=$(JAVA_RELEASE)
 LEGISLATIVE_FAMILY_DIR ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports
 CALIBRATION_DATA_DIR ?= data/calibration
+PAPER_LEGISLATIVE_INPUT ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv
+PAPER_ARGS ?= --legislative-input "$(PAPER_LEGISLATIVE_INPUT)"
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-figures paper-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-figures paper-figure-files paper-artifacts-check paper-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -17,28 +19,28 @@ run: build
 campaign: campaign-v2
 
 campaign-v2: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign v2 --runs 80 --cases 64 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign v2 --runs 80 --cases 64 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
 campaign-v1: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign v1 --runs 80 --cases 64 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign v1 --runs 80 --cases 64 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
 campaign-v0: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign v0 --runs 80 --cases 64 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign v0 --runs 80 --cases 64 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
 manipulation-stress: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign manipulation-stress --runs 80 --cases 64 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --campaign manipulation-stress --runs 80 --cases 64 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
 calibrate: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --calibrate --runs 80 --cases 64 --seed 20260501 --output-dir reports --calibration-data-dir "$(CALIBRATION_DATA_DIR)" $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --calibrate --runs 80 --cases 64 --seed 20260501 --output-dir reports --calibration-data-dir "$(CALIBRATION_DATA_DIR)" $(PAPER_ARGS) $(ARGS)
 
 seed-robustness: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --seed-robustness --runs 40 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --seed-robustness --runs 40 --cases 48 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
 mechanism-ablation: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --mechanism-ablation --runs 60 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --mechanism-ablation --runs 60 --cases 48 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
 parameter-sweep: build
-	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --parameter-sweep --runs 40 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --parameter-sweep --runs 40 --cases 48 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
 legislative-family-comparison: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --legislative-family-comparison --legislative-family-dir "$(LEGISLATIVE_FAMILY_DIR)" --runs 40 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
@@ -48,13 +50,20 @@ diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep legisl
 paper-figures:
 	python3 paper/scripts/generate_figures.py
 
-paper-check: paper-figures
+paper-figure-files: paper-figures
+	python3 paper/scripts/export_figures.py
+
+paper-artifacts-check:
+	python3 paper/scripts/verify_paper_artifacts.py
+
+paper-check: paper-figures paper-artifacts-check
 	python3 paper/scripts/check_jlc_format.py
 
-paper: paper-check
+paper: paper-check paper-figure-files
 	mkdir -p paper/build
 	rm -f paper/build/main.aux paper/build/main.bbl paper/build/main.blg paper/build/main.fdb_latexmk paper/build/main.fls paper/build/main.out
 	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
+	python3 paper/scripts/check_latex_log.py
 	cp paper/build/main.pdf paper/main.pdf
 
 paper-clean:
