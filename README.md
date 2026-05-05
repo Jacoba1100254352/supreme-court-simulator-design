@@ -37,7 +37,19 @@ Build the paper:
 make paper
 ```
 
-This also regenerates the paper's LaTeX figure and table fragments from the current v2 campaign, verifies report manifests, exports standalone figure files, runs a local JLC-format check, and checks the final LaTeX log for unresolved references or citations.
+This also regenerates the paper's LaTeX figure and table fragments from the current v2 campaign, verifies report manifests, checks the claim-level source audit, exports standalone figure files, runs a local JLC-format check, and checks the final LaTeX log for unresolved references or citations.
+
+Run stricter submission checks and build the non-anonymous title page:
+
+```sh
+make paper-strict-check
+```
+
+Build a clean replication archive for review or deposit:
+
+```sh
+make replication-package
+```
 
 Write the current v2 campaign artifacts:
 
@@ -118,4 +130,4 @@ The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a 
 
 The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC template path when the official `cup-journal` class is available, and otherwise builds locally as an author-date review copy. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 
-The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated calibration and uncertainty tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
+The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated calibration, uncertainty, and mechanism-level contrast tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. `paper/source-audit.csv` maps material claims to source-code, report, data, manuscript, or literature anchors. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.

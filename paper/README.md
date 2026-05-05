@@ -12,13 +12,16 @@ make paper
 
 The manuscript is intentionally cautious: it presents the simulator as a design-search framework and treats the v2 campaign plus v4 diagnostics as demonstrations of comparative mechanics rather than validation.
 
-`make paper` regenerates LaTeX figure fragments from `reports/constitutional-review-campaign-v2.csv` and generated table fragments from the calibration and parameter-sweep reports before compiling. The current manuscript includes a domain-specific claimant-success heatmap, a public-confidence/constitutional-conflict scatter plot, an emergency-docket profile chart, a calibration-guardrail table, and an uncertainty-band table.
+`make paper` regenerates LaTeX figure fragments from `reports/constitutional-review-campaign-v2.csv` and generated table fragments from the calibration, parameter-sweep, and mechanism-ablation reports before compiling. The current manuscript includes a domain-specific claimant-success heatmap, a public-confidence/constitutional-conflict scatter plot, an emergency-docket profile chart, a calibration-guardrail table, an uncertainty-band table, and a mechanism-level contrast table.
 
-The same command runs `paper/scripts/check_jlc_format.py`, which checks the main JLC-facing requirements that can be validated locally: anonymous review mode, JLC template options, hidden hyperlink borders, author-date fallback, figure/table descriptions, figure references in the text, data availability before the references, declaration sections, generated table fragments, a methods appendix, and the 10,000-word article ceiling.
+The same command runs `paper/scripts/check_jlc_format.py` and `paper/scripts/check_source_audit.py`, which check the main JLC-facing requirements that can be validated locally: anonymous review mode, JLC template options, hidden hyperlink borders, author-date fallback, figure/table descriptions, figure references in the text, data availability before the references, declaration sections, generated table fragments, a methods appendix, source-audit coverage, and the 10,000-word article ceiling.
 
 `make paper-figure-files` exports standalone production-oriented figure files under `figure-exports/`. The PDFs are built from the same LaTeX fragments as the manuscript, and PNG files are generated when `pdftoppm` is available.
 
 Additional submission-prep files:
 
-- `title-page.tex`: non-anonymous title-page skeleton for journal submission systems.
+- `title-page.tex`: non-anonymous title page for journal submission systems.
 - `abstract-variants.md`: short abstracts/proposal variants for CELS, ICON-S, and APSA-style routes.
+- `source-audit.csv`: claim-level source and artifact anchors for the manuscript.
+
+Use `make paper-strict-check` before a non-anonymous submission package. Use `make replication-package` from the repository root to build a clean archive under `dist/`.

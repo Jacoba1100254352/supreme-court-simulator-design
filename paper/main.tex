@@ -105,6 +105,20 @@ The design problem also differs from ordinary policy optimization. Constitutiona
 
 This framing matters for reform debates. A proposal to impose term limits is not only a tenure proposal; it changes vacancy timing, appointment incentives, and the value of partisan capture. A proposal to require reasoned emergency orders is not only a transparency proposal; it changes speed, emergency grant behavior, public disagreement, and merits follow-through. A proposal to add a constitutional council is not only a rights-screening proposal; it changes ex ante review, later judicial workload, and the political salience of invalidation. The simulation architecture therefore treats legal form, access path, and political response as jointly produced institutional behavior.
 
+\section{Expectations}
+
+The simulations are exploratory, but they are not atheoretical. The campaign is organized around five design expectations that can be evaluated in direct outputs rather than only in a final score.
+
+First, regularized appointments should reduce incentives to manipulate appointment timing and should soften public-legitimacy penalties, but the effect should be modest unless the regularized system also changes confirmation control or partisan appointment opportunities. Term limits are therefore expected to improve public confidence and reduce strategic pressure more than they transform rights outcomes.
+
+Second, fragmented or screened appointment systems should reduce partisan alignment and some appointment-manipulation pressure, but they can add administrative cost and may not improve rights protection by themselves. The model therefore expects appointment screening to move legitimacy and alignment more than merits outcomes.
+
+Third, emergency relief without merits follow-through should be a distinct legitimacy risk. Designs that require merits follow-through, reason giving, or full-court referral should reduce shadow-docket abuse and emergency legitimacy risk, but may pay for that improvement through more accelerated merits work or slower emergency handling.
+
+Fourth, panel routing, cross-checking courts, dual supreme courts, and constitutional councils should not be treated as simple activity reducers. They may improve error correction, ex ante screening, or cross-institutional moderation, but they can also raise administrative cost, disagreement, or constitutional conflict if the rules for resolving institutional disagreement are weak.
+
+Fifth, legislative override rules and accountability devices should increase democratic responsiveness only when they do not collapse into repeated override loops, rights carveout evasion, or symbolic compliance. The relevant output is therefore not only whether override is available, but whether it changes practical implementation, rights protection, elite acceptance, and constitutional conflict.
+
 \section{Model}
 
 Each generated world contains a pool of potential justices, a filed universe of constitutional disputes, and a legislative-output profile. Filed cases vary by legal ambiguity, rights burden, democratic mandate, partisan salience, emergency pressure, requested emergency relief, legislative quality, constitutional-conflict potential, public attention, override pressure, lower-court conflict, lower-court error risk, and certiorari pressure. We separate facial challenges, as-applied challenges, election disputes, emergency stay applications, executive-power disputes, administrative-law challenges, structural cases, economic-regulation cases, and rights claims. Legal-domain profiles shift baseline case attributes so rights, election, executive-power, administrative, structural, and economic-regulation cases do not behave as interchangeable labels.
@@ -197,6 +211,14 @@ Figure~\ref{fig:emergency-profile} makes the emergency-procedure result visible.
 \label{fig:emergency-profile}
 \end{figure}
 
+\section{Mechanism-Level Summary}
+
+The scenario table names institutional bundles. Table~\ref{tab:mechanism-summary} reports a second view: weighted paired contrasts from the mechanism-ablation report. Each row compares a current-like baseline to one institutional change across the same assumption cases. These are not causal estimates from observed courts, and they are not a substitute for the scenario table. They are a compact check on whether the named mechanisms move the outputs in the directions implied by the expectations.
+
+\input{tables/mechanism_summary}
+
+The contrast table reinforces the main interpretation. Term regularization, appointment screening, emergency restraint, and invalidation-threshold changes all reduce shadow-docket abuse in this run, but they do so with small or negative changes in rights protection and positive administrative cost. Emergency restraint has the largest shadow-abuse reduction and the largest administrative-cost increase among the front-line reforms, which matches the expectation that procedure regularity shifts work into merits follow-through rather than making emergency disputes disappear. Cross-checking and dual-court designs do not simply dominate; they increase constitutional conflict and administrative cost under the current disagreement-resolution rule. Legislative override has only small responsiveness gains while increasing conflict, so the model treats override design as a post-decision implementation problem rather than a pure democratic-response improvement.
+
 \clearpage
 
 \section{Limitations}
@@ -260,7 +282,7 @@ The stability-rights component averages legal stability, rights protection, reve
 
 \section*{Data Availability Statement}
 
-The simulator, normalized calibration tables, deterministic seeds, scenario definitions, generated reports, figure-generation scripts, standalone figure exports, and report manifests are maintained as a reproducible project. Public repository identifiers are withheld in this anonymous review manuscript. The intended replication package includes source code, build instructions, normalized input data, generated campaign artifacts, generated figure fragments, standalone figure files, manifest hashes, and documentation distinguishing observed inputs, coding choices, model assumptions, and simulated outputs. For final publication, the package should be deposited in the Journal of Law and Courts Dataverse or another repository linked from the JLC Dataverse rather than being available only on request.
+The simulator, normalized calibration tables, deterministic seeds, scenario definitions, generated reports, figure-generation scripts, standalone figure exports, source-audit file (\path{paper/source-audit.csv}), and report manifests are maintained as a reproducible project. Public repository identifiers are withheld in this anonymous review manuscript. The intended replication package includes source code, build instructions, normalized input data, generated campaign artifacts, generated figure fragments, standalone figure files, manifest hashes, and documentation distinguishing observed inputs, coding choices, model assumptions, and simulated outputs. For final publication, the package should be deposited in the Journal of Law and Courts Dataverse or another repository linked from the JLC Dataverse rather than being available only on request.
 
 \section*{Funding Statement}
 

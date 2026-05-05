@@ -41,7 +41,21 @@ Build the LaTeX paper:
 make paper
 ```
 
-This regenerates manuscript figures and tables, verifies report manifests, exports standalone figure files, compiles the PDF, and checks the LaTeX log for unresolved references or citations.
+This regenerates manuscript figures and tables, verifies report manifests, checks the source audit, exports standalone figure files, compiles the PDF, and checks the LaTeX log for unresolved references or citations.
+
+Run strict paper checks and build the non-anonymous title page:
+
+```sh
+make paper-strict-check
+```
+
+Create a review/deposit replication archive:
+
+```sh
+make replication-package
+```
+
+This writes `dist/constitutional-review-replication.zip` and `dist/replication-package-manifest.json`.
 
 Run the full diagnostic suite:
 
@@ -81,3 +95,5 @@ Campaign runs write:
 Diagnostic runs also write empirical calibration, source-range appendix, seed-robustness, mechanism-ablation, parameter-prior, legislative-family, and manipulation-stress reports. `--cases` is now the filed universe per run. Admission filtering determines how many of those filings become merits transfers or emergency merits follow-through. The campaign CSV includes review-path admission rates, certiorari signals, emergency legitimacy risk, emergency grant rate, quorum failure, opinion fragmentation, formal legal responses, practical implementation responses, and direct output metrics such as overall and domain-specific rights-claimant success, doctrinal depth, remedial breadth, lower-court compliance, elite acceptance, and public confidence.
 
 The preserved v0 and v1 targets write the same campaign filename pattern with `v0` and `v1`.
+
+Paper support outputs also include `paper/source-audit.csv`, generated table fragments in `paper/tables/`, standalone production figure files in `paper/figure-exports/`, and the replication package manifest under `dist/` when packaging is requested.

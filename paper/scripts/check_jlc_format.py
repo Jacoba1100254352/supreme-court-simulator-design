@@ -18,6 +18,7 @@ REQUIRED_GENERATED = [
     ROOT / "paper" / "figures" / "emergency_profile.tex",
     ROOT / "paper" / "tables" / "calibration_guardrails.tex",
     ROOT / "paper" / "tables" / "uncertainty_bands.tex",
+    ROOT / "paper" / "tables" / "mechanism_summary.tex",
 ]
 
 
@@ -58,9 +59,12 @@ def main() -> None:
         ("author-date fallback", "\\usepackage[authoryear,round]{natbib}"),
         ("hidden hyperlink borders", "\\hypersetup{hidelinks}"),
         ("theory section", "\\section{Theory and Design Space}"),
+        ("expectations section", "\\section{Expectations}"),
         ("calibration guardrail table", "tables/calibration_guardrails"),
         ("uncertainty band table", "tables/uncertainty_bands"),
+        ("mechanism summary table", "tables/mechanism_summary"),
         ("methods appendix", "\\section{Model Mechanics}"),
+        ("source audit", "paper/source-audit.csv"),
     ]
     for label, snippet in required_snippets:
         if snippet not in source:

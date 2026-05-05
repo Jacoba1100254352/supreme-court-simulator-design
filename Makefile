@@ -7,7 +7,7 @@ CALIBRATION_DATA_DIR ?= data/calibration
 PAPER_LEGISLATIVE_INPUT ?= /Users/jacobanderson/Documents/simulators/Congress Institutional Simulator/reports/simulation-campaign-v21-paper.csv
 PAPER_ARGS ?= --legislative-input "$(PAPER_LEGISLATIVE_INPUT)"
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-figures paper-figure-files paper-artifacts-check paper-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-strict-check replication-package paper-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -56,7 +56,10 @@ paper-figure-files: paper-figures
 paper-artifacts-check:
 	python3 paper/scripts/verify_paper_artifacts.py
 
-paper-check: paper-figures paper-artifacts-check
+paper-source-audit:
+	python3 paper/scripts/check_source_audit.py
+
+paper-check: paper-figures paper-artifacts-check paper-source-audit
 	python3 paper/scripts/check_jlc_format.py
 
 paper: paper-check paper-figure-files
@@ -65,6 +68,17 @@ paper: paper-check paper-figure-files
 	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
 	python3 paper/scripts/check_latex_log.py
 	cp paper/build/main.pdf paper/main.pdf
+
+paper-title-page:
+	mkdir -p paper/build
+	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build title-page.tex
+
+paper-strict-check: paper paper-title-page
+	python3 paper/scripts/check_jlc_format.py --strict-submission
+	python3 paper/scripts/check_source_audit.py
+
+replication-package: paper
+	python3 tools/create_replication_package.py
 
 paper-clean:
 	cd paper && latexmk -C -outdir=build main.tex
