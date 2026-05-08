@@ -103,10 +103,19 @@ public final class WorldGenerator {
                             + publicAttention * 0.08
                             + random.nextGaussian() * 0.08
             );
+            double lowerCourtIdeologicalDrift = Values.clamp01(
+                    0.08
+                            + spec.polarization() * 0.14
+                            + partisanSalience * 0.18
+                            + lowerCourtConflict * 0.16
+                            + Math.abs(lawIdeology) * 0.08
+                            + random.nextGaussian() * 0.08
+            );
             double certiorariPressure = Values.clamp01(
                     0.14
                             + lowerCourtConflict * 0.18
                             + lowerCourtSplitDepth * 0.18
+                            + lowerCourtIdeologicalDrift * 0.06
                             + lowerCourtErrorRisk * 0.18
                             + publicAttention * 0.16
                             + emergencyPressure * 0.08
@@ -125,6 +134,15 @@ public final class WorldGenerator {
                             + emergencyPressure * 0.10
                             + (specialistCounsel ? 0.08 : 0.0)
                             + random.nextGaussian() * 0.08
+            );
+            double forumShoppingPressure = Values.clamp01(
+                    0.08
+                            + publicAttention * 0.14
+                            + partisanSalience * 0.16
+                            + rightsBurden * 0.10
+                            + lowerCourtIdeologicalDrift * 0.16
+                            + strategicPlaintiffSelection * 0.14
+                            + random.nextGaussian() * 0.07
             );
             double repeatPlayerAdvantage = Values.clamp01(
                     0.12
@@ -161,6 +179,45 @@ public final class WorldGenerator {
                             + partisanSalience * 0.12
                             + emergencyPressure * 0.08
                             + repeatPlayerAdvantage * 0.08
+            );
+            double enforcementCapacity = Values.clamp01(
+                    0.56
+                            + legislativeQuality * 0.18
+                            + profile.publicLegitimacy() * 0.12
+                            - defianceRisk * 0.18
+                            - profile.weakMandateRate() * 0.10
+                            - conflictPotential * 0.08
+                            + random.nextGaussian() * 0.07
+            );
+            double lowerCourtResistanceRisk = Values.clamp01(
+                    lowerCourtIdeologicalDrift * 0.28
+                            + lowerCourtConflict * 0.12
+                            + conflictPotential * 0.18
+                            + governmentNoncomplianceRisk * 0.16
+                            + partisanSalience * 0.10
+                            - enforcementCapacity * 0.18
+                            + random.nextGaussian() * 0.06
+            );
+            double preReviewSettlementPressure = Values.clamp01(
+                    0.10
+                            + lowerCourtErrorRisk * 0.10
+                            + vehicleDefectRisk * 0.12
+                            + repeatPlayerAdvantage * 0.10
+                            + legalAmbiguity * 0.08
+                            + enforcementCapacity * 0.06
+                            - rightsBurden * 0.10
+                            - publicAttention * 0.08
+                            - emergencyPressure * 0.12
+                            + random.nextGaussian() * 0.06
+            );
+            double emergencyOpportunism = Values.clamp01(
+                    emergencyPressure * 0.24
+                            + requestedEmergencyRelief * 0.12
+                            + repeatPlayerAdvantage * 0.18
+                            + strategicPlaintiffSelection * 0.16
+                            + forumShoppingPressure * 0.10
+                            + governmentNoncomplianceRisk * 0.10
+                            + profile.volatility() * 0.08
             );
             double recusalIncentivePressure = Values.clamp01(
                     partisanSalience * 0.32
@@ -202,6 +259,8 @@ public final class WorldGenerator {
                     lowerCourtConflict,
                     lowerCourtErrorRisk,
                     lowerCourtSplitDepth,
+                    lowerCourtIdeologicalDrift,
+                    lowerCourtResistanceRisk,
                     certiorariPressure,
                     solicitorGeneralSignal,
                     amicusBriefs,
@@ -210,9 +269,13 @@ public final class WorldGenerator {
                     specialistCounsel,
                     vehicleDefectRisk,
                     conditionalReversalProbability,
+                    forumShoppingPressure,
+                    preReviewSettlementPressure,
                     strategicPlaintiffSelection,
                     repeatPlayerAdvantage,
                     governmentNoncomplianceRisk,
+                    enforcementCapacity,
+                    emergencyOpportunism,
                     recusalIncentivePressure,
                     emergencyApplication
             ));

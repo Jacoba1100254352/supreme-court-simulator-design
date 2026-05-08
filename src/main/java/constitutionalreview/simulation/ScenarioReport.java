@@ -17,14 +17,21 @@ public record ScenarioReport(
         double solicitorGeneralSignalRate,
         double amicusIntensity,
         double lowerCourtSplitDepth,
+        double lowerCourtIdeologicalDrift,
+        double lowerCourtResistanceRisk,
         double splitMaturity,
         double relistRate,
         double specialistCounselRate,
         double vehicleDefectRisk,
+        double forumShoppingPressure,
+        double preReviewSettlementPressure,
+        double settledBeforeReviewRate,
         double strategicPlaintiffSelection,
         double repeatPlayerAdvantage,
         double governmentNoncomplianceRisk,
         double governmentNoncomplianceRate,
+        double enforcementCapacity,
+        double emergencyOpportunism,
         double recusalIncentivePressure,
         double conditionalReversalProbability,
         double meritsReviewRate,
@@ -116,6 +123,8 @@ public record ScenarioReport(
                 legalStability,
                 precedentDurability,
                 lowerCourtCompliance,
+                enforcementCapacity,
+                MetricDefinition.lowerIsBetter(lowerCourtResistanceRisk),
                 rightsProtection,
                 MetricDefinition.lowerIsBetter(reversalRate),
                 MetricDefinition.lowerIsBetter(constitutionalConflict)
@@ -133,6 +142,8 @@ public record ScenarioReport(
                 MetricDefinition.lowerIsBetter(emergencyDownstreamEffect),
                 MetricDefinition.lowerIsBetter(governmentNoncomplianceRate),
                 MetricDefinition.lowerIsBetter(recusalIncentivePressure),
+                MetricDefinition.lowerIsBetter(forumShoppingPressure),
+                MetricDefinition.lowerIsBetter(emergencyOpportunism),
                 MetricDefinition.lowerIsBetter(strategicPressure())
         );
     }
@@ -151,7 +162,10 @@ public record ScenarioReport(
                 formalOpenDefianceRate,
                 practicalOpenNoncomplianceRate,
                 governmentNoncomplianceRate,
-                emergencyDownstreamEffect
+                emergencyDownstreamEffect,
+                lowerCourtResistanceRisk,
+                forumShoppingPressure,
+                emergencyOpportunism
         );
     }
 

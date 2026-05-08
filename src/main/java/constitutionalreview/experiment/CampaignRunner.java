@@ -484,14 +484,21 @@ public final class CampaignRunner {
                 "solicitorGeneralSignalRate",
                 "amicusIntensity",
                 "lowerCourtSplitDepth",
+                "lowerCourtIdeologicalDrift",
+                "lowerCourtResistanceRisk",
                 "splitMaturity",
                 "relistRate",
                 "specialistCounselRate",
                 "vehicleDefectRisk",
+                "forumShoppingPressure",
+                "preReviewSettlementPressure",
+                "settledBeforeReviewRate",
                 "strategicPlaintiffSelection",
                 "repeatPlayerAdvantage",
                 "governmentNoncomplianceRisk",
                 "governmentNoncomplianceRate",
+                "enforcementCapacity",
+                "emergencyOpportunism",
                 "recusalIncentivePressure",
                 "conditionalReversalProbability",
                 "directionalScore",
@@ -604,14 +611,21 @@ public final class CampaignRunner {
                     .append(format(report.solicitorGeneralSignalRate())).append(',')
                     .append(format(report.amicusIntensity())).append(',')
                     .append(format(report.lowerCourtSplitDepth())).append(',')
+                    .append(format(report.lowerCourtIdeologicalDrift())).append(',')
+                    .append(format(report.lowerCourtResistanceRisk())).append(',')
                     .append(format(report.splitMaturity())).append(',')
                     .append(format(report.relistRate())).append(',')
                     .append(format(report.specialistCounselRate())).append(',')
                     .append(format(report.vehicleDefectRisk())).append(',')
+                    .append(format(report.forumShoppingPressure())).append(',')
+                    .append(format(report.preReviewSettlementPressure())).append(',')
+                    .append(format(report.settledBeforeReviewRate())).append(',')
                     .append(format(report.strategicPlaintiffSelection())).append(',')
                     .append(format(report.repeatPlayerAdvantage())).append(',')
                     .append(format(report.governmentNoncomplianceRisk())).append(',')
                     .append(format(report.governmentNoncomplianceRate())).append(',')
+                    .append(format(report.enforcementCapacity())).append(',')
+                    .append(format(report.emergencyOpportunism())).append(',')
                     .append(format(report.recusalIncentivePressure())).append(',')
                     .append(format(report.conditionalReversalProbability())).append(',')
                     .append(format(report.directionalScore())).append(',')
@@ -816,11 +830,11 @@ public final class CampaignRunner {
         builder.append("- Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.\n");
         builder.append("- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `publicConfidence` are usually better, but each should be read in domain context.\n");
         builder.append("- Lower `partisanAlignment`, `shadowDocketAbuse`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.\n");
-        builder.append("- Petition, certiorari-admission, lower-court-split, strategic-plaintiff, repeat-player, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.\n");
+        builder.append("- Petition, certiorari-admission, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.\n");
 
         builder.append("\n## Scenario Averages Across Cases\n\n");
-        builder.append("| Scenario | Directional | Admission | Cert admit | Lower split | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |\n");
-        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        builder.append("| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |\n");
+        builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
         weightedReports.stream()
                 .sorted(Comparator.comparingDouble(WeightedScenarioReport::directionalScore).reversed())
                 .forEach(report -> builder.append("| ")
@@ -833,6 +847,10 @@ public final class CampaignRunner {
                         .append(format(report.certiorariAdmissionRate()))
                         .append(" | ")
                         .append(format(report.lowerCourtSplitDepth()))
+                        .append(" | ")
+                        .append(format(report.lowerCourtResistanceRisk()))
+                        .append(" | ")
+                        .append(format(report.enforcementCapacity()))
                         .append(" | ")
                         .append(format(report.rightsProtection()))
                         .append(" | ")
@@ -981,6 +999,8 @@ public final class CampaignRunner {
         private double strategicPlaintiffSelection;
         private double repeatPlayerAdvantage;
         private double lowerCourtSplitDepth;
+        private double lowerCourtResistanceRisk;
+        private double enforcementCapacity;
         private double recusalIncentivePressure;
         private double emergencyDownstreamEffect;
         private double legislativeEvasionRate;
@@ -1045,6 +1065,8 @@ public final class CampaignRunner {
             strategicPlaintiffSelection += report.strategicPlaintiffSelection() * rowWeight;
             repeatPlayerAdvantage += report.repeatPlayerAdvantage() * rowWeight;
             lowerCourtSplitDepth += report.lowerCourtSplitDepth() * rowWeight;
+            lowerCourtResistanceRisk += report.lowerCourtResistanceRisk() * rowWeight;
+            enforcementCapacity += report.enforcementCapacity() * rowWeight;
             recusalIncentivePressure += report.recusalIncentivePressure() * rowWeight;
             emergencyDownstreamEffect += report.emergencyDownstreamEffect() * rowWeight;
             legislativeEvasionRate += report.legislativeEvasionRate() * rowWeight;
@@ -1109,6 +1131,8 @@ public final class CampaignRunner {
                     strategicPlaintiffSelection / denominator,
                     repeatPlayerAdvantage / denominator,
                     lowerCourtSplitDepth / denominator,
+                    lowerCourtResistanceRisk / denominator,
+                    enforcementCapacity / denominator,
                     recusalIncentivePressure / denominator,
                     emergencyDownstreamEffect / denominator,
                     legislativeEvasionRate / denominator,
@@ -1173,6 +1197,8 @@ public final class CampaignRunner {
             double strategicPlaintiffSelection,
             double repeatPlayerAdvantage,
             double lowerCourtSplitDepth,
+            double lowerCourtResistanceRisk,
+            double enforcementCapacity,
             double recusalIncentivePressure,
             double emergencyDownstreamEffect,
             double legislativeEvasionRate,

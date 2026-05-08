@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 CAMPAIGN_CSV = ROOT / "reports" / "constitutional-review-campaign-v2.csv"
 CALIBRATION_CSV = ROOT / "reports" / "calibration-baseline.csv"
 SWEEP_CSV = ROOT / "reports" / "parameter-sweep-v4.csv"
+SWEEP_DRIVERS_CSV = ROOT / "reports" / "parameter-sweep-drivers-v4.csv"
 MECHANISM_CSV = ROOT / "reports" / "mechanism-ablation-v2.csv"
 FIGURE_DIR = ROOT / "paper" / "figures"
 TABLE_DIR = ROOT / "paper" / "tables"
@@ -29,7 +30,7 @@ SELECTED_SCENARIOS = [
     ("emergency-restraint-court", "No merits gap"),
     ("strong-recusal-enforcement", "Recusal enforce."),
     ("randomized-merits-panels", "Random panels"),
-    ("public-interest-litigation-filter", "Public-interest"),
+    ("emergency-integrity-package", "Integrity pkg."),
 ]
 
 FIELDS = [
@@ -46,9 +47,16 @@ FIELDS = [
     "administrativeCost",
     "publicConfidence",
     "lowerCourtSplitDepth",
+    "lowerCourtIdeologicalDrift",
+    "lowerCourtResistanceRisk",
+    "forumShoppingPressure",
+    "preReviewSettlementPressure",
+    "settledBeforeReviewRate",
     "strategicPlaintiffSelection",
     "repeatPlayerAdvantage",
     "governmentNoncomplianceRate",
+    "enforcementCapacity",
+    "emergencyOpportunism",
     "recusalIncentivePressure",
     "reasonedEmergencyOrderRate",
     "meritsAccelerationRate",
@@ -120,6 +128,7 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
         "emergency-restraint-court": (55.0, 70.5, "l"),
         "strong-recusal-enforcement": (66.0, 59.3, "l"),
         "randomized-merits-panels": (69.0, 66.5, "l"),
+        "emergency-integrity-package": (94.0, 58.0, "l"),
         "public-interest-litigation-filter": (95.0, 53.5, "l"),
     }
     lines = [
@@ -302,7 +311,9 @@ def write_selected_campaign_table(averages: dict[str, dict[str, float]]) -> None
         ("emergency-restraint-court", "No emergency relief without merits review"),
         ("strong-recusal-enforcement", "Independent recusal enforcement with substitutes"),
         ("randomized-merits-panels", "Randomized merits panels with en banc correction"),
+        ("emergency-integrity-package", "Emergency integrity package"),
         ("constitutional-remand", "Constitutional remand before invalidation"),
+        ("remand-override-window-package", "Remand with override window"),
         ("public-interest-litigation-filter", "Public-interest litigation filter"),
     ]
     fields = [
@@ -354,16 +365,24 @@ def write_litigation_pipeline_table(averages: dict[str, dict[str, float]]) -> No
         ("emergency-restraint-court", "No emergency merits gap"),
         ("strong-recusal-enforcement", "Strong recusal enforcement"),
         ("randomized-merits-panels", "Random merits panels"),
+        ("emergency-integrity-package", "Emergency integrity package"),
         ("jurisdiction-stripping-constraints", "Jurisdiction-stripping constraints"),
         ("legislative-override-window", "Legislative override window"),
         ("constitutional-remand", "Constitutional remand"),
         ("public-interest-litigation-filter", "Public-interest filter"),
+        ("remand-override-window-package", "Remand + override window"),
+        ("panel-jurisdiction-safeguards", "Panel + jurisdiction safeguards"),
     ]
     fields = [
         "certiorariAdmissionRate",
         "lowerCourtSplitDepth",
+        "lowerCourtResistanceRisk",
+        "forumShoppingPressure",
+        "settledBeforeReviewRate",
         "strategicPlaintiffSelection",
         "repeatPlayerAdvantage",
+        "enforcementCapacity",
+        "emergencyOpportunism",
         "recusalIncentivePressure",
         "governmentNoncomplianceRate",
         "emergencyDownstreamEffect",
@@ -375,13 +394,13 @@ def write_litigation_pipeline_table(averages: dict[str, dict[str, float]]) -> No
         "\\centering",
         "\\caption{Litigation-pipeline and downstream-enforcement diagnostics}",
         "\\label{tab:pipeline-diagnostics}",
-        "\\Description{Table reporting certiorari admission, lower-court split depth, strategic plaintiff selection, repeat-player advantage, recusal incentive pressure, government noncompliance, emergency downstream effect, and precedent durability for selected designs.}",
+        "\\Description{Table reporting certiorari admission, lower-court split depth, lower-court resistance, forum shopping, settlement, strategic plaintiff selection, repeat-player advantage, enforcement capacity, emergency opportunism, recusal incentive pressure, government noncompliance, emergency downstream effect, and precedent durability for selected designs.}",
         "\\scriptsize",
-        "\\setlength{\\tabcolsep}{3pt}",
+        "\\setlength{\\tabcolsep}{2pt}",
         "\\resizebox{\\textwidth}{!}{%",
-        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.45in}rrrrrrrr}",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.38in}rrrrrrrrrrrrr}",
         "\\toprule",
-        "Scenario & Cert admit & Split & Plaintiff sel. & Repeat player & Recusal press. & Gov. noncomp. & Emerg. downstream & Prec. dur. \\\\",
+        "Scenario & Cert admit & Split & Resistance & Forum & Settlement & Plaintiff sel. & Repeat player & Enforcement & Emerg. opp. & Recusal press. & Gov. noncomp. & Emerg. down. & Prec. dur. \\\\",
         "\\midrule",
     ]
     for key, label in selected:
@@ -463,9 +482,55 @@ def write_calibration_guardrails() -> None:
     (TABLE_DIR / "calibration_guardrails.tex").write_text("\n".join(lines))
 
 
+def write_calibration_classification_table() -> None:
+    rows = read_calibration_rows()
+    counts: dict[str, dict[str, int]] = defaultdict(lambda: {"total": 0, "pass": 0})
+    for row in rows:
+        guardrail_class = row["guardrailClass"].replace("_", " ")
+        counts[guardrail_class]["total"] += 1
+        counts[guardrail_class]["pass"] += 1 if row["pass"] == "true" else 0
+    lines = [
+        "% Auto-generated by paper/scripts/generate_figures.py",
+        "\\begin{table}[hbt!]",
+        "\\centering",
+        "\\caption{Calibration-use classification summary}",
+        "\\label{tab:calibration-classification}",
+        "\\Description{Table counting calibration guardrails by intended validation use and pass status.}",
+        "\\footnotesize",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.85in}rr>{\\raggedright\\arraybackslash}p{2.35in}}",
+        "\\toprule",
+        "Guardrail use & Rows & Within range & Interpretation \\\\",
+        "\\midrule",
+    ]
+    interpretations = {
+        "strict validation": "closest to source-denominator checks",
+        "loose calibration": "plausibility range, not point validation",
+        "proxy sanity": "related proxy, not same empirical construct",
+        "mechanism sanity": "checks expected mechanism direction",
+        "model prior": "documents coding prior or design context",
+    }
+    for guardrail_class, values in sorted(counts.items()):
+        lines.append(
+            f"{tex_escape(guardrail_class)} & {values['total']} & {values['pass']} & "
+            f"{tex_escape(interpretations.get(guardrail_class, 'context row'))} \\\\"
+        )
+    lines.extend([
+        "\\bottomrule",
+        "\\end{tabular}",
+        "\\end{table}",
+        "",
+    ])
+    (TABLE_DIR / "calibration_classification.tex").write_text("\n".join(lines))
+
+
 def read_sweep_rows() -> dict[str, dict[str, str]]:
     with SWEEP_CSV.open(newline="") as handle:
         return {row["scenarioKey"]: row for row in csv.DictReader(handle)}
+
+
+def read_sweep_driver_rows() -> list[dict[str, str]]:
+    with SWEEP_DRIVERS_CSV.open(newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
 def write_uncertainty_bands(averages: dict[str, dict[str, float]]) -> None:
@@ -509,6 +574,55 @@ def write_uncertainty_bands(averages: dict[str, dict[str, float]]) -> None:
     (TABLE_DIR / "uncertainty_bands.tex").write_text("\n".join(lines))
 
 
+def write_sensitivity_drivers_table() -> None:
+    selected_priors = {
+        "baseline",
+        "high-emergency-share",
+        "high-rights-risk",
+        "high-conflict",
+        "weak-mandate",
+        "imported-legislative-family",
+    }
+    rows = []
+    per_prior: dict[str, int] = defaultdict(int)
+    for row in read_sweep_driver_rows():
+        if row["priorKey"] not in selected_priors or per_prior[row["priorKey"]] >= 2:
+            continue
+        rows.append(row)
+        per_prior[row["priorKey"]] += 1
+    lines = [
+        "% Auto-generated by paper/scripts/generate_figures.py",
+        "\\begin{table}[hbt!]",
+        "\\centering",
+        "\\caption{Sensitivity drivers and interpretation caveats}",
+        "\\label{tab:sensitivity-drivers}",
+        "\\Description{Table reporting top-cluster scenarios under selected named priors and the caveat that would change the interpretation.}",
+        "\\scriptsize",
+        "\\setlength{\\tabcolsep}{3pt}",
+        "\\resizebox{\\textwidth}{!}{%",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.35in}>{\\raggedright\\arraybackslash}p{1.65in}rrrrrr>{\\raggedright\\arraybackslash}p{1.15in}}",
+        "\\toprule",
+        "Prior & Top-cluster design & Score & Rights & Shadow & Emerg. down. & Gov. noncomp. & LC resist. & Caveat \\\\",
+        "\\midrule",
+    ]
+    for row in rows:
+        lines.append(
+            f"{tex_escape(row['priorName'])} & {tex_escape(row['scenario'])} & "
+            f"{float(row['directionalScore']):.3f} & {float(row['rightsProtection']):.3f} & "
+            f"{float(row['shadowDocketAbuse']):.3f} & {float(row['emergencyDownstreamEffect']):.3f} & "
+            f"{float(row['governmentNoncomplianceRate']):.3f} & {float(row['lowerCourtResistanceRisk']):.3f} & "
+            f"{tex_escape(row['interpretationRisk'])} \\\\"
+        )
+    lines.extend([
+        "\\bottomrule",
+        "\\end{tabular}",
+        "}%",
+        "\\end{table}",
+        "",
+    ])
+    (TABLE_DIR / "sensitivity_drivers.tex").write_text("\n".join(lines))
+
+
 def read_mechanism_rows() -> list[dict[str, str]]:
     with MECHANISM_CSV.open(newline="") as handle:
         return list(csv.DictReader(handle))
@@ -520,7 +634,10 @@ def write_mechanism_summary() -> None:
         "deltaRightsProtection",
         "deltaShadowDocketAbuse",
         "deltaLowerCourtCompliance",
+        "deltaLowerCourtResistanceRisk",
+        "deltaEnforcementCapacity",
         "deltaGovernmentNoncomplianceRate",
+        "deltaEmergencyOpportunism",
         "deltaEmergencyDownstreamEffect",
         "deltaPrecedentDurability",
         "deltaAdministrativeCost",
@@ -535,6 +652,10 @@ def write_mechanism_summary() -> None:
         "public-interest-filter",
         "override-window",
         "jurisdiction-stripping-constraints",
+        "emergency-integrity-bundle",
+        "remand-override-window-bundle",
+        "panel-jurisdiction-safeguards",
+        "council-concrete-hybrid",
     ]
     totals: dict[str, defaultdict[str, float]] = defaultdict(lambda: defaultdict(float))
     weights: dict[str, float] = defaultdict(float)
@@ -556,13 +677,13 @@ def write_mechanism_summary() -> None:
         "\\centering",
         "\\caption{Mechanism-level paired contrasts against the current-like design}",
         "\\label{tab:mechanism-summary}",
-        "\\Description{Table of weighted average paired contrasts for emergency-procedure, recusal, pipeline, remand, public-interest, and override mechanisms across campaign assumption cases.}",
+        "\\Description{Table of weighted average paired contrasts for emergency-procedure, recusal, pipeline, remand, public-interest, override, and bundled institutional mechanisms across campaign assumption cases.}",
         "\\scriptsize",
         "\\setlength{\\tabcolsep}{3pt}",
         "\\resizebox{\\textwidth}{!}{%",
-        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.45in}rrrrrrrr}",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.45in}rrrrrrrrrrrr}",
         "\\toprule",
-        "Mechanism & Score & Rights & Shadow & Lower ct. & Gov. noncomp. & Emerg. downstream & Prec. dur. & Cost \\\\",
+        "Mechanism & Score & Rights & Shadow & Lower ct. & LC resist. & Enforce. & Gov. noncomp. & Emerg. opp. & Emerg. down. & Prec. dur. & Cost \\\\",
         "\\midrule",
     ]
     for key in selected:
@@ -572,7 +693,10 @@ def write_mechanism_summary() -> None:
             f"{average(key, 'deltaRightsProtection'):+.3f} & "
             f"{average(key, 'deltaShadowDocketAbuse'):+.3f} & "
             f"{average(key, 'deltaLowerCourtCompliance'):+.3f} & "
+            f"{average(key, 'deltaLowerCourtResistanceRisk'):+.3f} & "
+            f"{average(key, 'deltaEnforcementCapacity'):+.3f} & "
             f"{average(key, 'deltaGovernmentNoncomplianceRate'):+.3f} & "
+            f"{average(key, 'deltaEmergencyOpportunism'):+.3f} & "
             f"{average(key, 'deltaEmergencyDownstreamEffect'):+.3f} & "
             f"{average(key, 'deltaPrecedentDurability'):+.3f} & "
             f"{average(key, 'deltaAdministrativeCost'):+.3f} \\\\"
@@ -597,7 +721,9 @@ def main() -> None:
     write_selected_campaign_table(averages)
     write_litigation_pipeline_table(averages)
     write_calibration_guardrails()
+    write_calibration_classification_table()
     write_uncertainty_bands(averages)
+    write_sensitivity_drivers_table()
     write_mechanism_summary()
 
 

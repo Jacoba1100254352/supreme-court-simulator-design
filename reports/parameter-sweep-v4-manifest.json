@@ -8,11 +8,13 @@
   "casesPerRun": 48,
   "seed": 20260501,
   "experimentCaseCount": 14,
-  "scenarioCount": 22,
+  "scenarioCount": 26,
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/parameter-sweep-v4.csv", "sha256": "59fd13a0865cb9041241d80d3da7d8d2d329f96a244198ef44606b04415ab4ed"},
-    {"path": "reports/parameter-sweep-v4.md", "sha256": "d99030491d589feedf33d81480ffd52a6029289834eeed235fb1ffb7a84a2758"}
+    {"path": "reports/parameter-sweep-v4.csv", "sha256": "76ddb288caad5fc8f4a27963d3683ffa87f48a10a3835430ed88c10bd303a577"},
+    {"path": "reports/parameter-sweep-v4.md", "sha256": "2b2d6fe51901051622d384edd2267cd7f947a6e06e2556f7952f47396c478513"},
+    {"path": "reports/parameter-sweep-drivers-v4.csv", "sha256": "4b382024fe7d4f1617e97231f8bc5d0cc951ebf7c3a3c5a03d5b615fc494a2da"},
+    {"path": "reports/parameter-sweep-drivers-v4.md", "sha256": "9f89379b8562668cc4bc2fb4af33b9cbf5170a9f5164349f251d0595a3276536"}
   ]
 }

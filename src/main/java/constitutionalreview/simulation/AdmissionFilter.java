@@ -49,6 +49,8 @@ public final class AdmissionFilter {
                 + reviewCase.solicitorGeneralSignal() * 0.06
                 + reviewCase.strategicPlaintiffSelection() * 0.08
                 + reviewCase.repeatPlayerAdvantage() * 0.06
+                + reviewCase.forumShoppingPressure() * 0.04
+                - reviewCase.preReviewSettlementPressure() * 0.05
                 - reviewCase.vehicleDefectRisk() * 0.22);
     }
 
@@ -88,9 +90,11 @@ public final class AdmissionFilter {
                 + (reviewCase.specialistCounsel() ? 0.05 : 0.0)
                 + reviewCase.strategicPlaintiffSelection() * 0.05
                 + reviewCase.repeatPlayerAdvantage() * 0.05
+                + reviewCase.forumShoppingPressure() * 0.02
                 + reviewCase.conditionalReversalProbability() * 0.08
                 + pathAdjustment
                 + designGatekeeping
+                - reviewCase.preReviewSettlementPressure() * 0.06
                 - reviewCase.vehicleDefectRisk() * 0.16
                 + (design.vacancyDeadlockRisk() * -0.03);
         return Values.clamp01(score);
@@ -104,7 +108,7 @@ public final class AdmissionFilter {
                 || reviewCase.accessPath() == AccessPath.AMPARO) {
             return random.nextDouble() < Values.clamp01(0.42 + admissionScore * 0.36);
         }
-        return random.nextDouble() < Values.clamp01(0.72 + admissionScore * 0.18);
+        return random.nextDouble() < Values.clamp01(0.72 + admissionScore * 0.18 - reviewCase.preReviewSettlementPressure() * 0.10);
     }
 
     private static boolean paid(ReviewCase reviewCase) {

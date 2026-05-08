@@ -17,14 +17,18 @@ public final class StrategicActorPolicy {
                         + reviewCase.partisanSalience() * 0.24
                         + reviewCase.strategicPlaintiffSelection() * 0.08
                         + reviewCase.repeatPlayerAdvantage() * 0.06
+                        + reviewCase.forumShoppingPressure() * 0.05
+                        + reviewCase.lowerCourtResistanceRisk() * 0.06
                         + state.conflictLoad() * 0.16
                         + state.legislativeDefiance() * 0.10
         );
         double complianceProbability = Values.clamp01(
                 0.68
                         + reviewCase.legislativeQuality() * 0.12
+                        + reviewCase.enforcementCapacity() * 0.10
                         - reviewCase.executiveDefianceRisk() * 0.16
                         - reviewCase.governmentNoncomplianceRisk() * 0.12
+                        - reviewCase.lowerCourtResistanceRisk() * 0.08
                         - state.legislativeDefiance() * 0.20
                         - state.overrideAdaptation() * 0.10
         );
@@ -42,6 +46,7 @@ public final class StrategicActorPolicy {
                         + reviewCase.executiveDefianceRisk() * 0.24
                         + state.executiveEmergencyStrategy() * 0.28
                         + reviewCase.partisanSalience() * 0.10
+                        + reviewCase.emergencyOpportunism() * 0.16
         );
         boolean appointmentPressure = random.nextDouble() < Values.clamp01(
                 state.appointmentManipulationPressure() * 0.34
@@ -137,9 +142,11 @@ public final class StrategicActorPolicy {
         double defiance = Values.clamp01(
                 reviewCase.executiveDefianceRisk() * 0.38
                         + reviewCase.governmentNoncomplianceRisk() * 0.22
+                        + reviewCase.lowerCourtResistanceRisk() * 0.16
                         + state.legislativeDefiance() * 0.24
                         + state.conflictLoad() * 0.18
                         + politicalIncentive * 0.12
+                        - reviewCase.enforcementCapacity() * 0.18
         );
         if (defiance > 0.78 && random.nextDouble() < defiance * 0.32) {
             return PracticalImplementationResponse.OPEN_NONCOMPLIANCE;

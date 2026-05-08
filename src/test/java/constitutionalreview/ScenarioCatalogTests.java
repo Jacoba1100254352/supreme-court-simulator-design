@@ -22,6 +22,10 @@ public final class ScenarioCatalogTests {
         TestSupport.check(keys.contains("legislative-override-window"), "catalog should include legislative-override-window");
         TestSupport.check(keys.contains("constitutional-remand"), "catalog should include constitutional-remand");
         TestSupport.check(keys.contains("public-interest-litigation-filter"), "catalog should include public-interest-litigation-filter");
+        TestSupport.check(keys.contains("emergency-integrity-package"), "catalog should include emergency-integrity-package");
+        TestSupport.check(keys.contains("remand-override-window-package"), "catalog should include remand-override-window-package");
+        TestSupport.check(keys.contains("panel-jurisdiction-safeguards"), "catalog should include panel-jurisdiction-safeguards");
+        TestSupport.check(keys.contains("council-concrete-hybrid"), "catalog should include council-concrete-hybrid");
         List<Scenario> scenarios = ScenarioCatalog.scenariosForKeys(keys);
         TestSupport.check(scenarios.size() == keys.size(), "every scenario key should resolve");
         TestSupport.check(ScenarioCatalog.defaultScenarios().size() >= 10, "default scenario set should be broad");

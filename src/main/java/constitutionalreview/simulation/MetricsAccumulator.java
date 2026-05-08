@@ -68,6 +68,7 @@ public final class MetricsAccumulator {
     private int practicalBureaucraticResistance;
     private int practicalOpenNoncompliance;
     private int governmentNoncompliance;
+    private int settledBeforeReview;
     private int rightsClaimantCases;
     private int rightsDomainClaimantCases;
     private int structuralDomainClaimantCases;
@@ -80,13 +81,19 @@ public final class MetricsAccumulator {
     private double solicitorGeneralSignal;
     private double amicusBriefs;
     private double lowerCourtSplitDepth;
+    private double lowerCourtIdeologicalDrift;
+    private double lowerCourtResistanceRisk;
     private double splitMaturity;
     private double relistCount;
     private double specialistCounsel;
     private double vehicleDefectRisk;
+    private double forumShoppingPressure;
+    private double preReviewSettlementPressure;
     private double strategicPlaintiffSelection;
     private double repeatPlayerAdvantage;
     private double governmentNoncomplianceRisk;
+    private double enforcementCapacity;
+    private double emergencyOpportunism;
     private double recusalIncentivePressure;
     private double legalStability;
     private double precedentStability;
@@ -165,19 +172,26 @@ public final class MetricsAccumulator {
         addFormalResponse(decision.formalLegalResponse());
         addPracticalResponse(decision.practicalImplementationResponse());
         governmentNoncompliance += decision.governmentNoncompliance() ? 1 : 0;
+        settledBeforeReview += decision.settledBeforeReview() ? 1 : 0;
         addDomainClaimantSuccess(decision);
         admissionScore += decision.admissionScore();
         conditionalReversalProbability += decision.conditionalReversalProbability();
         solicitorGeneralSignal += decision.solicitorGeneralSignal();
         amicusBriefs += decision.amicusBriefs();
         lowerCourtSplitDepth += decision.lowerCourtSplitDepth();
+        lowerCourtIdeologicalDrift += decision.lowerCourtIdeologicalDrift();
+        lowerCourtResistanceRisk += decision.lowerCourtResistanceRisk();
         splitMaturity += decision.splitMaturity();
         relistCount += decision.relistCount();
         specialistCounsel += decision.specialistCounsel() ? 1.0 : 0.0;
         vehicleDefectRisk += decision.vehicleDefectRisk();
+        forumShoppingPressure += decision.forumShoppingPressure();
+        preReviewSettlementPressure += decision.preReviewSettlementPressure();
         strategicPlaintiffSelection += decision.strategicPlaintiffSelection();
         repeatPlayerAdvantage += decision.repeatPlayerAdvantage();
         governmentNoncomplianceRisk += decision.governmentNoncomplianceRisk();
+        enforcementCapacity += decision.enforcementCapacity();
+        emergencyOpportunism += decision.emergencyOpportunism();
         recusalIncentivePressure += decision.recusalIncentivePressure();
         legalStability += decision.legalStability();
         precedentStability += decision.precedentStability();
@@ -224,14 +238,21 @@ public final class MetricsAccumulator {
                 solicitorGeneralSignal / cases,
                 amicusBriefs / cases,
                 lowerCourtSplitDepth / cases,
+                lowerCourtIdeologicalDrift / cases,
+                lowerCourtResistanceRisk / cases,
                 splitMaturity / cases,
                 relistCount / cases,
                 specialistCounsel / cases,
                 vehicleDefectRisk / cases,
+                forumShoppingPressure / cases,
+                preReviewSettlementPressure / cases,
+                settledBeforeReview / cases,
                 strategicPlaintiffSelection / cases,
                 repeatPlayerAdvantage / cases,
                 governmentNoncomplianceRisk / cases,
                 governmentNoncompliance / cases,
+                enforcementCapacity / cases,
+                emergencyOpportunism / cases,
                 recusalIncentivePressure / cases,
                 conditionalReversalProbability / cases,
                 meritsReviews / cases,
@@ -402,6 +423,8 @@ public final class MetricsAccumulator {
         double lowEmergencyRisk = MetricDefinition.lowerIsBetter(emergencyLegitimacyRisk / cases);
         double lowGovernmentNoncompliance = MetricDefinition.lowerIsBetter(governmentNoncompliance / cases);
         double lowEmergencyDownstream = MetricDefinition.lowerIsBetter(emergencyDownstreamEffect / cases);
-        return (avgRights + avgResponsive + avgEliteAcceptance + avgPublicConfidence + lowPartisan + lowShadow + lowEmergencyRisk + lowGovernmentNoncompliance + lowEmergencyDownstream) / 9.0;
+        double avgEnforcement = enforcementCapacity / cases;
+        double lowLowerCourtResistance = MetricDefinition.lowerIsBetter(lowerCourtResistanceRisk / cases);
+        return (avgRights + avgResponsive + avgEliteAcceptance + avgPublicConfidence + avgEnforcement + lowPartisan + lowShadow + lowEmergencyRisk + lowGovernmentNoncompliance + lowEmergencyDownstream + lowLowerCourtResistance) / 11.0;
     }
 }

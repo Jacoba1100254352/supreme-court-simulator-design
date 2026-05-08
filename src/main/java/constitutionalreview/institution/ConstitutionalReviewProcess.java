@@ -33,11 +33,23 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     }
 
     private CourtDecision screenedOutDecision(ReviewCase reviewCase, AdmissionDecision admissionDecision, CourtState state) {
+        boolean publicInterestFiltered = publicInterestFiltered(reviewCase, admissionDecision);
+        double effectiveForumShoppingPressure = effectiveForumShoppingPressure(reviewCase, admissionDecision, publicInterestFiltered);
+        double effectiveEnforcementCapacity = effectiveEnforcementCapacity(reviewCase, false, false, false, new OverrideDecision(false, false, OverrideOutcome.NONE));
+        double effectiveLowerCourtResistanceRisk = effectiveLowerCourtResistanceRisk(reviewCase, false, false, false, false, effectiveEnforcementCapacity);
+        double effectiveEmergencyOpportunism = effectiveEmergencyOpportunism(reviewCase, false, null, null);
         double rightsProtection = reviewCase.rightsBurden() > 0.55 ? 0.26 : 0.62;
         double legalStability = Values.clamp01(0.72 + reviewCase.legislativeQuality() * 0.06 - reviewCase.legalAmbiguity() * 0.08);
-        double lowerCourtCompliance = Values.clamp01(0.62 + reviewCase.lowerCourtConflict() * 0.08 - reviewCase.lowerCourtErrorRisk() * 0.10);
-        double legitimacy = Values.clamp01(0.42 + admissionDecision.admissionScore() * 0.10 - reviewCase.publicAttention() * 0.08);
-        double conflict = Values.clamp01(reviewCase.constitutionalConflictPotential() * 0.22 + state.conflictLoad() * 0.08);
+        double lowerCourtCompliance = Values.clamp01(
+                0.62
+                        + reviewCase.lowerCourtConflict() * 0.08
+                        + effectiveEnforcementCapacity * 0.08
+                        - reviewCase.lowerCourtErrorRisk() * 0.10
+                        - reviewCase.lowerCourtIdeologicalDrift() * 0.05
+                        - effectiveLowerCourtResistanceRisk * 0.08
+        );
+        double legitimacy = Values.clamp01(0.42 + admissionDecision.admissionScore() * 0.10 - reviewCase.publicAttention() * 0.08 - effectiveForumShoppingPressure * 0.04);
+        double conflict = Values.clamp01(reviewCase.constitutionalConflictPotential() * 0.22 + state.conflictLoad() * 0.08 + effectiveLowerCourtResistanceRisk * 0.08);
         return new CourtDecision(
                 reviewCase.id(),
                 reviewCase.type(),
@@ -57,13 +69,20 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.amicusBriefs(),
                 reviewCase.splitMaturity(),
                 reviewCase.lowerCourtSplitDepth(),
+                reviewCase.lowerCourtIdeologicalDrift(),
+                effectiveLowerCourtResistanceRisk,
                 reviewCase.relistCount(),
                 reviewCase.specialistCounsel(),
                 reviewCase.vehicleDefectRisk(),
+                effectiveForumShoppingPressure,
+                reviewCase.preReviewSettlementPressure(),
+                false,
                 reviewCase.strategicPlaintiffSelection(),
                 reviewCase.repeatPlayerAdvantage(),
                 reviewCase.governmentNoncomplianceRisk(),
                 false,
+                effectiveEnforcementCapacity,
+                effectiveEmergencyOpportunism,
                 reviewCase.recusalIncentivePressure(),
                 false,
                 false,
@@ -80,7 +99,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 false,
                 false,
                 false,
-                publicInterestFiltered(reviewCase, admissionDecision),
+                publicInterestFiltered,
                 false,
                 false,
                 OverrideOutcome.NONE,
@@ -109,7 +128,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 legalStability,
                 0.0,
                 rightsClaimantCase(reviewCase),
-                rightsClaimantSuccess(reviewCase, false, false, false),
+                rightsClaimantSuccess(reviewCase, false, false, false, false),
                 0.0,
                 0.0,
                 0.0,
@@ -145,9 +164,11 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                         + state.conflictLoad() * 0.04
                         + reviewCase.repeatPlayerAdvantage() * 0.05
                         + reviewCase.strategicPlaintiffSelection() * 0.04
+                        + reviewCase.emergencyOpportunism() * 0.08
         );
         boolean emergency = random.nextDouble() < effectiveEmergencyPressure;
-        boolean initialMeritsReview = admissionDecision.transferredToMerits() && meritsReview(reviewCase, emergency, random);
+        boolean settledBeforeReview = settledBeforeReview(reviewCase, admissionDecision, emergency, strategicResponse, random);
+        boolean initialMeritsReview = !settledBeforeReview && admissionDecision.transferredToMerits() && meritsReview(reviewCase, emergency, random);
         boolean enBanc = enBanc(reviewCase, emergency, random);
         List<Justice> participating = participatingJustices(reviewCase, enBanc, random);
         int recused = Math.max(0, Math.min(court.size(), court.size() - participating.size()));
@@ -180,6 +201,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             councilWarning = true;
         }
 
+        boolean publicInterestFiltered = publicInterestFiltered(reviewCase, admissionDecision);
         OverrideDecision overrideDecision = legislativeOverride(reviewCase, invalidated, state, strategicResponse, random);
         boolean override = overrideDecision.successful();
         double precedentShift = precedentShift(reviewCase, invalidated, shadowRelief, crossDisagreement);
@@ -187,26 +209,60 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         int concurrences = concurrences(voteCount, participating.size(), random);
         int dissents = Math.max(0, voteCount.no() - (participating.size() - voteCount.yes() > 0 ? 1 : 0));
 
-        double rightsProtection = rightsProtection(reviewCase, invalidated, shadowRelief, constitutionalRemand, overrideDecision);
+        double rightsProtection = rightsProtection(reviewCase, invalidated, shadowRelief, constitutionalRemand, settledBeforeReview, overrideDecision);
         double partisanAlignment = partisanAlignment(reviewCase, voteCount, participating);
         double shadowAbuse = shadowDocketAbuse(reviewCase, emergency, meritsReview, emergencyProcedure);
         double emergencyLegitimacyRisk = emergencyOrder.legitimacyRisk();
         double emergencyDownstreamEffect = emergencyDownstreamEffect(reviewCase, emergencyProcedure, emergencyOrder, shadowRelief);
-        double conflict = constitutionalConflict(reviewCase, invalidated, shadowRelief, crossDisagreement, constitutionalRemand, emergencyDownstreamEffect, overrideDecision, state);
+        double effectiveForumShoppingPressure = effectiveForumShoppingPressure(reviewCase, admissionDecision, publicInterestFiltered);
+        double effectiveEmergencyOpportunism = effectiveEmergencyOpportunism(reviewCase, emergency, emergencyProcedure, strategicResponse);
+        double effectiveEnforcementCapacity = effectiveEnforcementCapacity(reviewCase, meritsReview, constitutionalRemand, councilWarning, overrideDecision);
+        double preliminaryConflict = constitutionalConflict(
+                reviewCase,
+                reviewCase.lowerCourtResistanceRisk(),
+                reviewCase.forumShoppingPressure(),
+                invalidated,
+                shadowRelief,
+                crossDisagreement,
+                constitutionalRemand,
+                emergencyDownstreamEffect,
+                overrideDecision,
+                state
+        );
+        boolean governmentNoncompliance = governmentNoncompliance(reviewCase, strategicResponse, preliminaryConflict, state, random);
+        double effectiveLowerCourtResistanceRisk = effectiveLowerCourtResistanceRisk(
+                reviewCase,
+                meritsReview,
+                constitutionalRemand,
+                settledBeforeReview,
+                governmentNoncompliance,
+                effectiveEnforcementCapacity
+        );
+        double conflict = constitutionalConflict(
+                reviewCase,
+                effectiveLowerCourtResistanceRisk,
+                effectiveForumShoppingPressure,
+                invalidated,
+                shadowRelief,
+                crossDisagreement,
+                constitutionalRemand,
+                emergencyDownstreamEffect,
+                overrideDecision,
+                state
+        );
         double precedentStability = precedentStability(state, precedentShift, shadowAbuse, conflict);
         double statutoryStability = statutoryStability(reviewCase, invalidated, shadowRelief, constitutionalRemand, emergencyProcedure, overrideDecision, conflict);
-        boolean governmentNoncompliance = governmentNoncompliance(reviewCase, strategicResponse, conflict, state, random);
-        double interbranchCompliance = interbranchCompliance(reviewCase, crossDisagreement, councilWarning, governmentNoncompliance, overrideDecision, conflict, state);
+        double interbranchCompliance = interbranchCompliance(reviewCase, effectiveLowerCourtResistanceRisk, effectiveEnforcementCapacity, crossDisagreement, councilWarning, governmentNoncompliance, overrideDecision, conflict, state);
         double legalStability = Values.average(precedentStability, statutoryStability, interbranchCompliance);
         double legitimacy = legitimacy(reviewCase, meritsReview, emergencyProcedure, recused, participating.size(), shadowAbuse, partisanAlignment, councilWarning);
         double responsiveness = democraticResponsiveness(reviewCase, invalidated, constitutionalRemand, overrideDecision, councilWarning);
         boolean rightsClaimantCase = rightsClaimantCase(reviewCase);
-        double rightsClaimantSuccess = rightsClaimantSuccess(reviewCase, invalidated, shadowRelief, constitutionalRemand);
+        double rightsClaimantSuccess = rightsClaimantSuccess(reviewCase, invalidated, shadowRelief, constitutionalRemand, settledBeforeReview);
         double doctrinalDepth = doctrinalDepth(reviewCase, invalidated, precedentShift, emergencyProcedure);
         double remedialBreadth = remedialBreadth(reviewCase, invalidated, shadowRelief, constitutionalRemand, emergencyProcedure, overrideDecision);
         double fragmentationIndex = fragmentationIndex(concurrences, dissents, voteCount, participating.size());
         double precedentDurability = precedentDurability(precedentStability, doctrinalDepth, fragmentationIndex, emergencyDownstreamEffect, shadowAbuse);
-        double lowerCourtCompliance = lowerCourtCompliance(reviewCase, meritsReview, invalidated, constitutionalRemand, governmentNoncompliance, admissionDecision, state);
+        double lowerCourtCompliance = lowerCourtCompliance(reviewCase, effectiveLowerCourtResistanceRisk, effectiveEnforcementCapacity, meritsReview, invalidated, constitutionalRemand, settledBeforeReview, governmentNoncompliance, admissionDecision, state);
         double eliteAcceptance = eliteAcceptance(interbranchCompliance, overrideDecision, strategicResponse);
         double publicConfidence = publicConfidence(legitimacy, emergencyLegitimacyRisk, partisanAlignment, strategicResponse);
         double administrativeCost = administrativeCost(reviewCase, emergencyProcedure, enBanc, crossDisagreement, councilWarning);
@@ -259,13 +315,20 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.amicusBriefs(),
                 reviewCase.splitMaturity(),
                 reviewCase.lowerCourtSplitDepth(),
+                reviewCase.lowerCourtIdeologicalDrift(),
+                effectiveLowerCourtResistanceRisk,
                 reviewCase.relistCount(),
                 reviewCase.specialistCounsel(),
                 reviewCase.vehicleDefectRisk(),
+                effectiveForumShoppingPressure,
+                reviewCase.preReviewSettlementPressure(),
+                settledBeforeReview,
                 reviewCase.strategicPlaintiffSelection(),
                 reviewCase.repeatPlayerAdvantage(),
                 reviewCase.governmentNoncomplianceRisk(),
                 governmentNoncompliance,
+                effectiveEnforcementCapacity,
+                effectiveEmergencyOpportunism,
                 recusalIncentivePressure(reviewCase, recused, quorumFailure),
                 meritsReview,
                 invalidated,
@@ -282,7 +345,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 councilWarning,
                 crossDisagreement,
                 constitutionalRemand,
-                publicInterestFiltered(reviewCase, admissionDecision),
+                publicInterestFiltered,
                 override,
                 overrideDecision.attempted(),
                 overrideDecision.outcome(),
@@ -405,6 +468,26 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         };
     }
 
+    private boolean settledBeforeReview(
+            ReviewCase reviewCase,
+            AdmissionDecision admissionDecision,
+            boolean emergency,
+            StrategicActorPolicy.StrategicResponse strategicResponse,
+            Random random
+    ) {
+        if (!admissionDecision.transferredToMerits() || emergency) {
+            return false;
+        }
+        double probability = reviewCase.preReviewSettlementPressure() * 0.34
+                + reviewCase.repeatPlayerAdvantage() * 0.08
+                + reviewCase.enforcementCapacity() * 0.06
+                + (strategicResponse.legislativeCompliance() ? 0.05 : 0.0)
+                - reviewCase.publicAttention() * 0.10
+                - reviewCase.rightsBurden() * 0.10
+                - reviewCase.lowerCourtResistanceRisk() * 0.06;
+        return random.nextDouble() < Values.clamp01(probability);
+    }
+
     private boolean enBanc(ReviewCase reviewCase, boolean emergency, Random random) {
         if (design.reviewMode() == ReviewMode.FULL_COURT || design.reviewMode() == ReviewMode.DUAL_COURTS) {
             return true;
@@ -482,7 +565,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             double stabilityPenalty = state.precedentStability() * 0.08;
             double accountabilityPull = justice.accountabilityPressure() * reviewCase.democraticMandate() * 0.09;
             double repeatPlayerPull = reviewCase.repeatPlayerAdvantage() * (1.0 - justice.independence()) * 0.08;
-            double plaintiffSelectionSignal = reviewCase.strategicPlaintiffSelection() * reviewCase.rightsBurden() * 0.06;
+            double plaintiffSelectionSignal = reviewCase.strategicPlaintiffSelection() * reviewCase.rightsBurden() * 0.06
+                    + reviewCase.forumShoppingPressure() * reviewCase.lowerCourtIdeologicalDrift() * 0.03;
             double score = legalConcern * 0.42
                     + rightsConcern
                     + partisanPull
@@ -727,7 +811,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + (1.0 - reviewCase.legislativeQuality()) * 0.20
                 + reviewCase.legalAmbiguity() * 0.12
                 + reviewCase.lowerCourtErrorRisk() * 0.10
-                + reviewCase.lowerCourtSplitDepth() * 0.08;
+                + reviewCase.lowerCourtSplitDepth() * 0.08
+                + reviewCase.lowerCourtResistanceRisk() * 0.06;
         if (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL) {
             concern *= 0.92;
         } else if (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_REMAND && reviewCase.legislativeQuality() > 0.52) {
@@ -743,11 +828,17 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             boolean invalidated,
             boolean shadowRelief,
             boolean constitutionalRemand,
+            boolean settledBeforeReview,
             OverrideDecision overrideDecision
     ) {
         double protection = reviewCase.rightsBurden() > 0.55
                 ? (invalidated || shadowRelief ? 0.82 : 0.30)
                 : (invalidated ? 0.55 : 0.70);
+        if (settledBeforeReview && reviewCase.rightsBurden() > 0.55) {
+            protection += 0.16;
+        } else if (settledBeforeReview) {
+            protection += 0.04;
+        }
         if (constitutionalRemand && reviewCase.rightsBurden() > 0.55) {
             protection += 0.24;
         } else if (constitutionalRemand) {
@@ -792,7 +883,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + (emergencyProcedure.stage() == EmergencyProcedureStage.SHADOW_STAY ? 0.24 : 0.0)
                 - (emergencyProcedure.reasonedOrder() ? 0.08 : 0.0)
                 - (emergencyProcedure.meritsAccelerated() ? 0.07 : 0.0);
-        abuse += reviewCase.partisanSalience() * 0.12 + reviewCase.legalAmbiguity() * 0.08;
+        abuse += reviewCase.partisanSalience() * 0.12
+                + reviewCase.legalAmbiguity() * 0.08
+                + reviewCase.emergencyOpportunism() * 0.10;
         return Values.clamp01(abuse);
     }
 
@@ -823,16 +916,20 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                         + meritsLike
                         + disagreementRisk
                         + statusQuoRisk
+                        + reviewCase.emergencyOpportunism() * 0.08
                         + grantedRisk
         );
     }
 
-    private double rightsClaimantSuccess(ReviewCase reviewCase, boolean invalidated, boolean shadowRelief, boolean constitutionalRemand) {
+    private double rightsClaimantSuccess(ReviewCase reviewCase, boolean invalidated, boolean shadowRelief, boolean constitutionalRemand, boolean settledBeforeReview) {
         if (!rightsClaimantCase(reviewCase)) {
             return 0.0;
         }
         if (invalidated || shadowRelief) {
             return 1.0;
+        }
+        if (settledBeforeReview) {
+            return 0.35;
         }
         return constitutionalRemand ? 0.55 : 0.0;
     }
@@ -886,11 +983,97 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         return Values.clamp01(majorityCohesionPenalty + separateOpinions * 0.45);
     }
 
+    private double effectiveForumShoppingPressure(
+            ReviewCase reviewCase,
+            AdmissionDecision admissionDecision,
+            boolean publicInterestFiltered
+    ) {
+        double pressure = reviewCase.forumShoppingPressure()
+                + (design.emergencyDocketRule() == EmergencyDocketRule.OPEN_EMERGENCY ? 0.04 : 0.0)
+                + (design.reviewMode() == ReviewMode.SPECIALIZED_PANELS ? 0.03 : 0.0)
+                - (design.reviewMode() == ReviewMode.PANEL_EN_BANC ? 0.03 : 0.0)
+                - (design.auxiliaryReview() == AuxiliaryReview.PUBLIC_INTEREST_FILTER ? 0.08 : 0.0)
+                - (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL ? 0.04 : 0.0)
+                - (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_REMAND ? 0.04 : 0.0)
+                - (design.overrideRule() == OverrideRule.JURISDICTION_STRIPPING_CONSTRAINT ? 0.05 : 0.0)
+                - (admissionDecision.screenedOut() ? 0.03 : 0.0)
+                - (publicInterestFiltered ? 0.06 : 0.0);
+        return Values.clamp01(pressure);
+    }
+
+    private double effectiveEnforcementCapacity(
+            ReviewCase reviewCase,
+            boolean meritsReview,
+            boolean constitutionalRemand,
+            boolean councilWarning,
+            OverrideDecision overrideDecision
+    ) {
+        double capacity = reviewCase.enforcementCapacity()
+                + (meritsReview ? 0.04 : -0.02)
+                + (constitutionalRemand ? 0.06 : 0.0)
+                + (councilWarning ? 0.03 : 0.0)
+                + (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL ? 0.03 : 0.0)
+                + (design.auxiliaryReview() == AuxiliaryReview.CROSS_CHECKING_COURT ? 0.02 : 0.0)
+                + (design.overrideRule() == OverrideRule.JURISDICTION_STRIPPING_CONSTRAINT ? 0.03 : 0.0)
+                + (overrideDecision.successful() ? 0.03 : 0.0);
+        if (overrideDecision.outcome() == OverrideOutcome.REPEATED_OVERRIDE) {
+            capacity -= 0.08;
+        }
+        return Values.clamp01(capacity);
+    }
+
+    private double effectiveLowerCourtResistanceRisk(
+            ReviewCase reviewCase,
+            boolean meritsReview,
+            boolean constitutionalRemand,
+            boolean settledBeforeReview,
+            boolean governmentNoncompliance,
+            double enforcementCapacity
+    ) {
+        double risk = reviewCase.lowerCourtResistanceRisk()
+                - enforcementCapacity * 0.05
+                - (meritsReview ? 0.04 : 0.0)
+                - (constitutionalRemand ? 0.07 : 0.0)
+                - (settledBeforeReview ? 0.03 : 0.0)
+                - (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_REMAND ? 0.03 : 0.0)
+                - (design.auxiliaryReview() == AuxiliaryReview.CROSS_CHECKING_COURT ? 0.02 : 0.0)
+                + (governmentNoncompliance ? 0.12 : 0.0);
+        return Values.clamp01(risk);
+    }
+
+    private double effectiveEmergencyOpportunism(
+            ReviewCase reviewCase,
+            boolean emergency,
+            EmergencyProcedure emergencyProcedure,
+            StrategicActorPolicy.StrategicResponse strategicResponse
+    ) {
+        double opportunism = reviewCase.emergencyOpportunism()
+                + (design.emergencyDocketRule() == EmergencyDocketRule.OPEN_EMERGENCY ? 0.08 : 0.0)
+                - (design.emergencyDocketRule() == EmergencyDocketRule.REASONED_FAST_TRACK ? 0.04 : 0.0)
+                - (design.emergencyDocketRule() == EmergencyDocketRule.SUPERMAJORITY_STAY ? 0.06 : 0.0)
+                - (design.emergencyDocketRule() == EmergencyDocketRule.MANDATORY_WRITTEN_REASONING ? 0.07 : 0.0)
+                - (design.emergencyDocketRule() == EmergencyDocketRule.AUTOMATIC_MERITS_FOLLOW_UP ? 0.08 : 0.0)
+                - (design.emergencyDocketRule() == EmergencyDocketRule.NO_RELIEF_WITHOUT_MERITS ? 0.10 : 0.0)
+                + (emergency ? 0.02 : -0.02);
+        if (emergencyProcedure != null) {
+            opportunism += emergencyProcedure.stage() == EmergencyProcedureStage.SHADOW_STAY ? 0.07 : 0.0;
+            opportunism -= emergencyProcedure.reasonedOrder() ? 0.03 : 0.0;
+            opportunism -= emergencyProcedure.meritsAccelerated() ? 0.04 : 0.0;
+        }
+        if (strategicResponse != null && strategicResponse.executiveEmergencyFlood()) {
+            opportunism += 0.08;
+        }
+        return Values.clamp01(opportunism);
+    }
+
     private double lowerCourtCompliance(
             ReviewCase reviewCase,
+            double lowerCourtResistanceRisk,
+            double enforcementCapacity,
             boolean meritsReview,
             boolean invalidated,
             boolean constitutionalRemand,
+            boolean settledBeforeReview,
             boolean governmentNoncompliance,
             AdmissionDecision admissionDecision,
             CourtState state
@@ -899,7 +1082,10 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 - reviewCase.lowerCourtConflict() * 0.18
                 - reviewCase.lowerCourtErrorRisk() * 0.12
                 - reviewCase.lowerCourtSplitDepth() * 0.08
+                - reviewCase.lowerCourtIdeologicalDrift() * 0.07
+                - lowerCourtResistanceRisk * 0.14
                 - state.conflictLoad() * 0.10
+                + enforcementCapacity * 0.14
                 + (meritsReview ? 0.08 : -0.03)
                 + (admissionDecision.transferredToMerits() ? 0.04 : 0.0);
         if (invalidated) {
@@ -907,6 +1093,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         }
         if (constitutionalRemand) {
             compliance += 0.09;
+        }
+        if (settledBeforeReview) {
+            compliance += 0.05;
         }
         if (governmentNoncompliance) {
             compliance -= 0.16;
@@ -944,6 +1133,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
 
     private double constitutionalConflict(
             ReviewCase reviewCase,
+            double lowerCourtResistanceRisk,
+            double forumShoppingPressure,
             boolean invalidated,
             boolean shadowRelief,
             boolean crossDisagreement,
@@ -956,6 +1147,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + reviewCase.executiveDefianceRisk() * 0.18
                 + reviewCase.lowerCourtConflict() * 0.08
                 + reviewCase.lowerCourtSplitDepth() * 0.05
+                + lowerCourtResistanceRisk * 0.10
+                + forumShoppingPressure * 0.04
                 + state.conflictLoad() * 0.12
                 + state.legislativeDefiance() * 0.10
                 + state.executiveEmergencyStrategy() * 0.08
@@ -1029,6 +1222,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
 
     private double interbranchCompliance(
             ReviewCase reviewCase,
+            double lowerCourtResistanceRisk,
+            double enforcementCapacity,
             boolean crossDisagreement,
             boolean councilWarning,
             boolean governmentNoncompliance,
@@ -1039,10 +1234,12 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double compliance = 0.76
                 + reviewCase.legislativeQuality() * 0.08
                 + reviewCase.democraticMandate() * 0.04
+                + enforcementCapacity * 0.12
                 - reviewCase.executiveDefianceRisk() * 0.18
                 - reviewCase.governmentNoncomplianceRisk() * 0.12
                 - reviewCase.partisanSalience() * 0.10
                 - reviewCase.lowerCourtConflict() * 0.05
+                - lowerCourtResistanceRisk * 0.09
                 - conflict * 0.26
                 - state.conflictLoad() * 0.10;
         if (crossDisagreement) {
@@ -1205,6 +1402,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double effect = reviewCase.emergencyPressure() * 0.18
                 + reviewCase.requestedEmergencyRelief() * 0.12
                 + reviewCase.governmentNoncomplianceRisk() * 0.12
+                + reviewCase.emergencyOpportunism() * 0.14
                 + (emergencyOrder.granted() ? 0.12 : 0.02)
                 + (shadowRelief ? 0.18 : 0.0)
                 + (emergencyProcedure.temporaryStay() ? 0.06 : 0.0)
@@ -1232,8 +1430,10 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + state.legislativeDefiance() * 0.18
                 + state.executiveEmergencyStrategy() * 0.12
                 + conflict * 0.16
+                + reviewCase.lowerCourtResistanceRisk() * 0.10
                 + (strategicResponse.practicalImplementationResponse() == PracticalImplementationResponse.OPEN_NONCOMPLIANCE ? 0.32 : 0.0)
                 + (strategicResponse.practicalImplementationResponse() == PracticalImplementationResponse.BUREAUCRATIC_RESISTANCE ? 0.10 : 0.0)
+                - reviewCase.enforcementCapacity() * 0.14
                 - (strategicResponse.legislativeCompliance() ? 0.12 : 0.0);
         return random.nextDouble() < Values.clamp01(probability);
     }

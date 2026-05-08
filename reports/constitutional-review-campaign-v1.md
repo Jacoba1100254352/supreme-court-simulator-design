@@ -7,7 +7,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 - runs per case: 80
 - cases per run: 64
 - base seed: 20260501
-- scenarios per case: 22
+- scenarios per case: 26
 - experiment cases: 15
 
 - legislative input: simulation-campaign-v21-paper.csv: volume=0.343 quality=0.610 weakMandate=0.175 rightsRisk=0.104 partisanSkew=0.237 volatility=0.120 legitimacy=0.547
@@ -34,13 +34,13 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 
 ## Headline Findings
 
-- Top directional-score cluster within 0.010 of the maximum: No emergency relief without merits review (0.586); 18-year staggered terms + regular appointments (0.585); 60 percent invalidation threshold (0.584); Nonpartisan commission appointments (0.581); Jurisdiction stripping constrained by rights carveouts (0.581); Automatic merits follow-up for emergency relief (0.580); Mandatory written emergency reasoning (0.580); Peer recusal + reasoned emergency docket (0.580); Retention-election accountability court (0.579); Three-judge panels with en banc correction (0.578); Judicial review with legislative supermajority override (0.578); Time-limited legislative override window (0.578); Expanded 15-seat court (0.578); Independent recusal enforcement with substitutes (0.578); Randomized merits panels with en banc correction (0.577). These close differences are not interpreted as rankings.
-- Highest single directional score for table ordering only: No emergency relief without merits review at 0.586.
-- Highest rights protection: Public-interest litigation filter at 0.656.
-- Lowest shadow-docket abuse: No emergency relief without merits review at 0.004.
-- Lowest emergency legitimacy risk: Automatic merits follow-up for emergency relief at 0.213.
+- Top directional-score cluster within 0.010 of the maximum: No emergency relief without merits review (0.579); 18-year staggered terms + regular appointments (0.577); 60 percent invalidation threshold (0.576); Jurisdiction stripping constrained by rights carveouts (0.576); Automatic merits follow-up for emergency relief (0.574); Mandatory written emergency reasoning (0.572); Nonpartisan commission appointments (0.572); Peer recusal + reasoned emergency docket (0.572); Retention-election accountability court (0.571); Three-judge panels with en banc correction (0.571); Emergency integrity package (0.571); Time-limited legislative override window (0.570); Randomized merits panels with en banc correction (0.570); Judicial review with legislative supermajority override (0.570); Expanded 15-seat court (0.569); Independent recusal enforcement with substitutes (0.569); Constitutional remand before invalidation (0.569). These close differences are not interpreted as rankings.
+- Highest single directional score for table ordering only: No emergency relief without merits review at 0.579.
+- Highest rights protection: Public-interest litigation filter at 0.661.
+- Lowest shadow-docket abuse: No emergency relief without merits review at 0.021.
+- Lowest emergency legitimacy risk: Automatic merits follow-up for emergency relief at 0.243.
 - Lowest partisan alignment: Jurisdiction stripping constrained by rights carveouts at 0.023.
-- Highest public confidence index: Pre-enactment constitutional council at 0.671.
+- Highest public confidence index: Constitutional council with concrete-review backstop at 0.663.
 - Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, claimant success, precedent durability, lower-court compliance, elite acceptance, and administrative feasibility.
 - Empirical claims, synthetic findings, and speculative design recommendations should be read separately: source ranges only smoke-test plausibility, campaign outputs are synthetic, and design recommendations are conditional on the model assumptions.
 
@@ -49,78 +49,86 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 - Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.
 - Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `publicConfidence` are usually better, but each should be read in domain context.
 - Lower `partisanAlignment`, `shadowDocketAbuse`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.
-- Petition, certiorari-admission, lower-court-split, strategic-plaintiff, repeat-player, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.
+- Petition, certiorari-admission, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.
 
 ## Scenario Averages Across Cases
 
-| Scenario | Directional | Admission | Cert admit | Lower split | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| No emergency relief without merits review | 0.586 | 0.684 | 0.575 | 0.574 | 0.648 | 0.145 | 0.773 | 0.518 | 0.159 | 0.059 | 0.658 | 0.004 | 0.215 | 0.186 | 0.265 |
-| 18-year staggered terms + regular appointments | 0.585 | 0.662 | 0.556 | 0.574 | 0.642 | 0.138 | 0.755 | 0.511 | 0.165 | 0.071 | 0.577 | 0.078 | 0.223 | 0.203 | 0.217 |
-| 60 percent invalidation threshold | 0.584 | 0.667 | 0.559 | 0.574 | 0.630 | 0.107 | 0.785 | 0.509 | 0.166 | 0.083 | 0.562 | 0.069 | 0.234 | 0.207 | 0.215 |
-| Nonpartisan commission appointments | 0.581 | 0.682 | 0.572 | 0.574 | 0.646 | 0.142 | 0.759 | 0.509 | 0.166 | 0.074 | 0.601 | 0.080 | 0.228 | 0.195 | 0.246 |
-| Jurisdiction stripping constrained by rights carveouts | 0.581 | 0.680 | 0.572 | 0.574 | 0.645 | 0.141 | 0.756 | 0.507 | 0.173 | 0.073 | 0.612 | 0.080 | 0.229 | 0.195 | 0.246 |
-| Automatic merits follow-up for emergency relief | 0.580 | 0.666 | 0.557 | 0.574 | 0.651 | 0.162 | 0.746 | 0.516 | 0.163 | 0.073 | 0.622 | 0.009 | 0.213 | 0.201 | 0.281 |
-| Mandatory written emergency reasoning | 0.580 | 0.667 | 0.557 | 0.574 | 0.640 | 0.132 | 0.770 | 0.511 | 0.164 | 0.081 | 0.582 | 0.043 | 0.231 | 0.207 | 0.262 |
-| Peer recusal + reasoned emergency docket | 0.580 | 0.668 | 0.559 | 0.574 | 0.643 | 0.139 | 0.757 | 0.511 | 0.165 | 0.072 | 0.584 | 0.079 | 0.225 | 0.205 | 0.250 |
-| Retention-election accountability court | 0.579 | 0.684 | 0.572 | 0.574 | 0.635 | 0.132 | 0.761 | 0.508 | 0.169 | 0.073 | 0.602 | 0.081 | 0.230 | 0.195 | 0.247 |
-| Three-judge panels with en banc correction | 0.578 | 0.687 | 0.577 | 0.574 | 0.644 | 0.137 | 0.769 | 0.508 | 0.167 | 0.075 | 0.650 | 0.081 | 0.230 | 0.195 | 0.263 |
-| Judicial review with legislative supermajority override | 0.578 | 0.680 | 0.568 | 0.574 | 0.648 | 0.141 | 0.759 | 0.506 | 0.175 | 0.074 | 0.604 | 0.081 | 0.230 | 0.204 | 0.254 |
-| Time-limited legislative override window | 0.578 | 0.679 | 0.568 | 0.574 | 0.647 | 0.141 | 0.758 | 0.506 | 0.175 | 0.073 | 0.603 | 0.080 | 0.228 | 0.203 | 0.254 |
-| Expanded 15-seat court | 0.578 | 0.667 | 0.558 | 0.574 | 0.642 | 0.138 | 0.748 | 0.511 | 0.162 | 0.073 | 0.591 | 0.079 | 0.229 | 0.204 | 0.258 |
-| Independent recusal enforcement with substitutes | 0.578 | 0.684 | 0.575 | 0.574 | 0.646 | 0.142 | 0.760 | 0.508 | 0.170 | 0.074 | 0.617 | 0.081 | 0.231 | 0.196 | 0.271 |
-| Randomized merits panels with en banc correction | 0.577 | 0.684 | 0.575 | 0.574 | 0.645 | 0.139 | 0.765 | 0.509 | 0.166 | 0.074 | 0.651 | 0.081 | 0.229 | 0.195 | 0.270 |
-| Public-interest litigation filter | 0.575 | 0.715 | 0.608 | 0.574 | 0.656 | 0.155 | 0.763 | 0.503 | 0.177 | 0.077 | 0.612 | 0.084 | 0.241 | 0.201 | 0.285 |
-| Comparative 16-seat constitutional senates | 0.574 | 0.665 | 0.553 | 0.574 | 0.625 | 0.096 | 0.795 | 0.512 | 0.159 | 0.083 | 0.639 | 0.069 | 0.234 | 0.192 | 0.293 |
-| Constitutional remand before invalidation | 0.574 | 0.708 | 0.598 | 0.574 | 0.643 | 0.126 | 0.800 | 0.511 | 0.172 | 0.075 | 0.639 | 0.083 | 0.237 | 0.199 | 0.350 |
-| Pre-enactment constitutional council | 0.572 | 0.683 | 0.573 | 0.574 | 0.643 | 0.128 | 0.773 | 0.508 | 0.173 | 0.073 | 0.671 | 0.080 | 0.227 | 0.200 | 0.325 |
-| Stylized current U.S.-like supreme court | 0.571 | 0.665 | 0.554 | 0.574 | 0.646 | 0.146 | 0.712 | 0.490 | 0.178 | 0.134 | 0.422 | 0.279 | 0.305 | 0.226 | 0.175 |
-| Supreme court with cross-checking constitutional court | 0.559 | 0.679 | 0.570 | 0.574 | 0.620 | 0.085 | 0.788 | 0.506 | 0.172 | 0.084 | 0.602 | 0.070 | 0.237 | 0.200 | 0.341 |
-| Dual supreme courts with disagreement filter | 0.547 | 0.684 | 0.574 | 0.574 | 0.648 | 0.147 | 0.720 | 0.498 | 0.181 | 0.086 | 0.609 | 0.071 | 0.240 | 0.209 | 0.382 |
+| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| No emergency relief without merits review | 0.579 | 0.693 | 0.586 | 0.574 | 0.288 | 0.577 | 0.654 | 0.156 | 0.754 | 0.523 | 0.144 | 0.093 | 0.646 | 0.021 | 0.248 | 0.228 | 0.271 |
+| 18-year staggered terms + regular appointments | 0.577 | 0.674 | 0.568 | 0.574 | 0.292 | 0.571 | 0.648 | 0.149 | 0.737 | 0.514 | 0.146 | 0.107 | 0.559 | 0.107 | 0.256 | 0.247 | 0.223 |
+| 60 percent invalidation threshold | 0.576 | 0.672 | 0.563 | 0.574 | 0.294 | 0.569 | 0.634 | 0.116 | 0.766 | 0.512 | 0.149 | 0.120 | 0.543 | 0.096 | 0.266 | 0.248 | 0.219 |
+| Jurisdiction stripping constrained by rights carveouts | 0.576 | 0.688 | 0.581 | 0.574 | 0.292 | 0.602 | 0.650 | 0.149 | 0.741 | 0.514 | 0.157 | 0.109 | 0.596 | 0.108 | 0.261 | 0.236 | 0.251 |
+| Automatic merits follow-up for emergency relief | 0.574 | 0.675 | 0.568 | 0.574 | 0.289 | 0.576 | 0.658 | 0.175 | 0.728 | 0.521 | 0.144 | 0.105 | 0.609 | 0.029 | 0.243 | 0.241 | 0.286 |
+| Mandatory written emergency reasoning | 0.572 | 0.673 | 0.567 | 0.574 | 0.293 | 0.572 | 0.645 | 0.144 | 0.749 | 0.514 | 0.148 | 0.116 | 0.565 | 0.068 | 0.262 | 0.247 | 0.266 |
+| Nonpartisan commission appointments | 0.572 | 0.691 | 0.586 | 0.574 | 0.293 | 0.573 | 0.652 | 0.154 | 0.736 | 0.511 | 0.154 | 0.109 | 0.583 | 0.109 | 0.262 | 0.241 | 0.251 |
+| Peer recusal + reasoned emergency docket | 0.572 | 0.673 | 0.564 | 0.574 | 0.293 | 0.571 | 0.647 | 0.147 | 0.738 | 0.514 | 0.148 | 0.108 | 0.565 | 0.107 | 0.257 | 0.247 | 0.255 |
+| Retention-election accountability court | 0.571 | 0.692 | 0.583 | 0.574 | 0.292 | 0.573 | 0.639 | 0.139 | 0.743 | 0.512 | 0.152 | 0.109 | 0.586 | 0.109 | 0.263 | 0.239 | 0.252 |
+| Three-judge panels with en banc correction | 0.571 | 0.690 | 0.581 | 0.574 | 0.292 | 0.572 | 0.649 | 0.147 | 0.748 | 0.512 | 0.150 | 0.110 | 0.632 | 0.110 | 0.261 | 0.238 | 0.267 |
+| Emergency integrity package | 0.571 | 0.693 | 0.582 | 0.574 | 0.288 | 0.577 | 0.652 | 0.155 | 0.750 | 0.522 | 0.146 | 0.108 | 0.650 | 0.030 | 0.250 | 0.232 | 0.316 |
+| Time-limited legislative override window | 0.570 | 0.689 | 0.581 | 0.574 | 0.293 | 0.573 | 0.652 | 0.149 | 0.740 | 0.510 | 0.158 | 0.109 | 0.587 | 0.108 | 0.261 | 0.247 | 0.259 |
+| Randomized merits panels with en banc correction | 0.570 | 0.692 | 0.585 | 0.574 | 0.292 | 0.573 | 0.650 | 0.147 | 0.748 | 0.513 | 0.149 | 0.110 | 0.635 | 0.110 | 0.263 | 0.238 | 0.276 |
+| Judicial review with legislative supermajority override | 0.570 | 0.687 | 0.582 | 0.574 | 0.294 | 0.572 | 0.652 | 0.148 | 0.739 | 0.510 | 0.159 | 0.110 | 0.586 | 0.109 | 0.262 | 0.247 | 0.259 |
+| Expanded 15-seat court | 0.569 | 0.672 | 0.565 | 0.574 | 0.293 | 0.571 | 0.648 | 0.148 | 0.726 | 0.515 | 0.147 | 0.107 | 0.573 | 0.106 | 0.259 | 0.247 | 0.262 |
+| Independent recusal enforcement with substitutes | 0.569 | 0.693 | 0.586 | 0.574 | 0.292 | 0.573 | 0.651 | 0.151 | 0.740 | 0.512 | 0.153 | 0.110 | 0.600 | 0.109 | 0.263 | 0.241 | 0.276 |
+| Constitutional remand before invalidation | 0.569 | 0.718 | 0.611 | 0.574 | 0.258 | 0.591 | 0.648 | 0.134 | 0.785 | 0.522 | 0.155 | 0.112 | 0.625 | 0.112 | 0.271 | 0.238 | 0.358 |
+| Public-interest litigation filter | 0.569 | 0.721 | 0.619 | 0.574 | 0.292 | 0.574 | 0.661 | 0.166 | 0.742 | 0.507 | 0.159 | 0.115 | 0.594 | 0.114 | 0.276 | 0.240 | 0.290 |
+| Random panels with jurisdiction safeguards | 0.567 | 0.695 | 0.588 | 0.574 | 0.293 | 0.600 | 0.641 | 0.129 | 0.767 | 0.510 | 0.158 | 0.123 | 0.643 | 0.098 | 0.273 | 0.236 | 0.305 |
+| Pre-enactment constitutional council | 0.566 | 0.692 | 0.587 | 0.574 | 0.291 | 0.615 | 0.647 | 0.135 | 0.757 | 0.517 | 0.157 | 0.108 | 0.658 | 0.109 | 0.262 | 0.243 | 0.333 |
+| Constitutional remand with override window | 0.566 | 0.717 | 0.611 | 0.574 | 0.259 | 0.591 | 0.647 | 0.131 | 0.793 | 0.523 | 0.156 | 0.122 | 0.632 | 0.071 | 0.277 | 0.238 | 0.395 |
+| Comparative 16-seat constitutional senates | 0.565 | 0.673 | 0.566 | 0.574 | 0.294 | 0.569 | 0.630 | 0.103 | 0.778 | 0.514 | 0.147 | 0.120 | 0.622 | 0.096 | 0.267 | 0.239 | 0.298 |
+| Constitutional council with concrete-review backstop | 0.564 | 0.688 | 0.583 | 0.574 | 0.290 | 0.615 | 0.642 | 0.121 | 0.766 | 0.520 | 0.153 | 0.108 | 0.663 | 0.108 | 0.260 | 0.241 | 0.347 |
+| Stylized current U.S.-like supreme court | 0.560 | 0.675 | 0.568 | 0.574 | 0.303 | 0.560 | 0.652 | 0.154 | 0.692 | 0.488 | 0.165 | 0.175 | 0.394 | 0.321 | 0.341 | 0.278 | 0.179 |
+| Supreme court with cross-checking constitutional court | 0.553 | 0.691 | 0.585 | 0.574 | 0.274 | 0.590 | 0.625 | 0.093 | 0.771 | 0.514 | 0.155 | 0.122 | 0.585 | 0.097 | 0.272 | 0.241 | 0.348 |
+| Dual supreme courts with disagreement filter | 0.540 | 0.688 | 0.580 | 0.574 | 0.295 | 0.570 | 0.651 | 0.153 | 0.702 | 0.502 | 0.161 | 0.123 | 0.589 | 0.099 | 0.274 | 0.249 | 0.387 |
 
 ## Domain-Specific Rights Claimant Success
 
 | Scenario | Claimant case share | Aggregate | Rights | Structural | Election | Executive | Administrative | Economic |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| No emergency relief without merits review | 0.383 | 0.145 | 0.359 | 0.206 | 0.553 | 0.166 | 0.156 | 0.120 |
-| 18-year staggered terms + regular appointments | 0.383 | 0.138 | 0.349 | 0.222 | 0.519 | 0.150 | 0.152 | 0.132 |
-| 60 percent invalidation threshold | 0.383 | 0.107 | 0.278 | 0.168 | 0.388 | 0.090 | 0.089 | 0.090 |
-| Nonpartisan commission appointments | 0.383 | 0.142 | 0.365 | 0.221 | 0.508 | 0.149 | 0.153 | 0.142 |
-| Jurisdiction stripping constrained by rights carveouts | 0.383 | 0.141 | 0.361 | 0.225 | 0.506 | 0.146 | 0.145 | 0.127 |
-| Automatic merits follow-up for emergency relief | 0.383 | 0.162 | 0.399 | 0.247 | 0.630 | 0.215 | 0.175 | 0.149 |
-| Mandatory written emergency reasoning | 0.383 | 0.132 | 0.333 | 0.216 | 0.510 | 0.140 | 0.130 | 0.119 |
-| Peer recusal + reasoned emergency docket | 0.383 | 0.139 | 0.352 | 0.217 | 0.518 | 0.133 | 0.155 | 0.126 |
-| Retention-election accountability court | 0.383 | 0.132 | 0.341 | 0.194 | 0.478 | 0.126 | 0.129 | 0.115 |
-| Three-judge panels with en banc correction | 0.383 | 0.137 | 0.347 | 0.231 | 0.508 | 0.145 | 0.139 | 0.130 |
-| Judicial review with legislative supermajority override | 0.383 | 0.141 | 0.365 | 0.221 | 0.508 | 0.147 | 0.137 | 0.125 |
-| Time-limited legislative override window | 0.383 | 0.141 | 0.362 | 0.216 | 0.514 | 0.136 | 0.172 | 0.129 |
-| Expanded 15-seat court | 0.383 | 0.138 | 0.349 | 0.228 | 0.505 | 0.141 | 0.140 | 0.124 |
-| Independent recusal enforcement with substitutes | 0.383 | 0.142 | 0.363 | 0.230 | 0.519 | 0.154 | 0.157 | 0.123 |
-| Randomized merits panels with en banc correction | 0.383 | 0.139 | 0.354 | 0.231 | 0.502 | 0.138 | 0.147 | 0.124 |
-| Public-interest litigation filter | 0.383 | 0.155 | 0.411 | 0.236 | 0.529 | 0.165 | 0.149 | 0.138 |
-| Comparative 16-seat constitutional senates | 0.383 | 0.096 | 0.248 | 0.151 | 0.353 | 0.065 | 0.081 | 0.067 |
-| Constitutional remand before invalidation | 0.383 | 0.126 | 0.326 | 0.200 | 0.447 | 0.117 | 0.143 | 0.109 |
-| Pre-enactment constitutional council | 0.383 | 0.128 | 0.331 | 0.198 | 0.463 | 0.114 | 0.143 | 0.107 |
-| Stylized current U.S.-like supreme court | 0.383 | 0.146 | 0.359 | 0.223 | 0.624 | 0.187 | 0.164 | 0.117 |
-| Supreme court with cross-checking constitutional court | 0.383 | 0.085 | 0.221 | 0.150 | 0.296 | 0.088 | 0.085 | 0.088 |
-| Dual supreme courts with disagreement filter | 0.383 | 0.147 | 0.381 | 0.238 | 0.534 | 0.137 | 0.170 | 0.143 |
+| No emergency relief without merits review | 0.379 | 0.156 | 0.389 | 0.235 | 0.604 | 0.190 | 0.153 | 0.135 |
+| 18-year staggered terms + regular appointments | 0.379 | 0.149 | 0.383 | 0.246 | 0.548 | 0.172 | 0.171 | 0.151 |
+| 60 percent invalidation threshold | 0.379 | 0.116 | 0.299 | 0.183 | 0.432 | 0.118 | 0.109 | 0.108 |
+| Jurisdiction stripping constrained by rights carveouts | 0.379 | 0.149 | 0.384 | 0.254 | 0.544 | 0.175 | 0.156 | 0.146 |
+| Automatic merits follow-up for emergency relief | 0.379 | 0.175 | 0.431 | 0.283 | 0.695 | 0.235 | 0.197 | 0.156 |
+| Mandatory written emergency reasoning | 0.379 | 0.144 | 0.366 | 0.236 | 0.545 | 0.174 | 0.179 | 0.139 |
+| Nonpartisan commission appointments | 0.379 | 0.154 | 0.396 | 0.263 | 0.566 | 0.177 | 0.161 | 0.143 |
+| Peer recusal + reasoned emergency docket | 0.379 | 0.147 | 0.376 | 0.223 | 0.553 | 0.161 | 0.158 | 0.152 |
+| Retention-election accountability court | 0.379 | 0.139 | 0.362 | 0.208 | 0.511 | 0.147 | 0.141 | 0.125 |
+| Three-judge panels with en banc correction | 0.379 | 0.147 | 0.378 | 0.241 | 0.535 | 0.192 | 0.157 | 0.144 |
+| Emergency integrity package | 0.379 | 0.155 | 0.376 | 0.231 | 0.605 | 0.185 | 0.173 | 0.141 |
+| Time-limited legislative override window | 0.379 | 0.149 | 0.384 | 0.243 | 0.548 | 0.183 | 0.152 | 0.146 |
+| Randomized merits panels with en banc correction | 0.379 | 0.147 | 0.381 | 0.243 | 0.526 | 0.174 | 0.161 | 0.144 |
+| Judicial review with legislative supermajority override | 0.379 | 0.148 | 0.380 | 0.235 | 0.549 | 0.173 | 0.158 | 0.150 |
+| Expanded 15-seat court | 0.379 | 0.148 | 0.381 | 0.240 | 0.551 | 0.172 | 0.151 | 0.144 |
+| Independent recusal enforcement with substitutes | 0.379 | 0.151 | 0.391 | 0.255 | 0.553 | 0.175 | 0.160 | 0.147 |
+| Constitutional remand before invalidation | 0.379 | 0.134 | 0.346 | 0.214 | 0.471 | 0.158 | 0.143 | 0.119 |
+| Public-interest litigation filter | 0.379 | 0.166 | 0.437 | 0.275 | 0.564 | 0.207 | 0.172 | 0.164 |
+| Random panels with jurisdiction safeguards | 0.379 | 0.129 | 0.333 | 0.217 | 0.461 | 0.156 | 0.136 | 0.136 |
+| Pre-enactment constitutional council | 0.379 | 0.135 | 0.348 | 0.209 | 0.501 | 0.140 | 0.125 | 0.120 |
+| Constitutional remand with override window | 0.379 | 0.131 | 0.340 | 0.213 | 0.470 | 0.142 | 0.137 | 0.129 |
+| Comparative 16-seat constitutional senates | 0.379 | 0.103 | 0.271 | 0.152 | 0.375 | 0.091 | 0.087 | 0.088 |
+| Constitutional council with concrete-review backstop | 0.379 | 0.121 | 0.316 | 0.170 | 0.441 | 0.103 | 0.099 | 0.105 |
+| Stylized current U.S.-like supreme court | 0.379 | 0.154 | 0.372 | 0.235 | 0.690 | 0.215 | 0.167 | 0.132 |
+| Supreme court with cross-checking constitutional court | 0.379 | 0.093 | 0.248 | 0.148 | 0.311 | 0.111 | 0.113 | 0.094 |
+| Dual supreme courts with disagreement filter | 0.379 | 0.153 | 0.395 | 0.260 | 0.558 | 0.180 | 0.151 | 0.154 |
 
 ## Stress Case Leaders
 
 | Case | Best directional | Highest rights | Lowest shadow abuse | Lowest partisan align. |
 | --- | --- | --- | --- | --- |
-| Baseline | 18-year staggered terms + regular appointments (0.607) | Public-interest litigation filter (0.657) | No emergency relief without merits review (0.001) | Jurisdiction stripping constrained by rights carveouts (0.018) |
-| Partisan Appointment Pressure | 18-year staggered terms + regular appointments (0.608) | Public-interest litigation filter (0.658) | No emergency relief without merits review (0.001) | Dual supreme courts with disagreement filter (0.022) |
-| Rights-Risk Legislation | 60 percent invalidation threshold (0.567) | Public-interest litigation filter (0.648) | No emergency relief without merits review (0.003) | Dual supreme courts with disagreement filter (0.025) |
-| Shadow-Docket Stress | No emergency relief without merits review (0.568) | Automatic merits follow-up for emergency relief (0.666) | No emergency relief without merits review (0.007) | Time-limited legislative override window (0.027) |
-| High Democratic Mandate | 18-year staggered terms + regular appointments (0.617) | Dual supreme courts with disagreement filter (0.643) | No emergency relief without merits review (0.001) | Dual supreme courts with disagreement filter (0.011) |
-| Constitutional Conflict | No emergency relief without merits review (0.548) | Automatic merits follow-up for emergency relief (0.674) | No emergency relief without merits review (0.012) | Jurisdiction stripping constrained by rights carveouts (0.042) |
-| Imported Legislative Output | No emergency relief without merits review (0.610) | Public-interest litigation filter (0.660) | No emergency relief without merits review (0.001) | Time-limited legislative override window (0.016) |
-| Low Appointment Capture | 18-year staggered terms + regular appointments (0.606) | Public-interest litigation filter (0.657) | No emergency relief without merits review (0.001) | Jurisdiction stripping constrained by rights carveouts (0.012) |
-| Extreme Appointment Capture | No emergency relief without merits review (0.606) | Public-interest litigation filter (0.654) | No emergency relief without merits review (0.001) | Jurisdiction stripping constrained by rights carveouts (0.026) |
-| Low Emergency Pressure | 18-year staggered terms + regular appointments (0.614) | Public-interest litigation filter (0.662) | No emergency relief without merits review (0.001) | Dual supreme courts with disagreement filter (0.017) |
-| Extreme Emergency Pressure | No emergency relief without merits review (0.553) | Automatic merits follow-up for emergency relief (0.677) | No emergency relief without merits review (0.012) | Dual supreme courts with disagreement filter (0.035) |
-| Low Rights Risk | 18-year staggered terms + regular appointments (0.623) | Public-interest litigation filter (0.653) | No emergency relief without merits review (0.001) | Judicial review with legislative supermajority override (0.010) |
-| Extreme Rights Risk | 60 percent invalidation threshold (0.530) | No emergency relief without merits review (0.645) | No emergency relief without merits review (0.005) | Time-limited legislative override window (0.034) |
-| Weak-Mandate Legislation | 60 percent invalidation threshold (0.571) | Public-interest litigation filter (0.667) | No emergency relief without merits review (0.003) | Time-limited legislative override window (0.022) |
-| Strong-Mandate Legislation | 18-year staggered terms + regular appointments (0.621) | Public-interest litigation filter (0.641) | No emergency relief without merits review (0.001) | Dual supreme courts with disagreement filter (0.012) |
+| Baseline | No emergency relief without merits review (0.607) | Public-interest litigation filter (0.664) | No emergency relief without merits review (0.011) | Dual supreme courts with disagreement filter (0.018) |
+| Partisan Appointment Pressure | No emergency relief without merits review (0.604) | Public-interest litigation filter (0.666) | No emergency relief without merits review (0.012) | Dual supreme courts with disagreement filter (0.023) |
+| Rights-Risk Legislation | 60 percent invalidation threshold (0.549) | Automatic merits follow-up for emergency relief (0.650) | No emergency relief without merits review (0.020) | Jurisdiction stripping constrained by rights carveouts (0.025) |
+| Shadow-Docket Stress | No emergency relief without merits review (0.553) | Stylized current U.S.-like supreme court (0.677) | No emergency relief without merits review (0.043) | Time-limited legislative override window (0.027) |
+| High Democratic Mandate | Jurisdiction stripping constrained by rights carveouts (0.624) | Public-interest litigation filter (0.650) | No emergency relief without merits review (0.008) | Dual supreme courts with disagreement filter (0.011) |
+| Constitutional Conflict | 60 percent invalidation threshold (0.522) | Automatic merits follow-up for emergency relief (0.676) | No emergency relief without merits review (0.044) | Jurisdiction stripping constrained by rights carveouts (0.042) |
+| Imported Legislative Output | No emergency relief without merits review (0.610) | Public-interest litigation filter (0.663) | No emergency relief without merits review (0.010) | Judicial review with legislative supermajority override (0.016) |
+| Low Appointment Capture | No emergency relief without merits review (0.607) | Public-interest litigation filter (0.665) | No emergency relief without merits review (0.011) | Time-limited legislative override window (0.012) |
+| Extreme Appointment Capture | Jurisdiction stripping constrained by rights carveouts (0.605) | Public-interest litigation filter (0.664) | No emergency relief without merits review (0.012) | Dual supreme courts with disagreement filter (0.027) |
+| Low Emergency Pressure | Jurisdiction stripping constrained by rights carveouts (0.613) | Public-interest litigation filter (0.667) | No emergency relief without merits review (0.009) | Dual supreme courts with disagreement filter (0.017) |
+| Extreme Emergency Pressure | No emergency relief without merits review (0.529) | Stylized current U.S.-like supreme court (0.680) | No emergency relief without merits review (0.057) | Jurisdiction stripping constrained by rights carveouts (0.036) |
+| Low Rights Risk | Jurisdiction stripping constrained by rights carveouts (0.633) | Public-interest litigation filter (0.652) | No emergency relief without merits review (0.006) | Time-limited legislative override window (0.010) |
+| Extreme Rights Risk | 60 percent invalidation threshold (0.511) | No emergency relief without merits review (0.656) | No emergency relief without merits review (0.030) | Jurisdiction stripping constrained by rights carveouts (0.034) |
+| Weak-Mandate Legislation | 60 percent invalidation threshold (0.550) | Public-interest litigation filter (0.667) | No emergency relief without merits review (0.022) | Time-limited legislative override window (0.022) |
+| Strong-Mandate Legislation | Jurisdiction stripping constrained by rights carveouts (0.629) | Dual supreme courts with disagreement filter (0.645) | No emergency relief without merits review (0.007) | Dual supreme courts with disagreement filter (0.012) |

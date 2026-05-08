@@ -36,10 +36,12 @@ public final class ParameterSweepRunner {
         List<Scenario> scenarios = ScenarioCatalog.defaultScenarios();
         Simulator simulator = new Simulator();
         Map<String, ScenarioSweepStats> stats = new LinkedHashMap<>();
+        List<SweepDriverRow> driverRows = new ArrayList<>();
 
         for (int i = 0; i < worlds.size(); i++) {
             SweepWorld world = worlds.get(i);
             List<ScenarioReport> reports = simulator.compare(scenarios, world.worldSpec(), runs, seed + i * 10_003L);
+            driverRows.addAll(driverRows(world, reports));
             for (ScenarioReport report : reports) {
                 stats.computeIfAbsent(report.scenarioKey(), ignored -> new ScenarioSweepStats(report.scenarioName()))
                         .add(report);
@@ -52,9 +54,13 @@ public final class ParameterSweepRunner {
                 .toList();
         Path csvPath = outputDir.resolve("parameter-sweep-v4.csv");
         Path markdownPath = outputDir.resolve("parameter-sweep-v4.md");
+        Path driverCsvPath = outputDir.resolve("parameter-sweep-drivers-v4.csv");
+        Path driverMarkdownPath = outputDir.resolve("parameter-sweep-drivers-v4.md");
         Path manifestPath = outputDir.resolve("parameter-sweep-v4-manifest.json");
         Files.writeString(csvPath, csv(rows));
-        Files.writeString(markdownPath, markdown(rows, worlds, runs, casesPerRun, seed, importedProfile));
+        Files.writeString(markdownPath, markdown(rows, worlds, driverRows, runs, casesPerRun, seed, importedProfile));
+        Files.writeString(driverCsvPath, driverCsv(driverRows));
+        Files.writeString(driverMarkdownPath, driverMarkdown(driverRows));
         ReportProvenance.write(
                 manifestPath,
                 "Parameter Sweep Priors v4",
@@ -64,9 +70,53 @@ public final class ParameterSweepRunner {
                 worlds.size(),
                 scenarios.size(),
                 legislativeInput,
-                List.of(csvPath, markdownPath)
+                List.of(csvPath, markdownPath, driverCsvPath, driverMarkdownPath)
         );
         return new DiagnosticResult("Parameter Sweep Priors v4", csvPath, markdownPath, manifestPath);
+    }
+
+    private static List<SweepDriverRow> driverRows(SweepWorld world, List<ScenarioReport> reports) {
+        ScenarioReport best = reports.stream()
+                .max(Comparator.comparingDouble(ScenarioReport::directionalScore))
+                .orElseThrow();
+        double closeThreshold = 0.010;
+        return reports.stream()
+                .filter(report -> best.directionalScore() - report.directionalScore() <= closeThreshold)
+                .sorted(Comparator.comparingDouble(ScenarioReport::directionalScore).reversed())
+                .map(report -> new SweepDriverRow(
+                        world.key(),
+                        world.name(),
+                        world.priorWeight(),
+                        report.scenarioKey(),
+                        report.scenarioName(),
+                        report.directionalScore(),
+                        report.rightsProtection(),
+                        report.rightsClaimantSuccess(),
+                        report.shadowDocketAbuse(),
+                        report.emergencyDownstreamEffect(),
+                        report.governmentNoncomplianceRate(),
+                        report.lowerCourtCompliance(),
+                        report.lowerCourtResistanceRisk(),
+                        report.enforcementCapacity(),
+                        interpretationRisk(report)
+                ))
+                .toList();
+    }
+
+    private static String interpretationRisk(ScenarioReport report) {
+        if (report.rightsProtection() < 0.48 || report.rightsClaimantSuccess() < 0.12) {
+            return "rights-protection caveat";
+        }
+        if (report.governmentNoncomplianceRate() > 0.20 || report.lowerCourtResistanceRisk() > 0.28) {
+            return "compliance caveat";
+        }
+        if (report.emergencyDownstreamEffect() > 0.11 || report.shadowDocketAbuse() > 0.18) {
+            return "emergency-power caveat";
+        }
+        if (report.administrativeCost() > 0.28) {
+            return "administrative-cost caveat";
+        }
+        return "front-line cluster";
     }
 
     private static List<SweepWorld> worlds(int casesPerRun, LegislativeOutputProfile importedProfile) {
@@ -169,9 +219,50 @@ public final class ParameterSweepRunner {
         return builder.toString();
     }
 
+    private static String driverCsv(List<SweepDriverRow> rows) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(String.join(",",
+                "priorKey",
+                "priorName",
+                "priorWeight",
+                "scenarioKey",
+                "scenario",
+                "directionalScore",
+                "rightsProtection",
+                "rightsClaimantSuccess",
+                "shadowDocketAbuse",
+                "emergencyDownstreamEffect",
+                "governmentNoncomplianceRate",
+                "lowerCourtCompliance",
+                "lowerCourtResistanceRisk",
+                "enforcementCapacity",
+                "interpretationRisk"
+        )).append('\n');
+        for (SweepDriverRow row : rows) {
+            builder.append(Values.csv(row.priorKey())).append(',')
+                    .append(Values.csv(row.priorName())).append(',')
+                    .append(format(row.priorWeight())).append(',')
+                    .append(Values.csv(row.scenarioKey())).append(',')
+                    .append(Values.csv(row.scenarioName())).append(',')
+                    .append(format(row.directionalScore())).append(',')
+                    .append(format(row.rightsProtection())).append(',')
+                    .append(format(row.rightsClaimantSuccess())).append(',')
+                    .append(format(row.shadowDocketAbuse())).append(',')
+                    .append(format(row.emergencyDownstreamEffect())).append(',')
+                    .append(format(row.governmentNoncomplianceRate())).append(',')
+                    .append(format(row.lowerCourtCompliance())).append(',')
+                    .append(format(row.lowerCourtResistanceRisk())).append(',')
+                    .append(format(row.enforcementCapacity())).append(',')
+                    .append(Values.csv(row.interpretationRisk()))
+                    .append('\n');
+        }
+        return builder.toString();
+    }
+
     private static String markdown(
             List<SweepRow> rows,
             List<SweepWorld> worlds,
+            List<SweepDriverRow> driverRows,
             int runs,
             int casesPerRun,
             long seed,
@@ -222,6 +313,67 @@ public final class ParameterSweepRunner {
                     .append(band(row.constitutionalConflictP05(), row.constitutionalConflictMedian(), row.constitutionalConflictP95()))
                     .append(" | ")
                     .append(band(row.strategicPressureP05(), row.strategicPressureMedian(), row.strategicPressureP95()))
+                    .append(" |\n");
+        }
+        builder.append("\n## What Would Change the Interpretation\n\n");
+        builder.append("The table below reports each named prior's top directional-score cluster within 0.010 of that prior's best score. A design conclusion should weaken if it appears only under one narrow prior, if its cluster membership depends on high emergency pressure or high conflict, or if its apparent advantage comes with rights-protection, compliance, or emergency-power caveats.\n\n");
+        builder.append("| Prior | Cluster scenario | Score | Rights | Shadow | Emerg. downstream | Gov. noncomp. | Lower-court resistance | Caveat |\n");
+        builder.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n");
+        for (SweepDriverRow row : driverRows) {
+            builder.append("| ")
+                    .append(row.priorName())
+                    .append(" | ")
+                    .append(row.scenarioName())
+                    .append(" | ")
+                    .append(format(row.directionalScore()))
+                    .append(" | ")
+                    .append(format(row.rightsProtection()))
+                    .append(" | ")
+                    .append(format(row.shadowDocketAbuse()))
+                    .append(" | ")
+                    .append(format(row.emergencyDownstreamEffect()))
+                    .append(" | ")
+                    .append(format(row.governmentNoncomplianceRate()))
+                    .append(" | ")
+                    .append(format(row.lowerCourtResistanceRisk()))
+                    .append(" | ")
+                    .append(row.interpretationRisk())
+                    .append(" |\n");
+        }
+        return builder.toString();
+    }
+
+    private static String driverMarkdown(List<SweepDriverRow> rows) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("# Parameter Sweep Interpretation Drivers v4\n\n");
+        builder.append("Top directional-score clusters by named prior. Rows are synthetic sensitivity diagnostics, not empirical validation results.\n\n");
+        builder.append("| Prior | Cluster scenario | Score | Rights | Claimant | Shadow | Emerg. downstream | Gov. noncomp. | Lower-court compliance | Lower-court resistance | Enforcement | Caveat |\n");
+        builder.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n");
+        for (SweepDriverRow row : rows) {
+            builder.append("| ")
+                    .append(row.priorName())
+                    .append(" | ")
+                    .append(row.scenarioName())
+                    .append(" | ")
+                    .append(format(row.directionalScore()))
+                    .append(" | ")
+                    .append(format(row.rightsProtection()))
+                    .append(" | ")
+                    .append(format(row.rightsClaimantSuccess()))
+                    .append(" | ")
+                    .append(format(row.shadowDocketAbuse()))
+                    .append(" | ")
+                    .append(format(row.emergencyDownstreamEffect()))
+                    .append(" | ")
+                    .append(format(row.governmentNoncomplianceRate()))
+                    .append(" | ")
+                    .append(format(row.lowerCourtCompliance()))
+                    .append(" | ")
+                    .append(format(row.lowerCourtResistanceRisk()))
+                    .append(" | ")
+                    .append(format(row.enforcementCapacity()))
+                    .append(" | ")
+                    .append(row.interpretationRisk())
                     .append(" |\n");
         }
         return builder.toString();
@@ -300,6 +452,25 @@ public final class ParameterSweepRunner {
     }
 
     private record SweepWorld(String key, String name, double priorWeight, String rationale, WorldSpec worldSpec) {
+    }
+
+    private record SweepDriverRow(
+            String priorKey,
+            String priorName,
+            double priorWeight,
+            String scenarioKey,
+            String scenarioName,
+            double directionalScore,
+            double rightsProtection,
+            double rightsClaimantSuccess,
+            double shadowDocketAbuse,
+            double emergencyDownstreamEffect,
+            double governmentNoncomplianceRate,
+            double lowerCourtCompliance,
+            double lowerCourtResistanceRisk,
+            double enforcementCapacity,
+            String interpretationRisk
+    ) {
     }
 
     private record SweepRow(

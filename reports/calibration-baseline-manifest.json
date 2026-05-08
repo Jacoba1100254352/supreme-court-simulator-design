@@ -12,8 +12,8 @@
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/calibration-baseline.csv", "sha256": "98ec5e4269d1321609fb7b9ba01278d346f947f9a43ea7650ad24f6f417974a5"},
-    {"path": "reports/calibration-baseline.md", "sha256": "704e1d397b8e346cdb1ac6a92b0b9bc34cce6cbc98d9e92147b42f2519c978d2"},
+    {"path": "reports/calibration-baseline.csv", "sha256": "6c3f200bbef57d1f64135f2955054468b001ad445321f81c4d087e91510e7d0d"},
+    {"path": "reports/calibration-baseline.md", "sha256": "04714baa58161fb92a7d434f31928f39ec42628aa23b4cabb5b4e5d20140675a"},
     {"path": "reports/calibration-source-ranges-v4.csv", "sha256": "04041d91edaecad62642079c14b5b3db86a27e1467e0ee1f7410033708b5c0c1"},
     {"path": "reports/calibration-source-ranges-v4.md", "sha256": "d4bddeff251f8d7f964708c57516b61504a90ac30c9918b3c7797945992c0ec0"}
   ]

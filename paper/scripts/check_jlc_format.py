@@ -18,9 +18,11 @@ REQUIRED_GENERATED = [
     ROOT / "paper" / "figures" / "conflict_confidence_tradeoff.tex",
     ROOT / "paper" / "figures" / "emergency_profile.tex",
     ROOT / "paper" / "tables" / "calibration_guardrails.tex",
+    ROOT / "paper" / "tables" / "calibration_classification.tex",
     ROOT / "paper" / "tables" / "v2_selected.tex",
     ROOT / "paper" / "tables" / "pipeline_diagnostics.tex",
     ROOT / "paper" / "tables" / "uncertainty_bands.tex",
+    ROOT / "paper" / "tables" / "sensitivity_drivers.tex",
     ROOT / "paper" / "tables" / "mechanism_summary.tex",
 ]
 
@@ -82,9 +84,11 @@ def main() -> None:
         ("theory section", "\\section{Theory and Design Space}"),
         ("expectations section", "\\section{Expectations}"),
         ("calibration guardrail table", "tables/calibration_guardrails"),
+        ("calibration classification table", "tables/calibration_classification"),
         ("generated selected results table", "tables/v2_selected"),
         ("litigation-pipeline diagnostics table", "tables/pipeline_diagnostics"),
         ("uncertainty band table", "tables/uncertainty_bands"),
+        ("sensitivity drivers table", "tables/sensitivity_drivers"),
         ("mechanism summary table", "tables/mechanism_summary"),
         ("methods appendix", "\\section{Model Mechanics}"),
         ("source audit", "paper/source-audit.csv"),

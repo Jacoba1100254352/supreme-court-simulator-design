@@ -42,10 +42,17 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.certiorariPathRate(), "certiorariPathRate");
         TestSupport.checkUnitInterval(report.certiorariAdmissionRate(), "certiorariAdmissionRate");
         TestSupport.checkUnitInterval(report.lowerCourtSplitDepth(), "lowerCourtSplitDepth");
+        TestSupport.checkUnitInterval(report.lowerCourtIdeologicalDrift(), "lowerCourtIdeologicalDrift");
+        TestSupport.checkUnitInterval(report.lowerCourtResistanceRisk(), "lowerCourtResistanceRisk");
+        TestSupport.checkUnitInterval(report.forumShoppingPressure(), "forumShoppingPressure");
+        TestSupport.checkUnitInterval(report.preReviewSettlementPressure(), "preReviewSettlementPressure");
+        TestSupport.checkUnitInterval(report.settledBeforeReviewRate(), "settledBeforeReviewRate");
         TestSupport.checkUnitInterval(report.strategicPlaintiffSelection(), "strategicPlaintiffSelection");
         TestSupport.checkUnitInterval(report.repeatPlayerAdvantage(), "repeatPlayerAdvantage");
         TestSupport.checkUnitInterval(report.governmentNoncomplianceRisk(), "governmentNoncomplianceRisk");
         TestSupport.checkUnitInterval(report.governmentNoncomplianceRate(), "governmentNoncomplianceRate");
+        TestSupport.checkUnitInterval(report.enforcementCapacity(), "enforcementCapacity");
+        TestSupport.checkUnitInterval(report.emergencyOpportunism(), "emergencyOpportunism");
         TestSupport.checkUnitInterval(report.recusalIncentivePressure(), "recusalIncentivePressure");
         TestSupport.checkUnitInterval(report.legalStability(), "legalStability");
         TestSupport.checkUnitInterval(report.precedentStability(), "precedentStability");

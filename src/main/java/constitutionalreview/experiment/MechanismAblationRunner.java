@@ -95,6 +95,10 @@ public final class MechanismAblationRunner {
                 new AblationPair("legislative-override", "Legislative override", "term-limited-balanced", "legislative-override"),
                 new AblationPair("override-window", "Legislative override window", "term-limited-balanced", "legislative-override-window"),
                 new AblationPair("jurisdiction-stripping-constraints", "Jurisdiction-stripping constraints", "term-limited-balanced", "jurisdiction-stripping-constraints"),
+                new AblationPair("emergency-integrity-bundle", "Emergency integrity bundle", "current-us-like", "emergency-integrity-package"),
+                new AblationPair("remand-override-window-bundle", "Remand and override-window bundle", "term-limited-balanced", "remand-override-window-package"),
+                new AblationPair("panel-jurisdiction-safeguards", "Panel and jurisdiction safeguards", "term-limited-balanced", "panel-jurisdiction-safeguards"),
+                new AblationPair("council-concrete-hybrid", "Council with concrete-review backstop", "nonpartisan-commission", "council-concrete-hybrid"),
                 new AblationPair("accountability-election", "Accountability election", "nonpartisan-commission", "accountability-retention-court"),
                 new AblationPair("court-expansion", "Court expansion", "term-limited-balanced", "expanded-court-fifteen")
         );
@@ -148,7 +152,10 @@ public final class MechanismAblationRunner {
                 "deltaDemocraticResponsiveness",
                 "deltaAdministrativeCost",
                 "deltaLowerCourtCompliance",
+                "deltaLowerCourtResistanceRisk",
+                "deltaEnforcementCapacity",
                 "deltaGovernmentNoncomplianceRate",
+                "deltaEmergencyOpportunism",
                 "deltaEmergencyDownstreamEffect",
                 "deltaPrecedentDurability",
                 "deltaJusticeReplacementRate",
@@ -177,7 +184,10 @@ public final class MechanismAblationRunner {
                     .append(format(row.deltaDemocraticResponsiveness())).append(',')
                     .append(format(row.deltaAdministrativeCost())).append(',')
                     .append(format(row.deltaLowerCourtCompliance())).append(',')
+                    .append(format(row.deltaLowerCourtResistanceRisk())).append(',')
+                    .append(format(row.deltaEnforcementCapacity())).append(',')
                     .append(format(row.deltaGovernmentNoncomplianceRate())).append(',')
+                    .append(format(row.deltaEmergencyOpportunism())).append(',')
                     .append(format(row.deltaEmergencyDownstreamEffect())).append(',')
                     .append(format(row.deltaPrecedentDurability())).append(',')
                     .append(format(row.deltaJusticeReplacementRate())).append(',')
@@ -212,8 +222,8 @@ public final class MechanismAblationRunner {
                 .append("\n\n");
         builder.append("Positive deltas improve higher-better metrics. Negative deltas improve lower-better diagnostics such as partisan alignment, shadow abuse, conflict, and administrative cost.\n\n");
         builder.append("## Weighted Mechanism Summary\n\n");
-        builder.append("| Mechanism | Base -> Variant | Directional | Legal | Rights | Shadow | Conflict | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Precedent durability | Admin cost |\n");
-        builder.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        builder.append("| Mechanism | Base -> Variant | Directional | Legal | Rights | Shadow | Conflict | Lower-court compliance | LC resistance | Enforcement | Gov. noncomp. | Emerg. opp. | Emerg. downstream | Precedent durability | Admin cost |\n");
+        builder.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
         for (AblationSummary summary : summaries) {
             builder.append("| ")
                     .append(summary.mechanismName())
@@ -234,7 +244,13 @@ public final class MechanismAblationRunner {
                     .append(" | ")
                     .append(format(summary.deltaLowerCourtCompliance()))
                     .append(" | ")
+                    .append(format(summary.deltaLowerCourtResistanceRisk()))
+                    .append(" | ")
+                    .append(format(summary.deltaEnforcementCapacity()))
+                    .append(" | ")
                     .append(format(summary.deltaGovernmentNoncomplianceRate()))
+                    .append(" | ")
+                    .append(format(summary.deltaEmergencyOpportunism()))
                     .append(" | ")
                     .append(format(summary.deltaEmergencyDownstreamEffect()))
                     .append(" | ")
@@ -287,7 +303,10 @@ public final class MechanismAblationRunner {
             double deltaDemocraticResponsiveness,
             double deltaAdministrativeCost,
             double deltaLowerCourtCompliance,
+            double deltaLowerCourtResistanceRisk,
+            double deltaEnforcementCapacity,
             double deltaGovernmentNoncomplianceRate,
+            double deltaEmergencyOpportunism,
             double deltaEmergencyDownstreamEffect,
             double deltaPrecedentDurability,
             double deltaJusticeReplacementRate,
@@ -322,7 +341,10 @@ public final class MechanismAblationRunner {
                     variant.democraticResponsiveness() - base.democraticResponsiveness(),
                     variant.administrativeCost() - base.administrativeCost(),
                     variant.lowerCourtCompliance() - base.lowerCourtCompliance(),
+                    variant.lowerCourtResistanceRisk() - base.lowerCourtResistanceRisk(),
+                    variant.enforcementCapacity() - base.enforcementCapacity(),
                     variant.governmentNoncomplianceRate() - base.governmentNoncomplianceRate(),
+                    variant.emergencyOpportunism() - base.emergencyOpportunism(),
                     variant.emergencyDownstreamEffect() - base.emergencyDownstreamEffect(),
                     variant.precedentDurability() - base.precedentDurability(),
                     variant.justiceReplacementRate() - base.justiceReplacementRate(),
@@ -352,7 +374,10 @@ public final class MechanismAblationRunner {
         private double deltaDemocraticResponsiveness;
         private double deltaAdministrativeCost;
         private double deltaLowerCourtCompliance;
+        private double deltaLowerCourtResistanceRisk;
+        private double deltaEnforcementCapacity;
         private double deltaGovernmentNoncomplianceRate;
+        private double deltaEmergencyOpportunism;
         private double deltaEmergencyDownstreamEffect;
         private double deltaPrecedentDurability;
         private double deltaJusticeReplacementRate;
@@ -383,7 +408,10 @@ public final class MechanismAblationRunner {
             deltaDemocraticResponsiveness += row.deltaDemocraticResponsiveness() * rowWeight;
             deltaAdministrativeCost += row.deltaAdministrativeCost() * rowWeight;
             deltaLowerCourtCompliance += row.deltaLowerCourtCompliance() * rowWeight;
+            deltaLowerCourtResistanceRisk += row.deltaLowerCourtResistanceRisk() * rowWeight;
+            deltaEnforcementCapacity += row.deltaEnforcementCapacity() * rowWeight;
             deltaGovernmentNoncomplianceRate += row.deltaGovernmentNoncomplianceRate() * rowWeight;
+            deltaEmergencyOpportunism += row.deltaEmergencyOpportunism() * rowWeight;
             deltaEmergencyDownstreamEffect += row.deltaEmergencyDownstreamEffect() * rowWeight;
             deltaPrecedentDurability += row.deltaPrecedentDurability() * rowWeight;
             deltaJusticeReplacementRate += row.deltaJusticeReplacementRate() * rowWeight;
@@ -412,7 +440,10 @@ public final class MechanismAblationRunner {
                     deltaDemocraticResponsiveness / denominator,
                     deltaAdministrativeCost / denominator,
                     deltaLowerCourtCompliance / denominator,
+                    deltaLowerCourtResistanceRisk / denominator,
+                    deltaEnforcementCapacity / denominator,
                     deltaGovernmentNoncomplianceRate / denominator,
+                    deltaEmergencyOpportunism / denominator,
                     deltaEmergencyDownstreamEffect / denominator,
                     deltaPrecedentDurability / denominator,
                     deltaJusticeReplacementRate / denominator,
@@ -441,7 +472,10 @@ public final class MechanismAblationRunner {
             double deltaDemocraticResponsiveness,
             double deltaAdministrativeCost,
             double deltaLowerCourtCompliance,
+            double deltaLowerCourtResistanceRisk,
+            double deltaEnforcementCapacity,
             double deltaGovernmentNoncomplianceRate,
+            double deltaEmergencyOpportunism,
             double deltaEmergencyDownstreamEffect,
             double deltaPrecedentDurability,
             double deltaJusticeReplacementRate,
