@@ -41,9 +41,17 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.directionalScore(), "directionalScore");
         TestSupport.checkUnitInterval(report.certiorariPathRate(), "certiorariPathRate");
         TestSupport.checkUnitInterval(report.certiorariAdmissionRate(), "certiorariAdmissionRate");
+        TestSupport.checkUnitInterval(report.courtRequestedResponseRate(), "courtRequestedResponseRate");
+        TestSupport.checkUnitInterval(report.cvsgRequestRate(), "cvsgRequestRate");
+        TestSupport.checkUnitInterval(report.paidCfrRequestRate(), "paidCfrRequestRate");
+        TestSupport.checkUnitInterval(report.ifpCfrRequestRate(), "ifpCfrRequestRate");
         TestSupport.checkUnitInterval(report.lowerCourtSplitDepth(), "lowerCourtSplitDepth");
+        TestSupport.checkUnitInterval(report.genuineLowerCourtSplitRate(), "genuineLowerCourtSplitRate");
         TestSupport.checkUnitInterval(report.lowerCourtIdeologicalDrift(), "lowerCourtIdeologicalDrift");
         TestSupport.checkUnitInterval(report.lowerCourtResistanceRisk(), "lowerCourtResistanceRisk");
+        TestSupport.checkUnitInterval(report.barCapital(), "barCapital");
+        TestSupport.checkUnitInterval(report.claimStrength(), "claimStrength");
+        TestSupport.checkUnitInterval(report.vehicleQuality(), "vehicleQuality");
         TestSupport.checkUnitInterval(report.forumShoppingPressure(), "forumShoppingPressure");
         TestSupport.checkUnitInterval(report.preReviewSettlementPressure(), "preReviewSettlementPressure");
         TestSupport.checkUnitInterval(report.settledBeforeReviewRate(), "settledBeforeReviewRate");
@@ -86,6 +94,10 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.rightsCarveoutBlockRate(), "rightsCarveoutBlockRate");
         TestSupport.checkUnitInterval(report.concurrenceRate(), "concurrenceRate");
         TestSupport.checkUnitInterval(report.dissentRate(), "dissentRate");
+        double claimantTypeTotal = report.individualOneShotClaimantRate() + report.organizedRightsClaimantRate()
+                + report.businessRepeatPlayerClaimantRate() + report.governmentClaimantRate()
+                + report.expertBarClinicClaimantRate();
+        TestSupport.check(Math.abs(claimantTypeTotal - 1.0) < 0.000_000_1, "claimant type rates should sum to one");
         TestSupport.checkUnitInterval(report.rightsClaimantCaseRate(), "rightsClaimantCaseRate");
         TestSupport.checkUnitInterval(report.rightsClaimantSuccess(), "rightsClaimantSuccess");
         TestSupport.check(

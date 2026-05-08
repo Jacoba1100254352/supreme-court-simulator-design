@@ -7,33 +7,91 @@ Normalized source observations used to compute calibration ranges. The simulator
 | Metric | Obs. | Terms | Sources | Raw min | P05 | Median | P95 | Raw max |
 | --- | ---: | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | `administrativeLawRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.068 | 0.086 | 0.234 | 0.397 | 0.416 |
+| `applicationsTotal_courtDecided` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 1565.000 | 1565.000 | 1565.000 | 1565.000 | 1565.000 |
+| `ca_scc_leaveGrantRate_submitted` | 1 | 2024 | supreme-court-simulator-litigation-pipeline-incentives | 0.064 | 0.064 | 0.064 | 0.064 | 0.064 |
 | `canada_override_duration_years` | 1 | stable | cross-national-calibration-targets | 5.000 | 5.000 | 5.000 | 5.000 | 5.000 |
+| `canada_override_expiryWindow` | 1 | current constitutional rule | supreme-court-simulator-institutional-design-and-empirical-anchors | 5.000 | 5.000 | 5.000 | 5.000 | 5.000 |
+| `capitalApplications_total` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 945.000 | 945.000 | 945.000 | 945.000 | 945.000 |
+| `certGrantRateAfterCFR_ifp` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.030 | 0.030 | 0.030 | 0.030 | 0.030 |
+| `certGrantRateAfterCFR_paid` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.169 | 0.169 | 0.169 | 0.169 | 0.169 |
+| `cfrRate_ifp` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.020 | 0.020 | 0.020 | 0.020 | 0.020 |
+| `cfrRate_paid` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.047 | 0.047 | 0.047 | 0.047 | 0.047 |
 | `civil_disposition_days_eu_median_first_instance` | 1 | 2022 | institutional-cost-delay-complexity-benchmarks | 239.000 | 239.000 | 239.000 | 239.000 | 239.000 |
+| `comparativeConstitutionalComplianceCoverage` | 1 | 1900–2020 | supreme-court-simulator-institutional-design-evidence | 175.000 | 175.000 | 175.000 | 175.000 | 175.000 |
 | `complaw_courts_covered` | 1 | 2024_release | cross-national-calibration-targets | 42.000 | 42.000 | 42.000 | 42.000 | 42.000 |
 | `complexity_appointment_actor_count_germany` | 1 | stable | institutional-cost-delay-complexity-benchmarks | 2.000 | 2.000 | 2.000 | 2.000 | 2.000 |
 | `complexity_appointment_actor_count_italy` | 1 | stable | institutional-cost-delay-complexity-benchmarks | 3.000 | 3.000 | 3.000 | 3.000 | 3.000 |
 | `complexity_appointment_actor_count_spain` | 1 | stable | institutional-cost-delay-complexity-benchmarks | 4.000 | 4.000 | 4.000 | 4.000 | 4.000 |
 | `complexity_panel_layers_germany` | 1 | stable | institutional-cost-delay-complexity-benchmarks | 2.000 | 2.000 | 2.000 | 2.000 | 2.000 |
 | `complexity_panel_layers_korea` | 1 | stable | institutional-cost-delay-complexity-benchmarks | 2.000 | 2.000 | 2.000 | 2.000 | 2.000 |
+| `conflictResolutionMeanYears_coaSample` | 1 | conflicts born 2005+ within 2005–2013 study window | supreme-court-simulator-calibration-targets | 1.500 | 1.500 | 1.500 | 1.500 | 1.500 |
+| `conflictResolutionMeanYears_scotusSample` | 1 | conflicts born 2005+ within 2005–2012/2013 study window | supreme-court-simulator-calibration-targets | 1.200 | 1.200 | 1.200 | 1.200 | 1.200 |
+| `conflictUnresolvedShare_sample` | 1 | conflicts born 2005+ within 2005–2013 study window | supreme-court-simulator-calibration-targets | 0.900 | 0.900 | 0.900 | 0.900 | 0.900 |
+| `constitutionalComplaintShare_longRun` | 1 | 1951–2018 | supreme-court-simulator-calibration-targets | 0.966 | 0.966 | 0.966 | 0.966 | 0.966 |
+| `costaRicaMeanMonthsToCompliance` | 1 | monitored cases after monitoring program launch in 2009 | supreme-court-simulator-institutional-design-evidence | 8.100 | 8.100 | 8.100 | 8.100 | 8.100 |
+| `costaRicaOrdersTrackedShare` | 1 | orders issued Oct. 2009–Mar. 25 2013; status as of May 2 2013 | supreme-court-simulator-institutional-design-evidence | 0.973 | 0.973 | 0.973 | 0.973 | 0.973 |
+| `costaRicaPublicityAccelerationMonths` | 1 | around March–April 2010 press-conference intervention | supreme-court-simulator-institutional-design-evidence | 2.000 | 2.000 | 2.000 | 2.000 | 2.000 |
+| `courtFollowsSGRecommendation` | 1 | 1994–2004 | supreme-court-simulator-calibration-targets | 0.796 | 0.796 | 0.796 | 0.796 | 0.796 |
+| `cvsgFrequency` | 1 | 1994–2004 | supreme-court-simulator-calibration-targets | 11.000 | 11.000 | 11.000 | 11.000 | 11.000 |
+| `cvsgGrantRate_recent` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.390 | 0.390 | 0.390 | 0.390 | 0.390 |
+| `de_bverfg_constitutionalComplaint_completionToIntake` | 1 | 2024 | supreme-court-simulator-litigation-pipeline-incentives | 1.060 | 1.060 | 1.060 | 1.060 | 1.060 |
+| `de_bverfg_constitutionalComplaint_intake` | 1 | 2024 | supreme-court-simulator-litigation-pipeline-incentives | 3433.000 | 3433.000 | 3433.000 | 3433.000 | 3433.000 |
+| `de_bverfg_cumulativeConstitutionalComplaints` | 1 | 1951 to 2024 | supreme-court-simulator-litigation-pipeline-incentives | 252000.000 | 252000.000 | 252000.000 | 252000.000 | 252000.000 |
+| `districtCourtAlignmentShockSameDirectionPP` | 1 | lower-court cases filed before and resolved after higher-court decisions; article published 2023 | supreme-court-simulator-institutional-design-evidence | 0.330 | 0.330 | 0.330 | 0.330 | 0.330 |
+| `echrClosedLeadingCases2025` | 1 | 2025 | supreme-court-simulator-institutional-design-evidence | 194.000 | 194.000 | 194.000 | 194.000 | 194.000 |
+| `echrEnforcementDomesticJudgmentsThemeShare` | 1 | 2025 | supreme-court-simulator-institutional-design-evidence | 0.040 | 0.040 | 0.040 | 0.040 | 0.040 |
+| `echrNonExecutedLeadingCasesDatasetN` | 1 | 2012–2020 | supreme-court-simulator-institutional-design-evidence | 971.000 | 971.000 | 971.000 | 971.000 | 971.000 |
+| `echrNonExecutionFeatureCount` | 1 | 2012–2020 | supreme-court-simulator-institutional-design-evidence | 232.000 | 232.000 | 232.000 | 232.000 | 232.000 |
+| `echrPendingLeadingCasesOver5YearsShare` | 1 | end of 2025 | supreme-court-simulator-institutional-design-evidence | 0.453 | 0.453 | 0.453 | 0.453 | 0.453 |
+| `echrPendingLeadingCasesTotal` | 1 | end of 2025 | supreme-court-simulator-institutional-design-evidence | 1162.000 | 1162.000 | 1162.000 | 1162.000 | 1162.000 |
+| `echr_allocatedPending_stockChange` | 1 | 2024 | supreme-court-simulator-litigation-pipeline-incentives | -8100.000 | -8100.000 | -8100.000 | -8100.000 | -8100.000 |
+| `echr_inadmissibleOrStruckOut_count` | 1 | 2024 | supreme-court-simulator-litigation-pipeline-incentives | 25990.000 | 25990.000 | 25990.000 | 25990.000 | 25990.000 |
+| `echr_singleJudge_disposals` | 1 | 2024 | supreme-court-simulator-litigation-pipeline-incentives | 22210.000 | 22210.000 | 22210.000 | 22210.000 | 22210.000 |
 | `economicRegulationRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.092 | 0.117 | 0.194 | 0.323 | 0.379 |
 | `emergencyOrderRate` | 22 | 2003-2024 | shadow-docket-v2-0 | 0.011 | 0.031 | 0.100 | 0.225 | 0.323 |
 | `emergencyStayDocketRate` | 32 | 1993-2024 | shadow-docket-v2-0 | 0.000 | 0.000 | 0.006 | 0.013 | 0.023 |
 | `ex_ante_vs_ex_post_strike_odds_ratio_nine_courts` | 1 | 2002-2003 law cohort | cross-national-calibration-targets | 2.060 | 2.060 | 2.060 | 2.060 | 2.060 |
 | `ex_ante_vs_ex_post_strike_odds_ratio_seven_courts` | 1 | 2002-2003 law cohort | cross-national-calibration-targets | 2.310 | 2.310 | 2.310 | 2.310 | 2.310 |
+| `federalAgencyImplementationSampleN` | 1 | 1953–1990 Terms | supreme-court-simulator-institutional-design-evidence | 220.000 | 220.000 | 220.000 | 220.000 | 220.000 |
+| `federalAgencyNarrowComplianceShare` | 1 | 1953–1990 Terms | supreme-court-simulator-institutional-design-evidence | 0.068 | 0.068 | 0.068 | 0.068 | 0.068 |
+| `fr_qpc_associationRaised_count` | 1 | 2010-2018 | supreme-court-simulator-litigation-pipeline-incentives | 52.000 | 52.000 | 52.000 | 52.000 | 52.000 |
+| `fr_qpc_avgProcessingTime` | 1 | as of 2023-07-31 | supreme-court-simulator-litigation-pipeline-incentives | 74.000 | 74.000 | 74.000 | 74.000 | 74.000 |
+| `fr_qpc_delayedEffectRate_decidedQPC` | 1 | 2010-05-28 to 2023-07-31 | supreme-court-simulator-litigation-pipeline-incentives | 0.126 | 0.126 | 0.126 | 0.126 | 0.126 |
+| `fr_qpc_enterpriseRequester_count` | 1 | reference period in QPC360 litigants study | supreme-court-simulator-litigation-pipeline-incentives | 146.000 | 146.000 | 146.000 | 146.000 | 146.000 |
+| `fr_qpc_invalidityRate_decidedQPC` | 1 | 2010-05-28 to 2023-07-31 | supreme-court-simulator-litigation-pipeline-incentives | 0.350 | 0.350 | 0.350 | 0.350 | 0.350 |
+| `france_exAnteReview_deadlineStandard` | 1 | current constitutional rule | supreme-court-simulator-institutional-design-and-empirical-anchors | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
+| `france_exAnteReview_deadlineUrgent` | 1 | current constitutional rule | supreme-court-simulator-institutional-design-and-empirical-anchors | 8.000 | 8.000 | 8.000 | 8.000 | 8.000 |
 | `france_ex_ante_strike_rate` | 1 | 2002-2015 | cross-national-calibration-targets | 0.480 | 0.480 | 0.480 | 0.480 | 0.480 |
 | `france_qpc_decisions` | 1 | 2023 | lower-court-intake-calibration | 45.000 | 45.000 | 45.000 | 45.000 | 45.000 |
+| `france_qpc_decisionsTotal` | 1 | 2010-03-01 to 2024-12-31 | supreme-court-simulator-institutional-design-and-empirical-anchors | 1011.000 | 1011.000 | 1011.000 | 1011.000 | 1011.000 |
 | `france_qpc_mean_per_year_since_2010` | 1 | 2010-2023 | lower-court-intake-calibration | 79.400 | 79.400 | 79.400 | 79.400 | 79.400 |
+| `france_qpc_referralsFromConseilEtat` | 1 | 2010-03-01 to 2024-12-31 | supreme-court-simulator-institutional-design-and-empirical-anchors | 501.000 | 501.000 | 501.000 | 501.000 | 501.000 |
+| `france_qpc_referralsTotal` | 1 | 2010-03-01 to 2024-12-31 | supreme-court-simulator-institutional-design-and-empirical-anchors | 1128.000 | 1128.000 | 1128.000 | 1128.000 | 1128.000 |
+| `genuineConflictAmongAlleged_rate` | 1 | 1986–1993 | supreme-court-simulator-calibration-targets | 0.140 | 0.140 | 0.140 | 0.140 | 0.140 |
+| `genuineConflictGrantRate` | 1 | 1986–1993 | supreme-court-simulator-calibration-targets | 0.160 | 0.160 | 0.160 | 0.160 | 0.160 |
 | `germany_chamber_escalation_if_no_agreement` | 1 | stable | emergency-docket-calibration | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| `germany_constComplaint_cumulativeSince1951` | 1 | 1951 to 2023/2024 reporting | supreme-court-simulator-institutional-design-and-empirical-anchors | 252000.000 | 252000.000 | 252000.000 | 252000.000 | 252000.000 |
+| `germany_constComplaint_shareNewCases` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 0.960 | 0.960 | 0.960 | 0.960 | 0.960 |
 | `germany_constitutional_complaint_share_new_cases` | 1 | 2024 | lower-court-intake-calibration | 0.960 | 0.960 | 0.960 | 0.960 | 0.960 |
 | `germany_court_size` | 1 | stable | cross-national-calibration-targets | 16.000 | 16.000 | 16.000 | 16.000 | 16.000 |
 | `germany_judicial_budget_per_capita` | 1 | 2022 | institutional-cost-delay-complexity-benchmarks | 136.100 | 136.100 | 136.100 | 136.100 | 136.100 |
 | `germany_preliminary_injunction_available` | 1 | stable | emergency-docket-calibration | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | `germany_preliminary_injunction_balancing_test` | 1 | stable | emergency-docket-calibration | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | `germany_term_years` | 1 | stable | cross-national-calibration-targets | 12.000 | 12.000 | 12.000 | 12.000 | 12.000 |
+| `grantRate_anyCertStageAmicus_paidNonOSG` | 1 | OT2005 | supreme-court-simulator-calibration-targets | 0.194 | 0.194 | 0.194 | 0.194 | 0.194 |
+| `grantRate_fourPlusCertStageAmici_paidNonOSG` | 1 | OT2005 | supreme-court-simulator-calibration-targets | 0.563 | 0.563 | 0.563 | 0.563 | 0.563 |
+| `grantRate_noCertStageAmicus_paidNonOSG` | 1 | OT2005 | supreme-court-simulator-calibration-targets | 0.022 | 0.022 | 0.022 | 0.022 | 0.022 |
+| `grantSetForArgumentRate_raw` | 1 | OT2023 | supreme-court-simulator-calibration-targets | 0.010 | 0.010 | 0.010 | 0.010 | 0.010 |
+| `ifpPetitionShare` | 1 | OT2023 | supreme-court-simulator-calibration-targets | 0.765 | 0.765 | 0.765 | 0.765 | 0.765 |
 | `invalidationRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.000 | 0.023 | 0.066 | 0.121 | 0.153 |
+| `italy_avgDaysPublicationToHearing` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 191.000 | 191.000 | 191.000 | 191.000 | 191.000 |
 | `italy_courts_budget_per_capita` | 1 | 2022 | institutional-cost-delay-complexity-benchmarks | 67.200 | 67.200 | 67.200 | 67.200 | 67.200 |
+| `italy_directApplicationsInitiated` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 39.000 | 39.000 | 39.000 | 39.000 | 39.000 |
+| `italy_incidentalDecisions` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 138.000 | 138.000 | 138.000 | 138.000 | 138.000 |
+| `italy_incidentalReferralOrders` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 248.000 | 248.000 | 248.000 | 248.000 | 248.000 |
 | `italy_incidental_review_share` | 1 | 2024 | lower-court-intake-calibration | 0.656 | 0.656 | 0.656 | 0.656 | 0.656 |
 | `italy_judicial_budget_per_capita` | 1 | 2022 | institutional-cost-delay-complexity-benchmarks | 100.600 | 100.600 | 100.600 | 100.600 | 100.600 |
+| `italy_totalDecisions` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 212.000 | 212.000 | 212.000 | 212.000 | 212.000 |
 | `italy_total_civil_procedure_days_three_instances` | 1 | 2022 | institutional-cost-delay-complexity-benchmarks | 2356.000 | 2356.000 | 2356.000 | 2356.000 | 2356.000 |
 | `italy_total_decisions` | 1 | 2024 | lower-court-intake-calibration | 212.000 | 212.000 | 212.000 | 212.000 | 212.000 |
 | `judicial_budget_per_capita_coe_median` | 1 | 2020 | institutional-cost-delay-complexity-benchmarks | 79.000 | 79.000 | 79.000 | 79.000 | 79.000 |
@@ -43,29 +101,88 @@ Normalized source observations used to compute calibration ranges. The simulator
 | `korea_panel_transfer_deadline_days` | 1 | stable | emergency-docket-calibration | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 | `korea_recusal_available` | 1 | stable | emergency-docket-calibration | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | `korea_supermajority_votes_for_unconstitutionality` | 1 | stable | cross-national-calibration-targets | 6.000 | 6.000 | 6.000 | 6.000 | 6.000 |
+| `meritsCaseCoverage_scdb` | 1 | 1791–2024 Terms | supreme-court-simulator-calibration-targets | 2024.000 | 2024.000 | 2024.000 | 2024.000 | 2024.000 |
 | `meritsReviewRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| `mexico_accionesInconstitucionalidad_admitted` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 189.000 | 189.000 | 189.000 | 189.000 | 189.000 |
+| `mexico_accionesInconstitucionalidad_promoted` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 197.000 | 197.000 | 197.000 | 197.000 | 197.000 |
+| `mexico_amparoDirect_filings` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 182036.000 | 182036.000 | 182036.000 | 182036.000 | 182036.000 |
+| `mexico_amparoIndirect_filings` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 643245.000 | 643245.000 | 643245.000 | 643245.000 | 643245.000 |
+| `mexico_constroversias_admitted` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 299.000 | 299.000 | 299.000 | 299.000 | 299.000 |
+| `mexico_constroversias_promoted` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 449.000 | 449.000 | 449.000 | 449.000 | 449.000 |
+| `noncapitalAmicusRate` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.180 | 0.180 | 0.180 | 0.180 | 0.180 |
+| `noncapitalApplications_total` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 526.000 | 526.000 | 526.000 | 526.000 | 526.000 |
+| `noncapitalCFRShare_amongResponses` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.850 | 0.850 | 0.850 | 0.850 | 0.850 |
+| `noncapitalDissentRate_any` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.250 | 0.250 | 0.250 | 0.250 | 0.250 |
+| `noncapitalExplanationRate_any` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.090 | 0.090 | 0.090 | 0.090 | 0.090 |
+| `noncapitalGrantRate_initialReferral` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.430 | 0.430 | 0.430 | 0.430 | 0.430 |
+| `noncapitalGrantRate_noLinkedMerits` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.250 | 0.250 | 0.250 | 0.250 | 0.250 |
+| `noncapitalGrantRate_overall` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.230 | 0.230 | 0.230 | 0.230 | 0.230 |
+| `noncapitalReplyRate_amongResponses` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.800 | 0.800 | 0.800 | 0.800 | 0.800 |
+| `noncapitalResponseBriefRate` | 1 | OT2003–OT2021 | supreme-court-simulator-calibration-targets | 0.530 | 0.530 | 0.530 | 0.530 | 0.530 |
+| `paidPetitionShare` | 1 | OT2023 | supreme-court-simulator-calibration-targets | 0.235 | 0.235 | 0.235 | 0.235 | 0.235 |
 | `precedentStability` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.933 | 0.956 | 0.983 | 1.000 | 1.000 |
+| `presidentialEmergencyApplications_peak` | 1 | admin-year ending Oct. 3, 2025 | supreme-court-simulator-calibration-targets | 22.000 | 22.000 | 22.000 | 22.000 | 22.000 |
+| `prior_advocateCapital_merits_shift` | 1 | synthetic from 1977-1982 studies | supreme-court-simulator-litigation-pipeline-incentives | 0.070 | 0.070 | 0.070 | 0.070 | 0.070 |
+| `prior_cert_signal_formerClerk` | 1 | synthetic from 2003-2015 study | supreme-court-simulator-litigation-pipeline-incentives | 0.100 | 0.100 | 0.100 | 0.100 | 0.100 |
+| `prior_pathway_discount_stateOrigin` | 1 | synthetic from 2002-2014 descriptor | supreme-court-simulator-litigation-pipeline-incentives | 0.590 | 0.590 | 0.590 | 0.590 | 0.590 |
+| `prior_us_discretionaryReview_base` | 1 | synthetic from OT2023-OT2024 | supreme-court-simulator-litigation-pipeline-incentives | 0.010 | 0.010 | 0.010 | 0.010 | 0.010 |
 | `recusalRate` | 1 | 1946-2003 | black-epstein-recusal | 0.009 | 0.009 | 0.009 | 0.009 | 0.009 |
 | `rightsClaimRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.133 | 0.159 | 0.299 | 0.383 | 0.410 |
+| `scotus_arguedCases` | 1 | 2024 Term | supreme-court-simulator-institutional-design-and-empirical-anchors | 73.000 | 73.000 | 73.000 | 73.000 | 73.000 |
+| `scotus_docketedCases` | 1 | 2023 Term | supreme-court-simulator-institutional-design-and-empirical-anchors | 4223.000 | 4223.000 | 4223.000 | 4223.000 | 4223.000 |
+| `scotus_plenaryReviewGrants` | 1 | 2023 Term | supreme-court-simulator-institutional-design-and-empirical-anchors | 69.000 | 69.000 | 69.000 | 69.000 | 69.000 |
+| `scotus_totalFilings` | 1 | 2024 Term | supreme-court-simulator-institutional-design-and-empirical-anchors | 3856.000 | 3856.000 | 3856.000 | 3856.000 | 3856.000 |
+| `selfRepresentedLeaveApplicantsShare` | 1 | 2023 | supreme-court-simulator-calibration-targets | 0.280 | 0.280 | 0.280 | 0.280 | 0.280 |
+| `sgResponsePredictiveValue_allFederalRespondents` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.021 | 0.021 | 0.021 | 0.021 | 0.021 |
+| `sgVoluntaryResponseRate_USRespondent_ifp` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.103 | 0.103 | 0.103 | 0.103 | 0.103 |
+| `sgVoluntaryResponseRate_USRespondent_paid` | 1 | OT2001–OT2004 | supreme-court-simulator-calibration-targets | 0.320 | 0.320 | 0.320 | 0.320 | 0.320 |
 | `shadowDocketAbuse` | 22 | 2003-2024 | shadow-docket-v2-0 | 0.065 | 0.069 | 0.222 | 0.361 | 0.538 |
+| `shadowDocketWrittenDissents_peak` | 1 | 2018 Term | supreme-court-simulator-calibration-targets | 61.000 | 61.000 | 61.000 | 61.000 | 61.000 |
+| `southAfricaLandmarkCaseStudyN` | 1 | assessment released 2017; covers post-1994 constitutional jurisprudence | supreme-court-simulator-institutional-design-evidence | 43.000 | 43.000 | 43.000 | 43.000 | 43.000 |
+| `spain_amparo_admissionRate` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 0.023 | 0.023 | 0.023 | 0.023 | 0.023 |
 | `spain_amparo_admission_rate` | 1 | 2024 | lower-court-intake-calibration | 0.016 | 0.016 | 0.016 | 0.016 | 0.016 |
 | `spain_amparo_admitted` | 1 | 2024 | lower-court-intake-calibration | 153.000 | 153.000 | 153.000 | 153.000 | 153.000 |
 | `spain_amparo_filings` | 1 | 2024 | lower-court-intake-calibration | 9796.000 | 9796.000 | 9796.000 | 9796.000 | 9796.000 |
+| `spain_amparo_fromSupremeCourtShare` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 0.625 | 0.625 | 0.625 | 0.625 | 0.625 |
+| `spain_amparo_newCases` | 1 | 2024 | supreme-court-simulator-institutional-design-and-empirical-anchors | 9796.000 | 9796.000 | 9796.000 | 9796.000 | 9796.000 |
 | `spain_amparo_share_total_matters` | 1 | 2024 | lower-court-intake-calibration | 0.992 | 0.992 | 0.992 | 0.992 | 0.992 |
 | `spain_court_size` | 1 | stable | cross-national-calibration-targets | 12.000 | 12.000 | 12.000 | 12.000 | 12.000 |
 | `spain_first_instance_civil_disposition_days` | 1 | 2022 | institutional-cost-delay-complexity-benchmarks | 359.000 | 359.000 | 359.000 | 359.000 | 359.000 |
 | `spain_pending_amparo_admissibility` | 1 | 2024 | lower-court-intake-calibration | 3264.000 | 3264.000 | 3264.000 | 3264.000 | 3264.000 |
 | `spain_term_years` | 1 | stable | cross-national-calibration-targets | 9.000 | 9.000 | 9.000 | 9.000 | 9.000 |
 | `spain_total_matters` | 1 | 2024 | lower-court-intake-calibration | 9871.000 | 9871.000 | 9871.000 | 9871.000 | 9871.000 |
+| `specialistCounselDenyRate_ChristopherLandau_filtered` | 1 | 2001–2015 | supreme-court-simulator-calibration-targets | 0.947 | 0.947 | 0.947 | 0.947 | 0.947 |
+| `specialistCounselGrantRate_JeffreyFisher_filtered` | 1 | 2001–2015 | supreme-court-simulator-calibration-targets | 0.291 | 0.291 | 0.291 | 0.291 | 0.291 |
 | `statutoryStability` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.847 | 0.879 | 0.934 | 0.977 | 1.000 |
 | `structuralRate` | 79 | 1946-2024 | scdb-modern-2025-01 | 0.133 | 0.145 | 0.223 | 0.309 | 0.370 |
+| `ukLowerCourtResponsesDatasetN` | 1 | 1970–2002 | supreme-court-simulator-institutional-design-evidence | 13000.000 | 13000.000 | 13000.000 | 13000.000 | 13000.000 |
+| `ukReviewRateHistoricalComparison` | 1 | roughly 1970–2002 comparison window | supreme-court-simulator-institutional-design-evidence | 0.300 | 0.300 | 0.300 | 0.300 | 0.300 |
+| `usCourtsOfAppealsFilings` | 1 | FY 2024 | supreme-court-simulator-institutional-design-evidence | 39788.000 | 39788.000 | 39788.000 | 39788.000 | 39788.000 |
+| `usLowerCourtResponseDatasetN` | 1 | dataset spans signed majority-opinion responses; article published 2023 | supreme-court-simulator-institutional-design-evidence | 130000.000 | 130000.000 | 130000.000 | 130000.000 | 130000.000 |
+| `usSupremeCourtFilings` | 1 | OT 2023 | supreme-court-simulator-institutional-design-evidence | 4223.000 | 4223.000 | 4223.000 | 4223.000 | 4223.000 |
+| `usTopCourtDirectReviewShareProxy` | 1 | OT 2023 filings / FY 2024 appeals | supreme-court-simulator-institutional-design-evidence | 0.002 | 0.002 | 0.002 | 0.002 | 0.002 |
 | `us_argued_cases` | 1 | 2023 Term | lower-court-intake-calibration | 69.000 | 69.000 | 69.000 | 69.000 | 69.000 |
 | `us_argued_to_filing_share` | 1 | 2023 Term | lower-court-intake-calibration | 0.016 | 0.016 | 0.016 | 0.016 | 0.016 |
+| `us_certGrantRate_withVsWithoutSupportiveAmicus` | 1 | 2014 | supreme-court-simulator-litigation-pipeline-incentives | 0.123 | 0.123 | 0.123 | 0.123 | 0.123 |
+| `us_certGrant_formerClerk_predicted` | 1 | 2003-2015 Terms | supreme-court-simulator-litigation-pipeline-incentives | 0.150 | 0.150 | 0.150 | 0.150 | 0.150 |
+| `us_certStageAmicus_formerClerk_predicted` | 1 | 2003-2015 Terms | supreme-court-simulator-litigation-pipeline-incentives | 0.400 | 0.400 | 0.400 | 0.400 | 0.400 |
+| `us_certStageAmicus_supportRate` | 1 | 2014 | supreme-court-simulator-litigation-pipeline-incentives | 0.142 | 0.142 | 0.142 | 0.142 | 0.142 |
+| `us_cert_votesRequired` | 1 | contemporary rules | supreme-court-simulator-institutional-design-and-empirical-anchors | 4.000 | 4.000 | 4.000 | 4.000 | 4.000 |
+| `us_emergencyStay_votesRequired` | 1 | contemporary rules | supreme-court-simulator-institutional-design-and-empirical-anchors | 5.000 | 5.000 | 5.000 | 5.000 | 5.000 |
 | `us_emergency_brief_reasoning_common` | 1 | 2024-2025 terms | emergency-docket-calibration | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | `us_emergency_limited_briefing` | 1 | 2024-2025 terms | emergency-docket-calibration | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
 | `us_emergency_oral_argument_typically_absent` | 1 | 2024-2025 terms | emergency-docket-calibration | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| `us_expertAdvocate_shareOfGrantedNonSGCases` | 1 | OT1980 to OT2008 comparison | supreme-court-simulator-litigation-pipeline-incentives | 0.058 | 0.058 | 0.058 | 0.058 | 0.058 |
 | `us_merits_dispositions` | 1 | 2023 Term | lower-court-intake-calibration | 64.000 | 64.000 | 64.000 | 64.000 | 64.000 |
+| `us_merits_petitionerSuccess_withExperienceAdvantage` | 1 | 1977-1982 | supreme-court-simulator-litigation-pipeline-incentives | 0.730 | 0.730 | 0.730 | 0.730 | 0.730 |
+| `us_petitionsReviewedPerWeek` | 1 | contemporary court practice | supreme-court-simulator-institutional-design-and-empirical-anchors | 130.000 | 130.000 | 130.000 | 130.000 | 130.000 |
+| `us_scotus_plenaryReviewRate_allDocketed` | 2 | OT2023-OT2024 | supreme-court-simulator-litigation-pipeline-incentives | 0.016 | 0.016 | 0.017 | 0.018 | 0.018 |
+| `us_sg_experience_confoundedAdvantage` | 1 | 1977-1982 | supreme-court-simulator-litigation-pipeline-incentives | 0.310 | 0.310 | 0.310 | 0.310 | 0.310 |
 | `us_shadow_docket_dataset_terms_covered` | 1 | 1993-2024 | emergency-docket-calibration | 32.000 | 32.000 | 32.000 | 32.000 | 32.000 |
+| `us_stateCourt_underrepresentation_allPetitions` | 1 | 2002-2014 Terms | supreme-court-simulator-litigation-pipeline-incentives | 0.334 | 0.334 | 0.334 | 0.334 | 0.334 |
+| `us_stateCourt_underrepresentation_paidPetitions` | 1 | 2002-2014 Terms | supreme-court-simulator-litigation-pipeline-incentives | 0.413 | 0.413 | 0.413 | 0.413 | 0.413 |
+| `us_stateOSG_respondentState_successShift` | 1 | 1989-2007 Terms | supreme-court-simulator-litigation-pipeline-incentives | 0.380 | 0.380 | 0.380 | 0.380 | 0.380 |
+| `us_stateOSG_winProbability_bonus` | 1 | 1989-2007 Terms | supreme-court-simulator-litigation-pipeline-incentives | 0.240 | 0.240 | 0.240 | 0.240 | 0.240 |
 | `us_total_filings` | 1 | 2023 Term | lower-court-intake-calibration | 4223.000 | 4223.000 | 4223.000 | 4223.000 | 4223.000 |
 
 ## Source Files
@@ -74,6 +191,11 @@ Normalized source observations used to compute calibration ranges. The simulator
 - `provenance-manifest.csv`
 - `scdb-modern-2025-release-01.csv`
 - `shadow-docket-v2-0-summary.csv`
+- `supreme-court-research-2026/source-register.csv`
+- `supreme-court-research-2026/supreme-court-simulator-calibration-targets.csv`
+- `supreme-court-research-2026/supreme-court-simulator-institutional-design-and-empirical-anchors.csv`
+- `supreme-court-research-2026/supreme-court-simulator-institutional-design-evidence.csv`
+- `supreme-court-research-2026/supreme-court-simulator-litigation-pipeline-incentives.csv`
 - `supreme-court-synthesis/comparative-court-design-presets.csv`
 - `supreme-court-synthesis/cross-national-calibration-targets.csv`
 - `supreme-court-synthesis/emergency-docket-calibration.csv`

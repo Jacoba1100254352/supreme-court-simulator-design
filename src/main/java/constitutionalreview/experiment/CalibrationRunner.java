@@ -100,11 +100,13 @@ public final class CalibrationRunner {
         add(targets, current, "docket-executive-power", "Executive-power disputes remain visible but bounded within structural public-law disputes.", "executivePowerDisputeRate", "structuralRate", "loose_calibration", 0.03, 0.30, 0.04, "scdb-issue-area", dataset);
         add(targets, current, "current-invalidation", "Declarations of unconstitutionality should be uncommon in the full merits docket.", "invalidationRate", "invalidationRate", "strict_validation", 0.00, 0.22, 0.07, "scdb-unconstitutionality", dataset);
         add(targets, current, "current-merits-transfer", "Admissibility-aware current-like designs should transfer a substantial but not universal share of filed matters to merits.", "meritsTransferRate", "admissibilityModelShare", "model_prior_check", 0.25, 0.85, 0.00, "deep-research-intake-synthesis", dataset);
+        add(targets, current, "current-paid-cfr-stage", "Paid cert-style petitions should expose a separate court-requested-response stage rather than a one-step grant draw.", "paidCfrRequestRate", "cfrRate_paid", "loose_calibration", 0.01, 0.12, 0.02, "deep-research-tables-2026", dataset);
+        add(targets, current, "current-ifp-cfr-stage", "IFP cert-style petitions should expose a lower-frequency court-requested-response stage.", "ifpCfrRequestRate", "cfrRate_ifp", "loose_calibration", 0.00, 0.08, 0.02, "deep-research-tables-2026", dataset);
         add(targets, current, "current-emergency-applications", "Emergency applications should be present but bounded in the current-like docket.", "emergencyStayDocketRate", "emergencyStayDocketRate", "strict_validation", 0.00, 0.22, 0.20, "shadow-docket-database", dataset);
         add(targets, current, "current-emergency-orders", "Emergency orders should be observable but not universal.", "emergencyOrderRate", "emergencyOrderRate", "loose_calibration", 0.03, 0.60, 0.45, "hlr-emergency", dataset);
         add(targets, current, "current-recusal", "Justice-case recusals should be rare.", "recusalRate", "recusalRate", "strict_validation", 0.00, 0.06, 0.02, "epstein-recusal", dataset);
         add(targets, current, "current-shadow-abuse", "Open emergency procedure creates measurable but bounded shadow-docket abuse.", "shadowDocketAbuse", "shadowDocketAbuse", "loose_calibration", 0.05, 0.60, 0.05, "shadow-docket-database", dataset);
-        add(targets, current, "current-precedent-stability", "Precedent stability remains high enough for a stress-inclusive docket with screened and emergency matters.", "precedentStability", "precedentStability", "loose_calibration", 0.55, 1.00, 0.16, "scdb-formal-precedent", dataset);
+        add(targets, current, "current-precedent-stability", "Precedent stability remains high enough for a stress-inclusive docket with screened and emergency matters.", "precedentStability", "precedentStability", "loose_calibration", 0.55, 1.00, 0.18, "scdb-formal-precedent", dataset);
         add(targets, current, "current-statutory-stability", "Statutory stability remains in a source-derived post-review band.", "statutoryStability", "statutoryStability", "loose_calibration", 0.40, 1.00, 0.22, "scdb-unconstitutionality", dataset);
         add(targets, current, "current-compliance", "Interbranch compliance stays above a low-conflict floor.", "interbranchCompliance", "statutoryStability", "proxy_sanity_check", 0.30, 1.00, 0.42, "hlr-emergency", dataset);
         add(targets, commission, "commission-partisan-alignment", "Commission appointments should keep partisan alignment low.", "partisanAlignment", "shadowDocketAbuse", "proxy_sanity_check", 0.00, 0.18, 0.08, "hlr-voting-alignments", dataset);
@@ -177,6 +179,12 @@ public final class CalibrationRunner {
                         "Preserves named-source intake-denominator rows with validation-use and coverage metadata; used here as a structural guardrail rather than a one-to-one empirical target."
                 ),
                 new CalibrationSource(
+                        "deep-research-tables-2026",
+                        "Normalized Supreme Court simulator research-table source register",
+                        "data/calibration/supreme-court-research-2026/source-register.csv",
+                        "Preserves named-source rows from the 2026 markdown-table reports, including certiorari CFR/CVSG, emergency applications, comparative access paths, lower-court compliance, and repeat-player evidence."
+                ),
+                new CalibrationSource(
                         "model-docket-mix-prior",
                         "Simulator docket-mix prior",
                         "src/main/java/constitutionalreview/simulation/WorldGenerator.java",
@@ -234,6 +242,10 @@ public final class CalibrationRunner {
             case "invalidationRate" -> report.invalidationRate();
             case "meritsReviewRate" -> report.meritsReviewRate();
             case "meritsTransferRate" -> report.meritsTransferRate();
+            case "paidCfrRequestRate" -> report.paidCfrRequestRate();
+            case "ifpCfrRequestRate" -> report.ifpCfrRequestRate();
+            case "courtRequestedResponseRate" -> report.courtRequestedResponseRate();
+            case "cvsgRequestRate" -> report.cvsgRequestRate();
             case "emergencyOrderRate" -> report.emergencyOrderRate();
             case "meritsAccelerationRate" -> report.meritsAccelerationRate();
             case "recusalRate" -> report.recusalRate();

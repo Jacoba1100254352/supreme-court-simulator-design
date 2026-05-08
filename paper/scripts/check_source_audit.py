@@ -98,7 +98,7 @@ def main() -> None:
 
     provenance_rows = list(csv.DictReader(CALIBRATION_PROVENANCE.open(newline="")))
     provenance_keys = {row.get("datasetKey", "").strip() for row in provenance_rows}
-    for key in {"scdb-modern-2025-01", "shadow-docket-v2-0", "black-epstein-recusal", "supreme-court-synthesis"}:
+    for key in {"scdb-modern-2025-01", "shadow-docket-v2-0", "black-epstein-recusal", "supreme-court-synthesis", "supreme-court-research-2026"}:
         if key not in provenance_keys:
             fail(f"calibration provenance is missing datasetKey {key}")
 

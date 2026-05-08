@@ -1,6 +1,7 @@
 package constitutionalreview.institution;
 
 import constitutionalreview.model.CaseType;
+import constitutionalreview.model.ClaimantType;
 import constitutionalreview.model.DocketType;
 import constitutionalreview.model.AccessPath;
 import constitutionalreview.model.ReviewTiming;
@@ -11,12 +12,15 @@ public record CourtDecision(
         DocketType docketType,
         AccessPath accessPath,
         ReviewTiming reviewTiming,
+        ClaimantType claimantType,
         boolean petitionFiled,
         boolean admitted,
         boolean screenedOut,
         boolean transferredToMerits,
         boolean paidPetition,
         boolean ifpPetition,
+        boolean courtRequestedResponse,
+        boolean cvsgRequested,
         double admissionScore,
         double conditionalReversalProbability,
         boolean certiorariPath,
@@ -24,10 +28,14 @@ public record CourtDecision(
         int amicusBriefs,
         double splitMaturity,
         double lowerCourtSplitDepth,
+        boolean genuineLowerCourtSplit,
         double lowerCourtIdeologicalDrift,
         double lowerCourtResistanceRisk,
         int relistCount,
         boolean specialistCounsel,
+        double barCapital,
+        double claimStrength,
+        double vehicleQuality,
         double vehicleDefectRisk,
         double forumShoppingPressure,
         double preReviewSettlementPressure,

@@ -1,27 +1,27 @@
 scenarioKey,scenario,observations,directionalP05,directionalMedian,directionalP95,legalStabilityP05,legalStabilityMedian,legalStabilityP95,rightsProtectionP05,rightsProtectionMedian,rightsProtectionP95,shadowDocketAbuseP05,shadowDocketAbuseMedian,shadowDocketAbuseP95,constitutionalConflictP05,constitutionalConflictMedian,constitutionalConflictP95,strategicPressureP05,strategicPressureMedian,strategicPressureP95
-emergency-restraint-court,No emergency relief without merits review,14,0.512,0.605,0.619,0.488,0.694,0.717,0.645,0.653,0.675,0.007,0.011,0.051,0.371,0.417,0.636,0.167,0.193,0.317
-jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,14,0.500,0.604,0.619,0.491,0.686,0.712,0.638,0.655,0.665,0.065,0.088,0.186,0.377,0.426,0.663,0.173,0.195,0.332
-term-limited-balanced,18-year staggered terms + regular appointments,14,0.507,0.604,0.618,0.502,0.687,0.710,0.638,0.654,0.659,0.063,0.084,0.177,0.375,0.417,0.638,0.183,0.210,0.337
-automatic-merits-follow-up,Automatic merits follow-up for emergency relief,14,0.503,0.601,0.614,0.470,0.686,0.713,0.650,0.658,0.674,0.013,0.020,0.062,0.373,0.416,0.636,0.180,0.206,0.330
-nonpartisan-commission,Nonpartisan commission appointments,14,0.502,0.601,0.615,0.499,0.688,0.713,0.640,0.656,0.663,0.067,0.085,0.181,0.380,0.420,0.645,0.180,0.201,0.330
-supermajority-review,60 percent invalidation threshold,14,0.511,0.601,0.616,0.537,0.687,0.711,0.616,0.644,0.648,0.055,0.072,0.167,0.378,0.421,0.644,0.188,0.213,0.340
-recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,14,0.507,0.599,0.613,0.506,0.687,0.713,0.639,0.653,0.659,0.064,0.084,0.177,0.370,0.419,0.640,0.184,0.211,0.339
-panel-en-banc,Three-judge panels with en banc correction,14,0.502,0.599,0.615,0.503,0.687,0.711,0.637,0.655,0.662,0.063,0.084,0.185,0.381,0.421,0.649,0.176,0.199,0.330
-accountability-retention-court,Retention-election accountability court,14,0.503,0.599,0.613,0.509,0.690,0.712,0.622,0.646,0.655,0.067,0.086,0.181,0.384,0.425,0.662,0.178,0.201,0.328
-mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,14,0.504,0.599,0.614,0.513,0.688,0.712,0.628,0.650,0.657,0.033,0.046,0.128,0.375,0.419,0.648,0.187,0.210,0.342
-legislative-override,Judicial review with legislative supermajority override,14,0.494,0.598,0.614,0.492,0.683,0.710,0.643,0.657,0.664,0.062,0.082,0.190,0.384,0.429,0.676,0.180,0.205,0.340
-legislative-override-window,Time-limited legislative override window,14,0.497,0.598,0.612,0.493,0.685,0.709,0.638,0.656,0.665,0.064,0.085,0.183,0.381,0.428,0.672,0.180,0.205,0.340
-strong-recusal-enforcement,Independent recusal enforcement with substitutes,14,0.497,0.597,0.612,0.499,0.686,0.711,0.643,0.658,0.664,0.067,0.086,0.185,0.379,0.427,0.649,0.177,0.202,0.332
-emergency-integrity-package,Emergency integrity package,14,0.501,0.596,0.609,0.484,0.693,0.716,0.644,0.651,0.672,0.013,0.020,0.065,0.376,0.420,0.640,0.171,0.196,0.321
-randomized-merits-panels,Randomized merits panels with en banc correction,14,0.499,0.596,0.612,0.506,0.688,0.712,0.638,0.653,0.660,0.068,0.087,0.188,0.377,0.422,0.647,0.176,0.202,0.331
-expanded-court-fifteen,Expanded 15-seat court,14,0.503,0.596,0.611,0.513,0.686,0.710,0.635,0.653,0.659,0.063,0.085,0.180,0.371,0.418,0.638,0.184,0.211,0.337
-public-interest-litigation-filter,Public-interest litigation filter,14,0.494,0.596,0.612,0.487,0.684,0.711,0.649,0.665,0.676,0.065,0.089,0.195,0.385,0.433,0.663,0.175,0.204,0.333
-panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,14,0.495,0.595,0.610,0.513,0.686,0.709,0.627,0.648,0.653,0.054,0.073,0.168,0.381,0.425,0.659,0.173,0.194,0.329
-constitutional-council,Pre-enactment constitutional council,14,0.497,0.594,0.609,0.520,0.692,0.715,0.638,0.654,0.659,0.065,0.086,0.180,0.376,0.430,0.663,0.174,0.204,0.337
-constitutional-remand,Constitutional remand before invalidation,14,0.503,0.592,0.609,0.547,0.701,0.720,0.633,0.654,0.658,0.068,0.092,0.188,0.383,0.432,0.655,0.175,0.203,0.330
-council-concrete-hybrid,Constitutional council with concrete-review backstop,14,0.495,0.591,0.605,0.535,0.697,0.718,0.632,0.646,0.655,0.066,0.086,0.184,0.377,0.426,0.662,0.174,0.201,0.329
-remand-override-window-package,Constitutional remand with override window,14,0.501,0.590,0.605,0.556,0.701,0.723,0.633,0.653,0.657,0.039,0.049,0.132,0.382,0.433,0.656,0.175,0.200,0.332
-comparative-constitutional-senates,Comparative 16-seat constitutional senates,14,0.501,0.588,0.605,0.546,0.689,0.711,0.615,0.640,0.645,0.053,0.072,0.165,0.377,0.418,0.641,0.180,0.203,0.332
-current-us-like,Stylized current U.S.-like supreme court,14,0.490,0.584,0.604,0.511,0.674,0.699,0.642,0.651,0.675,0.205,0.266,0.489,0.396,0.433,0.681,0.211,0.238,0.379
-cross-checking-courts,Supreme court with cross-checking constitutional court,14,0.481,0.578,0.595,0.532,0.677,0.700,0.595,0.640,0.647,0.056,0.075,0.169,0.409,0.453,0.693,0.180,0.206,0.336
-dual-supreme-courts,Dual supreme courts with disagreement filter,14,0.463,0.571,0.589,0.466,0.664,0.694,0.637,0.656,0.659,0.056,0.075,0.164,0.408,0.458,0.685,0.183,0.211,0.340
+emergency-restraint-court,No emergency relief without merits review,14,0.511,0.608,0.625,0.457,0.659,0.695,0.615,0.647,0.653,0.007,0.011,0.043,0.346,0.384,0.588,0.170,0.195,0.316
+supermajority-review,60 percent invalidation threshold,14,0.519,0.605,0.621,0.525,0.668,0.693,0.589,0.634,0.644,0.050,0.071,0.153,0.348,0.386,0.581,0.185,0.210,0.322
+term-limited-balanced,18-year staggered terms + regular appointments,14,0.513,0.605,0.621,0.495,0.658,0.691,0.599,0.643,0.648,0.059,0.079,0.164,0.344,0.387,0.586,0.186,0.211,0.327
+jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,14,0.509,0.605,0.621,0.481,0.660,0.688,0.599,0.641,0.648,0.057,0.079,0.168,0.355,0.395,0.611,0.176,0.202,0.334
+automatic-merits-follow-up,Automatic merits follow-up for emergency relief,14,0.500,0.603,0.619,0.448,0.656,0.690,0.613,0.646,0.654,0.012,0.017,0.055,0.346,0.384,0.596,0.183,0.204,0.329
+nonpartisan-commission,Nonpartisan commission appointments,14,0.507,0.602,0.618,0.483,0.660,0.691,0.600,0.642,0.650,0.062,0.078,0.165,0.351,0.386,0.592,0.179,0.201,0.323
+public-interest-litigation-filter,Public-interest litigation filter,14,0.514,0.601,0.617,0.500,0.662,0.693,0.606,0.645,0.652,0.057,0.075,0.163,0.348,0.385,0.581,0.170,0.198,0.311
+mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,14,0.508,0.601,0.617,0.497,0.663,0.692,0.595,0.638,0.648,0.033,0.051,0.126,0.346,0.388,0.587,0.183,0.211,0.326
+accountability-retention-court,Retention-election accountability court,14,0.510,0.601,0.617,0.490,0.662,0.692,0.582,0.638,0.645,0.058,0.077,0.159,0.357,0.399,0.607,0.181,0.204,0.319
+emergency-integrity-package,Emergency integrity package,14,0.504,0.601,0.617,0.454,0.660,0.692,0.617,0.647,0.659,0.012,0.018,0.054,0.352,0.388,0.586,0.175,0.198,0.317
+recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,14,0.506,0.600,0.616,0.488,0.659,0.690,0.601,0.641,0.648,0.057,0.077,0.171,0.350,0.386,0.593,0.186,0.211,0.331
+legislative-override,Judicial review with legislative supermajority override,14,0.503,0.600,0.616,0.477,0.657,0.687,0.606,0.642,0.652,0.059,0.077,0.167,0.361,0.401,0.620,0.185,0.210,0.334
+legislative-override-window,Time-limited legislative override window,14,0.504,0.600,0.616,0.476,0.657,0.687,0.602,0.640,0.650,0.056,0.076,0.169,0.362,0.398,0.620,0.186,0.206,0.331
+constitutional-remand,Constitutional remand before invalidation,14,0.514,0.600,0.618,0.538,0.685,0.712,0.600,0.636,0.645,0.058,0.079,0.167,0.343,0.390,0.591,0.168,0.198,0.316
+panel-en-banc,Three-judge panels with en banc correction,14,0.509,0.600,0.617,0.495,0.660,0.691,0.599,0.642,0.650,0.057,0.077,0.164,0.349,0.389,0.585,0.178,0.202,0.317
+strong-recusal-enforcement,Independent recusal enforcement with substitutes,14,0.509,0.598,0.616,0.491,0.659,0.692,0.601,0.642,0.651,0.058,0.077,0.166,0.350,0.388,0.584,0.179,0.204,0.319
+expanded-court-fifteen,Expanded 15-seat court,14,0.502,0.598,0.614,0.488,0.662,0.687,0.600,0.640,0.652,0.055,0.077,0.169,0.348,0.386,0.599,0.184,0.209,0.335
+randomized-merits-panels,Randomized merits panels with en banc correction,14,0.507,0.598,0.615,0.496,0.662,0.690,0.599,0.642,0.649,0.056,0.078,0.163,0.352,0.388,0.584,0.178,0.201,0.316
+remand-override-window-package,Constitutional remand with override window,14,0.512,0.597,0.614,0.548,0.686,0.707,0.596,0.637,0.645,0.033,0.051,0.126,0.348,0.388,0.586,0.171,0.197,0.314
+panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,14,0.504,0.597,0.613,0.504,0.663,0.689,0.588,0.635,0.646,0.049,0.069,0.155,0.358,0.396,0.603,0.178,0.199,0.322
+constitutional-council,Pre-enactment constitutional council,14,0.501,0.597,0.612,0.491,0.669,0.696,0.607,0.640,0.649,0.062,0.077,0.166,0.362,0.396,0.617,0.183,0.206,0.330
+council-concrete-hybrid,Constitutional council with concrete-review backstop,14,0.501,0.594,0.611,0.504,0.672,0.699,0.606,0.642,0.650,0.059,0.078,0.166,0.356,0.395,0.610,0.178,0.206,0.327
+comparative-constitutional-senates,Comparative 16-seat constitutional senates,14,0.508,0.594,0.610,0.520,0.670,0.697,0.587,0.636,0.640,0.053,0.068,0.155,0.350,0.385,0.584,0.181,0.203,0.318
+current-us-like,Stylized current U.S.-like supreme court,14,0.502,0.592,0.610,0.492,0.656,0.683,0.617,0.643,0.656,0.171,0.236,0.426,0.358,0.405,0.630,0.203,0.235,0.360
+cross-checking-courts,Supreme court with cross-checking constitutional court,14,0.495,0.585,0.600,0.527,0.662,0.686,0.567,0.621,0.635,0.050,0.068,0.157,0.371,0.408,0.618,0.180,0.200,0.318
+dual-supreme-courts,Dual supreme courts with disagreement filter,14,0.474,0.575,0.594,0.461,0.640,0.673,0.595,0.641,0.648,0.048,0.073,0.155,0.376,0.417,0.623,0.183,0.209,0.328

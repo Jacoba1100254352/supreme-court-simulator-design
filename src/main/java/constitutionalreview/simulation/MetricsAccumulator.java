@@ -5,6 +5,7 @@ import constitutionalreview.institution.FormalLegalResponse;
 import constitutionalreview.institution.OverrideOutcome;
 import constitutionalreview.institution.PracticalImplementationResponse;
 import constitutionalreview.model.CaseType;
+import constitutionalreview.model.ClaimantType;
 import constitutionalreview.model.DocketType;
 
 public final class MetricsAccumulator {
@@ -17,6 +18,10 @@ public final class MetricsAccumulator {
     private int certiorariAdmissions;
     private int paidPetitions;
     private int ifpPetitions;
+    private int courtRequestedResponses;
+    private int cvsgRequests;
+    private int paidCfrRequests;
+    private int ifpCfrRequests;
     private int meritsReviews;
     private int invalidations;
     private int emergencyOrders;
@@ -69,6 +74,12 @@ public final class MetricsAccumulator {
     private int practicalOpenNoncompliance;
     private int governmentNoncompliance;
     private int settledBeforeReview;
+    private int genuineLowerCourtSplits;
+    private int individualOneShotClaimants;
+    private int organizedRightsClaimants;
+    private int businessRepeatPlayerClaimants;
+    private int governmentClaimants;
+    private int expertBarClinicClaimants;
     private int rightsClaimantCases;
     private int rightsDomainClaimantCases;
     private int structuralDomainClaimantCases;
@@ -86,6 +97,9 @@ public final class MetricsAccumulator {
     private double splitMaturity;
     private double relistCount;
     private double specialistCounsel;
+    private double barCapital;
+    private double claimStrength;
+    private double vehicleQuality;
     private double vehicleDefectRisk;
     private double forumShoppingPressure;
     private double preReviewSettlementPressure;
@@ -137,6 +151,10 @@ public final class MetricsAccumulator {
         certiorariAdmissions += decision.certiorariPath() && decision.admitted() ? 1 : 0;
         paidPetitions += decision.paidPetition() ? 1 : 0;
         ifpPetitions += decision.ifpPetition() ? 1 : 0;
+        courtRequestedResponses += decision.courtRequestedResponse() ? 1 : 0;
+        cvsgRequests += decision.cvsgRequested() ? 1 : 0;
+        paidCfrRequests += decision.paidPetition() && decision.courtRequestedResponse() ? 1 : 0;
+        ifpCfrRequests += decision.ifpPetition() && decision.courtRequestedResponse() ? 1 : 0;
         meritsReviews += decision.meritsReview() ? 1 : 0;
         invalidations += decision.invalidated() ? 1 : 0;
         emergencyOrders += decision.emergencyOrder() ? 1 : 0;
@@ -173,6 +191,8 @@ public final class MetricsAccumulator {
         addPracticalResponse(decision.practicalImplementationResponse());
         governmentNoncompliance += decision.governmentNoncompliance() ? 1 : 0;
         settledBeforeReview += decision.settledBeforeReview() ? 1 : 0;
+        genuineLowerCourtSplits += decision.genuineLowerCourtSplit() ? 1 : 0;
+        addClaimantType(decision.claimantType());
         addDomainClaimantSuccess(decision);
         admissionScore += decision.admissionScore();
         conditionalReversalProbability += decision.conditionalReversalProbability();
@@ -184,6 +204,9 @@ public final class MetricsAccumulator {
         splitMaturity += decision.splitMaturity();
         relistCount += decision.relistCount();
         specialistCounsel += decision.specialistCounsel() ? 1.0 : 0.0;
+        barCapital += decision.barCapital();
+        claimStrength += decision.claimStrength();
+        vehicleQuality += decision.vehicleQuality();
         vehicleDefectRisk += decision.vehicleDefectRisk();
         forumShoppingPressure += decision.forumShoppingPressure();
         preReviewSettlementPressure += decision.preReviewSettlementPressure();
@@ -235,14 +258,22 @@ public final class MetricsAccumulator {
                 certiorariAdmissions / Math.max(1.0, certiorariPaths),
                 paidPetitions / cases,
                 ifpPetitions / cases,
+                courtRequestedResponses / cases,
+                cvsgRequests / cases,
+                paidCfrRequests / Math.max(1.0, paidPetitions),
+                ifpCfrRequests / Math.max(1.0, ifpPetitions),
                 solicitorGeneralSignal / cases,
                 amicusBriefs / cases,
                 lowerCourtSplitDepth / cases,
+                genuineLowerCourtSplits / cases,
                 lowerCourtIdeologicalDrift / cases,
                 lowerCourtResistanceRisk / cases,
                 splitMaturity / cases,
                 relistCount / cases,
                 specialistCounsel / cases,
+                barCapital / cases,
+                claimStrength / cases,
+                vehicleQuality / cases,
                 vehicleDefectRisk / cases,
                 forumShoppingPressure / cases,
                 preReviewSettlementPressure / cases,
@@ -316,6 +347,11 @@ public final class MetricsAccumulator {
                 practicalSymbolicCompliance / cases,
                 practicalBureaucraticResistance / cases,
                 practicalOpenNoncompliance / cases,
+                individualOneShotClaimants / cases,
+                organizedRightsClaimants / cases,
+                businessRepeatPlayerClaimants / cases,
+                governmentClaimants / cases,
+                expertBarClinicClaimants / cases,
                 rightsClaimantCases / cases,
                 rightsClaimantSuccess / cases,
                 rightsDomainClaimantSuccess / Math.max(1.0, rightsDomainClaimantCases),
@@ -376,6 +412,16 @@ public final class MetricsAccumulator {
             case OPEN_NONCOMPLIANCE -> practicalOpenNoncompliance++;
             case NONE, PROMPT_IMPLEMENTATION -> {
             }
+        }
+    }
+
+    private void addClaimantType(ClaimantType claimantType) {
+        switch (claimantType) {
+            case INDIVIDUAL_ONE_SHOT -> individualOneShotClaimants++;
+            case ORGANIZED_RIGHTS_GROUP -> organizedRightsClaimants++;
+            case BUSINESS_REPEAT_PLAYER -> businessRepeatPlayerClaimants++;
+            case GOVERNMENT_SG_OR_AG -> governmentClaimants++;
+            case EXPERT_BAR_CLINIC -> expertBarClinicClaimants++;
         }
     }
 

@@ -2,6 +2,7 @@ package constitutionalreview.simulation;
 
 import constitutionalreview.model.CaseType;
 import constitutionalreview.model.CaseWorld;
+import constitutionalreview.model.ClaimantType;
 import constitutionalreview.model.DocketType;
 import constitutionalreview.model.AccessPath;
 import constitutionalreview.model.EmergencyApplicantType;
@@ -103,6 +104,12 @@ public final class WorldGenerator {
                             + publicAttention * 0.08
                             + random.nextGaussian() * 0.08
             );
+            boolean genuineLowerCourtSplit = random.nextDouble() < Values.clamp01(
+                    0.06
+                            + lowerCourtSplitDepth * 0.58
+                            + lowerCourtConflict * 0.16
+                            + legalAmbiguity * 0.05
+            );
             double lowerCourtIdeologicalDrift = Values.clamp01(
                     0.08
                             + spec.polarization() * 0.14
@@ -121,11 +128,32 @@ public final class WorldGenerator {
                             + emergencyPressure * 0.08
                             + domain.conflictPotentialShift()
             );
+            ClaimantType claimantType = claimantType(type, docketType, rightsBurden, publicAttention, executiveBoost, adminBoost, random);
+            double claimStrength = Values.clamp01(
+                    0.18
+                            + rightsBurden * 0.22
+                            + lowerCourtErrorRisk * 0.22
+                            + (1.0 - legislativeQuality) * 0.18
+                            + conflictPotential * 0.12
+                            + (genuineLowerCourtSplit ? 0.05 : 0.0)
+                            + random.nextGaussian() * 0.08
+            );
+            double barCapital = barCapital(claimantType, publicAttention, partisanSalience, executiveBoost, adminBoost, random);
             double solicitorGeneralSignal = solicitorGeneralSignal(type, docketType, publicAttention, executiveBoost, random);
             int amicusBriefs = amicusBriefs(publicAttention, partisanSalience, solicitorGeneralSignal, random);
             double splitMaturity = Values.clamp01(lowerCourtSplitDepth * 0.58 + lowerCourtConflict * 0.18 + legalAmbiguity * 0.12 + random.nextDouble() * 0.16);
             int relistCount = relistCount(certiorariPressure, solicitorGeneralSignal, amicusBriefs, random);
-            boolean specialistCounsel = random.nextDouble() < Values.clamp01(0.16 + publicAttention * 0.26 + solicitorGeneralSignal * 0.18);
+            boolean specialistCounsel = random.nextDouble() < Values.clamp01(0.08 + publicAttention * 0.18 + solicitorGeneralSignal * 0.14 + barCapital * 0.36);
+            double vehicleQuality = Values.clamp01(
+                    0.38
+                            + claimStrength * 0.20
+                            + lowerCourtSplitDepth * 0.12
+                            + (genuineLowerCourtSplit ? 0.08 : 0.0)
+                            + barCapital * 0.16
+                            + (specialistCounsel ? 0.08 : 0.0)
+                            - legalAmbiguity * 0.08
+                            + random.nextGaussian() * 0.08
+            );
             double strategicPlaintiffSelection = Values.clamp01(
                     0.10
                             + publicAttention * 0.20
@@ -133,6 +161,7 @@ public final class WorldGenerator {
                             + rightsBurden * 0.12
                             + emergencyPressure * 0.10
                             + (specialistCounsel ? 0.08 : 0.0)
+                            + barCapital * 0.10
                             + random.nextGaussian() * 0.08
             );
             double forumShoppingPressure = Values.clamp01(
@@ -142,6 +171,7 @@ public final class WorldGenerator {
                             + rightsBurden * 0.10
                             + lowerCourtIdeologicalDrift * 0.16
                             + strategicPlaintiffSelection * 0.14
+                            + barCapital * 0.05
                             + random.nextGaussian() * 0.07
             );
             double repeatPlayerAdvantage = Values.clamp01(
@@ -149,6 +179,7 @@ public final class WorldGenerator {
                             + solicitorGeneralSignal * 0.24
                             + Math.min(1.0, amicusBriefs / 5.0) * 0.14
                             + (specialistCounsel ? 0.14 : 0.0)
+                            + barCapital * 0.20
                             + executiveBoost * 0.12
                             + adminBoost * 0.08
                             + emergencyPressure * 0.08
@@ -157,6 +188,7 @@ public final class WorldGenerator {
             double vehicleDefectRisk = Values.clamp01(
                     0.30
                             + legalAmbiguity * 0.14
+                            - vehicleQuality * 0.28
                             - legislativeQuality * 0.16
                             - lowerCourtSplitDepth * 0.08
                             - strategicPlaintiffSelection * 0.10
@@ -165,6 +197,8 @@ public final class WorldGenerator {
             );
             double conditionalReversalProbability = Values.clamp01(
                     0.46
+                            + claimStrength * 0.11
+                            + vehicleQuality * 0.06
                             + lowerCourtErrorRisk * 0.16
                             + lowerCourtSplitDepth * 0.12
                             + Math.abs(lawIdeology) * partisanSalience * 0.08
@@ -244,8 +278,11 @@ public final class WorldGenerator {
                     accessPath,
                     reviewTiming,
                     petitionType,
+                    claimantType,
                     legalAmbiguity,
                     rightsBurden,
+                    claimStrength,
+                    vehicleQuality,
                     democraticMandate,
                     partisanSalience,
                     lawIdeology,
@@ -259,6 +296,7 @@ public final class WorldGenerator {
                     lowerCourtConflict,
                     lowerCourtErrorRisk,
                     lowerCourtSplitDepth,
+                    genuineLowerCourtSplit,
                     lowerCourtIdeologicalDrift,
                     lowerCourtResistanceRisk,
                     certiorariPressure,
@@ -267,6 +305,7 @@ public final class WorldGenerator {
                     splitMaturity,
                     relistCount,
                     specialistCounsel,
+                    barCapital,
                     vehicleDefectRisk,
                     conditionalReversalProbability,
                     forumShoppingPressure,
@@ -328,6 +367,55 @@ public final class WorldGenerator {
             case FILTERED_QPC, COURT_REFERRAL_CONCRETE_REVIEW -> PetitionType.FILTERED_REFERRAL;
             case ABSTRACT_EX_ANTE_REVIEW, ABSTRACT_EX_POST_REVIEW, INTERBRANCH_DISPUTE, ELECTORAL_REVIEW -> random.nextDouble() < 0.18 ? PetitionType.DIRECT_APPEAL : PetitionType.ABSTRACT_REFERRAL;
         };
+    }
+
+    private static ClaimantType claimantType(
+            CaseType type,
+            DocketType docketType,
+            double rightsBurden,
+            double publicAttention,
+            double executiveBoost,
+            double adminBoost,
+            Random random
+    ) {
+        double government = 0.06 + executiveBoost * 0.36 + adminBoost * 0.16 + (docketType == DocketType.ELECTION_DISPUTE ? 0.16 : 0.0);
+        double business = 0.12 + (type == CaseType.ECONOMIC_REGULATION ? 0.24 : 0.0) + adminBoost * 0.12;
+        double organizedRights = 0.10 + rightsBurden * 0.20 + publicAttention * 0.10;
+        double expertClinic = 0.06 + rightsBurden * 0.08 + publicAttention * 0.08;
+        double individual = Math.max(0.08, 1.0 - government - business - organizedRights - expertClinic);
+        double total = government + business + organizedRights + expertClinic + individual;
+        double draw = random.nextDouble() * total;
+        if ((draw -= government) < 0.0) {
+            return ClaimantType.GOVERNMENT_SG_OR_AG;
+        }
+        if ((draw -= business) < 0.0) {
+            return ClaimantType.BUSINESS_REPEAT_PLAYER;
+        }
+        if ((draw -= organizedRights) < 0.0) {
+            return ClaimantType.ORGANIZED_RIGHTS_GROUP;
+        }
+        if ((draw -= expertClinic) < 0.0) {
+            return ClaimantType.EXPERT_BAR_CLINIC;
+        }
+        return ClaimantType.INDIVIDUAL_ONE_SHOT;
+    }
+
+    private static double barCapital(
+            ClaimantType claimantType,
+            double publicAttention,
+            double partisanSalience,
+            double executiveBoost,
+            double adminBoost,
+            Random random
+    ) {
+        double base = switch (claimantType) {
+            case INDIVIDUAL_ONE_SHOT -> 0.18;
+            case ORGANIZED_RIGHTS_GROUP -> 0.52;
+            case BUSINESS_REPEAT_PLAYER -> 0.62;
+            case GOVERNMENT_SG_OR_AG -> 0.70 + executiveBoost * 0.10 + adminBoost * 0.06;
+            case EXPERT_BAR_CLINIC -> 0.78;
+        };
+        return Values.clamp01(base + publicAttention * 0.10 + partisanSalience * 0.04 + random.nextGaussian() * 0.09);
     }
 
     private static double solicitorGeneralSignal(CaseType type, DocketType docketType, double publicAttention, double executiveBoost, Random random) {

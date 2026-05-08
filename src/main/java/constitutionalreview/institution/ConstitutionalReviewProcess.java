@@ -56,12 +56,15 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.docketType(),
                 reviewCase.accessPath(),
                 reviewCase.reviewTiming(),
+                reviewCase.claimantType(),
                 admissionDecision.petitionFiled(),
                 false,
                 admissionDecision.screenedOut(),
                 false,
                 admissionDecision.paidPetition(),
                 admissionDecision.ifpPetition(),
+                admissionDecision.courtRequestedResponse(),
+                admissionDecision.cvsgRequested(),
                 admissionDecision.admissionScore(),
                 admissionDecision.conditionalReversalProbability(),
                 certiorariPath(reviewCase),
@@ -69,10 +72,14 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.amicusBriefs(),
                 reviewCase.splitMaturity(),
                 reviewCase.lowerCourtSplitDepth(),
+                reviewCase.genuineLowerCourtSplit(),
                 reviewCase.lowerCourtIdeologicalDrift(),
                 effectiveLowerCourtResistanceRisk,
                 reviewCase.relistCount(),
                 reviewCase.specialistCounsel(),
+                reviewCase.barCapital(),
+                reviewCase.claimStrength(),
+                reviewCase.vehicleQuality(),
                 reviewCase.vehicleDefectRisk(),
                 effectiveForumShoppingPressure,
                 reviewCase.preReviewSettlementPressure(),
@@ -302,12 +309,15 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.docketType(),
                 reviewCase.accessPath(),
                 reviewCase.reviewTiming(),
+                reviewCase.claimantType(),
                 admissionDecision.petitionFiled(),
                 admissionDecision.admitted(),
                 admissionDecision.screenedOut(),
                 admissionDecision.transferredToMerits(),
                 admissionDecision.paidPetition(),
                 admissionDecision.ifpPetition(),
+                admissionDecision.courtRequestedResponse(),
+                admissionDecision.cvsgRequested(),
                 admissionDecision.admissionScore(),
                 admissionDecision.conditionalReversalProbability(),
                 certiorariPath(reviewCase),
@@ -315,10 +325,14 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.amicusBriefs(),
                 reviewCase.splitMaturity(),
                 reviewCase.lowerCourtSplitDepth(),
+                reviewCase.genuineLowerCourtSplit(),
                 reviewCase.lowerCourtIdeologicalDrift(),
                 effectiveLowerCourtResistanceRisk,
                 reviewCase.relistCount(),
                 reviewCase.specialistCounsel(),
+                reviewCase.barCapital(),
+                reviewCase.claimStrength(),
+                reviewCase.vehicleQuality(),
                 reviewCase.vehicleDefectRisk(),
                 effectiveForumShoppingPressure,
                 reviewCase.preReviewSettlementPressure(),
@@ -569,6 +583,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                     + reviewCase.forumShoppingPressure() * reviewCase.lowerCourtIdeologicalDrift() * 0.03;
             double score = legalConcern * 0.42
                     + rightsConcern
+                    + reviewCase.claimStrength() * 0.10
+                    + reviewCase.vehicleQuality() * 0.035
+                    + reviewCase.barCapital() * reviewCase.claimStrength() * 0.025
                     + partisanPull
                     + plaintiffSelectionSignal
                     - deference
@@ -811,7 +828,10 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + (1.0 - reviewCase.legislativeQuality()) * 0.20
                 + reviewCase.legalAmbiguity() * 0.12
                 + reviewCase.lowerCourtErrorRisk() * 0.10
+                + reviewCase.claimStrength() * 0.12
+                + reviewCase.vehicleQuality() * 0.04
                 + reviewCase.lowerCourtSplitDepth() * 0.08
+                + (reviewCase.genuineLowerCourtSplit() ? 0.05 : 0.0)
                 + reviewCase.lowerCourtResistanceRisk() * 0.06;
         if (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL) {
             concern *= 0.92;
@@ -941,7 +961,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     private double doctrinalDepth(ReviewCase reviewCase, boolean invalidated, double precedentShift, EmergencyProcedure emergencyProcedure) {
         double depth = precedentShift * 0.62 + reviewCase.legalAmbiguity() * 0.12;
         if (invalidated) {
-            depth += reviewCase.publicAttention() * 0.12;
+            depth += reviewCase.publicAttention() * 0.12 + reviewCase.claimStrength() * 0.05;
         }
         if (emergencyProcedure.meritsAccelerated()) {
             depth += 0.06;
@@ -991,6 +1011,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double pressure = reviewCase.forumShoppingPressure()
                 + (design.emergencyDocketRule() == EmergencyDocketRule.OPEN_EMERGENCY ? 0.04 : 0.0)
                 + (design.reviewMode() == ReviewMode.SPECIALIZED_PANELS ? 0.03 : 0.0)
+                + reviewCase.barCapital() * 0.03
                 - (design.reviewMode() == ReviewMode.PANEL_EN_BANC ? 0.03 : 0.0)
                 - (design.auxiliaryReview() == AuxiliaryReview.PUBLIC_INTEREST_FILTER ? 0.08 : 0.0)
                 - (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL ? 0.04 : 0.0)
@@ -1012,6 +1033,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + (meritsReview ? 0.04 : -0.02)
                 + (constitutionalRemand ? 0.06 : 0.0)
                 + (councilWarning ? 0.03 : 0.0)
+                + reviewCase.claimStrength() * 0.02
                 + (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL ? 0.03 : 0.0)
                 + (design.auxiliaryReview() == AuxiliaryReview.CROSS_CHECKING_COURT ? 0.02 : 0.0)
                 + (design.overrideRule() == OverrideRule.JURISDICTION_STRIPPING_CONSTRAINT ? 0.03 : 0.0)
@@ -1086,6 +1108,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 - lowerCourtResistanceRisk * 0.14
                 - state.conflictLoad() * 0.10
                 + enforcementCapacity * 0.14
+                + reviewCase.claimStrength() * 0.03
+                + reviewCase.vehicleQuality() * 0.03
+                + (reviewCase.genuineLowerCourtSplit() ? 0.02 : 0.0)
                 + (meritsReview ? 0.08 : -0.03)
                 + (admissionDecision.transferredToMerits() ? 0.04 : 0.0);
         if (invalidated) {

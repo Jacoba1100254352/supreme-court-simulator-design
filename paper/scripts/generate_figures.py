@@ -36,6 +36,10 @@ SELECTED_SCENARIOS = [
 FIELDS = [
     "admissionRate",
     "certiorariAdmissionRate",
+    "courtRequestedResponseRate",
+    "cvsgRequestRate",
+    "paidCfrRequestRate",
+    "ifpCfrRequestRate",
     "directionalScore",
     "legalStability",
     "rightsProtection",
@@ -47,6 +51,7 @@ FIELDS = [
     "administrativeCost",
     "publicConfidence",
     "lowerCourtSplitDepth",
+    "genuineLowerCourtSplitRate",
     "lowerCourtIdeologicalDrift",
     "lowerCourtResistanceRisk",
     "forumShoppingPressure",
@@ -54,6 +59,9 @@ FIELDS = [
     "settledBeforeReviewRate",
     "strategicPlaintiffSelection",
     "repeatPlayerAdvantage",
+    "barCapital",
+    "claimStrength",
+    "vehicleQuality",
     "governmentNoncomplianceRate",
     "enforcementCapacity",
     "emergencyOpportunism",
@@ -375,6 +383,12 @@ def write_litigation_pipeline_table(averages: dict[str, dict[str, float]]) -> No
     ]
     fields = [
         "certiorariAdmissionRate",
+        "courtRequestedResponseRate",
+        "cvsgRequestRate",
+        "barCapital",
+        "claimStrength",
+        "vehicleQuality",
+        "genuineLowerCourtSplitRate",
         "lowerCourtSplitDepth",
         "lowerCourtResistanceRisk",
         "forumShoppingPressure",
@@ -394,13 +408,13 @@ def write_litigation_pipeline_table(averages: dict[str, dict[str, float]]) -> No
         "\\centering",
         "\\caption{Litigation-pipeline and downstream-enforcement diagnostics}",
         "\\label{tab:pipeline-diagnostics}",
-        "\\Description{Table reporting certiorari admission, lower-court split depth, lower-court resistance, forum shopping, settlement, strategic plaintiff selection, repeat-player advantage, enforcement capacity, emergency opportunism, recusal incentive pressure, government noncompliance, emergency downstream effect, and precedent durability for selected designs.}",
+        "\\Description{Table reporting certiorari admission, court-requested response, CVSG request, bar capital, claim strength, vehicle quality, genuine split rate, lower-court split depth, lower-court resistance, forum shopping, settlement, strategic plaintiff selection, repeat-player advantage, enforcement capacity, emergency opportunism, recusal incentive pressure, government noncompliance, emergency downstream effect, and precedent durability for selected designs.}",
         "\\scriptsize",
         "\\setlength{\\tabcolsep}{2pt}",
         "\\resizebox{\\textwidth}{!}{%",
-        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.38in}rrrrrrrrrrrrr}",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.38in}rrrrrrrrrrrrrrrrrrr}",
         "\\toprule",
-        "Scenario & Cert admit & Split & Resistance & Forum & Settlement & Plaintiff sel. & Repeat player & Enforcement & Emerg. opp. & Recusal press. & Gov. noncomp. & Emerg. down. & Prec. dur. \\\\",
+        "Scenario & Cert admit & CFR & CVSG & Bar & Claim & Vehicle & Genuine split & Split & Resistance & Forum & Settlement & Plaintiff sel. & Repeat player & Enforcement & Emerg. opp. & Recusal press. & Gov. noncomp. & Emerg. down. & Prec. dur. \\\\",
         "\\midrule",
     ]
     for key, label in selected:
@@ -425,6 +439,8 @@ def read_calibration_rows() -> list[dict[str, str]]:
 def write_calibration_guardrails() -> None:
     selected = [
         ("current-merits-transfer", "Merits transfer"),
+        ("current-paid-cfr-stage", "Paid CFR stage"),
+        ("current-ifp-cfr-stage", "IFP CFR stage"),
         ("current-invalidation", "Invalidation"),
         ("current-emergency-applications", "Emergency filings"),
         ("current-shadow-abuse", "Shadow abuse"),
@@ -437,6 +453,7 @@ def write_calibration_guardrails() -> None:
         "scdb-modern-2025-01": "SCDB",
         "shadow-docket-v2-0": "shadow database",
         "black-epstein-recusal": "recusal data",
+        "supreme-court-simulator-calibration-targets": "research tables",
     }
 
     def source_basis(row: dict[str, str]) -> str:

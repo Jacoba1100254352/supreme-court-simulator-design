@@ -10,12 +10,12 @@ Empirical plausibility checks for the constitutional-review simulator. Target ra
 - legislative profile: simulation-campaign-v21-paper.csv
 
 - calibration data directory: `data/calibration`
-- source observations: 758
+- source observations: 876
 
 ## Summary
 
-- targets within assigned ranges: 17 / 17
-- guardrail-use counts: strict_validation=5, model_prior_check=2, loose_calibration=5, proxy_sanity_check=3, mechanism_sanity_check=2
+- targets within assigned ranges: 19 / 19
+- guardrail-use counts: strict_validation=5, model_prior_check=2, loose_calibration=7, proxy_sanity_check=3, mechanism_sanity_check=2
 
 ## Sources
 
@@ -31,27 +31,30 @@ Empirical plausibility checks for the constitutional-review simulator. Target ra
 | `epstein-recusal` | [Black and Epstein, Recusals and the Problem of an Equally Divided Supreme Court](https://epstein.wustl.edu/recusal) | Reports 599 post-1946 recusal cases and treats recusals as rare case-level events. |
 | `scdb-formal-precedent` | [Supreme Court Database formal alteration of precedent variable](https://scdb.la.psu.edu/online-codebook/formal-alteration-of-precedent/) | Provides a historical anchor for rare formal precedent alteration. |
 | `deep-research-intake-synthesis` | [Normalized comparative intake source-register rows](data/calibration/supreme-court-synthesis/source-register.csv) | Preserves named-source intake-denominator rows with validation-use and coverage metadata; used here as a structural guardrail rather than a one-to-one empirical target. |
+| `deep-research-tables-2026` | [Normalized Supreme Court simulator research-table source register](data/calibration/supreme-court-research-2026/source-register.csv) | Preserves named-source rows from the 2026 markdown-table reports, including certiorari CFR/CVSG, emergency applications, comparative access paths, lower-court compliance, and repeat-player evidence. |
 | `model-docket-mix-prior` | [Simulator docket-mix prior](src/main/java/constitutionalreview/simulation/WorldGenerator.java) | Defines stress-domain bounds for generated docket categories that do not map cleanly to a single empirical source denominator. |
 ## Targets
 
 | Target | Scenario | Use | Metric | Source metric | Observed | Range | Source median | Source obs. | Source terms | Status |
 | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- |
-| Rights-related merits domains track SCDB rights issue areas. | Stylized current U.S.-like supreme court | `strict_validation` | `rightsClaimRate` | `rightsClaimRate` | 0.213 | 0.064-0.479 | 0.299 | 79 | 1946-2024 | within range |
-| Administrative-law challenges track SCDB administrative-action observations. | Stylized current U.S.-like supreme court | `strict_validation` | `administrativeLawRate` | `administrativeLawRate` | 0.181 | 0.000-0.503 | 0.234 | 79 | 1946-2024 | within range |
-| Election disputes remain a stress domain rather than the whole docket. | Stylized current U.S.-like supreme court | `model_prior_check` | `electionDisputeRate` | `electionDocketShare` | 0.055 | 0.020-0.240 | 0.130 | 0 |  | within range |
-| Executive-power disputes remain visible but bounded within structural public-law disputes. | Stylized current U.S.-like supreme court | `loose_calibration` | `executivePowerDisputeRate` | `structuralRate` | 0.096 | 0.074-0.429 | 0.223 | 79 | 1946-2024 | within range |
-| Declarations of unconstitutionality should be uncommon in the full merits docket. | Stylized current U.S.-like supreme court | `strict_validation` | `invalidationRate` | `invalidationRate` | 0.063 | 0.000-0.223 | 0.066 | 79 | 1946-2024 | within range |
-| Admissibility-aware current-like designs should transfer a substantial but not universal share of filed matters to merits. | Stylized current U.S.-like supreme court | `model_prior_check` | `meritsTransferRate` | `admissibilityModelShare` | 0.499 | 0.250-0.850 | 0.550 | 0 |  | within range |
-| Emergency applications should be present but bounded in the current-like docket. | Stylized current U.S.-like supreme court | `strict_validation` | `emergencyStayDocketRate` | `emergencyStayDocketRate` | 0.047 | 0.000-0.223 | 0.006 | 32 | 1993-2024 | within range |
-| Emergency orders should be observable but not universal. | Stylized current U.S.-like supreme court | `loose_calibration` | `emergencyOrderRate` | `emergencyOrderRate` | 0.397 | 0.000-0.773 | 0.100 | 22 | 2003-2024 | within range |
+| Rights-related merits domains track SCDB rights issue areas. | Stylized current U.S.-like supreme court | `strict_validation` | `rightsClaimRate` | `rightsClaimRate` | 0.204 | 0.064-0.479 | 0.299 | 79 | 1946-2024 | within range |
+| Administrative-law challenges track SCDB administrative-action observations. | Stylized current U.S.-like supreme court | `strict_validation` | `administrativeLawRate` | `administrativeLawRate` | 0.184 | 0.000-0.503 | 0.234 | 79 | 1946-2024 | within range |
+| Election disputes remain a stress domain rather than the whole docket. | Stylized current U.S.-like supreme court | `model_prior_check` | `electionDisputeRate` | `electionDocketShare` | 0.050 | 0.020-0.240 | 0.130 | 0 |  | within range |
+| Executive-power disputes remain visible but bounded within structural public-law disputes. | Stylized current U.S.-like supreme court | `loose_calibration` | `executivePowerDisputeRate` | `structuralRate` | 0.099 | 0.074-0.429 | 0.223 | 79 | 1946-2024 | within range |
+| Declarations of unconstitutionality should be uncommon in the full merits docket. | Stylized current U.S.-like supreme court | `strict_validation` | `invalidationRate` | `invalidationRate` | 0.102 | 0.000-0.223 | 0.066 | 79 | 1946-2024 | within range |
+| Admissibility-aware current-like designs should transfer a substantial but not universal share of filed matters to merits. | Stylized current U.S.-like supreme court | `model_prior_check` | `meritsTransferRate` | `admissibilityModelShare` | 0.410 | 0.250-0.850 | 0.550 | 0 |  | within range |
+| Paid cert-style petitions should expose a separate court-requested-response stage rather than a one-step grant draw. | Stylized current U.S.-like supreme court | `loose_calibration` | `paidCfrRequestRate` | `cfrRate_paid` | 0.054 | 0.027-0.067 | 0.047 | 1 | OT2001–OT2004 | within range |
+| IFP cert-style petitions should expose a lower-frequency court-requested-response stage. | Stylized current U.S.-like supreme court | `loose_calibration` | `ifpCfrRequestRate` | `cfrRate_ifp` | 0.038 | 0.000-0.040 | 0.020 | 1 | OT2001–OT2004 | within range |
+| Emergency applications should be present but bounded in the current-like docket. | Stylized current U.S.-like supreme court | `strict_validation` | `emergencyStayDocketRate` | `emergencyStayDocketRate` | 0.046 | 0.000-0.223 | 0.006 | 32 | 1993-2024 | within range |
+| Emergency orders should be observable but not universal. | Stylized current U.S.-like supreme court | `loose_calibration` | `emergencyOrderRate` | `emergencyOrderRate` | 0.333 | 0.000-0.773 | 0.100 | 22 | 2003-2024 | within range |
 | Justice-case recusals should be rare. | Stylized current U.S.-like supreme court | `strict_validation` | `recusalRate` | `recusalRate` | 0.013 | 0.000-0.029 | 0.009 | 1 | 1946-2003 | within range |
-| Open emergency procedure creates measurable but bounded shadow-docket abuse. | Stylized current U.S.-like supreme court | `loose_calibration` | `shadowDocketAbuse` | `shadowDocketAbuse` | 0.236 | 0.000-0.657 | 0.222 | 22 | 2003-2024 | within range |
-| Precedent stability remains high enough for a stress-inclusive docket with screened and emergency matters. | Stylized current U.S.-like supreme court | `loose_calibration` | `precedentStability` | `precedentStability` | 0.822 | 0.773-1.000 | 0.983 | 79 | 1946-2024 | within range |
-| Statutory stability remains in a source-derived post-review band. | Stylized current U.S.-like supreme court | `loose_calibration` | `statutoryStability` | `statutoryStability` | 0.691 | 0.627-1.000 | 0.934 | 79 | 1946-2024 | within range |
-| Interbranch compliance stays above a low-conflict floor. | Stylized current U.S.-like supreme court | `proxy_sanity_check` | `interbranchCompliance` | `statutoryStability` | 0.534 | 0.427-1.000 | 0.934 | 79 | 1946-2024 | within range |
-| Commission appointments should keep partisan alignment low. | Nonpartisan commission appointments | `proxy_sanity_check` | `partisanAlignment` | `shadowDocketAbuse` | 0.025 | 0.000-0.657 | 0.222 | 22 | 2003-2024 | within range |
-| No-relief-without-merits should sharply suppress shadow-docket abuse. | No emergency relief without merits review | `mechanism_sanity_check` | `shadowDocketAbuse` | `shadowDocketAbuse` | 0.008 | 0.000-0.657 | 0.222 | 22 | 2003-2024 | within range |
-| Emergency-restraint designs should convert urgent matters into merits acceleration. | No emergency relief without merits review | `mechanism_sanity_check` | `meritsAccelerationRate` | `emergencyOrderRate` | 0.385 | 0.000-0.683 | 0.100 | 22 | 2003-2024 | within range |
-| Override designs should produce observable but not constant override attempts. | Judicial review with legislative supermajority override | `proxy_sanity_check` | `overrideAttemptRate` | `invalidationRate` | 0.041 | 0.000-0.333 | 0.066 | 79 | 1946-2024 | within range |
+| Open emergency procedure creates measurable but bounded shadow-docket abuse. | Stylized current U.S.-like supreme court | `loose_calibration` | `shadowDocketAbuse` | `shadowDocketAbuse` | 0.205 | 0.000-0.657 | 0.222 | 22 | 2003-2024 | within range |
+| Precedent stability remains high enough for a stress-inclusive docket with screened and emergency matters. | Stylized current U.S.-like supreme court | `loose_calibration` | `precedentStability` | `precedentStability` | 0.769 | 0.753-1.000 | 0.983 | 79 | 1946-2024 | within range |
+| Statutory stability remains in a source-derived post-review band. | Stylized current U.S.-like supreme court | `loose_calibration` | `statutoryStability` | `statutoryStability` | 0.679 | 0.627-1.000 | 0.934 | 79 | 1946-2024 | within range |
+| Interbranch compliance stays above a low-conflict floor. | Stylized current U.S.-like supreme court | `proxy_sanity_check` | `interbranchCompliance` | `statutoryStability` | 0.547 | 0.427-1.000 | 0.934 | 79 | 1946-2024 | within range |
+| Commission appointments should keep partisan alignment low. | Nonpartisan commission appointments | `proxy_sanity_check` | `partisanAlignment` | `shadowDocketAbuse` | 0.019 | 0.000-0.657 | 0.222 | 22 | 2003-2024 | within range |
+| No-relief-without-merits should sharply suppress shadow-docket abuse. | No emergency relief without merits review | `mechanism_sanity_check` | `shadowDocketAbuse` | `shadowDocketAbuse` | 0.007 | 0.000-0.657 | 0.222 | 22 | 2003-2024 | within range |
+| Emergency-restraint designs should convert urgent matters into merits acceleration. | No emergency relief without merits review | `mechanism_sanity_check` | `meritsAccelerationRate` | `emergencyOrderRate` | 0.312 | 0.000-0.683 | 0.100 | 22 | 2003-2024 | within range |
+| Override designs should produce observable but not constant override attempts. | Judicial review with legislative supermajority override | `proxy_sanity_check` | `overrideAttemptRate` | `invalidationRate` | 0.072 | 0.000-0.333 | 0.066 | 79 | 1946-2024 | within range |
 
 See `calibration-source-ranges-v4.md` for the generated source-range appendix.

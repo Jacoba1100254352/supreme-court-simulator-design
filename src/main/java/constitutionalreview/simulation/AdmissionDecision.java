@@ -7,6 +7,8 @@ public record AdmissionDecision(
         boolean transferredToMerits,
         boolean paidPetition,
         boolean ifpPetition,
+        boolean courtRequestedResponse,
+        boolean cvsgRequested,
         double admissionScore,
         double conditionalReversalProbability
 ) {

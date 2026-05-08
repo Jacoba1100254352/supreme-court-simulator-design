@@ -1,197 +1,219 @@
 priorKey,priorName,priorWeight,scenarioKey,scenario,directionalScore,rightsProtection,rightsClaimantSuccess,shadowDocketAbuse,emergencyDownstreamEffect,governmentNoncomplianceRate,lowerCourtCompliance,lowerCourtResistanceRisk,enforcementCapacity,interpretationRisk
-baseline,Baseline institutional prior,1.000,emergency-restraint-court,No emergency relief without merits review,0.606,0.659,0.103,0.011,0.062,0.096,0.561,0.241,0.607,rights-protection caveat
-baseline,Baseline institutional prior,1.000,term-limited-balanced,18-year staggered terms + regular appointments,0.605,0.658,0.111,0.083,0.072,0.102,0.557,0.245,0.603,rights-protection caveat
-baseline,Baseline institutional prior,1.000,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.605,0.659,0.106,0.089,0.076,0.099,0.556,0.242,0.634,rights-protection caveat
-baseline,Baseline institutional prior,1.000,nonpartisan-commission,Nonpartisan commission appointments,0.603,0.656,0.109,0.084,0.071,0.093,0.557,0.244,0.602,rights-protection caveat
-baseline,Baseline institutional prior,1.000,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.602,0.658,0.113,0.019,0.080,0.092,0.564,0.241,0.606,rights-protection caveat
-baseline,Baseline institutional prior,1.000,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.602,0.655,0.105,0.082,0.071,0.087,0.557,0.243,0.603,rights-protection caveat
-baseline,Baseline institutional prior,1.000,panel-en-banc,Three-judge panels with en banc correction,0.601,0.653,0.094,0.083,0.073,0.083,0.559,0.242,0.603,rights-protection caveat
-baseline,Baseline institutional prior,1.000,supermajority-review,60 percent invalidation threshold,0.601,0.648,0.085,0.071,0.079,0.115,0.549,0.247,0.601,rights-protection caveat
-baseline,Baseline institutional prior,1.000,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.600,0.651,0.097,0.045,0.073,0.103,0.556,0.245,0.602,rights-protection caveat
-baseline,Baseline institutional prior,1.000,accountability-retention-court,Retention-election accountability court,0.599,0.644,0.081,0.087,0.074,0.090,0.557,0.243,0.604,rights-protection caveat
-baseline,Baseline institutional prior,1.000,legislative-override-window,Time-limited legislative override window,0.599,0.654,0.094,0.083,0.072,0.098,0.554,0.245,0.602,rights-protection caveat
-baseline,Baseline institutional prior,1.000,legislative-override,Judicial review with legislative supermajority override,0.599,0.654,0.093,0.082,0.073,0.094,0.555,0.243,0.604,rights-protection caveat
-baseline,Baseline institutional prior,1.000,expanded-court-fifteen,Expanded 15-seat court,0.599,0.655,0.104,0.081,0.072,0.082,0.559,0.242,0.603,rights-protection caveat
-baseline,Baseline institutional prior,1.000,randomized-merits-panels,Randomized merits panels with en banc correction,0.598,0.657,0.102,0.086,0.073,0.095,0.555,0.243,0.604,rights-protection caveat
-baseline,Baseline institutional prior,1.000,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.597,0.659,0.101,0.087,0.076,0.104,0.552,0.244,0.605,rights-protection caveat
-baseline,Baseline institutional prior,1.000,public-interest-litigation-filter,Public-interest litigation filter,0.597,0.667,0.119,0.090,0.079,0.113,0.549,0.245,0.605,rights-protection caveat
-baseline,Baseline institutional prior,1.000,emergency-integrity-package,Emergency integrity package,0.597,0.655,0.092,0.020,0.085,0.099,0.563,0.241,0.609,rights-protection caveat
-baseline,Baseline institutional prior,1.000,panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,0.596,0.651,0.092,0.072,0.082,0.106,0.554,0.244,0.632,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.610,0.662,0.104,0.077,0.068,0.088,0.566,0.233,0.635,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,emergency-restraint-court,No emergency relief without merits review,0.609,0.651,0.084,0.011,0.059,0.091,0.568,0.234,0.607,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,term-limited-balanced,18-year staggered terms + regular appointments,0.606,0.652,0.094,0.080,0.069,0.088,0.559,0.237,0.603,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,nonpartisan-commission,Nonpartisan commission appointments,0.604,0.660,0.103,0.083,0.072,0.090,0.559,0.236,0.605,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,supermajority-review,60 percent invalidation threshold,0.604,0.645,0.074,0.068,0.073,0.106,0.556,0.239,0.602,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,legislative-override-window,Time-limited legislative override window,0.604,0.661,0.106,0.080,0.068,0.091,0.559,0.236,0.604,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.604,0.662,0.112,0.018,0.077,0.093,0.567,0.235,0.606,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.603,0.653,0.094,0.081,0.069,0.092,0.560,0.237,0.604,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,panel-en-banc,Three-judge panels with en banc correction,0.602,0.655,0.094,0.080,0.067,0.099,0.559,0.237,0.604,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.602,0.655,0.097,0.045,0.073,0.098,0.559,0.237,0.604,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,legislative-override,Judicial review with legislative supermajority override,0.602,0.662,0.100,0.080,0.069,0.100,0.558,0.237,0.605,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,accountability-retention-court,Retention-election accountability court,0.602,0.652,0.090,0.079,0.069,0.102,0.560,0.237,0.605,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,randomized-merits-panels,Randomized merits panels with en banc correction,0.601,0.660,0.103,0.084,0.072,0.091,0.560,0.236,0.604,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,expanded-court-fifteen,Expanded 15-seat court,0.601,0.656,0.105,0.075,0.067,0.082,0.564,0.236,0.603,rights-protection caveat
-low-polarization,Low-polarization prior,0.600,public-interest-litigation-filter,Public-interest litigation filter,0.601,0.664,0.111,0.083,0.073,0.102,0.557,0.236,0.606,rights-protection caveat
-high-polarization,High-polarization prior,0.850,emergency-restraint-court,No emergency relief without merits review,0.604,0.651,0.092,0.012,0.068,0.093,0.560,0.253,0.607,rights-protection caveat
-high-polarization,High-polarization prior,0.850,term-limited-balanced,18-year staggered terms + regular appointments,0.602,0.654,0.102,0.085,0.077,0.101,0.551,0.257,0.603,rights-protection caveat
-high-polarization,High-polarization prior,0.850,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.602,0.649,0.091,0.087,0.078,0.114,0.551,0.257,0.633,rights-protection caveat
-high-polarization,High-polarization prior,0.850,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.601,0.665,0.118,0.020,0.087,0.093,0.557,0.252,0.608,rights-protection caveat
-high-polarization,High-polarization prior,0.850,supermajority-review,60 percent invalidation threshold,0.601,0.644,0.079,0.072,0.084,0.100,0.551,0.257,0.602,rights-protection caveat
-high-polarization,High-polarization prior,0.850,accountability-retention-court,Retention-election accountability court,0.599,0.647,0.092,0.085,0.075,0.082,0.553,0.254,0.603,rights-protection caveat
-high-polarization,High-polarization prior,0.850,nonpartisan-commission,Nonpartisan commission appointments,0.598,0.656,0.102,0.089,0.080,0.098,0.551,0.255,0.605,rights-protection caveat
-high-polarization,High-polarization prior,0.850,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.597,0.654,0.101,0.091,0.080,0.091,0.551,0.256,0.603,rights-protection caveat
-high-polarization,High-polarization prior,0.850,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.597,0.649,0.094,0.046,0.078,0.103,0.551,0.257,0.603,rights-protection caveat
-high-polarization,High-polarization prior,0.850,legislative-override,Judicial review with legislative supermajority override,0.597,0.654,0.099,0.082,0.074,0.105,0.550,0.257,0.603,rights-protection caveat
-high-polarization,High-polarization prior,0.850,legislative-override-window,Time-limited legislative override window,0.596,0.653,0.097,0.087,0.077,0.113,0.548,0.258,0.604,rights-protection caveat
-high-polarization,High-polarization prior,0.850,public-interest-litigation-filter,Public-interest litigation filter,0.596,0.664,0.115,0.088,0.081,0.101,0.548,0.255,0.605,rights-protection caveat
-high-polarization,High-polarization prior,0.850,randomized-merits-panels,Randomized merits panels with en banc correction,0.595,0.653,0.095,0.087,0.079,0.100,0.550,0.256,0.603,rights-protection caveat
-high-polarization,High-polarization prior,0.850,panel-en-banc,Three-judge panels with en banc correction,0.594,0.654,0.100,0.090,0.082,0.111,0.547,0.257,0.604,rights-protection caveat
-high-polarization,High-polarization prior,0.850,emergency-integrity-package,Emergency integrity package,0.594,0.651,0.089,0.021,0.092,0.098,0.558,0.253,0.608,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,emergency-restraint-court,No emergency relief without merits review,0.611,0.655,0.070,0.010,0.057,0.079,0.574,0.232,0.607,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.609,0.657,0.084,0.080,0.068,0.089,0.566,0.234,0.634,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,supermajority-review,60 percent invalidation threshold,0.607,0.647,0.064,0.067,0.072,0.081,0.564,0.236,0.601,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,term-limited-balanced,18-year staggered terms + regular appointments,0.607,0.654,0.077,0.077,0.065,0.099,0.561,0.237,0.603,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.604,0.658,0.083,0.017,0.076,0.086,0.571,0.233,0.607,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,nonpartisan-commission,Nonpartisan commission appointments,0.604,0.660,0.083,0.082,0.069,0.093,0.561,0.236,0.605,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,accountability-retention-court,Retention-election accountability court,0.604,0.656,0.083,0.079,0.068,0.092,0.561,0.235,0.605,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,panel-en-banc,Three-judge panels with en banc correction,0.603,0.660,0.089,0.082,0.070,0.091,0.562,0.236,0.604,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.603,0.655,0.081,0.044,0.071,0.101,0.563,0.237,0.605,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,legislative-override-window,Time-limited legislative override window,0.603,0.656,0.080,0.078,0.067,0.097,0.563,0.237,0.604,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.603,0.656,0.080,0.079,0.067,0.093,0.562,0.236,0.604,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,legislative-override,Judicial review with legislative supermajority override,0.602,0.663,0.084,0.081,0.071,0.104,0.559,0.236,0.606,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.602,0.666,0.097,0.082,0.068,0.094,0.560,0.235,0.605,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,expanded-court-fifteen,Expanded 15-seat court,0.602,0.653,0.074,0.074,0.065,0.080,0.568,0.235,0.603,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,randomized-merits-panels,Randomized merits panels with en banc correction,0.602,0.655,0.080,0.081,0.070,0.082,0.564,0.235,0.604,rights-protection caveat
-low-appointment-capture,Low appointment-capture prior,0.550,public-interest-litigation-filter,Public-interest litigation filter,0.601,0.666,0.098,0.079,0.070,0.106,0.557,0.237,0.605,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,emergency-restraint-court,No emergency relief without merits review,0.603,0.645,0.089,0.013,0.073,0.089,0.560,0.256,0.611,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.601,0.654,0.103,0.090,0.085,0.106,0.551,0.259,0.637,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,term-limited-balanced,18-year staggered terms + regular appointments,0.600,0.651,0.105,0.086,0.081,0.095,0.549,0.261,0.605,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.597,0.655,0.110,0.022,0.095,0.093,0.556,0.257,0.610,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,nonpartisan-commission,Nonpartisan commission appointments,0.597,0.654,0.109,0.091,0.084,0.108,0.547,0.262,0.606,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,legislative-override-window,Time-limited legislative override window,0.596,0.662,0.115,0.091,0.085,0.094,0.547,0.259,0.608,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,supermajority-review,60 percent invalidation threshold,0.596,0.633,0.067,0.080,0.091,0.109,0.545,0.264,0.603,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.595,0.648,0.097,0.053,0.090,0.106,0.548,0.261,0.607,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,panel-en-banc,Three-judge panels with en banc correction,0.594,0.647,0.096,0.092,0.084,0.106,0.549,0.261,0.606,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,legislative-override,Judicial review with legislative supermajority override,0.594,0.661,0.114,0.091,0.085,0.123,0.542,0.262,0.608,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.594,0.651,0.101,0.091,0.085,0.104,0.547,0.261,0.607,rights-protection caveat
-high-appointment-capture,High appointment-capture prior,0.800,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.594,0.657,0.112,0.094,0.085,0.103,0.546,0.261,0.607,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.609,0.656,0.092,0.080,0.070,0.093,0.566,0.238,0.637,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,emergency-restraint-court,No emergency relief without merits review,0.608,0.654,0.089,0.010,0.063,0.097,0.568,0.237,0.610,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,term-limited-balanced,18-year staggered terms + regular appointments,0.607,0.658,0.097,0.079,0.069,0.094,0.559,0.240,0.605,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,supermajority-review,60 percent invalidation threshold,0.605,0.647,0.072,0.071,0.076,0.090,0.560,0.240,0.605,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,nonpartisan-commission,Nonpartisan commission appointments,0.605,0.661,0.098,0.084,0.072,0.076,0.561,0.237,0.607,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.605,0.656,0.101,0.017,0.074,0.088,0.568,0.238,0.608,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,legislative-override-window,Time-limited legislative override window,0.604,0.658,0.094,0.078,0.068,0.087,0.560,0.239,0.607,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,accountability-retention-court,Retention-election accountability court,0.604,0.654,0.097,0.081,0.069,0.085,0.561,0.238,0.608,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.603,0.659,0.098,0.045,0.073,0.098,0.560,0.239,0.608,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,panel-en-banc,Three-judge panels with en banc correction,0.603,0.656,0.098,0.079,0.069,0.096,0.558,0.240,0.607,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.603,0.648,0.086,0.076,0.066,0.092,0.563,0.241,0.605,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,emergency-integrity-package,Emergency integrity package,0.601,0.649,0.081,0.017,0.076,0.081,0.569,0.236,0.609,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,legislative-override,Judicial review with legislative supermajority override,0.601,0.656,0.091,0.082,0.072,0.103,0.559,0.241,0.607,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,expanded-court-fifteen,Expanded 15-seat court,0.601,0.652,0.093,0.076,0.067,0.094,0.561,0.241,0.605,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,public-interest-litigation-filter,Public-interest litigation filter,0.600,0.665,0.110,0.085,0.073,0.101,0.554,0.240,0.608,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.600,0.659,0.101,0.079,0.070,0.103,0.556,0.241,0.606,rights-protection caveat
-low-public-pressure,Low public-pressure prior,0.450,randomized-merits-panels,Randomized merits panels with en banc correction,0.599,0.654,0.087,0.086,0.073,0.089,0.557,0.240,0.606,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,emergency-restraint-court,No emergency relief without merits review,0.604,0.653,0.081,0.013,0.070,0.096,0.562,0.247,0.606,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.603,0.652,0.087,0.089,0.084,0.093,0.560,0.248,0.631,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,term-limited-balanced,18-year staggered terms + regular appointments,0.602,0.657,0.097,0.086,0.080,0.094,0.556,0.250,0.601,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,nonpartisan-commission,Nonpartisan commission appointments,0.599,0.651,0.087,0.085,0.081,0.097,0.557,0.250,0.602,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.599,0.656,0.099,0.021,0.092,0.095,0.563,0.248,0.604,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.598,0.657,0.097,0.049,0.085,0.103,0.553,0.251,0.602,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.597,0.660,0.098,0.085,0.080,0.102,0.552,0.250,0.603,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,panel-en-banc,Three-judge panels with en banc correction,0.597,0.658,0.098,0.086,0.082,0.098,0.553,0.250,0.602,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,supermajority-review,60 percent invalidation threshold,0.597,0.647,0.072,0.080,0.093,0.114,0.548,0.253,0.600,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,emergency-integrity-package,Emergency integrity package,0.596,0.646,0.073,0.020,0.087,0.090,0.565,0.247,0.604,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.596,0.654,0.091,0.086,0.080,0.101,0.553,0.251,0.601,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,legislative-override,Judicial review with legislative supermajority override,0.595,0.661,0.096,0.094,0.085,0.120,0.550,0.252,0.603,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,legislative-override-window,Time-limited legislative override window,0.595,0.656,0.089,0.092,0.084,0.107,0.551,0.251,0.603,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,public-interest-litigation-filter,Public-interest litigation filter,0.595,0.663,0.098,0.092,0.086,0.104,0.551,0.250,0.603,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,accountability-retention-court,Retention-election accountability court,0.595,0.649,0.079,0.092,0.084,0.108,0.552,0.251,0.603,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,expanded-court-fifteen,Expanded 15-seat court,0.594,0.656,0.094,0.088,0.081,0.105,0.552,0.252,0.600,rights-protection caveat
-high-public-pressure,High public-pressure prior,0.700,randomized-merits-panels,Randomized merits panels with en banc correction,0.594,0.651,0.085,0.089,0.083,0.108,0.554,0.252,0.601,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.611,0.658,0.117,0.068,0.053,0.084,0.563,0.238,0.631,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,emergency-restraint-court,No emergency relief without merits review,0.611,0.660,0.110,0.009,0.042,0.089,0.563,0.238,0.605,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,term-limited-balanced,18-year staggered terms + regular appointments,0.610,0.653,0.102,0.066,0.051,0.089,0.560,0.240,0.602,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,supermajority-review,60 percent invalidation threshold,0.610,0.644,0.084,0.057,0.056,0.094,0.559,0.241,0.600,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,panel-en-banc,Three-judge panels with en banc correction,0.608,0.659,0.110,0.064,0.052,0.079,0.565,0.238,0.603,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,nonpartisan-commission,Nonpartisan commission appointments,0.607,0.655,0.107,0.071,0.053,0.089,0.557,0.240,0.602,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.605,0.663,0.124,0.015,0.056,0.094,0.562,0.238,0.604,front-line cluster
-low-emergency-share,Low emergency-share prior,0.500,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.605,0.652,0.101,0.066,0.053,0.083,0.561,0.239,0.601,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.605,0.662,0.120,0.069,0.053,0.086,0.558,0.239,0.602,front-line cluster
-low-emergency-share,Low emergency-share prior,0.500,legislative-override-window,Time-limited legislative override window,0.605,0.663,0.117,0.065,0.050,0.090,0.558,0.240,0.602,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,randomized-merits-panels,Randomized merits panels with en banc correction,0.605,0.662,0.112,0.071,0.054,0.078,0.557,0.238,0.603,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.604,0.648,0.101,0.036,0.054,0.094,0.559,0.242,0.600,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,legislative-override,Judicial review with legislative supermajority override,0.604,0.660,0.116,0.062,0.049,0.105,0.556,0.242,0.601,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,public-interest-litigation-filter,Public-interest litigation filter,0.604,0.668,0.126,0.068,0.054,0.100,0.555,0.239,0.604,front-line cluster
-low-emergency-share,Low emergency-share prior,0.500,accountability-retention-court,Retention-election accountability court,0.604,0.645,0.095,0.069,0.053,0.094,0.559,0.241,0.602,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,expanded-court-fifteen,Expanded 15-seat court,0.603,0.653,0.105,0.066,0.049,0.080,0.562,0.240,0.600,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,0.602,0.650,0.094,0.057,0.057,0.095,0.558,0.240,0.631,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,constitutional-remand,Constitutional remand before invalidation,0.602,0.656,0.093,0.070,0.053,0.089,0.568,0.205,0.616,rights-protection caveat
-low-emergency-share,Low emergency-share prior,0.500,emergency-integrity-package,Emergency integrity package,0.602,0.654,0.102,0.015,0.058,0.097,0.562,0.239,0.605,rights-protection caveat
-high-emergency-share,High emergency-share prior,0.850,emergency-restraint-court,No emergency relief without merits review,0.526,0.676,0.171,0.057,0.220,0.248,0.447,0.388,0.527,compliance caveat
-high-emergency-share,High emergency-share prior,0.850,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.519,0.680,0.198,0.071,0.242,0.244,0.446,0.388,0.526,compliance caveat
-high-emergency-share,High emergency-share prior,0.850,emergency-integrity-package,Emergency integrity package,0.517,0.674,0.176,0.072,0.245,0.241,0.447,0.387,0.527,compliance caveat
-high-emergency-share,High emergency-share prior,0.850,term-limited-balanced,18-year staggered terms + regular appointments,0.517,0.659,0.145,0.200,0.244,0.232,0.434,0.393,0.517,compliance caveat
-high-emergency-share,High emergency-share prior,0.850,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.516,0.671,0.161,0.203,0.248,0.269,0.427,0.395,0.548,compliance caveat
-low-rights-risk,Low rights-risk prior,0.450,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.632,0.646,0.035,0.058,0.047,0.048,0.611,0.172,0.704,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,term-limited-balanced,18-year staggered terms + regular appointments,0.632,0.647,0.037,0.057,0.045,0.047,0.609,0.173,0.674,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,emergency-restraint-court,No emergency relief without merits review,0.631,0.648,0.031,0.006,0.042,0.045,0.613,0.171,0.678,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,nonpartisan-commission,Nonpartisan commission appointments,0.629,0.649,0.034,0.060,0.047,0.036,0.608,0.172,0.674,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,supermajority-review,60 percent invalidation threshold,0.628,0.644,0.026,0.052,0.052,0.061,0.603,0.176,0.674,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.628,0.651,0.041,0.010,0.058,0.044,0.612,0.171,0.677,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,legislative-override,Judicial review with legislative supermajority override,0.628,0.652,0.039,0.060,0.048,0.047,0.607,0.173,0.676,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,panel-en-banc,Three-judge panels with en banc correction,0.627,0.651,0.038,0.060,0.048,0.047,0.606,0.173,0.675,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,accountability-retention-court,Retention-election accountability court,0.626,0.645,0.030,0.063,0.047,0.051,0.606,0.174,0.675,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,legislative-override-window,Time-limited legislative override window,0.626,0.647,0.030,0.063,0.048,0.047,0.607,0.173,0.675,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.626,0.646,0.032,0.060,0.047,0.043,0.606,0.174,0.673,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.626,0.649,0.037,0.029,0.049,0.052,0.608,0.173,0.675,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.626,0.652,0.043,0.062,0.048,0.051,0.605,0.173,0.675,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,public-interest-litigation-filter,Public-interest litigation filter,0.626,0.654,0.041,0.060,0.049,0.051,0.605,0.173,0.676,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,0.625,0.651,0.038,0.049,0.052,0.047,0.607,0.172,0.704,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,randomized-merits-panels,Randomized merits panels with en banc correction,0.624,0.649,0.036,0.063,0.049,0.052,0.604,0.174,0.675,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,expanded-court-fifteen,Expanded 15-seat court,0.624,0.646,0.035,0.057,0.046,0.050,0.608,0.174,0.674,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,emergency-integrity-package,Emergency integrity package,0.624,0.643,0.022,0.010,0.058,0.041,0.614,0.171,0.677,rights-protection caveat
-low-rights-risk,Low rights-risk prior,0.450,constitutional-council,Pre-enactment constitutional council,0.623,0.647,0.028,0.061,0.049,0.046,0.613,0.171,0.711,rights-protection caveat
-high-rights-risk,High rights-risk prior,0.850,supermajority-review,60 percent invalidation threshold,0.515,0.586,0.314,0.128,0.177,0.251,0.413,0.401,0.468,compliance caveat
-high-rights-risk,High rights-risk prior,0.850,emergency-restraint-court,No emergency relief without merits review,0.513,0.644,0.468,0.029,0.112,0.248,0.420,0.393,0.478,compliance caveat
-high-rights-risk,High rights-risk prior,0.850,term-limited-balanced,18-year staggered terms + regular appointments,0.508,0.621,0.401,0.140,0.152,0.243,0.413,0.397,0.472,compliance caveat
-high-rights-risk,High rights-risk prior,0.850,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.508,0.627,0.405,0.130,0.147,0.231,0.416,0.395,0.472,compliance caveat
-high-rights-risk,High rights-risk prior,0.850,remand-override-window-package,Constitutional remand with override window,0.505,0.604,0.345,0.099,0.178,0.266,0.430,0.361,0.502,compliance caveat
-high-rights-risk,High rights-risk prior,0.850,constitutional-remand,Constitutional remand before invalidation,0.505,0.613,0.359,0.147,0.159,0.262,0.427,0.360,0.501,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,supermajority-review,60 percent invalidation threshold,0.547,0.642,0.176,0.105,0.136,0.202,0.457,0.373,0.465,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,emergency-restraint-court,No emergency relief without merits review,0.545,0.664,0.246,0.023,0.098,0.215,0.463,0.369,0.473,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,term-limited-balanced,18-year staggered terms + regular appointments,0.544,0.656,0.215,0.119,0.122,0.211,0.456,0.373,0.467,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.542,0.640,0.193,0.072,0.122,0.208,0.463,0.373,0.465,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.539,0.653,0.209,0.119,0.120,0.238,0.451,0.375,0.496,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,constitutional-remand,Constitutional remand before invalidation,0.539,0.654,0.200,0.118,0.123,0.222,0.470,0.337,0.492,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.539,0.650,0.210,0.115,0.117,0.226,0.456,0.374,0.466,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,remand-override-window-package,Constitutional remand with override window,0.538,0.651,0.187,0.075,0.133,0.224,0.471,0.337,0.492,compliance caveat
-weak-mandate,Weak democratic-mandate prior,0.750,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.537,0.662,0.251,0.033,0.103,0.217,0.463,0.370,0.472,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,emergency-restraint-court,No emergency relief without merits review,0.511,0.675,0.258,0.047,0.149,0.277,0.419,0.428,0.494,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,supermajority-review,60 percent invalidation threshold,0.510,0.640,0.170,0.158,0.200,0.288,0.405,0.437,0.482,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,term-limited-balanced,18-year staggered terms + regular appointments,0.506,0.654,0.221,0.164,0.175,0.284,0.409,0.434,0.485,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.505,0.653,0.219,0.118,0.196,0.281,0.410,0.434,0.486,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,accountability-retention-court,Retention-election accountability court,0.505,0.641,0.210,0.170,0.178,0.265,0.411,0.431,0.487,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.505,0.658,0.226,0.164,0.178,0.261,0.415,0.431,0.486,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,nonpartisan-commission,Nonpartisan commission appointments,0.504,0.661,0.231,0.171,0.182,0.274,0.407,0.433,0.486,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,expanded-court-fifteen,Expanded 15-seat court,0.503,0.649,0.208,0.167,0.175,0.280,0.412,0.435,0.484,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.502,0.639,0.160,0.156,0.203,0.266,0.412,0.434,0.483,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,constitutional-remand,Constitutional remand before invalidation,0.501,0.654,0.200,0.177,0.186,0.287,0.422,0.397,0.514,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,remand-override-window-package,Constitutional remand with override window,0.501,0.651,0.194,0.125,0.202,0.284,0.423,0.399,0.513,compliance caveat
-high-conflict,High constitutional-conflict prior,0.900,emergency-integrity-package,Emergency integrity package,0.501,0.672,0.259,0.061,0.166,0.292,0.416,0.429,0.494,compliance caveat
-imported-legislative-family,Imported legislative-family prior,0.700,emergency-restraint-court,No emergency relief without merits review,0.612,0.649,0.066,0.009,0.059,0.083,0.579,0.228,0.609,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.612,0.652,0.073,0.081,0.070,0.079,0.573,0.229,0.636,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,term-limited-balanced,18-year staggered terms + regular appointments,0.610,0.656,0.080,0.075,0.067,0.093,0.569,0.231,0.607,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,supermajority-review,60 percent invalidation threshold,0.609,0.643,0.055,0.065,0.074,0.080,0.570,0.231,0.605,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.607,0.652,0.080,0.015,0.075,0.084,0.575,0.229,0.609,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,nonpartisan-commission,Nonpartisan commission appointments,0.607,0.655,0.073,0.079,0.069,0.084,0.569,0.230,0.607,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.607,0.650,0.079,0.042,0.072,0.070,0.574,0.229,0.606,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,legislative-override,Judicial review with legislative supermajority override,0.606,0.657,0.078,0.080,0.069,0.083,0.569,0.230,0.607,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.606,0.647,0.066,0.076,0.065,0.076,0.574,0.230,0.605,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,accountability-retention-court,Retention-election accountability court,0.605,0.652,0.072,0.077,0.067,0.092,0.567,0.231,0.607,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,legislative-override-window,Time-limited legislative override window,0.605,0.654,0.074,0.072,0.066,0.093,0.568,0.232,0.606,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,randomized-merits-panels,Randomized merits panels with en banc correction,0.605,0.653,0.074,0.077,0.069,0.077,0.571,0.230,0.606,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.604,0.657,0.080,0.076,0.067,0.083,0.566,0.231,0.606,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,panel-en-banc,Three-judge panels with en banc correction,0.604,0.655,0.074,0.079,0.070,0.096,0.567,0.231,0.608,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,expanded-court-fifteen,Expanded 15-seat court,0.604,0.651,0.077,0.073,0.066,0.090,0.570,0.232,0.605,rights-protection caveat
-imported-legislative-family,Imported legislative-family prior,0.700,public-interest-litigation-filter,Public-interest litigation filter,0.603,0.662,0.082,0.083,0.073,0.087,0.567,0.229,0.608,rights-protection caveat
+baseline,Baseline institutional prior,1.000,emergency-restraint-court,No emergency relief without merits review,0.608,0.646,0.141,0.011,0.055,0.091,0.593,0.247,0.610,front-line cluster
+baseline,Baseline institutional prior,1.000,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.607,0.646,0.130,0.076,0.070,0.091,0.589,0.247,0.637,front-line cluster
+baseline,Baseline institutional prior,1.000,term-limited-balanced,18-year staggered terms + regular appointments,0.606,0.646,0.135,0.076,0.072,0.093,0.585,0.248,0.608,front-line cluster
+baseline,Baseline institutional prior,1.000,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.606,0.650,0.151,0.016,0.062,0.090,0.593,0.246,0.611,front-line cluster
+baseline,Baseline institutional prior,1.000,supermajority-review,60 percent invalidation threshold,0.605,0.635,0.107,0.070,0.080,0.089,0.583,0.250,0.605,rights-protection caveat
+baseline,Baseline institutional prior,1.000,nonpartisan-commission,Nonpartisan commission appointments,0.604,0.647,0.135,0.074,0.070,0.082,0.587,0.248,0.607,front-line cluster
+baseline,Baseline institutional prior,1.000,legislative-override-window,Time-limited legislative override window,0.604,0.641,0.122,0.073,0.069,0.074,0.590,0.247,0.608,front-line cluster
+baseline,Baseline institutional prior,1.000,emergency-integrity-package,Emergency integrity package,0.603,0.656,0.156,0.018,0.067,0.092,0.591,0.245,0.612,front-line cluster
+baseline,Baseline institutional prior,1.000,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.603,0.642,0.128,0.076,0.070,0.079,0.587,0.248,0.606,front-line cluster
+baseline,Baseline institutional prior,1.000,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.603,0.647,0.133,0.050,0.080,0.091,0.585,0.248,0.608,front-line cluster
+baseline,Baseline institutional prior,1.000,randomized-merits-panels,Randomized merits panels with en banc correction,0.602,0.645,0.135,0.069,0.066,0.086,0.590,0.248,0.607,front-line cluster
+baseline,Baseline institutional prior,1.000,expanded-court-fifteen,Expanded 15-seat court,0.602,0.646,0.135,0.074,0.071,0.074,0.590,0.246,0.608,front-line cluster
+baseline,Baseline institutional prior,1.000,accountability-retention-court,Retention-election accountability court,0.601,0.645,0.141,0.076,0.069,0.101,0.585,0.249,0.610,front-line cluster
+baseline,Baseline institutional prior,1.000,panel-en-banc,Three-judge panels with en banc correction,0.601,0.641,0.127,0.074,0.071,0.083,0.591,0.247,0.609,front-line cluster
+baseline,Baseline institutional prior,1.000,public-interest-litigation-filter,Public-interest litigation filter,0.601,0.651,0.136,0.076,0.071,0.107,0.583,0.250,0.608,front-line cluster
+baseline,Baseline institutional prior,1.000,constitutional-remand,Constitutional remand before invalidation,0.601,0.637,0.105,0.076,0.072,0.092,0.599,0.215,0.623,rights-protection caveat
+baseline,Baseline institutional prior,1.000,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.601,0.647,0.137,0.074,0.070,0.091,0.585,0.248,0.608,front-line cluster
+baseline,Baseline institutional prior,1.000,legislative-override,Judicial review with legislative supermajority override,0.601,0.648,0.131,0.072,0.068,0.093,0.584,0.249,0.608,front-line cluster
+baseline,Baseline institutional prior,1.000,remand-override-window-package,Constitutional remand with override window,0.599,0.639,0.110,0.048,0.077,0.092,0.600,0.215,0.622,rights-protection caveat
+baseline,Baseline institutional prior,1.000,constitutional-council,Pre-enactment constitutional council,0.598,0.644,0.124,0.076,0.071,0.089,0.591,0.246,0.649,front-line cluster
+low-polarization,Low-polarization prior,0.600,emergency-restraint-court,No emergency relief without merits review,0.610,0.649,0.160,0.011,0.053,0.087,0.594,0.242,0.612,front-line cluster
+low-polarization,Low-polarization prior,0.600,supermajority-review,60 percent invalidation threshold,0.608,0.627,0.108,0.060,0.071,0.092,0.588,0.246,0.606,rights-protection caveat
+low-polarization,Low-polarization prior,0.600,term-limited-balanced,18-year staggered terms + regular appointments,0.607,0.647,0.151,0.071,0.065,0.097,0.585,0.245,0.608,front-line cluster
+low-polarization,Low-polarization prior,0.600,constitutional-remand,Constitutional remand before invalidation,0.606,0.634,0.119,0.070,0.062,0.082,0.603,0.210,0.623,rights-protection caveat
+low-polarization,Low-polarization prior,0.600,public-interest-litigation-filter,Public-interest litigation filter,0.606,0.642,0.144,0.069,0.064,0.085,0.590,0.243,0.609,front-line cluster
+low-polarization,Low-polarization prior,0.600,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.605,0.639,0.136,0.070,0.065,0.096,0.589,0.244,0.638,front-line cluster
+low-polarization,Low-polarization prior,0.600,emergency-integrity-package,Emergency integrity package,0.605,0.644,0.154,0.016,0.056,0.071,0.597,0.240,0.612,front-line cluster
+low-polarization,Low-polarization prior,0.600,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.604,0.638,0.144,0.040,0.068,0.077,0.591,0.243,0.609,front-line cluster
+low-polarization,Low-polarization prior,0.600,nonpartisan-commission,Nonpartisan commission appointments,0.604,0.639,0.140,0.072,0.063,0.086,0.587,0.244,0.609,front-line cluster
+low-polarization,Low-polarization prior,0.600,panel-en-banc,Three-judge panels with en banc correction,0.604,0.638,0.136,0.070,0.065,0.084,0.588,0.244,0.608,front-line cluster
+low-polarization,Low-polarization prior,0.600,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.603,0.642,0.153,0.016,0.057,0.085,0.593,0.242,0.611,front-line cluster
+low-polarization,Low-polarization prior,0.600,randomized-merits-panels,Randomized merits panels with en banc correction,0.603,0.645,0.140,0.073,0.066,0.070,0.590,0.242,0.609,front-line cluster
+low-polarization,Low-polarization prior,0.600,remand-override-window-package,Constitutional remand with override window,0.603,0.632,0.113,0.047,0.074,0.073,0.606,0.208,0.624,rights-protection caveat
+low-polarization,Low-polarization prior,0.600,accountability-retention-court,Retention-election accountability court,0.603,0.637,0.143,0.070,0.065,0.095,0.587,0.244,0.611,front-line cluster
+low-polarization,Low-polarization prior,0.600,legislative-override,Judicial review with legislative supermajority override,0.602,0.643,0.138,0.072,0.064,0.089,0.586,0.244,0.608,front-line cluster
+low-polarization,Low-polarization prior,0.600,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.602,0.639,0.139,0.068,0.063,0.085,0.588,0.244,0.608,front-line cluster
+low-polarization,Low-polarization prior,0.600,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.602,0.636,0.136,0.073,0.065,0.096,0.586,0.246,0.607,front-line cluster
+low-polarization,Low-polarization prior,0.600,legislative-override-window,Time-limited legislative override window,0.601,0.637,0.135,0.074,0.066,0.092,0.585,0.245,0.609,front-line cluster
+low-polarization,Low-polarization prior,0.600,expanded-court-fifteen,Expanded 15-seat court,0.601,0.640,0.139,0.073,0.065,0.090,0.588,0.244,0.608,front-line cluster
+low-polarization,Low-polarization prior,0.600,panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,0.600,0.636,0.127,0.064,0.075,0.086,0.588,0.244,0.637,front-line cluster
+high-polarization,High-polarization prior,0.850,emergency-restraint-court,No emergency relief without merits review,0.605,0.645,0.149,0.012,0.062,0.088,0.587,0.263,0.606,front-line cluster
+high-polarization,High-polarization prior,0.850,supermajority-review,60 percent invalidation threshold,0.601,0.634,0.109,0.071,0.089,0.091,0.577,0.266,0.601,rights-protection caveat
+high-polarization,High-polarization prior,0.850,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.600,0.647,0.157,0.019,0.072,0.090,0.584,0.263,0.606,front-line cluster
+high-polarization,High-polarization prior,0.850,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.600,0.641,0.131,0.081,0.078,0.095,0.579,0.265,0.632,front-line cluster
+high-polarization,High-polarization prior,0.850,emergency-integrity-package,Emergency integrity package,0.600,0.645,0.147,0.018,0.068,0.091,0.587,0.263,0.606,front-line cluster
+high-polarization,High-polarization prior,0.850,term-limited-balanced,18-year staggered terms + regular appointments,0.599,0.640,0.132,0.081,0.079,0.104,0.575,0.267,0.602,front-line cluster
+high-polarization,High-polarization prior,0.850,accountability-retention-court,Retention-election accountability court,0.599,0.634,0.123,0.077,0.075,0.094,0.581,0.266,0.603,front-line cluster
+high-polarization,High-polarization prior,0.850,public-interest-litigation-filter,Public-interest litigation filter,0.599,0.643,0.135,0.079,0.077,0.080,0.579,0.265,0.602,front-line cluster
+high-polarization,High-polarization prior,0.850,constitutional-remand,Constitutional remand before invalidation,0.598,0.641,0.124,0.081,0.078,0.089,0.594,0.231,0.619,administrative-cost caveat
+high-polarization,High-polarization prior,0.850,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.598,0.640,0.137,0.078,0.077,0.084,0.581,0.265,0.603,front-line cluster
+high-polarization,High-polarization prior,0.850,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.597,0.637,0.124,0.052,0.084,0.090,0.577,0.267,0.601,front-line cluster
+high-polarization,High-polarization prior,0.850,nonpartisan-commission,Nonpartisan commission appointments,0.597,0.643,0.131,0.080,0.078,0.109,0.575,0.268,0.603,front-line cluster
+high-polarization,High-polarization prior,0.850,legislative-override-window,Time-limited legislative override window,0.597,0.638,0.124,0.078,0.075,0.089,0.579,0.266,0.602,front-line cluster
+high-polarization,High-polarization prior,0.850,randomized-merits-panels,Randomized merits panels with en banc correction,0.596,0.645,0.140,0.078,0.080,0.086,0.579,0.264,0.603,front-line cluster
+high-polarization,High-polarization prior,0.850,remand-override-window-package,Constitutional remand with override window,0.596,0.637,0.113,0.052,0.088,0.083,0.595,0.231,0.618,rights-protection caveat
+high-polarization,High-polarization prior,0.850,expanded-court-fifteen,Expanded 15-seat court,0.596,0.641,0.136,0.079,0.078,0.092,0.581,0.266,0.602,front-line cluster
+high-polarization,High-polarization prior,0.850,panel-en-banc,Three-judge panels with en banc correction,0.596,0.644,0.131,0.082,0.079,0.102,0.575,0.267,0.602,front-line cluster
+high-polarization,High-polarization prior,0.850,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.596,0.642,0.136,0.078,0.076,0.091,0.579,0.266,0.602,front-line cluster
+high-polarization,High-polarization prior,0.850,legislative-override,Judicial review with legislative supermajority override,0.595,0.640,0.129,0.082,0.078,0.101,0.576,0.267,0.602,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,emergency-restraint-court,No emergency relief without merits review,0.612,0.647,0.148,0.010,0.051,0.089,0.596,0.239,0.615,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,supermajority-review,60 percent invalidation threshold,0.610,0.634,0.117,0.062,0.071,0.082,0.589,0.241,0.610,rights-protection caveat
+low-appointment-capture,Low appointment-capture prior,0.550,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.609,0.646,0.140,0.070,0.062,0.094,0.593,0.240,0.642,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.608,0.646,0.154,0.016,0.058,0.085,0.595,0.238,0.615,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,constitutional-remand,Constitutional remand before invalidation,0.607,0.633,0.112,0.069,0.062,0.083,0.606,0.207,0.626,rights-protection caveat
+low-appointment-capture,Low appointment-capture prior,0.550,nonpartisan-commission,Nonpartisan commission appointments,0.607,0.644,0.143,0.068,0.061,0.079,0.591,0.240,0.611,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,public-interest-litigation-filter,Public-interest litigation filter,0.607,0.650,0.147,0.071,0.063,0.083,0.591,0.240,0.612,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,emergency-integrity-package,Emergency integrity package,0.606,0.644,0.144,0.016,0.057,0.073,0.599,0.237,0.615,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,term-limited-balanced,18-year staggered terms + regular appointments,0.606,0.642,0.138,0.072,0.064,0.097,0.588,0.242,0.612,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,accountability-retention-court,Retention-election accountability court,0.606,0.634,0.128,0.067,0.060,0.090,0.590,0.241,0.612,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.606,0.638,0.138,0.044,0.071,0.081,0.592,0.240,0.611,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,randomized-merits-panels,Randomized merits panels with en banc correction,0.605,0.635,0.122,0.070,0.062,0.072,0.593,0.239,0.611,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,panel-en-banc,Three-judge panels with en banc correction,0.604,0.634,0.127,0.073,0.064,0.079,0.590,0.241,0.610,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,legislative-override,Judicial review with legislative supermajority override,0.603,0.640,0.130,0.073,0.064,0.082,0.588,0.241,0.611,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,expanded-court-fifteen,Expanded 15-seat court,0.603,0.637,0.131,0.070,0.062,0.082,0.591,0.241,0.610,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,remand-override-window-package,Constitutional remand with override window,0.603,0.638,0.120,0.043,0.068,0.087,0.603,0.208,0.626,administrative-cost caveat
+low-appointment-capture,Low appointment-capture prior,0.550,legislative-override-window,Time-limited legislative override window,0.603,0.646,0.146,0.072,0.062,0.094,0.585,0.242,0.612,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.603,0.634,0.122,0.073,0.062,0.086,0.589,0.242,0.610,front-line cluster
+low-appointment-capture,Low appointment-capture prior,0.550,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.603,0.636,0.123,0.072,0.064,0.100,0.588,0.243,0.611,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,emergency-restraint-court,No emergency relief without merits review,0.606,0.651,0.148,0.012,0.062,0.095,0.588,0.261,0.611,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,supermajority-review,60 percent invalidation threshold,0.606,0.634,0.106,0.073,0.087,0.075,0.583,0.263,0.605,rights-protection caveat
+high-appointment-capture,High appointment-capture prior,0.800,term-limited-balanced,18-year staggered terms + regular appointments,0.603,0.644,0.131,0.081,0.077,0.078,0.582,0.263,0.606,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.603,0.641,0.125,0.080,0.075,0.100,0.582,0.263,0.637,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.601,0.645,0.146,0.018,0.068,0.085,0.589,0.261,0.610,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,nonpartisan-commission,Nonpartisan commission appointments,0.601,0.640,0.126,0.079,0.076,0.090,0.582,0.264,0.607,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,public-interest-litigation-filter,Public-interest litigation filter,0.601,0.643,0.133,0.075,0.076,0.092,0.583,0.264,0.607,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,accountability-retention-court,Retention-election accountability court,0.601,0.641,0.131,0.080,0.076,0.085,0.582,0.263,0.608,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.600,0.640,0.127,0.051,0.084,0.095,0.580,0.264,0.607,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,emergency-integrity-package,Emergency integrity package,0.599,0.648,0.140,0.019,0.074,0.092,0.589,0.261,0.611,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,legislative-override-window,Time-limited legislative override window,0.599,0.643,0.129,0.081,0.078,0.095,0.581,0.264,0.608,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,panel-en-banc,Three-judge panels with en banc correction,0.599,0.643,0.132,0.079,0.077,0.096,0.581,0.264,0.607,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.598,0.649,0.140,0.079,0.078,0.098,0.579,0.263,0.609,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,constitutional-remand,Constitutional remand before invalidation,0.597,0.643,0.118,0.082,0.078,0.098,0.592,0.230,0.623,rights-protection caveat
+high-appointment-capture,High appointment-capture prior,0.800,legislative-override,Judicial review with legislative supermajority override,0.597,0.645,0.136,0.080,0.078,0.101,0.578,0.264,0.609,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,randomized-merits-panels,Randomized merits panels with en banc correction,0.596,0.638,0.116,0.081,0.077,0.086,0.581,0.264,0.606,rights-protection caveat
+high-appointment-capture,High appointment-capture prior,0.800,expanded-court-fifteen,Expanded 15-seat court,0.596,0.638,0.119,0.083,0.078,0.085,0.580,0.264,0.606,rights-protection caveat
+high-appointment-capture,High appointment-capture prior,0.800,panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,0.596,0.633,0.111,0.068,0.086,0.086,0.584,0.263,0.636,rights-protection caveat
+high-appointment-capture,High appointment-capture prior,0.800,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.596,0.646,0.132,0.084,0.080,0.094,0.579,0.264,0.607,front-line cluster
+high-appointment-capture,High appointment-capture prior,0.800,remand-override-window-package,Constitutional remand with override window,0.596,0.639,0.109,0.052,0.086,0.090,0.596,0.228,0.624,rights-protection caveat
+low-public-pressure,Low public-pressure prior,0.450,emergency-restraint-court,No emergency relief without merits review,0.609,0.650,0.143,0.010,0.056,0.092,0.593,0.249,0.610,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,term-limited-balanced,18-year staggered terms + regular appointments,0.607,0.642,0.122,0.077,0.071,0.088,0.587,0.251,0.607,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,public-interest-litigation-filter,Public-interest litigation filter,0.607,0.653,0.135,0.075,0.068,0.076,0.590,0.248,0.608,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.607,0.644,0.128,0.075,0.070,0.090,0.590,0.249,0.637,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,supermajority-review,60 percent invalidation threshold,0.606,0.639,0.107,0.071,0.082,0.091,0.583,0.253,0.604,rights-protection caveat
+low-public-pressure,Low public-pressure prior,0.450,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.605,0.651,0.144,0.017,0.065,0.091,0.592,0.248,0.610,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,nonpartisan-commission,Nonpartisan commission appointments,0.605,0.642,0.121,0.073,0.069,0.085,0.588,0.250,0.606,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.604,0.643,0.123,0.045,0.077,0.080,0.588,0.250,0.606,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.603,0.644,0.124,0.071,0.068,0.085,0.589,0.251,0.606,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,accountability-retention-court,Retention-election accountability court,0.603,0.639,0.116,0.074,0.068,0.101,0.585,0.252,0.607,rights-protection caveat
+low-public-pressure,Low public-pressure prior,0.450,legislative-override-window,Time-limited legislative override window,0.602,0.639,0.117,0.073,0.068,0.085,0.587,0.251,0.607,rights-protection caveat
+low-public-pressure,Low public-pressure prior,0.450,constitutional-remand,Constitutional remand before invalidation,0.602,0.645,0.113,0.076,0.072,0.094,0.599,0.217,0.623,rights-protection caveat
+low-public-pressure,Low public-pressure prior,0.450,emergency-integrity-package,Emergency integrity package,0.602,0.652,0.140,0.017,0.066,0.095,0.590,0.249,0.611,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,panel-en-banc,Three-judge panels with en banc correction,0.601,0.645,0.122,0.074,0.071,0.089,0.587,0.250,0.607,front-line cluster
+low-public-pressure,Low public-pressure prior,0.450,legislative-override,Judicial review with legislative supermajority override,0.601,0.644,0.123,0.075,0.069,0.092,0.585,0.251,0.607,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,emergency-restraint-court,No emergency relief without merits review,0.608,0.649,0.139,0.013,0.064,0.093,0.592,0.251,0.611,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.604,0.646,0.124,0.081,0.079,0.099,0.585,0.253,0.637,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,term-limited-balanced,18-year staggered terms + regular appointments,0.604,0.648,0.130,0.080,0.079,0.098,0.582,0.254,0.607,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,supermajority-review,60 percent invalidation threshold,0.603,0.635,0.107,0.073,0.090,0.088,0.583,0.255,0.605,rights-protection caveat
+high-public-pressure,High public-pressure prior,0.700,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.602,0.655,0.149,0.020,0.077,0.092,0.589,0.251,0.612,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,public-interest-litigation-filter,Public-interest litigation filter,0.602,0.647,0.131,0.081,0.079,0.085,0.585,0.253,0.607,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,emergency-integrity-package,Emergency integrity package,0.600,0.658,0.148,0.020,0.076,0.088,0.591,0.249,0.613,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,legislative-override,Judicial review with legislative supermajority override,0.600,0.645,0.129,0.084,0.081,0.097,0.583,0.254,0.608,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.599,0.639,0.115,0.052,0.089,0.098,0.584,0.254,0.608,rights-protection caveat
+high-public-pressure,High public-pressure prior,0.700,constitutional-remand,Constitutional remand before invalidation,0.599,0.636,0.102,0.085,0.082,0.088,0.599,0.219,0.624,rights-protection caveat
+high-public-pressure,High public-pressure prior,0.700,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.599,0.646,0.121,0.081,0.078,0.104,0.581,0.255,0.607,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,nonpartisan-commission,Nonpartisan commission appointments,0.599,0.643,0.119,0.087,0.082,0.099,0.581,0.255,0.607,rights-protection caveat
+high-public-pressure,High public-pressure prior,0.700,accountability-retention-court,Retention-election accountability court,0.598,0.642,0.130,0.085,0.083,0.100,0.580,0.254,0.609,front-line cluster
+high-public-pressure,High public-pressure prior,0.700,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.598,0.644,0.123,0.080,0.079,0.090,0.585,0.254,0.607,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,emergency-restraint-court,No emergency relief without merits review,0.616,0.646,0.144,0.009,0.037,0.063,0.599,0.240,0.612,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,supermajority-review,60 percent invalidation threshold,0.611,0.634,0.107,0.053,0.056,0.085,0.589,0.245,0.607,rights-protection caveat
+low-emergency-share,Low emergency-share prior,0.500,term-limited-balanced,18-year staggered terms + regular appointments,0.611,0.643,0.137,0.061,0.050,0.085,0.588,0.244,0.609,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,public-interest-litigation-filter,Public-interest litigation filter,0.610,0.646,0.133,0.058,0.049,0.080,0.592,0.243,0.609,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,nonpartisan-commission,Nonpartisan commission appointments,0.610,0.641,0.127,0.064,0.050,0.077,0.592,0.243,0.609,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.610,0.639,0.128,0.059,0.050,0.086,0.593,0.243,0.639,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.609,0.644,0.144,0.014,0.044,0.078,0.594,0.242,0.610,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.609,0.633,0.120,0.034,0.053,0.068,0.595,0.243,0.608,rights-protection caveat
+low-emergency-share,Low emergency-share prior,0.500,constitutional-remand,Constitutional remand before invalidation,0.609,0.636,0.111,0.062,0.050,0.073,0.605,0.209,0.624,rights-protection caveat
+low-emergency-share,Low emergency-share prior,0.500,emergency-integrity-package,Emergency integrity package,0.608,0.651,0.153,0.014,0.044,0.078,0.596,0.240,0.613,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.608,0.644,0.136,0.060,0.048,0.085,0.589,0.244,0.609,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,accountability-retention-court,Retention-election accountability court,0.608,0.638,0.129,0.061,0.050,0.088,0.589,0.244,0.610,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,remand-override-window-package,Constitutional remand with override window,0.607,0.641,0.117,0.035,0.055,0.078,0.607,0.209,0.625,rights-protection caveat
+low-emergency-share,Low emergency-share prior,0.500,panel-en-banc,Three-judge panels with en banc correction,0.607,0.644,0.133,0.059,0.050,0.084,0.589,0.244,0.609,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,randomized-merits-panels,Randomized merits panels with en banc correction,0.607,0.645,0.132,0.056,0.048,0.074,0.591,0.243,0.609,front-line cluster
+low-emergency-share,Low emergency-share prior,0.500,expanded-court-fifteen,Expanded 15-seat court,0.607,0.641,0.131,0.058,0.049,0.073,0.593,0.243,0.609,front-line cluster
+high-emergency-share,High emergency-share prior,0.850,supermajority-review,60 percent invalidation threshold,0.520,0.614,0.127,0.179,0.260,0.216,0.472,0.404,0.513,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,public-interest-litigation-filter,Public-interest litigation filter,0.519,0.629,0.170,0.178,0.219,0.216,0.481,0.401,0.518,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,constitutional-remand,Constitutional remand before invalidation,0.517,0.626,0.151,0.187,0.230,0.228,0.494,0.365,0.542,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,term-limited-balanced,18-year staggered terms + regular appointments,0.516,0.625,0.167,0.188,0.229,0.229,0.474,0.402,0.517,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,emergency-restraint-court,No emergency relief without merits review,0.516,0.647,0.254,0.049,0.182,0.222,0.487,0.394,0.528,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,remand-override-window-package,Constitutional remand with override window,0.515,0.619,0.131,0.141,0.252,0.232,0.493,0.368,0.540,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,accountability-retention-court,Retention-election accountability court,0.515,0.614,0.162,0.180,0.221,0.224,0.478,0.402,0.518,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.515,0.629,0.171,0.189,0.231,0.241,0.474,0.402,0.548,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.514,0.625,0.164,0.187,0.226,0.205,0.479,0.400,0.516,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,panel-en-banc,Three-judge panels with en banc correction,0.514,0.628,0.168,0.185,0.230,0.221,0.476,0.401,0.518,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.513,0.611,0.135,0.144,0.253,0.223,0.476,0.404,0.515,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,nonpartisan-commission,Nonpartisan commission appointments,0.513,0.627,0.175,0.187,0.228,0.219,0.473,0.401,0.517,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.512,0.610,0.111,0.176,0.254,0.216,0.474,0.405,0.512,rights-protection caveat
+high-emergency-share,High emergency-share prior,0.850,legislative-override-window,Time-limited legislative override window,0.511,0.625,0.164,0.185,0.226,0.236,0.472,0.403,0.519,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.511,0.630,0.177,0.190,0.230,0.241,0.469,0.404,0.517,compliance caveat
+high-emergency-share,High emergency-share prior,0.850,randomized-merits-panels,Randomized merits panels with en banc correction,0.510,0.623,0.165,0.184,0.227,0.248,0.471,0.405,0.517,compliance caveat
+low-rights-risk,Low rights-risk prior,0.450,emergency-restraint-court,No emergency relief without merits review,0.637,0.653,0.081,0.005,0.039,0.051,0.635,0.176,0.679,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.636,0.647,0.078,0.052,0.042,0.040,0.635,0.176,0.706,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,supermajority-review,60 percent invalidation threshold,0.636,0.646,0.070,0.044,0.049,0.036,0.631,0.178,0.675,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,term-limited-balanced,18-year staggered terms + regular appointments,0.634,0.648,0.081,0.053,0.044,0.052,0.628,0.180,0.674,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.633,0.651,0.091,0.009,0.048,0.041,0.636,0.176,0.678,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,nonpartisan-commission,Nonpartisan commission appointments,0.632,0.652,0.086,0.057,0.047,0.049,0.628,0.178,0.676,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.632,0.647,0.079,0.031,0.048,0.043,0.629,0.178,0.675,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,accountability-retention-court,Retention-election accountability court,0.631,0.644,0.074,0.054,0.045,0.049,0.631,0.178,0.677,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.631,0.648,0.080,0.052,0.044,0.046,0.630,0.178,0.675,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,panel-en-banc,Three-judge panels with en banc correction,0.631,0.653,0.089,0.054,0.045,0.049,0.629,0.178,0.676,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,emergency-integrity-package,Emergency integrity package,0.631,0.648,0.079,0.010,0.047,0.042,0.637,0.176,0.678,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,legislative-override,Judicial review with legislative supermajority override,0.631,0.655,0.089,0.054,0.046,0.043,0.630,0.178,0.676,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,constitutional-remand,Constitutional remand before invalidation,0.631,0.642,0.062,0.051,0.043,0.041,0.642,0.146,0.684,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,legislative-override-window,Time-limited legislative override window,0.631,0.649,0.082,0.057,0.047,0.044,0.629,0.178,0.676,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.630,0.651,0.080,0.052,0.046,0.044,0.630,0.178,0.676,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,public-interest-litigation-filter,Public-interest litigation filter,0.630,0.650,0.078,0.056,0.046,0.052,0.629,0.179,0.676,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,randomized-merits-panels,Randomized merits panels with en banc correction,0.630,0.649,0.079,0.055,0.045,0.052,0.630,0.179,0.676,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,expanded-court-fifteen,Expanded 15-seat court,0.628,0.653,0.086,0.051,0.044,0.049,0.628,0.179,0.675,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,panel-jurisdiction-safeguards,Random panels with jurisdiction safeguards,0.628,0.646,0.073,0.045,0.050,0.054,0.632,0.178,0.706,rights-protection caveat
+low-rights-risk,Low rights-risk prior,0.450,constitutional-council,Pre-enactment constitutional council,0.627,0.648,0.072,0.057,0.046,0.050,0.633,0.177,0.713,rights-protection caveat
+high-rights-risk,High rights-risk prior,0.850,supermajority-review,60 percent invalidation threshold,0.529,0.559,0.304,0.115,0.161,0.204,0.473,0.402,0.476,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,constitutional-remand,Constitutional remand before invalidation,0.527,0.567,0.319,0.119,0.133,0.216,0.496,0.363,0.504,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,emergency-restraint-court,No emergency relief without merits review,0.526,0.603,0.432,0.027,0.098,0.226,0.474,0.397,0.487,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,term-limited-balanced,18-year staggered terms + regular appointments,0.524,0.573,0.342,0.122,0.136,0.219,0.469,0.402,0.479,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.524,0.600,0.426,0.035,0.082,0.230,0.473,0.398,0.486,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,remand-override-window-package,Constitutional remand with override window,0.522,0.564,0.303,0.093,0.162,0.222,0.493,0.364,0.505,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.521,0.577,0.354,0.119,0.134,0.221,0.471,0.402,0.480,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,public-interest-litigation-filter,Public-interest litigation filter,0.521,0.580,0.356,0.120,0.135,0.207,0.475,0.400,0.480,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,randomized-merits-panels,Randomized merits panels with en banc correction,0.521,0.575,0.353,0.121,0.134,0.194,0.475,0.399,0.480,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,emergency-integrity-package,Emergency integrity package,0.520,0.607,0.438,0.035,0.081,0.245,0.469,0.400,0.487,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,expanded-court-fifteen,Expanded 15-seat court,0.520,0.572,0.344,0.119,0.132,0.207,0.472,0.400,0.480,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,current-us-like,Stylized current U.S.-like supreme court,0.520,0.593,0.382,0.347,0.223,0.245,0.456,0.412,0.470,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.519,0.565,0.329,0.091,0.161,0.222,0.469,0.403,0.479,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,strong-recusal-enforcement,Independent recusal enforcement with substitutes,0.519,0.580,0.354,0.121,0.137,0.214,0.469,0.401,0.480,compliance caveat
+high-rights-risk,High rights-risk prior,0.850,panel-en-banc,Three-judge panels with en banc correction,0.519,0.575,0.352,0.121,0.136,0.216,0.470,0.401,0.480,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,supermajority-review,60 percent invalidation threshold,0.543,0.607,0.157,0.097,0.131,0.183,0.498,0.377,0.468,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,constitutional-remand,Constitutional remand before invalidation,0.540,0.617,0.166,0.108,0.112,0.179,0.521,0.338,0.492,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,remand-override-window-package,Constitutional remand with override window,0.537,0.616,0.160,0.075,0.128,0.198,0.519,0.340,0.494,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,public-interest-litigation-filter,Public-interest litigation filter,0.536,0.619,0.191,0.100,0.108,0.191,0.500,0.376,0.470,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,emergency-restraint-court,No emergency relief without merits review,0.536,0.622,0.228,0.020,0.084,0.192,0.504,0.373,0.476,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,term-limited-balanced,18-year staggered terms + regular appointments,0.536,0.616,0.192,0.110,0.113,0.193,0.496,0.377,0.470,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.535,0.613,0.178,0.078,0.128,0.172,0.500,0.375,0.469,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,comparative-constitutional-senates,Comparative 16-seat constitutional senates,0.535,0.611,0.166,0.098,0.130,0.180,0.500,0.377,0.468,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,expanded-court-fifteen,Expanded 15-seat court,0.534,0.615,0.186,0.103,0.109,0.178,0.500,0.375,0.470,compliance caveat
+weak-mandate,Weak democratic-mandate prior,0.750,recusal-and-emergency-reform,Peer recusal + reasoned emergency docket,0.533,0.615,0.190,0.105,0.111,0.194,0.496,0.377,0.470,compliance caveat
+high-conflict,High constitutional-conflict prior,0.900,supermajority-review,60 percent invalidation threshold,0.517,0.605,0.166,0.139,0.188,0.213,0.468,0.435,0.487,compliance caveat
+imported-legislative-family,Imported legislative-family prior,0.700,emergency-restraint-court,No emergency relief without merits review,0.618,0.653,0.120,0.008,0.052,0.076,0.604,0.231,0.616,front-line cluster
+imported-legislative-family,Imported legislative-family prior,0.700,term-limited-balanced,18-year staggered terms + regular appointments,0.614,0.645,0.104,0.068,0.065,0.072,0.599,0.233,0.613,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,supermajority-review,60 percent invalidation threshold,0.612,0.642,0.093,0.063,0.077,0.074,0.595,0.235,0.611,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,jurisdiction-stripping-constraints,Jurisdiction stripping constrained by rights carveouts,0.612,0.650,0.112,0.077,0.071,0.077,0.598,0.232,0.643,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,automatic-merits-follow-up,Automatic merits follow-up for emergency relief,0.612,0.654,0.121,0.015,0.067,0.072,0.604,0.231,0.617,front-line cluster
+imported-legislative-family,Imported legislative-family prior,0.700,constitutional-remand,Constitutional remand before invalidation,0.610,0.645,0.088,0.075,0.067,0.065,0.613,0.198,0.628,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,emergency-integrity-package,Emergency integrity package,0.610,0.662,0.132,0.016,0.067,0.082,0.601,0.230,0.619,front-line cluster
+imported-legislative-family,Imported legislative-family prior,0.700,panel-en-banc,Three-judge panels with en banc correction,0.610,0.648,0.108,0.070,0.066,0.073,0.598,0.233,0.613,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,public-interest-litigation-filter,Public-interest litigation filter,0.610,0.650,0.108,0.072,0.070,0.079,0.596,0.234,0.613,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,accountability-retention-court,Retention-election accountability court,0.610,0.644,0.105,0.073,0.066,0.076,0.596,0.234,0.614,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,mandatory-written-emergency-reasoning,Mandatory written emergency reasoning,0.610,0.649,0.110,0.044,0.074,0.080,0.597,0.234,0.614,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,legislative-override,Judicial review with legislative supermajority override,0.609,0.651,0.111,0.073,0.069,0.078,0.595,0.234,0.614,rights-protection caveat
+imported-legislative-family,Imported legislative-family prior,0.700,nonpartisan-commission,Nonpartisan commission appointments,0.609,0.648,0.105,0.077,0.069,0.091,0.591,0.236,0.612,rights-protection caveat

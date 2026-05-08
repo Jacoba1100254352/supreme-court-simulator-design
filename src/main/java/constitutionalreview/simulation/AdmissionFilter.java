@@ -1,6 +1,7 @@
 package constitutionalreview.simulation;
 
 import constitutionalreview.institution.CourtDesign;
+import constitutionalreview.model.ClaimantType;
 import constitutionalreview.model.AccessPath;
 import constitutionalreview.model.PetitionType;
 import constitutionalreview.model.ReviewCase;
@@ -16,10 +17,18 @@ public final class AdmissionFilter {
         double petitionProbability = petitionProbability(reviewCase);
         boolean petitionFiled = random.nextDouble() < petitionProbability;
         if (!petitionFiled) {
-            return new AdmissionDecision(false, false, false, false, paid(reviewCase), ifp(reviewCase), 0.0, reviewCase.conditionalReversalProbability());
+            return new AdmissionDecision(false, false, false, false, paid(reviewCase), ifp(reviewCase), false, false, 0.0, reviewCase.conditionalReversalProbability());
         }
 
-        double score = admissionScore(reviewCase, design);
+        double preliminaryScore = admissionScore(reviewCase, design);
+        boolean courtRequestedResponse = courtRequestedResponse(reviewCase, preliminaryScore, random);
+        boolean cvsgRequested = cvsgRequested(reviewCase, courtRequestedResponse, random);
+        double score = Values.clamp01(preliminaryScore
+                + (courtRequestedResponse ? 0.055 : 0.0)
+                + (cvsgRequested ? 0.13 : 0.0));
+        if (certiorariPath(reviewCase)) {
+            score = certiorariGateScore(reviewCase, score, courtRequestedResponse, cvsgRequested);
+        }
         boolean admitted = random.nextDouble() < score;
         boolean transferredToMerits = admitted && transferredToMerits(reviewCase, score, random);
         return new AdmissionDecision(
@@ -29,6 +38,8 @@ public final class AdmissionFilter {
                 transferredToMerits,
                 paid(reviewCase),
                 ifp(reviewCase),
+                courtRequestedResponse,
+                cvsgRequested,
                 score,
                 reviewCase.conditionalReversalProbability()
         );
@@ -47,6 +58,8 @@ public final class AdmissionFilter {
                 + reviewCase.lowerCourtSplitDepth() * 0.08
                 + reviewCase.publicAttention() * 0.08
                 + reviewCase.solicitorGeneralSignal() * 0.06
+                + reviewCase.barCapital() * 0.05
+                + reviewCase.claimStrength() * 0.05
                 + reviewCase.strategicPlaintiffSelection() * 0.08
                 + reviewCase.repeatPlayerAdvantage() * 0.06
                 + reviewCase.forumShoppingPressure() * 0.04
@@ -83,11 +96,15 @@ public final class AdmissionFilter {
                 + reviewCase.lowerCourtConflict() * 0.12
                 + reviewCase.lowerCourtSplitDepth() * 0.13
                 + reviewCase.lowerCourtErrorRisk() * 0.10
+                + reviewCase.claimStrength() * 0.10
+                + reviewCase.vehicleQuality() * 0.09
+                + (reviewCase.genuineLowerCourtSplit() ? 0.06 : 0.0)
                 + reviewCase.solicitorGeneralSignal() * 0.15
                 + amicusSignal * 0.10
                 + reviewCase.splitMaturity() * 0.08
                 + relistSignal * 0.07
                 + (reviewCase.specialistCounsel() ? 0.05 : 0.0)
+                + reviewCase.barCapital() * 0.06
                 + reviewCase.strategicPlaintiffSelection() * 0.05
                 + reviewCase.repeatPlayerAdvantage() * 0.05
                 + reviewCase.forumShoppingPressure() * 0.02
@@ -97,6 +114,64 @@ public final class AdmissionFilter {
                 - reviewCase.preReviewSettlementPressure() * 0.06
                 - reviewCase.vehicleDefectRisk() * 0.16
                 + (design.vacancyDeadlockRisk() * -0.03);
+        return Values.clamp01(score);
+    }
+
+    private static boolean courtRequestedResponse(ReviewCase reviewCase, double admissionScore, Random random) {
+        double amicusSignal = Math.min(1.0, reviewCase.amicusBriefs() / 4.0);
+        double base = switch (reviewCase.petitionType()) {
+            case PAID_CERT -> 0.014;
+            case IFP_CERT -> 0.006;
+            case DIRECT_APPEAL, ABSTRACT_REFERRAL, FILTERED_REFERRAL, CONSTITUTIONAL_COMPLAINT -> 0.05;
+            case EMERGENCY_APPLICATION -> reviewCase.emergencyApplication().responseRequested() ? 0.54 : 0.16;
+        };
+        double probability = base
+                + reviewCase.solicitorGeneralSignal() * 0.035
+                + amicusSignal * 0.018
+                + reviewCase.lowerCourtSplitDepth() * 0.018
+                + (reviewCase.genuineLowerCourtSplit() ? 0.012 : 0.0)
+                + reviewCase.vehicleQuality() * 0.012
+                + admissionScore * 0.014
+                - reviewCase.vehicleDefectRisk() * 0.012;
+        if (reviewCase.petitionType() == PetitionType.EMERGENCY_APPLICATION
+                && reviewCase.emergencyApplication().referredToFullCourt()) {
+            probability += 0.22;
+        }
+        return random.nextDouble() < Values.clamp01(probability);
+    }
+
+    private static boolean cvsgRequested(ReviewCase reviewCase, boolean courtRequestedResponse, Random random) {
+        if (!courtRequestedResponse || !certiorariPath(reviewCase)) {
+            return false;
+        }
+        double governmentCue = reviewCase.claimantType() == ClaimantType.GOVERNMENT_SG_OR_AG ? 0.025 : 0.0;
+        double probability = 0.006
+                + reviewCase.solicitorGeneralSignal() * 0.045
+                + reviewCase.publicAttention() * 0.008
+                + reviewCase.lowerCourtSplitDepth() * 0.010
+                + governmentCue;
+        return random.nextDouble() < Values.clamp01(probability);
+    }
+
+    private static double certiorariGateScore(
+            ReviewCase reviewCase,
+            double preliminaryScore,
+            boolean courtRequestedResponse,
+            boolean cvsgRequested
+    ) {
+        double amicusSignal = Math.min(1.0, reviewCase.amicusBriefs() / 4.0);
+        double base = reviewCase.petitionType() == PetitionType.IFP_CERT ? 0.006 : 0.030;
+        double score = base
+                + preliminaryScore * 0.16
+                + (courtRequestedResponse ? 0.070 : 0.0)
+                + (cvsgRequested ? 0.180 : 0.0)
+                + reviewCase.solicitorGeneralSignal() * 0.050
+                + amicusSignal * 0.035
+                + reviewCase.barCapital() * 0.024
+                + reviewCase.claimStrength() * 0.030
+                + reviewCase.vehicleQuality() * 0.025
+                + (reviewCase.genuineLowerCourtSplit() ? 0.045 : 0.0)
+                - reviewCase.vehicleDefectRisk() * 0.030;
         return Values.clamp01(score);
     }
 
@@ -117,5 +192,11 @@ public final class AdmissionFilter {
 
     private static boolean ifp(ReviewCase reviewCase) {
         return reviewCase.petitionType() == PetitionType.IFP_CERT;
+    }
+
+    private static boolean certiorariPath(ReviewCase reviewCase) {
+        return reviewCase.accessPath() == AccessPath.DISCRETIONARY_CERTIORARI
+                || reviewCase.accessPath() == AccessPath.PAID_CERTIORARI
+                || reviewCase.accessPath() == AccessPath.IFP_CERTIORARI;
     }
 }

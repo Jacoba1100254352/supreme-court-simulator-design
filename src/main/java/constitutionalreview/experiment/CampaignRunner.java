@@ -481,14 +481,22 @@ public final class CampaignRunner {
                 "certiorariAdmissionRate",
                 "paidPetitionRate",
                 "ifpPetitionRate",
+                "courtRequestedResponseRate",
+                "cvsgRequestRate",
+                "paidCfrRequestRate",
+                "ifpCfrRequestRate",
                 "solicitorGeneralSignalRate",
                 "amicusIntensity",
                 "lowerCourtSplitDepth",
+                "genuineLowerCourtSplitRate",
                 "lowerCourtIdeologicalDrift",
                 "lowerCourtResistanceRisk",
                 "splitMaturity",
                 "relistRate",
                 "specialistCounselRate",
+                "barCapital",
+                "claimStrength",
+                "vehicleQuality",
                 "vehicleDefectRisk",
                 "forumShoppingPressure",
                 "preReviewSettlementPressure",
@@ -566,6 +574,11 @@ public final class CampaignRunner {
                 "practicalSymbolicComplianceRate",
                 "practicalBureaucraticResistanceRate",
                 "practicalOpenNoncomplianceRate",
+                "individualOneShotClaimantRate",
+                "organizedRightsClaimantRate",
+                "businessRepeatPlayerClaimantRate",
+                "governmentClaimantRate",
+                "expertBarClinicClaimantRate",
                 "rightsClaimantCaseRate",
                 "rightsClaimantSuccess",
                 "rightsDomainClaimantSuccess",
@@ -608,14 +621,22 @@ public final class CampaignRunner {
                     .append(format(report.certiorariAdmissionRate())).append(',')
                     .append(format(report.paidPetitionRate())).append(',')
                     .append(format(report.ifpPetitionRate())).append(',')
+                    .append(format(report.courtRequestedResponseRate())).append(',')
+                    .append(format(report.cvsgRequestRate())).append(',')
+                    .append(format(report.paidCfrRequestRate())).append(',')
+                    .append(format(report.ifpCfrRequestRate())).append(',')
                     .append(format(report.solicitorGeneralSignalRate())).append(',')
                     .append(format(report.amicusIntensity())).append(',')
                     .append(format(report.lowerCourtSplitDepth())).append(',')
+                    .append(format(report.genuineLowerCourtSplitRate())).append(',')
                     .append(format(report.lowerCourtIdeologicalDrift())).append(',')
                     .append(format(report.lowerCourtResistanceRisk())).append(',')
                     .append(format(report.splitMaturity())).append(',')
                     .append(format(report.relistRate())).append(',')
                     .append(format(report.specialistCounselRate())).append(',')
+                    .append(format(report.barCapital())).append(',')
+                    .append(format(report.claimStrength())).append(',')
+                    .append(format(report.vehicleQuality())).append(',')
                     .append(format(report.vehicleDefectRisk())).append(',')
                     .append(format(report.forumShoppingPressure())).append(',')
                     .append(format(report.preReviewSettlementPressure())).append(',')
@@ -693,6 +714,11 @@ public final class CampaignRunner {
                     .append(format(report.practicalSymbolicComplianceRate())).append(',')
                     .append(format(report.practicalBureaucraticResistanceRate())).append(',')
                     .append(format(report.practicalOpenNoncomplianceRate())).append(',')
+                    .append(format(report.individualOneShotClaimantRate())).append(',')
+                    .append(format(report.organizedRightsClaimantRate())).append(',')
+                    .append(format(report.businessRepeatPlayerClaimantRate())).append(',')
+                    .append(format(report.governmentClaimantRate())).append(',')
+                    .append(format(report.expertBarClinicClaimantRate())).append(',')
                     .append(format(report.rightsClaimantCaseRate())).append(',')
                     .append(format(report.rightsClaimantSuccess())).append(',')
                     .append(format(report.rightsDomainClaimantSuccess())).append(',')
@@ -830,7 +856,7 @@ public final class CampaignRunner {
         builder.append("- Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.\n");
         builder.append("- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `publicConfidence` are usually better, but each should be read in domain context.\n");
         builder.append("- Lower `partisanAlignment`, `shadowDocketAbuse`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.\n");
-        builder.append("- Petition, certiorari-admission, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.\n");
+        builder.append("- Petition, court-requested-response, CVSG, certiorari-admission, bar-capital, claim-strength, vehicle-quality, genuine-split, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.\n");
 
         builder.append("\n## Scenario Averages Across Cases\n\n");
         builder.append("| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |\n");

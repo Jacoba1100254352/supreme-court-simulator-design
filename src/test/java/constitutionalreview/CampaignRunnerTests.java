@@ -48,6 +48,12 @@ public final class CampaignRunnerTests {
         String csv = Files.readString(v2.csvPath());
         TestSupport.check(csv.contains("precedentStability"), "v2 csv should include split stability metrics");
         TestSupport.check(csv.contains("certiorariAdmissionRate"), "v2 csv should include certiorari admission metrics");
+        TestSupport.check(csv.contains("courtRequestedResponseRate"), "v2 csv should include court-requested-response metrics");
+        TestSupport.check(csv.contains("cvsgRequestRate"), "v2 csv should include CVSG request metrics");
+        TestSupport.check(csv.contains("barCapital"), "v2 csv should include bar-capital diagnostics");
+        TestSupport.check(csv.contains("claimStrength"), "v2 csv should include claim-strength diagnostics");
+        TestSupport.check(csv.contains("vehicleQuality"), "v2 csv should include vehicle-quality diagnostics");
+        TestSupport.check(csv.contains("genuineLowerCourtSplitRate"), "v2 csv should include genuine split diagnostics");
         TestSupport.check(csv.contains("lowerCourtSplitDepth"), "v2 csv should include lower-court split depth");
         TestSupport.check(csv.contains("lowerCourtResistanceRisk"), "v2 csv should include lower-court resistance");
         TestSupport.check(csv.contains("forumShoppingPressure"), "v2 csv should include forum-shopping pressure");
