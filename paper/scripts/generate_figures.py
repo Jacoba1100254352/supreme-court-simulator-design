@@ -151,9 +151,9 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
         "mandatory-written-emergency-reasoning": (70.0, 30.0, "l"),
         "automatic-merits-follow-up": (50.0, 59.5, "r"),
         "emergency-restraint-court": (48.0, 70.5, "l"),
-        "strong-recusal-enforcement": (101.0, 43.0, "l"),
-        "randomized-merits-panels": (81.0, 66.5, "l"),
-        "emergency-integrity-package": (96.0, 59.0, "l"),
+        "strong-recusal-enforcement": (98.0, 38.8, "l"),
+        "randomized-merits-panels": (98.0, 48.8, "l"),
+        "emergency-integrity-package": (94.0, 58.8, "l"),
         "public-interest-litigation-filter": (95.0, 53.5, "l"),
     }
     lines = [
@@ -192,9 +192,9 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
         label_x, label_y, anchor = label_positions[key]
         label_color = "red" if key == "current-us-like" else "black"
         if anchor == "r":
-            leader_x = label_x + 1.0
+            leader_x = label_x + 2.2
         elif anchor == "l":
-            leader_x = label_x - 1.0
+            leader_x = label_x - 2.2
         else:
             leader_x = label_x
         leader_mid_x = (x + leader_x) / 2.0
@@ -205,10 +205,10 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
             f"\\put({fmt(label_x)},{fmt(label_y)}){{\\makebox(0,0)[{anchor}]{{\\colorbox{{white}}{{\\color{{{label_color}}}{label}}}}}}}",
         ])
     lines.extend([
-        f"\\put({fmt(left + width / 2.0)},{fmt(3.8)}){{\\makebox(0,0){{Constitutional conflict $\\downarrow$}}}}",
-        f"\\put(11.0,{fmt(bottom + height / 2.0)}){{\\rotatebox{{90}}{{\\makebox(0,0){{Public confidence $\\uparrow$}}}}}}",
+        f"\\put({fmt(left + width / 2.0)},{fmt(3.8)}){{\\makebox(0,0){{Constitutional conflict (lower is better)}}}}",
+        f"\\put(11.0,{fmt(bottom + height / 2.0)}){{\\rotatebox{{90}}{{\\makebox(0,0){{Public confidence (higher is better)}}}}}}",
         "\\tiny",
-        "\\put(58.0,77.0){\\makebox(0,0)[l]{Marker shade increases with shadow-docket abuse.}}",
+        "\\put(55.0,77.0){\\makebox(0,0)[l]{Better: up-left; darker markers = more shadow-docket abuse.}}",
         "\\end{picture}",
         "\\endgroup",
         "",

@@ -124,11 +124,13 @@ def check_conflict_confidence_axis_labels() -> None:
     if not figure.exists():
         return
     source = figure.read_text()
-    if "\\rotatebox{90}{\\makebox(0,0){Public confidence $\\uparrow$}}" not in source:
-        fail("conflict/confidence figure should use a rotated y-axis label outside the tick labels")
+    if "Public confidence $\\uparrow$" in source or "Constitutional conflict $\\downarrow$" in source:
+        fail("conflict/confidence figure should spell out metric direction instead of rotating arrow glyphs")
+    if "\\rotatebox{90}{\\makebox(0,0){Public confidence (higher is better)}}" not in source:
+        fail("conflict/confidence figure should use a clear rotated y-axis label outside the tick labels")
 
     x_label = re.search(
-        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\makebox\(0,0\)\{Constitutional conflict \$\\downarrow\$\}\}",
+        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\makebox\(0,0\)\{Constitutional conflict \(lower is better\)\}\}",
         source,
     )
     if not x_label:
@@ -141,7 +143,7 @@ def check_conflict_confidence_axis_labels() -> None:
         fail(f"conflict/confidence x-axis label is too close to the tick labels ({x_label_y:.1f}mm)")
 
     y_label = re.search(
-        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\rotatebox\{90\}\{\\makebox\(0,0\)\{Public confidence \$\\uparrow\$\}\}\}",
+        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\rotatebox\{90\}\{\\makebox\(0,0\)\{Public confidence \(higher is better\)\}\}\}",
         source,
     )
     if not y_label:
@@ -152,6 +154,17 @@ def check_conflict_confidence_axis_labels() -> None:
         fail(f"conflict/confidence y-axis label is not in the left-axis gutter ({y_label_x:.1f}mm)")
     if not 40.0 <= y_label_y <= 46.0:
         fail(f"conflict/confidence y-axis label is not vertically centered ({y_label_y:.1f}mm)")
+
+    random_label = re.search(
+        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\makebox\(0,0\)\[l\]\{\\colorbox\{white\}\{\\color\{black\}Random panels\}\}\}",
+        source,
+    )
+    if not random_label:
+        fail("conflict/confidence figure is missing the Random panels label")
+    random_x = float(random_label.group(1))
+    random_y = float(random_label.group(2))
+    if random_x < 94.0 or not 46.0 <= random_y <= 51.0:
+        fail(f"Random panels label should sit close to its marker in the right-middle callout area ({random_x:.1f},{random_y:.1f}mm)")
 
 
 def main() -> None:
