@@ -193,4 +193,16 @@ public record ScenarioReport(
                 MetricDefinition.lowerIsBetter(administrativeCost)
         );
     }
+
+    public double repeatPlayerLearning() {
+        return Values.average(repeatPlayerAdvantage, strategicPlaintiffSelection, forumShoppingPressure);
+    }
+
+    public double emergencyIncentiveLearning() {
+        return Values.average(emergencyOpportunism, executiveEmergencyStrategy, emergencyDownstreamEffect);
+    }
+
+    public double complianceLearning() {
+        return Values.average(lowerCourtCompliance, enforcementCapacity, interbranchCompliance);
+    }
 }

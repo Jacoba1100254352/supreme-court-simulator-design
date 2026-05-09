@@ -12,7 +12,7 @@
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/constitutional-review-campaign-v2.csv", "sha256": "a8562bb183d01181c9910f0aecc6f3e6ba77829d683358574211264b825d5c66"},
-    {"path": "reports/constitutional-review-campaign-v2.md", "sha256": "d7e87333aa8efdfa90272f3fbd19a33423d4818617f34088dba5d050918745a7"}
+    {"path": "reports/constitutional-review-campaign-v2.csv", "sha256": "88515ca7b39032051507d7d39772cd675239f27937d238796aeee0d1dbd21267"},
+    {"path": "reports/constitutional-review-campaign-v2.md", "sha256": "23b106080d8f2cf2b984bda1cdd108df3c1c8870306781f32439dbfd779f3ebb"}
   ]
 }

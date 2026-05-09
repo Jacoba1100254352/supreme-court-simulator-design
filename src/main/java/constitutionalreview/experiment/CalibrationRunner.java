@@ -226,8 +226,28 @@ public final class CalibrationRunner {
                 range.sourceKeys().isBlank() ? sourceKey : range.sourceKeys(),
                 range.basis(),
                 sourceKey,
+                sourceTier(sourceKey, range.sourceKeys(), range.basis()),
                 observed >= range.min() && observed <= range.max()
         ));
+    }
+
+    private static String sourceTier(String sourceKey, String sourceKeys, String rangeBasis) {
+        String combined = (sourceKey + " " + sourceKeys + " " + rangeBasis).toLowerCase(Locale.ROOT);
+        if (combined.contains("fallback") || combined.contains("model-docket-mix-prior")) {
+            return "model_prior";
+        }
+        if (combined.contains("deep-research")
+                || combined.contains("supreme-court-synthesis")
+                || combined.contains("supreme-court-research")) {
+            return "research_synthesis";
+        }
+        if (combined.contains("scdb")
+                || combined.contains("shadow-docket")
+                || combined.contains("epstein")
+                || combined.contains("harvard")) {
+            return "raw_or_primary_summary";
+        }
+        return "source_register";
     }
 
     private static double metric(ScenarioReport report, String metric) {
@@ -277,6 +297,7 @@ public final class CalibrationRunner {
                 "sourceTerms",
                 "rangeBasis",
                 "sourceKey",
+                "sourceTier",
                 "pass"
         )).append('\n');
         for (CalibrationTarget target : targets) {
@@ -295,6 +316,7 @@ public final class CalibrationRunner {
                     .append(Values.csv(target.sourceTermRange())).append(',')
                     .append(Values.csv(target.rangeBasis())).append(',')
                     .append(Values.csv(target.sourceKeys())).append(',')
+                    .append(Values.csv(target.sourceTier())).append(',')
                     .append(target.pass())
                     .append('\n');
         }
@@ -340,8 +362,8 @@ public final class CalibrationRunner {
                     .append(" |\n");
         }
         builder.append("## Targets\n\n");
-        builder.append("| Target | Scenario | Use | Metric | Source metric | Observed | Range | Source median | Source obs. | Source terms | Status |\n");
-        builder.append("| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- |\n");
+        builder.append("| Target | Scenario | Use | Evidence tier | Metric | Source metric | Observed | Range | Source median | Source obs. | Source terms | Status |\n");
+        builder.append("| --- | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- |\n");
         for (CalibrationTarget target : targets) {
             builder.append("| ")
                     .append(target.label())
@@ -349,6 +371,8 @@ public final class CalibrationRunner {
                     .append(target.scenarioName())
                     .append(" | `")
                     .append(target.guardrailClass())
+                    .append("` | `")
+                    .append(target.sourceTier())
                     .append("` | `")
                     .append(target.metric())
                     .append("` | ")
@@ -410,6 +434,7 @@ public final class CalibrationRunner {
             String sourceKeys,
             String rangeBasis,
             String sourceKey,
+            String sourceTier,
             boolean pass
     ) {
     }

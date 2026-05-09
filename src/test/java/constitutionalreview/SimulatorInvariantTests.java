@@ -57,6 +57,9 @@ public final class SimulatorInvariantTests {
         TestSupport.checkUnitInterval(report.settledBeforeReviewRate(), "settledBeforeReviewRate");
         TestSupport.checkUnitInterval(report.strategicPlaintiffSelection(), "strategicPlaintiffSelection");
         TestSupport.checkUnitInterval(report.repeatPlayerAdvantage(), "repeatPlayerAdvantage");
+        TestSupport.checkUnitInterval(report.repeatPlayerLearning(), "repeatPlayerLearning");
+        TestSupport.checkUnitInterval(report.emergencyIncentiveLearning(), "emergencyIncentiveLearning");
+        TestSupport.checkUnitInterval(report.complianceLearning(), "complianceLearning");
         TestSupport.checkUnitInterval(report.governmentNoncomplianceRisk(), "governmentNoncomplianceRisk");
         TestSupport.checkUnitInterval(report.governmentNoncomplianceRate(), "governmentNoncomplianceRate");
         TestSupport.checkUnitInterval(report.enforcementCapacity(), "enforcementCapacity");

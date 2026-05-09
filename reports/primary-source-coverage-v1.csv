@@ -1,0 +1,6 @@
+pathway,rows,rawOrPrimaryRows,researchSynthesisRows,missingRows,proxyOrDesignPriorRows,primaryCoverageShare
+certiorari,8,3,4,1,1,0.375
+complaint_referral,4,3,0,0,0,0.750
+emergency,6,3,3,0,1,0.500
+lower_court_compliance,4,2,2,0,0,0.500
+override_remand,3,3,0,0,0,1.000

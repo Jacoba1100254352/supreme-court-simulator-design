@@ -556,6 +556,9 @@ public final class CampaignRunner {
                 "executiveEmergencyStrategy",
                 "appointmentManipulationPressure",
                 "overrideAdaptation",
+                "repeatPlayerLearning",
+                "emergencyIncentiveLearning",
+                "complianceLearning",
                 "legislativeComplianceRate",
                 "legislativeEvasionRate",
                 "delayedReenactmentStrategyRate",
@@ -696,6 +699,9 @@ public final class CampaignRunner {
                     .append(format(report.executiveEmergencyStrategy())).append(',')
                     .append(format(report.appointmentManipulationPressure())).append(',')
                     .append(format(report.overrideAdaptation())).append(',')
+                    .append(format(report.repeatPlayerLearning())).append(',')
+                    .append(format(report.emergencyIncentiveLearning())).append(',')
+                    .append(format(report.complianceLearning())).append(',')
                     .append(format(report.legislativeComplianceRate())).append(',')
                     .append(format(report.legislativeEvasionRate())).append(',')
                     .append(format(report.delayedReenactmentStrategyRate())).append(',')

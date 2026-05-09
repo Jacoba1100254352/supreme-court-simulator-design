@@ -52,9 +52,17 @@ EXCLUDED_PARTS = {
 
 def git_commit() -> str:
     try:
-        return subprocess.check_output(
-            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
-        ).strip()
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+        return "unknown"
     except (subprocess.CalledProcessError, FileNotFoundError):
         return "unknown"
 

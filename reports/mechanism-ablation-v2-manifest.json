@@ -12,7 +12,7 @@
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "acf7ba703e0f9b241a3e5fa707bd12b218fa5a632926b5b967c48fdf07b6bed3"},
-    {"path": "reports/mechanism-ablation-v2.md", "sha256": "fc4b83f10e1d8e2571981bceb5183526fdac5a7c27aa23a71b222fe658cee61a"}
+    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "9ec477ed6104361f2252c2816995cf6f7c5a6b3771d264c1ab1c75c8ee9b05eb"},
+    {"path": "reports/mechanism-ablation-v2.md", "sha256": "5c9a1e066da84f2c8c519d1a0ffa699ba5d817ac2ffa2b5a80aefdf75b91ee3b"}
   ]
 }

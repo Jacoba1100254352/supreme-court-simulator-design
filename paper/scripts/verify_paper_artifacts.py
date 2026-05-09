@@ -16,8 +16,11 @@ MANIFESTS = [
     ROOT / "reports" / "constitutional-review-campaign-v2-manifest.json",
     ROOT / "reports" / "calibration-baseline-manifest.json",
     ROOT / "reports" / "parameter-sweep-v4-manifest.json",
+    ROOT / "reports" / "prior-uncertainty-v1-manifest.json",
 ]
 CAMPAIGN_CSV = ROOT / "reports" / "constitutional-review-campaign-v2.csv"
+PRIOR_UNCERTAINTY_CSV = ROOT / "reports" / "prior-uncertainty-v1.csv"
+PATHWAY_DASHBOARD_CSV = ROOT / "reports" / "pathway-validation-dashboard-v1.csv"
 REQUIRED_CAMPAIGN_COLUMNS = {
     "certiorariPathRate",
     "certiorariAdmissionRate",
@@ -29,6 +32,9 @@ REQUIRED_CAMPAIGN_COLUMNS = {
     "settledBeforeReviewRate",
     "strategicPlaintiffSelection",
     "repeatPlayerAdvantage",
+    "repeatPlayerLearning",
+    "emergencyIncentiveLearning",
+    "complianceLearning",
     "governmentNoncomplianceRisk",
     "governmentNoncomplianceRate",
     "enforcementCapacity",
@@ -38,6 +44,20 @@ REQUIRED_CAMPAIGN_COLUMNS = {
     "publicInterestFilteredRate",
     "precedentDurability",
     "emergencyDownstreamEffect",
+}
+REQUIRED_PRIOR_COLUMNS = {
+    "scenarioKey",
+    "directionalP05",
+    "directionalP50",
+    "directionalP95",
+    "interpretation",
+}
+REQUIRED_PATHWAY_COLUMNS = {
+    "pathway",
+    "simulatorMetric",
+    "sourceMetric",
+    "sourceTier",
+    "nextValidationAction",
 }
 
 
@@ -88,10 +108,22 @@ def check_campaign_schema() -> None:
         fail("campaign CSV is missing pipeline/downstream columns: " + ", ".join(sorted(missing)))
 
 
+def check_csv_schema(path: Path, required: set[str], label: str) -> None:
+    if not path.exists():
+        fail(f"missing {label} CSV {path.relative_to(ROOT)}")
+    with path.open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        missing = required - set(reader.fieldnames or [])
+    if missing:
+        fail(f"{label} CSV is missing columns: " + ", ".join(sorted(missing)))
+
+
 def main() -> None:
     for manifest in MANIFESTS:
         check_manifest(manifest)
     check_campaign_schema()
+    check_csv_schema(PRIOR_UNCERTAINTY_CSV, REQUIRED_PRIOR_COLUMNS, "prior uncertainty")
+    check_csv_schema(PATHWAY_DASHBOARD_CSV, REQUIRED_PATHWAY_COLUMNS, "pathway dashboard")
     print(f"Paper artifact verification passed ({len(MANIFESTS)} manifests).")
 
 

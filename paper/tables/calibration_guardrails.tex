@@ -6,18 +6,18 @@
 \Description{Table showing selected calibration guardrails, their intended use, simulated observations, source-informed ranges, source bases, and status.}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{>{\raggedright\arraybackslash}p{1.05in}>{\raggedright\arraybackslash}p{0.72in}>{\raggedright\arraybackslash}p{0.78in}rr>{\raggedright\arraybackslash}p{0.92in}r}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.92in}>{\raggedright\arraybackslash}p{0.64in}>{\raggedright\arraybackslash}p{0.70in}>{\raggedright\arraybackslash}p{0.74in}rr>{\raggedright\arraybackslash}p{0.80in}r}
 \toprule
-Guardrail & Scenario & Use & Observed & Range & Source basis & Status \\
+Guardrail & Scenario & Use & Evidence & Observed & Range & Source basis & Status \\
 \midrule
-Merits transfer & Current-like & model prior check & 0.410 & 0.250--0.850 & source register; model fallback & within \\
-Paid CFR stage & Current-like & loose calibration & 0.054 & 0.027--0.067 & research tables; source range & within \\
-IFP CFR stage & Current-like & loose calibration & 0.038 & 0.000--0.040 & research tables; source range & within \\
-Invalidation & Current-like & strict validation & 0.102 & 0.000--0.223 & SCDB; source range & within \\
-Emergency filings & Current-like & strict validation & 0.046 & 0.000--0.223 & shadow database; source range & within \\
-Shadow abuse & Current-like & loose calibration & 0.205 & 0.000--0.657 & shadow database; source range & within \\
-Partisan alignment & Commission & proxy sanity check & 0.019 & 0.000--0.657 & shadow database; source range & within \\
-Emergency restraint & No-gap & mechanism sanity check & 0.007 & 0.000--0.657 & shadow database; source range & within \\
+Merits transfer & Current-like & model prior check & model prior & 0.409 & 0.250--0.850 & source register; model fallback & within \\
+Paid CFR stage & Current-like & loose calibration & research synthesis & 0.052 & 0.027--0.067 & research tables; source range & within \\
+IFP CFR stage & Current-like & loose calibration & research synthesis & 0.033 & 0.000--0.040 & research tables; source range & within \\
+Invalidation & Current-like & strict validation & raw or primary summary & 0.094 & 0.000--0.223 & SCDB; source range & within \\
+Emergency filings & Current-like & strict validation & raw or primary summary & 0.046 & 0.000--0.223 & shadow database; source range & within \\
+Shadow abuse & Current-like & loose calibration & raw or primary summary & 0.221 & 0.000--0.657 & shadow database; source range & within \\
+Partisan alignment & Commission & proxy sanity check & raw or primary summary & 0.020 & 0.000--0.657 & shadow database; source range & within \\
+Emergency restraint & No-gap & mechanism sanity check & raw or primary summary & 0.007 & 0.000--0.657 & shadow database; source range & within \\
 \bottomrule
 \end{tabular}
 \end{table}

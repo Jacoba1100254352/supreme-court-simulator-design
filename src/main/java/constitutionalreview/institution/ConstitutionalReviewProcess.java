@@ -34,7 +34,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
 
     private CourtDecision screenedOutDecision(ReviewCase reviewCase, AdmissionDecision admissionDecision, CourtState state) {
         boolean publicInterestFiltered = publicInterestFiltered(reviewCase, admissionDecision);
-        double effectiveForumShoppingPressure = effectiveForumShoppingPressure(reviewCase, admissionDecision, publicInterestFiltered);
+        double effectiveForumShoppingPressure = effectiveForumShoppingPressure(reviewCase, admissionDecision, publicInterestFiltered, state);
         double effectiveEnforcementCapacity = effectiveEnforcementCapacity(reviewCase, false, false, false, new OverrideDecision(false, false, OverrideOutcome.NONE));
         double effectiveLowerCourtResistanceRisk = effectiveLowerCourtResistanceRisk(reviewCase, false, false, false, false, effectiveEnforcementCapacity);
         double effectiveEmergencyOpportunism = effectiveEmergencyOpportunism(reviewCase, false, null, null);
@@ -168,13 +168,15 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.emergencyPressure()
                         + strategicResponse.emergencyPressureDelta()
                         + state.executiveEmergencyStrategy() * 0.20
+                        + state.emergencyIncentiveLearning() * 0.08
+                        + state.repeatPlayerLearning() * 0.04
                         + state.conflictLoad() * 0.04
                         + reviewCase.repeatPlayerAdvantage() * 0.05
                         + reviewCase.strategicPlaintiffSelection() * 0.04
                         + reviewCase.emergencyOpportunism() * 0.08
         );
         boolean emergency = random.nextDouble() < effectiveEmergencyPressure;
-        boolean settledBeforeReview = settledBeforeReview(reviewCase, admissionDecision, emergency, strategicResponse, random);
+        boolean settledBeforeReview = settledBeforeReview(reviewCase, admissionDecision, emergency, strategicResponse, state, random);
         boolean initialMeritsReview = !settledBeforeReview && admissionDecision.transferredToMerits() && meritsReview(reviewCase, emergency, random);
         boolean enBanc = enBanc(reviewCase, emergency, random);
         List<Justice> participating = participatingJustices(reviewCase, enBanc, random);
@@ -221,7 +223,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double shadowAbuse = shadowDocketAbuse(reviewCase, emergency, meritsReview, emergencyProcedure);
         double emergencyLegitimacyRisk = emergencyOrder.legitimacyRisk();
         double emergencyDownstreamEffect = emergencyDownstreamEffect(reviewCase, emergencyProcedure, emergencyOrder, shadowRelief);
-        double effectiveForumShoppingPressure = effectiveForumShoppingPressure(reviewCase, admissionDecision, publicInterestFiltered);
+        double effectiveForumShoppingPressure = effectiveForumShoppingPressure(reviewCase, admissionDecision, publicInterestFiltered, state);
         double effectiveEmergencyOpportunism = effectiveEmergencyOpportunism(reviewCase, emergency, emergencyProcedure, strategicResponse);
         double effectiveEnforcementCapacity = effectiveEnforcementCapacity(reviewCase, meritsReview, constitutionalRemand, councilWarning, overrideDecision);
         double preliminaryConflict = constitutionalConflict(
@@ -285,6 +287,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 invalidated,
                 emergencyDenied,
                 shadowRelief,
+                emergencyProcedure.reasonedOrder(),
+                emergencyProcedure.meritsAccelerated(),
                 overrideDecision.attempted(),
                 overrideDecision.successful(),
                 overrideDecision.outcome() == OverrideOutcome.RIGHTS_CARVEOUT_BLOCKED,
@@ -293,6 +297,11 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 reviewCase.rightsBurden(),
                 reviewCase.partisanSalience(),
                 reviewCase.executiveDefianceRisk(),
+                reviewCase.repeatPlayerAdvantage(),
+                reviewCase.strategicPlaintiffSelection(),
+                effectiveForumShoppingPressure,
+                lowerCourtCompliance,
+                effectiveEnforcementCapacity,
                 emergencyDownstreamEffect,
                 governmentNoncompliance,
                 strategicResponse.legislativeCompliance(),
@@ -487,6 +496,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             AdmissionDecision admissionDecision,
             boolean emergency,
             StrategicActorPolicy.StrategicResponse strategicResponse,
+            CourtState state,
             Random random
     ) {
         if (!admissionDecision.transferredToMerits() || emergency) {
@@ -494,6 +504,8 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         }
         double probability = reviewCase.preReviewSettlementPressure() * 0.34
                 + reviewCase.repeatPlayerAdvantage() * 0.08
+                + state.repeatPlayerLearning() * 0.05
+                + state.complianceLearning() * 0.04
                 + reviewCase.enforcementCapacity() * 0.06
                 + (strategicResponse.legislativeCompliance() ? 0.05 : 0.0)
                 - reviewCase.publicAttention() * 0.10
@@ -1006,12 +1018,15 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     private double effectiveForumShoppingPressure(
             ReviewCase reviewCase,
             AdmissionDecision admissionDecision,
-            boolean publicInterestFiltered
+            boolean publicInterestFiltered,
+            CourtState state
     ) {
         double pressure = reviewCase.forumShoppingPressure()
                 + (design.emergencyDocketRule() == EmergencyDocketRule.OPEN_EMERGENCY ? 0.04 : 0.0)
                 + (design.reviewMode() == ReviewMode.SPECIALIZED_PANELS ? 0.03 : 0.0)
                 + reviewCase.barCapital() * 0.03
+                + state.repeatPlayerLearning() * 0.04
+                - state.complianceLearning() * 0.03
                 - (design.reviewMode() == ReviewMode.PANEL_EN_BANC ? 0.03 : 0.0)
                 - (design.auxiliaryReview() == AuxiliaryReview.PUBLIC_INTEREST_FILTER ? 0.08 : 0.0)
                 - (design.auxiliaryReview() == AuxiliaryReview.CONSTITUTIONAL_COUNCIL ? 0.04 : 0.0)
@@ -1177,6 +1192,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                 + state.conflictLoad() * 0.12
                 + state.legislativeDefiance() * 0.10
                 + state.executiveEmergencyStrategy() * 0.08
+                + state.repeatPlayerLearning() * 0.04
+                + state.emergencyIncentiveLearning() * 0.05
+                - state.complianceLearning() * 0.04
                 + emergencyDownstreamEffect * 0.12;
         if (invalidated) {
             conflict += reviewCase.democraticMandate() * 0.14;
@@ -1454,6 +1472,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double probability = reviewCase.governmentNoncomplianceRisk() * 0.36
                 + state.legislativeDefiance() * 0.18
                 + state.executiveEmergencyStrategy() * 0.12
+                + state.emergencyIncentiveLearning() * 0.08
+                + state.repeatPlayerLearning() * 0.04
+                - state.complianceLearning() * 0.10
                 + conflict * 0.16
                 + reviewCase.lowerCourtResistanceRisk() * 0.10
                 + (strategicResponse.practicalImplementationResponse() == PracticalImplementationResponse.OPEN_NONCOMPLIANCE ? 0.32 : 0.0)

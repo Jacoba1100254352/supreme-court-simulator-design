@@ -127,6 +127,8 @@ The review-path model distinguishes certiorari, IFP certiorari, constitutional c
 
 Emergency applications are first-class objects with applicant/respondent type, application class, requested relief, response request, full-court referral, status-quo effect, public disagreement risk, and merits follow-through. Reports now separate `shadowDocketAbuse` from `emergencyLegitimacyRisk` and `emergencyDownstreamEffect`, while also exposing `emergencyOpportunism`.
 
+The repeated-case state now includes repeat-player learning, emergency-incentive learning, and compliance learning. These synthetic channels update across decisions and then affect later emergency routing, settlement, forum shopping, noncompliance, and conflict. Reported learning metrics are derived diagnostics, not empirical validation claims.
+
 The headline metrics are legal stability, rights protection, partisan alignment, shadow-docket abuse, legitimacy, reversal rate, constitutional conflict, and democratic responsiveness. Direct outputs such as rights-claimant success, domain-specific claimant success, doctrinal depth, remedial breadth, fragmentation, lower-court compliance, precedent durability, government noncompliance, recusal incentive pressure, emergency downstream effects, elite acceptance, and public confidence are kept separate from derived directional indices. Pipeline diagnostics including lower-court resistance, forum shopping, enforcement capacity, and emergency opportunism are reported as scenario-mediated values rather than raw filed-world constants.
 
 ## Current Reports
@@ -139,6 +141,9 @@ The headline metrics are legal stability, rights protection, partisan alignment,
 - `reports/manipulation-stress-v2.csv` and `.md`: focused adversarial stress campaign.
 - `reports/parameter-sweep-v4.csv` and `.md`: uncertainty bands from named prior profiles, not only random seeds.
 - `reports/parameter-sweep-drivers-v4.csv` and `.md`: top close-score clusters by named prior, with interpretation caveats.
+- `reports/prior-uncertainty-v1.csv` and `.md`: sampled-prior uncertainty bands over weak assumptions.
+- `reports/pathway-validation-dashboard-v1.csv` and `.md`: pathway-specific validation dashboard that keeps certiorari, emergency, complaint/referral, compliance, and override/remand denominators separate.
+- `reports/primary-source-coverage-v1.csv` and `.md`: coverage summary showing which pathway rows are raw/primary-source-backed, synthesis-backed, proxy/design-prior, or missing.
 - `reports/legislative-family-comparison-v3.csv` and `.md`: constitutional-review results across multiple congressional-simulator campaign families.
 
 ## Calibration Data
@@ -156,5 +161,7 @@ The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a 
 The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC `cup-journal` template path with `journal=jlc` when the official class is available, and otherwise builds locally as an author-date review copy. `make paper-jlc-template-check` is available for an official-template environment and intentionally fails on TeX installations that do not provide `cup-journal.cls`. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 
 The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated selected-results, litigation-pipeline diagnostics, calibration, calibration-classification, sensitivity-driver, uncertainty, and mechanism-level contrast tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. `paper/source-audit.csv` maps material claims to source-code, report, data, manuscript, or literature anchors. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
+
+Use `make replication-check` before submission. It rebuilds tests, campaigns, diagnostics, validation dashboards, the strict paper checks, and the replication/submission packages, then verifies a clean copied source tree can run the core replication workflow.
 
 Use `docs/jlc-submission-checklist.md` as the final pre-submission checklist.

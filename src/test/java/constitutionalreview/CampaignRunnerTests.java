@@ -62,6 +62,9 @@ public final class CampaignRunnerTests {
         TestSupport.check(csv.contains("emergencyOpportunism"), "v2 csv should include emergency opportunism");
         TestSupport.check(csv.contains("strategicPlaintiffSelection"), "v2 csv should include strategic plaintiff selection");
         TestSupport.check(csv.contains("repeatPlayerAdvantage"), "v2 csv should include repeat-player advantage");
+        TestSupport.check(csv.contains("repeatPlayerLearning"), "v2 csv should include repeat-player learning diagnostics");
+        TestSupport.check(csv.contains("emergencyIncentiveLearning"), "v2 csv should include emergency incentive learning diagnostics");
+        TestSupport.check(csv.contains("complianceLearning"), "v2 csv should include compliance learning diagnostics");
         TestSupport.check(csv.contains("governmentNoncomplianceRate"), "v2 csv should include government noncompliance");
         TestSupport.check(csv.contains("emergencyDownstreamEffect"), "v2 csv should include emergency downstream effects");
         TestSupport.check(csv.contains("appointment-timing-manipulation"), "v2 campaign should include manipulation cases");

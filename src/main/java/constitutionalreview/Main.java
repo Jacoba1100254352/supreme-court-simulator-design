@@ -7,6 +7,7 @@ import constitutionalreview.experiment.DiagnosticResult;
 import constitutionalreview.experiment.LegislativeFamilyComparisonRunner;
 import constitutionalreview.experiment.MechanismAblationRunner;
 import constitutionalreview.experiment.ParameterSweepRunner;
+import constitutionalreview.experiment.PriorUncertaintyRunner;
 import constitutionalreview.experiment.SeedRobustnessRunner;
 import constitutionalreview.importer.LegislativeOutputImporter;
 import constitutionalreview.model.LegislativeOutputProfile;
@@ -122,6 +123,7 @@ public final class Main {
                 || options.seedRobustness
                 || options.mechanismAblation
                 || options.parameterSweep
+                || options.priorUncertainty
                 || options.legislativeFamilyComparison;
         if (!any) {
             return false;
@@ -164,6 +166,17 @@ public final class Main {
                         options.outputDir,
                         options.runs,
                         options.cases,
+                        options.seed,
+                        imported,
+                        options.legislativeInput
+                ));
+            }
+            if (options.priorUncertainty) {
+                printDiagnostic(PriorUncertaintyRunner.run(
+                        options.outputDir,
+                        options.runs,
+                        options.cases,
+                        options.priorSamples,
                         options.seed,
                         imported,
                         options.legislativeInput
@@ -263,7 +276,9 @@ public final class Main {
         private boolean seedRobustness;
         private boolean mechanismAblation;
         private boolean parameterSweep;
+        private boolean priorUncertainty;
         private boolean legislativeFamilyComparison;
+        private int priorSamples = 32;
         private Path outputDir = Path.of("reports");
         private Path calibrationDataDir = Path.of("data/calibration");
         private Path legislativeInput;
@@ -290,6 +305,8 @@ public final class Main {
                     case "--seed-robustness" -> options.seedRobustness = true;
                     case "--mechanism-ablation" -> options.mechanismAblation = true;
                     case "--parameter-sweep" -> options.parameterSweep = true;
+                    case "--prior-uncertainty" -> options.priorUncertainty = true;
+                    case "--prior-samples" -> options.priorSamples = parseInt(args, ++i, arg);
                     case "--legislative-family-comparison" -> options.legislativeFamilyComparison = true;
                     case "--output-dir" -> options.outputDir = Path.of(requireValue(args, ++i, arg));
                     case "--legislative-input" -> options.legislativeInput = Path.of(requireValue(args, ++i, arg));
@@ -304,6 +321,9 @@ public final class Main {
             }
             if (options.cases <= 0) {
                 throw new IllegalArgumentException("--cases must be positive");
+            }
+            if (options.priorSamples <= 0) {
+                throw new IllegalArgumentException("--prior-samples must be positive");
             }
             return options;
         }
@@ -356,6 +376,8 @@ public final class Main {
                       --seed-robustness
                       --mechanism-ablation
                       --parameter-sweep
+                      --prior-uncertainty
+                      --prior-samples N
                       --legislative-family-comparison
                       --output-dir DIR
                       --calibration-data-dir DIR

@@ -5,6 +5,7 @@ import constitutionalreview.experiment.DiagnosticResult;
 import constitutionalreview.experiment.LegislativeFamilyComparisonRunner;
 import constitutionalreview.experiment.MechanismAblationRunner;
 import constitutionalreview.experiment.ParameterSweepRunner;
+import constitutionalreview.experiment.PriorUncertaintyRunner;
 import constitutionalreview.experiment.SeedRobustnessRunner;
 import constitutionalreview.model.LegislativeOutputProfile;
 
@@ -23,6 +24,7 @@ public final class DiagnosticRunnerTests {
         checkResult(SeedRobustnessRunner.run(outputDir, 1, 6, 20260501L, profile, null), "Seed Robustness");
         checkResult(MechanismAblationRunner.run(outputDir, 1, 6, 20260501L, profile, null), "Mechanism Ablation");
         checkResult(ParameterSweepRunner.run(outputDir, 1, 6, 20260501L, profile, null), "Parameter Sweep");
+        checkResult(PriorUncertaintyRunner.run(outputDir, 1, 6, 3, 20260501L, profile, null), "Sampled Prior Uncertainty");
         Path familyDir = Files.createTempDirectory("legislative-family");
         Files.writeString(familyDir.resolve("simulation-campaign-v0.csv"), """
                 caseKey,caseWeight,productivity,welfare,weakPublicMandatePassage,minorityHarm,lobbyCapture,policyShift,legitimacy

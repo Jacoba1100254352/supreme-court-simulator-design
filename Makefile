@@ -8,7 +8,7 @@ RAW_CALIBRATION_DIR ?= data/raw/calibration
 PAPER_LEGISLATIVE_INPUT ?= data/external/legislative/simulation-campaign-v21-paper.csv
 PAPER_ARGS ?= --legislative-input "$(PAPER_LEGISLATIVE_INPUT)"
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-jlc-template-check paper-strict-check replication-package anonymous-submission-package paper-clean dist-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison validation-dashboards diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-jlc-template-check paper-strict-check replication-package anonymous-submission-package replication-check paper-clean dist-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -48,12 +48,19 @@ mechanism-ablation: build
 parameter-sweep: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --parameter-sweep --runs 40 --cases 48 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
+prior-uncertainty: build
+	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --prior-uncertainty --prior-samples 32 --runs 24 --cases 48 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
+
 legislative-family-comparison: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --legislative-family-comparison --legislative-family-dir "$(LEGISLATIVE_FAMILY_DIR)" --runs 40 --cases 48 --seed 20260501 --output-dir reports $(ARGS)
 
-diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep legislative-family-comparison manipulation-stress
+validation-dashboards:
+	python3 tools/build_validation_dashboards.py
+
+diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison manipulation-stress validation-dashboards
 
 paper-figures:
+	python3 tools/build_validation_dashboards.py
 	python3 paper/scripts/generate_figures.py
 
 paper-figure-files: paper-figures
@@ -95,6 +102,9 @@ replication-package: paper
 
 anonymous-submission-package: paper
 	python3 tools/create_anonymous_submission_package.py
+
+replication-check: test campaign-v0 campaign-v1 campaign-v2 diagnostics paper-strict-check replication-package anonymous-submission-package
+	python3 tools/check_replication_package.py
 
 paper-clean:
 	cd paper && latexmk -C -outdir=build main.tex
