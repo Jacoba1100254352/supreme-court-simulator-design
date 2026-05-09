@@ -12,7 +12,7 @@
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/manipulation-stress-v2.csv", "sha256": "264ed91ac52615e51233b365c34f005b1126dcc3ac9b5d50172310a4c28fa1cf"},
-    {"path": "reports/manipulation-stress-v2.md", "sha256": "08a6885fa2493eccc6c4a1c0e04faf6006d6c38f00b291c5b2921154ab9a79da"}
+    {"path": "reports/manipulation-stress-v2.csv", "sha256": "3d8deb47a85ed4660160d5947b3c76b239478979cabfc4a7cb8630a79d00c25a"},
+    {"path": "reports/manipulation-stress-v2.md", "sha256": "0690caff59ac912796ff0f4d1326916d2c08b62e7ee6d3cfcb5e2e56a996d7bf"}
   ]
 }

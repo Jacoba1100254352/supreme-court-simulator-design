@@ -205,4 +205,31 @@ public record ScenarioReport(
     public double complianceLearning() {
         return Values.average(lowerCourtCompliance, enforcementCapacity, interbranchCompliance);
     }
+
+    public double paidCertPetitionShare() {
+        return ratio(paidPetitionRate, paidPetitionRate + ifpPetitionRate);
+    }
+
+    public double ifpCertPetitionShare() {
+        return ratio(ifpPetitionRate, paidPetitionRate + ifpPetitionRate);
+    }
+
+    public double emergencyGrantConditionalRate() {
+        return ratio(emergencyGrantRate, emergencyOrderRate);
+    }
+
+    public double emergencyGrantPerEmergencyStayDocket() {
+        return ratio(emergencyGrantRate, emergencyStayDocketRate);
+    }
+
+    public double meritsAccelerationPerEmergencyStayDocket() {
+        return ratio(meritsAccelerationRate, emergencyStayDocketRate);
+    }
+
+    private static double ratio(double numerator, double denominator) {
+        if (denominator <= 0.0) {
+            return 0.0;
+        }
+        return numerator / denominator;
+    }
 }

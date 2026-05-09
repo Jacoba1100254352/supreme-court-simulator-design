@@ -481,6 +481,8 @@ public final class CampaignRunner {
                 "certiorariAdmissionRate",
                 "paidPetitionRate",
                 "ifpPetitionRate",
+                "paidCertPetitionShare",
+                "ifpCertPetitionShare",
                 "courtRequestedResponseRate",
                 "cvsgRequestRate",
                 "paidCfrRequestRate",
@@ -530,10 +532,13 @@ public final class CampaignRunner {
                 "meritsReviewRate",
                 "emergencyOrderRate",
                 "emergencyGrantRate",
+                "emergencyGrantConditionalRate",
+                "emergencyGrantPerEmergencyStayDocket",
                 "shadowReliefRate",
                 "reasonedEmergencyOrderRate",
                 "temporaryStayRate",
                 "meritsAccelerationRate",
+                "meritsAccelerationPerEmergencyStayDocket",
                 "expiredEmergencyOrderRate",
                 "recusalRate",
                 "quorumFailureRate",
@@ -624,6 +629,8 @@ public final class CampaignRunner {
                     .append(format(report.certiorariAdmissionRate())).append(',')
                     .append(format(report.paidPetitionRate())).append(',')
                     .append(format(report.ifpPetitionRate())).append(',')
+                    .append(format(report.paidCertPetitionShare())).append(',')
+                    .append(format(report.ifpCertPetitionShare())).append(',')
                     .append(format(report.courtRequestedResponseRate())).append(',')
                     .append(format(report.cvsgRequestRate())).append(',')
                     .append(format(report.paidCfrRequestRate())).append(',')
@@ -673,10 +680,13 @@ public final class CampaignRunner {
                     .append(format(report.meritsReviewRate())).append(',')
                     .append(format(report.emergencyOrderRate())).append(',')
                     .append(format(report.emergencyGrantRate())).append(',')
+                    .append(format(report.emergencyGrantConditionalRate())).append(',')
+                    .append(format(report.emergencyGrantPerEmergencyStayDocket())).append(',')
                     .append(format(report.shadowReliefRate())).append(',')
                     .append(format(report.reasonedEmergencyOrderRate())).append(',')
                     .append(format(report.temporaryStayRate())).append(',')
                     .append(format(report.meritsAccelerationRate())).append(',')
+                    .append(format(report.meritsAccelerationPerEmergencyStayDocket())).append(',')
                     .append(format(report.expiredEmergencyOrderRate())).append(',')
                     .append(format(report.recusalRate())).append(',')
                     .append(format(report.quorumFailureRate())).append(',')

@@ -341,7 +341,13 @@ public final class WorldGenerator {
         if (random.nextDouble() < 0.18) {
             return AccessPath.FILTERED_QPC;
         }
-        return random.nextDouble() < 0.72 ? AccessPath.PAID_CERTIORARI : AccessPath.IFP_CERTIORARI;
+        double paidCertShare = Values.clamp01(
+                0.235
+                        + (profile.publicLegitimacy() - 0.58) * 0.03
+                        + (profile.rightsRisk() - 0.20) * 0.03
+                        - (profile.weakMandateRate() - 0.22) * 0.02
+        );
+        return random.nextDouble() < paidCertShare ? AccessPath.PAID_CERTIORARI : AccessPath.IFP_CERTIORARI;
     }
 
     private static ReviewTiming reviewTiming(AccessPath accessPath, DocketType docketType) {

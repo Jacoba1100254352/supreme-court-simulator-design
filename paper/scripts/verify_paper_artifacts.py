@@ -21,9 +21,12 @@ MANIFESTS = [
 CAMPAIGN_CSV = ROOT / "reports" / "constitutional-review-campaign-v2.csv"
 PRIOR_UNCERTAINTY_CSV = ROOT / "reports" / "prior-uncertainty-v1.csv"
 PATHWAY_DASHBOARD_CSV = ROOT / "reports" / "pathway-validation-dashboard-v1.csv"
+METRIC_SEMANTICS_CSV = ROOT / "reports" / "metric-semantics-v1.csv"
 REQUIRED_CAMPAIGN_COLUMNS = {
     "certiorariPathRate",
     "certiorariAdmissionRate",
+    "paidCertPetitionShare",
+    "ifpCertPetitionShare",
     "lowerCourtSplitDepth",
     "lowerCourtIdeologicalDrift",
     "lowerCourtResistanceRisk",
@@ -39,6 +42,9 @@ REQUIRED_CAMPAIGN_COLUMNS = {
     "governmentNoncomplianceRate",
     "enforcementCapacity",
     "emergencyOpportunism",
+    "emergencyGrantConditionalRate",
+    "emergencyGrantPerEmergencyStayDocket",
+    "meritsAccelerationPerEmergencyStayDocket",
     "recusalIncentivePressure",
     "constitutionalRemandRate",
     "publicInterestFilteredRate",
@@ -57,7 +63,22 @@ REQUIRED_PATHWAY_COLUMNS = {
     "simulatorMetric",
     "sourceMetric",
     "sourceTier",
+    "sourceValidationUse",
+    "validationUse",
+    "denominatorCompatibility",
+    "simulatorDenominator",
+    "sourceDenominator",
+    "comparabilityNote",
     "nextValidationAction",
+}
+REQUIRED_METRIC_SEMANTICS_COLUMNS = {
+    "metricFamily",
+    "metric",
+    "simulatorDenominatorOrScale",
+    "sourceDenominatorOrScale",
+    "empiricalUse",
+    "denominatorCompatibility",
+    "manuscriptInterpretation",
 }
 
 
@@ -124,6 +145,7 @@ def main() -> None:
     check_campaign_schema()
     check_csv_schema(PRIOR_UNCERTAINTY_CSV, REQUIRED_PRIOR_COLUMNS, "prior uncertainty")
     check_csv_schema(PATHWAY_DASHBOARD_CSV, REQUIRED_PATHWAY_COLUMNS, "pathway dashboard")
+    check_csv_schema(METRIC_SEMANTICS_CSV, REQUIRED_METRIC_SEMANTICS_COLUMNS, "metric semantics")
     print(f"Paper artifact verification passed ({len(MANIFESTS)} manifests).")
 
 

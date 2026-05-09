@@ -142,7 +142,8 @@ The headline metrics are legal stability, rights protection, partisan alignment,
 - `reports/parameter-sweep-v4.csv` and `.md`: uncertainty bands from named prior profiles, not only random seeds.
 - `reports/parameter-sweep-drivers-v4.csv` and `.md`: top close-score clusters by named prior, with interpretation caveats.
 - `reports/prior-uncertainty-v1.csv` and `.md`: sampled-prior uncertainty bands over weak assumptions.
-- `reports/pathway-validation-dashboard-v1.csv` and `.md`: pathway-specific validation dashboard that keeps certiorari, emergency, complaint/referral, compliance, and override/remand denominators separate.
+- `reports/pathway-validation-dashboard-v1.csv` and `.md`: pathway-specific denominator audit that keeps certiorari, emergency, complaint/referral, compliance, and override/remand denominators separate and distinguishes source-row labels from manuscript-use labels.
+- `reports/metric-semantics-v1.csv` and `.md`: metric semantics audit that separates empirical source checks, synthetic outputs, and score-reading aids by denominator or scale.
 - `reports/primary-source-coverage-v1.csv` and `.md`: coverage summary showing which pathway rows are raw/primary-source-backed, synthesis-backed, proxy/design-prior, or missing.
 - `reports/legislative-family-comparison-v3.csv` and `.md`: constitutional-review results across multiple congressional-simulator campaign families.
 
@@ -160,7 +161,7 @@ The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a 
 
 The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC `cup-journal` template path with `journal=jlc` when the official class is available, and otherwise builds locally as an author-date review copy. `make paper-jlc-template-check` is available for an official-template environment and intentionally fails on TeX installations that do not provide `cup-journal.cls`. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 
-The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated selected-results, litigation-pipeline diagnostics, calibration, calibration-classification, sensitivity-driver, uncertainty, and mechanism-level contrast tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. `paper/source-audit.csv` maps material claims to source-code, report, data, manuscript, or literature anchors. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
+The paper includes generated campaign figures for domain-specific claimant success, public-confidence/constitutional-conflict tradeoffs, and emergency-docket profiles, plus generated selected-results, litigation-pipeline diagnostics, calibration, calibration-classification, pathway denominator, metric-semantics, sensitivity-driver, uncertainty, and mechanism-level contrast tables. `make paper-figure-files` exports standalone PDF/PNG figure files for journal production. `paper/source-audit.csv` maps material claims to source-code, report, data, manuscript, or literature anchors. Venue-fit notes also explain why JLC is preferred over the ACM route used by the adjacent Congress Institutional Simulator.
 
 Use `make replication-check` before submission. It rebuilds tests, campaigns, diagnostics, validation dashboards, the strict paper checks, and the replication/submission packages, then verifies a clean copied source tree can run the core replication workflow.
 

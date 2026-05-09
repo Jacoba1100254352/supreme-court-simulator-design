@@ -21,7 +21,7 @@ REQUIRED_SECTIONS = {
     "Theory and Design Space",
     "Expectations",
     "Model",
-    "Calibration and Validation",
+    "Calibration and Source-Range Checks",
     "Metrics",
     "Campaign Results",
     "Mechanism-Level Summary",
