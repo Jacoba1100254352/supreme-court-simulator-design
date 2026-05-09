@@ -161,7 +161,7 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
         "\\begingroup",
         "\\setlength{\\unitlength}{1mm}",
         "\\setlength{\\fboxsep}{0.45pt}",
-        "\\begin{picture}(128,82)",
+        "\\begin{picture}(128,84)",
         "\\scriptsize",
     ]
     for tick in (0.44, 0.45, 0.46, 0.47, 0.48):
@@ -205,10 +205,10 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
             f"\\put({fmt(label_x)},{fmt(label_y)}){{\\makebox(0,0)[{anchor}]{{\\colorbox{{white}}{{\\color{{{label_color}}}{label}}}}}}}",
         ])
     lines.extend([
-        f"\\put({fmt(left + width / 2.0)},{fmt(4.5)}){{\\makebox(0,0){{Constitutional conflict $\\downarrow$}}}}",
-        f"\\put({fmt(left - 5.0)},{fmt(bottom + height + 5.0)}){{\\makebox(0,0)[l]{{Public confidence $\\uparrow$}}}}",
+        f"\\put({fmt(left + width / 2.0)},{fmt(3.8)}){{\\makebox(0,0){{Constitutional conflict $\\downarrow$}}}}",
+        f"\\put(11.0,{fmt(bottom + height / 2.0)}){{\\rotatebox{{90}}{{\\makebox(0,0){{Public confidence $\\uparrow$}}}}}}",
         "\\tiny",
-        "\\put(61.0,76.0){\\makebox(0,0)[l]{Marker shade increases with shadow-docket abuse.}}",
+        "\\put(58.0,77.0){\\makebox(0,0)[l]{Marker shade increases with shadow-docket abuse.}}",
         "\\end{picture}",
         "\\endgroup",
         "",

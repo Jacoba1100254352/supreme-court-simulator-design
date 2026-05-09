@@ -119,6 +119,41 @@ def check_domain_heatmap_layout() -> None:
         fail(f"domain heatmap row padding is too narrow ({min(row_gaps):.1f}mm)")
 
 
+def check_conflict_confidence_axis_labels() -> None:
+    figure = ROOT / "paper" / "figures" / "conflict_confidence_tradeoff.tex"
+    if not figure.exists():
+        return
+    source = figure.read_text()
+    if "\\rotatebox{90}{\\makebox(0,0){Public confidence $\\uparrow$}}" not in source:
+        fail("conflict/confidence figure should use a rotated y-axis label outside the tick labels")
+
+    x_label = re.search(
+        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\makebox\(0,0\)\{Constitutional conflict \$\\downarrow\$\}\}",
+        source,
+    )
+    if not x_label:
+        fail("conflict/confidence figure is missing the x-axis label")
+    x_label_x = float(x_label.group(1))
+    x_label_y = float(x_label.group(2))
+    if not 64.0 <= x_label_x <= 68.0:
+        fail(f"conflict/confidence x-axis label is not centered under the plot ({x_label_x:.1f}mm)")
+    if x_label_y > 5.0:
+        fail(f"conflict/confidence x-axis label is too close to the tick labels ({x_label_y:.1f}mm)")
+
+    y_label = re.search(
+        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\rotatebox\{90\}\{\\makebox\(0,0\)\{Public confidence \$\\uparrow\$\}\}\}",
+        source,
+    )
+    if not y_label:
+        fail("conflict/confidence figure is missing the rotated y-axis label coordinates")
+    y_label_x = float(y_label.group(1))
+    y_label_y = float(y_label.group(2))
+    if not 9.0 <= y_label_x <= 13.0:
+        fail(f"conflict/confidence y-axis label is not in the left-axis gutter ({y_label_x:.1f}mm)")
+    if not 40.0 <= y_label_y <= 46.0:
+        fail(f"conflict/confidence y-axis label is not vertically centered ({y_label_y:.1f}mm)")
+
+
 def main() -> None:
     strict_submission = "--strict-submission" in sys.argv
     require_cambridge_class = "--require-cambridge-class" in sys.argv
@@ -186,6 +221,7 @@ def main() -> None:
             fail(f"figure label {label} is not cited in the manuscript text")
 
     check_domain_heatmap_layout()
+    check_conflict_confidence_axis_labels()
 
     words = word_count(source)
     if words > MAX_WORDS:
