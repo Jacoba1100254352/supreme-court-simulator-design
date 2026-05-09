@@ -61,6 +61,64 @@ def has_cambridge_class() -> bool:
     return result.returncode == 0
 
 
+def check_domain_heatmap_layout() -> None:
+    figure = ROOT / "paper" / "figures" / "domain_claimant_success.tex"
+    if not figure.exists():
+        return
+    source = figure.read_text()
+    headers = [
+        (float(x), float(y), label)
+        for x, y, label in re.findall(
+            r"\\put\(([0-9.]+),([0-9.]+)\)\{\\makebox\(0,0\)\{\\textbf\{([^}]+)\}\}\}",
+            source,
+        )
+    ]
+    cells = [
+        (float(x), float(y), float(width), float(height))
+        for x, y, width, height in re.findall(
+            r"\\put\(([0-9.]+),([0-9.]+)\)\{\\color\{(?:red|black)![0-9]+\}\\rule\{([0-9.]+)mm\}\{([0-9.]+)mm\}\}",
+            source,
+        )
+    ]
+    row_labels = [
+        (float(x), float(y), label)
+        for x, y, label in re.findall(
+            r"\\put\(([0-9.]+),([0-9.]+)\)\{\\makebox\(0,0\)\[r\]\{\\color\{(?:red|black)\}([^}]+)\}\}",
+            source,
+        )
+    ]
+    if len(headers) != 6 or len(cells) != 48 or len(row_labels) != 8:
+        fail("domain claimant-success heatmap has an unexpected generated shape")
+
+    header_y = min(y for _x, y, _label in headers)
+    first_row_y = max(y for _x, y, _width, _height in cells)
+    cell_height = max(height for _x, y, _width, height in cells if y == first_row_y)
+    header_gap = header_y - (first_row_y + cell_height)
+    if header_gap < 3.0:
+        fail(f"domain heatmap header is too close to first row ({header_gap:.1f}mm gap)")
+
+    first_row_cells = sorted((x, width) for x, y, width, _height in cells if y == first_row_y)
+    left_gutter = first_row_cells[0][0] - max(x for x, _y, _label in row_labels)
+    if left_gutter < 7.0:
+        fail(f"domain heatmap row-label gutter is too narrow ({left_gutter:.1f}mm)")
+
+    cell_gaps = [
+        next_x - (x + width)
+        for (x, width), (next_x, _next_width) in zip(first_row_cells, first_row_cells[1:])
+    ]
+    if min(cell_gaps) < 1.2:
+        fail(f"domain heatmap column padding is too narrow ({min(cell_gaps):.1f}mm)")
+
+    right_edge = max(x + width for x, _y, width, _height in cells)
+    if right_edge > 126.0:
+        fail(f"domain heatmap right edge is too close to the figure boundary ({right_edge:.1f}mm)")
+
+    row_centers = sorted({y for _x, y, _label in row_labels}, reverse=True)
+    row_gaps = [upper - lower for upper, lower in zip(row_centers, row_centers[1:])]
+    if min(row_gaps) < 6.6:
+        fail(f"domain heatmap row padding is too narrow ({min(row_gaps):.1f}mm)")
+
+
 def main() -> None:
     strict_submission = "--strict-submission" in sys.argv
     require_cambridge_class = "--require-cambridge-class" in sys.argv
@@ -126,6 +184,8 @@ def main() -> None:
     for label in labels:
         if f"\\ref{{{label}}}" not in source:
             fail(f"figure label {label} is not cited in the manuscript text")
+
+    check_domain_heatmap_layout()
 
     words = word_count(source)
     if words > MAX_WORDS:
