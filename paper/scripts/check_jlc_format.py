@@ -6,6 +6,7 @@ from __future__ import annotations
 import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -167,6 +168,103 @@ def check_conflict_confidence_axis_labels() -> None:
         fail(f"Random panels label should sit close to its marker in the right-middle callout area ({random_x:.1f},{random_y:.1f}mm)")
 
 
+def rendered_conflict_label_boxes() -> list[tuple[str, float, float, float, float]]:
+    figure = ROOT / "paper" / "figures" / "conflict_confidence_tradeoff.tex"
+    source = figure.read_text()
+    with tempfile.TemporaryDirectory(prefix="supreme-figure-check-") as temp_raw:
+        temp = Path(temp_raw)
+        (temp / "fragment.tex").write_text(source)
+        (temp / "figure-check.tex").write_text(
+            "\n".join(
+                [
+                    r"\documentclass{article}",
+                    r"\usepackage{xcolor}",
+                    r"\usepackage{graphicx}",
+                    r"\pagestyle{empty}",
+                    r"\begin{document}",
+                    r"\input{fragment.tex}",
+                    r"\end{document}",
+                    "",
+                ]
+            )
+        )
+        subprocess.run(
+            ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", "figure-check.tex"],
+            cwd=temp,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=True,
+        )
+        result = subprocess.run(
+            ["pdftotext", "-bbox", "figure-check.pdf", "-"],
+            cwd=temp,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True,
+        )
+    bbox = result.stdout
+    page = re.search(r"<page[^>]*width=\"([\d.]+)\"[^>]*height=\"([\d.]+)\"", bbox)
+    if not page:
+        fail("could not inspect rendered conflict/confidence figure labels")
+    page_width = float(page.group(1))
+    page_height = float(page.group(2))
+    label_words = {
+        "Current-like",
+        "18-year",
+        "terms",
+        "Written",
+        "reasons",
+        "Auto",
+        "merits",
+        "No",
+        "gap",
+        "Recusal",
+        "enforce",
+        "Random",
+        "panels",
+        "Integrity",
+        "pkg",
+    }
+    boxes: list[tuple[str, float, float, float, float]] = []
+    word_pattern = re.compile(
+        r"<word[^>]*xMin=\"([\d.]+)\"[^>]*yMin=\"([\d.]+)\"[^>]*xMax=\"([\d.]+)\"[^>]*yMax=\"([\d.]+)\"[^>]*>([^<]+)</word>"
+    )
+    for match in word_pattern.finditer(bbox):
+        text = (
+            match.group(5)
+            .replace("&amp;", "&")
+            .replace("&lt;", "<")
+            .replace("&gt;", ">")
+        )
+        normalized = text.strip().strip(".,;:")
+        if normalized not in label_words:
+            continue
+        left, top, right, bottom = map(float, match.groups()[:4])
+        if left < 0.5 or top < 0.5 or right > page_width - 0.5 or bottom > page_height - 0.5:
+            fail(f"rendered conflict/confidence label word is clipped: {text}")
+        boxes.append((normalized, left, top, right, bottom))
+    found = {label for label, *_ in boxes}
+    missing = sorted(label_words - found)
+    if missing:
+        fail("rendered conflict/confidence figure is missing label words: " + ", ".join(missing))
+    return boxes
+
+
+def check_rendered_conflict_label_layout() -> None:
+    boxes = rendered_conflict_label_boxes()
+    for index, current in enumerate(boxes):
+        current_label, left, top, right, bottom = current
+        for other_label, other_left, other_top, other_right, other_bottom in boxes[index + 1:]:
+            horizontal = min(right, other_right) - max(left, other_left)
+            vertical = min(bottom, other_bottom) - max(top, other_top)
+            if horizontal > 0.5 and vertical > 0.5:
+                fail(
+                    "rendered conflict/confidence label words overlap: "
+                    f"{current_label} and {other_label}"
+                )
+
+
 def main() -> None:
     strict_submission = "--strict-submission" in sys.argv
     require_cambridge_class = "--require-cambridge-class" in sys.argv
@@ -235,6 +333,7 @@ def main() -> None:
 
     check_domain_heatmap_layout()
     check_conflict_confidence_axis_labels()
+    check_rendered_conflict_label_layout()
 
     words = word_count(source)
     if words > MAX_WORDS:
