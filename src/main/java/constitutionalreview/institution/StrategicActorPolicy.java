@@ -52,7 +52,7 @@ public final class StrategicActorPolicy {
                 state.appointmentManipulationPressure() * 0.34
                         + state.conflictLoad() * 0.20
                         + reviewCase.publicAttention() * 0.16
-                        + (design.appointmentMethod() == AppointmentMethod.PRESIDENT_SENATE ? 0.08 : -0.04)
+                        + appointmentPressureAdjustment(design)
         );
         FormalLegalResponse formalResponse = formalResponse(
                 comply,
@@ -86,6 +86,14 @@ public final class StrategicActorPolicy {
                 overrideCampaign ? 0.12 + state.overrideAdaptation() * 0.12 : 0.0,
                 comply ? 0.07 : -0.05
         );
+    }
+
+    private static double appointmentPressureAdjustment(CourtDesign design) {
+        return switch (design.appointmentMethod()) {
+            case PRESIDENT_SENATE -> 0.08;
+            case JUDICIAL_ELECTORATE -> -0.10 - design.judicialElectorateInsulation() * 0.04;
+            case NONPARTISAN_COMMISSION, LEGISLATIVE_SUPERMAJORITY, LOTTERY_FROM_APPELLATE_POOL, ROTATING_PANEL -> -0.04;
+        };
     }
 
     private static FormalLegalResponse formalResponse(

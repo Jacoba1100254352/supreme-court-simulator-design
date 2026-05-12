@@ -7,7 +7,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 - runs per case: 80
 - cases per run: 64
 - base seed: 20260501
-- scenarios per case: 26
+- scenarios per case: 27
 - experiment cases: 20
 
 - legislative input: simulation-campaign-v21-paper.csv: volume=0.343 quality=0.610 weakMandate=0.175 rightsRisk=0.104 partisanSkew=0.237 volatility=0.120 legitimacy=0.547
@@ -83,6 +83,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 | Random panels with jurisdiction safeguards | 0.558 | 0.537 | 0.197 | 0.589 | 0.322 | 0.589 | 0.613 | 0.144 | 0.669 | 0.535 | 0.156 | 0.131 | 0.547 | 0.099 | 0.248 | 0.252 | 0.260 |
 | Constitutional council with concrete-review backstop | 0.556 | 0.535 | 0.196 | 0.589 | 0.319 | 0.605 | 0.623 | 0.157 | 0.658 | 0.542 | 0.152 | 0.111 | 0.574 | 0.105 | 0.236 | 0.257 | 0.306 |
 | Pre-enactment constitutional council | 0.556 | 0.537 | 0.199 | 0.589 | 0.320 | 0.605 | 0.623 | 0.163 | 0.645 | 0.540 | 0.153 | 0.113 | 0.567 | 0.106 | 0.237 | 0.258 | 0.293 |
+| Judicial electorate selection court | 0.554 | 0.539 | 0.199 | 0.589 | 0.321 | 0.561 | 0.623 | 0.169 | 0.634 | 0.535 | 0.148 | 0.114 | 0.526 | 0.107 | 0.240 | 0.246 | 0.275 |
 | Stylized current U.S.-like supreme court | 0.552 | 0.533 | 0.195 | 0.589 | 0.332 | 0.552 | 0.634 | 0.190 | 0.599 | 0.514 | 0.181 | 0.186 | 0.345 | 0.306 | 0.314 | 0.290 | 0.152 |
 | Supreme court with cross-checking constitutional court | 0.551 | 0.534 | 0.194 | 0.589 | 0.302 | 0.579 | 0.596 | 0.097 | 0.694 | 0.542 | 0.145 | 0.129 | 0.506 | 0.098 | 0.246 | 0.246 | 0.295 |
 | Dual supreme courts with disagreement filter | 0.532 | 0.535 | 0.195 | 0.589 | 0.324 | 0.559 | 0.620 | 0.167 | 0.588 | 0.526 | 0.157 | 0.131 | 0.509 | 0.099 | 0.249 | 0.258 | 0.330 |
@@ -114,6 +115,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 | Random panels with jurisdiction safeguards | 0.397 | 0.144 | 0.326 | 0.364 | 0.657 | 0.168 | 0.281 | 0.169 |
 | Constitutional council with concrete-review backstop | 0.397 | 0.157 | 0.367 | 0.347 | 0.699 | 0.181 | 0.278 | 0.166 |
 | Pre-enactment constitutional council | 0.397 | 0.163 | 0.378 | 0.380 | 0.727 | 0.211 | 0.315 | 0.179 |
+| Judicial electorate selection court | 0.397 | 0.169 | 0.395 | 0.389 | 0.739 | 0.231 | 0.335 | 0.210 |
 | Stylized current U.S.-like supreme court | 0.397 | 0.190 | 0.406 | 0.422 | 0.961 | 0.341 | 0.406 | 0.218 |
 | Supreme court with cross-checking constitutional court | 0.397 | 0.097 | 0.226 | 0.251 | 0.422 | 0.127 | 0.190 | 0.123 |
 | Dual supreme courts with disagreement filter | 0.397 | 0.167 | 0.377 | 0.396 | 0.764 | 0.225 | 0.349 | 0.204 |
@@ -136,7 +138,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 | Low Rights Risk | Jurisdiction stripping constrained by rights carveouts (0.637) | Jurisdiction stripping constrained by rights carveouts (0.644) | No emergency relief without merits review (0.006) | Time-limited legislative override window (0.008) |
 | Extreme Rights Risk | 60 percent invalidation threshold (0.522) | Emergency integrity package (0.598) | No emergency relief without merits review (0.026) | Judicial review with legislative supermajority override (0.026) |
 | Weak-Mandate Legislation | 60 percent invalidation threshold (0.544) | Stylized current U.S.-like supreme court (0.619) | No emergency relief without merits review (0.019) | Jurisdiction stripping constrained by rights carveouts (0.017) |
-| Strong-Mandate Legislation | No emergency relief without merits review (0.635) | Automatic merits follow-up for emergency relief (0.641) | No emergency relief without merits review (0.007) | Dual supreme courts with disagreement filter (0.009) |
+| Strong-Mandate Legislation | No emergency relief without merits review (0.635) | Judicial electorate selection court (0.641) | No emergency relief without merits review (0.007) | Dual supreme courts with disagreement filter (0.009) |
 | Appointment Timing Manipulation | No emergency relief without merits review (0.613) | Emergency integrity package (0.647) | No emergency relief without merits review (0.010) | Jurisdiction stripping constrained by rights carveouts (0.020) |
 | Emergency Application Flood | 60 percent invalidation threshold (0.499) | Stylized current U.S.-like supreme court (0.666) | No emergency relief without merits review (0.059) | Jurisdiction stripping constrained by rights carveouts (0.038) |
 | Override Evasion Loop | 60 percent invalidation threshold (0.524) | Emergency integrity package (0.615) | No emergency relief without merits review (0.029) | Judicial review with legislative supermajority override (0.028) |

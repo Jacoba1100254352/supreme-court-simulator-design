@@ -7,7 +7,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 - runs per case: 80
 - cases per run: 64
 - base seed: 20260501
-- scenarios per case: 26
+- scenarios per case: 27
 - experiment cases: 5
 
 - legislative input: simulation-campaign-v21-paper.csv: volume=0.343 quality=0.610 weakMandate=0.175 rightsRisk=0.104 partisanSkew=0.237 volatility=0.120 legitimacy=0.547
@@ -70,6 +70,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 | Pre-enactment constitutional council | 0.516 | 0.570 | 0.206 | 0.635 | 0.390 | 0.570 | 0.617 | 0.196 | 0.571 | 0.492 | 0.219 | 0.152 | 0.559 | 0.136 | 0.289 | 0.309 | 0.319 |
 | Stylized current U.S.-like supreme court | 0.516 | 0.571 | 0.213 | 0.635 | 0.404 | 0.513 | 0.636 | 0.239 | 0.525 | 0.463 | 0.251 | 0.247 | 0.305 | 0.377 | 0.377 | 0.340 | 0.164 |
 | Supreme court with cross-checking constitutional court | 0.516 | 0.570 | 0.211 | 0.635 | 0.373 | 0.541 | 0.585 | 0.114 | 0.654 | 0.495 | 0.209 | 0.177 | 0.496 | 0.129 | 0.304 | 0.295 | 0.317 |
+| Judicial electorate selection court | 0.514 | 0.574 | 0.212 | 0.635 | 0.392 | 0.524 | 0.615 | 0.200 | 0.553 | 0.487 | 0.213 | 0.155 | 0.514 | 0.138 | 0.293 | 0.296 | 0.295 |
 | Dual supreme courts with disagreement filter | 0.490 | 0.572 | 0.212 | 0.635 | 0.396 | 0.521 | 0.613 | 0.201 | 0.496 | 0.475 | 0.223 | 0.180 | 0.501 | 0.131 | 0.306 | 0.308 | 0.354 |
 
 ## Domain-Specific Rights Claimant Success
@@ -101,6 +102,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 | Pre-enactment constitutional council | 0.450 | 0.196 | 0.412 | 0.438 | 0.730 | 0.219 | 0.363 | 0.219 |
 | Stylized current U.S.-like supreme court | 0.450 | 0.239 | 0.484 | 0.485 | 0.984 | 0.396 | 0.520 | 0.269 |
 | Supreme court with cross-checking constitutional court | 0.450 | 0.114 | 0.234 | 0.282 | 0.425 | 0.182 | 0.216 | 0.141 |
+| Judicial electorate selection court | 0.450 | 0.200 | 0.422 | 0.477 | 0.740 | 0.268 | 0.382 | 0.235 |
 | Dual supreme courts with disagreement filter | 0.450 | 0.201 | 0.412 | 0.482 | 0.772 | 0.279 | 0.416 | 0.228 |
 
 ## Stress Case Leaders

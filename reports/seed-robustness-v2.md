@@ -37,6 +37,7 @@ Weighted v2 campaign averages rerun across deterministic seed offsets.
 | Random panels with jurisdiction safeguards | 0.559 | 0.558-0.559 | 0.000 | 0.605 | 0.612 | 0.098 | 0.477 | 0.468 | 0.260 |
 | Constitutional council with concrete-review backstop | 0.557 | 0.556-0.557 | 0.000 | 0.610 | 0.623 | 0.104 | 0.479 | 0.488 | 0.306 |
 | Pre-enactment constitutional council | 0.557 | 0.556-0.558 | 0.001 | 0.604 | 0.623 | 0.106 | 0.484 | 0.486 | 0.293 |
+| Judicial electorate selection court | 0.556 | 0.556-0.557 | 0.000 | 0.598 | 0.623 | 0.106 | 0.468 | 0.475 | 0.275 |
 | Stylized current U.S.-like supreme court | 0.553 | 0.552-0.554 | 0.001 | 0.590 | 0.633 | 0.302 | 0.504 | 0.455 | 0.151 |
 | Supreme court with cross-checking constitutional court | 0.550 | 0.550-0.551 | 0.000 | 0.614 | 0.595 | 0.098 | 0.486 | 0.461 | 0.294 |
 | Dual supreme courts with disagreement filter | 0.535 | 0.535-0.536 | 0.000 | 0.573 | 0.619 | 0.098 | 0.497 | 0.452 | 0.330 |

@@ -49,6 +49,7 @@ Compares the constitutional-review import contract across multiple congressional
 | simulation-campaign-v0.csv | Constitutional council with concrete-review backstop | 0.604 | 0.677 | 0.636 | 0.065 | 0.368 | 0.191 | 0.075 |
 | simulation-campaign-v0.csv | Random panels with jurisdiction safeguards | 0.603 | 0.668 | 0.633 | 0.061 | 0.377 | 0.190 | 0.077 |
 | simulation-campaign-v0.csv | Comparative 16-seat constitutional senates | 0.603 | 0.677 | 0.632 | 0.060 | 0.369 | 0.192 | 0.000 |
+| simulation-campaign-v0.csv | Judicial electorate selection court | 0.602 | 0.666 | 0.641 | 0.065 | 0.372 | 0.187 | 0.000 |
 | simulation-campaign-v0.csv | Stylized current U.S.-like supreme court | 0.598 | 0.661 | 0.638 | 0.216 | 0.392 | 0.224 | 0.000 |
 | simulation-campaign-v0.csv | Supreme court with cross-checking constitutional court | 0.595 | 0.668 | 0.627 | 0.057 | 0.392 | 0.191 | 0.000 |
 | simulation-campaign-v0.csv | Dual supreme courts with disagreement filter | 0.583 | 0.644 | 0.636 | 0.059 | 0.399 | 0.200 | 0.000 |
@@ -74,6 +75,7 @@ Compares the constitutional-review import contract across multiple congressional
 | simulation-campaign-v10.csv | Constitutional council with concrete-review backstop | 0.590 | 0.662 | 0.630 | 0.078 | 0.394 | 0.204 | 0.077 |
 | simulation-campaign-v10.csv | Pre-enactment constitutional council | 0.589 | 0.656 | 0.631 | 0.076 | 0.401 | 0.210 | 0.088 |
 | simulation-campaign-v10.csv | Random panels with jurisdiction safeguards | 0.589 | 0.647 | 0.628 | 0.073 | 0.401 | 0.202 | 0.086 |
+| simulation-campaign-v10.csv | Judicial electorate selection court | 0.588 | 0.645 | 0.639 | 0.079 | 0.395 | 0.201 | 0.000 |
 | simulation-campaign-v10.csv | Comparative 16-seat constitutional senates | 0.587 | 0.659 | 0.622 | 0.072 | 0.389 | 0.205 | 0.000 |
 | simulation-campaign-v10.csv | Stylized current U.S.-like supreme court | 0.582 | 0.634 | 0.635 | 0.236 | 0.423 | 0.240 | 0.000 |
 | simulation-campaign-v10.csv | Supreme court with cross-checking constitutional court | 0.579 | 0.649 | 0.615 | 0.068 | 0.413 | 0.201 | 0.000 |
@@ -100,6 +102,7 @@ Compares the constitutional-review import contract across multiple congressional
 | simulation-campaign-v15.csv | Pre-enactment constitutional council | 0.595 | 0.666 | 0.638 | 0.075 | 0.390 | 0.198 | 0.080 |
 | simulation-campaign-v15.csv | Comparative 16-seat constitutional senates | 0.594 | 0.668 | 0.634 | 0.069 | 0.379 | 0.197 | 0.000 |
 | simulation-campaign-v15.csv | Constitutional council with concrete-review backstop | 0.593 | 0.667 | 0.638 | 0.074 | 0.389 | 0.202 | 0.079 |
+| simulation-campaign-v15.csv | Judicial electorate selection court | 0.593 | 0.662 | 0.640 | 0.077 | 0.379 | 0.189 | 0.000 |
 | simulation-campaign-v15.csv | Random panels with jurisdiction safeguards | 0.592 | 0.657 | 0.633 | 0.073 | 0.390 | 0.199 | 0.077 |
 | simulation-campaign-v15.csv | Stylized current U.S.-like supreme court | 0.585 | 0.651 | 0.636 | 0.236 | 0.407 | 0.233 | 0.000 |
 | simulation-campaign-v15.csv | Supreme court with cross-checking constitutional court | 0.585 | 0.659 | 0.624 | 0.065 | 0.398 | 0.192 | 0.000 |
@@ -123,6 +126,7 @@ Compares the constitutional-review import contract across multiple congressional
 | simulation-campaign-v20.csv | Constitutional remand with override window | 0.593 | 0.676 | 0.638 | 0.051 | 0.384 | 0.196 | 0.060 |
 | simulation-campaign-v20.csv | Judicial review with legislative supermajority override | 0.592 | 0.647 | 0.642 | 0.084 | 0.403 | 0.210 | 0.092 |
 | simulation-campaign-v20.csv | Time-limited legislative override window | 0.592 | 0.645 | 0.643 | 0.079 | 0.404 | 0.212 | 0.087 |
+| simulation-campaign-v20.csv | Judicial electorate selection court | 0.590 | 0.653 | 0.647 | 0.081 | 0.389 | 0.193 | 0.000 |
 | simulation-campaign-v20.csv | Random panels with jurisdiction safeguards | 0.590 | 0.653 | 0.638 | 0.073 | 0.400 | 0.202 | 0.076 |
 | simulation-campaign-v20.csv | Pre-enactment constitutional council | 0.590 | 0.659 | 0.644 | 0.084 | 0.404 | 0.208 | 0.086 |
 | simulation-campaign-v20.csv | Constitutional council with concrete-review backstop | 0.588 | 0.661 | 0.643 | 0.081 | 0.399 | 0.206 | 0.082 |
@@ -151,6 +155,7 @@ Compares the constitutional-review import contract across multiple congressional
 | simulation-campaign-v21-paper.csv | Independent recusal enforcement with substitutes | 0.610 | 0.678 | 0.639 | 0.064 | 0.355 | 0.182 | 0.000 |
 | simulation-campaign-v21-paper.csv | Constitutional remand with override window | 0.608 | 0.697 | 0.635 | 0.041 | 0.352 | 0.180 | 0.053 |
 | simulation-campaign-v21-paper.csv | Constitutional council with concrete-review backstop | 0.607 | 0.689 | 0.636 | 0.067 | 0.356 | 0.181 | 0.058 |
+| simulation-campaign-v21-paper.csv | Judicial electorate selection court | 0.607 | 0.680 | 0.641 | 0.065 | 0.356 | 0.176 | 0.000 |
 | simulation-campaign-v21-paper.csv | Pre-enactment constitutional council | 0.607 | 0.679 | 0.644 | 0.063 | 0.368 | 0.188 | 0.083 |
 | simulation-campaign-v21-paper.csv | Comparative 16-seat constitutional senates | 0.606 | 0.685 | 0.630 | 0.054 | 0.347 | 0.181 | 0.000 |
 | simulation-campaign-v21-paper.csv | Stylized current U.S.-like supreme court | 0.599 | 0.667 | 0.642 | 0.222 | 0.387 | 0.220 | 0.000 |
@@ -179,6 +184,7 @@ Compares the constitutional-review import contract across multiple congressional
 | simulation-campaign-v5.csv | Randomized merits panels with en banc correction | 0.591 | 0.641 | 0.632 | 0.079 | 0.395 | 0.211 | 0.000 |
 | simulation-campaign-v5.csv | Comparative 16-seat constitutional senates | 0.591 | 0.655 | 0.625 | 0.068 | 0.390 | 0.207 | 0.000 |
 | simulation-campaign-v5.csv | Pre-enactment constitutional council | 0.590 | 0.647 | 0.634 | 0.074 | 0.404 | 0.207 | 0.102 |
+| simulation-campaign-v5.csv | Judicial electorate selection court | 0.588 | 0.641 | 0.637 | 0.075 | 0.396 | 0.203 | 0.000 |
 | simulation-campaign-v5.csv | Stylized current U.S.-like supreme court | 0.583 | 0.638 | 0.627 | 0.240 | 0.423 | 0.239 | 0.000 |
 | simulation-campaign-v5.csv | Supreme court with cross-checking constitutional court | 0.579 | 0.647 | 0.612 | 0.067 | 0.420 | 0.204 | 0.000 |
 | simulation-campaign-v5.csv | Dual supreme courts with disagreement filter | 0.571 | 0.620 | 0.632 | 0.066 | 0.418 | 0.207 | 0.000 |
@@ -204,6 +210,7 @@ Compares the constitutional-review import contract across multiple congressional
 | simulation-manipulation-stress.csv | Constitutional remand with override window | 0.610 | 0.696 | 0.633 | 0.037 | 0.352 | 0.174 | 0.051 |
 | simulation-manipulation-stress.csv | Random panels with jurisdiction safeguards | 0.609 | 0.676 | 0.628 | 0.055 | 0.360 | 0.179 | 0.072 |
 | simulation-manipulation-stress.csv | Constitutional council with concrete-review backstop | 0.608 | 0.686 | 0.632 | 0.062 | 0.356 | 0.184 | 0.063 |
+| simulation-manipulation-stress.csv | Judicial electorate selection court | 0.607 | 0.676 | 0.641 | 0.063 | 0.357 | 0.179 | 0.000 |
 | simulation-manipulation-stress.csv | Comparative 16-seat constitutional senates | 0.606 | 0.681 | 0.632 | 0.057 | 0.358 | 0.182 | 0.000 |
 | simulation-manipulation-stress.csv | Stylized current U.S.-like supreme court | 0.601 | 0.667 | 0.637 | 0.207 | 0.385 | 0.218 | 0.000 |
 | simulation-manipulation-stress.csv | Supreme court with cross-checking constitutional court | 0.599 | 0.677 | 0.618 | 0.054 | 0.371 | 0.180 | 0.000 |

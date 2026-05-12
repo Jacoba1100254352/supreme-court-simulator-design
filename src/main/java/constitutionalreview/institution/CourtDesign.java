@@ -3,6 +3,8 @@ package constitutionalreview.institution;
 public record CourtDesign(
         String name,
         AppointmentMethod appointmentMethod,
+        JudicialSelectorPool judicialSelectorPool,
+        JudicialNomineePool judicialNomineePool,
         int courtSize,
         TermLimitPolicy termLimitPolicy,
         RemovalStandard removalStandard,
@@ -46,6 +48,48 @@ public record CourtDesign(
         this(
                 name,
                 appointmentMethod,
+                defaultSelectorPool(appointmentMethod),
+                defaultNomineePool(appointmentMethod),
+                courtSize,
+                termLimitPolicy,
+                removalStandard,
+                recusalRule,
+                emergencyDocketRule,
+                votingThreshold,
+                opinionCoalitionRule,
+                reviewMode,
+                auxiliaryReview,
+                overrideRule,
+                independenceWeight,
+                accountabilityWeight,
+                administrativeCost
+        );
+    }
+
+    public CourtDesign(
+            String name,
+            AppointmentMethod appointmentMethod,
+            JudicialSelectorPool judicialSelectorPool,
+            JudicialNomineePool judicialNomineePool,
+            int courtSize,
+            TermLimitPolicy termLimitPolicy,
+            RemovalStandard removalStandard,
+            RecusalRule recusalRule,
+            EmergencyDocketRule emergencyDocketRule,
+            VotingThreshold votingThreshold,
+            OpinionCoalitionRule opinionCoalitionRule,
+            ReviewMode reviewMode,
+            AuxiliaryReview auxiliaryReview,
+            OverrideRule overrideRule,
+            double independenceWeight,
+            double accountabilityWeight,
+            double administrativeCost
+    ) {
+        this(
+                name,
+                appointmentMethod,
+                judicialSelectorPool,
+                judicialNomineePool,
                 courtSize,
                 termLimitPolicy,
                 removalStandard,
@@ -71,7 +115,73 @@ public record CourtDesign(
         );
     }
 
+    public CourtDesign(
+            String name,
+            AppointmentMethod appointmentMethod,
+            int courtSize,
+            TermLimitPolicy termLimitPolicy,
+            RemovalStandard removalStandard,
+            RecusalRule recusalRule,
+            EmergencyDocketRule emergencyDocketRule,
+            VotingThreshold votingThreshold,
+            OpinionCoalitionRule opinionCoalitionRule,
+            ReviewMode reviewMode,
+            AuxiliaryReview auxiliaryReview,
+            OverrideRule overrideRule,
+            double independenceWeight,
+            double accountabilityWeight,
+            double administrativeCost,
+            int appointmentFragmentation,
+            double confirmationThreshold,
+            double vacancyDeadlockRisk,
+            boolean renewableTerms,
+            Integer retirementAge,
+            SizeChangeDifficulty sizeChangeDifficulty,
+            RecusalConsequenceType recusalConsequenceType,
+            double quorumFailureRisk,
+            RemedyVotingThresholds remedyVotingThresholds
+    ) {
+        this(
+                name,
+                appointmentMethod,
+                defaultSelectorPool(appointmentMethod),
+                defaultNomineePool(appointmentMethod),
+                courtSize,
+                termLimitPolicy,
+                removalStandard,
+                recusalRule,
+                emergencyDocketRule,
+                votingThreshold,
+                opinionCoalitionRule,
+                reviewMode,
+                auxiliaryReview,
+                overrideRule,
+                independenceWeight,
+                accountabilityWeight,
+                administrativeCost,
+                appointmentFragmentation,
+                confirmationThreshold,
+                vacancyDeadlockRisk,
+                renewableTerms,
+                retirementAge,
+                sizeChangeDifficulty,
+                recusalConsequenceType,
+                quorumFailureRisk,
+                remedyVotingThresholds
+        );
+    }
+
     public CourtDesign {
+        if (judicialSelectorPool == null) {
+            judicialSelectorPool = defaultSelectorPool(appointmentMethod);
+        }
+        if (judicialNomineePool == null) {
+            judicialNomineePool = defaultNomineePool(appointmentMethod);
+        }
+        if (appointmentMethod != AppointmentMethod.JUDICIAL_ELECTORATE) {
+            judicialSelectorPool = JudicialSelectorPool.NOT_APPLICABLE;
+            judicialNomineePool = JudicialNomineePool.NOT_APPLICABLE;
+        }
         if (courtSize < 3) {
             throw new IllegalArgumentException("courtSize must be at least 3");
         }
@@ -98,6 +208,7 @@ public record CourtDesign(
             case PRESIDENT_SENATE -> 2;
             case LEGISLATIVE_SUPERMAJORITY -> 3;
             case NONPARTISAN_COMMISSION -> 3;
+            case JUDICIAL_ELECTORATE -> 5;
             case LOTTERY_FROM_APPELLATE_POOL, ROTATING_PANEL -> 4;
         };
     }
@@ -106,6 +217,7 @@ public record CourtDesign(
         return switch (appointmentMethod) {
             case LEGISLATIVE_SUPERMAJORITY -> 0.67;
             case NONPARTISAN_COMMISSION -> 0.60;
+            case JUDICIAL_ELECTORATE -> 0.52;
             case PRESIDENT_SENATE -> 0.50;
             case LOTTERY_FROM_APPELLATE_POOL, ROTATING_PANEL -> 0.55;
         };
@@ -115,6 +227,7 @@ public record CourtDesign(
         return switch (appointmentMethod) {
             case LEGISLATIVE_SUPERMAJORITY -> 0.28;
             case NONPARTISAN_COMMISSION -> 0.12;
+            case JUDICIAL_ELECTORATE -> 0.07;
             case PRESIDENT_SENATE -> 0.18;
             case LOTTERY_FROM_APPELLATE_POOL, ROTATING_PANEL -> 0.05;
         };
@@ -151,5 +264,49 @@ public record CourtDesign(
             case PEER_PANEL -> 0.003;
             case AUTOMATIC_CONFLICT_SCREEN -> 0.002;
         };
+    }
+
+    private static JudicialSelectorPool defaultSelectorPool(AppointmentMethod appointmentMethod) {
+        return appointmentMethod == AppointmentMethod.JUDICIAL_ELECTORATE
+                ? JudicialSelectorPool.FEDERAL_AND_STATE_HIGH_COURT_JUDGES
+                : JudicialSelectorPool.NOT_APPLICABLE;
+    }
+
+    private static JudicialNomineePool defaultNomineePool(AppointmentMethod appointmentMethod) {
+        return appointmentMethod == AppointmentMethod.JUDICIAL_ELECTORATE
+                ? JudicialNomineePool.FEDERAL_AND_STATE_HIGH_COURT_JUDGES
+                : JudicialNomineePool.NOT_APPLICABLE;
+    }
+
+    public boolean usesJudicialElectorate() {
+        return appointmentMethod == AppointmentMethod.JUDICIAL_ELECTORATE;
+    }
+
+    public double judicialElectorateInsulation() {
+        if (!usesJudicialElectorate()) {
+            return 0.0;
+        }
+        return (judicialSelectorPool.professionalInsulation() + judicialNomineePool.professionalFilter()) / 2.0;
+    }
+
+    public double judicialElectorateBreadth() {
+        if (!usesJudicialElectorate()) {
+            return 0.0;
+        }
+        return (judicialSelectorPool.jurisdictionalBreadth() + judicialNomineePool.candidateBreadth()) / 2.0;
+    }
+
+    public double judicialElectorateCaptureRisk() {
+        if (!usesJudicialElectorate()) {
+            return 0.0;
+        }
+        return (judicialSelectorPool.captureRisk() + judicialNomineePool.pipelineIdeologyRisk()) / 2.0;
+    }
+
+    public double judicialElectorateAdministrativeCost() {
+        if (!usesJudicialElectorate()) {
+            return 0.0;
+        }
+        return judicialSelectorPool.administrativeCost() + judicialNomineePool.administrativeCost();
     }
 }

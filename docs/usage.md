@@ -15,6 +15,14 @@ Run a smaller comparison:
 make run ARGS="--runs 20 --cases 30 --scenarios current-us-like,term-limited-balanced,cross-checking-courts"
 ```
 
+Judicial-electorate appointment variants can be run directly:
+
+```bash
+make run ARGS="--runs 20 --cases 30 --scenarios judicial-electorate-selection,judicial-electorate-all-federal,judicial-electorate-appellate-only,judicial-electorate-selected-circuits,judicial-electorate-state-high-courts"
+```
+
+The selector and nominee presets behind those variants are documented in `data/design/judicial-electorate-pools.csv`.
+
 Write campaign artifacts:
 
 ```sh

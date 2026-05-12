@@ -8,11 +8,11 @@
   "casesPerRun": 64,
   "seed": 20260501,
   "experimentCaseCount": 5,
-  "scenarioCount": 26,
+  "scenarioCount": 27,
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/manipulation-stress-v2.csv", "sha256": "3d8deb47a85ed4660160d5947b3c76b239478979cabfc4a7cb8630a79d00c25a"},
-    {"path": "reports/manipulation-stress-v2.md", "sha256": "0690caff59ac912796ff0f4d1326916d2c08b62e7ee6d3cfcb5e2e56a996d7bf"}
+    {"path": "reports/manipulation-stress-v2.csv", "sha256": "d018a545372972d556dbee4d7e1f4a57773d8f2cb8e3a373ccd76c24f17aaaa3"},
+    {"path": "reports/manipulation-stress-v2.md", "sha256": "d71fdc1e828aa5eb0cca433e8920aee48808c430ea89d9eb57e87f56146a975e"}
   ]
 }

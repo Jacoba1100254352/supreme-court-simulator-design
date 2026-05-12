@@ -1,5 +1,6 @@
 package constitutionalreview.simulation;
 
+import constitutionalreview.institution.AppointmentMethod;
 import constitutionalreview.institution.CourtDesign;
 import constitutionalreview.model.ClaimantType;
 import constitutionalreview.model.AccessPath;
@@ -91,6 +92,9 @@ public final class AdmissionFilter {
             pathAdjustment += 0.03;
         }
         double designGatekeeping = design.appointmentFragmentation() > 2 ? 0.02 : 0.0;
+        if (design.appointmentMethod() == AppointmentMethod.JUDICIAL_ELECTORATE) {
+            designGatekeeping += design.judicialElectorateInsulation() * 0.012;
+        }
         double score = 0.18
                 + reviewCase.certiorariPressure() * 0.22
                 + reviewCase.lowerCourtConflict() * 0.12

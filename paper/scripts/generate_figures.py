@@ -337,6 +337,7 @@ def write_selected_campaign_table(averages: dict[str, dict[str, float]]) -> None
         ("automatic-merits-follow-up", "Automatic merits follow-up"),
         ("emergency-restraint-court", "No emergency relief without merits review"),
         ("strong-recusal-enforcement", "Independent recusal enforcement with substitutes"),
+        ("judicial-electorate-selection", "Judicial electorate selection court"),
         ("randomized-merits-panels", "Randomized merits panels with en banc correction"),
         ("emergency-integrity-package", "Emergency integrity package"),
         ("constitutional-remand", "Constitutional remand before invalidation"),
@@ -391,6 +392,7 @@ def write_litigation_pipeline_table(averages: dict[str, dict[str, float]]) -> No
         ("automatic-merits-follow-up", "Automatic merits follow-up"),
         ("emergency-restraint-court", "No emergency merits gap"),
         ("strong-recusal-enforcement", "Strong recusal enforcement"),
+        ("judicial-electorate-selection", "Judicial electorate selection"),
         ("randomized-merits-panels", "Random merits panels"),
         ("emergency-integrity-package", "Emergency integrity package"),
         ("jurisdiction-stripping-constraints", "Jurisdiction-stripping constraints"),
@@ -583,6 +585,7 @@ def write_sampled_prior_uncertainty_table() -> None:
         "emergency-restraint-court",
         "current-us-like",
         "strong-recusal-enforcement",
+        "judicial-electorate-selection",
         "randomized-merits-panels",
         "constitutional-remand",
     }
@@ -634,6 +637,7 @@ def write_uncertainty_bands(averages: dict[str, dict[str, float]]) -> None:
         ("emergency-restraint-court", "No emergency merits gap"),
         ("current-us-like", "Current-like"),
         ("strong-recusal-enforcement", "Strong recusal enforcement"),
+        ("judicial-electorate-selection", "Judicial electorate selection"),
         ("constitutional-remand", "Constitutional remand"),
     ]
     lines = [
@@ -852,6 +856,7 @@ def write_mechanism_summary() -> None:
         "randomized-merits-panels",
         "constitutional-remand",
         "public-interest-filter",
+        "judicial-electorate-selection",
         "override-window",
         "jurisdiction-stripping-constraints",
         "emergency-integrity-bundle",

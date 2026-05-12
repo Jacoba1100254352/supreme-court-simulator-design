@@ -8,11 +8,11 @@
   "casesPerRun": 48,
   "seed": 20260501,
   "experimentCaseCount": 7,
-  "scenarioCount": 26,
+  "scenarioCount": 27,
   "legislativeInput": "data/external/legislative",
   "legislativeInputSha256": "48701ae65ae29e14a92c1e1ffcfe12740e44b7fad0fc38e67171a35c1a3f3699",
   "artifacts": [
-    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "199748ead89f6b4b8b7fff5bd795670008978457417b4daf9c0df0ee698c6ef9"},
-    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "fd03b651288afb59e1664b2261a68bcbe0f5ff2574cf85f2bf5796aedaab901f"}
+    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "41c2a1b6626405848c91acd6f586ed341c2f16ef28eba004ad1096c1a4cab75e"},
+    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "0040d0d14a7aa7f484074d932e5c9a82822b03c8262b7c048a30daee5769f515"}
   ]
 }

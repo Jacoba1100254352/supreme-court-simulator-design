@@ -427,6 +427,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             case LEGISLATIVE_SUPERMAJORITY -> candidates.sort(Comparator
                     .comparingDouble((Justice justice) -> Math.abs(justice.ideology()))
                     .thenComparingDouble(justice -> -justice.institutionalism()));
+            case JUDICIAL_ELECTORATE -> candidates.sort(Comparator
+                    .comparingDouble((Justice justice) -> -judicialElectorateSelectionScore(justice, design))
+                    .thenComparingDouble(justice -> Math.abs(justice.ideology())));
             case LOTTERY_FROM_APPELLATE_POOL, ROTATING_PANEL -> shuffle(candidates, random);
             case PRESIDENT_SENATE -> candidates.sort(Comparator
                     .comparingDouble((Justice justice) -> -Math.abs(justice.ideology()))
@@ -445,7 +448,10 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
     private static Justice adjustForInstitution(Justice justice, CourtDesign design) {
         double independence = justice.independence();
         double accountability = justice.accountabilityPressure();
+        double rightsSensitivity = justice.rightsSensitivity();
+        double institutionalism = justice.institutionalism();
         double loyalty = justice.partisanLoyalty();
+        double emergencyDeference = justice.emergencyDeference();
         if (design.termLimitPolicy() == TermLimitPolicy.LIFE_TENURE) {
             independence += 0.08;
             accountability -= 0.06;
@@ -463,16 +469,42 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
             accountability += 0.18;
             independence -= 0.08;
         }
+        if (design.usesJudicialElectorate()) {
+            double insulation = design.judicialElectorateInsulation();
+            double breadth = design.judicialElectorateBreadth();
+            double capture = design.judicialElectorateCaptureRisk();
+            independence += 0.05 + insulation * 0.06;
+            institutionalism += 0.04 + design.judicialNomineePool().professionalFilter() * 0.05;
+            rightsSensitivity += design.judicialNomineePool().rightsPracticeExposure() * 0.04;
+            accountability += 0.02 + breadth * 0.03;
+            loyalty -= 0.08 + insulation * 0.10 - capture * 0.04;
+            emergencyDeference -= breadth * 0.03;
+        }
         return new Justice(
                 justice.id(),
                 justice.ideology(),
                 Values.clamp01(independence * design.independenceWeight()),
-                justice.rightsSensitivity(),
+                Values.clamp01(rightsSensitivity),
                 Values.clamp01(accountability * design.accountabilityWeight()),
-                justice.institutionalism(),
+                Values.clamp01(institutionalism),
                 Values.clamp01(loyalty),
-                justice.emergencyDeference()
+                Values.clamp01(emergencyDeference)
         );
+    }
+
+    private static double judicialElectorateSelectionScore(Justice justice, CourtDesign design) {
+        double insulation = design.judicialElectorateInsulation();
+        double breadth = design.judicialElectorateBreadth();
+        double capture = design.judicialElectorateCaptureRisk();
+        double professionalFilter = design.judicialNomineePool().professionalFilter();
+        double rightsPractice = design.judicialNomineePool().rightsPracticeExposure();
+        double policyModeration = 1.0 - Math.abs(justice.ideology());
+        return justice.independence() * (0.32 + insulation * 0.12)
+                + justice.institutionalism() * (0.24 + professionalFilter * 0.10)
+                + policyModeration * (0.18 + breadth * 0.06)
+                + justice.rightsSensitivity() * (0.08 + rightsPractice * 0.04)
+                - justice.partisanLoyalty() * (0.18 + insulation * 0.06)
+                + Math.abs(justice.ideology()) * capture * 0.08;
     }
 
     private boolean meritsReview(ReviewCase reviewCase, boolean emergency, Random random) {
@@ -1322,6 +1354,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         double emergencyProcessBoost = (emergencyProcedure.reasonedOrder() ? 0.04 : 0.0)
                 + (emergencyProcedure.meritsAccelerated() ? 0.04 : 0.0)
                 - (emergencyProcedure.stage() == EmergencyProcedureStage.SHADOW_STAY ? 0.08 : 0.0);
+        double judicialElectorateLegitimacy = design.usesJudicialElectorate()
+                ? design.judicialElectorateBreadth() * 0.04 - design.judicialElectorateCaptureRisk() * 0.03
+                : 0.0;
         return Values.clamp01(
                 0.48
                         + reviewCase.publicAttention() * 0.16
@@ -1330,6 +1365,7 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                         + recusalDiscipline
                         + councilBoost
                         + emergencyProcessBoost
+                        + judicialElectorateLegitimacy
                         - shadowAbuse * 0.24
                         - partisanAlignment * 0.20
         );
@@ -1400,6 +1436,9 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         }
         if (design.auxiliaryReview() == AuxiliaryReview.PUBLIC_INTEREST_FILTER) {
             cost += 0.03;
+        }
+        if (design.usesJudicialElectorate()) {
+            cost += design.judicialElectorateAdministrativeCost() * 0.25;
         }
         if (design.emergencyDocketRule() == EmergencyDocketRule.AUTOMATIC_MERITS_FOLLOW_UP
                 || design.emergencyDocketRule() == EmergencyDocketRule.MANDATORY_WRITTEN_REASONING) {
@@ -1539,13 +1578,19 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
         if (design.appointmentMethod() == AppointmentMethod.ROTATING_PANEL) {
             scheduled += 0.055;
         }
+        if (design.usesJudicialElectorate()) {
+            scheduled += 0.006 + design.judicialSelectorPool().selectionNoise() * 0.018;
+        }
         if (reviewedCases % 18 == 0 && design.termLimitPolicy() != TermLimitPolicy.LIFE_TENURE) {
             scheduled += 0.18;
         }
         if (reviewCase.publicAttention() > 0.72 && design.removalStandard() == RemovalStandard.RETENTION_RECALL) {
             scheduled += 0.05;
         }
-        scheduled += state.appointmentManipulationPressure() * 0.06;
+        double manipulationMultiplier = design.usesJudicialElectorate()
+                ? Values.clamp(0.78 - design.judicialElectorateInsulation() * 0.26, 0.46, 0.78)
+                : 1.0;
+        scheduled += state.appointmentManipulationPressure() * 0.06 * manipulationMultiplier;
         return Values.clamp01(scheduled);
     }
 
@@ -1582,10 +1627,19 @@ public final class ConstitutionalReviewProcess implements ReviewProcess {
                     .min(Comparator.comparingDouble((Justice justice) -> Math.abs(justice.ideology()))
                             .thenComparingDouble(justice -> -justice.institutionalism()))
                     .orElse(candidates.get(random.nextInt(candidates.size())));
+            case JUDICIAL_ELECTORATE -> judicialElectorateAppointment(candidates, random);
             case LOTTERY_FROM_APPELLATE_POOL, ROTATING_PANEL -> candidates.get(random.nextInt(candidates.size()));
             case PRESIDENT_SENATE -> partisanAppointment(candidates, random);
         };
         return adjustForInstitution(selected, design);
+    }
+
+    private Justice judicialElectorateAppointment(List<Justice> candidates, Random random) {
+        return candidates.stream()
+                .max(Comparator.comparingDouble((Justice justice) -> judicialElectorateSelectionScore(justice, design)
+                                + random.nextGaussian() * design.judicialSelectorPool().selectionNoise() * 0.04)
+                        .thenComparingDouble(Justice::institutionalism))
+                .orElse(candidates.get(random.nextInt(candidates.size())));
     }
 
     private Justice partisanAppointment(List<Justice> candidates, Random random) {

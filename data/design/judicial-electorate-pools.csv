@@ -1,0 +1,11 @@
+poolType,key,label,approximateCount,modeledUse,primaryCaveat
+selector,ALL_FEDERAL_JUDGES,All Article III federal judges,870,Large professional electorate with federal breadth and moderate regional diversity,Approximate count is a modeling preset rather than a current administrative roster
+selector,FEDERAL_APPELLATE_JUDGES,Federal appellate judges,180,Small high-status professional electorate with strong appellate screening,May overweight existing federal appellate pipeline and reduce democratic legibility
+selector,SELECTED_CIRCUITS,Judges from selected circuits,90,Regional or rotating-circuit electorate with lower coordination cost,Can amplify circuit-specific ideology or local professional capture
+selector,STATE_SUPREME_COURT_JUSTICES,State supreme court justices,350,State high-court electorate with federalism and state-law experience,Judicial selection environments differ sharply across states
+selector,FEDERAL_AND_STATE_HIGH_COURT_JUDGES,Federal and state high-court judges,1250,Broad professional electorate combining federal and state high-court perspectives,Still a professional-guild electorate rather than a democratically elected body
+nominee,OPEN_TO_QUALIFIED_LAWYERS,Open to qualified lawyers,,Broad eligibility outside the judicial career ladder,Less professional screening and higher uncertainty about judicial-role behavior
+nominee,SITTING_FEDERAL_JUDGES,Sitting federal judges,,Federal judicial eligibility pool with trial and appellate experience,Can underrepresent state constitutional and state-law perspectives
+nominee,FEDERAL_APPELLATE_JUDGES,Federal appellate judges,,Narrow appellate-judge eligibility pool with strong appellate filtering,Can reproduce the existing appellate pipeline and reduce candidate breadth
+nominee,STATE_HIGH_COURT_JUDGES,State high-court judges,,State supreme court eligibility pool with state constitutional experience,State selection systems may import partisan or electoral incentives
+nominee,FEDERAL_AND_STATE_HIGH_COURT_JUDGES,Federal and state high-court judges,,Broad high-court eligibility pool across federal and state systems,Comparability across court systems is synthetic and should not be treated as empirical calibration

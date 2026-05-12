@@ -5,6 +5,8 @@ import constitutionalreview.institution.AuxiliaryReview;
 import constitutionalreview.institution.ConstitutionalReviewProcess;
 import constitutionalreview.institution.CourtDesign;
 import constitutionalreview.institution.EmergencyDocketRule;
+import constitutionalreview.institution.JudicialNomineePool;
+import constitutionalreview.institution.JudicialSelectorPool;
 import constitutionalreview.institution.OpinionCoalitionRule;
 import constitutionalreview.institution.OverrideRule;
 import constitutionalreview.institution.RecusalRule;
@@ -51,7 +53,8 @@ public final class ScenarioCatalog {
             "emergency-integrity-package",
             "remand-override-window-package",
             "panel-jurisdiction-safeguards",
-            "council-concrete-hybrid"
+            "council-concrete-hybrid",
+            "judicial-electorate-selection"
     );
 
     private ScenarioCatalog() {
@@ -141,6 +144,101 @@ public final class ScenarioCatalog {
                         1.10,
                         1.02,
                         0.16
+                )),
+                entry("judicial-electorate-selection", new CourtDesign(
+                        "Judicial electorate selection court",
+                        AppointmentMethod.JUDICIAL_ELECTORATE,
+                        JudicialSelectorPool.FEDERAL_AND_STATE_HIGH_COURT_JUDGES,
+                        JudicialNomineePool.FEDERAL_AND_STATE_HIGH_COURT_JUDGES,
+                        11,
+                        TermLimitPolicy.EIGHTEEN_YEAR_STAGGERED,
+                        RemovalStandard.ETHICS_TRIBUNAL,
+                        RecusalRule.PEER_PANEL,
+                        EmergencyDocketRule.REASONED_FAST_TRACK,
+                        VotingThreshold.SIMPLE_MAJORITY,
+                        OpinionCoalitionRule.MAJORITY_OPINION_DISCIPLINE,
+                        ReviewMode.FULL_COURT,
+                        AuxiliaryReview.NONE,
+                        OverrideRule.NONE,
+                        1.10,
+                        1.03,
+                        0.22
+                )),
+                entry("judicial-electorate-all-federal", new CourtDesign(
+                        "Judicial electorate: all federal judges vote",
+                        AppointmentMethod.JUDICIAL_ELECTORATE,
+                        JudicialSelectorPool.ALL_FEDERAL_JUDGES,
+                        JudicialNomineePool.SITTING_FEDERAL_JUDGES,
+                        11,
+                        TermLimitPolicy.EIGHTEEN_YEAR_STAGGERED,
+                        RemovalStandard.ETHICS_TRIBUNAL,
+                        RecusalRule.PEER_PANEL,
+                        EmergencyDocketRule.REASONED_FAST_TRACK,
+                        VotingThreshold.SIMPLE_MAJORITY,
+                        OpinionCoalitionRule.MAJORITY_OPINION_DISCIPLINE,
+                        ReviewMode.FULL_COURT,
+                        AuxiliaryReview.NONE,
+                        OverrideRule.NONE,
+                        1.09,
+                        1.03,
+                        0.21
+                )),
+                entry("judicial-electorate-appellate-only", new CourtDesign(
+                        "Judicial electorate: federal appellate judges only",
+                        AppointmentMethod.JUDICIAL_ELECTORATE,
+                        JudicialSelectorPool.FEDERAL_APPELLATE_JUDGES,
+                        JudicialNomineePool.FEDERAL_APPELLATE_JUDGES,
+                        9,
+                        TermLimitPolicy.EIGHTEEN_YEAR_STAGGERED,
+                        RemovalStandard.ETHICS_TRIBUNAL,
+                        RecusalRule.PEER_PANEL,
+                        EmergencyDocketRule.REASONED_FAST_TRACK,
+                        VotingThreshold.SIMPLE_MAJORITY,
+                        OpinionCoalitionRule.MAJORITY_OPINION_DISCIPLINE,
+                        ReviewMode.FULL_COURT,
+                        AuxiliaryReview.NONE,
+                        OverrideRule.NONE,
+                        1.10,
+                        1.01,
+                        0.19
+                )),
+                entry("judicial-electorate-selected-circuits", new CourtDesign(
+                        "Judicial electorate: selected circuits vote",
+                        AppointmentMethod.JUDICIAL_ELECTORATE,
+                        JudicialSelectorPool.SELECTED_CIRCUITS,
+                        JudicialNomineePool.FEDERAL_APPELLATE_JUDGES,
+                        9,
+                        TermLimitPolicy.EIGHTEEN_YEAR_STAGGERED,
+                        RemovalStandard.ETHICS_TRIBUNAL,
+                        RecusalRule.PEER_PANEL,
+                        EmergencyDocketRule.REASONED_FAST_TRACK,
+                        VotingThreshold.SIMPLE_MAJORITY,
+                        OpinionCoalitionRule.MAJORITY_OPINION_DISCIPLINE,
+                        ReviewMode.FULL_COURT,
+                        AuxiliaryReview.NONE,
+                        OverrideRule.NONE,
+                        1.07,
+                        1.01,
+                        0.18
+                )),
+                entry("judicial-electorate-state-high-courts", new CourtDesign(
+                        "Judicial electorate: state high courts vote",
+                        AppointmentMethod.JUDICIAL_ELECTORATE,
+                        JudicialSelectorPool.STATE_SUPREME_COURT_JUSTICES,
+                        JudicialNomineePool.STATE_HIGH_COURT_JUDGES,
+                        11,
+                        TermLimitPolicy.EIGHTEEN_YEAR_STAGGERED,
+                        RemovalStandard.ETHICS_TRIBUNAL,
+                        RecusalRule.PEER_PANEL,
+                        EmergencyDocketRule.REASONED_FAST_TRACK,
+                        VotingThreshold.SIMPLE_MAJORITY,
+                        OpinionCoalitionRule.MAJORITY_OPINION_DISCIPLINE,
+                        ReviewMode.FULL_COURT,
+                        AuxiliaryReview.NONE,
+                        OverrideRule.NONE,
+                        1.07,
+                        1.05,
+                        0.22
                 )),
                 entry("expanded-court-fifteen", new CourtDesign(
                         "Expanded 15-seat court",

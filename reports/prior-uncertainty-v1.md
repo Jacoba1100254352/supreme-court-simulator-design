@@ -45,6 +45,7 @@ This diagnostic replaces a purely named-scenario sensitivity story with sampled 
 | Constitutional remand with override window | 0.580/0.604/0.621 | 0.624/0.636/0.646 | 0.029/0.047/0.074 | 0.049/0.078/0.140 | 0.585/0.611/0.628 | 0.040/0.073/0.113 | 0.311/0.360/0.416 | front-line cluster |
 | Random panels with jurisdiction safeguards | 0.582/0.602/0.621 | 0.622/0.636/0.647 | 0.043/0.065/0.099 | 0.051/0.079/0.140 | 0.571/0.597/0.619 | 0.046/0.076/0.117 | 0.321/0.373/0.424 | front-line cluster |
 | Comparative 16-seat constitutional senates | 0.578/0.602/0.619 | 0.623/0.636/0.644 | 0.042/0.066/0.098 | 0.051/0.081/0.141 | 0.572/0.598/0.618 | 0.043/0.066/0.111 | 0.317/0.364/0.422 | front-line cluster |
+| Judicial electorate selection court | 0.579/0.601/0.617 | 0.629/0.644/0.653 | 0.052/0.074/0.110 | 0.045/0.073/0.128 | 0.574/0.597/0.615 | 0.046/0.071/0.105 | 0.315/0.368/0.419 | front-line cluster |
 | Constitutional council with concrete-review backstop | 0.581/0.601/0.618 | 0.627/0.639/0.646 | 0.050/0.073/0.107 | 0.042/0.071/0.125 | 0.583/0.604/0.625 | 0.047/0.072/0.102 | 0.322/0.373/0.418 | front-line cluster |
 | Stylized current U.S.-like supreme court | 0.568/0.594/0.616 | 0.627/0.645/0.658 | 0.167/0.234/0.324 | 0.079/0.122/0.196 | 0.543/0.576/0.602 | 0.051/0.095/0.150 | 0.337/0.401/0.462 | overlapping uncertainty band |
 | Supreme court with cross-checking constitutional court | 0.569/0.592/0.610 | 0.606/0.628/0.640 | 0.045/0.065/0.097 | 0.052/0.080/0.140 | 0.573/0.600/0.620 | 0.044/0.082/0.109 | 0.337/0.392/0.448 | overlapping uncertainty band |

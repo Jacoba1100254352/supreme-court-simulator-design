@@ -78,6 +78,7 @@ public final class MechanismAblationRunner {
     private static List<AblationPair> pairs() {
         return List.of(
                 new AblationPair("appointment-screening", "Appointment screening", "current-us-like", "nonpartisan-commission"),
+                new AblationPair("judicial-electorate-selection", "Judicial electorate selection", "nonpartisan-commission", "judicial-electorate-selection"),
                 new AblationPair("term-regularization", "Term regularization", "current-us-like", "term-limited-balanced"),
                 new AblationPair("emergency-restraint", "Emergency restraint", "current-us-like", "emergency-restraint-court"),
                 new AblationPair("written-emergency-reasoning", "Mandatory written emergency reasoning", "current-us-like", "mandatory-written-emergency-reasoning"),

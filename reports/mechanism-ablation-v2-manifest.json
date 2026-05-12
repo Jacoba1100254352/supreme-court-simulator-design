@@ -8,11 +8,11 @@
   "casesPerRun": 48,
   "seed": 20260501,
   "experimentCaseCount": 8,
-  "scenarioCount": 48,
+  "scenarioCount": 50,
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "fd292ab1a4a493e4cde1a94a662eb75b5127956993990f761093ecb15ea342cd"},
-    {"path": "reports/mechanism-ablation-v2.md", "sha256": "aa50033f774a1ef0f0ab80a1cfe0c2d286b0139f9ac49debeb5fc121438e6d00"}
+    {"path": "reports/mechanism-ablation-v2.csv", "sha256": "bedeef8d2e2b93d2e8e639dd356a3cec50872a36262329b0c54471ff98907141"},
+    {"path": "reports/mechanism-ablation-v2.md", "sha256": "c145707eb31e9376489a6328d7453a56d86742e26630b623a08060b07bfb6e33"}
   ]
 }
