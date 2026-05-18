@@ -1,4 +1,4 @@
-# Constitutional Review Simulator Usage
+# Supreme Court Simulator Design Usage
 
 ## Commands
 

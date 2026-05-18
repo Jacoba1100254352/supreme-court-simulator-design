@@ -1,6 +1,8 @@
-# Constitutional Review Simulator
+# Supreme Court Simulator Design
 
-This is a separate Java simulation project for comparing supreme-court and constitutional-review institutional designs. It follows the campaign/scenario/report style of the adjacent congressional simulator while keeping the source tree independent.
+This is the earlier Supreme Court and constitutional-review design workspace. Its current manuscript is titled "Emergency Review and Constitutional Court Design by Simulation" and uses Supreme Court emergency-review evidence as a calibration anchor for broader constitutional-court design comparisons. It remains distinct from the separate `Constitutional Review Simulator` repository unless the two projects are explicitly consolidated.
+
+The project follows the campaign/scenario/report style of the adjacent congressional simulator while keeping the source tree independent.
 
 The simulator evaluates court designs across generated constitutional cases and, optionally, imports legislative campaign outputs as docket inputs. Imported legislative metrics are summarized into a `LegislativeOutputProfile`, which affects case quality, rights risk, weak-mandate disputes, emergency pressure, and constitutional conflict.
 
@@ -157,7 +159,7 @@ Frozen legislative-output fixtures live in `data/external/legislative/` with pro
 
 ## Paper
 
-The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the current formulas are empirically validated.
+The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the specified mechanisms are empirically validated.
 
 The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC `cup-journal` template path with `journal=jlc` when the official class is available, and otherwise builds locally as an author-date review copy. `make paper-jlc-template-check` is available for an official-template environment and intentionally fails on TeX installations that do not provide `cup-journal.cls`. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 
