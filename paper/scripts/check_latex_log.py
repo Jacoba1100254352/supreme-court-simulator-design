@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-LOG = ROOT / "paper" / "build" / "main.log"
+LOG = ROOT / "paper" / "build" / "emergency-review-constitutional-court-design.log"
 
 FAIL_PATTERNS = [
     r"undefined citations",

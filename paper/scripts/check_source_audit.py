@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-MAIN = ROOT / "paper" / "main.tex"
+MAIN = ROOT / "paper" / "emergency-review-constitutional-court-design.tex"
 BIB = ROOT / "paper" / "references.bib"
 AUDIT = ROOT / "paper" / "source-audit.csv"
 CALIBRATION_PROVENANCE = ROOT / "data" / "calibration" / "provenance-manifest.csv"

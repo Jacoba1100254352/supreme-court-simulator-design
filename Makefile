@@ -83,10 +83,10 @@ paper-check: paper-figures paper-artifacts-check paper-source-audit
 
 paper: paper-check paper-figure-files
 	mkdir -p paper/build
-	rm -f paper/build/main.aux paper/build/main.bbl paper/build/main.blg paper/build/main.fdb_latexmk paper/build/main.fls paper/build/main.out
-	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
+	rm -f paper/build/emergency-review-constitutional-court-design.aux paper/build/emergency-review-constitutional-court-design.bbl paper/build/emergency-review-constitutional-court-design.blg paper/build/emergency-review-constitutional-court-design.fdb_latexmk paper/build/emergency-review-constitutional-court-design.fls paper/build/emergency-review-constitutional-court-design.out
+	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build emergency-review-constitutional-court-design.tex
 	python3 paper/scripts/check_latex_log.py
-	cp paper/build/main.pdf paper/main.pdf
+	cp paper/build/emergency-review-constitutional-court-design.pdf paper/emergency-review-constitutional-court-design.pdf
 	python3 paper/scripts/check_pdf_freshness.py
 
 paper-title-page:
@@ -107,7 +107,7 @@ replication-check: test campaign-v0 campaign-v1 campaign-v2 diagnostics paper-st
 	python3 tools/check_replication_package.py
 
 paper-clean:
-	cd paper && latexmk -C -outdir=build main.tex
+	cd paper && latexmk -C -outdir=build emergency-review-constitutional-court-design.tex
 	rm -rf paper/build
 	rm -rf paper/figure-exports/build
 

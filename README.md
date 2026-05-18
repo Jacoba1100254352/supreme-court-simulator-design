@@ -47,7 +47,7 @@ Run stricter submission checks and build the non-anonymous title page:
 make paper-strict-check
 ```
 
-`make paper` always refreshes `paper/main.pdf` after regenerating paper tables
+`make paper` always refreshes `paper/emergency-review-constitutional-court-design.pdf` after regenerating paper tables
 and figures, and the paper targets now fail if the checked-in PDF is older than
 the LaTeX inputs that feed it.
 
@@ -159,7 +159,7 @@ Frozen legislative-output fixtures live in `data/external/legislative/` with pro
 
 ## Paper
 
-The LaTeX manuscript lives at `paper/main.tex`. It is intentionally framed as a model-and-design paper, not a claim that the specified mechanisms are empirically validated.
+The LaTeX manuscript lives at `paper/emergency-review-constitutional-court-design.tex`. It is intentionally framed as a model-and-design paper, not a claim that the specified mechanisms are empirically validated.
 
 The current venue target is Journal of Law and Courts, with CELS 2026 as the near-term conference target. The manuscript is anonymous by default, uses the Cambridge/JLC `cup-journal` template path with `journal=jlc` when the official class is available, and otherwise builds locally as an author-date review copy. `make paper-jlc-template-check` is available for an official-template environment and intentionally fails on TeX installations that do not provide `cup-journal.cls`. Submission-prep notes live in `docs/submission-readiness.md`; reproduction notes live in `REPLICATION.md`.
 

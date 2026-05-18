@@ -8,7 +8,7 @@ Reason: its scope explicitly fits judicial institutions, judicial independence, 
 
 Current manuscript posture:
 
-- `paper/main.tex` is anonymous by default.
+- `paper/emergency-review-constitutional-court-design.tex` is anonymous by default.
 - The source attempts to use the official Cambridge `cup-journal` template with `journal=jlc` when `cup-journal.cls` is available.
 - The local build falls back to an article review copy with author-date citations because the local TeX Live Basic installation does not ship Cambridge's class or `biber`.
 - `make paper-jlc-template-check` is the official-template gate; it should pass in Overleaf or another TeX environment that provides `cup-journal.cls` and should fail locally when the class is unavailable.

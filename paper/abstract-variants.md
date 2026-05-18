@@ -1,6 +1,6 @@
 # Abstract Variants
 
-These are venue-support drafts. Keep the main manuscript abstract in `paper/main.tex` as the source of truth.
+These are venue-support drafts. Keep the main manuscript abstract in `paper/emergency-review-constitutional-court-design.tex` as the source of truth.
 
 ## Journal of Law and Courts
 

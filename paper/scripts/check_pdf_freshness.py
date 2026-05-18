@@ -8,9 +8,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PDF = ROOT / "paper" / "main.pdf"
+PDF = ROOT / "paper" / "emergency-review-constitutional-court-design.pdf"
 INPUT_PATTERNS = [
-    "paper/main.tex",
+    "paper/emergency-review-constitutional-court-design.tex",
     "paper/references.bib",
     "paper/figures/*.tex",
     "paper/tables/*.tex",
@@ -34,7 +34,7 @@ def input_files() -> list[Path]:
 
 def main() -> None:
     if not PDF.exists():
-        fail("paper/main.pdf is missing; run `make paper`")
+        fail("paper/emergency-review-constitutional-court-design.pdf is missing; run `make paper`")
 
     pdf_mtime = PDF.stat().st_mtime
     stale_inputs = [path for path in input_files() if path.stat().st_mtime > pdf_mtime]
@@ -42,7 +42,7 @@ def main() -> None:
         display = ", ".join(str(path.relative_to(ROOT)) for path in stale_inputs[:8])
         if len(stale_inputs) > 8:
             display += f", and {len(stale_inputs) - 8} more"
-        fail(f"paper/main.pdf is older than {display}; run `make paper`")
+        fail(f"paper/emergency-review-constitutional-court-design.pdf is older than {display}; run `make paper`")
 
     print(f"PDF freshness check passed ({PDF.relative_to(ROOT)} is current).")
 

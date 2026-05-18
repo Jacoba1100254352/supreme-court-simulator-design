@@ -30,8 +30,8 @@ INCLUDE_PATHS = [
     "docs",
     "paper/README.md",
     "paper/abstract-variants.md",
-    "paper/main.tex",
-    "paper/main.pdf",
+    "paper/emergency-review-constitutional-court-design.tex",
+    "paper/emergency-review-constitutional-court-design.pdf",
     "paper/references.bib",
     "paper/source-audit.csv",
     "paper/figures",
@@ -208,7 +208,7 @@ def build_manifest(files: list[Path], archive_name: str, package_kind: str) -> d
             "Blinded package for anonymous peer review.",
             "Non-anonymous citation metadata, author metadata, raw third-party archives, build directories, class files, and repository remotes are excluded.",
             "Run make test and make paper from the package root to reproduce the simulator checks and manuscript build.",
-            "Upload the manuscript-only archive or paper/main.pdf as the main anonymous manuscript; upload the supplement archive only if the submission system requests anonymous supplementary or replication materials at review.",
+            "Upload the manuscript-only archive or paper/emergency-review-constitutional-court-design.pdf as the main anonymous manuscript; upload the supplement archive only if the submission system requests anonymous supplementary or replication materials at review.",
         ],
     }
 
@@ -224,8 +224,8 @@ def is_manuscript_file(path: Path) -> bool:
     if relative == "ANONYMOUS_SUBMISSION_README.md":
         return True
     if relative in {
-        "paper/main.pdf",
-        "paper/main.tex",
+        "paper/emergency-review-constitutional-court-design.pdf",
+        "paper/emergency-review-constitutional-court-design.tex",
         "paper/references.bib",
         "paper/source-audit.csv",
         "paper/README.md",

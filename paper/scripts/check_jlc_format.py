@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-MAIN = ROOT / "paper" / "main.tex"
+MAIN = ROOT / "paper" / "emergency-review-constitutional-court-design.tex"
 TITLE_PAGE = ROOT / "paper" / "title-page.tex"
 MAX_WORDS = 10_000
 REQUIRED_GENERATED = [

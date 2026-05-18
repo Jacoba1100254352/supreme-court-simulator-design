@@ -25,7 +25,7 @@ The anonymous package target rebuilds the manuscript, stages a blinded package, 
 
 ## Upload Set for Anonymous Review
 
-- Anonymous manuscript PDF from `paper/main.pdf` or manuscript archive `dist/constitutional-review-anonymous-manuscript.zip`.
+- Anonymous manuscript PDF from `paper/emergency-review-constitutional-court-design.pdf` or manuscript archive `dist/constitutional-review-anonymous-manuscript.zip`.
 - Anonymous supplemental package, if requested during review: `dist/constitutional-review-anonymous-supplement.zip`.
 - Short abstract from `paper/abstract-variants.md`, edited to match the submission form.
 - Non-anonymous title-page metadata entered only in the journal submission system or uploaded separately if the system requests it outside peer-review files.
@@ -34,7 +34,7 @@ Do not upload `dist/constitutional-review-replication.zip` as the anonymous supp
 
 ## JLC Formatting Items
 
-- Manuscript remains in anonymous mode in `paper/main.tex`.
+- Manuscript remains in anonymous mode in `paper/emergency-review-constitutional-court-design.tex`.
 - Cambridge/JLC path is present through the `cup-journal`/`journal=jlc` branch, with the local fallback used only for local builds.
 - Official-template environments should pass `make paper-jlc-template-check`; local TeX installations without `cup-journal.cls` are expected to fail that target.
 - Figures and tables appear near first reference in the manuscript.
