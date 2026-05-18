@@ -130,7 +130,7 @@ def check_conflict_confidence_axis_labels() -> None:
     source = figure.read_text()
     if "Public confidence $\\uparrow$" in source or "Constitutional conflict $\\downarrow$" in source:
         fail("conflict/confidence figure should spell out metric direction instead of rotating arrow glyphs")
-    if "\\rotatebox{90}{\\makebox(0,0){Public-legitimacy proxy (higher is better)}}" not in source:
+    if "\\rotatebox{90}{\\makebox(0,0){Process legitimacy (higher is better)}}" not in source:
         fail("conflict/confidence figure should use a clear rotated y-axis label outside the tick labels")
 
     x_label = re.search(
@@ -147,7 +147,7 @@ def check_conflict_confidence_axis_labels() -> None:
         fail(f"conflict/confidence x-axis label is too close to the tick labels ({x_label_y:.1f}mm)")
 
     y_label = re.search(
-        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\rotatebox\{90\}\{\\makebox\(0,0\)\{Public-legitimacy proxy \(higher is better\)\}\}\}",
+        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\rotatebox\{90\}\{\\makebox\(0,0\)\{Process legitimacy \(higher is better\)\}\}\}",
         source,
     )
     if not y_label:

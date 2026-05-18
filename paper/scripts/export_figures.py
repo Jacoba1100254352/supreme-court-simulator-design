@@ -20,13 +20,13 @@ FIGURES = [
     ),
     (
         "conflict_confidence_tradeoff",
-        "Public-legitimacy-proxy and constitutional-conflict tradeoff",
-        "Scatter plot of the modeled public-legitimacy proxy against the constitutional-conflict index for selected court designs.",
+        "Process-legitimacy and constitutional-conflict tradeoff",
+        "Scatter plot of process legitimacy against the constitutional-conflict index for selected court designs.",
     ),
     (
         "emergency_profile",
-        "Emergency-review and public-legitimacy profile",
-        "Horizontal bar chart comparing emergency-process irregularity, emergency legitimacy risk, and the modeled public-legitimacy proxy.",
+        "Emergency-review and process-legitimacy profile",
+        "Horizontal bar chart comparing emergency irregularity, emergency legitimacy risk, and process legitimacy.",
     ),
 ]
 
