@@ -506,6 +506,14 @@ public final class CampaignRunner
 		                           "recusalIncentivePressure",
 		                           "conditionalReversalProbability",
 		                           "directionalScore",
+		                           "rightsPriorityScore",
+		                           "emergencyRestraintScore",
+		                           "democraticResponsivenessPriorityScore",
+		                           "legalStabilityPriorityScore",
+		                           "lowConflictScore",
+		                           "administrativeFeasibilityScore",
+		                           "emergencyProcessIrregularity",
+		                           "processLegitimacyProxy",
 		                           "stabilityRightsScore",
 		                           "legitimacyControlScore",
 		                           "legalStability",
@@ -654,6 +662,14 @@ public final class CampaignRunner
                     .append(format(report.recusalIncentivePressure())).append(',')
                     .append(format(report.conditionalReversalProbability())).append(',')
                     .append(format(report.directionalScore())).append(',')
+                    .append(format(report.rightsPriorityScore())).append(',')
+                    .append(format(report.emergencyRestraintScore())).append(',')
+                    .append(format(report.democraticResponsivenessPriorityScore())).append(',')
+                    .append(format(report.legalStabilityPriorityScore())).append(',')
+                    .append(format(report.lowConflictScore())).append(',')
+                    .append(format(report.administrativeFeasibilityScore())).append(',')
+                    .append(format(report.emergencyProcessIrregularity())).append(',')
+                    .append(format(report.processLegitimacyProxy())).append(',')
                     .append(format(report.stabilityRightsScore())).append(',')
                     .append(format(report.legitimacyControlScore())).append(',')
                     .append(format(report.legalStability())).append(',')
@@ -839,7 +855,7 @@ public final class CampaignRunner
 		       .append(" at ")
 		       .append(format(bestRights.rightsProtection()))
 		       .append(".\n");
-		builder.append("- Lowest shadow-docket abuse: ")
+		builder.append("- Lowest emergency-process irregularity: ")
 		       .append(lowestShadow.scenarioName())
 		       .append(" at ")
 		       .append(format(lowestShadow.shadowDocketAbuse()))
@@ -854,7 +870,7 @@ public final class CampaignRunner
 		       .append(" at ")
 		       .append(format(lowestPartisan.partisanAlignment()))
 		       .append(".\n");
-		builder.append("- Highest public confidence index: ")
+		builder.append("- Highest modeled public-legitimacy proxy: ")
 		       .append(highestPublicConfidence.scenarioName())
 		       .append(" at ")
 		       .append(format(highestPublicConfidence.publicConfidence()))
@@ -864,12 +880,12 @@ public final class CampaignRunner
 		
 		builder.append("\n## Metric Direction Legend\n\n");
 		builder.append("- Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.\n");
-		builder.append("- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `publicConfidence` are usually better, but each should be read in domain context.\n");
-		builder.append("- Lower `partisanAlignment`, `shadowDocketAbuse`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.\n");
+		builder.append("- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `processLegitimacyProxy` are usually better, but each should be read in domain context.\n");
+		builder.append("- Lower `partisanAlignment`, `emergencyProcessIrregularity` (legacy CSV field `shadowDocketAbuse`), `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.\n");
 		builder.append("- Petition, court-requested-response, CVSG, certiorari-admission, bar-capital, claim-strength, vehicle-quality, genuine-split, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.\n");
 		
 		builder.append("\n## Scenario Averages Across Cases\n\n");
-		builder.append("| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |\n");
+		builder.append("| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public-legit. proxy | Emerg. irregularity | Emergency risk | Strategic | Admin cost |\n");
 		builder.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
 		weightedReports.stream()
 		               .sorted(Comparator.comparingDouble(WeightedScenarioReport::directionalScore).reversed())
@@ -944,7 +960,7 @@ public final class CampaignRunner
 			byCase.computeIfAbsent(row.campaignCase().key(), ignored -> new ArrayList<>()).add(row);
 		}
 		builder.append("\n## Stress Case Leaders\n\n");
-		builder.append("| Case | Best directional | Highest rights | Lowest shadow abuse | Lowest partisan align. |\n");
+		builder.append("| Case | Best directional | Highest rights | Lowest emerg. irregularity | Lowest partisan align. |\n");
 		builder.append("| --- | --- | --- | --- | --- |\n");
 		for (List<CampaignRow> caseRows : byCase.values()) {
 			CampaignCase campaignCase = caseRows.get(0).campaignCase();

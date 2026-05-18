@@ -203,6 +203,83 @@ public record ScenarioReport(
 				MetricDefinition.lowerIsBetter(administrativeCost)
 		);
 	}
+
+	public double emergencyProcessIrregularity() {
+		return shadowDocketAbuse;
+	}
+
+	public double processLegitimacyProxy() {
+		return publicConfidence;
+	}
+
+	public double rightsPriorityScore() {
+		return Values.average(
+				rightsProtection,
+				rightsClaimantSuccess,
+				rightsDomainClaimantSuccess,
+				structuralDomainClaimantSuccess,
+				executivePowerDomainClaimantSuccess,
+				lowerCourtCompliance,
+				MetricDefinition.lowerIsBetter(governmentNoncomplianceRate)
+		);
+	}
+
+	public double emergencyRestraintScore() {
+		return Values.average(
+				MetricDefinition.lowerIsBetter(emergencyProcessIrregularity()),
+				MetricDefinition.lowerIsBetter(emergencyLegitimacyRisk),
+				MetricDefinition.lowerIsBetter(emergencyDownstreamEffect),
+				MetricDefinition.lowerIsBetter(emergencyOpportunism),
+				reasonedEmergencyOrderRate,
+				meritsAccelerationRate
+		);
+	}
+
+	public double democraticResponsivenessPriorityScore() {
+		return Values.average(
+				democraticResponsiveness,
+				legislativeComplianceRate,
+				processLegitimacyProxy(),
+				MetricDefinition.lowerIsBetter(repeatedOverrideRate),
+				MetricDefinition.lowerIsBetter(governmentNoncomplianceRate),
+				MetricDefinition.lowerIsBetter(constitutionalConflict)
+		);
+	}
+
+	public double legalStabilityPriorityScore() {
+		return Values.average(
+				legalStability,
+				precedentStability,
+				statutoryStability,
+				interbranchCompliance,
+				precedentDurability,
+				lowerCourtCompliance,
+				MetricDefinition.lowerIsBetter(reversalRate),
+				MetricDefinition.lowerIsBetter(constitutionalConflict)
+		);
+	}
+
+	public double lowConflictScore() {
+		return Values.average(
+				MetricDefinition.lowerIsBetter(constitutionalConflict),
+				MetricDefinition.lowerIsBetter(lowerCourtResistanceRisk),
+				MetricDefinition.lowerIsBetter(governmentNoncomplianceRate),
+				MetricDefinition.lowerIsBetter(emergencyDownstreamEffect),
+				MetricDefinition.lowerIsBetter(strategicPressure()),
+				MetricDefinition.lowerIsBetter(partisanAlignment),
+				eliteAcceptance
+		);
+	}
+
+	public double administrativeFeasibilityScore() {
+		return Values.average(
+				MetricDefinition.lowerIsBetter(administrativeCost),
+				MetricDefinition.lowerIsBetter(quorumFailureRate),
+				MetricDefinition.lowerIsBetter(recusalIncentivePressure),
+				MetricDefinition.lowerIsBetter(emergencyOpportunism),
+				enforcementCapacity
+		);
+	}
 	
 	public double repeatPlayerLearning() {
 		return Values.average(repeatPlayerAdvantage, strategicPlaintiffSelection, forumShoppingPressure);

@@ -20,10 +20,10 @@ public record MetricDefinition(
 			new MetricDefinition("legalStability", "Legal stability", MetricDirection.HIGHER_IS_BETTER, "Precedent continuity and low conflict escalation."),
 			new MetricDefinition("rightsProtection", "Rights protection", MetricDirection.HIGHER_IS_BETTER, "Protection of high-burden rights cases without treating every loss as a rights failure."),
 			new MetricDefinition("partisanAlignment", "Partisan alignment", MetricDirection.LOWER_IS_BETTER, "Degree to which outcomes track the court's ideological direction in salient cases."),
-			new MetricDefinition("shadowDocketAbuse", "Shadow-docket abuse", MetricDirection.LOWER_IS_BETTER, "Emergency or unexplained relief outside merits review."),
+			new MetricDefinition("shadowDocketAbuse", "Emergency-process irregularity", MetricDirection.LOWER_IS_BETTER, "Opaque, opportunistic, or merits-displacing emergency intervention outside ordinary merits review."),
 			new MetricDefinition("legitimacy", "Legitimacy", MetricDirection.HIGHER_IS_BETTER, "Reason-giving, recusal discipline, public attention, and low partisan odor."),
 			new MetricDefinition("reversalRate", "Reversal rate", MetricDirection.LOWER_IS_BETTER, "Precedent or law reversal frequency."),
-			new MetricDefinition("constitutionalConflict", "Constitutional conflict", MetricDirection.LOWER_IS_BETTER, "Institutional conflict after judicial action, cross-court disagreement, or override."),
+			new MetricDefinition("constitutionalConflict", "Constitutional-conflict index", MetricDirection.LOWER_IS_BETTER, "Composite index for legal, political, implementation, and cross-institutional conflict after review."),
 			new MetricDefinition("democraticResponsiveness", "Democratic responsiveness", MetricDirection.HIGHER_IS_BETTER, "Respect for mandate and transparent override channels without collapsing rights protection."),
 			new MetricDefinition("independenceAccountabilityBalance", "Independence/accountability balance", MetricDirection.HIGHER_IS_BETTER, "Combined score for low partisan alignment, responsive mandate handling, and rights protection."),
 			new MetricDefinition("administrativeCost", "Administrative cost", MetricDirection.LOWER_IS_BETTER, "Procedural load from councils, cross-checking, panels, emergency processing, and en banc review."),
@@ -48,7 +48,15 @@ public record MetricDefinition(
 			new MetricDefinition("dissentRate", "Dissent rate", MetricDirection.DIAGNOSTIC, "Public disagreement inside the court."),
 			new MetricDefinition("enBancRate", "En banc rate", MetricDirection.DIAGNOSTIC, "Full-court review rate."),
 			new MetricDefinition("overrideAttemptRate", "Override attempt rate", MetricDirection.DIAGNOSTIC, "Legislative or popular override attempts."),
-			new MetricDefinition("overrideRate", "Override rate", MetricDirection.DIAGNOSTIC, "Legislative or popular override activity.")
+			new MetricDefinition("overrideRate", "Override rate", MetricDirection.DIAGNOSTIC, "Legislative or popular override activity."),
+			new MetricDefinition("processLegitimacyProxy", "Modeled public-legitimacy proxy", MetricDirection.HIGHER_IS_BETTER, "Constructed process-legitimacy index, not a direct public-opinion measure."),
+			new MetricDefinition("emergencyProcessIrregularity", "Emergency-process irregularity", MetricDirection.LOWER_IS_BETTER, "Paper-facing alias for the legacy shadowDocketAbuse output field."),
+			new MetricDefinition("rightsPriorityScore", "Rights-priority score", MetricDirection.HIGHER_IS_BETTER, "Normative reading aid that emphasizes rights protection and claimant-success outputs."),
+			new MetricDefinition("emergencyRestraintScore", "Emergency-restraint score", MetricDirection.HIGHER_IS_BETTER, "Normative reading aid that emphasizes emergency-process regularity and downstream restraint."),
+			new MetricDefinition("democraticResponsivenessPriorityScore", "Democratic-responsiveness score", MetricDirection.HIGHER_IS_BETTER, "Normative reading aid that emphasizes mandate responsiveness and implementation without repeated defiance."),
+			new MetricDefinition("legalStabilityPriorityScore", "Legal-stability score", MetricDirection.HIGHER_IS_BETTER, "Normative reading aid that emphasizes precedent, statutory, interbranch, and lower-court stability."),
+			new MetricDefinition("lowConflictScore", "Low-conflict score", MetricDirection.HIGHER_IS_BETTER, "Normative reading aid that emphasizes low institutional, emergency, and implementation conflict."),
+			new MetricDefinition("administrativeFeasibilityScore", "Administrative-feasibility score", MetricDirection.HIGHER_IS_BETTER, "Normative reading aid that emphasizes low procedural burden and workable enforcement.")
 	);
 	
 	private static final Map<String, MetricDefinition> BY_KEY = DEFINITIONS.stream()

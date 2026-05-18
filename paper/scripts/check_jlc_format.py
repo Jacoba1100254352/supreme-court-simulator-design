@@ -21,6 +21,9 @@ REQUIRED_GENERATED = [
     ROOT / "paper" / "tables" / "calibration_guardrails.tex",
     ROOT / "paper" / "tables" / "calibration_classification.tex",
     ROOT / "paper" / "tables" / "v2_selected.tex",
+    ROOT / "paper" / "tables" / "normative_scores.tex",
+    ROOT / "paper" / "tables" / "emergency_walkthrough.tex",
+    ROOT / "paper" / "tables" / "mechanical_emergent.tex",
     ROOT / "paper" / "tables" / "pipeline_diagnostics.tex",
     ROOT / "paper" / "tables" / "uncertainty_bands.tex",
     ROOT / "paper" / "tables" / "sensitivity_drivers.tex",
@@ -127,7 +130,7 @@ def check_conflict_confidence_axis_labels() -> None:
     source = figure.read_text()
     if "Public confidence $\\uparrow$" in source or "Constitutional conflict $\\downarrow$" in source:
         fail("conflict/confidence figure should spell out metric direction instead of rotating arrow glyphs")
-    if "\\rotatebox{90}{\\makebox(0,0){Public confidence (higher is better)}}" not in source:
+    if "\\rotatebox{90}{\\makebox(0,0){Public-legitimacy proxy (higher is better)}}" not in source:
         fail("conflict/confidence figure should use a clear rotated y-axis label outside the tick labels")
 
     x_label = re.search(
@@ -144,7 +147,7 @@ def check_conflict_confidence_axis_labels() -> None:
         fail(f"conflict/confidence x-axis label is too close to the tick labels ({x_label_y:.1f}mm)")
 
     y_label = re.search(
-        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\rotatebox\{90\}\{\\makebox\(0,0\)\{Public confidence \(higher is better\)\}\}\}",
+        r"\\put\(([0-9.]+),([0-9.]+)\)\{\\rotatebox\{90\}\{\\makebox\(0,0\)\{Public-legitimacy proxy \(higher is better\)\}\}\}",
         source,
     )
     if not y_label:
@@ -290,6 +293,9 @@ def main() -> None:
         ("calibration guardrail table", "tables/calibration_guardrails"),
         ("calibration classification table", "tables/calibration_classification"),
         ("generated selected results table", "tables/v2_selected"),
+        ("multi-objective scores table", "tables/normative_scores"),
+        ("emergency walkthrough table", "tables/emergency_walkthrough"),
+        ("mechanical versus emergent table", "tables/mechanical_emergent"),
         ("litigation-pipeline diagnostics table", "tables/pipeline_diagnostics"),
         ("uncertainty band table", "tables/uncertainty_bands"),
         ("sensitivity drivers table", "tables/sensitivity_drivers"),

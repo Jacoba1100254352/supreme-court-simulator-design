@@ -217,12 +217,12 @@ public final class Main
 				"Stable",
 				"Rights",
 				"Partisan",
-				"Shadow",
+				"Irreg.",
 				"Emerg",
 				"Legit",
 				"Conflict",
 				"Resp",
-				"Public"
+				"LegitPx"
 		);
 		for (ScenarioReport report : reports) {
 			System.out.printf(
@@ -234,12 +234,12 @@ public final class Main
 					Values.format3(report.legalStability()),
 					Values.format3(report.rightsProtection()),
 					Values.format3(report.partisanAlignment()),
-					Values.format3(report.shadowDocketAbuse()),
+					Values.format3(report.emergencyProcessIrregularity()),
 					Values.format3(report.emergencyLegitimacyRisk()),
 					Values.format3(report.legitimacy()),
 					Values.format3(report.constitutionalConflict()),
 					Values.format3(report.democraticResponsiveness()),
-					Values.format3(report.publicConfidence())
+					Values.format3(report.processLegitimacyProxy())
 			);
 		}
 	}

@@ -37,23 +37,23 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 - Top directional-score cluster within 0.010 of the maximum: 60 percent invalidation threshold (0.581); No emergency relief without merits review (0.580); 18-year staggered terms + regular appointments (0.578); Constitutional remand before invalidation (0.578); Jurisdiction stripping constrained by rights carveouts (0.576); Public-interest litigation filter (0.576); Nonpartisan commission appointments (0.575); Constitutional remand with override window (0.575); Mandatory written emergency reasoning (0.574); Peer recusal + reasoned emergency docket (0.574); Automatic merits follow-up for emergency relief (0.574); Three-judge panels with en banc correction (0.574); Retention-election accountability court (0.574); Randomized merits panels with en banc correction (0.573); Emergency integrity package (0.573); Independent recusal enforcement with substitutes (0.573); Expanded 15-seat court (0.572); Time-limited legislative override window (0.572); Comparative 16-seat constitutional senates (0.571); Judicial review with legislative supermajority override (0.571). These close differences are not interpreted as rankings.
 - Highest single directional score for table ordering only: 60 percent invalidation threshold at 0.581.
 - Highest rights protection: Emergency integrity package at 0.635.
-- Lowest shadow-docket abuse: No emergency relief without merits review at 0.018.
+- Lowest emergency-process irregularity: No emergency relief without merits review at 0.018.
 - Lowest emergency legitimacy risk: No emergency relief without merits review at 0.204.
 - Lowest partisan alignment: Time-limited legislative override window at 0.018.
-- Highest public confidence index: Constitutional council with concrete-review backstop at 0.575.
+- Highest modeled public-legitimacy proxy: Constitutional council with concrete-review backstop at 0.575.
 - Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, claimant success, precedent durability, lower-court compliance, elite acceptance, and administrative feasibility.
 - Empirical claims, synthetic findings, and speculative design recommendations should be read separately: source ranges only smoke-test plausibility, campaign outputs are synthetic, and design recommendations are conditional on the model assumptions.
 
 ## Metric Direction Legend
 
 - Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.
-- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `publicConfidence` are usually better, but each should be read in domain context.
-- Lower `partisanAlignment`, `shadowDocketAbuse`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.
+- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `processLegitimacyProxy` are usually better, but each should be read in domain context.
+- Lower `partisanAlignment`, `emergencyProcessIrregularity` (legacy CSV field `shadowDocketAbuse`), `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.
 - Petition, court-requested-response, CVSG, certiorari-admission, bar-capital, claim-strength, vehicle-quality, genuine-split, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.
 
 ## Scenario Averages Across Cases
 
-| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |
+| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public-legit. proxy | Emerg. irregularity | Emergency risk | Strategic | Admin cost |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 60 percent invalidation threshold | 0.581 | 0.519 | 0.189 | 0.574 | 0.298 | 0.571 | 0.615 | 0.132 | 0.692 | 0.552 | 0.123 | 0.114 | 0.479 | 0.087 | 0.228 | 0.240 | 0.181 |
 | No emergency relief without merits review | 0.580 | 0.525 | 0.193 | 0.574 | 0.293 | 0.579 | 0.634 | 0.190 | 0.641 | 0.560 | 0.123 | 0.078 | 0.569 | 0.018 | 0.204 | 0.228 | 0.223 |
@@ -117,7 +117,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 
 ## Stress Case Leaders
 
-| Case | Best directional | Highest rights | Lowest shadow abuse | Lowest partisan align. |
+| Case | Best directional | Highest rights | Lowest emerg. irregularity | Lowest partisan align. |
 | --- | --- | --- | --- | --- |
 | Baseline | No emergency relief without merits review (0.610) | No emergency relief without merits review (0.646) | No emergency relief without merits review (0.011) | Jurisdiction stripping constrained by rights carveouts (0.014) |
 | Partisan Appointment Pressure | No emergency relief without merits review (0.608) | No emergency relief without merits review (0.640) | No emergency relief without merits review (0.011) | Dual supreme courts with disagreement filter (0.017) |

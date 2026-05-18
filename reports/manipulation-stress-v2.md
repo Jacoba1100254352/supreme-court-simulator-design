@@ -27,23 +27,23 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 - Top directional-score cluster within 0.010 of the maximum: 60 percent invalidation threshold (0.533); Constitutional remand before invalidation (0.532); Constitutional remand with override window (0.529); 18-year staggered terms + regular appointments (0.527); Comparative 16-seat constitutional senates (0.525); Public-interest litigation filter (0.524); No emergency relief without merits review (0.523). These close differences are not interpreted as rankings.
 - Highest single directional score for table ordering only: 60 percent invalidation threshold at 0.533.
 - Highest rights protection: Stylized current U.S.-like supreme court at 0.636.
-- Lowest shadow-docket abuse: No emergency relief without merits review at 0.034.
+- Lowest emergency-process irregularity: No emergency relief without merits review at 0.034.
 - Lowest emergency legitimacy risk: No emergency relief without merits review at 0.268.
 - Lowest partisan alignment: Judicial review with legislative supermajority override at 0.033.
-- Highest public confidence index: Emergency integrity package at 0.584.
+- Highest modeled public-legitimacy proxy: Emergency integrity package at 0.584.
 - Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, claimant success, precedent durability, lower-court compliance, elite acceptance, and administrative feasibility.
 - Empirical claims, synthetic findings, and speculative design recommendations should be read separately: source ranges only smoke-test plausibility, campaign outputs are synthetic, and design recommendations are conditional on the model assumptions.
 
 ## Metric Direction Legend
 
 - Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.
-- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `publicConfidence` are usually better, but each should be read in domain context.
-- Lower `partisanAlignment`, `shadowDocketAbuse`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.
+- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `processLegitimacyProxy` are usually better, but each should be read in domain context.
+- Lower `partisanAlignment`, `emergencyProcessIrregularity` (legacy CSV field `shadowDocketAbuse`), `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.
 - Petition, court-requested-response, CVSG, certiorari-admission, bar-capital, claim-strength, vehicle-quality, genuine-split, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.
 
 ## Scenario Averages Across Cases
 
-| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public confidence | Shadow abuse | Emergency risk | Strategic | Admin cost |
+| Scenario | Directional | Admission | Cert admit | Lower split | Resistance | Enforcement | Rights protection | Claimant success | Precedent durability | Lower-court compliance | Gov. noncomp. | Emerg. downstream | Public-legit. proxy | Emerg. irregularity | Emergency risk | Strategic | Admin cost |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 60 percent invalidation threshold | 0.533 | 0.569 | 0.210 | 0.635 | 0.393 | 0.521 | 0.603 | 0.163 | 0.623 | 0.487 | 0.205 | 0.177 | 0.453 | 0.129 | 0.303 | 0.304 | 0.204 |
 | Constitutional remand before invalidation | 0.532 | 0.575 | 0.211 | 0.635 | 0.355 | 0.545 | 0.614 | 0.177 | 0.649 | 0.508 | 0.208 | 0.153 | 0.532 | 0.138 | 0.291 | 0.295 | 0.327 |
@@ -107,7 +107,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 
 ## Stress Case Leaders
 
-| Case | Best directional | Highest rights | Lowest shadow abuse | Lowest partisan align. |
+| Case | Best directional | Highest rights | Lowest emerg. irregularity | Lowest partisan align. |
 | --- | --- | --- | --- | --- |
 | Appointment Timing Manipulation | No emergency relief without merits review (0.613) | Automatic merits follow-up for emergency relief (0.645) | No emergency relief without merits review (0.009) | Judicial review with legislative supermajority override (0.020) |
 | Emergency Application Flood | 60 percent invalidation threshold (0.496) | Stylized current U.S.-like supreme court (0.666) | No emergency relief without merits review (0.060) | Jurisdiction stripping constrained by rights carveouts (0.032) |

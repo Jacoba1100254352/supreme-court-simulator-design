@@ -45,6 +45,14 @@ FIELDS = [
     "paidCfrRequestRate",
     "ifpCfrRequestRate",
     "directionalScore",
+    "rightsPriorityScore",
+    "emergencyRestraintScore",
+    "democraticResponsivenessPriorityScore",
+    "legalStabilityPriorityScore",
+    "lowConflictScore",
+    "administrativeFeasibilityScore",
+    "emergencyProcessIrregularity",
+    "processLegitimacyProxy",
     "legalStability",
     "rightsProtection",
     "partisanAlignment",
@@ -135,10 +143,64 @@ def read_weighted_averages() -> dict[str, dict[str, float]]:
             for field in FIELDS:
                 if row.get(field):
                     totals[key][field] += float(row[field]) * weight
-    return {
+    averages = {
         key: {field: totals[key][field] / weights[key] for field in FIELDS}
         for key in totals
     }
+    for values in averages.values():
+        values.setdefault("emergencyProcessIrregularity", values.get("shadowDocketAbuse", 0.0))
+        values.setdefault("processLegitimacyProxy", values.get("publicConfidence", 0.0))
+        if not values.get("emergencyProcessIrregularity"):
+            values["emergencyProcessIrregularity"] = values.get("shadowDocketAbuse", 0.0)
+        if not values.get("processLegitimacyProxy"):
+            values["processLegitimacyProxy"] = values.get("publicConfidence", 0.0)
+        if not values.get("rightsPriorityScore"):
+            values["rightsPriorityScore"] = sum([
+                values.get("rightsProtection", 0.0),
+                values.get("rightsDomainClaimantSuccess", 0.0),
+                values.get("structuralDomainClaimantSuccess", 0.0),
+                values.get("lowerCourtCompliance", 0.0),
+                1.0 - values.get("governmentNoncomplianceRate", 0.0),
+            ]) / 5.0
+        if not values.get("emergencyRestraintScore"):
+            values["emergencyRestraintScore"] = sum([
+                1.0 - values.get("emergencyProcessIrregularity", 0.0),
+                1.0 - values.get("emergencyLegitimacyRisk", 0.0),
+                1.0 - values.get("emergencyDownstreamEffect", 0.0),
+                1.0 - values.get("emergencyOpportunism", 0.0),
+                values.get("reasonedEmergencyOrderRate", 0.0),
+                values.get("meritsAccelerationRate", 0.0),
+            ]) / 6.0
+        if not values.get("democraticResponsivenessPriorityScore"):
+            values["democraticResponsivenessPriorityScore"] = sum([
+                values.get("democraticResponsiveness", 0.0),
+                values.get("processLegitimacyProxy", 0.0),
+                1.0 - values.get("governmentNoncomplianceRate", 0.0),
+                1.0 - values.get("constitutionalConflict", 0.0),
+            ]) / 4.0
+        if not values.get("legalStabilityPriorityScore"):
+            values["legalStabilityPriorityScore"] = sum([
+                values.get("legalStability", 0.0),
+                values.get("precedentDurability", 0.0),
+                values.get("lowerCourtCompliance", 0.0),
+                1.0 - values.get("constitutionalConflict", 0.0),
+            ]) / 4.0
+        if not values.get("lowConflictScore"):
+            values["lowConflictScore"] = sum([
+                1.0 - values.get("constitutionalConflict", 0.0),
+                1.0 - values.get("lowerCourtResistanceRisk", 0.0),
+                1.0 - values.get("governmentNoncomplianceRate", 0.0),
+                1.0 - values.get("emergencyDownstreamEffect", 0.0),
+                values.get("eliteAcceptance", 0.0),
+            ]) / 5.0
+        if not values.get("administrativeFeasibilityScore"):
+            values["administrativeFeasibilityScore"] = sum([
+                1.0 - values.get("administrativeCost", 0.0),
+                1.0 - values.get("recusalIncentivePressure", 0.0),
+                1.0 - values.get("emergencyOpportunism", 0.0),
+                values.get("enforcementCapacity", 0.0),
+            ]) / 4.0
+    return averages
 
 
 def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) -> None:
@@ -186,7 +248,7 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
         y = bottom + ((values["publicConfidence"] - y_min) / (y_max - y_min)) * height
         x = max(left, min(left + width, x))
         y = max(bottom, min(bottom + height, y))
-        shade = 15 + round(clamp01(values["shadowDocketAbuse"] / 0.25) * 70)
+        shade = 15 + round(clamp01(values["emergencyProcessIrregularity"] / 0.25) * 70)
         color = "red" if key == "current-us-like" else f"black!{shade}"
         marker = 3.1 if key == "current-us-like" else 2.5
         label_x, label_y, anchor = label_positions[key]
@@ -206,9 +268,9 @@ def write_conflict_confidence_tradeoff(averages: dict[str, dict[str, float]]) ->
         ])
     lines.extend([
         f"\\put({fmt(left + width / 2.0)},{fmt(3.8)}){{\\makebox(0,0){{Constitutional conflict (lower is better)}}}}",
-        f"\\put(11.0,{fmt(bottom + height / 2.0)}){{\\rotatebox{{90}}{{\\makebox(0,0){{Public confidence (higher is better)}}}}}}",
+        f"\\put(11.0,{fmt(bottom + height / 2.0)}){{\\rotatebox{{90}}{{\\makebox(0,0){{Public-legitimacy proxy (higher is better)}}}}}}",
         "\\tiny",
-        "\\put(55.0,77.0){\\makebox(0,0)[l]{Better: up-left; darker markers = more shadow-docket abuse.}}",
+        "\\put(45.0,77.0){\\makebox(0,0)[l]{Darker markers = more emergency-process irregularity; labels are point estimates.}}",
         "\\end{picture}",
         "\\endgroup",
         "",
@@ -220,9 +282,9 @@ def write_emergency_profile(averages: dict[str, dict[str, float]]) -> None:
     left_label, left_axis, scale = 45.0, 50.0, 70.0
     top, row_gap, bar_gap = 66.0, 7.2, 1.65
     metrics = [
-        ("shadowDocketAbuse", "Shadow abuse", "black!75"),
+        ("emergencyProcessIrregularity", "Emerg. irregularity", "black!75"),
         ("emergencyLegitimacyRisk", "Emerg. legit. risk", "black!45"),
-        ("publicConfidence", "Public confidence", "black!18"),
+        ("processLegitimacyProxy", "Public-legit. proxy", "black!18"),
     ]
     lines = [
         "% Auto-generated by paper/scripts/generate_figures.py",
@@ -255,9 +317,9 @@ def write_emergency_profile(averages: dict[str, dict[str, float]]) -> None:
                 f"{{\\makebox(0,0)[l]{{\\tiny {value:.2f}}}}}"
             )
     legend_positions = [
-        (37.0, 74.0, metrics[0][1], metrics[0][2]),
-        (75.0, 74.0, metrics[1][1], metrics[1][2]),
-        (37.0, 70.2, metrics[2][1], metrics[2][2]),
+        (30.0, 74.0, metrics[0][1], metrics[0][2]),
+        (79.0, 74.0, metrics[1][1], metrics[1][2]),
+        (30.0, 70.2, metrics[2][1], metrics[2][2]),
     ]
     for x, y, label, color in legend_positions:
         lines.extend([
@@ -332,7 +394,6 @@ def write_domain_claimant_success(averages: dict[str, dict[str, float]]) -> None
 def write_selected_campaign_table(averages: dict[str, dict[str, float]]) -> None:
     selected = [
         ("current-us-like", "Stylized current U.S.-like court"),
-        ("term-limited-balanced", "18-year staggered terms"),
         ("mandatory-written-emergency-reasoning", "Mandatory written emergency reasoning"),
         ("automatic-merits-follow-up", "Automatic merits follow-up"),
         ("emergency-restraint-court", "No emergency relief without merits review"),
@@ -340,40 +401,45 @@ def write_selected_campaign_table(averages: dict[str, dict[str, float]]) -> None
         ("judicial-electorate-selection", "Judicial electorate selection court"),
         ("randomized-merits-panels", "Randomized merits panels with en banc correction"),
         ("emergency-integrity-package", "Emergency integrity package"),
-        ("constitutional-remand", "Constitutional remand before invalidation"),
-        ("remand-override-window-package", "Remand with override window"),
         ("public-interest-litigation-filter", "Public-interest litigation filter"),
     ]
     fields = [
         "rightsProtection",
-        "shadowDocketAbuse",
-        "emergencyLegitimacyRisk",
+        "emergencyProcessIrregularity",
         "emergencyDownstreamEffect",
-        "governmentNoncomplianceRate",
+        "processLegitimacyProxy",
         "lowerCourtCompliance",
-        "precedentDurability",
-        "publicConfidence",
-        "directionalScore",
     ]
+    tradeoffs = {
+        "current-us-like": "Higher claimant success but higher emergency irregularity",
+        "mandatory-written-emergency-reasoning": "Transparency gains with modest merits-work shift",
+        "automatic-merits-follow-up": "Regularizes emergency relief through merits routing",
+        "emergency-restraint-court": "Lowest emergency irregularity; watch claimant routes",
+        "strong-recusal-enforcement": "Reduces recusal pressure with substitution costs",
+        "judicial-electorate-selection": "Appointment insulation, not emergency reform",
+        "randomized-merits-panels": "Access/correction tradeoff through en banc review",
+        "emergency-integrity-package": "Broad emergency-process package with higher complexity",
+        "public-interest-litigation-filter": "Filters access while preserving public-law claims",
+    }
     lines = [
         "% Auto-generated by paper/scripts/generate_figures.py",
         "\\begin{table}[hbt!]",
         "\\centering",
-        "\\caption{Selected v2 campaign averages, grouped by emergency-power and rights-protection profile}",
+        "\\caption{Selected campaign diagnostics for the emergency-review argument}",
         "\\label{tab:v2-selected}",
-        "\\Description{Table of selected campaign averages for rights protection, shadow-docket abuse, emergency legitimacy risk, emergency downstream effect, government noncompliance, lower-court compliance, precedent durability, public confidence, and directional score.}",
-        "\\scriptsize",
+        "\\Description{Table of selected campaign averages for rights protection, emergency-process irregularity, emergency downstream effect, public-legitimacy proxy, lower-court compliance, and the main tradeoff for each design.}",
+        "\\footnotesize",
         "\\setlength{\\tabcolsep}{3pt}",
         "\\resizebox{\\textwidth}{!}{%",
-        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.55in}rrrrrrrrr}",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.55in}rrrrr>{\\raggedright\\arraybackslash}p{2.35in}}",
         "\\toprule",
-        "Scenario & Rights & Shadow & Emerg. risk & Downstream & Gov. noncomp. & Lower ct. & Prec. dur. & Public & Score \\\\",
+        "Scenario & Rights & Emerg. irregularity & Emerg. downstream & Public-legit. proxy & Lower ct. & Main tradeoff \\\\",
         "\\midrule",
     ]
     for key, label in selected:
         values = averages[key]
         cells = " & ".join(fmt3(values[field]) for field in fields)
-        lines.append(f"{tex_escape(label)} & {cells} \\\\")
+        lines.append(f"{tex_escape(label)} & {cells} & {tex_escape(tradeoffs[key])} \\\\")
     lines.extend([
         "\\bottomrule",
         "\\end{tabular}",
@@ -382,6 +448,172 @@ def write_selected_campaign_table(averages: dict[str, dict[str, float]]) -> None
         "",
     ])
     (TABLE_DIR / "v2_selected.tex").write_text("\n".join(lines))
+
+
+def write_normative_scores_table(averages: dict[str, dict[str, float]]) -> None:
+    selected = [
+        ("current-us-like", "Current-like"),
+        ("term-limited-balanced", "18-year terms"),
+        ("mandatory-written-emergency-reasoning", "Written reasons"),
+        ("automatic-merits-follow-up", "Auto merits"),
+        ("emergency-restraint-court", "No merits gap"),
+        ("strong-recusal-enforcement", "Recusal enforce."),
+        ("judicial-electorate-selection", "Judicial electorate"),
+        ("randomized-merits-panels", "Random panels"),
+        ("emergency-integrity-package", "Integrity package"),
+        ("constitutional-remand", "Constitutional remand"),
+        ("public-interest-litigation-filter", "Public-interest filter"),
+    ]
+    fields = [
+        ("rightsPriorityScore", "Rights priority"),
+        ("emergencyRestraintScore", "Emergency restraint"),
+        ("democraticResponsivenessPriorityScore", "Democratic response"),
+        ("legalStabilityPriorityScore", "Legal stability"),
+        ("lowConflictScore", "Low conflict"),
+        ("administrativeFeasibilityScore", "Admin feasibility"),
+    ]
+    lines = [
+        "% Auto-generated by paper/scripts/generate_figures.py",
+        "\\begin{table}[p]",
+        "\\centering",
+        "\\caption{Multi-objective reading aids under different normative priorities}",
+        "\\label{tab:normative-scores}",
+        "\\Description{Table reporting alternative synthetic score families for rights priority, emergency restraint, democratic responsiveness, legal stability, low conflict, and administrative feasibility.}",
+        "\\scriptsize",
+        "\\setlength{\\tabcolsep}{3pt}",
+        "\\resizebox{\\textwidth}{!}{%",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.45in}rrrrrr}",
+        "\\toprule",
+        "Scenario & Rights priority & Emergency restraint & Democratic response & Legal stability & Low conflict & Admin feasibility \\\\",
+        "\\midrule",
+    ]
+    for key, label in selected:
+        values = averages[key]
+        cells = " & ".join(fmt3(values[field]) for field, _label in fields)
+        lines.append(f"{tex_escape(label)} & {cells} \\\\")
+    lines.extend([
+        "\\bottomrule",
+        "\\end{tabular}",
+        "}%",
+        "\\end{table}",
+        "",
+    ])
+    (TABLE_DIR / "normative_scores.tex").write_text("\n".join(lines))
+
+
+def write_emergency_walkthrough_table() -> None:
+    selected = [
+        ("current-us-like", "Current-like"),
+        ("mandatory-written-emergency-reasoning", "Written reasons"),
+        ("automatic-merits-follow-up", "Auto merits follow-up"),
+        ("emergency-restraint-court", "No emergency merits gap"),
+    ]
+    rows: dict[str, dict[str, str]] = {}
+    with CAMPAIGN_CSV.open(newline="") as handle:
+        for row in csv.DictReader(handle):
+            if row["caseKey"] == "emergency-application-flood":
+                rows[row["scenarioKey"]] = row
+    fields = [
+        ("emergencyOrderRate", "Emerg. orders"),
+        ("reasonedEmergencyOrderRate", "Reasoned orders"),
+        ("meritsAccelerationRate", "Merits accel."),
+        ("emergencyProcessIrregularity", "Irregularity"),
+        ("emergencyDownstreamEffect", "Downstream"),
+        ("processLegitimacyProxy", "Public-legit. proxy"),
+    ]
+    lines = [
+        "% Auto-generated by paper/scripts/generate_figures.py",
+        "\\begin{table}[hbt!]",
+        "\\centering",
+        "\\caption{Emergency-application-flood walkthrough under a shared assumption case}",
+        "\\label{tab:emergency-walkthrough}",
+        "\\Description{Table comparing current-like, written-reasons, automatic merits follow-up, and no-emergency-merits-gap designs under the emergency-application-flood assumption case.}",
+        "\\footnotesize",
+        "\\setlength{\\tabcolsep}{4pt}",
+        "\\resizebox{\\textwidth}{!}{%",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.55in}rrrrrr}",
+        "\\toprule",
+        "Design & Emerg. orders & Reasoned orders & Merits accel. & Irregularity & Downstream & Public-legit. proxy \\\\",
+        "\\midrule",
+    ]
+    for key, label in selected:
+        row = rows[key]
+        if "emergencyProcessIrregularity" not in row or not row["emergencyProcessIrregularity"]:
+            row["emergencyProcessIrregularity"] = row["shadowDocketAbuse"]
+        if "processLegitimacyProxy" not in row or not row["processLegitimacyProxy"]:
+            row["processLegitimacyProxy"] = row["publicConfidence"]
+        cells = " & ".join(f"{float(row[field]):.3f}" for field, _label in fields)
+        lines.append(f"{tex_escape(label)} & {cells} \\\\")
+    lines.extend([
+        "\\bottomrule",
+        "\\end{tabular}",
+        "}%",
+        "\\end{table}",
+        "",
+    ])
+    (TABLE_DIR / "emergency_walkthrough.tex").write_text("\n".join(lines))
+
+
+def write_mechanical_emergent_table() -> None:
+    rows = [
+        (
+            "Written emergency reasons reduce emergency irregularity",
+            "Partly coded",
+            "Diagnostic only if downstream disruption, compliance, or rights outputs also move",
+            "Use emergency profile and mechanism contrasts; do not report as independent causal discovery",
+        ),
+        (
+            "Automatic merits follow-up reduces merits-displacing emergency relief",
+            "Partly coded",
+            "Emergent only through workload, lower-court compliance, and public-legitimacy proxy changes",
+            "Read with emergency walkthrough and mechanism table",
+        ),
+        (
+            "No emergency relief without merits review produces the lowest irregularity",
+            "Strongly coded",
+            "Tradeoff is whether rights claimant success, settlement, or downstream compliance worsens",
+            "Treat as design implication plus tradeoff test",
+        ),
+        (
+            "Judicial-electorate selection affects appointment-pressure diagnostics more than emergency outputs",
+            "Not mechanically forced by the emergency metric",
+            "Emergent if legitimacy/alignment changes without comparable emergency movement",
+            "Use as comparison mechanism, not main emergency-reform result",
+        ),
+        (
+            "Randomized panels or remand rules have mixed profiles",
+            "Weakly coded",
+            "Emergent through access, correction, compliance, and administrative-cost channels",
+            "Use as evidence that non-emergency mechanisms move costs elsewhere",
+        ),
+    ]
+    lines = [
+        "% Auto-generated by paper/scripts/generate_figures.py",
+        "\\begin{table}[hbt!]",
+        "\\centering",
+        "\\caption{Mechanical implications versus diagnostic findings}",
+        "\\label{tab:mechanical-emergent}",
+        "\\Description{Table distinguishing model implications that are partly coded into metric definitions from findings that depend on downstream simulated tradeoffs.}",
+        "\\footnotesize",
+        "\\setlength{\\tabcolsep}{4pt}",
+        "\\resizebox{\\textwidth}{!}{%",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.7in}>{\\raggedright\\arraybackslash}p{1.0in}>{\\raggedright\\arraybackslash}p{2.25in}>{\\raggedright\\arraybackslash}p{2.1in}}",
+        "\\toprule",
+        "Claim & Mechanical status & What would be diagnostic & Manuscript use \\\\",
+        "\\midrule",
+    ]
+    for claim, mechanical, diagnostic, use in rows:
+        lines.append(
+            f"{tex_escape(claim)} & {tex_escape(mechanical)} & {tex_escape(diagnostic)} & {tex_escape(use)} \\\\"
+        )
+    lines.extend([
+        "\\bottomrule",
+        "\\end{tabular}",
+        "}%",
+        "\\end{table}",
+        "",
+    ])
+    (TABLE_DIR / "mechanical_emergent.tex").write_text("\n".join(lines))
 
 
 def write_litigation_pipeline_table(averages: dict[str, dict[str, float]]) -> None:
@@ -464,7 +696,7 @@ def write_calibration_guardrails() -> None:
         ("current-ifp-cfr-stage", "IFP CFR stage"),
         ("current-invalidation", "Invalidation"),
         ("current-emergency-applications", "Emergency filings"),
-        ("current-shadow-abuse", "Shadow abuse"),
+        ("current-shadow-abuse", "Emerg. irregularity"),
         ("commission-partisan-alignment", "Partisan alignment"),
         ("emergency-restraint-shadow", "Emergency restraint"),
     ]
@@ -597,13 +829,13 @@ def write_sampled_prior_uncertainty_table() -> None:
         "\\centering",
         "\\caption{Sampled-prior uncertainty bands for selected designs}",
         "\\label{tab:sampled-prior-uncertainty}",
-        "\\Description{Table reporting sampled-prior 5th, 50th, and 95th percentile bands for directional score, rights protection, shadow-docket abuse, emergency downstream effect, lower-court compliance, government noncompliance, and constitutional conflict.}",
+        "\\Description{Table reporting sampled-prior 5th, 50th, and 95th percentile bands for directional score, rights protection, emergency-process irregularity, emergency downstream effect, lower-court compliance, government noncompliance, and constitutional conflict.}",
         "\\scriptsize",
         "\\setlength{\\tabcolsep}{3pt}",
         "\\resizebox{\\textwidth}{!}{%",
         "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.45in}rrrrrrr>{\\raggedright\\arraybackslash}p{1.35in}}",
         "\\toprule",
-        "Scenario & Score & Rights & Shadow & Emerg. down. & Lower ct. & Gov. noncomp. & Conflict & Interpretation \\\\",
+        "Scenario & Score & Rights & Emerg. irregularity & Emerg. down. & Lower ct. & Gov. noncomp. & Conflict & Interpretation \\\\",
         "\\midrule",
     ]
     for row in rows:
@@ -646,11 +878,11 @@ def write_uncertainty_bands(averages: dict[str, dict[str, float]]) -> None:
         "\\centering",
         "\\caption{Campaign scores and uncertainty bands for selected designs}",
         "\\label{tab:uncertainty-bands}",
-        "\\Description{Table comparing campaign averages with named-prior uncertainty bands for directional score, shadow-docket abuse, and constitutional conflict.}",
+        "\\Description{Table comparing campaign averages with named-prior uncertainty bands for directional score, emergency-process irregularity, and constitutional conflict.}",
         "\\footnotesize",
         "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.65in}rrrr}",
         "\\toprule",
-        "Scenario & Campaign score & Score 5/50/95 & Shadow 5/50/95 & Conflict 5/50/95 \\\\",
+        "Scenario & Campaign score & Score 5/50/95 & Irregularity 5/50/95 & Conflict 5/50/95 \\\\",
         "\\midrule",
     ]
     for key, label in selected:
@@ -698,7 +930,7 @@ def write_sensitivity_drivers_table() -> None:
         "\\resizebox{\\textwidth}{!}{%",
         "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.35in}>{\\raggedright\\arraybackslash}p{1.65in}rrrrrr>{\\raggedright\\arraybackslash}p{1.15in}}",
         "\\toprule",
-        "Prior & Top-cluster design & Score & Rights & Shadow & Emerg. down. & Gov. noncomp. & LC resist. & Caveat \\\\",
+        "Prior & Top-cluster design & Score & Rights & Emerg. irregularity & Emerg. down. & Gov. noncomp. & LC resist. & Caveat \\\\",
         "\\midrule",
     ]
     for row in rows:
@@ -791,10 +1023,31 @@ def write_metric_semantics_table() -> None:
         "overrideRate",
         "directionalScore",
         "rightsClaimantSuccess",
-        "publicConfidence",
+        "emergencyProcessIrregularity",
+        "processLegitimacyProxy",
         "constitutionalConflict",
     ]
     by_metric = {row["metric"]: row for row in read_metric_semantics_rows()}
+    if "emergencyProcessIrregularity" not in by_metric and "shadowDocketAbuse" in by_metric:
+        by_metric["emergencyProcessIrregularity"] = {
+            **by_metric["shadowDocketAbuse"],
+            "metric": "emergencyProcessIrregularity",
+            "manuscriptInterpretation": "paper-facing alias for the legacy shadowDocketAbuse field",
+        }
+    if "emergencyProcessIrregularity" not in by_metric:
+        by_metric["emergencyProcessIrregularity"] = {
+            "metricFamily": "headline",
+            "metric": "emergencyProcessIrregularity",
+            "empiricalUse": "synthetic output",
+            "denominatorCompatibility": "not empirical target",
+            "manuscriptInterpretation": "constructed emergency-process index, not an adjudicative finding of legal abuse",
+        }
+    if "processLegitimacyProxy" not in by_metric and "publicConfidence" in by_metric:
+        by_metric["processLegitimacyProxy"] = {
+            **by_metric["publicConfidence"],
+            "metric": "processLegitimacyProxy",
+            "manuscriptInterpretation": "paper-facing alias for the legacy publicConfidence field",
+        }
     lines = [
         "% Auto-generated by paper/scripts/generate_figures.py",
         "\\begin{table}[p]",
@@ -878,35 +1131,60 @@ def write_mechanism_summary() -> None:
     def average(key: str, field: str) -> float:
         return totals[key][field] / weights[key]
 
+    def movement(value: float, lower_is_better: bool = False) -> str:
+        adjusted = -value if lower_is_better else value
+        if adjusted >= 0.050:
+            return "large improvement"
+        if adjusted >= 0.010:
+            return "small improvement"
+        if adjusted <= -0.050:
+            return "large deterioration"
+        if adjusted <= -0.010:
+            return "small deterioration"
+        return "no material movement"
+
+    def mechanism_reading(key: str) -> str:
+        if key in {"emergency-restraint", "written-emergency-reasoning", "automatic-merits-follow-up", "emergency-integrity-bundle"}:
+            return "emergency-process mechanism"
+        if key == "strong-recusal-enforcement":
+            return "recusal and process legitimacy"
+        if key == "judicial-electorate-selection":
+            return "appointment insulation comparison"
+        if key in {"constitutional-remand", "override-window", "remand-override-window-bundle"}:
+            return "post-decision response mechanism"
+        if key in {"randomized-merits-panels", "panel-jurisdiction-safeguards"}:
+            return "routing and correction mechanism"
+        return "mixed institutional mechanism"
+
     lines = [
         "% Auto-generated by paper/scripts/generate_figures.py",
         "\\begin{table}[hbt!]",
         "\\centering",
-        "\\caption{Mechanism-level paired contrasts against the current-like design}",
+        "\\caption{Mechanism-level paired contrasts, interpreted by movement thresholds}",
         "\\label{tab:mechanism-summary}",
-        "\\Description{Table of weighted average paired contrasts for emergency-procedure, recusal, pipeline, remand, public-interest, override, and bundled institutional mechanisms across campaign assumption cases.}",
-        "\\scriptsize",
-        "\\setlength{\\tabcolsep}{3pt}",
+        "\\Description{Table summarizing weighted average paired contrasts as qualitative movement categories for emergency irregularity, emergency downstream effect, rights protection, lower-court compliance, administrative cost, and mechanism reading.}",
+        "\\footnotesize",
+        "\\setlength{\\tabcolsep}{4pt}",
         "\\resizebox{\\textwidth}{!}{%",
-        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.45in}rrrrrrrrrrrr}",
+        "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{1.55in}>{\\raggedright\\arraybackslash}p{1.25in}>{\\raggedright\\arraybackslash}p{1.25in}>{\\raggedright\\arraybackslash}p{1.05in}>{\\raggedright\\arraybackslash}p{1.05in}>{\\raggedright\\arraybackslash}p{1.05in}>{\\raggedright\\arraybackslash}p{1.55in}}",
         "\\toprule",
-        "Mechanism & Score & Rights & Shadow & Lower ct. & LC resist. & Enforce. & Gov. noncomp. & Emerg. opp. & Emerg. down. & Prec. dur. & Cost \\\\",
+        "Mechanism & Emerg. irregularity & Emerg. downstream & Rights & Lower ct. & Cost & Reading \\\\",
         "\\midrule",
     ]
     for key in selected:
+        shadow = average(key, "deltaShadowDocketAbuse")
+        downstream = average(key, "deltaEmergencyDownstreamEffect")
+        rights = average(key, "deltaRightsProtection")
+        lower_court = average(key, "deltaLowerCourtCompliance")
+        cost = average(key, "deltaAdministrativeCost")
         lines.append(
             f"{tex_escape(names[key])} & "
-            f"{average(key, 'deltaDirectional'):+.3f} & "
-            f"{average(key, 'deltaRightsProtection'):+.3f} & "
-            f"{average(key, 'deltaShadowDocketAbuse'):+.3f} & "
-            f"{average(key, 'deltaLowerCourtCompliance'):+.3f} & "
-            f"{average(key, 'deltaLowerCourtResistanceRisk'):+.3f} & "
-            f"{average(key, 'deltaEnforcementCapacity'):+.3f} & "
-            f"{average(key, 'deltaGovernmentNoncomplianceRate'):+.3f} & "
-            f"{average(key, 'deltaEmergencyOpportunism'):+.3f} & "
-            f"{average(key, 'deltaEmergencyDownstreamEffect'):+.3f} & "
-            f"{average(key, 'deltaPrecedentDurability'):+.3f} & "
-            f"{average(key, 'deltaAdministrativeCost'):+.3f} \\\\"
+            f"{tex_escape(movement(shadow, lower_is_better=True))} ({shadow:+.3f}) & "
+            f"{tex_escape(movement(downstream, lower_is_better=True))} ({downstream:+.3f}) & "
+            f"{tex_escape(movement(rights))} ({rights:+.3f}) & "
+            f"{tex_escape(movement(lower_court))} ({lower_court:+.3f}) & "
+            f"{tex_escape(movement(cost, lower_is_better=True))} ({cost:+.3f}) & "
+            f"{tex_escape(mechanism_reading(key))} \\\\"
         )
     lines.extend([
         "\\bottomrule",
@@ -926,6 +1204,9 @@ def main() -> None:
     write_emergency_profile(averages)
     write_domain_claimant_success(averages)
     write_selected_campaign_table(averages)
+    write_normative_scores_table(averages)
+    write_emergency_walkthrough_table()
+    write_mechanical_emergent_table()
     write_litigation_pipeline_table(averages)
     write_calibration_guardrails()
     write_calibration_classification_table()

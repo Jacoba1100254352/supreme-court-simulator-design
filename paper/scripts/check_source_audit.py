@@ -23,8 +23,8 @@ REQUIRED_SECTIONS = {
     "Model",
     "Calibration and Source-Range Checks",
     "Metrics",
-    "Campaign Results",
-    "Mechanism-Level Summary",
+    "Emergency-Review Results",
+    "Sensitivity and Robustness",
     "Limitations",
 }
 
