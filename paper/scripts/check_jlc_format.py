@@ -15,6 +15,7 @@ MAIN = ROOT / "paper" / "emergency-review-constitutional-court-design.tex"
 TITLE_PAGE = ROOT / "paper" / "title-page.tex"
 MAX_WORDS = 10_000
 REQUIRED_GENERATED = [
+    ROOT / "paper" / "figures" / "model_flow.tex",
     ROOT / "paper" / "figures" / "domain_claimant_success.tex",
     ROOT / "paper" / "figures" / "conflict_confidence_tradeoff.tex",
     ROOT / "paper" / "figures" / "emergency_profile.tex",
@@ -23,8 +24,12 @@ REQUIRED_GENERATED = [
     ROOT / "paper" / "tables" / "v2_selected.tex",
     ROOT / "paper" / "tables" / "normative_scores.tex",
     ROOT / "paper" / "tables" / "emergency_walkthrough.tex",
+    ROOT / "paper" / "tables" / "non_mechanical_diagnostics.tex",
+    ROOT / "paper" / "tables" / "process_legitimacy_robustness.tex",
     ROOT / "paper" / "tables" / "mechanical_emergent.tex",
     ROOT / "paper" / "tables" / "pipeline_diagnostics.tex",
+    ROOT / "paper" / "tables" / "calibration_quality.tex",
+    ROOT / "paper" / "tables" / "parameter_justification.tex",
     ROOT / "paper" / "tables" / "uncertainty_bands.tex",
     ROOT / "paper" / "tables" / "sensitivity_drivers.tex",
     ROOT / "paper" / "tables" / "mechanism_summary.tex",
@@ -295,11 +300,17 @@ def main() -> None:
         ("generated selected results table", "tables/v2_selected"),
         ("multi-objective scores table", "tables/normative_scores"),
         ("emergency walkthrough table", "tables/emergency_walkthrough"),
+        ("non-mechanical diagnostics table", "tables/non_mechanical_diagnostics"),
+        ("process legitimacy robustness table", "tables/process_legitimacy_robustness"),
         ("mechanical versus emergent table", "tables/mechanical_emergent"),
         ("litigation-pipeline diagnostics table", "tables/pipeline_diagnostics"),
+        ("calibration quality table", "tables/calibration_quality"),
+        ("parameter justification table", "tables/parameter_justification"),
         ("uncertainty band table", "tables/uncertainty_bands"),
         ("sensitivity drivers table", "tables/sensitivity_drivers"),
         ("mechanism summary table", "tables/mechanism_summary"),
+        ("non-mechanical diagnostics section", "Non-Mechanical Diagnostics"),
+        ("price of emergency regularity section", "The Price of Emergency Regularity"),
         ("methods appendix", "\\section{Model Mechanics}"),
         ("source audit", "paper/source-audit.csv"),
     ]

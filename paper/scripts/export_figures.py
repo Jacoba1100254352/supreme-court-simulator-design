@@ -14,9 +14,14 @@ BUILD_DIR = EXPORT_DIR / "build"
 
 FIGURES = [
     (
+        "model_flow",
+        "Simulation state-transition flowchart",
+        "Flowchart showing filed universe, access path, admission screen, screen-out, settlement, emergency route, merits route, decision, post-decision response, and output diagnostics.",
+    ),
+    (
         "domain_claimant_success",
-        "Domain-specific claimant-success heatmap",
-        "Heatmap comparing claimant-success rates by legal domain across selected court designs.",
+        "Domain-specific claimant-success delta heatmap",
+        "Heatmap comparing claimant-success changes from the current-like baseline by legal domain across selected court designs.",
     ),
     (
         "conflict_confidence_tradeoff",

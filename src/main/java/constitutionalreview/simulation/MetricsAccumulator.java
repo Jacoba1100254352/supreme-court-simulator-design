@@ -2,6 +2,7 @@ package constitutionalreview.simulation;
 
 
 import constitutionalreview.institution.CourtDecision;
+import constitutionalreview.institution.EmergencyProcedureStage;
 import constitutionalreview.institution.FormalLegalResponse;
 import constitutionalreview.institution.OverrideOutcome;
 import constitutionalreview.institution.PracticalImplementationResponse;
@@ -83,6 +84,7 @@ public final class MetricsAccumulator
 	private int governmentClaimants;
 	private int expertBarClinicClaimants;
 	private int rightsClaimantCases;
+	private int emergencyRightsClaimantCases;
 	private int rightsDomainClaimantCases;
 	private int structuralDomainClaimantCases;
 	private int electionDomainClaimantCases;
@@ -124,6 +126,7 @@ public final class MetricsAccumulator
 	private double democraticResponsiveness;
 	private double administrativeCost;
 	private double rightsClaimantSuccess;
+	private double emergencyRightsClaimantSuccess;
 	private double rightsDomainClaimantSuccess;
 	private double structuralDomainClaimantSuccess;
 	private double electionDomainClaimantSuccess;
@@ -356,6 +359,7 @@ public final class MetricsAccumulator
 				expertBarClinicClaimants / cases,
 				rightsClaimantCases / cases,
 				rightsClaimantSuccess / cases,
+				emergencyRightsClaimantSuccess / Math.max(1.0, emergencyRightsClaimantCases),
 				rightsDomainClaimantSuccess / Math.max(1.0, rightsDomainClaimantCases),
 				structuralDomainClaimantSuccess / Math.max(1.0, structuralDomainClaimantCases),
 				electionDomainClaimantSuccess / Math.max(1.0, electionDomainClaimantCases),
@@ -432,6 +436,13 @@ public final class MetricsAccumulator
 			return;
 		}
 		rightsClaimantCases++;
+		if (decision.emergencyOrder()
+				|| decision.shadowRelief()
+				|| decision.temporaryStay()
+				|| decision.emergencyProcedureStage() != EmergencyProcedureStage.NONE) {
+			emergencyRightsClaimantCases++;
+			emergencyRightsClaimantSuccess += decision.rightsClaimantSuccess();
+		}
 		switch (decision.caseType()) {
 			case RIGHTS -> {
 				rightsDomainClaimantCases++;

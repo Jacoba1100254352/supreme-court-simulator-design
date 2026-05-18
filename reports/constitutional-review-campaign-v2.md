@@ -1,6 +1,6 @@
 # Constitutional Review Campaign v2
 
-Deterministic batch campaign for comparing supreme-court and constitutional-review designs.
+Deterministic simulation study for comparing supreme-court and constitutional-review designs.
 
 ## Run Configuration
 
@@ -22,7 +22,7 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 | Shadow-Docket Stress | 1.000 | emergency-pressure synthetic legislature | High emergency pressure and executive-defiance disputes. |
 | High Democratic Mandate | 1.000 | high-mandate synthetic legislature | Popular, high-mandate laws create accountability pressure against invalidation. |
 | Constitutional Conflict | 1.000 | conflict synthetic legislature | Polarized laws, executive defiance, and public attention raise court-legislature conflict. |
-| Imported Legislative Output | 1.000 | neutral/imported blend | Docket assumptions derived from a legislative simulator campaign CSV. |
+| Imported Legislative Output | 1.000 | neutral/imported blend | Docket assumptions derived from an imported legislative-output profile. |
 | Low Appointment Capture | 0.750 | neutral synthetic legislature | Appointment incentives are less partisan and the justice pool is less polarized. |
 | Extreme Appointment Capture | 1.000 | neutral synthetic legislature | Appointment incentives are highly partisan and vacancies become ideological leverage points. |
 | Low Emergency Pressure | 0.750 | neutral synthetic legislature | Few cases arrive through urgent stay requests or executive emergency disputes. |
@@ -45,15 +45,15 @@ Deterministic batch campaign for comparing supreme-court and constitutional-revi
 - Lowest emergency-process irregularity: No emergency relief without merits review at 0.022.
 - Lowest emergency legitimacy risk: No emergency relief without merits review at 0.220.
 - Lowest partisan alignment: Time-limited legislative override window at 0.022.
-- Highest modeled public-legitimacy proxy: Emergency integrity package at 0.575.
+- Highest modeled process-legitimacy index: Emergency integrity package at 0.575.
 - Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, claimant success, precedent durability, lower-court compliance, elite acceptance, and administrative feasibility.
-- Empirical claims, synthetic findings, and speculative design recommendations should be read separately: source ranges only smoke-test plausibility, campaign outputs are synthetic, and design recommendations are conditional on the model assumptions.
+- Empirical claims, synthetic findings, and speculative design recommendations should be read separately: plausibility checks only screen source ranges, simulation outputs are synthetic, and design recommendations are conditional on the model assumptions.
 
 ## Metric Direction Legend
 
 - Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.
 - Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `processLegitimacyProxy` are usually better, but each should be read in domain context.
-- Lower `partisanAlignment`, `emergencyProcessIrregularity` (legacy CSV field `shadowDocketAbuse`), `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.
+- Lower `partisanAlignment`, `emergencyProcessIrregularity`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.
 - Petition, court-requested-response, CVSG, certiorari-admission, bar-capital, claim-strength, vehicle-quality, genuine-split, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.
 
 ## Scenario Averages Across Cases

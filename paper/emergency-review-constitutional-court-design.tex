@@ -75,7 +75,7 @@
 \fi
 
 \begin{abstract}
-Constitutional courts face acute legitimacy pressure when emergency orders resolve public-law disputes before ordinary merits review. This paper uses a shared-world simulation to compare emergency-review rules inside broader constitutional-court design bundles. Across twenty-seven designs and twenty assumption cases, written reasons, automatic merits follow-through, and no-relief-without-merits review most directly reduce emergency irregularity and downstream emergency effects while leaving average rights-protection outputs broadly similar. Appointment, panel, council, override, and judicial-electorate reforms instead operate mainly through legitimacy, access, compliance, administrative-cost, or conflict channels. The results are simulation diagnostics under stated assumptions, not estimates of real-world causal effects.
+Constitutional courts face acute legitimacy pressure when emergency orders resolve public-law disputes before ordinary merits review. This paper uses a shared-world simulation to compare emergency-review rules inside broader constitutional-court design bundles. Across twenty-seven designs and twenty assumption cases, written reasons, automatic merits follow-through, and no-relief-without-merits review mechanically regularize emergency procedure and, under the reported assumptions, also reduce downstream emergency disruption. Those gains are not costless: domain-specific claimant success, lower-court compliance, implementation risk, and administrative cost remain central to interpretation. Appointment, panel, council, override, and judicial-electorate reforms mainly shift legitimacy, access, compliance, administrative-cost, or conflict channels rather than directly regularizing emergency review. The results are simulation diagnostics under stated assumptions, not estimates of real-world causal effects.
 \end{abstract}
 
 \ifnum\paperusescup=0
@@ -92,13 +92,13 @@ The U.S. Supreme Court supplies the principal calibration anchor for certiorari 
 
 \section{Contribution}
 
-The paper makes three contributions. First, it treats emergency-review reform as a bundle-level design problem rather than as a transparency proposal in isolation. A written-reasons rule, for example, interacts with admission pressure, merits acceleration, recusal, lower-court compliance, and post-decision government response. Second, it reports direct procedural and outcome outputs before constructed indices, so emergency grants, claimant success, domain-specific claimant outcomes, lower-court compliance, government noncompliance, emergency downstream effects, and process legitimacy remain visible. Third, it provides a reproducible design-search workflow that links scenario definitions, normalized plausibility inputs, deterministic seeds, generated reports, and manuscript figures.
+The paper makes three contributions. First, it treats emergency-review reform as a bundle-level design problem rather than as a transparency proposal in isolation. A written-reasons rule, for example, interacts with admission pressure, merits acceleration, recusal, lower-court compliance, and post-decision government response. Second, it reports direct procedural and outcome outputs before constructed indices, so emergency grants, claimant success, domain-specific claimant outcomes, lower-court compliance, government noncompliance, emergency downstream effects, and process legitimacy remain visible. Third, it provides a reproducible design-search workflow that links scenario definitions, normalized plausibility inputs, deterministic seeds, and manuscript outputs.
 
 These contributions are methodological rather than doctrinal. We do not argue that simulation can settle constitutional design. We argue that explicit simulation can make institutional tradeoffs more inspectable, especially when reforms that look attractive in isolation shift costs into emergency procedure, admission filtering, public legitimacy, interbranch conflict, or post-decision compliance.
 
 \section{Claim Boundaries and Interpretation}
 
-The manuscript separates empirical claims, synthetic findings, and speculative design recommendations. Empirical claims are limited to source descriptions, normalized plausibility checks, cited literature, and reproducible project artifacts. They support statements such as which source families are used for source-range checks, what institutional features are represented in the code, and whether generated artifacts match their manifests. They do not establish causal effects of any reform in the world.
+The manuscript separates empirical claims, synthetic findings, and speculative design recommendations. Empirical claims are limited to source descriptions, normalized plausibility checks, cited literature, and reproducible project artifacts. They support statements such as which source families are used for plausibility checks, what institutional features are represented in the code, and whether generated artifacts match their manifests. They do not establish causal effects of any reform in the world.
 
 Synthetic findings are outputs of the simulator under stated coding choices, deterministic seeds, and assumption cases. Statements about a scenario reducing emergency irregularity, increasing administrative cost, changing lower-court compliance, or moving the process-legitimacy index are therefore simulation findings, not empirical findings about observed courts. The generated tables and figures show where costs move when a rule bundle changes.
 
@@ -118,7 +118,7 @@ This framing matters for reform debates. A proposal to impose term limits is not
 
 \section{Expectations}
 
-The campaign is organized around five design expectations. Each links an institutional rule to the outputs most likely to reveal its tradeoffs.
+The simulation study is organized around five design expectations. Each links an institutional rule to the outputs most likely to reveal its tradeoffs.
 
 First, emergency-reason-giving and merits-follow-through rules should reduce emergency irregularity and emergency legitimacy risk. The relevant tradeoff metrics are emergency downstream effects, lower-court compliance, rights-claimant success, and administrative cost.
 
@@ -138,26 +138,25 @@ A review-path layer distinguishes certiorari-like petitions, direct constitution
 
 \begin{figure}[hbt!]
 \centering
-\fbox{\begin{minipage}{0.94\textwidth}
-\centering
-Filed dispute $\rightarrow$ access path $\rightarrow$ admission screen $\rightarrow$ emergency or merits route $\rightarrow$ decision $\rightarrow$ formal response $\rightarrow$ practical implementation $\rightarrow$ compliance, conflict, and legitimacy outputs
-\end{minipage}}
+\input{figures/model_flow}
 \caption{Core state transition for the shared-world simulator. The same filed dispute can be screened out, settled, routed to emergency disposition, transferred to merits review, or carried into post-decision implementation depending on access path and institutional design.}
-\Description{Flow diagram showing filed dispute, access path, admission screen, emergency or merits route, decision, formal response, practical implementation, and compliance/conflict/legitimacy outputs.}
+\Description{Flowchart showing filed universe, access path, admission screen, screen-out, settlement, emergency route, merits route, decision, post-decision response, and output diagnostics.}
 \label{fig:model-flow}
 \end{figure}
 
 Each scenario supplies a court design. The design selects reviewers, applies recusal rules, routes cases to full-court or panel review, determines emergency relief procedure, applies voting thresholds, optionally invokes cross-checking or council review, and optionally allows legislative or popular override. Appointment rules include president-senate selection, nonpartisan commissions, legislative supermajority selection, lottery or rotating panels, and judicial-electorate selection. The judicial-electorate mechanism separates the voting pool from the nominee pool, so the model can distinguish all federal judges, federal appellate judges, selected circuits, state high-court judges, and combined federal/state high-court electorates from narrower or broader nominee eligibility rules. Emergency applications carry applicant type, application class, requested relief, response request, full-court referral, status-quo effect, public disagreement risk, and merits follow-through. Emergency orders can also create downstream effects through status-quo disruption, opportunistic emergency filing, unexplained relief, merits follow-through, and later public disagreement. Strategic actors choose whether to comply, evade, reenact, flood emergency applications, organize override campaigns, or pressure appointments. Their response is split into formal legal response and practical implementation response, including repeal, replacement, narrowed reenactment, weak-form override, amendment, court-curbing, delay, administrative substitution, symbolic compliance, bureaucratic resistance, and open noncompliance.
 
-The model uses shared worlds to make institutional comparisons sharper. Within a run, every scenario sees the same filed matters and legislative-output profile. Differences in outputs therefore come from the institutional rule bundle and its induced strategic responses, not from a different case draw. Across runs and stress cases, the world generator changes appointment capture, emergency pressure, rights risk, democratic mandate, public attention, executive defiance, and imported legislative quality. This gives the campaign both within-world comparison and across-assumption sensitivity.
+The model uses shared worlds to make institutional comparisons sharper. Within a run, every scenario sees the same filed matters and legislative-output profile. Differences in outputs therefore come from the institutional rule bundle and its induced strategic responses, not from a different case draw. Across runs and stress cases, the world generator changes appointment capture, emergency pressure, rights risk, democratic mandate, public attention, executive defiance, and imported legislative quality. This gives the study both within-world comparison and across-assumption sensitivity.
 
 The current design surface is deliberately broader than the tabled scenarios. Court size may be odd or even; terms may be life, fixed, staggered, renewable, or retirement-age bounded; removal may be impeachment-like, supermajoritarian, or external-review based; recusal may leave replacement, vacancy, or quorum consequences; remedies may require different thresholds for invalidation, emergency relief, or override; and judicial-electorate selection may vary both the voting electorate and the nominee eligibility pool. The scenario catalog includes randomized merits panels with en banc correction, mandatory written emergency reasoning, automatic merits follow-up, strong recusal enforcement, jurisdiction-stripping constraints, legislative override windows, constitutional remand, public-interest litigation filtering, a broad judicial-electorate selection design, and bundled systems that combine emergency integrity, remand-and-override, panel-and-jurisdiction, or council-and-concrete-review safeguards. The diagnostics vary assumptions around these bundles rather than presenting every possible combination as if it were substantively meaningful.
+
+The twenty-seven reported designs fall into six families. Emergency-process designs change reason giving, merits follow-through, expiration, and relief-without-merits rules. Appointment and selection designs change term regularity, commission screening, legislative selection, court size, or judicial-electorate voting. Access and filtering designs change petition, public-interest, jurisdiction-stripping, or constitutional-complaint routes. Routing and correction designs change panels, en banc review, cross-checking courts, or constitutional councils. Post-decision designs change remand, override, rights carveouts, or implementation response. Bundled designs combine several of those mechanisms to test whether apparent emergency gains survive cost, compliance, and conflict tradeoffs.
 
 That choice keeps the paper focused on institutional mechanisms rather than arbitrary parameter permutations.
 
 An individual simulated dispute moves through the model as follows. First, the filed universe draws a legal domain and case type, then applies the imported legislative-output profile to the case's quality, mandate, rights burden, and conflict potential. Second, the access-path module assigns the procedural route. Third, the admission filter applies path-specific signals and either screens the matter out, settles it, or transfers it to emergency or merits review. Fourth, the scenario's court design determines reviewers, recusals, quorum effects, panel or en banc routing, voting thresholds, reason giving, cross-court or council checks, and emergency merits follow-through. Fifth, the decision creates a formal legal response, a practical implementation response, a precedent-durability value, and an emergency downstream effect. Enforcement capacity, lower-court resistance, lower-court compliance, and elite acceptance then feed the process-legitimacy and constitutional-conflict indices.
 
-\section{Calibration and Source-Range Checks}
+\section{Calibration and Plausibility Checks}
 
 Calibration is limited to plausibility checks. Normalized source observations are drawn from the Supreme Court Database, Harvard Law Review Supreme Court statistics, the Supreme Court Shadow Docket Database, and Black and Epstein's recusal data \jlcite{SupremeCourtDatabaseCodebook2025,HarvardLawReviewStatistics2025,ShadowDocketDatabase2025,BlackEpsteinRecusal}. Comparative synthesis rows generated during project research serve as structured design-context inputs with source names, URLs, confidence labels, validation-use fields, denominator notes, and coverage scopes. Source rows are classified as strict validation, loose calibration, proxy, mechanism, or design-prior checks. Only strict-validation rows approximate source denominators; proxy and mechanism rows are used as plausibility checks.
 
@@ -168,6 +167,10 @@ Table~\ref{tab:calibration-guardrails} reports representative guardrails rather 
 \input{tables/calibration_classification}
 
 Table~\ref{tab:calibration-classification} is a safeguard against overstating the evidence. Strict-validation rows are closest to empirical denominators, loose-calibration rows are plausibility checks, proxy rows are warning lights, mechanism rows test whether coded mechanisms move in the expected direction, and model-prior rows document institutional coding assumptions. A scenario does not become empirically validated because it passes a proxy or mechanism row.
+
+\input{tables/calibration_quality}
+
+Table~\ref{tab:calibration-quality} adds a quality audit for representative rows. It reports range width and distance from source median so that a broad interval does not masquerade as strong validation. Rows with proxy, mechanism, or design-prior uses remain useful guardrails, but their passing status should not carry the evidentiary weight of a denominator-matched validation target.
 
 \input{tables/pathway_validation}
 
@@ -183,51 +186,55 @@ The directional score is an appendix reading aid. It averages a stability/rights
 
 When a reform directly changes a component used in an index, movement in that index is treated as a design implication rather than a standalone discovery. The analysis emphasizes cases where downstream measures also move, including rights-claimant success, emergency downstream effects, lower-court compliance, government noncompliance, constitutional conflict, or administrative cost.
 
+\subsection{Non-Mechanical Diagnostics}
+
+The central diagnostic question is whether emergency-process rules move downstream disruption, rights-claimant success, lower-court compliance, government noncompliance, and administrative cost after the direct procedural regularization is set aside. Table~\ref{tab:non-mechanical-diagnostics} reports that check for the main emergency-review designs. Emergency irregularity remains a diagnostic of procedural regularization; the downstream-only column deliberately excludes emergency irregularity and process legitimacy.
+
+\input{tables/non_mechanical_diagnostics}
+
+Process legitimacy is treated with similar caution because it includes visible-procedure, emergency-risk, emergency-irregularity, partisan-alignment, appointment-pressure, and court-curbing channels. Table~\ref{tab:process-legitimacy-robustness} recalculates the index after removing selected penalty families and adds an implementation-only comparison. The point is to show how much of the legitimacy pattern depends on directly coded emergency and partisan channels rather than on downstream implementation behavior.
+
+\input{tables/process_legitimacy_robustness}
+
 Figure~\ref{fig:domain-claimant-success} illustrates why the domain-specific claimant-success measures are kept separate. Designs can look similar on aggregate rights protection while moving success rates differently for rights, structural, election, executive-power, administrative-law, and economic-regulation disputes.
 
 \begin{figure}[hbt!]
 \centering
 \input{figures/domain_claimant_success}
-\caption{Domain-specific rights-claimant success for selected institutional designs. The aggregate rights-protection score can hide domain shifts, especially for election, structural, executive-power, administrative-law, and economic-regulation cases.}
-\Description{Heatmap comparing claimant-success rates by legal domain across selected court designs.}
+\caption{Domain-specific claimant-success changes relative to the current-like baseline. The aggregate rights-protection score can hide domain shifts, especially for election, structural, executive-power, administrative-law, and economic-regulation cases.}
+\Description{Heatmap comparing claimant-success changes from the current-like baseline by legal domain across selected court designs.}
 \label{fig:domain-claimant-success}
 \end{figure}
 
 \section{Emergency-Review Results}
 
-The current campaign compares twenty-seven institutional scenarios across twenty assumption cases: the original broad cases, sensitivity sweeps for appointment capture, emergency pressure, rights risk, and democratic mandate, plus adversarial stress cases for appointment timing, emergency-application flooding, override evasion, recusal pressure, and court-expansion retaliation. The reported run used 80 runs per case, 64 filed matters per run, seed 20260501, and an imported legislative-output profile from a separate legislative simulator data contract. The main result is that emergency-review rules produce the clearest movement on emergency irregularity and downstream emergency effects. Appointment, panel, council, override, and judicial-electorate reforms mainly shift legitimacy, access, compliance, administrative-cost, or conflict channels.
+The simulation study compares twenty-seven institutional scenarios across twenty assumption cases: the original broad cases, sensitivity sweeps for appointment capture, emergency pressure, rights risk, and democratic mandate, plus adversarial stress cases for appointment timing, emergency-application flooding, override evasion, recusal pressure, and court-expansion retaliation. The reported run used 80 runs per case, 64 filed matters per run, seed 20260501, and an imported legislative-output profile. Because written reasons, merits follow-through, and merits acceleration are built into the emergency-procedure rules, the main result is not that those rules mechanically lower the emergency-irregularity diagnostic. The more important result is that several emergency-process designs also reduce downstream emergency disruption while preserving aggregate rights outputs under the baseline assumptions, though with administrative-cost and domain-specific claimant-success tradeoffs. Appointment, panel, council, override, and judicial-electorate reforms mainly shift legitimacy, access, compliance, administrative-cost, or conflict channels.
 
 Figure~\ref{fig:emergency-profile} is the main visual result. Similar rights and stability averages can coexist with very different emergency profiles, so the manuscript reports emergency irregularity, emergency legitimacy risk, and process legitimacy separately.
 
 \begin{figure}[hbt!]
 \centering
 \input{figures/emergency_profile}
-\caption{Emergency-review profile for selected institutional designs. Designs that are similar on rights protection and legal stability can differ sharply on emergency irregularity, emergency legitimacy risk, and process legitimacy.}
+\caption{Emergency-review profile for selected institutional designs. Designs that are similar on rights protection and legal stability can differ sharply on emergency irregularity, emergency legitimacy risk, and process legitimacy. Emergency irregularity and process legitimacy are related constructed diagnostics, so the figure should be read as an emergency-procedure profile rather than three independent validation targets.}
 \Description{Horizontal bar chart comparing emergency irregularity, emergency legitimacy risk, and process legitimacy across selected court designs.}
 \label{fig:emergency-profile}
 \end{figure}
 
 \input{tables/emergency_walkthrough}
 
-Table~\ref{tab:emergency-walkthrough} gives the simplest shared-world intuition. Under the emergency-application-flood assumption case, written reasons, automatic merits follow-up, and no-relief-without-merits rules alter the route from emergency filing to reasons, merits acceleration, emergency irregularity, downstream disruption, and process legitimacy. The walkthrough shows whether emergency-process rules affect only the immediate procedural route or also downstream disruption and process legitimacy.
+Table~\ref{tab:emergency-walkthrough} gives the simplest shared-world intuition. Under the emergency-application-flood assumption case, written reasons, automatic merits follow-up, and no-relief-without-merits rules alter the route from emergency filing to reasons, merits acceleration, emergency irregularity, downstream disruption, rights-claimant outcomes, lower-court compliance, administrative cost, and process legitimacy. The emergency-rights column is included because a procedure that suppresses emergency relief would be unattractive if it preserved regularity only by denying urgent rights claimants a usable route.
 
 \input{tables/v2_selected}
 
-Table~\ref{tab:v2-selected} reports selected diagnostics. The stylized current-like court has substantial modeled rights protection in this run while also carrying higher emergency irregularity. Written reasons, automatic merits follow-up, and no-relief-without-merits review reduce emergency irregularity or downstream effects more directly than judicial-electorate selection or randomized panels, which are better understood as appointment-insulation or routing/correction mechanisms.
+Table~\ref{tab:v2-selected} reports selected diagnostics with movement labels relative to the current-like baseline. The stylized current-like court has substantial modeled rights protection in this run while also carrying higher emergency irregularity. Written reasons, automatic merits follow-up, and no-relief-without-merits review reduce emergency irregularity or downstream effects more directly than judicial-electorate selection or randomized panels, which are better understood as appointment-insulation or routing/correction mechanisms. The cost column is included in the main table because emergency regularity is often purchased with added procedure, merits acceleration, or docket-processing load.
+
+\subsection{The Price of Emergency Regularity}
+
+Emergency regularity is not free in the reported simulations. Reason-giving requirements add explanation costs, automatic merits follow-up moves emergency pressure into the merits docket, and no-relief-without-merits rules can preserve procedural discipline only if urgent claimants still have a timely merits route. Those costs are visible in administrative cost, merits acceleration, emergency-rights claimant success, and lower-court compliance rather than in emergency irregularity alone. The institutional lesson is therefore not that emergency restraint is uniformly superior; it is that rules that discipline emergency relief should be evaluated by their downstream disruption and capacity demands.
 
 \input{tables/mechanism_summary}
 
 Table~\ref{tab:mechanism-summary} reports the mechanism-level paired contrasts with movement thresholds instead of a long decimal grid. Emergency restraint, written emergency reasoning, automatic merits follow-up, and the emergency-integrity bundle are the rows most directly connected to the paper's claim. Strong recusal enforcement, judicial-electorate selection, randomized panels, constitutional remand, public-interest filtering, jurisdiction-stripping constraints, and legislative override windows remain important because they test whether non-emergency mechanisms reduce arbitrary emergency power or merely move costs into access, compliance, administrative burden, or conflict.
-
-Figure~\ref{fig:conflict-confidence} plots the process-legitimacy index against the constitutional-conflict index for selected designs, with marker shade representing emergency irregularity. It is a secondary diagnostic. Movement toward lower conflict and higher process legitimacy is usually attractive, but the figure intentionally leaves rights protection and democratic responsiveness outside the two-dimensional display.
-
-\begin{figure}[hbt!]
-\centering
-\input{figures/conflict_confidence_tradeoff}
-\caption{Process-legitimacy and constitutional-conflict tradeoff for selected institutional designs. Marker shade increases with emergency irregularity.}
-\Description{Scatter plot of process legitimacy against constitutional-conflict index for selected court designs. Higher vertical placement and lower horizontal placement are better, and marker shade increases as emergency irregularity rises.}
-\label{fig:conflict-confidence}
-\end{figure}
 
 \section{Sensitivity and Robustness}
 
@@ -247,9 +254,9 @@ Table~\ref{tab:sensitivity-drivers} identifies the assumption cases that drive t
 
 \section{Limitations}
 
-Five limitations matter most. First, the parameter weights are not estimated coefficients. They are literature-informed and design-prior coding choices tested through shared-world comparisons and sensitivity sweeps. Second, some emergency-index movement is mechanical because the index includes opacity, merits follow-through, and emergency opportunism. Third, denominator matches remain weak for several pathways, especially emergency applications, lower-court compliance, comparative access paths, and override/remand behavior. Fourth, process legitimacy and constitutional conflict are constructed indices that combine several legal and political channels. Fifth, observed reform benchmarks are still needed before the model can be used for stronger empirical claims.
+Five limitations matter most. First, the parameter weights are not estimated coefficients. They are literature-informed and design-prior coding choices tested through shared-world comparisons and sensitivity sweeps. Second, the main emergency-irregularity result is partly endogenous to the model design: written reasons, merits follow-through, and merits acceleration are components of the emergency-irregularity formula, so reductions in that index should be read as design implications rather than independent findings. The more probative results are downstream changes in emergency disruption, rights-claimant success, lower-court compliance, government noncompliance, conflict, and administrative cost. Third, denominator matches remain weak for several pathways, especially emergency applications, lower-court compliance, comparative access paths, and override/remand behavior. Fourth, process legitimacy and constitutional conflict are constructed indices that combine several legal and political channels. Fifth, observed reform benchmarks are still needed before the model can be used for stronger empirical claims.
 
-The strongest next validation steps are to automate raw-data refresh for SCDB, Harvard Law Review statistics, shadow-docket data, and recusal data; add one-way sensitivity reports for the highest-leverage emergency, legitimacy, rights, and conflict weight families; calibrate review-path-specific admission denominators against raw certiorari, amparo, constitutional complaint, QPC, abstract-review, and concrete-referral data; add observed counterfactual benchmarks where institutional changes can be compared before and after reform; and benchmark the legislative import contract against raw legislative simulator runs rather than only aggregate campaign CSVs.
+The strongest next validation steps are to automate raw-data refresh for SCDB, Harvard Law Review statistics, shadow-docket data, and recusal data; add one-way sensitivity reports for the highest-leverage emergency, legitimacy, rights, and conflict weight families; calibrate review-path-specific admission denominators against raw certiorari, amparo, constitutional complaint, QPC, abstract-review, and concrete-referral data; add observed counterfactual benchmarks where institutional changes can be compared before and after reform; and benchmark the imported legislative-output profile against raw legislative simulator outputs rather than only aggregate CSV summaries.
 
 \appendix
 
@@ -276,6 +283,10 @@ Outputs & Stability, rights protection, claimant success, legitimacy, conflict, 
 \end{tabular}
 \end{table}
 
+Appendix Table~\ref{tab:parameter-justification} classifies major parameter families by the source of discipline behind the coding choice. The coefficients are not estimated; the table identifies which families have direct source support, which are design priors, and which require sensitivity or external benchmark work before stronger interpretation.
+
+\input{tables/parameter_justification}
+
 Appendix Table~\ref{tab:metric-semantics} records denominators and interpretation notes for representative metrics.
 
 \input{tables/metric_semantics}
@@ -287,6 +298,16 @@ Appendix Table~\ref{tab:normative-scores} reports alternative reading aids for d
 \input{tables/pipeline_diagnostics}
 
 Appendix Table~\ref{tab:pipeline-diagnostics} is the audit table for the concern that formal court design might overweight the model. It exposes litigation-pipeline and downstream-enforcement quantities directly: certiorari admission, court-requested response, CVSG request, bar capital, claim strength, vehicle quality, genuine lower-court split rate, lower-court split depth, lower-court resistance, forum shopping, pre-review settlement, strategic plaintiff selection, repeat-player advantage, enforcement capacity, emergency opportunism, recusal incentive pressure, government noncompliance, emergency downstream effect, and precedent durability.
+
+Figure~\ref{fig:conflict-confidence} is an appendix diagnostic map. It plots the process-legitimacy index against the constitutional-conflict index for selected designs, with marker shade representing emergency irregularity. It should not be read as a two-dimensional welfare frontier because rights protection, domain-specific claimant outcomes, democratic responsiveness, and administrative cost are intentionally outside the display.
+
+\begin{figure}[hbt!]
+\centering
+\input{figures/conflict_confidence_tradeoff}
+\caption{Appendix diagnostic map of process legitimacy and constitutional conflict for selected institutional designs. Marker shade increases with emergency irregularity.}
+\Description{Scatter plot of process legitimacy against constitutional-conflict index for selected court designs. Higher vertical placement and lower horizontal placement are better, and marker shade increases as emergency irregularity rises.}
+\label{fig:conflict-confidence}
+\end{figure}
 
 \input{tables/mechanical_emergent}
 
@@ -320,8 +341,8 @@ Component & Representative rule & Interpretation \\
 \midrule
 Admission & $0.18 + .22$ cert pressure $+ .12$ lower-court conflict $+ .10$ lower-court error $+ .13$ split depth $+ .06$ genuine split $+ .15$ SG signal $+ .10$ amicus signal $+ .08$ split maturity $+ .07$ relist signal $+ .06$ bar capital $+ .10$ claim strength $+ .09$ vehicle quality $+ .05$ specialist counsel $+ .05$ repeat-player signal $+ .05$ strategic-plaintiff signal $+ .02$ forum-shopping signal $+ .08$ conditional reversal $-.06$ settlement pressure $-.16$ vehicle defect, plus path adjustment, CFR, and CVSG increments & Admission is an institutional screen, not a fixed docket quota. \\
 Voting & Legal concern receives weight $.42$; rights concern uses rights burden, justice rights sensitivity, and weight $.44$; claim strength, vehicle quality, and bar capital can modestly increase merits credibility; democratic mandate, legislative quality, institutionalism, emergency deference, repeat-player pressure, forum-shopping signal, precedent stability, and accountability pull reduce or increase invalidation propensity. & Merits votes mix legal, rights, strategic, institutional, and emergency-deference considerations. \\
-Emergency irregularity & Open emergency rule base $.32$, no-merits penalty $.22$, shadow stay $.24$, written reasons $-.10$, automatic merits follow-up $-.12$, merits acceleration $-.07$, partisan salience $.12$, ambiguity $.08$, emergency opportunism $.10$. & The legacy \texttt{shadowDocketAbuse} field is retained in CSV outputs for compatibility; the paper-facing index is emergency irregularity. \\
-Process legitimacy & Base $.48$, public attention $.16$, legislative quality $.10$, merits reason-giving $.18$, recusal discipline up to $.16$, council warning $.06$, emergency irregularity $-.24$, partisan alignment $-.20$. & The index rewards visible process and penalizes opaque or partisan-looking intervention; it is not direct public-opinion measurement. \\
+Emergency irregularity & Open emergency rule base $.32$, no-merits penalty $.22$, shadow stay $.24$, reasoned order $-.08$, merits acceleration $-.07$, partisan salience $.12$, ambiguity $.08$, emergency opportunism $.10$. & The legacy \texttt{shadowDocketAbuse} field is retained in CSV outputs for compatibility; the paper-facing index is emergency irregularity. \\
+Process legitimacy & Legitimacy base $.48$, public attention $.16$, legislative quality $.10$, merits reason-giving $.18$, recusal discipline up to $.16$, council warning $.06$, emergency-process boost or shadow-stay penalty, emergency irregularity $-.24$, partisan alignment $-.20$; the process-legitimacy proxy then subtracts emergency legitimacy risk $.18$, partisan alignment $.12$, appointment pressure $.08$, and court-curbing $.10$. & The index rewards visible process and penalizes opaque or partisan-looking intervention; it is not direct public-opinion measurement. \\
 Compliance & Lower-court compliance rises with enforcement capacity and merits clarity, and falls with lower-court conflict, error risk, split depth, ideological drift, lower-court resistance, state conflict, invalidation shock, and government noncompliance. & Enforcement and implementation are modeled separately from formal legal validity. \\
 Conflict & Conflict potential $.38$, executive defiance $.18$, lower-court conflict $.08$, lower-court resistance $.10$, forum shopping $.04$, conflict load $.12$, legislative defiance $.10$, government noncompliance, emergency downstream effect, invalidating high-mandate laws $.14$, emergency relief $.12$, cross-court disagreement $.16$, override attempt $.06$. & Constitutional conflict is cumulative and rises when legal disagreement becomes interbranch disagreement. \\
 Override & Attempt pressure combines override pressure $.34$, democratic mandate $.30$, public attention $.18$, conflict load $.12$, legislative defiance $.12$, override adaptation $.10$, and rights-burden penalty $-.24$. & Accountability devices affect implementation only after invalidation and can generate rights carveouts or repeated override loops. \\

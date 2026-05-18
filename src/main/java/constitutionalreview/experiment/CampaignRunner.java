@@ -246,7 +246,7 @@ public final class CampaignRunner
 			cases.add(new CampaignCase(
 					"imported-legislative-output",
 					"Imported Legislative Output",
-					"Docket assumptions derived from a legislative simulator campaign CSV.",
+					"Docket assumptions derived from an imported legislative-output profile.",
 					1.0,
 					new WorldSpec(casesPerRun, 31, 0.58, 0.50, 0.50, 0.24, importedBlend)
 			));
@@ -591,6 +591,7 @@ public final class CampaignRunner
 		                           "expertBarClinicClaimantRate",
 		                           "rightsClaimantCaseRate",
 		                           "rightsClaimantSuccess",
+		                           "emergencyRightsClaimantSuccess",
 		                           "rightsDomainClaimantSuccess",
 		                           "structuralDomainClaimantSuccess",
 		                           "electionDomainClaimantSuccess",
@@ -747,6 +748,7 @@ public final class CampaignRunner
                     .append(format(report.expertBarClinicClaimantRate())).append(',')
                     .append(format(report.rightsClaimantCaseRate())).append(',')
                     .append(format(report.rightsClaimantSuccess())).append(',')
+                    .append(format(report.emergencyRightsClaimantSuccess())).append(',')
                     .append(format(report.rightsDomainClaimantSuccess())).append(',')
                     .append(format(report.structuralDomainClaimantSuccess())).append(',')
                     .append(format(report.electionDomainClaimantSuccess())).append(',')
@@ -784,7 +786,7 @@ public final class CampaignRunner
 	) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("# ").append(reportName).append("\n\n");
-		builder.append("Deterministic batch campaign for comparing supreme-court and constitutional-review designs.\n\n");
+		builder.append("Deterministic simulation study for comparing supreme-court and constitutional-review designs.\n\n");
 		builder.append("## Run Configuration\n\n");
 		builder.append("- runs per case: ").append(runs).append('\n');
 		builder.append("- cases per run: ").append(casesPerRun).append('\n');
@@ -870,18 +872,18 @@ public final class CampaignRunner
 		       .append(" at ")
 		       .append(format(lowestPartisan.partisanAlignment()))
 		       .append(".\n");
-		builder.append("- Highest modeled public-legitimacy proxy: ")
+		builder.append("- Highest modeled process-legitimacy index: ")
 		       .append(highestPublicConfidence.scenarioName())
 		       .append(" at ")
 		       .append(format(highestPublicConfidence.publicConfidence()))
 		       .append(".\n");
 		builder.append("- Directional score is a reading aid, not a final constitutional judgment. It averages stability/rights, legitimacy/control, claimant success, precedent durability, lower-court compliance, elite acceptance, and administrative feasibility.\n");
-		builder.append("- Empirical claims, synthetic findings, and speculative design recommendations should be read separately: source ranges only smoke-test plausibility, campaign outputs are synthetic, and design recommendations are conditional on the model assumptions.\n");
+		builder.append("- Empirical claims, synthetic findings, and speculative design recommendations should be read separately: plausibility checks only screen source ranges, simulation outputs are synthetic, and design recommendations are conditional on the model assumptions.\n");
 		
 		builder.append("\n## Metric Direction Legend\n\n");
 		builder.append("- Higher `legalStability`, `rightsProtection`, `legitimacy`, and `democraticResponsiveness` are usually better.\n");
 		builder.append("- Higher direct outputs such as `rightsClaimantSuccess`, `doctrinalDepth`, `remedialBreadth`, `precedentDurability`, `lowerCourtCompliance`, `eliteAcceptance`, and `processLegitimacyProxy` are usually better, but each should be read in domain context.\n");
-		builder.append("- Lower `partisanAlignment`, `emergencyProcessIrregularity` (legacy CSV field `shadowDocketAbuse`), `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.\n");
+		builder.append("- Lower `partisanAlignment`, `emergencyProcessIrregularity`, `emergencyLegitimacyRisk`, `emergencyDownstreamEffect`, `governmentNoncomplianceRate`, `reversalRate`, `constitutionalConflict`, `administrativeCost`, and `strategicPressure` are usually better.\n");
 		builder.append("- Petition, court-requested-response, CVSG, certiorari-admission, bar-capital, claim-strength, vehicle-quality, genuine-split, lower-court-split, lower-court-resistance, forum-shopping, settlement, strategic-plaintiff, repeat-player, enforcement-capacity, emergency-opportunism, emergency, emergency-downstream, replacement, recusal, concurrence, dissent, fragmentation, panel, en banc, council, cross-check, remand, public-interest, formal-response, practical-response, noncompliance, and override rates are diagnostic rather than automatically good or bad.\n");
 		
 		builder.append("\n## Scenario Averages Across Cases\n\n");

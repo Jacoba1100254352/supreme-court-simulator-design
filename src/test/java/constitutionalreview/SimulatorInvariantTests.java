@@ -111,6 +111,7 @@ public final class SimulatorInvariantTests
 				"aggregate claimant success should not exceed claimant case share"
 		);
 		TestSupport.checkUnitInterval(report.rightsDomainClaimantSuccess(), "rightsDomainClaimantSuccess");
+		TestSupport.checkUnitInterval(report.emergencyRightsClaimantSuccess(), "emergencyRightsClaimantSuccess");
 		TestSupport.checkUnitInterval(report.structuralDomainClaimantSuccess(), "structuralDomainClaimantSuccess");
 		TestSupport.checkUnitInterval(report.electionDomainClaimantSuccess(), "electionDomainClaimantSuccess");
 		TestSupport.checkUnitInterval(report.executivePowerDomainClaimantSuccess(), "executivePowerDomainClaimantSuccess");

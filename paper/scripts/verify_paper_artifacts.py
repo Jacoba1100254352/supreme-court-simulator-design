@@ -58,6 +58,7 @@ REQUIRED_CAMPAIGN_COLUMNS = {
     "publicInterestFilteredRate",
     "precedentDurability",
     "emergencyDownstreamEffect",
+    "emergencyRightsClaimantSuccess",
 }
 REQUIRED_PRIOR_COLUMNS = {
     "scenarioKey",

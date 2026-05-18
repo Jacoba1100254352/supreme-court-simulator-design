@@ -589,6 +589,16 @@ def build_metric_semantics_rows(dashboard_rows: list[dict[str, str]]) -> list[di
             "manuscriptInterpretation": "case-average claimant-success output",
         },
         {
+            "metricFamily": "rights",
+            "metric": "emergencyRightsClaimantSuccess",
+            "sourceMetric": "",
+            "simulatorDenominatorOrScale": "rights-claimant cases with an emergency route or emergency order in the generated filed universe",
+            "sourceDenominatorOrScale": "none",
+            "empiricalUse": "synthetic_output",
+            "denominatorCompatibility": "not_empirical_target",
+            "manuscriptInterpretation": "conditional emergency-route claimant-success output",
+        },
+        {
             "metricFamily": "headline",
             "metric": "publicConfidence",
             "sourceMetric": "",

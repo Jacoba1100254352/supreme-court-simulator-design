@@ -21,7 +21,7 @@ REQUIRED_SECTIONS = {
     "Theory and Design Space",
     "Expectations",
     "Model",
-    "Calibration and Source-Range Checks",
+    "Calibration and Plausibility Checks",
     "Metrics",
     "Emergency-Review Results",
     "Sensitivity and Robustness",

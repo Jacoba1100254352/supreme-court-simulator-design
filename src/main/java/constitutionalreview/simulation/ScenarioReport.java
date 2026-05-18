@@ -112,6 +112,7 @@ public record ScenarioReport(
 		double expertBarClinicClaimantRate,
 		double rightsClaimantCaseRate,
 		double rightsClaimantSuccess,
+		double emergencyRightsClaimantSuccess,
 		double rightsDomainClaimantSuccess,
 		double structuralDomainClaimantSuccess,
 		double electionDomainClaimantSuccess,
