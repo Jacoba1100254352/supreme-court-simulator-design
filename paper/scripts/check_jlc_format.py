@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import re
+import shutil
+import os
 import subprocess
 import sys
 import tempfile
@@ -32,7 +34,14 @@ REQUIRED_GENERATED = [
     ROOT / "paper" / "tables" / "parameter_justification.tex",
     ROOT / "paper" / "tables" / "uncertainty_bands.tex",
     ROOT / "paper" / "tables" / "sensitivity_drivers.tex",
+    ROOT / "paper" / "tables" / "benchmark_readiness.tex",
     ROOT / "paper" / "tables" / "mechanism_summary.tex",
+]
+
+TOOL_DIRS = [
+    Path("/Library/TeX/texbin"),
+    Path("/opt/homebrew/bin"),
+    Path("/usr/local/bin"),
 ]
 
 
@@ -43,6 +52,32 @@ def fail(message: str) -> None:
 
 def warn(message: str) -> None:
     print(f"JLC format warning: {message}", file=sys.stderr)
+
+
+def tool_path(name: str) -> str | None:
+    found = shutil.which(name)
+    if found:
+        return found
+    for directory in TOOL_DIRS:
+        candidate = directory / name
+        if candidate.exists():
+            return str(candidate)
+    return None
+
+
+def required_tool(name: str) -> str:
+    found = tool_path(name)
+    if not found:
+        fail(f"{name} is required for local paper checks but was not found on PATH")
+    return found
+
+
+def tool_env() -> dict[str, str]:
+    env = os.environ.copy()
+    prefix = ":".join(str(directory) for directory in TOOL_DIRS if directory.exists())
+    if prefix:
+        env["PATH"] = prefix + ":" + env.get("PATH", "")
+    return env
 
 
 def strip_latex(source: str) -> str:
@@ -58,12 +93,16 @@ def word_count(source: str) -> int:
 
 
 def has_cambridge_class() -> bool:
+    kpsewhich = tool_path("kpsewhich")
+    if not kpsewhich:
+        return False
     try:
         result = subprocess.run(
-            ["kpsewhich", "cup-journal.cls"],
+            [kpsewhich, "cup-journal.cls"],
             check=False,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
+            env=tool_env(),
         )
     except FileNotFoundError:
         return False
@@ -179,6 +218,8 @@ def check_conflict_confidence_axis_labels() -> None:
 def rendered_conflict_label_boxes() -> list[tuple[str, float, float, float, float]]:
     figure = ROOT / "paper" / "figures" / "conflict_confidence_tradeoff.tex"
     source = figure.read_text()
+    latexmk = required_tool("latexmk")
+    pdftotext = required_tool("pdftotext")
     with tempfile.TemporaryDirectory(prefix="supreme-figure-check-") as temp_raw:
         temp = Path(temp_raw)
         (temp / "fragment.tex").write_text(source)
@@ -197,18 +238,20 @@ def rendered_conflict_label_boxes() -> list[tuple[str, float, float, float, floa
             )
         )
         subprocess.run(
-            ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", "figure-check.tex"],
+            [latexmk, "-pdf", "-interaction=nonstopmode", "-halt-on-error", "figure-check.tex"],
             cwd=temp,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
+            env=tool_env(),
             check=True,
         )
         result = subprocess.run(
-            ["pdftotext", "-bbox", "figure-check.pdf", "-"],
+            [pdftotext, "-bbox", "figure-check.pdf", "-"],
             cwd=temp,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            env=tool_env(),
             check=True,
         )
     bbox = result.stdout
@@ -308,6 +351,7 @@ def main() -> None:
         ("parameter justification table", "tables/parameter_justification"),
         ("uncertainty band table", "tables/uncertainty_bands"),
         ("sensitivity drivers table", "tables/sensitivity_drivers"),
+        ("benchmark readiness table", "tables/benchmark_readiness"),
         ("mechanism summary table", "tables/mechanism_summary"),
         ("non-mechanical diagnostics section", "Non-Mechanical Diagnostics"),
         ("price of emergency regularity section", "The Price of Emergency Regularity"),

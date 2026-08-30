@@ -1,0 +1,35 @@
+{
+  "filters": {
+    "emergency_application": "1",
+    "full_court": "1",
+    "terms": [
+      "2023",
+      "2024"
+    ]
+  },
+  "notes": [
+    "Raw third-party archive is not committed.",
+    "Extract is an application/order denominator slice, not merits-follow-through or downstream-effect coding.",
+    "The source page text may lag the downloadable file name; this extract follows the v3.0 CSV and v3.0 codebook naming."
+  ],
+  "output": "data/benchmarks/emergency-application-order-extract-shadow-docket-v3-0.csv",
+  "rowCount": 241,
+  "sourceDownloadUrl": "https://www.dropbox.com/scl/fi/m4gr0ay66x8o7gqdy0mrd/shadow_docket_database_files.zip?rlkey=ofsyuzlon0modt9poc767qsd2&dl=1",
+  "sourceFile": "shadow_docket_database_v3-0.csv",
+  "sourceFileSha256": "dfe4989993cbca8a98220da51bee53b1f12d23a525363cc8b6e03075e5237ded",
+  "sourceKey": "shadow-docket-v3-0",
+  "sourceName": "Supreme Court Shadow Docket Database v3.0",
+  "sourceUrl": "https://www.shadowdocketdata.com/data",
+  "termApplicationCounts": {
+    "2023": 116,
+    "2024": 125
+  },
+  "termGrantedCounts": {
+    "2023": 11,
+    "2024": 20
+  },
+  "termPublicDisagreementCounts": {
+    "2023": 27,
+    "2024": 36
+  }
+}

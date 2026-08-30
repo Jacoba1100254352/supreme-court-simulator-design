@@ -264,7 +264,7 @@ public final class MetricsAccumulator
 				paidPetitions / cases,
 				ifpPetitions / cases,
 				courtRequestedResponses / cases,
-				cvsgRequests / cases,
+				cvsgRequests / Math.max(1.0, certiorariPaths),
 				paidCfrRequests / Math.max(1.0, paidPetitions),
 				ifpCfrRequests / Math.max(1.0, ifpPetitions),
 				solicitorGeneralSignal / cases,

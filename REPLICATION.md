@@ -65,7 +65,7 @@ Create a full non-anonymous archive for acceptance-stage review or deposit:
 make replication-package
 ```
 
-The target rebuilds the paper, verifies report manifests and the source audit, exports standalone figures, and writes:
+The target rebuilds the paper, verifies report manifests and substantive data invariants, checks claim-to-source traceability, exports standalone figures, and writes:
 
 - `dist/constitutional-review-replication.zip`
 - `dist/replication-package-manifest.json`
@@ -90,12 +90,57 @@ make raw-source-refresh ARGS="--scdb-case-zip /path/to/SCDB_2025_01_caseCentered
 
 The refresh writes `dist/calibration-source-refresh-manifest.json` with input names, hashes, generated output hashes, and notes about which sources were automatically transformed versus manually summarized.
 
+## Refresh Lower-Court Precedent-Treatment Evidence
+
+The public Masood, Kassow, and Songer replication release can be downloaded, checksum-verified, and reduced with:
+
+```sh
+make lower-court-precedent-benchmark
+```
+
+To force a live refresh and record the extraction date:
+
+```sh
+make lower-court-precedent-benchmark ARGS="--refresh --extraction-date 2026-07-26"
+```
+
+The target verifies the Harvard Dataverse version, CC0 license, released-file checksums, DDI dimensions, row counts, source-term counts, and published-model row count. It writes the 876-row precedent benchmark and manifest under `data/benchmarks/`, 60 term-pooled context rows under `data/calibration/`, and the aggregate summary under `reports/`. Downloaded metadata, Stata data, tab export, replication code, and DDI are cached only under ignored `data/raw/lower-court-precedent-treatment/`.
+
+The source unit is one formally argued Supreme Court precedent, with aggregate Shepard's lower-court treatment counts through 2016. The 223 source-flagged constitutional-issue precedents supply a direct aggregate doctrinal-uptake slice. The release does not contain individual lower-court treatment events, treatment dates, lower-court identifiers, exposed but non-citing or ignored cases, remedy fidelity, or practical implementation. Its shares are therefore proxy context, not denominator-matched validation of the synthetic case-average `lowerCourtCompliance` score.
+
+## Refresh Environmental Treatment and Practical-Implementation Evidence
+
+Rebuild the five-decision event-level and practical environmental cohort with:
+
+```sh
+make environmental-implementation-cohort
+```
+
+To force a live refresh of CourtListener search pages, public opinion documents, and official implementation sources:
+
+```sh
+make environmental-implementation-cohort ARGS="--refresh --extraction-date 2026-07-26"
+```
+
+The target writes 191 deduplicated published federal citing-opinion events, 65 nationwide-applicability/published-citation-presence cells, five practical agency episodes, normalized descriptive/data-quality rows, a full-text missingness audit, a pending expert-review queue, a structured Gurganus classification transcription, a manifest, and CSV/Markdown summaries. It verifies five explicitly published-only 730-day CourtListener searches, uses a stable provider-cluster tie-breaker, retains unavailable public text as `unclear` with a reason and search snippet, and verifies official agency or Federal Register source terms and hashes. Raw search pages and documents are cached under ignored `data/raw/environmental-implementation-cohort/`.
+
+The lower-court denominator is published citation-linked opinion documents, not all legally relevant case opportunities. The 65-cell frame records nationwide precedential applicability and published-citation presence, not empirical exposure. Full-text missingness is nonrandom, and automated directional values remain pending expert legal review. The practical denominator is Gurganus's complete purposive sample of five salient environmental statutory cases; its four compliant and one narrowly compliant labels are case-study composition, not an estimable rate. These boundaries preclude an ignored-precedent rate, representative constitutional-case claim, or general government-noncompliance rate.
+
+The main replication archive supports analytic reproduction from frozen normalized outputs; it does not include the ignored raw cache or rerun network acquisition. After refreshing the cohort, create a separately depositable acquisition snapshot with `make environmental-source-snapshot`. That archive includes cached CourtListener search JSON, public opinion documents, Crossref metadata, and official implementation sources with per-file and source-tree hashes; it excludes the Gurganus article full text and should undergo repository redistribution review before public deposit.
+
 ## Observed, Coded, Assumed, Simulated
 
 Observed inputs:
 
 - Normalized calibration rows in `data/calibration/`.
+- The aggregate lower-court precedent-treatment benchmark in `data/benchmarks/lower-court-precedent-treatment-aggregate-v1.csv`, bounded to doctrinal uptake and not practical compliance.
+- The environmental published-citation event, nationwide-applicability/citation-presence, pending expert-review, and practical-implementation cohorts in `data/benchmarks/`, bounded to their five purposively selected statutory cases and documented source denominators.
 - Imported legislative-output profiles read through the documented CSV contract in `data/external/legislative/`.
+
+Benchmark preparation inputs:
+
+- Extraction schemas and blank coding templates in `data/benchmarks/`.
+- Generated benchmark-readiness and extraction work queues in `reports/benchmark-*`; emergency docket-linkage extracts and summaries; closed OT2023 and OT2024 published-statistics certiorari cohorts with manifests, normalized calibration rows, term summaries, and a generated multi-term comparison; the older Journal certiorari slices; the 876-precedent aggregate lower-court treatment benchmark; the five-decision environmental published-citation and practical-implementation snapshot; and ECtHR monitoring materials. The paired certiorari cohorts cover 8,076 paid/IFP dockets and 7,716 docketed certiorari petitions. Three OT2024 petitions remain pending and the OT2024 manifest explicitly excludes four same-cutoff-date dockets above the Journal count-defined snapshot ranges. These materials support bounded docket-visible certiorari, aggregate doctrinal-uptake, descriptive environmental citation-presence, purposive practical environmental implementation, and monitoring-capacity descriptions. They do not close expert environmental treatment coding, issue, counsel, split-quality, vehicle-quality, relevant-case opportunity, remedy-fidelity, representative government-noncompliance, or external emergency-implementation evidence.
 
 Coded institutional rules:
 
@@ -116,9 +161,9 @@ Simulated outputs:
 - Sensitivity and diagnostic reports in `reports/seed-robustness-v2.*`, `reports/parameter-sweep-v4.*`, `reports/prior-uncertainty-v1.*`, `reports/pathway-validation-dashboard-v1.*`, `reports/primary-source-coverage-v1.*`, `reports/mechanism-ablation-v2.*`, `reports/legislative-family-comparison-v3.*`, and `reports/manipulation-stress-v2.*`.
 - Manuscript figure fragments in `paper/figures/`, manuscript table fragments in `paper/tables/`, and standalone production figure exports in `paper/figure-exports/`.
 
-Claim/source audit:
+Claim/source traceability:
 
-- `paper/source-audit.csv` maps material literature, model, calibration, result, mechanism, and limitation claims to local artifacts or bibliography keys.
+- `paper/source-audit.csv` maps material literature, model, calibration, result, mechanism, and limitation claims to local artifacts or bibliography keys. `paper/scripts/check_source_audit.py` is a structural traceability check; substantive cohort counts, hashes, and semantics are enforced by `paper/scripts/verify_paper_artifacts.py`.
 - `data/calibration/provenance-manifest.csv` and `data/external/legislative/source-provenance.csv` document source versions, source URLs, raw-source requirements, transformation scripts, fixture hashes, and denominator notes.
 
 ## Data Availability Statement Draft

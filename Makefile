@@ -7,8 +7,10 @@ CALIBRATION_DATA_DIR ?= data/calibration
 RAW_CALIBRATION_DIR ?= data/raw/calibration
 PAPER_LEGISLATIVE_INPUT ?= data/external/legislative/simulation-campaign-v21-paper.csv
 PAPER_ARGS ?= --legislative-input "$(PAPER_LEGISLATIVE_INPUT)"
+LATEXMK ?= $(if $(wildcard /Library/TeX/texbin/latexmk),/Library/TeX/texbin/latexmk,latexmk)
+TEX_PATH ?= /Library/TeX/texbin:$(PATH)
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison validation-dashboards diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-jlc-template-check paper-strict-check replication-package anonymous-submission-package replication-check paper-clean dist-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh certiorari-docketed-cohort certiorari-docketed-cohort-ot2024 certiorari-docketed-cohorts lower-court-precedent-benchmark environmental-implementation-cohort environmental-source-snapshot seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison validation-dashboards diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-jlc-template-check paper-strict-check replication-package anonymous-submission-package replication-check paper-clean dist-clean test ci clean
 
 build:
 	mkdir -p out/main
@@ -39,6 +41,23 @@ calibration-refresh:
 
 raw-source-refresh: calibration-refresh
 
+certiorari-docketed-cohort:
+	python3 tools/extract_certiorari_docketed_cohort_benchmark.py --term OT2023 $(ARGS)
+
+certiorari-docketed-cohort-ot2024:
+	python3 tools/extract_certiorari_docketed_cohort_benchmark.py --term OT2024 $(ARGS)
+
+certiorari-docketed-cohorts: certiorari-docketed-cohort certiorari-docketed-cohort-ot2024
+
+lower-court-precedent-benchmark:
+	python3 tools/extract_lower_court_precedent_treatment_benchmark.py $(ARGS)
+
+environmental-implementation-cohort:
+	python3 tools/extract_environmental_implementation_cohort.py $(ARGS)
+
+environmental-source-snapshot:
+	python3 tools/create_environmental_source_snapshot.py
+
 seed-robustness: build
 	java $(JAVA_PROPS) -cp out/main constitutionalreview.Main --seed-robustness --runs 40 --cases 48 --seed 20260501 --output-dir reports $(PAPER_ARGS) $(ARGS)
 
@@ -56,11 +75,11 @@ legislative-family-comparison: build
 
 validation-dashboards:
 	python3 tools/build_validation_dashboards.py
+	python3 tools/build_certiorari_journal_docket_retrieval_workqueue.py
 
 diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison manipulation-stress validation-dashboards
 
-paper-figures:
-	python3 tools/build_validation_dashboards.py
+paper-figures: validation-dashboards
 	python3 paper/scripts/generate_figures.py
 
 paper-figure-files: paper-figures
@@ -84,14 +103,14 @@ paper-check: paper-figures paper-artifacts-check paper-source-audit
 paper: paper-check paper-figure-files
 	mkdir -p paper/build
 	rm -f paper/build/emergency-review-constitutional-court-design.aux paper/build/emergency-review-constitutional-court-design.bbl paper/build/emergency-review-constitutional-court-design.blg paper/build/emergency-review-constitutional-court-design.fdb_latexmk paper/build/emergency-review-constitutional-court-design.fls paper/build/emergency-review-constitutional-court-design.out
-	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build emergency-review-constitutional-court-design.tex
+	cd paper && PATH="$(TEX_PATH)" $(LATEXMK) -pdf -interaction=nonstopmode -halt-on-error -outdir=build emergency-review-constitutional-court-design.tex
 	python3 paper/scripts/check_latex_log.py
 	cp paper/build/emergency-review-constitutional-court-design.pdf paper/emergency-review-constitutional-court-design.pdf
 	python3 paper/scripts/check_pdf_freshness.py
 
 paper-title-page:
 	mkdir -p paper/build
-	cd paper && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build title-page.tex
+	cd paper && PATH="$(TEX_PATH)" $(LATEXMK) -pdf -interaction=nonstopmode -halt-on-error -outdir=build title-page.tex
 
 paper-strict-check: paper paper-title-page paper-pdf-freshness-check
 	python3 paper/scripts/check_jlc_format.py --strict-submission
@@ -107,7 +126,7 @@ replication-check: test campaign-v0 campaign-v1 campaign-v2 diagnostics paper-st
 	python3 tools/check_replication_package.py
 
 paper-clean:
-	cd paper && latexmk -C -outdir=build emergency-review-constitutional-court-design.tex
+	cd paper && PATH="$(TEX_PATH)" $(LATEXMK) -C -outdir=build emergency-review-constitutional-court-design.tex
 	rm -rf paper/build
 	rm -rf paper/figure-exports/build
 

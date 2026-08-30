@@ -5,10 +5,24 @@ ca_scc_leaveGrantRate_submitted,1,2024,supreme-court-simulator-litigation-pipeli
 canada_override_duration_years,1,stable,cross-national-calibration-targets,5.000,5.000,5.000,5.000,5.000
 canada_override_expiryWindow,1,current constitutional rule,supreme-court-simulator-institutional-design-and-empirical-anchors,5.000,5.000,5.000,5.000,5.000
 capitalApplications_total,1,OT2003–OT2021,supreme-court-simulator-calibration-targets,945.000,945.000,945.000,945.000,945.000
+caseStudyCompliantClassificationComposition_salientEnvironmentalCases,1,2006-2023,gurganus-2025-environmental-agency-implementation,0.800,0.800,0.800,0.800,0.800
+caseStudyCompliantClassificationIndicator_massachusetts-v-epa-2007,1,2007,gurganus-2025-environmental-agency-implementation,1.000,1.000,1.000,1.000,1.000
+caseStudyCompliantClassificationIndicator_michigan-v-epa-2015,1,2015,gurganus-2025-environmental-agency-implementation,1.000,1.000,1.000,1.000,1.000
+caseStudyCompliantClassificationIndicator_rapanos-v-united-states-2006,1,2006,gurganus-2025-environmental-agency-implementation,0.000,0.000,0.000,0.000,0.000
+caseStudyCompliantClassificationIndicator_sackett-v-epa-2023,1,2023,gurganus-2025-environmental-agency-implementation,1.000,1.000,1.000,1.000,1.000
+caseStudyCompliantClassificationIndicator_utility-air-regulatory-group-v-epa-2014,1,2014,gurganus-2025-environmental-agency-implementation,1.000,1.000,1.000,1.000,1.000
+caseStudyNarrowComplianceClassificationComposition_salientEnvironmentalCases,1,2006-2023,gurganus-2025-environmental-agency-implementation,0.200,0.200,0.200,0.200,0.200
+caseStudyNarrowComplianceClassificationIndicator_massachusetts-v-epa-2007,1,2007,gurganus-2025-environmental-agency-implementation,0.000,0.000,0.000,0.000,0.000
+caseStudyNarrowComplianceClassificationIndicator_michigan-v-epa-2015,1,2015,gurganus-2025-environmental-agency-implementation,0.000,0.000,0.000,0.000,0.000
+caseStudyNarrowComplianceClassificationIndicator_rapanos-v-united-states-2006,1,2006,gurganus-2025-environmental-agency-implementation,1.000,1.000,1.000,1.000,1.000
+caseStudyNarrowComplianceClassificationIndicator_sackett-v-epa-2023,1,2023,gurganus-2025-environmental-agency-implementation,0.000,0.000,0.000,0.000,0.000
+caseStudyNarrowComplianceClassificationIndicator_utility-air-regulatory-group-v-epa-2014,1,2014,gurganus-2025-environmental-agency-implementation,0.000,0.000,0.000,0.000,0.000
 certGrantRateAfterCFR_ifp,1,OT2001–OT2004,supreme-court-simulator-calibration-targets,0.030,0.030,0.030,0.030,0.030
 certGrantRateAfterCFR_paid,1,OT2001–OT2004,supreme-court-simulator-calibration-targets,0.169,0.169,0.169,0.169,0.169
-cfrRate_ifp,1,OT2001–OT2004,supreme-court-simulator-calibration-targets,0.020,0.020,0.020,0.020,0.020
-cfrRate_paid,1,OT2001–OT2004,supreme-court-simulator-calibration-targets,0.047,0.047,0.047,0.047,0.047
+certStageAmicusPresenceRate,2,OT2023-OT2024,scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.076,0.076,0.080,0.085,0.085
+certiorariGrantRate_docketedCohort,2,OT2023-OT2024,scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.031,0.031,0.032,0.033,0.033
+cfrRate_ifp,3,OT2001–OT2004-OT2024,supreme-court-simulator-calibration-targets;scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.020,0.021,0.026,0.031,0.031
+cfrRate_paid,3,OT2001–OT2004-OT2024,supreme-court-simulator-calibration-targets;scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.047,0.055,0.126,0.144,0.146
 civil_disposition_days_eu_median_first_instance,1,2022,institutional-cost-delay-complexity-benchmarks,239.000,239.000,239.000,239.000,239.000
 comparativeConstitutionalComplianceCoverage,1,1900–2020,supreme-court-simulator-institutional-design-evidence,175.000,175.000,175.000,175.000,175.000
 complaw_courts_covered,1,2024_release,cross-national-calibration-targets,42.000,42.000,42.000,42.000,42.000
@@ -27,6 +41,7 @@ costaRicaPublicityAccelerationMonths,1,around March–April 2010 press-conferenc
 courtFollowsSGRecommendation,1,1994–2004,supreme-court-simulator-calibration-targets,0.796,0.796,0.796,0.796,0.796
 cvsgFrequency,1,1994–2004,supreme-court-simulator-calibration-targets,11.000,11.000,11.000,11.000,11.000
 cvsgGrantRate_recent,1,OT2001–OT2004,supreme-court-simulator-calibration-targets,0.390,0.390,0.390,0.390,0.390
+cvsgRequestRate,2,OT2023-OT2024,scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.002,0.003,0.004,0.005,0.005
 de_bverfg_constitutionalComplaint_completionToIntake,1,2024,supreme-court-simulator-litigation-pipeline-incentives,1.060,1.060,1.060,1.060,1.060
 de_bverfg_constitutionalComplaint_intake,1,2024,supreme-court-simulator-litigation-pipeline-incentives,3433.000,3433.000,3433.000,3433.000,3433.000
 de_bverfg_cumulativeConstitutionalComplaints,1,1951 to 2024,supreme-court-simulator-litigation-pipeline-incentives,252000.000,252000.000,252000.000,252000.000,252000.000
@@ -74,8 +89,8 @@ germany_term_years,1,stable,cross-national-calibration-targets,12.000,12.000,12.
 grantRate_anyCertStageAmicus_paidNonOSG,1,OT2005,supreme-court-simulator-calibration-targets,0.194,0.194,0.194,0.194,0.194
 grantRate_fourPlusCertStageAmici_paidNonOSG,1,OT2005,supreme-court-simulator-calibration-targets,0.563,0.563,0.563,0.563,0.563
 grantRate_noCertStageAmicus_paidNonOSG,1,OT2005,supreme-court-simulator-calibration-targets,0.022,0.022,0.022,0.022,0.022
-grantSetForArgumentRate_raw,1,OT2023,supreme-court-simulator-calibration-targets,0.010,0.010,0.010,0.010,0.010
-ifpPetitionShare,1,OT2023,supreme-court-simulator-calibration-targets,0.765,0.765,0.765,0.765,0.765
+grantSetForArgumentRate_raw,1,OT2023,supreme-court-simulator-calibration-targets,0.016,0.016,0.016,0.016,0.016
+ifpPetitionShare,2,OT2023-OT2024,scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.656,0.657,0.665,0.673,0.674
 invalidationRate,79,1946-2024,scdb-modern-2025-01,0.000,0.023,0.066,0.121,0.153
 italy_avgDaysPublicationToHearing,1,2024,supreme-court-simulator-institutional-design-and-empirical-anchors,191.000,191.000,191.000,191.000,191.000
 italy_courts_budget_per_capita,1,2022,institutional-cost-delay-complexity-benchmarks,67.200,67.200,67.200,67.200,67.200
@@ -94,6 +109,32 @@ korea_panel_dismissal_share_of_complaints_cumulative,1,1988-Mar-2026,lower-court
 korea_panel_transfer_deadline_days,1,stable,emergency-docket-calibration,30.000,30.000,30.000,30.000,30.000
 korea_recusal_available,1,stable,emergency-docket-calibration,1.000,1.000,1.000,1.000,1.000
 korea_supermajority_votes_for_unconstitutionality,1,stable,cross-national-calibration-targets,6.000,6.000,6.000,6.000,6.000
+lowerCourtAdverseShareAmongCitedOrAdverse_allPrecedents,10,1995-2004,masood-kassow-songer-2019-precedent-treatment,0.020,0.023,0.033,0.064,0.067
+lowerCourtAdverseShareAmongCitedOrAdverse_constitutionalIssues,10,1995-2004,masood-kassow-songer-2019-precedent-treatment,0.020,0.023,0.056,0.101,0.116
+lowerCourtAutomatedDirectionalCandidateShare_massachusetts-v-epa-2007,1,2007,courtlistener-environmental-scotus-citation-events,0.026,0.026,0.026,0.026,0.026
+lowerCourtAutomatedDirectionalCandidateShare_michigan-v-epa-2015,1,2015,courtlistener-environmental-scotus-citation-events,0.000,0.000,0.000,0.000,0.000
+lowerCourtAutomatedDirectionalCandidateShare_rapanos-v-united-states-2006,1,2006,courtlistener-environmental-scotus-citation-events,0.333,0.333,0.333,0.333,0.333
+lowerCourtAutomatedDirectionalCandidateShare_sackett-v-epa-2023,1,2023,courtlistener-environmental-scotus-citation-events,0.000,0.000,0.000,0.000,0.000
+lowerCourtAutomatedDirectionalCandidateShare_utility-air-regulatory-group-v-epa-2014,1,2014,courtlistener-environmental-scotus-citation-events,0.000,0.000,0.000,0.000,0.000
+lowerCourtCitationContextCoverage_massachusetts-v-epa-2007,1,2007,courtlistener-environmental-scotus-citation-events,0.513,0.513,0.513,0.513,0.513
+lowerCourtCitationContextCoverage_michigan-v-epa-2015,1,2015,courtlistener-environmental-scotus-citation-events,0.720,0.720,0.720,0.720,0.720
+lowerCourtCitationContextCoverage_rapanos-v-united-states-2006,1,2006,courtlistener-environmental-scotus-citation-events,0.366,0.366,0.366,0.366,0.366
+lowerCourtCitationContextCoverage_sackett-v-epa-2023,1,2023,courtlistener-environmental-scotus-citation-events,1.000,1.000,1.000,1.000,1.000
+lowerCourtCitationContextCoverage_utility-air-regulatory-group-v-epa-2014,1,2014,courtlistener-environmental-scotus-citation-events,0.864,0.864,0.864,0.864,0.864
+lowerCourtFollowedShareAmongCitedOrFollowed_allPrecedents,10,1995-2004,masood-kassow-songer-2019-precedent-treatment,0.152,0.154,0.183,0.239,0.252
+lowerCourtFollowedShareAmongCitedOrFollowed_constitutionalIssues,10,1995-2004,masood-kassow-songer-2019-precedent-treatment,0.136,0.141,0.163,0.199,0.220
+lowerCourtFollowedShareAmongDirectionalTreatments_allPrecedents,10,1995-2004,masood-kassow-songer-2019-precedent-treatment,0.724,0.763,0.869,0.914,0.919
+lowerCourtFollowedShareAmongDirectionalTreatments_constitutionalIssues,10,1995-2004,masood-kassow-songer-2019-precedent-treatment,0.566,0.612,0.799,0.883,0.905
+lowerCourtPublicFullTextCoverage_massachusetts-v-epa-2007,1,2007,courtlistener-environmental-scotus-citation-events,0.513,0.513,0.513,0.513,0.513
+lowerCourtPublicFullTextCoverage_michigan-v-epa-2015,1,2015,courtlistener-environmental-scotus-citation-events,0.720,0.720,0.720,0.720,0.720
+lowerCourtPublicFullTextCoverage_rapanos-v-united-states-2006,1,2006,courtlistener-environmental-scotus-citation-events,0.366,0.366,0.366,0.366,0.366
+lowerCourtPublicFullTextCoverage_sackett-v-epa-2023,1,2023,courtlistener-environmental-scotus-citation-events,1.000,1.000,1.000,1.000,1.000
+lowerCourtPublicFullTextCoverage_utility-air-regulatory-group-v-epa-2014,1,2014,courtlistener-environmental-scotus-citation-events,0.864,0.864,0.864,0.864,0.864
+lowerCourtPublishedCitationPresenceByCircuit_massachusetts-v-epa-2007,1,2007,courtlistener-environmental-circuit-exposure,0.923,0.923,0.923,0.923,0.923
+lowerCourtPublishedCitationPresenceByCircuit_michigan-v-epa-2015,1,2015,courtlistener-environmental-circuit-exposure,0.615,0.615,0.615,0.615,0.615
+lowerCourtPublishedCitationPresenceByCircuit_rapanos-v-united-states-2006,1,2006,courtlistener-environmental-circuit-exposure,0.769,0.769,0.769,0.769,0.769
+lowerCourtPublishedCitationPresenceByCircuit_sackett-v-epa-2023,1,2023,courtlistener-environmental-circuit-exposure,0.308,0.308,0.308,0.308,0.308
+lowerCourtPublishedCitationPresenceByCircuit_utility-air-regulatory-group-v-epa-2014,1,2014,courtlistener-environmental-circuit-exposure,0.846,0.846,0.846,0.846,0.846
 meritsCaseCoverage_scdb,1,1791–2024 Terms,supreme-court-simulator-calibration-targets,2024.000,2024.000,2024.000,2024.000,2024.000
 meritsReviewRate,79,1946-2024,scdb-modern-2025-01,1.000,1.000,1.000,1.000,1.000
 mexico_accionesInconstitucionalidad_admitted,1,2024,supreme-court-simulator-institutional-design-and-empirical-anchors,189.000,189.000,189.000,189.000,189.000
@@ -112,7 +153,7 @@ noncapitalGrantRate_noLinkedMerits,1,OT2003–OT2021,supreme-court-simulator-cal
 noncapitalGrantRate_overall,1,OT2003–OT2021,supreme-court-simulator-calibration-targets,0.230,0.230,0.230,0.230,0.230
 noncapitalReplyRate_amongResponses,1,OT2003–OT2021,supreme-court-simulator-calibration-targets,0.800,0.800,0.800,0.800,0.800
 noncapitalResponseBriefRate,1,OT2003–OT2021,supreme-court-simulator-calibration-targets,0.530,0.530,0.530,0.530,0.530
-paidPetitionShare,1,OT2023,supreme-court-simulator-calibration-targets,0.235,0.235,0.235,0.235,0.235
+paidPetitionShare,2,OT2023-OT2024,scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.326,0.327,0.335,0.343,0.344
 precedentStability,79,1946-2024,scdb-modern-2025-01,0.933,0.956,0.983,1.000,1.000
 presidentialEmergencyApplications_peak,1,"admin-year ending Oct. 3, 2025",supreme-court-simulator-calibration-targets,22.000,22.000,22.000,22.000,22.000
 prior_advocateCapital_merits_shift,1,synthetic from 1977-1982 studies,supreme-court-simulator-litigation-pipeline-incentives,0.070,0.070,0.070,0.070,0.070
@@ -120,6 +161,7 @@ prior_cert_signal_formerClerk,1,synthetic from 2003-2015 study,supreme-court-sim
 prior_pathway_discount_stateOrigin,1,synthetic from 2002-2014 descriptor,supreme-court-simulator-litigation-pipeline-incentives,0.590,0.590,0.590,0.590,0.590
 prior_us_discretionaryReview_base,1,synthetic from OT2023-OT2024,supreme-court-simulator-litigation-pipeline-incentives,0.010,0.010,0.010,0.010,0.010
 recusalRate,1,1946-2003,black-epstein-recusal,0.009,0.009,0.009,0.009,0.009
+relistRate,2,OT2023-OT2024,scotus-certiorari-docketed-cohort-ot2023;scotus-certiorari-docketed-cohort-ot2024,0.111,0.113,0.126,0.139,0.140
 rightsClaimRate,79,1946-2024,scdb-modern-2025-01,0.133,0.159,0.299,0.383,0.410
 scotus_arguedCases,1,2024 Term,supreme-court-simulator-institutional-design-and-empirical-anchors,73.000,73.000,73.000,73.000,73.000
 scotus_docketedCases,1,2023 Term,supreme-court-simulator-institutional-design-and-empirical-anchors,4223.000,4223.000,4223.000,4223.000,4223.000

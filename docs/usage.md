@@ -49,7 +49,7 @@ Build the LaTeX paper:
 make paper
 ```
 
-This regenerates manuscript figures and tables, verifies report manifests, checks the source audit, exports standalone figure files, compiles the PDF, and checks the LaTeX log for unresolved references or citations.
+This regenerates manuscript figures and tables, verifies report manifests and substantive data invariants, checks claim-to-source traceability, exports standalone figure files, compiles the PDF, and checks the LaTeX log for unresolved references or citations.
 
 Run strict paper checks and build the non-anonymous title page:
 
@@ -102,6 +102,14 @@ make raw-source-refresh
 
 By default the refresh looks in `data/raw/calibration/`, which is ignored by git. Pass explicit paths through `ARGS` when raw files live elsewhere.
 
+Refresh or resume the official OT2023 paid/IFP docketed cohort:
+
+```sh
+make certiorari-docketed-cohort
+```
+
+The extractor reuses same-snapshot rows by default, retries bounded Court-site failures, and regenerates the cohort manifest, summary, Journal reconciliation, and normalized calibration rows.
+
 Import legislative outputs:
 
 ```sh
@@ -123,3 +131,5 @@ Diagnostic runs also write empirical calibration, source-range appendix, seed-ro
 The preserved v0 and v1 targets write the same campaign filename pattern with `v0` and `v1`.
 
 Paper support outputs also include `paper/source-audit.csv`, generated table fragments in `paper/tables/`, standalone production figure files in `paper/figure-exports/`, and the replication package manifest under `dist/` when packaging is requested.
+
+Validation-support outputs include the pathway dashboard, benchmark-readiness reports, emergency docket-linkage materials, the closed OT2023 paid/IFP docketed-intake cohort and its normalized calibration rows, summary, and Journal reconciliation, older Journal certiorari slices, implementation/compliance work queues, the HUDOC-EXEC monitoring extract, and generated benchmark templates under `reports/`, `data/benchmarks/`, and `data/calibration/`. The certiorari cohort supports bounded docket-visible screening evidence over 4,222 paid/IFP dockets and 4,033 certiorari petitions. It does not cover undocketed submissions or close issue, counsel, split-quality, vehicle-quality, lower-court-compliance, government-noncompliance, or external emergency implementation claims.

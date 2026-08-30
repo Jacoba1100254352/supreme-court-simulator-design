@@ -1,0 +1,65 @@
+{
+  "calibrationOutput": "data/calibration/scotus-certiorari-docketed-cohort-ot2023.csv",
+  "dispositionCounts": {
+    "denied": 3791,
+    "dismissed": 82,
+    "granted": 69,
+    "gvr_or_remand": 66,
+    "ifp_fee_denied_closed": 21,
+    "not_certiorari_intake": 189,
+    "quorum_affirmance": 1,
+    "removed_from_docket": 3
+  },
+  "enumerationRule": {
+    "ifp": {
+      "firstDocket": "23-5001",
+      "lastDocket": "23-7847",
+      "officialCount": 2847
+    },
+    "paid": {
+      "firstDocket": "23-1",
+      "lastDocket": "23-1375",
+      "officialCount": 1375
+    }
+  },
+  "expectedRowCount": 4222,
+  "failedFetchCount": 0,
+  "failedFetches": [],
+  "freshlyFetchedRows": 25,
+  "journalReconciliationCounts": {
+    "not_in_journal_disposition_extract": 932,
+    "outcome_matches_journal": 3290
+  },
+  "notes": [
+    "The official Journal reports 1,375 paid and 2,847 IFP cases docketed during OT2023.",
+    "Those counts map exactly to contiguous public docket ranges 23-1 through 23-1375 and 23-5001 through 23-7847.",
+    "The extract is a closed docketed-intake cohort, not a census of submissions that were never docketed.",
+    "Docket-visible response, CFR, CVSG, amicus, relist, disposition, and merits-follow-through fields are coded where applicable.",
+    "Rows already present in the same-date official-docket Journal-detail extract may be reused to avoid redundant Court-site requests; the manifest reports reused and freshly fetched counts.",
+    "Specialist-counsel, former-clerk, alleged-split, genuine-split, split-depth, issue-area, and vehicle-quality fields remain outside this automated source slice."
+  ],
+  "output": "data/benchmarks/certiorari-docketed-cohort-ot2023.csv",
+  "paidOrIfpCounts": {
+    "ifp": 2847,
+    "paid": 1375
+  },
+  "petitionTypeCounts": {
+    "appeal_or_jurisdictional_statement": 3,
+    "certiorari": 4033,
+    "extraordinary_writ": 185,
+    "uncoded_or_no_primary_filing": 1
+  },
+  "retries": 3,
+  "reusedExistingCohortRows": 4197,
+  "reusedJournalDocketDetailRows": 0,
+  "rowCount": 4222,
+  "snapshotDate": "2026-07-24",
+  "sourceJournalUrl": "https://www.supremecourt.gov/orders/journal/jnl23.pdf",
+  "sourceKey": "scotus-certiorari-docketed-cohort-ot2023",
+  "sourceName": "Official Supreme Court OT2023 paid/IFP docketed-intake cohort",
+  "sourceRecordSha256": "5af1e53e496ac297aad79243192140183def7a7306ea19caa3b2261b60d30bec",
+  "sourceUrl": "https://www.supremecourt.gov/docket/docket.aspx",
+  "term": "OT2023",
+  "uniqueDocketCount": 4222,
+  "workers": 1
+}

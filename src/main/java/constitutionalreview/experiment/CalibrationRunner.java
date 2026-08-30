@@ -95,10 +95,11 @@ public final class CalibrationRunner
 		add(targets, current, "docket-executive-power", "Executive-power disputes remain visible but bounded within structural public-law disputes.", "executivePowerDisputeRate", "structuralRate", "loose_calibration", 0.03, 0.30, 0.04, "scdb-issue-area", dataset);
 		add(targets, current, "current-invalidation", "Declarations of unconstitutionality should be uncommon in the full merits docket.", "invalidationRate", "invalidationRate", "strict_validation", 0.00, 0.22, 0.07, "scdb-unconstitutionality", dataset);
 		add(targets, current, "current-merits-transfer", "Admissibility-aware current-like designs should transfer a substantial but not universal share of filed matters to merits.", "meritsTransferRate", "admissibilityModelShare", "model_prior_check", 0.25, 0.85, 0.00, "deep-research-intake-synthesis", dataset);
-		add(targets, current, "current-paid-cert-share", "Paid certiorari petitions should be a minority of cert-style intake after the paid/IFP denominator is separated from all filed matters.", "paidCertPetitionShare", "paidPetitionShare", "loose_calibration", 0.10, 0.40, 0.08, "deep-research-tables-2026", dataset);
-		add(targets, current, "current-ifp-cert-share", "IFP certiorari petitions should be the majority of cert-style intake after the paid/IFP denominator is separated from all filed matters.", "ifpCertPetitionShare", "ifpPetitionShare", "loose_calibration", 0.60, 0.90, 0.08, "deep-research-tables-2026", dataset);
-		add(targets, current, "current-paid-cfr-stage", "Paid cert-style petitions should expose a separate court-requested-response stage rather than a one-step grant draw.", "paidCfrRequestRate", "cfrRate_paid", "loose_calibration", 0.01, 0.12, 0.02, "deep-research-tables-2026", dataset);
-		add(targets, current, "current-ifp-cfr-stage", "IFP cert-style petitions should expose a lower-frequency court-requested-response stage.", "ifpCfrRequestRate", "cfrRate_ifp", "loose_calibration", 0.00, 0.08, 0.02, "deep-research-tables-2026", dataset);
+		add(targets, current, "current-paid-cert-share", "Paid certiorari petitions should be a minority of cert-style intake after the paid/IFP denominator is separated from all filed matters.", "paidCertPetitionShare", "paidPetitionShare", "loose_calibration", 0.10, 0.40, 0.08, "scotus-certiorari-docketed-cohort-ot2023", dataset);
+		add(targets, current, "current-ifp-cert-share", "IFP certiorari petitions should be the majority of cert-style intake after the paid/IFP denominator is separated from all filed matters.", "ifpCertPetitionShare", "ifpPetitionShare", "loose_calibration", 0.60, 0.90, 0.08, "scotus-certiorari-docketed-cohort-ot2023", dataset);
+		add(targets, current, "current-paid-cfr-stage", "Paid cert-style petitions should expose a separate court-requested-response stage rather than a one-step grant draw.", "paidCfrRequestRate", "cfrRate_paid", "loose_calibration", 0.01, 0.12, 0.02, "scotus-certiorari-docketed-cohort-ot2023", dataset);
+		add(targets, current, "current-ifp-cfr-stage", "IFP cert-style petitions should expose a lower-frequency court-requested-response stage.", "ifpCfrRequestRate", "cfrRate_ifp", "loose_calibration", 0.00, 0.08, 0.02, "scotus-certiorari-docketed-cohort-ot2023", dataset);
+		add(targets, current, "current-cvsg-stage", "CVSG requests should remain a rare petition-level transition within the certiorari pathway.", "cvsgRequestRate", "cvsgRequestRate", "loose_calibration", 0.00, 0.02, 0.005, "scotus-certiorari-docketed-cohort-ot2023", dataset);
 		add(targets, current, "current-emergency-applications", "Emergency applications should be present but bounded in the current-like docket; the source denominator is Journal orders, not generated filed matters.", "emergencyStayDocketRate", "emergencyStayDocketRate", "proxy_sanity_check", 0.00, 0.22, 0.20, "shadow-docket-database", dataset);
 		add(targets, current, "current-emergency-orders", "Emergency orders should be observable but not universal.", "emergencyOrderRate", "emergencyOrderRate", "loose_calibration", 0.03, 0.60, 0.45, "hlr-emergency", dataset);
 		add(targets, current, "current-emergency-grant-conditional", "Emergency grants should be interpreted on an emergency-order denominator before comparison with application-grant studies.", "emergencyGrantConditionalRate", "noncapitalGrantRate_overall", "loose_calibration", 0.12, 0.38, 0.12, "deep-research-tables-2026", dataset);
@@ -163,6 +164,18 @@ public final class CalibrationRunner
 						"Black and Epstein, Recusals and the Problem of an Equally Divided Supreme Court",
 						"https://epstein.wustl.edu/recusal",
 						"Reports 599 post-1946 recusal cases and treats recusals as rare case-level events."
+				),
+				new CalibrationSource(
+						"scotus-certiorari-docketed-cohort-ot2023",
+						"Official Supreme Court OT2023 paid/IFP docketed-intake cohort",
+						"https://www.supremecourt.gov/docket/docket.aspx",
+						"Enumerates all 4,222 paid and IFP dockets in the official OT2023 Journal statistics window and codes petition-level CFR and CVSG stages."
+				),
+				new CalibrationSource(
+						"scotus-certiorari-docketed-cohort-ot2024",
+						"Official Supreme Court OT2024 published-statistics paid/IFP docketed-intake cohort",
+						"https://www.supremecourt.gov/docket/docket.aspx",
+						"Enumerates the 3,854 paid and IFP dockets in the published OT2024 Journal statistics snapshot and codes the same petition-level stages as OT2023; same-cutoff-date dockets above the count-defined ranges are disclosed separately in the cohort manifest."
 				),
 				new CalibrationSource(
 						"scdb-formal-precedent",
@@ -230,20 +243,37 @@ public final class CalibrationRunner
 	}
 	
 	private static String sourceTier(String sourceKey, String sourceKeys, String rangeBasis) {
+		String preferred = sourceKey.toLowerCase(Locale.ROOT);
 		String combined = (sourceKey + " " + sourceKeys + " " + rangeBasis).toLowerCase(Locale.ROOT);
+		if (preferred.contains("fallback") || preferred.contains("model-docket-mix-prior")) {
+			return "model_prior";
+		}
+		if (preferred.contains("scdb")
+				|| preferred.contains("scotus-certiorari-docketed-cohort")
+				|| preferred.contains("shadow-docket")
+				|| preferred.contains("epstein")
+				|| preferred.contains("harvard")) {
+			return "raw_or_primary_summary";
+		}
+		if (preferred.contains("deep-research")
+				|| preferred.contains("supreme-court-synthesis")
+				|| preferred.contains("supreme-court-research")) {
+			return "research_synthesis";
+		}
 		if (combined.contains("fallback") || combined.contains("model-docket-mix-prior")) {
 			return "model_prior";
+		}
+		if (combined.contains("scdb")
+				|| combined.contains("scotus-certiorari-docketed-cohort")
+				|| combined.contains("shadow-docket")
+				|| combined.contains("epstein")
+				|| combined.contains("harvard")) {
+			return "raw_or_primary_summary";
 		}
 		if (combined.contains("deep-research")
 				|| combined.contains("supreme-court-synthesis")
 				|| combined.contains("supreme-court-research")) {
 			return "research_synthesis";
-		}
-		if (combined.contains("scdb")
-				|| combined.contains("shadow-docket")
-				|| combined.contains("epstein")
-				|| combined.contains("harvard")) {
-			return "raw_or_primary_summary";
 		}
 		return "source_register";
 	}

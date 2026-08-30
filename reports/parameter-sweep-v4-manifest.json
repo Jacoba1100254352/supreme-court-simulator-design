@@ -12,9 +12,9 @@
   "legislativeInput": "data/external/legislative/simulation-campaign-v21-paper.csv",
   "legislativeInputSha256": "554c92f6be3c1ccfc7b2635d6588b790101b6be1d50badc5b537b97c0851fcbe",
   "artifacts": [
-    {"path": "reports/parameter-sweep-v4.csv", "sha256": "a0b79a22e250d659e63ae75fcdb187b5cf60ece7fe848bb3e1f10fb8c4c01540"},
-    {"path": "reports/parameter-sweep-v4.md", "sha256": "fcede14057b1b2f5bb4f31969bbe9a297e4af564feb07c7e6239d3d0004730d5"},
-    {"path": "reports/parameter-sweep-drivers-v4.csv", "sha256": "8c51218ac06f3a5511cf4b7728a603b559206d55fbdf22a671522d36c76917fe"},
-    {"path": "reports/parameter-sweep-drivers-v4.md", "sha256": "c6ba6c3856798f52709028a6f6c898659e0e011c9726349b925bc16dc36131ec"}
+    {"path": "reports/parameter-sweep-v4.csv", "sha256": "1e61989b83a6b8f20d87e220672be765ebcc101eec14ff3bd0bdf4047efaa160"},
+    {"path": "reports/parameter-sweep-v4.md", "sha256": "37d680da61f157e868acf1421643eac46fdb268c0b2e8b7998949ee0442ce4b0"},
+    {"path": "reports/parameter-sweep-drivers-v4.csv", "sha256": "7025be713d25e4478f8913984a951746285812b6a81f3e0a149ea6a9427a5340"},
+    {"path": "reports/parameter-sweep-drivers-v4.md", "sha256": "110109a2c3bc53827c822c0be80375c28570557f0b392fa60b1021a827903252"}
   ]
 }

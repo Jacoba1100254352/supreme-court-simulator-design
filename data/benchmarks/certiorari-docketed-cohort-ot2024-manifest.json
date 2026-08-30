@@ -1,0 +1,101 @@
+{
+  "boundaryExclusions": [
+    {
+      "docketNumber": "24-1328",
+      "docketedDate": "2025-06-30",
+      "paidOrIfp": "paid",
+      "reason": "official page is dated on the Journal cutoff but the docket number is above the published paid-count range; excluded to preserve the published-statistics snapshot",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/24-1328.html"
+    },
+    {
+      "docketNumber": "24-1329",
+      "docketedDate": "2025-06-30",
+      "paidOrIfp": "paid",
+      "reason": "official page is dated on the Journal cutoff but the docket number is above the published paid-count range; excluded to preserve the published-statistics snapshot",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/24-1329.html"
+    },
+    {
+      "docketNumber": "24-7528",
+      "docketedDate": "2025-06-30",
+      "paidOrIfp": "ifp",
+      "reason": "official page is dated on the Journal cutoff but the docket number is above the published IFP-count range; excluded to preserve the published-statistics snapshot",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/24-7528.html"
+    },
+    {
+      "docketNumber": "24-7529",
+      "docketedDate": "2025-06-30",
+      "paidOrIfp": "ifp",
+      "reason": "official page is dated on the Journal cutoff but the docket number is above the published IFP-count range; excluded to preserve the published-statistics snapshot",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/24-7529.html"
+    }
+  ],
+  "boundaryPolicy": {
+    "basis": "The Journal's published paid and IFP counts define the snapshot-cohort ranges.",
+    "calendarDateCaveat": "The official public docket contains same-cutoff-date records above those count-defined ranges, so this cohort is not every public docket carrying the cutoff calendar date.",
+    "excludedDocketCount": 4
+  },
+  "cacheDirectory": "data/raw/supreme-court-dockets/ot2024",
+  "calibrationOutput": "data/calibration/scotus-certiorari-docketed-cohort-ot2024.csv",
+  "dispositionCounts": {
+    "denied": 3463,
+    "dismissed": 71,
+    "granted": 62,
+    "gvr_or_remand": 52,
+    "ifp_fee_denied_closed": 30,
+    "not_certiorari_intake": 171,
+    "pending_or_unresolved": 3,
+    "quorum_affirmance": 1,
+    "removed_from_docket": 1
+  },
+  "enumerationRule": {
+    "ifp": {
+      "firstDocket": "24-5001",
+      "lastDocket": "24-7527",
+      "officialCount": 2527
+    },
+    "paid": {
+      "firstDocket": "24-1",
+      "lastDocket": "24-1327",
+      "officialCount": 1327
+    }
+  },
+  "expectedRowCount": 3854,
+  "failedFetchCount": 0,
+  "failedFetches": [],
+  "freshlyFetchedRows": 121,
+  "journalReconciliationCounts": {},
+  "notes": [
+    "The official Journal reports 1,327 paid and 2,527 IFP cases docketed during OT2024.",
+    "The official published counts define the benchmark ranges 24-1 through 24-1327 and 24-5001 through 24-7527; same-day dockets above those count boundaries are recorded separately as exclusions.",
+    "The extract is a closed docketed-intake cohort, not a census of submissions that were never docketed.",
+    "Docket-visible response, CFR, CVSG, amicus, relist, disposition, and merits-follow-through fields are coded where applicable.",
+    "Rows already present in the same-date official-docket Journal-detail extract may be reused to avoid redundant Court-site requests; the manifest reports reused and freshly fetched counts.",
+    "Specialist-counsel, former-clerk, alleged-split, genuine-split, split-depth, issue-area, and vehicle-quality fields remain outside this automated source slice."
+  ],
+  "output": "data/benchmarks/certiorari-docketed-cohort-ot2024.csv",
+  "paidOrIfpCounts": {
+    "ifp": 2527,
+    "paid": 1327
+  },
+  "petitionTypeCounts": {
+    "appeal_or_jurisdictional_statement": 3,
+    "certiorari": 3683,
+    "extraordinary_writ": 166,
+    "uncoded_or_no_primary_filing": 2
+  },
+  "requestDelaySeconds": 0.5,
+  "retries": 5,
+  "reusedCachedDocketPages": 0,
+  "reusedExistingCohortRows": 3733,
+  "reusedJournalDocketDetailRows": 0,
+  "rowCount": 3854,
+  "snapshotDate": "2026-07-26",
+  "sourceJournalUrl": "https://www.supremecourt.gov/orders/journal/Jnl24.pdf",
+  "sourceKey": "scotus-certiorari-docketed-cohort-ot2024",
+  "sourceName": "Official Supreme Court OT2024 published-statistics paid/IFP docketed-intake cohort",
+  "sourceRecordSha256": "7af8deaf254042af17c15fd2ddb973edcfb51f2d8ea1f98ccf9d0f533fcdac00",
+  "sourceUrl": "https://www.supremecourt.gov/docket/docket.aspx",
+  "term": "OT2024",
+  "uniqueDocketCount": 3854,
+  "workers": 2
+}

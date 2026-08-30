@@ -1,0 +1,55 @@
+{
+  "apiEndpoint": "https://hudoc.exec.coe.int/app/query/results",
+  "notes": [
+    "The extract reconciles to the live HUDOC-EXEC API result count for the documented query.",
+    "The extract is a direct monitoring-capacity source slice, not a lower-court doctrinal-uptake or government-noncompliance benchmark.",
+    "The annual report URL is included for official execution-reporting context; this live API slice is not forced to match the static 2025 annual-report aggregate."
+  ],
+  "output": "data/benchmarks/ecthr-execution-monitoring-pending-leading-cases-v1.csv",
+  "query": "(contentsitename=EXEC AND execdocumenttype:CEC AND execisclosed:False AND execisprecedent:True AND execlanguage:ENG AND execgroup:MS)",
+  "rawResultSha256": "e52999539838801987b25f3b8749518fa3fd76e43c632d29beda6f5a09eba472",
+  "resultCount": 1450,
+  "rowCount": 1450,
+  "select": [
+    "execidentifier",
+    "exectitle",
+    "execappno",
+    "execstate",
+    "execgroup",
+    "execsupervision",
+    "execisclosed",
+    "execisprecedent",
+    "execlanguage",
+    "execjudgmentdateastext",
+    "execfinaljudgmentdateastext",
+    "execfinalresolutiondateastext",
+    "execshortstatusexecution",
+    "execapstatus",
+    "execmastergroupid"
+  ],
+  "shortStatusExecutionCodeCounts": {
+    "": 6,
+    "1": 53,
+    "10": 189,
+    "2": 434,
+    "3": 385,
+    "4": 44,
+    "5": 9,
+    "6": 254,
+    "7": 13,
+    "8": 63
+  },
+  "snapshotDate": "2026-07-02",
+  "sort": "execfinaljudgmentdate ascending",
+  "sourceAnnualReportUrl": "https://www.coe.int/en/web/execution/annual-report-2025",
+  "sourceGlossaryUrl": "https://www.coe.int/en/web/execution/glossary",
+  "sourceHelpUrl": "https://www.coe.int/en/web/execution/hudoc-exec-help",
+  "sourceKey": "ecthr-hudoc-exec-pending-leading-cases",
+  "sourceName": "HUDOC-EXEC pending leading cases",
+  "sourceUrl": "https://hudoc.exec.coe.int/",
+  "supervisionCodeCounts": {
+    "ENHA": 613,
+    "NEW": 7,
+    "STAND": 830
+  }
+}

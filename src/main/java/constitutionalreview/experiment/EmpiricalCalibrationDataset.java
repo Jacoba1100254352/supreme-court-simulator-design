@@ -40,11 +40,45 @@ public final class EmpiricalCalibrationDataset
 				observations.addAll(readCsv(path));
 			}
 		}
+		observations = preferDirectCertiorariCohorts(observations);
 		observations.sort(Comparator
 				                  .comparing(CalibrationObservation::metric)
 				                  .thenComparing(CalibrationObservation::term)
 				                  .thenComparing(CalibrationObservation::sourceKey));
 		return new EmpiricalCalibrationDataset(sourceDirectory, observations);
+	}
+
+	private static List<CalibrationObservation> preferDirectCertiorariCohorts(
+			List<CalibrationObservation> observations
+	) {
+		Map<String, List<CalibrationObservation>> directByMetricTerm = new LinkedHashMap<>();
+		for (CalibrationObservation observation : observations) {
+			if (!observation.sourceKey().startsWith("scotus-certiorari-docketed-cohort-ot")) {
+				continue;
+			}
+			directByMetricTerm
+					.computeIfAbsent(
+							observation.metric() + "\u0000" + observation.term(),
+							ignored -> new ArrayList<>()
+					)
+					.add(observation);
+		}
+		if (directByMetricTerm.isEmpty()) {
+			return observations;
+		}
+		List<CalibrationObservation> preferred = new ArrayList<>();
+		for (CalibrationObservation observation : observations) {
+			String key = observation.metric() + "\u0000" + observation.term();
+			List<CalibrationObservation> direct = directByMetricTerm.getOrDefault(key, List.of());
+			boolean duplicateSummary = !observation.sourceKey().startsWith("scotus-certiorari-docketed-cohort-ot")
+					&& direct.stream().anyMatch(candidate ->
+						Math.abs(candidate.value() - observation.value()) <= 0.0005
+					);
+			if (!duplicateSummary) {
+				preferred.add(observation);
+			}
+		}
+		return preferred;
 	}
 	
 	private static List<CalibrationObservation> readCsv(Path path) throws IOException {

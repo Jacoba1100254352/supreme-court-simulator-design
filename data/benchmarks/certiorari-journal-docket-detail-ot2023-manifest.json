@@ -1,0 +1,60 @@
+{
+  "dispositionCounts": {
+    "denied": 3769,
+    "dismissed": 63,
+    "granted": 58,
+    "gvr_or_remand": 57
+  },
+  "failedFetchCount": 4,
+  "failedFetches": [
+    {
+      "docketNumber": "23-5090",
+      "error": "URLError(TimeoutError(60, 'Operation timed out'))",
+      "index": "1532",
+      "sourceRecordId": "jnl23.pdf:text-page-222:line-8:23-5090",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/23-5090.html"
+    },
+    {
+      "docketNumber": "23-5209",
+      "error": "URLError(TimeoutError(60, 'Operation timed out'))",
+      "index": "1533",
+      "sourceRecordId": "jnl23.pdf:text-page-222:line-10:23-5209",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/23-5209.html"
+    },
+    {
+      "docketNumber": "23-5275",
+      "error": "URLError(TimeoutError(60, 'Operation timed out'))",
+      "index": "1534",
+      "sourceRecordId": "jnl23.pdf:text-page-222:line-12:23-5275",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/23-5275.html"
+    },
+    {
+      "docketNumber": "23-5310",
+      "error": "URLError(TimeoutError(60, 'Operation timed out'))",
+      "index": "1535",
+      "sourceRecordId": "jnl23.pdf:text-page-222:line-15:23-5310",
+      "sourceUrl": "https://www.supremecourt.gov/docket/docketfiles/html/public/23-5310.html"
+    }
+  ],
+  "journalDispositionRows": 3951,
+  "notes": [
+    "The extract is shaped like the certiorari cohort schema and covers the full OT2023 Journal disposition seed.",
+    "Official docket pages add petition filing date, response, CFR, CVSG, amicus, relist, and merits-detail fields where visible.",
+    "The source unit remains Journal disposition rows, not all petitions filed during OT2023.",
+    "This source slice is not a closed filed-petition cohort and cannot validate denominator-wide specialist-counsel or split-quality rates."
+  ],
+  "output": "data/benchmarks/certiorari-journal-docket-detail-ot2023.csv",
+  "paidOrIfpCounts": {
+    "application_or_misc": 34,
+    "ifp": 2643,
+    "paid": 1270
+  },
+  "rowCount": 3947,
+  "snapshotDate": "2026-07-24",
+  "sourceJournalUrl": "https://www.supremecourt.gov/orders/journal/jnl23.pdf",
+  "sourceKey": "scotus-docket-plus-journal-disposition-ot2023",
+  "sourceName": "Official Supreme Court docket pages joined to OT2023 Journal disposition rows",
+  "sourceRecordSha256": "6efe9b778c48e648ea6f583165cf9e00b3e9a30053dcfba339058443cc42e399",
+  "sourceUrl": "https://www.supremecourt.gov/docket/docket.aspx",
+  "workers": 2
+}

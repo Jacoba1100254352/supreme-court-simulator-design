@@ -1,0 +1,40 @@
+{
+  "notes": [
+    "Raw Journal PDF is not committed.",
+    "Extract is an official term-flow statistics slice, not a closed petition-cohort dataset.",
+    "Statistics cover activity between the docketing of the first case with a 24- prefix on July 3, 2024 and June 30, 2025."
+  ],
+  "officialCounts": {
+    "appeals_granted_paid": 2,
+    "applications_set_for_argument": 3,
+    "argued_full_opinions": 64,
+    "argued_per_curiam_opinions": 7,
+    "argued_set_for_reargument_next_term": 2,
+    "cases_argued_during_term": 73,
+    "cases_available_for_argument_next_term": 30,
+    "cases_available_for_argument_start": 28,
+    "cases_disposed": 4024,
+    "cases_docketed_ifp": 2527,
+    "cases_docketed_original": 2,
+    "cases_docketed_paid": 1327,
+    "cases_docketed_total": 3856,
+    "cases_remaining_from_last_term": 742,
+    "cases_reviewed_decided_without_oral_argument": 66,
+    "certiorari_granted_ifp": 4,
+    "certiorari_granted_paid": 64,
+    "disposed_summarily_after_review_granted": 0,
+    "number_remaining_on_docket": 574,
+    "original_cases_set_for_argument": 0,
+    "total_cases_granted_plenary_review": 70,
+    "total_cases_on_docket": 4598
+  },
+  "output": "data/benchmarks/certiorari-term-flow-extract-journal-ot2024.csv",
+  "rowCount": 22,
+  "sourceFile": "Jnl24.pdf",
+  "sourceFileSha256": "d89d73c1e442aaa78d8a5b879989a50d6c2dc58d5d0b181326eff86476acff1b",
+  "sourceKey": "journal-ot2024",
+  "sourceName": "Journal of the Supreme Court OT2024",
+  "sourceUrl": "https://www.supremecourt.gov/orders/journal/Jnl24.pdf",
+  "statisticsAsOf": "2025-06-30",
+  "term": "OT2024"
+}

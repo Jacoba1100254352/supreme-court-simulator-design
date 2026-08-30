@@ -1,0 +1,39 @@
+fieldName,fieldGroup,type,requiredFor,candidateSourceEvidence,simulatorMetric,validationUse,notes
+sourceKey,provenance,string,all,source register,all,required,Stable source-family key for joining extracted rows to provenance.
+sourceRecordId,provenance,string,all,source register,all,required,Source-specific record identifier such as docket number table row page citation or coding id.
+sourceUrl,provenance,url,all,source register,all,required,Direct source URL used by the coder.
+term,case_identity,string,all,Journal term docket term or study period,all,required,Needed to keep term-flow summaries separate from closed petition cohorts.
+docketNumber,case_identity,string,cert_petition_denominator;cert_cfr_response;cert_cvsg_signal,Journal docket page or docket record,certiorariAdmissionRate,recommended,Required for row-level docket linkage when available; may be absent in aggregate scholarly tables.
+petitionFiledDate,case_identity,date,cert_petition_denominator,docket record,certiorariPathRate,recommended,Needed to close filing cohorts rather than same-term flow counts.
+petitionType,petition_attributes,categorical,cert_petition_denominator,petition or docket record,certiorariPathRate,required,Examples include certiorari jurisdictional statement original action or other Supreme Court intake category.
+paidOrIfp,petition_attributes,categorical,cert_petition_denominator;cert_cfr_response,Journal or docket record,paidCertPetitionShare; ifpCertPetitionShare,required,Distinguishes paid from IFP petitions before grant or response modeling.
+petitionerType,petition_attributes,categorical,cert_petition_denominator;cert_elite_counsel,docket record or source coding,barCapital; repeatPlayerAdvantage,recommended,Supports repeat-player and claimant-capacity checks.
+respondentType,petition_attributes,categorical,cert_cfr_response;cert_cvsg_signal,docket record or source coding,solicitorGeneralSignalRate,required,Needed to separate United States respondent and federal-instrumentality respondent buckets from all petitions.
+lowerCourt,petition_attributes,string,cert_split_quality;cert_petition_denominator,petition or docket record,lowerCourtSplitDepth,recommended,Supports lower-court origin and split-depth coding.
+lowerCourtOrigin,petition_attributes,categorical,cert_split_quality;cert_petition_denominator,petition or docket record,lowerCourtSplitDepth,recommended,Examples include federal court of appeals state high court federal district court or agency path.
+issueArea,petition_attributes,categorical,cert_petition_denominator;cert_split_quality,petition question presented or source coding,caseType,recommended,Allows later separation of constitutional-review petitions from the full Supreme Court docket.
+responseFiled,procedure,binary,cert_cfr_response,docket record or study table,courtRequestedResponseRate,required,Whether a respondent response was filed voluntarily or after Court request.
+responseSource,procedure,categorical,cert_cfr_response,petition docket or source coding,solicitorGeneralSignalRate,required,Examples include waiver voluntary response court-requested response SG voluntary response or other response source.
+responseRequestedByCourt,procedure,binary,cert_cfr_response,docket record or source coding,paidCfrRequestRate; ifpCfrRequestRate,required,Whether the Court called for a response.
+cfrDate,procedure,date,cert_cfr_response,docket record or source coding,paidCfrRequestRate; ifpCfrRequestRate,recommended,Date of call for response when available.
+cvsgRequested,procedure,binary,cert_cvsg_signal,docket record or study table,cvsgRequestRate,required,Whether the Court called for the views of the Solicitor General.
+cvsgDate,procedure,date,cert_cvsg_signal,docket record or study table,cvsgRequestRate,recommended,Date of CVSG when available.
+sgRecommendation,procedure,categorical,cert_cvsg_signal,SG brief or source coding,solicitorGeneralSignalRate,recommended,Examples include grant deny GVR hold or other recommendation.
+certStageAmicusCount,procedure,number,cert_elite_counsel,brief docket or source table,amicusIntensity,recommended,Number of cert-stage amicus briefs supporting cert where source permits.
+specialistCounselFlag,representation,binary,cert_elite_counsel,source coding or counsel table,specialistCounselRate,required,Whether counsel is coded as specialist or elite Supreme Court counsel under the source rule.
+formerClerkCounselFlag,representation,binary,cert_elite_counsel,source coding or counsel biography,barCapital,recommended,Former clerk status should be kept distinct from specialist counsel when available.
+allegedSplitFlag,split_quality,binary,cert_split_quality,petition or source coding,lowerCourtSplitDepth,required,Whether the petition alleged a lower-court split or conflict.
+genuineSplitFlag,split_quality,binary,cert_split_quality,clerk coding or source coding,genuineLowerCourtSplitRate,required,Whether the source codes the split as genuine rather than merely alleged.
+splitDepth,split_quality,number,cert_split_quality,source coding or lower-court conflict table,lowerCourtSplitDepth,recommended,Number of courts or circuits implicated where source permits.
+vehicleQualityObjection,split_quality,binary,cert_split_quality;cert_petition_denominator,petition response or source coding,vehicleQuality,recommended,Whether the record vehicle quality was challenged or coded as defective.
+relistCount,procedure,number,cert_petition_denominator;cert_cvsg_signal,docket record or order list,relistRate,recommended,Number of relists before disposition where source permits.
+dispositionDate,disposition,date,cert_petition_denominator;cert_cfr_response;cert_cvsg_signal,docket record or Journal,certiorariAdmissionRate,required,Date of cert-stage disposition.
+certDisposition,disposition,categorical,cert_petition_denominator;cert_cfr_response;cert_cvsg_signal,docket record or Journal,certiorariAdmissionRate,required,Examples include granted denied GVR summary disposition DIG or other.
+granted,disposition,binary,cert_petition_denominator;cert_cfr_response;cert_cvsg_signal,docket record or Journal,certiorariAdmissionRate,required,Boolean grant indicator on the petition denominator.
+grantSetForArgument,disposition,binary,cert_petition_denominator,Journal term summary,certiorariAdmissionRate,recommended,Whether the case was granted and set for oral argument in the official term flow.
+gvrOrSummaryDisposition,disposition,binary,cert_petition_denominator;cert_cvsg_signal,docket record or Journal,conditionalReversalProbability,recommended,Keeps GVR and summary disposition separate from full merits grants.
+meritsDocket,merits_followthrough,string,cert_petition_denominator;cert_cvsg_signal,docket record or merits docket,meritsTransferRate,recommended,Needed when cert-stage disposition links to a merits docket.
+meritsDecisionDate,merits_followthrough,date,cert_petition_denominator;cert_cvsg_signal,merits docket or opinion,conditionalReversalProbability,recommended,Date of merits disposition when granted case is followed through.
+meritsOutcome,merits_followthrough,categorical,cert_petition_denominator;cert_cvsg_signal,opinion or Journal,conditionalReversalProbability,recommended,Examples include affirmed reversed vacated remanded dismissed or DIG.
+reversalOrVacatur,merits_followthrough,binary,cert_petition_denominator;cert_cvsg_signal,opinion or Journal,conditionalReversalProbability,recommended,Whether the lower-court judgment was reversed or vacated.
+coderNotes,quality_control,text,all,coder judgment,all,recommended,Use for denominator caveats source gaps and reconciliation notes.

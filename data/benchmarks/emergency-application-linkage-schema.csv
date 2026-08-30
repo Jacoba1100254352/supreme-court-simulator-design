@@ -1,0 +1,29 @@
+fieldName,fieldGroup,type,requiredFor,candidateSourceEvidence,simulatorMetric,validationUse,notes
+sourceKey,provenance,string,all,source register,all,required,Stable source-family key for joining extracted rows to provenance.
+sourceRecordId,provenance,string,all,source register,all,required,Page row docket number URL anchor or source-specific identifier.
+sourceUrl,provenance,url,all,source register,all,required,Direct source URL used by the coder.
+term,case_identity,string,all,SCOTUS term or source term label,all,required,Needed to separate term-flow summaries from application cohorts.
+docketNumber,case_identity,string,all,orders or docket page,all,required,Needed to link applications orders and merits proceedings.
+applicationDate,case_identity,date,application_presence,orders or docket page,emergencyStayDocketRate,required,Date the emergency application or interim-relief request was filed or docketed.
+applicationClass,application_attributes,categorical,application_presence;grant_rate,source coding or docket description,emergencyGrantConditionalRate,required,Examples include stay injunction vacatur administrative stay capital or other interim relief.
+applicantType,application_attributes,categorical,application_presence;downstream_effect,source coding or docket description,emergencyDownstreamEffect,required,Distinguish federal government state government private party rights claimant and other applicants where possible.
+respondentType,application_attributes,categorical,application_presence;downstream_effect,source coding or docket description,emergencyDownstreamEffect,recommended,Respondent type helps evaluate asymmetric downstream effects.
+reliefRequested,application_attributes,categorical,grant_rate;downstream_effect,application or order text,emergencyGrantConditionalRate,required,Requested stay injunction vacatur administrative stay or other relief.
+lowerCourt,application_attributes,string,application_presence,application or order text,emergencyStayDocketRate,recommended,Supports lower-court source and split diagnostics.
+responseRequested,procedure,binary,reason_visibility;grant_rate,orders or docket page,reasonedEmergencyOrderRate,required,Whether the Court requested a response or briefing before disposition.
+briefingWindowDays,procedure,number,reason_visibility,orders or docket page,reasonedEmergencyOrderRate,recommended,Duration from response request to response deadline when available.
+fullCourtReferral,procedure,binary,reason_visibility;grant_rate,orders or docket page,reasonedEmergencyOrderRate,recommended,Whether the application was referred to the full Court.
+dispositionDate,disposition,date,grant_rate;merits_followthrough,orders or docket page,emergencyGrantConditionalRate,required,Date of grant denial dismissal or other emergency disposition.
+reliefGranted,disposition,binary,grant_rate;downstream_effect,orders or docket page,emergencyGrantConditionalRate,required,Boolean grant indicator on the application denominator.
+dispositionType,disposition,categorical,grant_rate;merits_followthrough,orders or docket page,emergencyGrantConditionalRate,required,Grant denial dismissal administrative stay vacatur or other disposition.
+reasoningPresent,disposition,binary,reason_visibility,order text,reasonedEmergencyOrderRate,required,Whether an order or attached writing provides reasons beyond bare disposition.
+publicDisagreement,disposition,binary,reason_visibility,order text,reasonedEmergencyOrderRate,required,Whether a public dissent concurrence statement or noted disagreement accompanied the emergency disposition.
+statusQuoEffect,downstream,categorical,downstream_effect,order text and merits docket,emergencyDownstreamEffect,required,Preserve block restore alter or unclear status-quo effect.
+linkedMeritsDocket,merits_linkage,string,merits_followthrough;downstream_effect,docket page or merits case page,meritsAccelerationPerEmergencyStayDocket,required,Docket number or case name for linked merits proceeding if one exists.
+linkedMeritsFiledDate,merits_linkage,date,merits_followthrough,docket page or merits case page,meritsAccelerationPerEmergencyStayDocket,recommended,Supports timing from emergency disposition to merits review.
+linkedMeritsDecisionDate,merits_linkage,date,merits_followthrough,docket page or merits case page,meritsAccelerationPerEmergencyStayDocket,recommended,Supports timing and later merits follow-through classification.
+meritsFollowThroughCategory,merits_linkage,categorical,merits_followthrough,docket page or merits case page,meritsAccelerationPerEmergencyStayDocket,required,Values should separate none later merits affirmed later merits reversed moot DIG settlement and other.
+linkedMeritsOutcome,merits_linkage,categorical,merits_followthrough;downstream_effect,docket page or merits case page,emergencyDownstreamEffect,recommended,Needed to distinguish temporary relief later confirmed from temporary relief later reversed.
+downstreamPolicyStatus,downstream,categorical,downstream_effect,news official implementation record or merits docket,emergencyDownstreamEffect,recommended,Implementation stayed implemented modified expired or unclear.
+repeatFilingFlag,downstream,binary,downstream_effect,docket page or source coding,emergencyDownstreamEffect,recommended,Flags repeated emergency applications or repeat-player filing pattern after prior emergency relief.
+coderNotes,provenance,string,all,coder entry,all,recommended,Record ambiguity denominator caveats and unresolved linkage decisions.

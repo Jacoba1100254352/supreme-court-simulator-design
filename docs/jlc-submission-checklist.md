@@ -47,6 +47,8 @@ Do not upload `dist/constitutional-review-replication.zip` as the anonymous supp
 ## Replication and Data Availability
 
 - Normalized calibration inputs are under `data/calibration/`.
+- Benchmark extraction schemas, templates, work queues, emergency docket-linkage extracts, paired certiorari cohorts, the 876-precedent aggregate lower-court treatment extract, the 191-event/65-cell environmental published-citation snapshot, its pending expert-review queue and five practical agency episodes, the HUDOC-EXEC monitoring extract, and implementation/compliance materials are included. The environmental slice supports descriptive citation presence and case-study composition only; it is not a behavioral guardrail.
+- `paper/scripts/verify_paper_artifacts.py` reconciles all 876 aggregate-precedent rows and reductions plus the environmental cohort's 191 unique published events, 65 applicability/citation-presence cells, 115 public-text contexts, corrected 5-applied/1-distinguished automated-candidate counts, nonrandom missingness audit, 16-row pending review queue, five structured Gurganus classifications, official-source hashes, normalized rows, summaries, manifest hashes, and package inclusion.
 - Source-provenance manifests are under `data/calibration/provenance-manifest.csv` and `data/external/legislative/source-provenance.csv`.
 - Frozen legislative-output fixtures are under `data/external/legislative/`.
 - Raw third-party archives remain outside git under `data/raw/calibration/` or another local path.

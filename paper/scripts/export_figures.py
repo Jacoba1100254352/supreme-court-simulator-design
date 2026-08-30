@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import shutil
+import os
 import subprocess
 from pathlib import Path
 
@@ -11,6 +12,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 EXPORT_DIR = ROOT / "paper" / "figure-exports"
 BUILD_DIR = EXPORT_DIR / "build"
+TOOL_DIRS = [
+    Path("/Library/TeX/texbin"),
+    Path("/opt/homebrew/bin"),
+    Path("/usr/local/bin"),
+]
 
 FIGURES = [
     (
@@ -55,16 +61,35 @@ def wrapper(stem: str, title: str, description: str) -> str:
 """
 
 
+def tool_env() -> dict[str, str]:
+    env = os.environ.copy()
+    prefix = ":".join(str(directory) for directory in TOOL_DIRS if directory.exists())
+    if prefix:
+        env["PATH"] = prefix + ":" + env.get("PATH", "")
+    return env
+
+
 def run(command: list[str], cwd: Path) -> None:
-    subprocess.run(command, cwd=cwd, check=True)
+    subprocess.run(command, cwd=cwd, check=True, env=tool_env())
+
+
+def tool_path(name: str) -> str | None:
+    found = shutil.which(name)
+    if found:
+        return found
+    for directory in TOOL_DIRS:
+        candidate = directory / name
+        if candidate.exists():
+            return str(candidate)
+    return None
 
 
 def main() -> None:
     EXPORT_DIR.mkdir(parents=True, exist_ok=True)
     BUILD_DIR.mkdir(parents=True, exist_ok=True)
-    has_latexmk = shutil.which("latexmk") is not None
-    has_pdftoppm = shutil.which("pdftoppm") is not None
-    if not has_latexmk:
+    latexmk = tool_path("latexmk")
+    pdftoppm = tool_path("pdftoppm")
+    if not latexmk:
         raise SystemExit("latexmk is required to export standalone figure PDFs")
 
     for stem, title, description in FIGURES:
@@ -72,7 +97,7 @@ def main() -> None:
         tex_path.write_text(wrapper(stem, title, description))
         run(
             [
-                "latexmk",
+                latexmk,
                 "-pdf",
                 "-interaction=nonstopmode",
                 "-halt-on-error",
@@ -84,10 +109,10 @@ def main() -> None:
         pdf_path = BUILD_DIR / f"{stem}.pdf"
         final_pdf = EXPORT_DIR / f"{stem}.pdf"
         shutil.copyfile(pdf_path, final_pdf)
-        if has_pdftoppm:
+        if pdftoppm:
             run(
                 [
-                    "pdftoppm",
+                    pdftoppm,
                     "-png",
                     "-r",
                     "300",

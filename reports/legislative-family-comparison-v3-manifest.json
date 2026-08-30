@@ -12,7 +12,7 @@
   "legislativeInput": "data/external/legislative",
   "legislativeInputSha256": "48701ae65ae29e14a92c1e1ffcfe12740e44b7fad0fc38e67171a35c1a3f3699",
   "artifacts": [
-    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "41c2a1b6626405848c91acd6f586ed341c2f16ef28eba004ad1096c1a4cab75e"},
-    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "0040d0d14a7aa7f484074d932e5c9a82822b03c8262b7c048a30daee5769f515"}
+    {"path": "reports/legislative-family-comparison-v3.csv", "sha256": "899b75c12d65993779e3eccbf87558144ac7b91adec5072aa09ac8cb7a3237a8"},
+    {"path": "reports/legislative-family-comparison-v3.md", "sha256": "51e64a3e8fe1b4c692e3a381263e63819d8b7c6fa514d6d83ddb066cf35204e7"}
   ]
 }

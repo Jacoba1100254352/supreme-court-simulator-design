@@ -1,0 +1,390 @@
+{
+  "circuitExposureFrame": {
+    "expectedRowCount": 65,
+    "interpretation": "All cells reflect nationwide precedential applicability. Zero means no published CourtListener-linked citing opinion in the fixed window; the frame is not empirical exposure, opportunity, uptake, resistance, or compliance.",
+    "legallyExposedCells": 65,
+    "rowCount": 65,
+    "unit": "source decision x federal appellate circuit nationwide-applicability and published-citation-presence cell",
+    "zeroObservedEventCells": 20
+  },
+  "cohortName": "Environmental post-decision implementation cohort v1",
+  "dataQuality": {
+    "denominatorReconciledRows": 261,
+    "eventIdUnique": true,
+    "fullTextAvailabilityAudit": "reports/environmental-full-text-availability-audit-v1.csv",
+    "fullTextMissingnessInterpretation": "nonrandom across tracked decisions and opinion-document types",
+    "futureDatedRows": 0,
+    "intendedUse": "descriptive case-study summaries and data-quality checks; not behavioral guardrails or denominator-matched simulator validation",
+    "schemaFieldsPresent": true,
+    "totalRowsWithDenominatorField": 261
+  },
+  "decisionCount": 5,
+  "decisions": [
+    {
+      "caseName": "Massachusetts v. EPA",
+      "citation": "549 U.S. 497 (2007)",
+      "courtlistenerOpinionIds": [
+        145749,
+        9435108
+      ],
+      "decisionDate": "2007-04-02",
+      "decisionKey": "massachusetts-v-epa-2007",
+      "practicalClassification": "compliant",
+      "searchQuery": "(cites:145749 OR cites:9435108) AND dateFiled:[2007-04-03 TO 2009-04-01] AND status:published"
+    },
+    {
+      "caseName": "Rapanos v. United States",
+      "citation": "547 U.S. 715 (2006)",
+      "courtlistenerOpinionIds": [
+        145642,
+        9434923,
+        9434924,
+        9434925,
+        9434926,
+        9434927
+      ],
+      "decisionDate": "2006-06-19",
+      "decisionKey": "rapanos-v-united-states-2006",
+      "practicalClassification": "narrowly compliant",
+      "searchQuery": "(cites:145642 OR cites:9434923 OR cites:9434924 OR cites:9434925 OR cites:9434926 OR cites:9434927) AND dateFiled:[2006-06-20 TO 2008-06-18] AND status:published"
+    },
+    {
+      "caseName": "Utility Air Regulatory Group v. EPA",
+      "citation": "573 U.S. 302 (2014)",
+      "courtlistenerOpinionIds": [
+        2679834
+      ],
+      "decisionDate": "2014-06-23",
+      "decisionKey": "utility-air-regulatory-group-v-epa-2014",
+      "practicalClassification": "compliant",
+      "searchQuery": "cites:2679834 AND dateFiled:[2014-06-24 TO 2016-06-22] AND status:published"
+    },
+    {
+      "caseName": "Michigan v. EPA",
+      "citation": "576 U.S. 743 (2015)",
+      "courtlistenerOpinionIds": [
+        2959748,
+        2812587,
+        9812709,
+        9812710
+      ],
+      "decisionDate": "2015-06-29",
+      "decisionKey": "michigan-v-epa-2015",
+      "practicalClassification": "compliant",
+      "searchQuery": "(cites:2959748 OR cites:2812587 OR cites:9812709 OR cites:9812710) AND dateFiled:[2015-06-30 TO 2017-06-28] AND status:published"
+    },
+    {
+      "caseName": "Sackett v. EPA",
+      "citation": "598 U.S. 651 (2023)",
+      "courtlistenerOpinionIds": [
+        10516284,
+        9397381,
+        11066624
+      ],
+      "decisionDate": "2023-05-25",
+      "decisionKey": "sackett-v-epa-2023",
+      "practicalClassification": "compliant",
+      "searchQuery": "(cites:10516284 OR cites:9397381 OR cites:11066624) AND dateFiled:[2023-05-26 TO 2025-05-24] AND status:published"
+    }
+  ],
+  "extractionDate": "2026-07-26",
+  "generatedAtUtc": "2026-07-26T21:04:39+00:00",
+  "limitations": [
+    "The CourtListener search is explicitly published-only; unpublished and other-status opinions are outside the cohort.",
+    "Public full-text availability is 115/191 and nonrandom across tracked decisions and opinion-document types.",
+    "The citation-linked denominator is not an all-case opportunity denominator and excludes legally relevant cases that do not cite a tracked CourtListener opinion identifier.",
+    "The 65-cell nationwide-applicability and citation-presence frame does not reveal whether a relevant case opportunity arose in a circuit.",
+    "Automated context rules produce candidate flags and do not substitute for expert legal treatment coding; the review queue remains pending.",
+    "The five practical cases are purposively selected salient environmental statutory cases, not a representative or constitutional-case sample.",
+    "The practical cohort contains no noncompliant classification and cannot estimate a general government-noncompliance rate.",
+    "Neither cohort is denominator-matched to the simulator's synthetic case-average compliance metrics."
+  ],
+  "lowerCourtCohort": {
+    "allCourtSearchClusters": 239,
+    "citationContextFound": 115,
+    "citationDocumentation": "https://wiki.free.law/c/courtlistener/help/api/rest/v4/citations",
+    "citationLinkVerified": 191,
+    "citingOpinionDocumentsAfterDedupe": 191,
+    "codingMethod": "Up to three source-decision citation contexts per public document; conservative deterministic phrase rules produce automated candidate flags with rule and context retained; expert review remains pending",
+    "coverageDocumentation": "https://www.courtlistener.com/help/coverage/opinions/",
+    "deduplication": "Provider clusters grouped by court, filing date, normalized docket and case identity; the group member with the strongest public-document access retained, then the smallest cluster ID used as a stable final tie-breaker; all merged cluster IDs recorded",
+    "excludedCourts": "Supreme Court, state courts, territorial local courts, bankruptcy courts, and specialized non-district lower courts",
+    "exposureRows": 65,
+    "federalClustersAfterDedupe": 177,
+    "federalClustersBeforeDedupe": 192,
+    "fullTextAvailable": 115,
+    "includedCourts": "U.S. Courts of Appeals for the First through Eleventh, D.C., and Federal Circuits, plus U.S. district courts",
+    "publicationStatusScope": "published opinions only",
+    "searchApi": "https://www.courtlistener.com/api/rest/v4/search/",
+    "searchDocumentation": "https://wiki.free.law/c/courtlistener/help/api/rest/v4/search",
+    "searches": {
+      "massachusetts-v-epa-2007": {
+        "cachedPageHashes": {
+          "data/raw/environmental-implementation-cohort/courtlistener-search/massachusetts-v-epa-2007/c3dff016e54206d7/page-001.json": "0c9c3e3c7f95742eca5cef53297258a26348fd2c8efb2716a132849ccaba9938",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/massachusetts-v-epa-2007/c3dff016e54206d7/page-002.json": "3602588d2623c760fa5c1fe47b45d9e007dcf2c24cd2deaf1bca27b3490b68bb",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/massachusetts-v-epa-2007/c3dff016e54206d7/page-003.json": "2a9c4a650d65fc0cb34c1760741e1ecf9ea91944284bb3d750a97e32368b1b87",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/massachusetts-v-epa-2007/c3dff016e54206d7/page-004.json": "437f663f02bb6510f404a859c193b11791417336f6b86d31bf8889971ce45c5a",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/massachusetts-v-epa-2007/c3dff016e54206d7/page-005.json": "91f67ce5d8d05579e592e161c557ecd154f5c4d7ba208e4b37ccf8b66bc3de31"
+        },
+        "citingOpinionDocumentsAfterDedupe": 76,
+        "federalClustersAfterDedupe": 72,
+        "federalClustersBeforeDedupe": 81,
+        "fetchedCount": 98,
+        "pageCount": 5,
+        "query": "(cites:145749 OR cites:9435108) AND dateFiled:[2007-04-03 TO 2009-04-01] AND status:published",
+        "queryHash": "c3dff016e54206d7",
+        "queryUrl": "https://www.courtlistener.com/api/rest/v4/search/?q=%28cites%3A145749+OR+cites%3A9435108%29+AND+dateFiled%3A%5B2007-04-03+TO+2009-04-01%5D+AND+status%3Apublished&type=o&order_by=dateFiled+asc",
+        "reportedCount": 98
+      },
+      "michigan-v-epa-2015": {
+        "cachedPageHashes": {
+          "data/raw/environmental-implementation-cohort/courtlistener-search/michigan-v-epa-2015/b9216b21f0cb434b/page-001.json": "098379b505c5cc42633509122374bba3b9644d0b1ee90c31960d48c7a87c4931",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/michigan-v-epa-2015/b9216b21f0cb434b/page-002.json": "b4288903a0fd956d8f559ceb9043339adec210ed288c6a7b163705c28aafd8e4"
+        },
+        "citingOpinionDocumentsAfterDedupe": 25,
+        "federalClustersAfterDedupe": 23,
+        "federalClustersBeforeDedupe": 23,
+        "fetchedCount": 29,
+        "pageCount": 2,
+        "query": "(cites:2959748 OR cites:2812587 OR cites:9812709 OR cites:9812710) AND dateFiled:[2015-06-30 TO 2017-06-28] AND status:published",
+        "queryHash": "b9216b21f0cb434b",
+        "queryUrl": "https://www.courtlistener.com/api/rest/v4/search/?q=%28cites%3A2959748+OR+cites%3A2812587+OR+cites%3A9812709+OR+cites%3A9812710%29+AND+dateFiled%3A%5B2015-06-30+TO+2017-06-28%5D+AND+status%3Apublished&type=o&order_by=dateFiled+asc",
+        "reportedCount": 29
+      },
+      "rapanos-v-united-states-2006": {
+        "cachedPageHashes": {
+          "data/raw/environmental-implementation-cohort/courtlistener-search/rapanos-v-united-states-2006/384871b254606e2d/page-001.json": "38e9451ae266b6cd913c4d7718de2546f4518bce63b8d2286c644c1edb4129af",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/rapanos-v-united-states-2006/384871b254606e2d/page-002.json": "948c88fb1a1c0124241b695b2c65edc9e13ca1154704cf51b22e4dc02ce183c6",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/rapanos-v-united-states-2006/384871b254606e2d/page-003.json": "5ce710a1559d459d53c3f991639b1603ba130e40eb07c0f2ae33a4d4b9a15a67"
+        },
+        "citingOpinionDocumentsAfterDedupe": 41,
+        "federalClustersAfterDedupe": 37,
+        "federalClustersBeforeDedupe": 41,
+        "fetchedCount": 45,
+        "pageCount": 3,
+        "query": "(cites:145642 OR cites:9434923 OR cites:9434924 OR cites:9434925 OR cites:9434926 OR cites:9434927) AND dateFiled:[2006-06-20 TO 2008-06-18] AND status:published",
+        "queryHash": "384871b254606e2d",
+        "queryUrl": "https://www.courtlistener.com/api/rest/v4/search/?q=%28cites%3A145642+OR+cites%3A9434923+OR+cites%3A9434924+OR+cites%3A9434925+OR+cites%3A9434926+OR+cites%3A9434927%29+AND+dateFiled%3A%5B2006-06-20+TO+2008-06-18%5D+AND+status%3Apublished&type=o&order_by=dateFiled+asc",
+        "reportedCount": 45
+      },
+      "sackett-v-epa-2023": {
+        "cachedPageHashes": {
+          "data/raw/environmental-implementation-cohort/courtlistener-search/sackett-v-epa-2023/8a84e51477727ce0/page-001.json": "8b3b3c76031c914c3a3eb50633fe75d47d270cc5fd729d570cb456e4ad4c9034"
+        },
+        "citingOpinionDocumentsAfterDedupe": 5,
+        "federalClustersAfterDedupe": 5,
+        "federalClustersBeforeDedupe": 5,
+        "fetchedCount": 19,
+        "pageCount": 1,
+        "query": "(cites:10516284 OR cites:9397381 OR cites:11066624) AND dateFiled:[2023-05-26 TO 2025-05-24] AND status:published",
+        "queryHash": "8a84e51477727ce0",
+        "queryUrl": "https://www.courtlistener.com/api/rest/v4/search/?q=%28cites%3A10516284+OR+cites%3A9397381+OR+cites%3A11066624%29+AND+dateFiled%3A%5B2023-05-26+TO+2025-05-24%5D+AND+status%3Apublished&type=o&order_by=dateFiled+asc",
+        "reportedCount": 19
+      },
+      "utility-air-regulatory-group-v-epa-2014": {
+        "cachedPageHashes": {
+          "data/raw/environmental-implementation-cohort/courtlistener-search/utility-air-regulatory-group-v-epa-2014/2142a1a9aeafb14a/page-001.json": "1ff3b577b97fa2e8714c81f999511ec8cca8708aa390ca9b2ac6a564beb4c416",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/utility-air-regulatory-group-v-epa-2014/2142a1a9aeafb14a/page-002.json": "9d68da3922b82d107d421e0f81eaa3db220face847d8b45f776f857db7a0051a",
+          "data/raw/environmental-implementation-cohort/courtlistener-search/utility-air-regulatory-group-v-epa-2014/2142a1a9aeafb14a/page-003.json": "0f8b95f27fba921a016b734e9b65045e8c392d1f13815b5131226d3cb5d231ad"
+        },
+        "citingOpinionDocumentsAfterDedupe": 44,
+        "federalClustersAfterDedupe": 40,
+        "federalClustersBeforeDedupe": 42,
+        "fetchedCount": 48,
+        "pageCount": 3,
+        "query": "cites:2679834 AND dateFiled:[2014-06-24 TO 2016-06-22] AND status:published",
+        "queryHash": "2142a1a9aeafb14a",
+        "queryUrl": "https://www.courtlistener.com/api/rest/v4/search/?q=cites%3A2679834+AND+dateFiled%3A%5B2014-06-24+TO+2016-06-22%5D+AND+status%3Apublished&type=o&order_by=dateFiled+asc",
+        "reportedCount": 48
+      }
+    },
+    "source": "CourtListener public v4 search API, explicitly filtered to status:published, and linked public opinion documents",
+    "treatmentCounts": {
+      "applied": 5,
+      "cited_context_only": 109,
+      "distinguished": 1,
+      "unclear": 76
+    },
+    "treatmentReviewQueue": "data/benchmarks/environmental-directional-treatment-review-queue-v1.csv",
+    "treatmentReviewStatus": "pending expert legal review",
+    "uniqueOpinionDocumentsDownloadedOrAttempted": 187,
+    "unit": "source decision x citation-linked lower-court opinion document",
+    "windowDays": 730
+  },
+  "outputRows": {
+    "data/benchmarks/environmental-directional-treatment-review-queue-v1.csv": 16,
+    "data/benchmarks/environmental-practical-implementation-events-v1.csv": 5,
+    "data/benchmarks/gurganus-2025-table-1-classifications-v1.csv": 5,
+    "data/benchmarks/lower-court-environmental-circuit-exposure-v1.csv": 65,
+    "data/benchmarks/lower-court-environmental-treatment-events-v1.csv": 191,
+    "data/calibration/environmental-implementation-cohort-v1.csv": 32,
+    "reports/environmental-full-text-availability-audit-v1.csv": 60,
+    "reports/environmental-implementation-cohort-summary-v1.csv": 6
+  },
+  "outputSha256": {
+    "data/benchmarks/environmental-directional-treatment-review-queue-v1.csv": "2514f35f5d0f968ced4bd9d433d7301a32c782567d84b85c8d4dd45d706bbd1d",
+    "data/benchmarks/environmental-practical-implementation-events-v1.csv": "2b0689cb05fca70adfa1b9b9c649d556070014bc112fbeaae0a62b3f000a359b",
+    "data/benchmarks/gurganus-2025-table-1-classifications-v1.csv": "3b48e6f0e5c14bce423289486f3cfd06f58a91cc53c5beb70cb5ddd9bf0a1449",
+    "data/benchmarks/lower-court-environmental-circuit-exposure-v1.csv": "986d1a2758303eae2ee32f5f34bb00da93aced21279c64a31637790306fdb7f0",
+    "data/benchmarks/lower-court-environmental-treatment-events-v1.csv": "2abb8b2b71575c01a0edcd90eb8b5e64b825e823c15c2b33c60beefce5f99bd8",
+    "data/calibration/environmental-implementation-cohort-v1.csv": "7523a720c7063c7a2fa5dc1f89c175f0adbae4c8f538f2889a596b70ca200625",
+    "reports/environmental-full-text-availability-audit-v1.csv": "ef84805367c7785c3278860f77ebe18acf4b04b7f184a9ab73deaa34b5754625",
+    "reports/environmental-full-text-availability-audit-v1.md": "0d6fbf36436c7023e0c0d67d4cc103569446102df7b1677a01c5a585dcfa82e0",
+    "reports/environmental-implementation-cohort-summary-v1.csv": "d908d6cbf6708122fa20fa37984398e9740b2793adcae8610b64fc1fbf7d3222",
+    "reports/environmental-implementation-cohort-summary-v1.md": "ad0be7188755157015c8e3d9b531abb6232d89774f429a3a5f1031ebbe1f63dc"
+  },
+  "practicalImplementationCohort": {
+    "classificationCounts": {
+      "compliant": 4,
+      "narrowly compliant": 1
+    },
+    "rowCount": 5,
+    "sampleDesign": "complete purposive sample of five salient environmental Supreme Court decisions from 2005-2023 as selected in Gurganus (2025)",
+    "sourceStudy": "Gurganus, Kayla. 2025. \"Supreme Court Power and Agency Implementation in Environmental Litigation.\" Law & Policy 47(4).",
+    "sourceStudyDoi": "10.1111/lapo.70004",
+    "sourceStudyLicense": "CC BY 4.0",
+    "sourceStudyUrl": "https://doi.org/10.1111/lapo.70004",
+    "structuredClassificationFile": "data/benchmarks/gurganus-2025-table-1-classifications-v1.csv",
+    "structuredClassificationLocator": "Gurganus (2025) Table 1 and decision-specific case-study discussion",
+    "unit": "source decision x practical agency implementation episode",
+    "verifiedOfficialSources": {
+      "gurganus-crossref-metadata": {
+        "bytes": 20916,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/gurganus-crossref-metadata.source.json",
+        "contentType": "application/json",
+        "description": "Crossref metadata for the open-access source study",
+        "documentId": "gurganus-crossref-metadata",
+        "expectedTermsVerified": [
+          "supreme court power and agency implementation in environmental litigation",
+          "gurganus"
+        ],
+        "finalUrl": "https://api.crossref.org/works/10.1111/lapo.70004",
+        "license": "Article licensed CC BY 4.0 according to the publisher metadata",
+        "retrievalUrl": "https://api.crossref.org/works/10.1111/lapo.70004",
+        "sha256": "8ad93016d4f6c19eabd32d5adb773c32fa39580aca3e6bf1cc37672d4b12a519",
+        "sourceUrl": "https://doi.org/10.1111/lapo.70004",
+        "status": "verified"
+      },
+      "massachusetts-final-findings": {
+        "bytes": 314821,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/massachusetts-final-findings.source.pdf",
+        "contentType": "application/pdf",
+        "description": "EPA final endangerment and cause-or-contribute findings",
+        "documentId": "massachusetts-final-findings",
+        "expectedTermsVerified": [
+          "massachusetts v. epa",
+          "endangerment"
+        ],
+        "finalUrl": "https://www.epa.gov/sites/default/files/2021-05/documents/federal_register-epa-hq-oar-2009-0171-dec.15-09.pdf",
+        "license": "U.S. federal government work",
+        "retrievalUrl": "https://www.epa.gov/sites/default/files/2021-05/documents/federal_register-epa-hq-oar-2009-0171-dec.15-09.pdf",
+        "sha256": "18adeaa16621c9d03f6bc6acebc3dd34efe5b6a6fc707c823fcb6fc87465438c",
+        "sourceUrl": "https://www.epa.gov/sites/default/files/2021-05/documents/federal_register-epa-hq-oar-2009-0171-dec.15-09.pdf",
+        "status": "verified"
+      },
+      "michigan-2016-final-finding": {
+        "bytes": 400493,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/michigan-2016-final-finding.source.pdf",
+        "contentType": "application/pdf",
+        "description": "EPA final supplemental appropriate-and-necessary finding",
+        "documentId": "michigan-2016-final-finding",
+        "expectedTermsVerified": [
+          "michigan v. epa",
+          "supplemental finding"
+        ],
+        "finalUrl": "https://www.govinfo.gov/content/pkg/FR-2016-04-25/pdf/2016-09429.pdf",
+        "license": "U.S. federal government work",
+        "retrievalUrl": "https://www.govinfo.gov/content/pkg/FR-2016-04-25/pdf/2016-09429.pdf",
+        "sha256": "5f72bf7c2ea011b731659be08bc2b4a98ae13f22455ccc5818682a2297d0028b",
+        "sourceUrl": "https://www.govinfo.gov/content/pkg/FR-2016-04-25/pdf/2016-09429.pdf",
+        "status": "verified"
+      },
+      "rapanos-2007-guidance": {
+        "bytes": 287557,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/rapanos-2007-guidance.source.pdf",
+        "contentType": "application/pdf",
+        "description": "EPA and Army Corps post-Rapanos jurisdictional guidance",
+        "documentId": "rapanos-2007-guidance",
+        "expectedTermsVerified": [
+          "rapanos",
+          "significant nexus"
+        ],
+        "finalUrl": "https://www.epa.gov/sites/default/files/2016-04/documents/rapanosguidance6507.pdf",
+        "license": "U.S. federal government work",
+        "retrievalUrl": "https://www.epa.gov/sites/default/files/2016-04/documents/rapanosguidance6507.pdf",
+        "sha256": "626acefbb45d7fbec1c95c69f10ac71e7c83a32f660092d426561795ced53aa9",
+        "sourceUrl": "https://www.epa.gov/sites/default/files/2016-04/documents/rapanosguidance6507.pdf",
+        "status": "verified"
+      },
+      "sackett-2023-agency-statement": {
+        "bytes": 51746,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/sackett-2023-agency-statement.source.html",
+        "contentType": "text/html; charset=UTF-8",
+        "description": "EPA statement announcing implementation of Sackett",
+        "documentId": "sackett-2023-agency-statement",
+        "expectedTermsVerified": [
+          "sackett v. epa",
+          "amend the final"
+        ],
+        "finalUrl": "https://www.epa.gov/newsreleases/epa-statement-sackett-v-epa",
+        "license": "U.S. federal government work",
+        "retrievalUrl": "https://www.epa.gov/newsreleases/epa-statement-sackett-v-epa",
+        "sha256": "0ae392a15ad4bf480ed0ab236a86d85f4c0f1b67da5ac524a7110bdc4bf75927",
+        "sourceUrl": "https://www.epa.gov/newsreleases/epa-statement-sackett-v-epa",
+        "status": "verified"
+      },
+      "sackett-2023-final-rule": {
+        "bytes": 259062,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/sackett-2023-final-rule.source.pdf",
+        "contentType": "application/pdf",
+        "description": "EPA and Army Corps final conforming waters rule",
+        "documentId": "sackett-2023-final-rule",
+        "expectedTermsVerified": [
+          "sackett v. epa",
+          "conforming"
+        ],
+        "finalUrl": "https://www.govinfo.gov/content/pkg/FR-2023-09-08/pdf/2023-18929.pdf",
+        "license": "U.S. federal government work",
+        "retrievalUrl": "https://www.govinfo.gov/content/pkg/FR-2023-09-08/pdf/2023-18929.pdf",
+        "sha256": "c8832ce3f25be96226735c767f3df01a497baf10b6373ab741d2f1877d50943b",
+        "sourceUrl": "https://www.govinfo.gov/content/pkg/FR-2023-09-08/pdf/2023-18929.pdf",
+        "status": "verified"
+      },
+      "uarg-2014-implementation-memo": {
+        "bytes": 1582483,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/uarg-2014-implementation-memo.source.pdf",
+        "contentType": "application/pdf",
+        "description": "EPA memorandum on permitting after UARG",
+        "documentId": "uarg-2014-implementation-memo",
+        "expectedTermsVerified": [
+          "utility air regulatory group",
+          "supreme court"
+        ],
+        "finalUrl": "https://www.epa.gov/sites/default/files/2015-12/documents/20140724memo.pdf",
+        "license": "U.S. federal government work",
+        "retrievalUrl": "https://www.epa.gov/sites/default/files/2015-12/documents/20140724memo.pdf",
+        "sha256": "8ac6f9bdd97bc7264611fa131f54880c16f117f201e1a3af5561640b474d77ea",
+        "sourceUrl": "https://www.epa.gov/sites/default/files/2015-12/documents/20140724memo.pdf",
+        "status": "verified"
+      },
+      "uarg-2015-final-rule": {
+        "bytes": 252005,
+        "cachePath": "data/raw/environmental-implementation-cohort/official-sources/uarg-2015-final-rule.source.pdf",
+        "contentType": "application/pdf",
+        "description": "EPA final rule removing vacated permitting provisions",
+        "documentId": "uarg-2015-final-rule",
+        "expectedTermsVerified": [
+          "utility air",
+          "step 2"
+        ],
+        "finalUrl": "https://www.govinfo.gov/content/pkg/FR-2015-08-19/pdf/2015-20501.pdf",
+        "license": "U.S. federal government work",
+        "retrievalUrl": "https://www.govinfo.gov/content/pkg/FR-2015-08-19/pdf/2015-20501.pdf",
+        "sha256": "314dc9f95d27195685623eff91c43a72a35289776b506d2d6166cc4ef4480a67",
+        "sourceUrl": "https://www.govinfo.gov/content/pkg/FR-2015-08-19/pdf/2015-20501.pdf",
+        "status": "verified"
+      }
+    }
+  },
+  "schemaVersion": "1.0"
+}

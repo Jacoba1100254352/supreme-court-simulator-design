@@ -30,7 +30,7 @@ public record MetricDefinition(
 			new MetricDefinition("invalidationRate", "Invalidation rate", MetricDirection.DIAGNOSTIC, "Share of cases invalidating a law or government action."),
 			new MetricDefinition("meritsReviewRate", "Merits review", MetricDirection.DIAGNOSTIC, "Share of cases resolved through merits review."),
 			new MetricDefinition("courtRequestedResponseRate", "Court-requested response", MetricDirection.DIAGNOSTIC, "Intermediate screening stage before discretionary review or emergency disposition."),
-			new MetricDefinition("cvsgRequestRate", "CVSG request", MetricDirection.DIAGNOSTIC, "Solicitor-General-views request as a high-salience gate signal."),
+			new MetricDefinition("cvsgRequestRate", "CVSG request", MetricDirection.DIAGNOSTIC, "Solicitor-General-views requests per certiorari-path petition."),
 			new MetricDefinition("barCapital", "Bar capital", MetricDirection.DIAGNOSTIC, "Claimant-side appellate specialization and repeat-player legal capacity."),
 			new MetricDefinition("claimStrength", "Claim strength", MetricDirection.DIAGNOSTIC, "Latent substantive constitutional merit distinct from vehicle quality."),
 			new MetricDefinition("vehicleQuality", "Vehicle quality", MetricDirection.DIAGNOSTIC, "Record and procedural suitability distinct from underlying claim strength."),

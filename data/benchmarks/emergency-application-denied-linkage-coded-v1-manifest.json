@@ -1,0 +1,33 @@
+{
+  "applicationDateRows": 210,
+  "dispositionCounts": {
+    "Denied": 200,
+    "Dismissed": 1,
+    "Granted/Denied": 2,
+    "NA": 7
+  },
+  "failedFetchCount": 0,
+  "failedFetches": {},
+  "generatedBy": "extract_emergency_denied_docket_detail_benchmark.py",
+  "linkedMeritsRefreshDate": "2026-07-26",
+  "manualLinkedMeritsRows": 1,
+  "manualLinkedMeritsSources": [
+    "https://www.supremecourt.gov/docket/docketfiles/html/public/25-1017.html"
+  ],
+  "notes": "Official docket-page join for the denied/non-binary emergency linkage queue. This is all-application docket-linkage evidence for docket-visible fields, not external implementation validation.",
+  "officialDocketBase": "https://www.supremecourt.gov/docket/docketfiles/html/public",
+  "reasoningPresentRows": 40,
+  "reliefGrantedCounts": {
+    "0": 200,
+    "NA": 10
+  },
+  "repeatFilingRows": 55,
+  "responseRequestedRows": 60,
+  "rowCount": 210,
+  "sha256": "accbf4bb8e44d704950eaeb330fd844905db2b7724c6113e677477cc315b17fe",
+  "shadowDocketSourceUrl": "https://www.shadowdocketdata.com/data",
+  "snapshotDate": "2026-07-02",
+  "sourceQueue": "data/benchmarks/emergency-application-denied-linkage-workqueue-v1.csv",
+  "sourceQueueRows": 210,
+  "uniqueDocketCount": 197
+}

@@ -324,7 +324,7 @@ public final class WorldGenerator
 			return AccessPath.FILTERED_QPC;
 		}
 		double paidCertShare = Values.clamp01(
-				0.235
+				0.326
 						+ (profile.publicLegitimacy() - 0.58) * 0.03
 						+ (profile.rightsRisk() - 0.20) * 0.03
 						- (profile.weakMandateRate() - 0.22) * 0.02

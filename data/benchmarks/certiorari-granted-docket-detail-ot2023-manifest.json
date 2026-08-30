@@ -1,0 +1,22 @@
+{
+  "dispositionCounts": {
+    "granted": 58,
+    "gvr_or_remand": 57
+  },
+  "failedFetchCount": 0,
+  "failedFetches": [],
+  "journalGrantedOrGvrRows": 115,
+  "notes": [
+    "The extract is shaped like the certiorari cohort schema but covers only Journal granted and GVR/remand rows.",
+    "Official docket pages add petition filing date, response-request, CVSG, argument, and merits-outcome detail where visible.",
+    "This source slice is not a closed filed-petition cohort and cannot validate whole-docket CFR, CVSG, counsel, or split-quality rates."
+  ],
+  "output": "data/benchmarks/certiorari-granted-docket-detail-ot2023.csv",
+  "rowCount": 115,
+  "snapshotDate": "2026-07-02",
+  "sourceJournalUrl": "https://www.supremecourt.gov/orders/journal/jnl23.pdf",
+  "sourceKey": "scotus-docket-plus-journal-granted-ot2023",
+  "sourceName": "Official Supreme Court docket pages joined to OT2023 Journal granted/GVR rows",
+  "sourceRecordSha256": "e0775169c91e07769d4c566047b47e32b922f159b29acc19e3b37a449c4e37b9",
+  "sourceUrl": "https://www.supremecourt.gov/docket/docket.aspx"
+}
