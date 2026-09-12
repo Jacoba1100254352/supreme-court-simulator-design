@@ -1356,14 +1356,12 @@ def check_certiorari_field_readiness() -> None:
         "petitionType",
         "paidOrIfp",
         "lowerCourt",
-        "lowerCourtOrigin",
         "responseFiled",
         "responseSource",
         "responseRequestedByCourt",
         "cfrDate",
         "cvsgRequested",
         "cvsgDate",
-        "sgRecommendation",
         "certStageAmicusCount",
         "relistCount",
         "dispositionDate",
@@ -1392,6 +1390,8 @@ def check_certiorari_field_readiness() -> None:
             fail(f"certiorari field-readiness closed-cohort row omits undocketed boundary for {field}")
 
     partial_fields = {
+        "lowerCourtOrigin",
+        "sgRecommendation",
         "petitionerType",
         "respondentType",
         "meritsDecisionDate",

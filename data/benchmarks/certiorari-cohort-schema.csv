@@ -12,13 +12,13 @@ respondentType,petition_attributes,categorical,cert_cfr_response;cert_cvsg_signa
 lowerCourt,petition_attributes,string,cert_split_quality;cert_petition_denominator,petition or docket record,lowerCourtSplitDepth,recommended,Supports lower-court origin and split-depth coding.
 lowerCourtOrigin,petition_attributes,categorical,cert_split_quality;cert_petition_denominator,petition or docket record,lowerCourtSplitDepth,recommended,Examples include federal court of appeals state high court federal district court or agency path.
 issueArea,petition_attributes,categorical,cert_petition_denominator;cert_split_quality,petition question presented or source coding,caseType,recommended,Allows later separation of constitutional-review petitions from the full Supreme Court docket.
-responseFiled,procedure,binary,cert_cfr_response,docket record or study table,courtRequestedResponseRate,required,Whether a respondent response was filed voluntarily or after Court request.
+responseFiled,procedure,categorical,cert_cfr_response,docket record or study table,courtRequestedResponseRate,required,Observed values are yes no or waived; a waiver is distinct from a filed response.
 responseSource,procedure,categorical,cert_cfr_response,petition docket or source coding,solicitorGeneralSignalRate,required,Examples include waiver voluntary response court-requested response SG voluntary response or other response source.
 responseRequestedByCourt,procedure,binary,cert_cfr_response,docket record or source coding,paidCfrRequestRate; ifpCfrRequestRate,required,Whether the Court called for a response.
 cfrDate,procedure,date,cert_cfr_response,docket record or source coding,paidCfrRequestRate; ifpCfrRequestRate,recommended,Date of call for response when available.
 cvsgRequested,procedure,binary,cert_cvsg_signal,docket record or study table,cvsgRequestRate,required,Whether the Court called for the views of the Solicitor General.
 cvsgDate,procedure,date,cert_cvsg_signal,docket record or study table,cvsgRequestRate,recommended,Date of CVSG when available.
-sgRecommendation,procedure,categorical,cert_cvsg_signal,SG brief or source coding,solicitorGeneralSignalRate,recommended,Examples include grant deny GVR hold or other recommendation.
+sgRecommendation,procedure,categorical,cert_cvsg_signal,SG brief or source coding,solicitorGeneralSignalRate,recommended,Examples include grant deny GVR hold or other recommendation; legacy brief filed values record filing presence only and must not count as substantive recommendation coding.
 certStageAmicusCount,procedure,number,cert_elite_counsel,brief docket or source table,amicusIntensity,recommended,Number of cert-stage amicus briefs supporting cert where source permits.
 specialistCounselFlag,representation,binary,cert_elite_counsel,source coding or counsel table,specialistCounselRate,required,Whether counsel is coded as specialist or elite Supreme Court counsel under the source rule.
 formerClerkCounselFlag,representation,binary,cert_elite_counsel,source coding or counsel biography,barCapital,recommended,Former clerk status should be kept distinct from specialist counsel when available.

@@ -1,0 +1,147 @@
+{
+  "humanSignoff": "pending; no human review performed by this build",
+  "inputs": [
+    {
+      "path": "data/benchmarks/certiorari-docketed-cohort-ot2023-manifest.json",
+      "sha256": "66bffc7f382bafd0049969f5919bc282ff51f344f303a7fc73b498e876e52f55"
+    },
+    {
+      "path": "data/benchmarks/certiorari-docketed-cohort-ot2023.csv",
+      "sha256": "fd9e4f38560bfc4e96141b7b22904fef22f76f50d4df2bb74e781dc02360871b"
+    },
+    {
+      "path": "data/benchmarks/certiorari-docketed-cohort-ot2024-manifest.json",
+      "sha256": "0168e860aa78087884179388a169e5109072fd3628ae6a6635bdaaeac351fa10"
+    },
+    {
+      "path": "data/benchmarks/certiorari-docketed-cohort-ot2024.csv",
+      "sha256": "27cb24e2189501b8ffc8b0976ab3e945c8ef2d3943ce0913864d7f3c46a9ec45"
+    },
+    {
+      "path": "data/benchmarks/certiorari-journal-docket-detail-ot2023-manifest.json",
+      "sha256": "33a3c187dba6cd276c78f9cafb699c11ed90d16ba2e6c8b6d9ff3d90f36f5de1"
+    },
+    {
+      "path": "data/benchmarks/emergency-application-denied-linkage-coded-v1.csv",
+      "sha256": "accbf4bb8e44d704950eaeb330fd844905db2b7724c6113e677477cc315b17fe"
+    },
+    {
+      "path": "data/benchmarks/emergency-application-linkage-coded-v1.csv",
+      "sha256": "e52025d0cafdb02c7e34fb9f631d34e8519640a65a8f5bb04d531a98982175c9"
+    },
+    {
+      "path": "data/benchmarks/emergency-application-order-extract-shadow-docket-v3-0.csv",
+      "sha256": "b9b528345552068bc5ed33c441117f6df782fe99a1395546e851be00b4aa1ed1"
+    },
+    {
+      "path": "data/benchmarks/environmental-directional-treatment-review-queue-v1.csv",
+      "sha256": "2514f35f5d0f968ced4bd9d433d7301a32c782567d84b85c8d4dd45d706bbd1d"
+    },
+    {
+      "path": "data/benchmarks/environmental-implementation-cohort-v1-manifest.json",
+      "sha256": "0121fc87fe80e9f1bb91dbb1974d5fd793bd684325b2ddb7cd1887ad299e1c76"
+    },
+    {
+      "path": "data/benchmarks/lower-court-environmental-treatment-events-v1.csv",
+      "sha256": "2abb8b2b71575c01a0edcd90eb8b5e64b825e823c15c2b33c60beefce5f99bd8"
+    },
+    {
+      "path": "docs/evidence-acquisition-priorities.md",
+      "sha256": "414aaf40de0db8328c4a50bcd231361f8b54f1300070a84713004147bbd57c62"
+    },
+    {
+      "path": "docs/expert-legal-coding-protocol.md",
+      "sha256": "6c5d34362153972c93d7b76e2ade8ebc9e32cc25ee416698b824838da5916d7d"
+    },
+    {
+      "path": "tools/prepare_expert_review.py",
+      "sha256": "34648f7fa9ce3422b5e5e770d2bd3143be4b6ee2ddaa095e56c3db0ad7c24e18"
+    },
+    {
+      "path": "tools/review_coding_returns.py",
+      "sha256": "022ad2a67f3eb0253c16615d42990daf5d3ab8665589feb1bcbf5bd6713a83bb"
+    }
+  ],
+  "outputs": [
+    {
+      "bytes": 843,
+      "path": "data/review/expert-legal-coding-v1/adjudication-template.csv",
+      "sha256": "dbed9a82fdc6258b770e3fd20a62c3d69d00860a212334b3ccd517eafbd89a9e"
+    },
+    {
+      "bytes": 70880,
+      "path": "data/review/expert-legal-coding-v1/case-cards.md",
+      "sha256": "855c50e943bb1704f9c714733d2e8805ccdadee33688aca78a4f85ddf54a1979"
+    },
+    {
+      "bytes": 2108,
+      "path": "data/review/expert-legal-coding-v1/coordinator-key.csv",
+      "sha256": "9aed6a77e736cad4d336c7a296c08772af3dccfddd2694792c036885f902eb34"
+    },
+    {
+      "bytes": 6451,
+      "path": "data/review/expert-legal-coding-v1/reviewer-a-template.csv",
+      "sha256": "60adac5de64bd829faeabd4ec78a0a66aaebab98b06113191898caac6a8883a2"
+    },
+    {
+      "bytes": 6451,
+      "path": "data/review/expert-legal-coding-v1/reviewer-b-template.csv",
+      "sha256": "60adac5de64bd829faeabd4ec78a0a66aaebab98b06113191898caac6a8883a2"
+    },
+    {
+      "bytes": 151999,
+      "path": "reports/emergency-implementation-priority-queue-v1.csv",
+      "sha256": "61f36c564d9aa769c66a62f102505c03e0e1a1d8fd93ba6220adbabc46dd3afe"
+    },
+    {
+      "bytes": 32661,
+      "path": "reports/environmental-text-recovery-queue-v1.csv",
+      "sha256": "920ab0150721b079e89daa2103df51186bd371ba66d2152078c56ef9537bcf33"
+    },
+    {
+      "bytes": 1781,
+      "path": "reports/legacy-docket-recovery-reconciliation-v1.csv",
+      "sha256": "05f1c80e834b6fb392a71f17d2e51b4d3a02b876eb202026c9b73dc47db96de8"
+    },
+    {
+      "bytes": 3420,
+      "path": "reports/petition-characteristics-coverage-v1.csv",
+      "sha256": "b4bc094512d2c76d70fb9b1c91954e23678c889c65199d18fb96882455364fb3"
+    },
+    {
+      "bytes": 3474322,
+      "path": "reports/petition-characteristics-priority-queue-v1.csv",
+      "sha256": "92066f2a51a75294aec88711646795a1b59e425857ea83f8090cf9005a9692f2"
+    },
+    {
+      "bytes": 484,
+      "path": "reports/review-data-integrity-v1.csv",
+      "sha256": "6856623ff97e9b3c281ac758a388757a42e4731ff9547142a16cb9ddaf6ce32f"
+    },
+    {
+      "bytes": 3950,
+      "path": "reports/review-data-quality-v1.md",
+      "sha256": "54553286f0eb4bb6ee780eaaee12fdf04f4c9e1e2e62489cd362fae0c6563ab5"
+    }
+  ],
+  "packetVersion": "v1",
+  "purpose": "independent human legal coding and evidence acquisition preparation",
+  "summary": {
+    "certiorariPetitions": 7716,
+    "completedHumanReviews": 0,
+    "cvsgPriorityRows": 30,
+    "emergencyMatters": 227,
+    "emergencySourceRows": 241,
+    "environmentalEvents": 191,
+    "grantedEmergencyMatters": 30,
+    "legacyFailuresMatchedInCohort": 4,
+    "missingFullText": 76,
+    "petitionQueueRows": 7716,
+    "pilotRows": 40,
+    "reviewPacketRows": 16,
+    "sourceSnapshots": {
+      "OT2023": "2026-07-24",
+      "OT2024": "2026-07-26"
+    }
+  }
+}

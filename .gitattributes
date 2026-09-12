@@ -1,2 +1,4 @@
 * text=auto eol=lf
+# Fingerprinted CSV artifacts must retain their original serialized bytes.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 *.pdf binary

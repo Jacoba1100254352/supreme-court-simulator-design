@@ -10,6 +10,8 @@ import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+from package_policy import skip_source
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
@@ -17,6 +19,8 @@ ARCHIVE = DIST / "constitutional-review-replication.zip"
 MANIFEST = DIST / "replication-package-manifest.json"
 
 INCLUDE_PATHS = [
+    ".gitattributes",
+    ".gitignore",
     "AGENTS.md",
     "CITATION.cff",
     "Makefile",
@@ -38,9 +42,19 @@ INCLUDE_PATHS = [
     "reports",
     "src",
     "tools",
+    "notebooks",
 ]
 
 REQUIRED_CONTENTS = {
+    "data/review/expert-legal-coding-v1/manifest.json",
+    "data/review/expert-legal-coding-v1/reviewer-a-template.csv",
+    "data/review/expert-legal-coding-v1/reviewer-b-template.csv",
+    "docs/expert-legal-coding-protocol.md",
+    "docs/evidence-acquisition-priorities.md",
+    "reports/review-data-quality-v1.md",
+    "tools/prepare_expert_review.py",
+    "tools/review_coding_returns.py",
+    "tools/package_policy.py",
     "data/benchmarks/certiorari-docketed-cohort-ot2023.csv",
     "data/benchmarks/certiorari-docketed-cohort-ot2023-manifest.json",
     "data/benchmarks/certiorari-docketed-cohort-ot2024.csv",
@@ -207,13 +221,7 @@ def package_tree_sha256(entries: list[dict[str, object]]) -> str:
 
 
 def should_skip(path: Path) -> bool:
-    relative = path.relative_to(ROOT)
-    return (
-        path.name == ".DS_Store"
-        or path.suffix == ".iml"
-        or relative.parts[:2] == ("data", "raw")
-        or any(part in EXCLUDED_PARTS for part in relative.parts)
-    )
+    return skip_source(path, ROOT)
 
 
 def iter_files() -> list[Path]:

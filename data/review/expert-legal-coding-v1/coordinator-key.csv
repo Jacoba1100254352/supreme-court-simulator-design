@@ -1,0 +1,17 @@
+reviewId,sourceRecordId,automatedTreatment,reviewStratum,codingRule
+E001,utility-air-regulatory-group-v-epa-2014:2792922,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E002,massachusetts-v-epa-2007:3000502,distinguished,all_automated_directional_candidates,target-linked-limiting-distinction
+E003,utility-air-regulatory-group-v-epa-2014:2758285,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E004,rapanos-v-united-states-2006:2999595,applied,all_automated_directional_candidates,target-linked-application
+E005,sackett-v-epa-2023:10791418,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E006,rapanos-v-united-states-2006:3048582,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E007,sackett-v-epa-2023:10837325,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E008,rapanos-v-united-states-2006:77830,applied,all_automated_directional_candidates,target-linked-application
+E009,rapanos-v-united-states-2006:202476,applied,all_automated_directional_candidates,target-linked-application
+E010,michigan-v-epa-2015:3148970,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E011,rapanos-v-united-states-2006:3000412,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E012,rapanos-v-united-states-2006:3049590,applied,all_automated_directional_candidates,target-linked-application
+E013,massachusetts-v-epa-2007:52276,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E014,massachusetts-v-epa-2007:65030,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language
+E015,rapanos-v-united-states-2006:3038351,applied,all_automated_directional_candidates,target-linked-application
+E016,michigan-v-epa-2015:4179039,cited_context_only,stratified_citation_only_sample,citation-anchor-without-directional-language

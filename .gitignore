@@ -5,6 +5,8 @@ paper/build/
 paper/figure-exports/build/
 .DS_Store
 *.class
+__pycache__/
+*.pyc
 .idea/
 *.iml
 

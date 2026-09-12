@@ -5,6 +5,8 @@ This project is being prepared for a Journal of Law and Courts submission and a 
 ## Requirements
 
 - Java 21 or newer
+- Python 3.10 or newer
+- Poppler (pdftoppm) to regenerate the standalone PNG figure exports
 - `make`
 - A LaTeX installation with `latexmk` for the paper
 
@@ -32,7 +34,15 @@ Before submission, run the full clean-tree gate:
 make replication-check
 ```
 
-This rebuilds tests, campaigns, diagnostics, validation dashboards, the strict paper checks, the anonymous submission package, and the full replication package, then copies the repository into a temporary clean tree and verifies that tree can run the core replication workflow.
+This rebuilds tests, campaigns, diagnostics, validation dashboards, the strict paper checks, the anonymous submission package, and the full replication package. It then validates the full archive's exact member inventory and hashes, extracts that delivered ZIP into a temporary directory, reruns tests, all three campaigns, diagnostics and the strict manuscript build, and compares every frozen report CSV and figure/table TeX fragment byte-for-byte. The extracted run reads no source files from the original checkout. PDF timestamps and run-time metadata are excluded from byte equality; the manuscript is independently rebuilt and checked.
+
+The same gate independently extracts the combined anonymous archive, runs its tests and manuscript build, and checks that its frozen analytic outputs remain unchanged. Anonymous copying preserves data bytes and line endings instead of invalidating source fingerprints. The gate also checks both split-package manifests and verifies that merging their files reconstructs the tested combined package. For the split upload packages, unpack the manuscript and supplement into the same directory to reproduce the paper; the supplement alone intentionally omits manuscript files.
+
+## Expert Legal Coding Packet
+
+`make expert-review-packet` regenerates the data-quality report, coverage and acquisition queues, source-linked case cards and separate ZIPs for reviewer A, reviewer B and the coordinator. `make expert-review-check` checks the generated artifacts against current frozen inputs without overwriting them. Read `docs/expert-legal-coding-protocol.md` before distributing a packet. Reader ZIPs omit machine labels and the coordinator key. Return files belong in ignored private storage; regenerated templates always remain blank.
+
+The 16-row packet has no completed human reviews. The return validator requires two distinct declared human readers, evidence locators and an independent adjudicator before reporting completed legal coding; it never supplies methods signoff or modifies empirical source rows. `reports/review-data-quality-v1.md` distinguishes actual characteristics from placeholders for both terms, and `docs/evidence-acquisition-priorities.md` specifies the remaining source and human decisions. The companion notebook is `notebooks/review-data-quality.ipynb`.
 
 The default paper commands use:
 

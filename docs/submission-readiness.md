@@ -1,5 +1,13 @@
 # Submission Readiness
 
+## September 2026 review handoff
+
+The local review packet now includes two independent-reader forms, case cards, an adjudication form and a return validator. Human coding and external methods approval remain pending. `reports/review-data-quality-v1.md` and `docs/evidence-acquisition-priorities.md` identify specific missing petition characteristics, the 30 certiorari CVSG briefs, a fixed 40-petition pilot, 227 emergency matters needing external observations, and 76 environmental documents needing text recovery. The July source snapshots remain frozen and explicitly dated.
+
+The readiness audit treats SG filing markers and unresolved court-origin categories as incomplete substantive coding. The full replication gate rebuilds the delivered ZIP and checks deterministic analytic outputs, alongside the local strict manuscript build. Use `docs/expert-legal-coding-protocol.md` for the human handoff; the AI methods report cannot close that gate.
+
+The [current JLC preparation instructions](https://www.cambridge.org/core/journals/journal-of-law-and-courts/information/author-instructions/preparing-your-materials), checked September 12, 2026, permit an anonymous PDF for initial review and provide an optional Overleaf template. They retain a general 10,000-word ceiling, figures near first reference, AI-use disclosure and reproducible analytic materials. Author confirmation of declarations, human methods review and the journal submission itself remain separate actions.
+
 ## Primary Target
 
 Primary journal target: Journal of Law and Courts.
@@ -34,7 +42,7 @@ Practical differences:
 - ACM would be plausible only if the paper were reframed around the simulator as a computing contribution: model architecture, human-centered decision support, collective intelligence, simulation methodology, or software/tooling. That would risk making the constitutional-review substance look like an application case rather than the paper's core contribution.
 - ACM production is also stricter about `acmart`, CCS concepts, TAPS compatibility, figure descriptions, and approved LaTeX packages. See ACM's [LaTeX preparation instructions](https://authors.acm.org/proceedings/production-information/preparing-your-article-with-latex). That is manageable, as the Congress paper shows, but it adds constraints without improving venue fit for a judicial-politics manuscript.
 
-Bottom line: keep JLC as the primary journal target and CELS as the near-term feedback venue. Revisit ACM only if the paper is rewritten into a general computational institutional-design methods paper rather than a court-design paper.
+Keep JLC as the primary journal target and use external methods review as the immediate feedback route. Revisit ACM only if the paper is rewritten into a general computational institutional-design methods paper rather than a court-design paper.
 
 ## Conference Feedback Posture
 

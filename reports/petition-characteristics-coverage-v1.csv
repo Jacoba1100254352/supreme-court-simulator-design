@@ -1,0 +1,31 @@
+term,field,denominatorRule,eligibleRows,populatedRows,substantivelyCodedRows,placeholderRows,blankRows,missingSubstantiveRows,coverageFraction,snapshotDate
+OT2023,petitionerType,all docketed certiorari petitions,4033,747,9,738,3286,4024,0.002232,2026-07-24
+OT2023,respondentType,all docketed certiorari petitions,4033,747,219,528,3286,3814,0.054302,2026-07-24
+OT2023,lowerCourt,all docketed certiorari petitions,4033,4033,4033,0,0,0,1.000000,2026-07-24
+OT2023,lowerCourtOrigin,all docketed certiorari petitions,4033,4033,3711,322,0,322,0.920159,2026-07-24
+OT2023,issueArea,all docketed certiorari petitions,4033,0,0,0,4033,4033,0.000000,2026-07-24
+OT2023,specialistCounselFlag,all docketed certiorari petitions,4033,0,0,0,4033,4033,0.000000,2026-07-24
+OT2023,formerClerkCounselFlag,all docketed certiorari petitions,4033,0,0,0,4033,4033,0.000000,2026-07-24
+OT2023,allegedSplitFlag,all docketed certiorari petitions,4033,0,0,0,4033,4033,0.000000,2026-07-24
+OT2023,genuineSplitFlag,all docketed certiorari petitions,4033,0,0,0,4033,4033,0.000000,2026-07-24
+OT2023,splitDepth,all docketed certiorari petitions,4033,0,0,0,4033,4033,0.000000,2026-07-24
+OT2023,vehicleQualityObjection,all docketed certiorari petitions,4033,0,0,0,4033,4033,0.000000,2026-07-24
+OT2023,sgRecommendation,CVSG-requested certiorari petitions,10,10,0,10,0,10,0.000000,2026-07-24
+OT2023,meritsDecisionDate,certiorari petitions granted for argument; outcome completion requires docket review,70,49,49,0,21,21,0.700000,2026-07-24
+OT2023,meritsOutcome,certiorari petitions granted for argument; outcome completion requires docket review,70,49,49,0,21,21,0.700000,2026-07-24
+OT2023,reversalOrVacatur,certiorari petitions granted for argument; outcome completion requires docket review,70,46,46,0,24,24,0.657143,2026-07-24
+OT2024,petitionerType,all docketed certiorari petitions,3683,3683,41,3642,0,3642,0.011132,2026-07-26
+OT2024,respondentType,all docketed certiorari petitions,3683,3682,1266,2416,1,2417,0.343742,2026-07-26
+OT2024,lowerCourt,all docketed certiorari petitions,3683,3683,3683,0,0,0,1.000000,2026-07-26
+OT2024,lowerCourtOrigin,all docketed certiorari petitions,3683,3683,3391,292,0,292,0.920717,2026-07-26
+OT2024,issueArea,all docketed certiorari petitions,3683,0,0,0,3683,3683,0.000000,2026-07-26
+OT2024,specialistCounselFlag,all docketed certiorari petitions,3683,0,0,0,3683,3683,0.000000,2026-07-26
+OT2024,formerClerkCounselFlag,all docketed certiorari petitions,3683,0,0,0,3683,3683,0.000000,2026-07-26
+OT2024,allegedSplitFlag,all docketed certiorari petitions,3683,0,0,0,3683,3683,0.000000,2026-07-26
+OT2024,genuineSplitFlag,all docketed certiorari petitions,3683,0,0,0,3683,3683,0.000000,2026-07-26
+OT2024,splitDepth,all docketed certiorari petitions,3683,0,0,0,3683,3683,0.000000,2026-07-26
+OT2024,vehicleQualityObjection,all docketed certiorari petitions,3683,0,0,0,3683,3683,0.000000,2026-07-26
+OT2024,sgRecommendation,CVSG-requested certiorari petitions,20,20,0,20,0,20,0.000000,2026-07-26
+OT2024,meritsDecisionDate,certiorari petitions granted for argument; outcome completion requires docket review,62,44,44,0,18,18,0.709677,2026-07-26
+OT2024,meritsOutcome,certiorari petitions granted for argument; outcome completion requires docket review,62,44,44,0,18,18,0.709677,2026-07-26
+OT2024,reversalOrVacatur,certiorari petitions granted for argument; outcome completion requires docket review,62,42,42,0,20,20,0.677419,2026-07-26

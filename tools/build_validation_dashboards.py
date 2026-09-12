@@ -2825,14 +2825,12 @@ DOCKETED_COHORT_COMPLETE_FIELDS = {
     "petitionType",
     "paidOrIfp",
     "lowerCourt",
-    "lowerCourtOrigin",
     "responseFiled",
     "responseSource",
     "responseRequestedByCourt",
     "cfrDate",
     "cvsgRequested",
     "cvsgDate",
-    "sgRecommendation",
     "certStageAmicusCount",
     "relistCount",
     "dispositionDate",
@@ -2845,6 +2843,8 @@ DOCKETED_COHORT_COMPLETE_FIELDS = {
 }
 
 DOCKETED_COHORT_PARTIAL_FIELDS = {
+    "lowerCourtOrigin",
+    "sgRecommendation",
     "petitionerType",
     "respondentType",
     "meritsDecisionDate",
@@ -2979,6 +2979,19 @@ def certiorari_current_evidence(
         )
     if status == "closed_docketed_cohort_partial":
         field_name = field["fieldName"]
+        if field_name == "sgRecommendation":
+            return (
+                f"The OT2023 cohort has {cert_counts.get(field_name, 0)} populated SG fields, "
+                "but 'brief filed' records filing presence only. Grant/deny/GVR/hold "
+                "recommendations require the brief text and remain uncoded. See the "
+                "two-term petition-characteristics coverage audit for substantive values."
+            )
+        if field_name == "lowerCourtOrigin":
+            return (
+                "Every OT2023 certiorari row has an origin value, but other_or_uncoded "
+                "is an unresolved classification. See the two-term petition-characteristics "
+                "coverage audit for substantive and placeholder counts."
+            )
         return (
             f"The closed OT2023 docketed cohort populates `{field_name}` for "
             f"{cohort_counts.get(field_name, 0)}/{cohort_total} all-docket rows and "
@@ -3028,6 +3041,8 @@ def certiorari_current_evidence(
 
 def certiorari_next_action(status: str, field: dict[str, str], source_slice: str) -> str:
     field_name = field["fieldName"]
+    if field_name == "sgRecommendation":
+        return "read each CVSG brief and record its recommendation, source page, and date; filing presence alone cannot supply this field"
     if status == "closed_docketed_cohort_complete":
         return (
             f"retain `{field_name}` in the closed cohort and re-run the official-docket "

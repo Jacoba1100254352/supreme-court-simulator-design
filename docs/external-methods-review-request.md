@@ -2,6 +2,14 @@
 
 Use this before adding more simulator features. The goal is to find the strongest objections to the calibration posture, mechanism interpretation, and replication materials while the paper is still easy to revise.
 
+## Start with this handoff
+
+For a methods reader, send the anonymous manuscript PDF, `reports/review-data-quality-v1.md`, `docs/evidence-acquisition-priorities.md` and the anonymous supplement. The detailed inventory below is a reference list, not a request to read every file first. Ask for a severity-ranked memo on construct alignment, denominator selection, circular model diagnostics, missingness and publication claims.
+
+For independent legal coding, follow `docs/expert-legal-coding-protocol.md`: send the reviewer A and B ZIPs to separate readers and retain the coordinator ZIP until initial returns. `make expert-review-packet` creates all three. No files have been sent by preparing this request, and no human completion is recorded. The earlier review and response are explicitly AI work.
+
+The immediate factual questions are whether the treatment categories can be reliably distinguished, whether any remedy-fidelity judgment is supportable, how to code the 30 CVSG-requested certiorari briefs, what opportunity rule includes non-citing cases, and what external observations establish actual emergency implementation. The new two-term semantic coverage audit treats `brief filed` and `other_or_uncoded` as incomplete substantive coding.
+
 ## Suggested Reviewer Profile
 
 Ask one quantitative judicial-politics, empirical legal studies, or computational social-science reviewer who is willing to be critical. The reviewer does not need to agree with simulation as a method, but should be able to evaluate whether the paper's claims are properly scoped.
@@ -123,5 +131,6 @@ Run:
 ```sh
 make test
 make paper-strict-check
-make replication-package
+make replication-check
+make expert-review-check
 ```

@@ -1,19 +1,32 @@
 #!/usr/bin/env python3
-"""Verify that a clean copied source tree can rebuild core artifacts."""
+"""Verify the delivered archive by rebuilding its extracted contents."""
 
 from __future__ import annotations
 
 import hashlib
 import json
-import shutil
+import stat
 import subprocess
 import tempfile
 import zipfile
 from pathlib import Path
 
+from package_policy import validate_member_name
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_ARCHIVE_CONTENTS = {
+    ".gitattributes",
+    ".gitignore",
+    "data/review/expert-legal-coding-v1/manifest.json",
+    "data/review/expert-legal-coding-v1/reviewer-a-template.csv",
+    "data/review/expert-legal-coding-v1/reviewer-b-template.csv",
+    "docs/expert-legal-coding-protocol.md",
+    "docs/evidence-acquisition-priorities.md",
+    "reports/review-data-quality-v1.md",
+    "tools/prepare_expert_review.py",
+    "tools/review_coding_returns.py",
+    "tools/package_policy.py",
     "data/benchmarks/certiorari-docketed-cohort-ot2023.csv",
     "data/benchmarks/certiorari-docketed-cohort-ot2023-manifest.json",
     "data/benchmarks/certiorari-docketed-cohort-ot2024.csv",
@@ -117,37 +130,6 @@ EXCLUDED_PARTS = {
 }
 
 
-def candidate_files() -> list[Path]:
-    try:
-        output = subprocess.check_output(
-            ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
-            cwd=ROOT,
-            text=True,
-        )
-    except subprocess.CalledProcessError as exception:
-        raise SystemExit("Unable to list repository files for replication check") from exception
-    files: list[Path] = []
-    for line in output.splitlines():
-        if not line.strip():
-            continue
-        path = ROOT / line
-        if not path.is_file():
-            continue
-        relative = path.relative_to(ROOT)
-        if path.name == ".DS_Store" or any(part in EXCLUDED_PARTS for part in relative.parts):
-            continue
-        files.append(path)
-    return files
-
-
-def copy_tree(destination: Path) -> None:
-    for path in candidate_files():
-        relative = path.relative_to(ROOT)
-        target = destination / relative
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(path, target)
-
-
 def run(command: list[str], cwd: Path) -> None:
     print("Running " + " ".join(command))
     subprocess.run(command, cwd=cwd, check=True)
@@ -161,30 +143,42 @@ def package_tree_sha256(entries: list[dict[str, object]]) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
-def check_archive_contents(archive: Path) -> None:
+def check_archive_contents(archive: Path, manifest_name: str = "replication-package-manifest.json", required_contents: set[str] | None = None) -> None:
     with zipfile.ZipFile(archive) as package:
-        names = set(package.namelist())
-        manifest_name = "replication-package-manifest.json"
+        member_names = package.namelist()
+        names = set(member_names)
+        if len(names) != len(member_names):
+            raise SystemExit("Replication archive contains duplicate member names")
+        for info in package.infolist():
+            validate_member_name(info.filename)
+            if stat.S_ISLNK(info.external_attr >> 16):
+                raise SystemExit(f"Replication archive contains a symbolic link: {info.filename}")
         if manifest_name not in names:
             raise SystemExit("Replication archive lacks its internal manifest")
         manifest = json.loads(package.read(manifest_name))
         entries = manifest.get("files", [])
         if not isinstance(entries, list):
             raise SystemExit("Replication manifest files field is malformed")
+        if not all(isinstance(entry, dict) and isinstance(entry.get("path"), str) for entry in entries):
+            raise SystemExit("Replication manifest entry is malformed")
+        declared = [entry["path"] for entry in entries]
+        if len(declared) != len(set(declared)):
+            raise SystemExit("Replication manifest repeats a member")
+        if set(declared) != names - {manifest_name}:
+            raise SystemExit("Replication manifest does not cover exactly the archive members")
         if manifest.get("fileCount") != len(entries):
             raise SystemExit("Replication manifest file count does not reconcile")
         if manifest.get("packageTreeSha256") != package_tree_sha256(entries):
             raise SystemExit("Replication manifest package-tree hash does not reconcile")
-        if manifest.get("gitDirty") not in {True, False, None}:
-            raise SystemExit("Replication manifest lacks a valid dirty-tree disclosure")
-        if not isinstance(manifest.get("gitStatusEntryCount"), int):
-            raise SystemExit("Replication manifest lacks git status entry count")
-        if "frozen normalized inputs" not in manifest.get(
-            "analyticReproductionScope", ""
-        ):
-            raise SystemExit("Replication manifest overstates analytic reproduction scope")
-        if "network access" not in manifest.get("sourceAcquisitionScope", ""):
-            raise SystemExit("Replication manifest omits source-acquisition boundary")
+        if manifest_name == "replication-package-manifest.json":
+            if manifest.get("gitDirty") not in {True, False, None}:
+                raise SystemExit("Replication manifest lacks a valid dirty-tree disclosure")
+            if not isinstance(manifest.get("gitStatusEntryCount"), int):
+                raise SystemExit("Replication manifest lacks git status entry count")
+            if "frozen normalized inputs" not in manifest.get("analyticReproductionScope", ""):
+                raise SystemExit("Replication manifest overstates analytic reproduction scope")
+            if "network access" not in manifest.get("sourceAcquisitionScope", ""):
+                raise SystemExit("Replication manifest omits source-acquisition boundary")
         for entry in entries:
             name = entry.get("path", "")
             if name not in names:
@@ -194,7 +188,8 @@ def check_archive_contents(archive: Path) -> None:
                 raise SystemExit(f"Replication manifest byte count changed: {name}")
             if hashlib.sha256(payload).hexdigest() != entry.get("sha256"):
                 raise SystemExit(f"Replication manifest hash changed: {name}")
-    missing = sorted(REQUIRED_ARCHIVE_CONTENTS - names)
+    required = REQUIRED_ARCHIVE_CONTENTS if required_contents is None else required_contents
+    missing = sorted(required - names)
     if missing:
         formatted = "\n".join(f"- {path}" for path in missing)
         raise SystemExit(f"Replication archive is missing required benchmark files:\n{formatted}")
@@ -211,6 +206,29 @@ def check_archive_contents(archive: Path) -> None:
         raise SystemExit(f"Replication archive contains local or generated metadata:\n{formatted}")
 
 
+def check_split_archives(combined: Path, manuscript: Path, supplement: Path) -> None:
+    """Prove the two upload ZIPs reconstruct the already tested combined tree."""
+    merged = {}
+    for archive, manifest_name in (
+        (manuscript, "anonymous-manuscript-manifest.json"),
+        (supplement, "anonymous-supplement-manifest.json"),
+    ):
+        check_archive_contents(archive, manifest_name, set())
+        with zipfile.ZipFile(archive) as package:
+            for name in package.namelist():
+                if name == manifest_name:
+                    continue
+                payload = package.read(name)
+                if name in merged and merged[name] != payload:
+                    raise SystemExit(f"Split anonymous packages disagree: {name}")
+                merged[name] = payload
+    with zipfile.ZipFile(combined) as package:
+        expected = {name: package.read(name) for name in package.namelist() if name != "anonymous-submission-manifest.json"}
+    if merged != expected:
+        raise SystemExit("Split anonymous packages do not reconstruct the combined archive")
+    print("Split anonymous upload packages reconstruct the tested combined tree.")
+
+
 def main() -> None:
     workspace_archive = ROOT / "dist" / "constitutional-review-replication.zip"
     if not workspace_archive.exists():
@@ -219,17 +237,48 @@ def main() -> None:
     with tempfile.TemporaryDirectory(prefix="constitutional-review-replication-") as temp:
         checkout = Path(temp) / "repo"
         checkout.mkdir()
-        copy_tree(checkout)
+        with zipfile.ZipFile(workspace_archive) as package:
+            package.extractall(checkout)
+        # Compare deterministic analytic outputs, not PDF timestamps or run-time metadata.
+        targets = sorted((checkout / "reports").glob("*.csv"))
+        targets += sorted((checkout / "paper" / "tables").glob("*.tex"))
+        targets += sorted((checkout / "paper" / "figures").glob("*.tex"))
+        before = {path.relative_to(checkout): hashlib.sha256(path.read_bytes()).hexdigest() for path in targets}
         run(["make", "test"], checkout)
-        run(["make", "validation-dashboards"], checkout)
+        run(["make", "campaign-v0", "campaign-v1", "campaign-v2", "diagnostics"], checkout)
         run(["make", "paper-strict-check"], checkout)
+        changed = [str(path) for path, digest in before.items() if not (checkout / path).exists() or hashlib.sha256((checkout / path).read_bytes()).hexdigest() != digest]
+        if changed:
+            raise SystemExit("Extracted archive does not reproduce frozen analytic outputs: " + ", ".join(changed))
         run(["make", "replication-package"], checkout)
         archive = checkout / "dist" / "constitutional-review-replication.zip"
         manifest = checkout / "dist" / "replication-package-manifest.json"
         if not archive.exists() or not manifest.exists():
-            raise SystemExit("Replication package outputs were not created in clean copied tree")
+            raise SystemExit("Replication package outputs were not created from extracted archive")
         check_archive_contents(archive)
-        print("Clean copied-tree replication check passed.")
+        print(f"Extracted-archive replication check passed ({len(before)} deterministic outputs matched).")
+    anonymous = ROOT / "dist" / "constitutional-review-anonymous-submission.zip"
+    if not anonymous.exists():
+        raise SystemExit("Combined anonymous archive is missing")
+    check_archive_contents(anonymous, "anonymous-submission-manifest.json")
+    with tempfile.TemporaryDirectory(prefix="constitutional-review-anonymous-") as temp:
+        checkout = Path(temp)
+        with zipfile.ZipFile(anonymous) as package:
+            package.extractall(checkout)
+        targets = sorted((checkout / "reports").glob("*.csv"))
+        targets += sorted((checkout / "paper" / "tables").glob("*.tex"))
+        targets += sorted((checkout / "paper" / "figures").glob("*.tex"))
+        before = {path.relative_to(checkout): hashlib.sha256(path.read_bytes()).hexdigest() for path in targets}
+        run(["make", "test", "paper"], checkout)
+        changed = [str(path) for path, digest in before.items() if not (checkout / path).exists() or hashlib.sha256((checkout / path).read_bytes()).hexdigest() != digest]
+        if changed:
+            raise SystemExit("Anonymous rebuild changed frozen analytic outputs: " + ", ".join(changed))
+        print("Extracted anonymous archive test and manuscript rebuild passed.")
+    check_split_archives(
+        anonymous,
+        ROOT / "dist" / "constitutional-review-anonymous-manuscript.zip",
+        ROOT / "dist" / "constitutional-review-anonymous-supplement.zip",
+    )
 
 
 if __name__ == "__main__":

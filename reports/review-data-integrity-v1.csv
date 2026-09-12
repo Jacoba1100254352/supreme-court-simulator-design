@@ -1,0 +1,5 @@
+dataset,grain,rows,uniqueKeys,checkStatus,snapshotDate
+data/benchmarks/certiorari-docketed-cohort-ot2023.csv,one docket,4222,4222,passed,2026-07-24
+data/benchmarks/certiorari-docketed-cohort-ot2024.csv,one docket,3854,3854,passed,2026-07-26
+data/benchmarks/lower-court-environmental-treatment-events-v1.csv,source decision x citing opinion document,191,191,passed,2026-07-26
+emergency granted + denied linkage,one source order record,241,241,passed,see source manifests and row notes

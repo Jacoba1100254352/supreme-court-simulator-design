@@ -10,6 +10,7 @@ Run from the repository root:
 make test
 make paper-strict-check
 make anonymous-submission-package
+make expert-review-check
 ```
 
 If refreshed raw datasets are available, run this before the final strict check:
@@ -59,3 +60,7 @@ Do not upload `dist/constitutional-review-replication.zip` as the anonymous supp
 ## External Review Gate
 
 Before adding more realism layers, send `docs/external-methods-review-request.md` and the anonymous package to one methods-oriented reviewer. Ask them to focus on calibration guardrails, model identification, claim discipline, and whether any manuscript claim sounds more validated than the evidence supports.
+
+Prepared materials are not evidence that they were sent or approved. Use `docs/expert-legal-coding-protocol.md` for the separate two-reader legal packet. Verify actual human returns, record disagreement and adjudication, and obtain the author's approval of declarations before journal submission. The existing AI review cannot satisfy either human gate.
+
+The author should add any recoverable model/version identifiers to the AI-use declaration from actual session records. The package discloses that it does not retain a complete session-by-session version history; do not invent one or treat that disclosure as editorial acceptance.

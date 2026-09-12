@@ -11,6 +11,8 @@ import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
+from package_policy import skip_source, write_transformed_utf8
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
@@ -21,13 +23,13 @@ SUPPLEMENT_ARCHIVE = DIST / "constitutional-review-anonymous-supplement.zip"
 MANIFEST = DIST / "anonymous-submission-manifest.json"
 
 INCLUDE_PATHS = [
+    ".gitattributes",
+    ".gitignore",
     "AGENTS.md",
     "Makefile",
     "README.md",
     "REPLICATION.md",
-    "data/benchmarks",
-    "data/calibration",
-    "data/external",
+    "data",
     "docs",
     "paper/README.md",
     "paper/abstract-variants.md",
@@ -42,6 +44,12 @@ INCLUDE_PATHS = [
     "reports",
     "src",
     "tools/build_validation_dashboards.py",
+    "tools/package_policy.py",
+    "tools/check_replication_package.py",
+    "tools/tests",
+    "tools/prepare_expert_review.py",
+    "tools/review_coding_returns.py",
+    "notebooks",
     "tools/build_certiorari_journal_docket_retrieval_workqueue.py",
     "tools/build_calibration_tables.py",
     "tools/extract_certiorari_docketed_cohort_benchmark.py",
@@ -60,6 +68,15 @@ INCLUDE_PATHS = [
 ]
 
 REQUIRED_CONTENTS = {
+    "data/review/expert-legal-coding-v1/manifest.json",
+    "data/review/expert-legal-coding-v1/reviewer-a-template.csv",
+    "data/review/expert-legal-coding-v1/reviewer-b-template.csv",
+    "docs/expert-legal-coding-protocol.md",
+    "docs/evidence-acquisition-priorities.md",
+    "reports/review-data-quality-v1.md",
+    "tools/prepare_expert_review.py",
+    "tools/review_coding_returns.py",
+    "tools/package_policy.py",
     "data/benchmarks/certiorari-docketed-cohort-ot2023.csv",
     "data/benchmarks/certiorari-docketed-cohort-ot2023-manifest.json",
     "data/benchmarks/certiorari-docketed-cohort-ot2024.csv",
@@ -221,10 +238,7 @@ def package_tree_sha256(entries: list[dict[str, object]]) -> str:
 
 
 def should_skip(path: Path) -> bool:
-    relative = path.relative_to(ROOT)
-    if any(part in EXCLUDED_PARTS for part in relative.parts):
-        return True
-    return path.name == ".DS_Store" or path.suffix == ".iml"
+    return skip_source(path, ROOT)
 
 
 def iter_source_files() -> list[Path]:
@@ -269,9 +283,11 @@ def copy_file(source: Path) -> Path:
     destination = STAGING / relative
     destination.parent.mkdir(parents=True, exist_ok=True)
     if is_text(source):
-        destination.write_text(sanitize_text(source.read_text()))
+        write_transformed_utf8(source, destination, sanitize_text)
     else:
         shutil.copy2(source, destination)
+    if relative.parts[0] == "data" and destination.read_bytes() != source.read_bytes():
+        raise SystemExit(f"Anonymous redaction would alter frozen evidence: {relative}")
     return destination
 
 
@@ -304,6 +320,7 @@ def write_package_readme() -> Path:
                 "This package contains the anonymous manuscript, simulator source, normalized calibration inputs, frozen external legislative-output fixtures, generated reports, figure/table fragments, and source-audit materials for review.",
                 "",
                 "Author-identifying files and public repository metadata are withheld. Local absolute paths in report manifests and documentation have been replaced with anonymized external-input placeholders if present.",
+                "Frozen data files retain their original bytes, including line endings and source fingerprints. The builder refuses redactions that would alter those evidence files.",
                 "",
                 "The package builder also writes separate manuscript-only and supplement-only ZIP archives so journal-upload categories can be kept distinct.",
                 "",

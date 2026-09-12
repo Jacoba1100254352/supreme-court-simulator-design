@@ -10,7 +10,7 @@ PAPER_ARGS ?= --legislative-input "$(PAPER_LEGISLATIVE_INPUT)"
 LATEXMK ?= $(if $(wildcard /Library/TeX/texbin/latexmk),/Library/TeX/texbin/latexmk,latexmk)
 TEX_PATH ?= /Library/TeX/texbin:$(PATH)
 
-.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh certiorari-docketed-cohort certiorari-docketed-cohort-ot2024 certiorari-docketed-cohorts lower-court-precedent-benchmark environmental-implementation-cohort environmental-source-snapshot seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison validation-dashboards diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-jlc-template-check paper-strict-check replication-package anonymous-submission-package replication-check paper-clean dist-clean test ci clean
+.PHONY: build run campaign campaign-v0 campaign-v1 campaign-v2 manipulation-stress calibrate calibration-refresh raw-source-refresh certiorari-docketed-cohort certiorari-docketed-cohort-ot2024 certiorari-docketed-cohorts lower-court-precedent-benchmark environmental-implementation-cohort environmental-source-snapshot seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison validation-dashboards diagnostics paper paper-check paper-source-audit paper-figures paper-figure-files paper-artifacts-check paper-title-page paper-pdf-freshness-check paper-jlc-template-check paper-strict-check replication-package anonymous-submission-package replication-check paper-clean dist-clean test ci clean expert-review-packet expert-review-check
 
 build:
 	mkdir -p out/main
@@ -76,6 +76,13 @@ legislative-family-comparison: build
 validation-dashboards:
 	python3 tools/build_validation_dashboards.py
 	python3 tools/build_certiorari_journal_docket_retrieval_workqueue.py
+	python3 -B tools/prepare_expert_review.py
+
+expert-review-packet:
+	python3 -B tools/prepare_expert_review.py
+
+expert-review-check:
+	python3 -B tools/prepare_expert_review.py --check
 
 diagnostics: calibrate seed-robustness mechanism-ablation parameter-sweep prior-uncertainty legislative-family-comparison manipulation-stress validation-dashboards
 
@@ -87,6 +94,7 @@ paper-figure-files: paper-figures
 
 paper-artifacts-check:
 	python3 paper/scripts/verify_paper_artifacts.py
+	python3 -B tools/prepare_expert_review.py --check
 
 paper-pdf-freshness-check:
 	python3 paper/scripts/check_pdf_freshness.py
@@ -134,6 +142,7 @@ test: build
 	mkdir -p out/test
 	javac --release $(JAVA_RELEASE) -cp out/main -d out/test $(TEST_SOURCES)
 	java $(JAVA_PROPS) -cp out/main:out/test constitutionalreview.SimulatorTests
+	python3 -B -m unittest discover -s tools/tests -v
 
 ci: test campaign paper
 
