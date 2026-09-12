@@ -134,7 +134,7 @@ Fifth, legislative override rules and accountability devices should increase dem
 
 Each generated world contains a pool of potential justices, a filed universe of constitutional disputes, and a legislative-output profile. Filed cases vary along six grouped dimensions: legal strength, claimant capacity, political salience, emergency pressure, lower-court conflict, and implementation risk. Legal-domain profiles then shift those dimensions for rights, election, executive-power, administrative, structural, and economic-regulation disputes so the model does not treat all constitutional cases as interchangeable.
 
-A review-path layer distinguishes certiorari-like petitions, direct constitutional complaints, amparo, QPC-style and concrete referrals, abstract review, emergency applications, electoral review, and interbranch disputes. Admission filtering turns filed disputes into screened-out matters or merits transfers using path-specific signals such as lower-court conflict, government participation, amici, relists, claimant resources, vehicle quality, repeat-player advantages, strategic plaintiff selection, settlement pressure, and conditional reversal probability. There is no preliminary fixed-size top-case selector before admission; the modeled merits docket is an output of the intake process. Figure~\ref{fig:model-flow} summarizes the state transition from filed matter to post-decision response. Appendix~\ref{app:mechanics} lists representative variables and weights.
+A review-path layer distinguishes certiorari-like petitions, direct constitutional complaints, amparo, QPC-style and concrete referrals, abstract review, emergency applications, electoral review, and interbranch disputes. Admission filtering turns filed disputes into screened-out matters or merits transfers using path-specific signals such as lower-court conflict, government participation, amici, relists, claimant resources, vehicle quality, repeat-player advantages, strategic plaintiff selection, settlement pressure, and conditional reversal probability. There is no preliminary fixed-size top-case selector before admission; the modeled merits docket is an output of the intake process. Figure~\ref{fig:model-flow} summarizes the state transition from filed matter to post-decision response. Appendix~\ref{app:mechanics} describes the main mechanics; Table~S4 in the technical supplement lists representative weights.
 
 \begin{figure}[hbt!]
 \centering
@@ -194,7 +194,7 @@ Table~\ref{tab:pathway-validation} is the denominator audit. Certiorari screenin
 
 \section{Metrics}
 
-The paper-facing metrics are grouped into four categories. Direct procedural outputs include petition filing, court-requested response, CVSG request, admission, emergency order, emergency grant, reasoned emergency order, merits acceleration, recusal, panel, en banc, council warning, remand, public-interest filtering, and override rates. Direct outcome outputs include claimant success, invalidation, precedent durability, lower-court compliance, government noncompliance, elite acceptance, emergency downstream effect, and domain-specific claimant success. Constructed indices include emergency irregularity, emergency legitimacy risk, the constitutional-conflict index, and the process-legitimacy index. Normative reading aids include the directional score and alternative priority scores in Appendix Table~\ref{tab:normative-scores}.
+The paper-facing metrics are grouped into four categories. Direct procedural outputs include petition filing, court-requested response, CVSG request, admission, emergency order, emergency grant, reasoned emergency order, merits acceleration, recusal, panel, en banc, council warning, remand, public-interest filtering, and override rates. Direct outcome outputs include claimant success, invalidation, precedent durability, lower-court compliance, government noncompliance, elite acceptance, emergency downstream effect, and domain-specific claimant success. Constructed indices include emergency irregularity, emergency legitimacy risk, the constitutional-conflict index, and the process-legitimacy index. Normative reading aids include the directional score and alternative priority scores in Table~S1 in the technical supplement.
 
 Emergency irregularity measures opaque, opportunistic, or merits-displacing emergency intervention. Process legitimacy is a modeled index based on visible procedure, emergency risk, partisan alignment, appointment pressure, and court-curbing response. Rights-claimant success is reported separately from rights protection and disaggregated by legal domain.
 
@@ -315,13 +315,7 @@ Appendix Table~\ref{tab:metric-semantics} records denominators and interpretatio
 
 \input{tables/metric_semantics}
 
-\input{tables/normative_scores}
-
-Appendix Table~\ref{tab:normative-scores} reports alternative reading aids for different constitutional priorities: rights priority, emergency restraint, democratic responsiveness, legal stability, low conflict, and administrative feasibility. The table makes visible that any single score embeds a normative weighting choice.
-
-\input{tables/pipeline_diagnostics}
-
-Appendix Table~\ref{tab:pipeline-diagnostics} is the audit table for the concern that formal court design might overweight the model. It exposes litigation-pipeline and downstream-enforcement quantities directly: certiorari admission, court-requested response, CVSG request, bar capital, claim strength, vehicle quality, genuine lower-court split rate, lower-court split depth, lower-court resistance, forum shopping, pre-review settlement, strategic plaintiff selection, repeat-player advantage, enforcement capacity, emergency opportunism, recusal incentive pressure, government noncompliance, emergency downstream effect, and precedent durability.
+The anonymous technical supplement retains alternative priority scores (Table~S1), full litigation and enforcement diagnostics (Table~S2), and coding-versus-downstream interpretation rules (Table~S3). These remain descriptive model outputs and assumptions, not empirical validation.
 
 Figure~\ref{fig:conflict-confidence} is an appendix diagnostic map. It plots the process-legitimacy index against the constitutional-conflict index for selected designs, with marker shade representing emergency irregularity. It should not be read as a two-dimensional welfare frontier because rights protection, domain-specific claimant outcomes, democratic responsiveness, and administrative cost are intentionally outside the display.
 
@@ -333,10 +327,7 @@ Figure~\ref{fig:conflict-confidence} is an appendix diagnostic map. It plots the
 \label{fig:conflict-confidence}
 \end{figure}
 
-\input{tables/mechanical_emergent}
-
-Appendix Table~\ref{tab:mechanical-emergent} records the interpretive rule used in the results section: index movement is most informative when it travels with downstream rights, compliance, implementation, conflict, or cost measures.
-
+\clearpage
 \section{Model Mechanics}
 \label{app:mechanics}
 
@@ -352,41 +343,11 @@ P_{is}=\mathrm{clamp}_{[0,1]}(&b_{\mathrm{petition}}
 \]
 Conditional on a petition or referral, the admission score combines certiorari pressure, lower-court conflict, lower-court error, lower-court split depth, genuine split status, SG signal, court-requested response, CVSG request, amicus intensity, split maturity, relist signal, claimant type, bar capital, claim strength, vehicle quality, specialist counsel, repeat-player advantage, strategic plaintiff selection, forum-shopping pressure, settlement pressure, conditional reversal probability, access-path adjustment, institutional gatekeeping, vehicle defects, and vacancy deadlock. Merits transfer is then path-specific: emergency applications transfer through the application's merits-follow-through probability, complaints and amparo transfer at a lower rate, and ordinary referrals or cert-like paths transfer at a higher baseline reduced by settlement pressure.
 
-\begin{table}[p]
-\centering
-\caption{Representative model weights and decision rules}
-\label{tab:model-weights}
-\Description{Table summarizing representative admission, voting, emergency, conflict, legitimacy, and override weights used by the simulator.}
-\scriptsize
-\renewcommand{\arraystretch}{0.9}
-\begin{tabular}{>{\raggedright\arraybackslash}p{1.05in}>{\raggedright\arraybackslash}p{2.05in}>{\raggedright\arraybackslash}p{1.75in}}
-\toprule
-Component & Representative rule & Interpretation \\
-\midrule
-Admission & $0.18 + .22$ cert pressure $+ .12$ lower-court conflict $+ .10$ lower-court error $+ .13$ split depth $+ .06$ genuine split $+ .15$ SG signal $+ .10$ amicus signal $+ .08$ split maturity $+ .07$ relist signal $+ .06$ bar capital $+ .10$ claim strength $+ .09$ vehicle quality $+ .05$ specialist counsel $+ .05$ repeat-player signal $+ .05$ strategic-plaintiff signal $+ .02$ forum-shopping signal $+ .08$ conditional reversal $-.06$ settlement pressure $-.16$ vehicle defect, plus path adjustment, CFR, and CVSG increments & Admission is an institutional screen, not a fixed docket quota. \\
-Voting & Legal concern receives weight $.42$; rights concern uses rights burden, justice rights sensitivity, and weight $.44$; claim strength, vehicle quality, and bar capital can modestly increase merits credibility; democratic mandate, legislative quality, institutionalism, emergency deference, repeat-player pressure, forum-shopping signal, precedent stability, and accountability pull reduce or increase invalidation propensity. & Merits votes mix legal, rights, strategic, institutional, and emergency-deference considerations. \\
-Emergency irregularity & Open emergency rule base $.32$, no-merits penalty $.22$, shadow stay $.24$, reasoned order $-.08$, merits acceleration $-.07$, partisan salience $.12$, ambiguity $.08$, emergency opportunism $.10$. & The legacy \texttt{shadowDocketAbuse} field is retained in CSV outputs for compatibility; the paper-facing index is emergency irregularity. \\
-Process legitimacy & Legitimacy base $.48$, public attention $.16$, legislative quality $.10$, merits reason-giving $.18$, recusal discipline up to $.16$, council warning $.06$, emergency-process boost or shadow-stay penalty, emergency irregularity $-.24$, partisan alignment $-.20$; the process-legitimacy proxy then subtracts emergency legitimacy risk $.18$, partisan alignment $.12$, appointment pressure $.08$, and court-curbing $.10$. & The index rewards visible process and penalizes opaque or partisan-looking intervention; it is not direct public-opinion measurement. \\
-Compliance & Lower-court compliance rises with enforcement capacity and merits clarity, and falls with lower-court conflict, error risk, split depth, ideological drift, lower-court resistance, state conflict, invalidation shock, and government noncompliance. & Enforcement and implementation are modeled separately from formal legal validity. \\
-Conflict & Conflict potential $.38$, executive defiance $.18$, lower-court conflict $.08$, lower-court resistance $.10$, forum shopping $.04$, conflict load $.12$, legislative defiance $.10$, government noncompliance, emergency downstream effect, invalidating high-mandate laws $.14$, emergency relief $.12$, cross-court disagreement $.16$, override attempt $.06$. & Constitutional conflict is cumulative and rises when legal disagreement becomes interbranch disagreement. \\
-Override & Attempt pressure combines override pressure $.34$, democratic mandate $.30$, public attention $.18$, conflict load $.12$, legislative defiance $.12$, override adaptation $.10$, and rights-burden penalty $-.24$. & Accountability devices affect implementation only after invalidation and can generate rights carveouts or repeated override loops. \\
-\bottomrule
-\end{tabular}
-\end{table}
+Table~S4 in the anonymous technical supplement records representative weights and their interpretation.
 
 After admission, the court process chooses strategic-actor response, emergency status, pre-review settlement, initial merits review, panel or en banc routing, recusals, quorum, votes, emergency order, invalidation, auxiliary-review outcome, override attempt, and post-decision implementation response. Case-level metrics are averaged over the filed universe. For example, rights-claimant success is one when a high-rights-burden claimant receives invalidation or emergency relief and partial when settlement or constitutional remand preserves a claimant's route without immediate invalidation; process legitimacy is legitimacy minus penalties for emergency legitimacy risk, partisan alignment, appointment-pressure campaigns, and court-curbing response; the constitutional-conflict index rises with conflict potential, executive defiance, lower-court conflict, lower-court resistance, accumulated state conflict, government noncompliance, emergency downstream effect, invalidating high-mandate laws, emergency relief, cross-court disagreement, override attempts, and repeated override loops.
 
-The directional score is intentionally secondary:
-\[
-\begin{aligned}
-\mathrm{DirectionalScore}_s = \mathrm{mean}(&\mathrm{StabilityRights}_s,
-\mathrm{LegitimacyControl}_s,\mathrm{ClaimantSuccess}_s,\\
-&\mathrm{PrecedentDurability}_s,\mathrm{LowerCourtCompliance}_s,
-\mathrm{EliteAcceptance}_s,\\
-1-\mathrm{AdministrativeCost}_s).
-\end{aligned}
-\]
-The stability-rights component averages legal stability, precedent durability, lower-court compliance, enforcement capacity, lower-court-resistance restraint, rights protection, reversal restraint, and conflict restraint. The legitimacy-control component averages legitimacy, democratic responsiveness, independence-accountability balance, partisan-alignment restraint, emergency-irregularity restraint, emergency-legitimacy-risk restraint, emergency-downstream restraint, government-noncompliance restraint, recusal-pressure restraint, forum-shopping restraint, emergency-opportunism restraint, and strategic-pressure restraint. Because those choices are normative, the paper uses the directional score only as a reading aid. Score differences below .010 are treated as indistinguishable in the manuscript's substantive interpretation.
+The directional score is a secondary, normative reading aid. The technical supplement records its formula and component weights alongside Table~S1. Differences below .010 are treated as indistinguishable; the substantive analysis emphasizes individual outcomes and tradeoffs.
 
 \section*{Data Availability Statement}
 

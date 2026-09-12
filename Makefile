@@ -108,13 +108,22 @@ paper-source-audit:
 paper-check: paper-figures paper-artifacts-check paper-source-audit
 	python3 paper/scripts/check_jlc_format.py
 
-paper: paper-check paper-figure-files
+paper: paper-check paper-figure-files paper-technical-supplement
 	mkdir -p paper/build
 	rm -f paper/build/emergency-review-constitutional-court-design.aux paper/build/emergency-review-constitutional-court-design.bbl paper/build/emergency-review-constitutional-court-design.blg paper/build/emergency-review-constitutional-court-design.fdb_latexmk paper/build/emergency-review-constitutional-court-design.fls paper/build/emergency-review-constitutional-court-design.out
 	cd paper && PATH="$(TEX_PATH)" $(LATEXMK) -pdf -interaction=nonstopmode -halt-on-error -outdir=build emergency-review-constitutional-court-design.tex
 	python3 paper/scripts/check_latex_log.py
 	cp paper/build/emergency-review-constitutional-court-design.pdf paper/emergency-review-constitutional-court-design.pdf
 	python3 paper/scripts/check_pdf_freshness.py
+	python3 paper/scripts/check_jlc_format.py --rendered-word-count
+
+paper-technical-supplement: paper-figures
+	mkdir -p paper/build
+	cd paper && PATH="$(TEX_PATH)" $(LATEXMK) -pdf -interaction=nonstopmode -halt-on-error -outdir=build technical-supplement.tex
+	python3 paper/scripts/check_latex_log.py --log paper/build/technical-supplement.log
+	cp paper/build/technical-supplement.pdf paper/technical-supplement.pdf
+
+.PHONY: paper-technical-supplement
 
 paper-title-page:
 	mkdir -p paper/build

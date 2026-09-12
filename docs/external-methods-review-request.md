@@ -17,6 +17,7 @@ Ask one quantitative judicial-politics, empirical legal studies, or computationa
 ## Materials to Send
 
 - `paper/emergency-review-constitutional-court-design.pdf`
+- `paper/technical-supplement.pdf` (detailed diagnostic Tables S1-S4)
 - `REPLICATION.md`
 - `paper/source-audit.csv`
 - `reports/constitutional-review-campaign-v2.md`

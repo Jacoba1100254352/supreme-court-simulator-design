@@ -16,6 +16,9 @@ from package_policy import validate_member_name
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_ARCHIVE_CONTENTS = {
+    "paper/technical-supplement.tex",
+    "paper/technical-supplement.pdf",
+    "paper/tables/model_weights.tex",
     ".gitattributes",
     ".gitignore",
     "data/review/expert-legal-coding-v1/manifest.json",
@@ -244,13 +247,10 @@ def main() -> None:
         targets += sorted((checkout / "paper" / "tables").glob("*.tex"))
         targets += sorted((checkout / "paper" / "figures").glob("*.tex"))
         before = {path.relative_to(checkout): hashlib.sha256(path.read_bytes()).hexdigest() for path in targets}
-        run(["make", "test"], checkout)
-        run(["make", "campaign-v0", "campaign-v1", "campaign-v2", "diagnostics"], checkout)
-        run(["make", "paper-strict-check"], checkout)
+        run(["make", "test", "campaign-v0", "campaign-v1", "campaign-v2", "diagnostics", "paper-strict-check", "replication-package"], checkout)
         changed = [str(path) for path, digest in before.items() if not (checkout / path).exists() or hashlib.sha256((checkout / path).read_bytes()).hexdigest() != digest]
         if changed:
             raise SystemExit("Extracted archive does not reproduce frozen analytic outputs: " + ", ".join(changed))
-        run(["make", "replication-package"], checkout)
         archive = checkout / "dist" / "constitutional-review-replication.zip"
         manifest = checkout / "dist" / "replication-package-manifest.json"
         if not archive.exists() or not manifest.exists():

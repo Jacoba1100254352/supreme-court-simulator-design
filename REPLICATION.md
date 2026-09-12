@@ -54,6 +54,8 @@ The default fixture is included in the repository and documented in `data/extern
 
 ## Package for Review or Deposit
 
+The review set contains the main manuscript and `paper/technical-supplement.pdf`, with detailed diagnostic Tables S1-S4. `make paper` rebuilds both PDFs, checks their logs and freshness, and enforces the main article's 10,000-word ceiling on all rendered text, including tables and references. Both full and combined anonymous archives include the supplement source and PDF; the split anonymous supplement archive carries these companion files.
+
 Create a blinded archive for anonymous review after the checks pass:
 
 ```sh

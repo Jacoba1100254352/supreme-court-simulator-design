@@ -41,6 +41,8 @@ make paper
 
 This also regenerates the paper's LaTeX figure and table fragments from the current v2 campaign, verifies report manifests and substantive data invariants, checks claim-to-source traceability, exports standalone figure files, runs a local JLC-format check, and checks the final LaTeX log for unresolved references or citations.
 
+It builds both the main manuscript and `paper/technical-supplement.pdf`. The supplement preserves detailed priority scores, pipeline diagnostics, interpretation rules, and model weights as Tables S1-S4. The 10,000-word gate counts all whitespace-delimited text extracted from the rendered main PDF, including tables, captions, numbers, and references. The source-prose estimate is not a submission-length check. Human methods review and journal approval remain separate.
+
 Run stricter submission checks and build the non-anonymous title page:
 
 ```sh

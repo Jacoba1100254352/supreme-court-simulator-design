@@ -27,6 +27,7 @@ The anonymous package target rebuilds the manuscript, stages a blinded package, 
 ## Upload Set for Anonymous Review
 
 - Anonymous manuscript PDF from `paper/emergency-review-constitutional-court-design.pdf` or manuscript archive `dist/constitutional-review-anonymous-manuscript.zip`.
+- Anonymous technical supplement `paper/technical-supplement.pdf`, containing Tables S1-S4. Supply it to the methods reader and use the journal's supplementary-material upload category when available; do not silently omit its detailed evidence.
 - Anonymous supplemental package, if requested during review: `dist/constitutional-review-anonymous-supplement.zip`.
 - Short abstract from `paper/abstract-variants.md`, edited to match the submission form.
 - Non-anonymous title-page metadata entered only in the journal submission system or uploaded separately if the system requests it outside peer-review files.
@@ -43,7 +44,7 @@ Do not upload `dist/constitutional-review-replication.zip` as the anonymous supp
 - Data Availability Statement appears before the references.
 - Funding, competing-interest, and AI-assistance statements are present.
 - `paper/source-audit.csv` has checked anchors for material claims.
-- The manuscript stays under the 10,000-word article ceiling checked by `paper/scripts/check_jlc_format.py`.
+- The rendered main PDF stays under the 10,000-word article ceiling checked by `paper/scripts/check_jlc_format.py --rendered-word-count`, including tables, captions, numbers, declarations and references. The pre-build source-prose estimate alone is insufficient.
 
 ## Replication and Data Availability
 

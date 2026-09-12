@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import argparse
 import sys
 from pathlib import Path
 
@@ -23,10 +24,13 @@ FAIL_PATTERNS = [
 
 
 def main() -> None:
-    if not LOG.exists():
-        print(f"LaTeX log check failed: missing {LOG}", file=sys.stderr)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--log", type=Path, default=LOG)
+    log = parser.parse_args().log
+    if not log.exists():
+        print(f"LaTeX log check failed: missing {log}", file=sys.stderr)
         raise SystemExit(1)
-    text = LOG.read_text(errors="replace")
+    text = log.read_text(errors="replace")
     failures = []
     for pattern in FAIL_PATTERNS:
         if re.search(pattern, text):

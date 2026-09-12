@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,booktabs,array,graphicx,pdflscape,hyperref}
+\hypersetup{hidelinks}
+\setlength{\emergencystretch}{3em}
+\providecommand{\Description}[1]{}
+\ifdefined\pdfinfoomitdate\pdfinfoomitdate=1\fi
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=-1\fi
+\ifdefined\pdftrailerid\pdftrailerid{}\fi
+\renewcommand{\thetable}{S\arabic{table}}
+\let\originaltable\table
+\let\endoriginaltable\endtable
+\renewenvironment{table}[1][]{\originaltable[!htbp]}{\endoriginaltable}
+\title{Technical Supplement\\Emergency Review and Constitutional Court Design by Simulation}
+\author{Anonymous Author(s)}
+\date{}
+\begin{document}
+\maketitle
+
+This supplement preserves detailed diagnostic tables and representative model weights accompanying the anonymous manuscript. The quantities are synthetic model outputs or coding assumptions, not estimates of causal reform effects. The replication materials contain the full source, frozen inputs, and report generators.
+
+Table~\ref{tab:normative-scores} reports alternative reading aids for different constitutional priorities: rights priority, emergency restraint, democratic responsiveness, legal stability, low conflict, and administrative feasibility. The table makes visible that any single score embeds a normative weighting choice.
+\input{tables/normative_scores}
+
+The directional score is intentionally secondary:
+\[
+\begin{aligned}
+\mathrm{DirectionalScore}_s = \mathrm{mean}(&\mathrm{StabilityRights}_s,
+\mathrm{LegitimacyControl}_s,\mathrm{ClaimantSuccess}_s,\\
+&\mathrm{PrecedentDurability}_s,\mathrm{LowerCourtCompliance}_s,
+\mathrm{EliteAcceptance}_s,\\
+1-\mathrm{AdministrativeCost}_s).
+\end{aligned}
+\]
+The stability-rights component averages legal stability, precedent durability, lower-court compliance, enforcement capacity, lower-court-resistance restraint, rights protection, reversal restraint, and conflict restraint. The legitimacy-control component averages legitimacy, democratic responsiveness, independence-accountability balance, partisan-alignment restraint, emergency-irregularity restraint, emergency-legitimacy-risk restraint, emergency-downstream restraint, government-noncompliance restraint, recusal-pressure restraint, forum-shopping restraint, emergency-opportunism restraint, and strategic-pressure restraint. Because those choices are normative, the paper uses the directional score only as a reading aid. Score differences below .010 are treated as indistinguishable in the manuscript's substantive interpretation.
+
+\clearpage
+\begin{landscape}
+\setlength{\textwidth}{\linewidth}
+Table~\ref{tab:pipeline-diagnostics} is the audit table for the concern that formal court design might overweight the model. It exposes litigation-pipeline and downstream-enforcement quantities directly: certiorari admission, court-requested response, CVSG request, bar capital, claim strength, vehicle quality, genuine lower-court split rate, lower-court split depth, lower-court resistance, forum shopping, pre-review settlement, strategic plaintiff selection, repeat-player advantage, enforcement capacity, emergency opportunism, recusal incentive pressure, government noncompliance, emergency downstream effect, and precedent durability.
+\input{tables/pipeline_diagnostics}
+\end{landscape}
+
+\clearpage
+Table~\ref{tab:mechanical-emergent} records the interpretive rule used in the results section: index movement is most informative when it travels with downstream rights, compliance, implementation, conflict, or cost measures.
+\input{tables/mechanical_emergent}
+
+\clearpage
+Table~\ref{tab:model-weights} records representative weights used by the simulator. These are source-informed and design-prior coding choices, not fitted coefficients.
+\input{tables/model_weights}
+
+\clearpage
+\end{document}

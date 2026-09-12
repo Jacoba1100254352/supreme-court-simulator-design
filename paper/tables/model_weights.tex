@@ -1,0 +1,21 @@
+\begin{table}[p]
+\centering
+\caption{Representative model weights and decision rules}
+\label{tab:model-weights}
+\Description{Table summarizing representative admission, voting, emergency, conflict, legitimacy, and override weights used by the simulator.}
+\scriptsize
+\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{>{\raggedright\arraybackslash}p{1.10in}>{\raggedright\arraybackslash}p{2.65in}>{\raggedright\arraybackslash}p{2.05in}}
+\toprule
+Component & Representative rule & Interpretation \\
+\midrule
+Admission & $0.18 + .22$ cert pressure $+ .12$ lower-court conflict $+ .10$ lower-court error $+ .13$ split depth $+ .06$ genuine split $+ .15$ SG signal $+ .10$ amicus signal $+ .08$ split maturity $+ .07$ relist signal $+ .06$ bar capital $+ .10$ claim strength $+ .09$ vehicle quality $+ .05$ specialist counsel $+ .05$ repeat-player signal $+ .05$ strategic-plaintiff signal $+ .02$ forum-shopping signal $+ .08$ conditional reversal $-.06$ settlement pressure $-.16$ vehicle defect, plus path adjustment, CFR, and CVSG increments & Admission is an institutional screen, not a fixed docket quota. \\
+Voting & Legal concern receives weight $.42$; rights concern uses rights burden, justice rights sensitivity, and weight $.44$; claim strength, vehicle quality, and bar capital can modestly increase merits credibility; democratic mandate, legislative quality, institutionalism, emergency deference, repeat-player pressure, forum-shopping signal, precedent stability, and accountability pull reduce or increase invalidation propensity. & Merits votes mix legal, rights, strategic, institutional, and emergency-deference considerations. \\
+Emergency irregularity & Open emergency rule base $.32$, no-merits penalty $.22$, shadow stay $.24$, reasoned order $-.08$, merits acceleration $-.07$, partisan salience $.12$, ambiguity $.08$, emergency opportunism $.10$. & The legacy \texttt{shadowDocketAbuse} field is retained in CSV outputs for compatibility; the paper-facing index is emergency irregularity. \\
+Process legitimacy & Legitimacy base $.48$, public attention $.16$, legislative quality $.10$, merits reason-giving $.18$, recusal discipline up to $.16$, council warning $.06$, emergency-process boost or shadow-stay penalty, emergency irregularity $-.24$, partisan alignment $-.20$; the process-legitimacy proxy then subtracts emergency legitimacy risk $.18$, partisan alignment $.12$, appointment pressure $.08$, and court-curbing $.10$. & The index rewards visible process and penalizes opaque or partisan-looking intervention; it is not direct public-opinion measurement. \\
+Compliance & Lower-court compliance rises with enforcement capacity and merits clarity, and falls with lower-court conflict, error risk, split depth, ideological drift, lower-court resistance, state conflict, invalidation shock, and government noncompliance. & Enforcement and implementation are modeled separately from formal legal validity. \\
+Conflict & Conflict potential $.38$, executive defiance $.18$, lower-court conflict $.08$, lower-court resistance $.10$, forum shopping $.04$, conflict load $.12$, legislative defiance $.10$, government noncompliance, emergency downstream effect, invalidating high-mandate laws $.14$, emergency relief $.12$, cross-court disagreement $.16$, override attempt $.06$. & Constitutional conflict is cumulative and rises when legal disagreement becomes interbranch disagreement. \\
+Override & Attempt pressure combines override pressure $.34$, democratic mandate $.30$, public attention $.18$, conflict load $.12$, legislative defiance $.12$, override adaptation $.10$, and rights-burden penalty $-.24$. & Accountability devices affect implementation only after invalidation and can generate rights carveouts or repeated override loops. \\
+\bottomrule
+\end{tabular}
+\end{table}

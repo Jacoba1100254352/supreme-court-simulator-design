@@ -15,6 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 MAIN = ROOT / "paper" / "emergency-review-constitutional-court-design.tex"
 TITLE_PAGE = ROOT / "paper" / "title-page.tex"
+SUPPLEMENT = ROOT / "paper" / "technical-supplement.tex"
+PDF = MAIN.with_suffix(".pdf")
 MAX_WORDS = 10_000
 REQUIRED_GENERATED = [
     ROOT / "paper" / "figures" / "model_flow.tex",
@@ -36,6 +38,7 @@ REQUIRED_GENERATED = [
     ROOT / "paper" / "tables" / "sensitivity_drivers.tex",
     ROOT / "paper" / "tables" / "benchmark_readiness.tex",
     ROOT / "paper" / "tables" / "mechanism_summary.tex",
+    ROOT / "paper" / "tables" / "model_weights.tex",
 ]
 
 TOOL_DIRS = [
@@ -90,6 +93,27 @@ def strip_latex(source: str) -> str:
 
 def word_count(source: str) -> int:
     return len(re.findall(r"[A-Za-z][A-Za-z0-9'-]*", strip_latex(source)))
+
+
+def rendered_word_count(pdf: Path) -> int:
+    """Count all rendered tokens, including tables, captions and references."""
+    if not pdf.is_file():
+        fail(f"rendered word count requires {pdf.name}; run make paper")
+    result = subprocess.run(
+        [required_tool("pdftotext"), "-layout", str(pdf), "-"],
+        check=True, capture_output=True, text=True, env=tool_env(),
+    )
+    words = len(result.stdout.split())
+    if not words:
+        fail(f"no text could be extracted from {pdf.name}")
+    return words
+
+
+def check_rendered_word_limit(pdf: Path) -> int:
+    words = rendered_word_count(pdf)
+    if words > MAX_WORDS:
+        fail(f"rendered main manuscript has {words} words, above the {MAX_WORDS}-word limit (including tables and references)")
+    return words
 
 
 def has_cambridge_class() -> bool:
@@ -321,6 +345,16 @@ def main() -> None:
     require_cambridge_class = "--require-cambridge-class" in sys.argv
     source = MAIN.read_text()
     title_page = TITLE_PAGE.read_text() if TITLE_PAGE.exists() else ""
+    if not SUPPLEMENT.exists():
+        fail("anonymous technical supplement source is missing")
+    supplement = SUPPLEMENT.read_text()
+    supplemental_tables = ["normative_scores", "pipeline_diagnostics", "mechanical_emergent", "model_weights"]
+    positions = [supplement.find(f"\\input{{tables/{name}}}") for name in supplemental_tables]
+    if any(position < 0 for position in positions) or positions != sorted(positions):
+        fail("technical supplement must retain Tables S1-S4 in the documented order")
+    for number in range(1, 5):
+        if f"Table~S{number}" not in source:
+            fail(f"main manuscript must refer to technical supplement Table S{number}")
 
     required_snippets = [
         ("official JLC class option", "journal=jlc"),
@@ -341,12 +375,9 @@ def main() -> None:
         ("calibration guardrail table", "tables/calibration_guardrails"),
         ("calibration classification table", "tables/calibration_classification"),
         ("generated selected results table", "tables/v2_selected"),
-        ("multi-objective scores table", "tables/normative_scores"),
         ("emergency walkthrough table", "tables/emergency_walkthrough"),
         ("non-mechanical diagnostics table", "tables/non_mechanical_diagnostics"),
         ("process legitimacy robustness table", "tables/process_legitimacy_robustness"),
-        ("mechanical versus emergent table", "tables/mechanical_emergent"),
-        ("litigation-pipeline diagnostics table", "tables/pipeline_diagnostics"),
         ("calibration quality table", "tables/calibration_quality"),
         ("parameter justification table", "tables/parameter_justification"),
         ("uncertainty band table", "tables/uncertainty_bands"),
@@ -380,7 +411,7 @@ def main() -> None:
         fail("Data Availability Statement must appear before the reference list")
 
     generated_source = "\n".join(path.read_text() for path in REQUIRED_GENERATED if path.exists())
-    combined_source = source + "\n" + generated_source
+    combined_source = source + "\n" + supplement + "\n" + generated_source
     figure_count = combined_source.count("\\begin{figure}")
     description_count = combined_source.count("\\Description{")
     table_count = combined_source.count("\\begin{table}")
@@ -397,10 +428,11 @@ def main() -> None:
     check_rendered_conflict_label_layout()
 
     words = word_count(source)
-    if words > MAX_WORDS:
-        fail(f"main manuscript has {words} words, above JLC's {MAX_WORDS}-word article limit")
     if words < 3_000:
-        warn(f"main manuscript has only {words} words; JLC review will likely expect fuller theory and method exposition")
+        warn(f"main manuscript source-prose estimate is only {words} words; review exposition")
+    rendered_words = None
+    if strict_submission or "--rendered-word-count" in sys.argv:
+        rendered_words = check_rendered_word_limit(PDF)
 
     if strict_submission and not TITLE_PAGE.exists():
         fail("strict submission check requires a separate non-anonymous title page")
@@ -413,7 +445,8 @@ def main() -> None:
                 fail(message)
             warn(message)
 
-    print(f"JLC format check passed ({words} manuscript words, {figure_count} figures).")
+    length = f"{rendered_words} rendered main-PDF words including tables and references" if rendered_words is not None else f"{words} source-prose words estimated; rendered length not yet checked"
+    print(f"JLC format check passed ({length}, {figure_count} figures).")
 
 
 if __name__ == "__main__":

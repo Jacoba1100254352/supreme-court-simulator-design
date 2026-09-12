@@ -35,6 +35,8 @@ INCLUDE_PATHS = [
     "paper/abstract-variants.md",
     "paper/emergency-review-constitutional-court-design.tex",
     "paper/emergency-review-constitutional-court-design.pdf",
+    "paper/technical-supplement.tex",
+    "paper/technical-supplement.pdf",
     "paper/references.bib",
     "paper/source-audit.csv",
     "paper/figures",
@@ -68,6 +70,9 @@ INCLUDE_PATHS = [
 ]
 
 REQUIRED_CONTENTS = {
+    "paper/technical-supplement.tex",
+    "paper/technical-supplement.pdf",
+    "paper/tables/model_weights.tex",
     "data/review/expert-legal-coding-v1/manifest.json",
     "data/review/expert-legal-coding-v1/reviewer-a-template.csv",
     "data/review/expert-legal-coding-v1/reviewer-b-template.csv",
